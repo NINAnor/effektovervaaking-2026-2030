@@ -14,9 +14,13 @@ Scripts 1–3 and 7 also produce the clearing data used by [Stor-elvebreddedderk
 
 ## Each year
 
-1. Put the new field data and the MidNat clearing polygons on P:, and run scripts 1–3, 6 and 7 (update the years in them).
-2. Replace the four files in [`../data/`](../data/) with the new ones and delete the old ones. The report finds them by pattern (`*_master.csv`, `lupin_clearing_by_site_*.csv`, `lupin_clearing_polygon_panel_*.csv`, `*_analysis_data.csv`), so there must be exactly one of each.
+1. Put the new field data, the MidNat clearing polygons and the NVE/MET series on P:, and run scripts 1–3, 6, 7 and 8 (update the years in them).
+2. Replace the files in [`../data/`](../data/) with the new ones and delete the old ones. The report finds them by pattern (`*_master.csv`, `lupin_clearing_by_site_*.csv`, `lupin_clearing_polygon_panel_*.csv`, `*_analysis_data.csv`, `daily_climate_hydrology_*.csv`, `climate_hydrology_yearly_*.csv`), so there must be exactly one of each.
    - The analysis data must contain the columns `Luket_yy` for the year before the survey, `years_cleared_*` and `lupins*_per_m2`. The report picks up the right year automatically.
 3. Copy `lupin_clearing_by_site_*.csv` to `../../Stor-elvebreddedderkopp/data/` as well.
 4. From the repo root, run `pixi run render-elvesandjeger`.
 5. Read through section 7 (interpretation) and update `yearLastUpdate`, `Version`, `VersionComment` and the Log in `Elvesandjeger.qmd`.
+
+## Climate and hydrology
+
+`8_elvesandjeger_climate_hydrology_2026.R` combines discharge and water level at Gaulfoss (NVE 122.9.0), precipitation and snow at Leinstrand (MET SN67150) and temperature at E6 Kvål (MET SN67175) into `daily_climate_hydrology_*.csv` and `climate_hydrology_yearly_*.csv`. Each year: download the new NVE and MET series to `05 Elvedyr/Data`, run script 8, and replace both files in [`../data/`](../data/). Copy the daily file to `../../Stor-elvebreddedderkopp/data/` as well. The reports compute the exposure before each visit and the exploratory models themselves, so the other outputs of script 8 are not needed.

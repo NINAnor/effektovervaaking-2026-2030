@@ -19,7 +19,7 @@ yearAdded: 2026
 yearLastUpdate: 2026
 status: incomplete # complete, incomplete eller deprecated
 Version: "0.1.0" # https://github.com/NINAnor/ecRxiv/wiki#versioning
-VersionComment: Første versjon, med data 2020–2026 og effekt av lupinluking
+VersionComment: Første versjon, med data 2020–2026, effekt av lupinluking og klima/vannføring
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision:
 writtenLanguage: Norwegian
@@ -324,6 +324,8 @@ Stor elvebreddedderkopp overvåkes på fire lokaliteter langs Gaula: Storrønnin
 
 Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 9 i [`code/`](code/). Polygonene inngår der som sentroider med areal. For effektanalysen er hvert undersøkelsespolygon (`r paste(eff_years, collapse = " og ")`) koblet til lukepolygonet det overlapper mest (skript 10, `r attr(dat, "file")`).
 
+Klima- og vannføringsdata er de samme som for elvesandjeger: vannføring ved Gaulfoss (NVE 122.9.0), nedbør og snø ved Leinstrand (MET SN67150) og temperatur ved E6 Kvål (MET SN67175, fra 2023), satt sammen til én daglig tabell av skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
+
 ```{r tbl-datainnsamling}
 #| tbl-cap: 'Antall observasjonspunkter (2020–2024) eller polygoner (fra 2025) per lokalitet i september. 0 = ikke undersøkt.'
 #| code-summary: 'Kode for tabell over innsats.'
@@ -345,6 +347,8 @@ effort |>
 Antallene er sterkt overspredte, men ikke nullinflaterte. Modellen er en **negativ binomial GLMM** (`glmmTMB`, nbinom2) per stadium med luking året før, år, substrat og lokalitet som faste effekter og et tilfeldig konstantledd per lukepolygon. Polygonarealet inngår som **kovariat, ikke som offset**: antallet øker langsommere enn arealet fordi store polygoner tar med mer tom mark, og polygonene var mye større i 2026 enn i 2025. Prediksjoner vises for et standard polygon på 50 m².
 
 `antall ~ luket året før + år + substrat + lokalitet + log(areal) + (1 | lukepolygon)`
+
+**Klima, snø og vannføring.** Antallet i september er sammenholdt med vannføring, nedbør og snø i fire vinduer: sommersesongen (1. mai til besøket), de 30 dagene før besøket og vinteren før (1. oktober – 30. april). Antall per lokalitet og år er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og år som tilfeldige effekter. For høyeste vannføring i sesongen er det i tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til polygoner i 2025.
 
 ```{r models}
 #| code-summary: 'Kode for modellene.'
@@ -537,6 +541,110 @@ for (resp in c("juvenile", "adult")) {
 bind_rows(veg_rows) |> kable()
 ```
 
+### 6.3 Klima, snø og vannføring
+
+```{r climate-data}
+#| code-summary: 'Kode for klimadata og eksponering før septemberbesøket.'
+daily <- read_one("^daily_climate_hydrology_.*\\.csv$") |> mutate(date = as.Date(date))
+
+# Eksponering: sommersesongen (1. mai – besøket), 30 og 14 dager før besøket, og vinteren før (1. okt – 30. apr)
+exposure <- function(d) {
+  y <- as.integer(format(d, "%Y"))
+  season <- daily[daily$date >= as.Date(paste0(y, "-05-01")) & daily$date <= d, ]
+  w30 <- daily[daily$date > d - 30 & daily$date <= d, ]
+  win <- daily[daily$date >= as.Date(paste0(y - 1, "-10-01")) & daily$date <= as.Date(paste0(y, "-04-30")), ]
+  c(q_max_season = max(season$q, na.rm = TRUE), d_over300_season = sum(season$q > 300, na.rm = TRUE),
+    q_max_30d = max(w30$q, na.rm = TRUE), precip_season = sum(season$precip, na.rm = TRUE),
+    precip_30d = sum(w30$precip, na.rm = TRUE), snow_days_winter = sum(win$snow_depth > 0, na.rm = TRUE))
+}
+sept_cl <- master |>
+  filter(month == "september", year >= min(daily$year)) |>
+  mutate(date = as.Date(date), point_id = paste(N, E, date))
+vis <- sept_cl |>
+  group_by(year) |>
+  summarise(date = median(date), n_units = n_distinct(point_id),
+            juveniles = sum(obs[stage == "juvenile"], na.rm = TRUE), adults = sum(obs[stage == "adult"], na.rm = TRUE), .groups = "drop")
+vis <- cbind(vis, t(sapply(vis$date, exposure)))
+sv <- sept_cl |>
+  group_by(year, site) |>
+  summarise(date = median(date), juveniles = sum(obs[stage == "juvenile"], na.rm = TRUE),
+            adults = sum(obs[stage == "adult"], na.rm = TRUE), .groups = "drop")
+sv <- cbind(sv, t(sapply(sv$date, exposure))) |>
+  mutate(yearf = factor(year), site = factor(site), log_qmax_season = log(q_max_season), log_qmax_30d = log(q_max_30d),
+         yr_c = year - round(mean(range(year))))
+
+# Utforskende modeller: antall per lokalitet og år mot én eksponeringsvariabel om gangen,
+# og effekten av høyeste vannføring når det er tatt hensyn til en lineær trend og metodeskiftet i 2025
+climate_res <- bind_rows(lapply(c("juveniles", "adults"), function(resp) {
+  m0 <- glmmTMB(as.formula(paste(resp, "~ 1 + (1 | site) + (1 | yearf)")), family = nbinom2, data = sv)
+  one <- bind_rows(lapply(c("log_qmax_season", "d_over300_season", "log_qmax_30d", "precip_season", "precip_30d", "snow_days_winter"), function(v) {
+    m1 <- glmmTMB(as.formula(paste(resp, "~", v, "+ (1 | site) + (1 | yearf)")), family = nbinom2, data = sv)
+    ss <- summary(m1)$coefficients$cond[v, ]
+    data.frame(response = resp, predictor = v, estimate = ss[1], se = ss[2], p_LRT = anova(m0, m1)[["Pr(>Chisq)"]][2], row.names = NULL)
+  }))
+  m_t <- glmmTMB(as.formula(paste(resp, "~ yr_c + (1 | site) + (1 | yearf)")), family = nbinom2, data = sv)
+  m_tq <- update(m_t, . ~ . + log_qmax_season)
+  m_tqp <- update(m_tq, . ~ . + I(year >= 2025))
+  trend <- data.frame(
+    response = resp,
+    predictor = c("log_qmax_trend", "log_qmax_trend_method"),
+    estimate = c(fixef(m_tq)$cond["log_qmax_season"], fixef(m_tqp)$cond["log_qmax_season"]),
+    se = c(summary(m_tq)$coefficients$cond["log_qmax_season", 2], summary(m_tqp)$coefficients$cond["log_qmax_season", 2]),
+    p_LRT = c(anova(m_t, m_tq)[["Pr(>Chisq)"]][2], anova(update(m_tqp, . ~ . - log_qmax_season), m_tqp)[["Pr(>Chisq)"]][2])
+  )
+  bind_rows(one, trend)
+}))
+cl_p <- function(resp, pred) climate_res$p_LRT[climate_res$response == resp & climate_res$predictor == pred]
+r_trend <- cor(vis$year, vis$q_max_season)
+```
+
+```{r tbl-klima}
+#| tbl-cap: 'Septemberbesøket per år: antall og eksponering. Høyeste vannføring og dager > 300 m³/s i sommersesongen (1. mai – besøket), høyeste vannføring de 30 dagene før besøket, nedbør i sesongen og snødager vinteren før.'
+#| code-summary: 'Kode for tabell.'
+vis |>
+  transmute(År = year, Dato = format(as.Date(date), "%d.%m"), Enheter = n_units, Juvenile = juveniles, Voksne = adults,
+            `Q maks sesong` = round(q_max_season), `Dager >300 sesong` = d_over300_season, `Q maks 30 d` = round(q_max_30d),
+            `Nedbør sesong` = round(precip_season), `Snødager vinter` = snow_days_winter) |>
+  kable()
+```
+
+```{r fig-klima}
+#| fig-cap: 'Antall i september mot høyeste vannføring i sommersesongen (venstre) og nedbør i sommersesongen (høyre). Tallene = år.'
+#| fig-height: 4.5
+#| fig-width: 11
+#| code-summary: 'Kode for figur.'
+vl <- vis |>
+  pivot_longer(c(juveniles, adults), names_to = "stage", values_to = "n") |>
+  mutate(stage = factor(stage, levels = c("juveniles", "adults"), labels = names(stage_cols)))
+pq <- ggplot(vl, aes(q_max_season, n + 1, colour = stage)) +
+  geom_point(size = 3) + geom_text(aes(label = year), vjust = -0.9, size = 3, show.legend = FALSE) +
+  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(x = "Høyeste vannføring mai–september (m³/s)", y = "Antall + 1 (log-skala)")
+pp <- ggplot(vl, aes(precip_season, n + 1, colour = stage)) +
+  geom_point(size = 3) + geom_text(aes(label = year), vjust = -0.9, size = 3, show.legend = FALSE) +
+  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(x = "Nedbør mai–september (mm)", y = NULL)
+pq + pp + plot_layout(guides = "collect") & theme(legend.position = "top")
+```
+
+```{r tbl-klima-modeller}
+#| tbl-cap: 'Utforskende NB GLMM for antall i september per lokalitet og år (lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om gangen, og effekten av høyeste vannføring når det er tatt hensyn til en lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på log-skala; p fra likelihood-ratio-test.'
+#| code-summary: 'Kode for tabell.'
+climate_res |>
+  mutate(Respons = recode(response, juveniles = "Juvenile", adults = "Voksne"),
+         Variabel = recode(predictor,
+                           log_qmax_season = "log(høyeste vannføring mai–sep)", d_over300_season = "Dager > 300 m³/s mai–sep",
+                           log_qmax_30d = "log(høyeste vannføring 30 d før besøk)", precip_season = "Nedbør mai–sep (mm)",
+                           precip_30d = "Nedbør 30 d før besøk (mm)", snow_days_winter = "Snødager vinteren før",
+                           log_qmax_trend = "log(høyeste vannføring), gitt årstrend",
+                           log_qmax_trend_method = "log(høyeste vannføring), gitt årstrend + polygonmetode"),
+         Estimat = round(estimate, 3), SE = round(se, 3), p = signif(p_LRT, 2)) |>
+  select(Respons, Variabel, Estimat, SE, p) |>
+  kable()
+```
+
 ```{r effect-numbers}
 #| include: false
 sj <- summary(res$Juvenile$m)$coefficients$cond
@@ -561,6 +669,8 @@ ci_txt <- function(ss, term) paste0(num(exp(ss[term, 1] - 1.96 * ss[term, 2])), 
 - **Lukehistorikk:** antall tidligere år en flekk er luket har ingen effekt på juvenile (RR `r num(exp(hj[1]))` per år, p `r fp(hj[4])`), men henger sammen med flere voksne (`r num(exp(ha[1]))` per år, p `r fp(ha[4])`). Det tyder på en gevinst av langvarig luking, men med samme forbehold om Kregnesteigen.
 - **Habitat:** vegetasjonsdekke reduserer antallet for begge stadier (juvenile p `r fp(res$Juvenile$lrt["Vegetasjonsdekke"])`, voksne p `r fp(res$Voksne$lrt["Vegetasjonsdekke"])`), og kontrollen viser at dette ikke skyldes tetthetsmetoden: effekten finnes også med areal som kovariat og innen ett enkelt år. Juvenile er færre på blandet substrat (RR `r num(exp(sj["substratblanding", 1]))`, p `r fp(sj["substratblanding", 4])`); substrat betyr ikke noe for voksne.
 - Stigningen for log(areal) (`r num(sj["log_area", 1])` for juvenile, `r num(sa["log_area", 1])` for voksne, mot 1 hvis antallet var proporsjonalt med arealet) bekrefter at antallet øker mye langsommere enn polygonarealet. Tetthet per m² avhenger derfor av hvordan polygonet er tegnet, og sammenligninger mellom år med ulik polygonstørrelse bør gjøres med areal i modellen, som her.
+
+- **Vannføring:** det sterkeste mønsteret i datasettet er sammenhengen mellom **høyeste vannføring i sommersesongen og antallet i september**: årene med de største vår- og sommerflommene hadde færrest edderkopper, og årene med de minste flommene flest. Effekten holder også når det er tatt hensyn til en lineær årstrend (voksne p `r fp(cl_p("adults", "log_qmax_trend"))`, juvenile p `r fp(cl_p("juveniles", "log_qmax_trend"))`) og metodeskiftet i 2025 (voksne p `r fp(cl_p("adults", "log_qmax_trend_method"))`, juvenile p `r fp(cl_p("juveniles", "log_qmax_trend_method"))`). Det er biologisk rimelig – edderkoppene lever i ganger på den laveste, mest flomutsatte sanden, og flommen kommer når juvenilene er små. Men serien er kort, og høyeste vannføring har gått ned gjennom perioden (r = `r num(r_trend)` med år), så trend og flom kan ikke skilles sikkert. Nedbør og snø vinteren før viser ingen sammenheng (p `r fp(min(climate_res$p_LRT[climate_res$predictor %in% c("precip_season", "precip_30d", "snow_days_winter")]))` eller høyere). Høyeste vannføring de 30 dagene før besøket henger sammen med antall voksne (p `r fp(cl_p("adults", "log_qmax_30d"))`), men ikke juvenile (p `r fp(cl_p("juveniles", "log_qmax_30d"))`). Hypotesen – **lave sommerflommer lar bestanden bygge seg opp på sandbankene** – bør testes på en lengre serie og med oversvømmelsesterskler per sandbanke.
 
 ### 7.2 Anbefaling for videreføring
 

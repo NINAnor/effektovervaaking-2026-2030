@@ -12,6 +12,10 @@ The lupin clearing data (`Lupinluking_2025_2026_clean.shp` and `lupin_clearing_b
 ## Each year
 
 1. Put the new field data on P:, run the clearing scripts in `Elvesandjeger/code/`, then scripts 9 and 10 here (update the years in them).
-2. Replace the three files in [`../data/`](../data/) with the new ones and delete the old ones. The report finds them by pattern (`*_master.csv`, `lupin_clearing_by_site_*.csv`, `*_analysis_data.csv`), so there must be exactly one of each.
+2. Replace the four files in [`../data/`](../data/) (master, clearing by site, analysis data, daily climate) with the new ones and delete the old ones. The report finds them by pattern (`*_master.csv`, `lupin_clearing_by_site_*.csv`, `*_analysis_data.csv`, `daily_climate_hydrology_*.csv`), so there must be exactly one of each.
 3. From the repo root, run `pixi run render-stor-elvebreddedderkopp`.
 4. Read through section 7 (interpretation) and update `yearLastUpdate`, `Version`, `VersionComment` and the Log in `Stor-elvebreddedderkopp.qmd`.
+
+## Climate and hydrology
+
+`daily_climate_hydrology_*.csv` in [`../data/`](../data/) is made by script 8 in [`Elvesandjeger/code/`](../../Elvesandjeger/code/) – replace it each year together with the Elvesandjeger copy. The report computes the exposure before each September visit and the exploratory models itself (as script 11 on P: did), so no other climate files are needed.

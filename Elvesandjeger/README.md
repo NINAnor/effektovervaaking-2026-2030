@@ -61,7 +61,7 @@ Megan Nowell
 > | Year added | 2026 |
 > | Last update | 2026 |
 > | Version | 0.1.0 |
-> | Version comment | Første versjon, med data 2015–2026 og effekt av lupinluking |
+> | Version comment | Første versjon, med data 2015–2026, effekt av lupinluking og klima/vannføring |
 > | Precision |  |
 >
 > </div>
@@ -183,6 +183,18 @@ effektanalysen er hvert undersøkelsespolygon i 2026 koblet til
 lukepolygonet det overlapper mest (skript 7,
 elvesandjeger_2026_analysis_data.csv).
 
+Klima- og vannføringsdata er satt sammen til én daglig tabell av skript
+8 i [`code/`](code/):
+
+- **Vannføring og vannstand ved Gaulfoss** (NVE, stasjon 122.9.0). NVEs
+  referanseverdier: middelflom 1 008 m³/s, 5-årsflom 1 304 m³/s.
+  Snøsmeltingen gir vårflommen, og flommene avgjør om – og hvor lenge –
+  sandbankene står under vann.
+- **Nedbør, snødekke og snødybde ved Leinstrand** (MET SN67150,
+  nedstrøms lokalitetene).
+- **Døgnmiddeltemperatur ved E6 Kvål** (MET SN67175), bare fra april
+  2023 og med hull.
+
 <div id="tbl-datainnsamling">
 
 Table 3: Antall observasjonspunkter (til og med 2025) eller polygoner
@@ -249,6 +261,17 @@ lukepolygon (de samme flekkene besøkes i juni, juli og august):
 
 Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for
 offset, og modellen er tilpasset hvert larvestadium for seg.
+
+**Klima, snø og vannføring.** Vannføringen der de overvåkede sandbankene
+oversvømmes er ikke kjent, så vannføringen brukes direkte som
+eksponeringsindeks: høyeste vannføring og antall dager over 300 m³/s
+siden forrige besøk (for junibesøket: siden 1. september året før), og
+høyeste vannføring og nedbør de 14 dagene før besøket. Larver per
+lokalitet og besøk (Storrønningen, Kregnesteigen og Fornes) er modellert
+med én eksponeringsvariabel om gangen i en utforskende NB GLMM med måned
+som fast effekt og lokalitet og år som tilfeldige effekter. Med én
+målestasjon får alle lokaliteter samme eksponering, så testen hviler på
+antall besøk.
 
 ## 6. Resultater
 
@@ -460,6 +483,118 @@ stadium, og rateratio for luket mot ikke luket.
 
 </div>
 
+### 6.4 Klima, snø og vannføring
+
+<div id="fig-hydrologi">
+
+![](img/fig-hydrologi-1.png)
+
+Figure 10: Daglig vannføring ved Gaulfoss, snødybde og nedbør ved
+Leinstrand, med besøkene for elvesandjeger (oransje). Referanselinjer
+for vannføring: 300 (prikket) og 500 m³/s (stiplet) og middelflom, 1 008
+m³/s (heltrukket).
+
+</div>
+
+<div id="tbl-hydrologi">
+
+Table 10: Årlig oppsummering av vannføring, snø og klima. Vårflom =
+høyeste vannføring april–juni; dager \> 300 / 500 m³/s; snødager = dager
+med snø på bakken januar–mai; siste snø = siste dag med snø før august;
+nedbør mai–august; temperatur ved Kvål der den finnes (vinter =
+des–feb).
+
+<div class="cell-output-display">
+
+| År | Vårflom | Vårflom dato | Årsmaks | Årsmaks dato | \>300 apr–jun | \>300 jul–aug | \>500 | Snø maks (cm) | Snødager jan–mai | Siste snø | Nedbør mai–aug | Temp des–feb | Temp apr–mai | Temp juni |
+|---:|---:|:---|---:|:---|---:|---:|---:|---:|---:|:---|---:|---:|---:|---:|
+| 2020 | 829 | 07.06 | 829 | 07.06 | 28 | 0 | 11 | 24 | 57 | 13.05 | 256 | NA | NA | NA |
+| 2021 | 618 | 16.05 | 618 | 16.05 | 18 | 4 | 5 | 28 | 84 | 14.04 | 266 | NA | NA | NA |
+| 2022 | 715 | 25.05 | 715 | 25.05 | 20 | 1 | 8 | 40 | 79 | 03.05 | 366 | NA | NA | NA |
+| 2023 | 580 | 15.05 | 755 | 08.08 | 13 | 4 | 4 | 42 | 98 | 04.05 | 261 | NA | 7.6 | 15.0 |
+| 2024 | 509 | 11.06 | 509 | 11.06 | 14 | 0 | 1 | 24 | 51 | 26.03 | 368 | -2.5 | 9.9 | 13.8 |
+| 2025 | 561 | 18.04 | 561 | 18.04 | 11 | 0 | 1 | 42 | 51 | 04.04 | 330 | 0.3 | 7.8 | 13.0 |
+| 2026 | 388 | 24.05 | 388 | 24.05 | 1 | 0 | 0 | 18 | 69 | 26.04 | 387 | -2.8 | 8.8 | 14.6 |
+
+</div>
+
+</div>
+
+<div id="fig-hydrologi-tidspunkt">
+
+![](img/fig-hydrologi-tidspunkt-1.png)
+
+Figure 11: Tidspunkt for siste dag med snø, vårflomtoppen og
+junibesøket, per år.
+
+</div>
+
+<div id="fig-hydrologi-besok">
+
+![](img/fig-hydrologi-besok-1.png)
+
+Figure 12: Larver per besøk og stadium (alle lokaliteter) mot høyeste
+vannføring de 14 dagene før besøket. Tallene = år.
+
+</div>
+
+<div id="tbl-besok-eksponering">
+
+Table 11: Innsats og antall per besøk: antall GPS-punkter (til og med
+2025) eller polygoner (fra 2026), larver totalt og per stadium, og
+eksponering før besøket (høyeste vannføring og nedbør de 14 dagene før;
+høyeste vannføring og dager \> 300 m³/s siden forrige besøk, eller
+siden 1. september for junibesøket).
+
+<div class="cell-output-display">
+
+| År | Måned | Dato | Punkter | Larver | St. 1 | St. 2 | St. 3 | Q maks 14 d | Nedbør 14 d | Q maks siden forrige | Dager \>300 siden forrige |
+|---:|:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2020 | juli | 15.07 | 130 | 1454 | 155 | 423 | 876 | 228 | 34 | 829 | 28 |
+| 2020 | august | 17.08 | 131 | 1220 | 242 | 220 | 758 | 167 | 16 | 241 | 0 |
+| 2021 | juni | 16.06 | 188 | 1597 | 101 | 475 | 1021 | 305 | 22 | 618 | 18 |
+| 2021 | august | 09.08 | 200 | 2737 | 422 | 1228 | 1087 | 37 | 22 | 172 | 0 |
+| 2022 | juni | 30.06 | 191 | 1918 | 360 | 464 | 1094 | 269 | 73 | 715 | 21 |
+| 2022 | august | 10.08 | 214 | 3133 | 616 | 1061 | 1456 | 230 | 47 | 305 | 1 |
+| 2023 | juni | 20.06 | 135 | 1535 | 140 | 377 | 1018 | 196 | 1 | 580 | 17 |
+| 2023 | juli | 19.07 | 164 | 2820 | 856 | 536 | 1428 | 171 | 23 | 171 | 0 |
+| 2023 | august | 17.08 | 197 | 1458 | 99 | 576 | 783 | 755 | 88 | 755 | 2 |
+| 2024 | juni | 13.06 | 136 | 824 | 76 | 272 | 476 | 509 | 96 | 509 | 14 |
+| 2024 | juli | 25.07 | 194 | 2253 | 296 | 1059 | 898 | 180 | 52 | 180 | 0 |
+| 2024 | august | 19.08 | 192 | 1098 | 15 | 380 | 703 | 127 | 48 | 130 | 0 |
+| 2025 | juni | 14.06 | 313 | 808 | 10 | 226 | 572 | 264 | 36 | 561 | 11 |
+| 2025 | juli | 11.07 | 261 | 959 | 205 | 35 | 719 | 191 | 33 | 305 | 1 |
+| 2025 | august | 27.08 | 81 | 308 | 22 | 100 | 186 | 240 | 88 | 240 | 0 |
+| 2026 | juni | 12.06 | 47 | 293 | 6 | 44 | 243 | 200 | 40 | 388 | 2 |
+| 2026 | juli | 13.07 | 37 | 1081 | 717 | 41 | 323 | 180 | 54 | 180 | 0 |
+| 2026 | august | 25.08 | 49 | 930 | 178 | 614 | 138 | 209 | 85 | 209 | 0 |
+
+</div>
+
+</div>
+
+<div id="tbl-klima-modeller">
+
+Table 12: Utforskende NB GLMM for larver per lokalitet og besøk
+(Storrønningen, Kregnesteigen, Fornes; måned som fast effekt, lokalitet
+og år som tilfeldige effekter) med én eksponeringsvariabel om gangen.
+Estimat på log-skala; p fra likelihood-ratio-test.
+
+<div class="cell-output-display">
+
+| Respons     | Variabel                               | Estimat |    SE |    p |
+|:------------|:---------------------------------------|--------:|------:|-----:|
+| Alle larver | log(høyeste vannføring 14 d før besøk) |  -0.221 | 0.182 | 0.23 |
+| Alle larver | Dager \> 300 m³/s siden forrige besøk  |  -0.002 | 0.019 | 0.92 |
+| Alle larver | Nedbør 14 d før besøk (mm)             |  -0.005 | 0.004 | 0.23 |
+| Stadium 1   | log(høyeste vannføring 14 d før besøk) |  -0.474 | 0.365 | 0.21 |
+| Stadium 1   | Dager \> 300 m³/s siden forrige besøk  |  -0.024 | 0.042 | 0.59 |
+| Stadium 1   | Nedbør 14 d før besøk (mm)             |  -0.004 | 0.008 | 0.59 |
+
+</div>
+
+</div>
+
 ## 7. Oppsummering
 
 ### 7.1 Hva viser årets resultater
@@ -498,6 +633,24 @@ Effekten varierer ikke signifikant mellom måneder (p = 0,21).
   Kregnesteigen (p = 0,0032).
 - **Per stadium:** stadium 1 p = 0,19, stadium 2 p = 0,76, stadium 3 p =
   0,9 for luking året før.
+
+**Klima og vannføring.**
+
+- Årlig høyeste vannføring ved Gaulfoss var 388–829 m³/s i 2020–2026;
+  ingen år nådde middelflom (1 008 m³/s), så serien inneholder ennå ikke
+  et år der sandbankene sto lenge under vann.
+- I de utforskende modellene har verken høyeste vannføring, dager over
+  300 m³/s eller nedbør før besøket en påviselig effekt (p = 0,21–0,92)
+  når variasjonen mellom år er tatt med.
+- Den eneste sommerflommen i serien (8. august 2023, 755 m³/s) kom ni
+  dager før augustbesøket og falt sammen med et kraftig fall i stadium
+  1-larver fra juli til august. Stadium 1-larvene har de grunneste
+  gangene og er mest utsatt for oversvømmelse og sandflytting.
+- Innsatsen varierer mellom besøk og blander seg med signalet mellom år
+  (f.eks. august 2025 med få punkter). Videre analyser av klima og
+  bestand trenger et mål på innsats per besøk, oversvømmelsesterskler
+  per sandbanke (drone-DEM + vannstand) og en lengre vannføringsserie
+  som inkluderer år med store flommer.
 
 ### 7.2 Anbefaling for videreføring
 

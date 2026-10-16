@@ -62,7 +62,7 @@ Megan Nowell
 > | Year added | 2026 |
 > | Last update | 2026 |
 > | Version | 0.1.0 |
-> | Version comment | Første versjon, med data 2020–2026 og effekt av lupinluking |
+> | Version comment | Første versjon, med data 2020–2026, effekt av lupinluking og klima/vannføring |
 > | Precision |  |
 >
 > </div>
@@ -149,6 +149,12 @@ sentroider med areal. For effektanalysen er hvert undersøkelsespolygon
 (2025 og 2026) koblet til lukepolygonet det overlapper mest (skript 10,
 elvebreddedderkopp_2025-2026_analysis_data.csv).
 
+Klima- og vannføringsdata er de samme som for elvesandjeger: vannføring
+ved Gaulfoss (NVE 122.9.0), nedbør og snø ved Leinstrand (MET SN67150)
+og temperatur ved E6 Kvål (MET SN67175, fra 2023), satt sammen til én
+daglig tabell av skript 8 i
+[`Elvesandjeger/code/`](../Elvesandjeger/code/).
+
 <div id="tbl-datainnsamling">
 
 Table 2: Antall observasjonspunkter (2020–2024) eller polygoner (fra
@@ -200,6 +206,15 @@ polygoner tar med mer tom mark, og polygonene var mye større i 2026 enn
 i 2025. Prediksjoner vises for et standard polygon på 50 m².
 
 `antall ~ luket året før + år + substrat + lokalitet + log(areal) + (1 | lukepolygon)`
+
+**Klima, snø og vannføring.** Antallet i september er sammenholdt med
+vannføring, nedbør og snø i fire vinduer: sommersesongen (1. mai til
+besøket), de 30 dagene før besøket og vinteren før (1. oktober – 30.
+april). Antall per lokalitet og år er modellert med én
+eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og
+år som tilfeldige effekter. For høyeste vannføring i sesongen er det i
+tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til
+polygoner i 2025.
 
 ## 6. Resultater
 
@@ -365,6 +380,73 @@ kovariat.
 
 </div>
 
+### 6.3 Klima, snø og vannføring
+
+<div id="tbl-klima">
+
+Table 8: Septemberbesøket per år: antall og eksponering. Høyeste
+vannføring og dager \> 300 m³/s i sommersesongen (1. mai – besøket),
+høyeste vannføring de 30 dagene før besøket, nedbør i sesongen og
+snødager vinteren før.
+
+<div class="cell-output-display">
+
+| År | Dato | Enheter | Juvenile | Voksne | Q maks sesong | Dager \>300 sesong | Q maks 30 d | Nedbør sesong | Snødager vinter |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2020 | 28.09 | 29 | 30 | 18 | 829 | 28 | 155 | 334 | 54 |
+| 2021 | 27.09 | 202 | 191 | 205 | 618 | 23 | 341 | 378 | 96 |
+| 2022 | 28.09 | 134 | 232 | 46 | 715 | 25 | 541 | 508 | 111 |
+| 2023 | 15.09 | 164 | 204 | 66 | 755 | 17 | 697 | 301 | 128 |
+| 2024 | 19.09 | 427 | 1065 | 147 | 509 | 15 | 446 | 424 | 94 |
+| 2025 | 11.09 | 140 | 615 | 503 | 431 | 6 | 240 | 336 | 85 |
+| 2026 | 12.09 | 57 | 2374 | 819 | 388 | 1 | 233 | 432 | 92 |
+
+</div>
+
+</div>
+
+<div id="fig-klima">
+
+![](img/fig-klima-1.png)
+
+Figure 6: Antall i september mot høyeste vannføring i sommersesongen
+(venstre) og nedbør i sommersesongen (høyre). Tallene = år.
+
+</div>
+
+<div id="tbl-klima-modeller">
+
+Table 9: Utforskende NB GLMM for antall i september per lokalitet og år
+(lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om
+gangen, og effekten av høyeste vannføring når det er tatt hensyn til en
+lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
+log-skala; p fra likelihood-ratio-test.
+
+<div class="cell-output-display">
+
+| Respons | Variabel | Estimat | SE | p |
+|:---|:---|---:|---:|---:|
+| Juvenile | log(høyeste vannføring mai–sep) | -2.975 | 0.531 | 0.00053 |
+| Juvenile | Dager \> 300 m³/s mai–sep | -0.079 | 0.021 | 0.00460 |
+| Juvenile | log(høyeste vannføring 30 d før besøk) | -0.439 | 0.693 | 0.54000 |
+| Juvenile | Nedbør mai–sep (mm) | 0.004 | 0.005 | 0.38000 |
+| Juvenile | Nedbør 30 d før besøk (mm) | 0.005 | 0.011 | 0.65000 |
+| Juvenile | Snødager vinteren før | -0.003 | 0.017 | 0.86000 |
+| Juvenile | log(høyeste vannføring), gitt årstrend | -2.445 | 1.084 | 0.05000 |
+| Juvenile | log(høyeste vannføring), gitt årstrend + polygonmetode | -3.421 | 0.924 | 0.00420 |
+| Voksne | log(høyeste vannføring mai–sep) | -3.439 | 0.736 | 0.00230 |
+| Voksne | Dager \> 300 m³/s mai–sep | -0.088 | 0.028 | 0.01500 |
+| Voksne | log(høyeste vannføring 30 d før besøk) | -2.151 | 0.374 | 0.01500 |
+| Voksne | Nedbør mai–sep (mm) | 0.000 | 0.006 | 0.98000 |
+| Voksne | Nedbør 30 d før besøk (mm) | -0.001 | 0.014 | 0.96000 |
+| Voksne | Snødager vinteren før | -0.018 | 0.020 | 0.38000 |
+| Voksne | log(høyeste vannføring), gitt årstrend | -5.328 | 1.261 | 0.00310 |
+| Voksne | log(høyeste vannføring), gitt årstrend + polygonmetode | -4.178 | 1.247 | 0.00840 |
+
+</div>
+
+</div>
+
 ## 7. Oppsummering
 
 ### 7.1 Hva viser årets resultater
@@ -375,6 +457,7 @@ kovariat.
   RR 1,03 (95 % KI 0,65–1,65), voksne 1,12 (0,51–2,44) sammenlignet med
   flekker som ikke ble luket; ingen av dem skiller seg fra kontrollen på
   Fornes (juvenile p = 0,51, voksne p = 0,99).
+
 - **Delvis lukede flekker har flest edderkopper** – voksne 3,6 ganger
   nivået i ikke-lukede flekker (p = 0,0068), juvenile 1,6 ganger (p =
   0,18). **Dette er en Kregnesteigen-effekt, ikke en lukeeffekt:** i
@@ -383,20 +466,40 @@ kovariat.
   Storrønningen, der det ikke gjorde noen forskjell. Uten Kregnesteigen
   blir RR for delvis luking 0,85 (juvenile, p = 0,64) og 2,17 (voksne, p
   = 0,21).
+
 - **Lukehistorikk:** antall tidligere år en flekk er luket har ingen
   effekt på juvenile (RR 1,01 per år, p = 0,85), men henger sammen med
   flere voksne (1,66 per år, p \< 0,001). Det tyder på en gevinst av
   langvarig luking, men med samme forbehold om Kregnesteigen.
+
 - **Habitat:** vegetasjonsdekke reduserer antallet for begge stadier
   (juvenile p \< 0,001, voksne p = 0,0093), og kontrollen viser at dette
   ikke skyldes tetthetsmetoden: effekten finnes også med areal som
   kovariat og innen ett enkelt år. Juvenile er færre på blandet substrat
   (RR 0,50, p = 0,048); substrat betyr ikke noe for voksne.
+
 - Stigningen for log(areal) (0,51 for juvenile, 0,57 for voksne, mot 1
   hvis antallet var proporsjonalt med arealet) bekrefter at antallet
   øker mye langsommere enn polygonarealet. Tetthet per m² avhenger
   derfor av hvordan polygonet er tegnet, og sammenligninger mellom år
   med ulik polygonstørrelse bør gjøres med areal i modellen, som her.
+
+- **Vannføring:** det sterkeste mønsteret i datasettet er sammenhengen
+  mellom **høyeste vannføring i sommersesongen og antallet i
+  september**: årene med de største vår- og sommerflommene hadde færrest
+  edderkopper, og årene med de minste flommene flest. Effekten holder
+  også når det er tatt hensyn til en lineær årstrend (voksne p = 0,0031,
+  juvenile p = 0,05) og metodeskiftet i 2025 (voksne p = 0,0084,
+  juvenile p = 0,0042). Det er biologisk rimelig – edderkoppene lever i
+  ganger på den laveste, mest flomutsatte sanden, og flommen kommer når
+  juvenilene er små. Men serien er kort, og høyeste vannføring har gått
+  ned gjennom perioden (r = -0,87 med år), så trend og flom kan ikke
+  skilles sikkert. Nedbør og snø vinteren før viser ingen sammenheng (p
+  = 0,38 eller høyere). Høyeste vannføring de 30 dagene før besøket
+  henger sammen med antall voksne (p = 0,015), men ikke juvenile (p =
+  0,54). Hypotesen – **lave sommerflommer lar bestanden bygge seg opp på
+  sandbankene** – bør testes på en lengre serie og med
+  oversvømmelsesterskler per sandbanke.
 
 ### 7.2 Anbefaling for videreføring
 

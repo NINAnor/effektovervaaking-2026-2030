@@ -19,7 +19,7 @@ yearAdded: 2026
 yearLastUpdate: 2026
 status: incomplete # complete, incomplete eller deprecated
 Version: "0.1.0" # https://github.com/NINAnor/ecRxiv/wiki#versioning
-VersionComment: Første versjon, med data 2015–2026 og effekt av lupinluking
+VersionComment: Første versjon, med data 2015–2026, effekt av lupinluking og klima/vannføring
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision:
 writtenLanguage: Norwegian
@@ -380,6 +380,12 @@ Elvesandjeger overvåkes på fire lokaliteter langs Gaula: Storrønningen, Kregn
 
 Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 6 i [`code/`](code/). I masterfila er larvestadiene for 2024 rettet (stadium 1 og 3 var byttet om i 2024-shapefilene). For effektanalysen er hvert undersøkelsespolygon i `r aar_eff` koblet til lukepolygonet det overlapper mest (skript 7, `r attr(dat, "file")`).
 
+Klima- og vannføringsdata er satt sammen til én daglig tabell av skript 8 i [`code/`](code/):
+
+- **Vannføring og vannstand ved Gaulfoss** (NVE, stasjon 122.9.0). NVEs referanseverdier: middelflom 1 008 m³/s, 5-årsflom 1 304 m³/s. Snøsmeltingen gir vårflommen, og flommene avgjør om – og hvor lenge – sandbankene står under vann.
+- **Nedbør, snødekke og snødybde ved Leinstrand** (MET SN67150, nedstrøms lokalitetene).
+- **Døgnmiddeltemperatur ved E6 Kvål** (MET SN67175), bare fra april 2023 og med hull.
+
 ```{r tbl-datainnsamling}
 #| tbl-cap: 'Antall observasjonspunkter (til og med 2025) eller polygoner (fra 2026) per besøksmåned og år. 0 = ikke undersøkt.'
 #| code-summary: 'Kode for tabell over innsats.'
@@ -406,6 +412,8 @@ Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon. Polygonen
 `larver ~ luket året før + måned + substrat + vegetasjonsdekke + slitasje + lokalitet + offset(log areal) + (1 | lukepolygon)`
 
 Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for offset, og modellen er tilpasset hvert larvestadium for seg.
+
+**Klima, snø og vannføring.** Vannføringen der de overvåkede sandbankene oversvømmes er ikke kjent, så vannføringen brukes direkte som eksponeringsindeks: høyeste vannføring og antall dager over 300 m³/s siden forrige besøk (for junibesøket: siden 1. september året før), og høyeste vannføring og nedbør de 14 dagene før besøket. Larver per lokalitet og besøk (Storrønningen, Kregnesteigen og Fornes) er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med måned som fast effekt og lokalitet og år som tilfeldige effekter. Med én målestasjon får alle lokaliteter samme eksponering, så testen hviler på antall besøk.
 
 ```{r models}
 #| code-summary: 'Kode for modellene.'
@@ -719,6 +727,159 @@ data.frame(
 ) |> kable()
 ```
 
+### 6.4 Klima, snø og vannføring
+
+```{r climate-data}
+#| code-summary: 'Kode for klimadata og eksponering før hvert besøk.'
+daily <- read_one("^daily_climate_hydrology_.*\\.csv$") |> mutate(date = as.Date(date))
+yearly <- read_one("^climate_hydrology_yearly_.*\\.csv$") |>
+  mutate(across(c(q_max_date, spring_peak_date, last_snow_date), as.Date))
+
+# Eksponering i vinduet før hvert besøk: siden forrige besøk (juni: siden 1. september året før) og 14 dager før
+exposure <- function(d, prev) {
+  w <- daily[daily$date > prev & daily$date <= d, ]
+  w14 <- daily[daily$date > d - 14 & daily$date <= d, ]
+  c(q_max_since_prev = max(w$q, na.rm = TRUE), d_over300_since_prev = sum(w$q > 300, na.rm = TRUE),
+    q_max_14d = max(w14$q, na.rm = TRUE), precip_14d = sum(w14$precip, na.rm = TRUE))
+}
+add_exposure <- function(v) {
+  v <- arrange(v, date)
+  v$prev <- dplyr::lag(v$date)
+  first_or_june <- is.na(v$prev) | v$month == "juni"
+  v$prev[first_or_june] <- as.Date(paste0(v$year[first_or_june] - 1, "-09-01"))
+  cbind(v, t(mapply(exposure, v$date, v$prev)))
+}
+
+# Besøk fra og med første år med vannføringsdata
+obs_cl <- master |>
+  filter(year >= min(daily$year), month %in% month_lev, stage %in% c("stad1", "stad2", "stad3"), site %in% names(site_lab)) |>
+  mutate(date = as.Date(date), point_id = paste(N, E, date))
+visits <- obs_cl |>
+  group_by(year, month) |>
+  summarise(date = median(date), n_points = n_distinct(point_id), larvae = sum(obs, na.rm = TRUE),
+            stad1 = sum(obs[stage == "stad1"], na.rm = TRUE), stad2 = sum(obs[stage == "stad2"], na.rm = TRUE),
+            stad3 = sum(obs[stage == "stad3"], na.rm = TRUE), .groups = "drop") |>
+  add_exposure() |>
+  mutate(month = factor(month, levels = month_lev))
+site_visits <- obs_cl |>
+  filter(site != "Grav") |>
+  group_by(year, month, site) |>
+  summarise(date = median(date), larvae = sum(obs, na.rm = TRUE),
+            stad1 = sum(obs[stage == "stad1"], na.rm = TRUE), .groups = "drop") |>
+  group_split(site) |>
+  lapply(add_exposure) |>
+  bind_rows() |>
+  mutate(month = factor(month, levels = month_lev), yearf = factor(year), site = factor(site), log_qmax14 = log(q_max_14d))
+
+# Utforskende modeller: larver per lokalitet og besøk mot én eksponeringsvariabel om gangen
+climate_res <- bind_rows(lapply(c("larvae", "stad1"), function(resp) {
+  f0 <- as.formula(paste(resp, "~ month + (1 | site) + (1 | yearf)"))
+  m0 <- glmmTMB(f0, family = nbinom2, data = site_visits)
+  bind_rows(lapply(c("log_qmax14", "d_over300_since_prev", "precip_14d"), function(v) {
+    m1 <- glmmTMB(update(f0, as.formula(paste(". ~ . +", v))), family = nbinom2, data = site_visits)
+    ss <- summary(m1)$coefficients$cond[v, ]
+    data.frame(response = resp, predictor = v, estimate = ss[1], se = ss[2], p_LRT = anova(m0, m1)[["Pr(>Chisq)"]][2], row.names = NULL)
+  }))
+}))
+cl_years <- range(daily$year)
+```
+
+```{r fig-hydrologi}
+#| fig-cap: 'Daglig vannføring ved Gaulfoss, snødybde og nedbør ved Leinstrand, med besøkene for elvesandjeger (oransje). Referanselinjer for vannføring: 300 (prikket) og 500 m³/s (stiplet) og middelflom, 1 008 m³/s (heltrukket).'
+#| fig-height: 8
+#| fig-width: 10
+#| code-summary: 'Kode for figur.'
+vis_dates <- distinct(visits, year, month, date)
+var_lab <- c(q = "Vannføring Gaulfoss (m³/s)", snow_depth = "Snødybde Leinstrand (cm)", precip = "Nedbør Leinstrand (mm/døgn)")
+dl <- daily |>
+  select(date, q, snow_depth, precip) |>
+  pivot_longer(-date, names_to = "var") |>
+  mutate(var = factor(var_lab[var], levels = var_lab))
+ggplot(dl, aes(date, value)) +
+  geom_line(data = filter(dl, var != var_lab["precip"]), colour = "#2a78d6", linewidth = 0.4) +
+  geom_col(data = filter(dl, var == var_lab["precip"]), fill = "#2a78d6", width = 1) +
+  geom_hline(data = data.frame(var = factor(var_lab["q"], levels = var_lab), y = c(300, 500, 1008), lt = c("dotted", "dashed", "solid")),
+             aes(yintercept = y, linetype = lt), colour = "grey40", linewidth = 0.4, show.legend = FALSE) +
+  scale_linetype_identity() +
+  geom_vline(data = vis_dates, aes(xintercept = date), colour = "#eb6834", linewidth = 0.4, alpha = 0.8) +
+  facet_wrap(~var, ncol = 1, scales = "free_y") +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  labs(x = NULL, y = NULL)
+```
+
+```{r tbl-hydrologi}
+#| tbl-cap: 'Årlig oppsummering av vannføring, snø og klima. Vårflom = høyeste vannføring april–juni; dager > 300 / 500 m³/s; snødager = dager med snø på bakken januar–mai; siste snø = siste dag med snø før august; nedbør mai–august; temperatur ved Kvål der den finnes (vinter = des–feb).'
+#| code-summary: 'Kode for tabell.'
+yearly |>
+  transmute(År = year, Vårflom = round(spring_peak), `Vårflom dato` = format(spring_peak_date, "%d.%m"),
+            `Årsmaks` = round(q_max), `Årsmaks dato` = format(q_max_date, "%d.%m"),
+            `>300 apr–jun` = d_over300_AprJun, `>300 jul–aug` = d_over300_JulAug, `>500` = d_over500,
+            `Snø maks (cm)` = snow_max_cm, `Snødager jan–mai` = snow_days_JanMay, `Siste snø` = format(last_snow_date, "%d.%m"),
+            `Nedbør mai–aug` = round(precip_MayAug), `Temp des–feb` = round(temp_DecFeb, 1),
+            `Temp apr–mai` = round(temp_AprMay, 1), `Temp juni` = round(temp_June, 1)) |>
+  kable()
+```
+
+```{r fig-hydrologi-tidspunkt}
+#| fig-cap: 'Tidspunkt for siste dag med snø, vårflomtoppen og junibesøket, per år.'
+#| fig-height: 4
+#| fig-width: 9
+#| code-summary: 'Kode for figur.'
+yearly |>
+  select(year, spring_peak_date, last_snow_date) |>
+  left_join(vis_dates |> filter(month == "juni") |> select(year, june_visit = date), by = "year") |>
+  pivot_longer(-year, names_to = "event", values_to = "date") |>
+  filter(!is.na(date)) |>
+  mutate(doy = as.integer(format(date, "%j")),
+         event = recode(event, spring_peak_date = "Vårflomtopp", last_snow_date = "Siste dag med snø", june_visit = "Junibesøk")) |>
+  ggplot(aes(doy, factor(year), colour = event)) +
+  geom_point(size = 3.5) +
+  scale_colour_manual(values = c("Vårflomtopp" = "#2a78d6", "Siste dag med snø" = "#9a9891", "Junibesøk" = "#eb6834"), name = NULL) +
+  scale_x_continuous(breaks = c(60, 91, 121, 152, 182), labels = c("1. mar", "1. apr", "1. mai", "1. jun", "1. jul")) +
+  labs(x = NULL, y = NULL)
+```
+
+```{r fig-hydrologi-besok}
+#| fig-cap: 'Larver per besøk og stadium (alle lokaliteter) mot høyeste vannføring de 14 dagene før besøket. Tallene = år.'
+#| fig-height: 5.5
+#| fig-width: 9
+#| code-summary: 'Kode for figur.'
+visits |>
+  pivot_longer(c(stad1, stad2, stad3), names_to = "stage", values_to = "n") |>
+  mutate(stage = factor(stage_lab[stage], levels = stage_lab[1:3])) |>
+  ggplot(aes(q_max_14d, n + 1, colour = stage, shape = month)) +
+  geom_point(size = 3) +
+  geom_text(aes(label = year), vjust = -0.9, size = 2.8, show.legend = FALSE) +
+  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_shape_discrete(name = "Besøk") +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(x = "Høyeste vannføring 14 dager før besøket (m³/s)", y = "Larver telt + 1 (log-skala)")
+```
+
+```{r tbl-besok-eksponering}
+#| tbl-cap: 'Innsats og antall per besøk: antall GPS-punkter (til og med 2025) eller polygoner (fra 2026), larver totalt og per stadium, og eksponering før besøket (høyeste vannføring og nedbør de 14 dagene før; høyeste vannføring og dager > 300 m³/s siden forrige besøk, eller siden 1. september for junibesøket).'
+#| code-summary: 'Kode for tabell.'
+visits |>
+  transmute(År = year, Måned = month, Dato = format(date, "%d.%m"), Punkter = n_points, Larver = larvae,
+            `St. 1` = stad1, `St. 2` = stad2, `St. 3` = stad3,
+            `Q maks 14 d` = round(q_max_14d), `Nedbør 14 d` = round(precip_14d),
+            `Q maks siden forrige` = round(q_max_since_prev), `Dager >300 siden forrige` = d_over300_since_prev) |>
+  kable()
+```
+
+```{r tbl-klima-modeller}
+#| tbl-cap: 'Utforskende NB GLMM for larver per lokalitet og besøk (Storrønningen, Kregnesteigen, Fornes; måned som fast effekt, lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om gangen. Estimat på log-skala; p fra likelihood-ratio-test.'
+#| code-summary: 'Kode for tabell.'
+climate_res |>
+  mutate(Respons = recode(response, larvae = "Alle larver", stad1 = "Stadium 1"),
+         Variabel = recode(predictor, log_qmax14 = "log(høyeste vannføring 14 d før besøk)",
+                           d_over300_since_prev = "Dager > 300 m³/s siden forrige besøk",
+                           precip_14d = "Nedbør 14 d før besøk (mm)"),
+         Estimat = round(estimate, 3), SE = round(se, 3), p = signif(p_LRT, 2)) |>
+  select(Respons, Variabel, Estimat, SE, p) |>
+  kable()
+```
+
 ```{r effect-numbers}
 #| include: false
 rr <- exp(s["Luket_prevJa", 1])
@@ -744,6 +905,13 @@ ctr_r <- function(g) ctr$ratio[ctr$contrast == paste(g, "/ Kontroll")]
 - **Sammenlignet med kontrollen på Fornes** har lukede flekker `r num(ctr_r("Ja"), 1)` ganger larvetettheten (p `r fp(ctr_p("Ja"))`, Dunnett-justert) og ikke-lukede flekker `r num(ctr_r("Nei"), 1)` ganger (p `r fp(ctr_p("Nei"))`).
 - **Habitat:** substrat har ingen effekt (p `r fp(lrts["Substrat", "p"])`). Vegetasjonsdekke og slitasje trekker begge ned – omtrent `r round(100 * (1 - exp(s["veg_frac", 1] / 10)))` % færre larver per 10 % vegetasjonsdekke (p `r fp(lrts["Vegetasjonsdekke", "p"])`) og `r round(100 * (1 - exp(s["slitasje", 1])))` % færre per slitasjeklasse (p `r fp(lrts["Slitasje", "p"])`). Larvetettheten er `r num(exp(s["siteStorrønningen", 1]), 1)` ganger høyere på Storrønningen enn på Kregnesteigen (p `r fp(lrts["Lokalitet", "p"])`).
 - **Per stadium:** stadium 1 p `r fp(stage_lrt["stad1"])`, stadium 2 p `r fp(stage_lrt["stad2"])`, stadium 3 p `r fp(stage_lrt["stad3"])` for luking året før.
+
+**Klima og vannføring.**
+
+- Årlig høyeste vannføring ved Gaulfoss var `r num(min(yearly$q_max), 0)`–`r num(max(yearly$q_max), 0)` m³/s i `r cl_years[1]`–`r cl_years[2]`; `r if (all(yearly$q_max < 1008)) "ingen år nådde middelflom (1 008 m³/s), så serien inneholder ennå ikke et år der sandbankene sto lenge under vann" else "minst ett år nådde middelflom (1 008 m³/s)"`.
+- I de utforskende modellene har verken høyeste vannføring, dager over 300 m³/s eller nedbør før besøket en påviselig effekt (p = `r num(min(climate_res$p_LRT))`–`r num(max(climate_res$p_LRT))`) når variasjonen mellom år er tatt med.
+- Den eneste sommerflommen i serien (8. august 2023, 755 m³/s) kom ni dager før augustbesøket og falt sammen med et kraftig fall i stadium 1-larver fra juli til august. Stadium 1-larvene har de grunneste gangene og er mest utsatt for oversvømmelse og sandflytting.
+- Innsatsen varierer mellom besøk og blander seg med signalet mellom år (f.eks. august 2025 med få punkter). Videre analyser av klima og bestand trenger et mål på innsats per besøk, oversvømmelsesterskler per sandbanke (drone-DEM + vannstand) og en lengre vannføringsserie som inkluderer år med store flommer.
 
 ### 7.2 Anbefaling for videreføring
 
