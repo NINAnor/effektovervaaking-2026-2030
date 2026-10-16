@@ -22,3 +22,6 @@ renv/library/
 ~$*
 Thumbs.db
 .DS_Store
+
+# pixi environment
+.pixi/

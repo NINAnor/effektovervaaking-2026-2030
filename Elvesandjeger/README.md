@@ -47,22 +47,22 @@ Megan Nowell
 >
 > <div class="cell-output-display">
 >
-> | Variable          | Value                                    |
-> |:------------------|:-----------------------------------------|
-> | Indicator ID      | INDICATORID                              |
-> | Indicator Name    | Elvesandjeger                            |
-> | verbatimName      | Elvesandjeger                            |
-> | Country           | Norway                                   |
-> | Continent         | Europe                                   |
-> | Realm             | write realm here                         |
-> | Biome             | write biome here                         |
-> | Ecosystem         | write ecosystem here                     |
+> | Variable | Value |
+> |:---|:---|
+> | Indicator ID | INDICATORID |
+> | Indicator Name | Elvesandjeger |
+> | verbatimName | Elvesandjeger |
+> | Country | Norway |
+> | Continent | Europe |
+> | Realm | write realm here |
+> | Biome | write biome here |
+> | Ecosystem | write ecosystem here |
 > | verbatimEcosystem | Elvebredder med sand og grus langs Gaula |
-> | Year added        | 2026                                     |
-> | Last update       | 2026                                     |
-> | Version           | 0.1.0                                    |
-> | Version comment   | Første versjon, med data 2015–2026       |
-> | Precision         |                                          |
+> | Year added | 2026 |
+> | Last update | 2026 |
+> | Version | 0.1.0 |
+> | Version comment | Første versjon, med data 2015–2026 og effekt av lupinluking |
+> | Precision |  |
 >
 > </div>
 >
@@ -110,7 +110,59 @@ Megan Nowell
 
 ### 3.2 Tiltak
 
-<!-- Beskrivelse av tiltak (luking av hagelupin), hva, når, hvem utfører. Legg inn bilde. -->
+<!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
+
+Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene.
+Lukingen registreres per lukepolygon og år som luket (Ja), delvis luket
+(Delvis) eller ikke luket (Nei), med antall lupiner fjernet.
+Lukepolygonene for 2025–2026 er slått sammen og renset i skript 1–3 i
+[`code/`](code/), og oppsummert per lokalitet og år av skript 7.
+Follstadøya har ikke overvåking av elvesandjeger og er ikke med.
+
+<div id="fig-luking-areal">
+
+![](img/fig-luking-areal-1.png)
+
+Figure 1: Areal luket per lokalitet og år (Ja = luket, Delvis = delvis
+luket). Ulik skala på y-aksen.
+
+</div>
+
+<div id="fig-luking-lupiner">
+
+![](img/fig-luking-lupiner-1.png)
+
+Figure 2: Antall lupiner fjernet (venstre) og lupiner fjernet per m²
+luket areal (høyre), per lokalitet og år. Fornes har lukepolygoner først
+fra 2026; Gravråk 2021 mangler antall.
+
+</div>
+
+<div id="tbl-luking">
+
+Table 2: Lupinluking per lokalitet og år: areal luket (m², Ja + Delvis),
+antall lupiner fjernet og lupiner per m² luket.
+
+<div class="cell-output-display">
+
+| Lokalitet | Mål | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
+|:---|:---|---:|---:|---:|---:|---:|---:|---:|
+| Storrønningen | Areal luket (m²) | 10751.00 | 14363.00 | 11238.00 | 16056.00 | 21465.00 | 5101.00 | 12507.00 |
+| Storrønningen | Lupiner fjernet | 56846.00 | 37172.00 | 5134.00 | 8551.00 | 7526.00 | 1318.00 | 25592.00 |
+| Storrønningen | Lupiner per m² | 5.29 | 2.59 | 0.46 | 0.53 | 0.35 | 0.26 | 2.05 |
+| Kregnesteigen | Areal luket (m²) | 0.00 | 2203.00 | 2941.00 | 17643.00 | 17981.00 | 17684.00 | 604.00 |
+| Kregnesteigen | Lupiner fjernet | 5750.00 | 5400.00 | 19130.00 | 29593.00 | 22217.00 | 1125.00 | 448.00 |
+| Kregnesteigen | Lupiner per m² | NA | 2.45 | 6.50 | 1.68 | 1.24 | 0.06 | 0.74 |
+| Fornes | Areal luket (m²) | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 2827.00 |
+| Fornes | Lupiner fjernet | NA | NA | NA | NA | NA | NA | 5150.00 |
+| Fornes | Lupiner per m² | NA | NA | NA | NA | NA | NA | 1.82 |
+| Gravråk | Areal luket (m²) | 0.00 | 2768.00 | 0.00 | 445.00 | 5226.00 | 5115.00 | 4216.00 |
+| Gravråk | Lupiner fjernet | 0.00 | 0.00 | 0.00 | 4535.00 | 6915.00 | 2409.00 | 3545.00 |
+| Gravråk | Lupiner per m² | NA | NA | NA | 10.19 | 1.32 | 0.47 | 0.84 |
+
+</div>
+
+</div>
 
 ## 4. Datainnsamling
 
@@ -120,16 +172,20 @@ telles ved opptil tre besøk per sommer (juni, juli og august); enkelte
 besøk i mai og september er ikke med her. Fra 2015 til 2025 ble
 observasjonene registrert som GPS-punkter med antall. Fra 2026 tegnet
 observatørene i stedet et polygon rundt hver søkte flekk på et
-dronebilde. Antallene brukes som registrert, uavhengig av metode.
+dronebilde, og registrerte substrat, vegetasjonsdekke og slitasje (1–5)
+per polygon. Antallene brukes som registrert, uavhengig av metode.
 
 Alle observasjoner ligger i masterfila
 [elvesandjeger_obs_2015-2026_master.csv](data/elvesandjeger_obs_2015-2026_master.csv),
-som lages av skriptet i [`code/`](code/). I masterfila er larvestadiene
-for 2024 rettet (stadium 1 og 3 var byttet om i 2024-shapefilene).
+som lages av skript 6 i [`code/`](code/). I masterfila er larvestadiene
+for 2024 rettet (stadium 1 og 3 var byttet om i 2024-shapefilene). For
+effektanalysen er hvert undersøkelsespolygon i 2026 koblet til
+lukepolygonet det overlapper mest (skript 7,
+elvesandjeger_2026_analysis_data.csv).
 
 <div id="tbl-datainnsamling">
 
-Table 2: Antall observasjonspunkter (til og med 2025) eller polygoner
+Table 3: Antall observasjonspunkter (til og med 2025) eller polygoner
 (fra 2026) per besøksmåned og år. 0 = ikke undersøkt.
 
 <div class="cell-output-display">
@@ -155,14 +211,44 @@ Table 2: Antall observasjonspunkter (til og med 2025) eller polygoner
 
 ## 5. Dataanalyser
 
-<!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål).
-Effektanalysen av lupinluking (negativ binomial GLMM, glmmTMB) i elvesandjeger_dynamics_2026.qmd på P: kan flyttes hit når analysedataene legges i data/. -->
+<!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
-Tidsseriene under viser summen av registrerte individer per år, stadium
-og besøksmåned. Innsatsen (antall punkter/polygoner og hvilke
-lokaliteter som ble besøkt) varierer mellom år og måneder
-(<a href="#tbl-datainnsamling" class="quarto-xref">Table 2</a>), så
+**Utvikling over tid.** Tidsseriene viser summen av registrerte
+individer per år, stadium og besøksmåned. Innsatsen varierer mellom år
+og måneder
+(<a href="#tbl-datainnsamling" class="quarto-xref">Table 3</a>), så
 summene viser relativ forekomst og er ikke et bestandsestimat.
+
+**Effekt av luking på lupin.** Dersom lukingen virker, skal et polygon
+som ble luket ha færre lupiner året etter. Dette testes med en negativ
+binomial GLMM (`glmmTMB`, nbinom2) på antall lupiner fjernet i et
+polygon de årene det ble luket (2021–2026), med polygonarealet som
+offset, lukestatus året før (Nei / Delvis / Ja) som forklaringsvariabel,
+år og lokalitet som faste effekter og et tilfeldig konstantledd per
+polygon. En modell nummer to bruker antall tidligere år polygonet er
+luket.
+
+**Effekt av luking på elvesandjeger.** Effektanalysen bruker
+**Kregnesteigen og Storrønningen**, de to lokalitetene som har både
+lukepolygoner og observasjoner av elvesandjeger. Hvert
+undersøkelsespolygon i 2026 får lukestatusen (Nei / Delvis / Ja) til
+lukepolygonet det overlapper mest, **året før undersøkelsen** (2025).
+Observasjonene på **Fornes** ligger utenfor alle lukepolygonene og
+brukes som **kontroll** uten lupinluking. Gravråk har for få
+observasjoner og er ikke med, og luking i undersøkelsesåret brukes ikke.
+
+Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon.
+Polygonene er tegnet rundt okkuperte flekker, så bare 3 av 133 har null
+larver; dataene er sterkt overspredte (varians/gjennomsnitt = 45), men
+ikke nullinflaterte. Modellen er derfor en **negativ binomial GLMM** med
+søkt areal som offset, måned, substrat, vegetasjonsdekke og slitasje som
+kovariater, lokalitet som fast effekt og et tilfeldig konstantledd per
+lukepolygon (de samme flekkene besøkes i juni, juli og august):
+
+`larver ~ luket året før + måned + substrat + vegetasjonsdekke + slitasje + lokalitet + offset(log areal) + (1 | lukepolygon)`
+
+Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for
+offset, og modellen er tilpasset hvert larvestadium for seg.
 
 ## 6. Resultater
 
@@ -175,24 +261,20 @@ totalt for alle besøk og lokaliteter.
 
 ![](img/fig-trend-stadium-maaned-1.png)
 
-Figure 1: Totalt antall larvehull (stadium 1–3) og voksne per år,
+Figure 3: Totalt antall larvehull (stadium 1–3) og voksne per år,
 fordelt på besøksmåned (alle lokaliteter). Manglende punkter = måneden
 ble ikke undersøkt det året.
 
 </div>
 
-### 6.2 Lokaliteter
-
 <div id="fig-august-lokalitet">
 
 ![](img/fig-august-lokalitet-1.png)
 
-Figure 2: Antall i august per lokalitet og stadium (august er måneden
+Figure 4: Antall i august per lokalitet og stadium (august er måneden
 som er undersøkt mest konsekvent). Ulik skala på y-aksen.
 
 </div>
-
-### 6.3 Sesongmønster
 
 I år der alle tre månedene er undersøkt, forventes stadium 3
 (overvintrede larver) å dominere i juni, nye stadium 1-larver å komme i
@@ -202,8 +284,179 @@ juli etter egglegging, og at disse skifter til stadium 2 innen august.
 
 ![](img/fig-sesong-1.png)
 
-Figure 3: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk
+Figure 5: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk
 i juni, juli og august. Tallene over søylene er totalt antall larver.
+
+</div>
+
+### 6.2 Effekt av luking på lupin
+
+<div id="tbl-lupin-luking">
+
+Table 4: Lupintetthet (lupiner fjernet per m²) i lukede polygoner som
+funksjon av luking året før. NB GLMM, n = polygon-år.
+
+<div class="cell-output-display">
+
+| Effekt                           |   RR | KI95      |       p |
+|:---------------------------------|-----:|:----------|--------:|
+| Delvis luket året før (mot ikke) | 1.90 | 0.97–3.71 | 6.0e-02 |
+| Luket året før (mot ikke)        | 0.33 | 0.21–0.51 | 5.0e-07 |
+| Per ekstra tidligere år luket    | 0.53 | 0.36–0.78 | 1.3e-03 |
+
+</div>
+
+</div>
+
+<div id="fig-lupin-luking">
+
+![](img/fig-lupin-luking-1.png)
+
+Figure 6: Venstre: lupintetthet i lukede polygoner etter lukestatus året
+før (punkter = polygon-år, +0,01 for å vise nuller; svart = modellert
+gjennomsnitt ± 95 % KI). Høyre: årseffekten fra samme modell
+(gjennomsnitt ± 95 % KI).
+
+</div>
+
+### 6.3 Effekt av luking på elvesandjeger
+
+<div id="tbl-effekt-n">
+
+Table 5: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
+observasjoner på Fornes utenfor alle lukepolygoner; Nei/Delvis/Ja =
+lukestatus året før på Kregnesteigen og Storrønningen.
+
+<div class="cell-output-display">
+
+| Gruppe   | juni | juli | august |
+|:---------|-----:|-----:|-------:|
+| Kontroll |    7 |    5 |      7 |
+| Nei      |    1 |    2 |      8 |
+| Delvis   |    5 |    7 |      5 |
+| Ja       |   25 |   18 |     21 |
+
+</div>
+
+</div>
+
+<div id="tbl-effekt-koeff">
+
+Table 6: NB GLMM for larver per undersøkelsespolygon på Kregnesteigen og
+Storrønningen. RR = rateratio (multiplikativ effekt på larvetettheten).
+Referansenivåer: ikke luket året før, juni, sand, Kregnesteigen.
+
+<div class="cell-output-display">
+
+| Effekt                            |   RR | KI95      |       p |
+|:----------------------------------|-----:|:----------|--------:|
+| Delvis luket året før (mot ikke)  | 2.15 | 0.67–6.89 | 0.20000 |
+| Luket året før (mot ikke)         | 2.02 | 0.90–4.52 | 0.08600 |
+| Juli (mot juni)                   | 0.48 | 0.25–0.91 | 0.02400 |
+| August (mot juni)                 | 0.30 | 0.16–0.56 | 0.00021 |
+| Substrat: blanding (mot sand)     | 1.26 | 0.70–2.27 | 0.43000 |
+| Substrat: silt (mot sand)         | 1.43 | 0.56–3.68 | 0.45000 |
+| Vegetasjonsdekke (0 → 100 %)      | 0.24 | 0.05–1.08 | 0.06200 |
+| Slitasje (per klasse)             | 0.77 | 0.58–1.02 | 0.06600 |
+| Storrønningen (mot Kregnesteigen) | 2.91 | 1.54–5.53 | 0.00110 |
+
+</div>
+
+</div>
+
+<div id="tbl-effekt-lrt">
+
+Table 7: Likelihood-ratio-tester for hvert ledd i modellen.
+
+<div class="cell-output-display">
+
+| Ledd             | chisq |  df |      p |
+|:-----------------|------:|----:|-------:|
+| Luket året før   |  2.74 |   2 | 0.2500 |
+| Luket × måned    |  5.92 |   4 | 0.2100 |
+| Substrat         |  0.80 |   2 | 0.6700 |
+| Vegetasjonsdekke |  3.22 |   1 | 0.0730 |
+| Slitasje         |  3.33 |   1 | 0.0680 |
+| Lokalitet        |  8.67 |   1 | 0.0032 |
+
+</div>
+
+</div>
+
+<div id="fig-effekt">
+
+![](img/fig-effekt-1.png)
+
+Figure 7: Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95
+% KI, midlet over måned, substrat og lokalitet, ved median
+vegetasjonsdekke og slitasje). Venstre: Kregnesteigen + Storrønningen
+etter lukestatus året før. Høyre: de samme gruppene sammenlignet med
+kontrollen på Fornes (uten luking).
+
+</div>
+
+<div id="fig-kovariater">
+
+![](img/fig-kovariater-1.png)
+
+Figure 8: Kovariateffekter fra modellen: predikert larvetetthet mot
+vegetasjonsdekke og slitasje (linje ± 95 % KI, for en luket flekk på
+Storrønningen i august; punkter = undersøkelsespolygoner) og etter
+substrat (gjennomsnitt ± 95 % KI).
+
+</div>
+
+**Sensitivitet: areal som kovariat i stedet for offset.** Hovedmodellen
+antar at antallet er proporsjonalt med søkt areal. Med log(areal) som
+estimert kovariat blir stigningen 0,53 på log-skala (1 = proporsjonalt),
+fordi større polygoner tar med mer tom mark.
+
+<div id="tbl-sensitivitet">
+
+Table 8: Hovedmodellen tilpasset med log(polygonareal) som kovariat i
+stedet for offset.
+
+<div class="cell-output-display">
+
+| Effekt                                              |   RR | KI95      |     p |
+|:----------------------------------------------------|-----:|:----------|------:|
+| Delvis luket året før (mot ikke)                    | 0.76 | 0.27–2.10 | 0.590 |
+| Luket året før (mot ikke)                           | 1.39 | 0.70–2.74 | 0.350 |
+| Vegetasjonsdekke (0 → 100 %)                        | 0.33 | 0.10–1.06 | 0.062 |
+| Slitasje (per klasse)                               | 0.85 | 0.67–1.07 | 0.160 |
+| log(areal), RR per e-dobling (2,72 = proporsjonalt) | 1.69 | 1.47–1.95 | 0.000 |
+
+</div>
+
+</div>
+
+**Per larvestadium.** Voksne modelleres ikke (få individer). Den samme
+modellen er tilpasset stadium 1, 2 og 3 hver for seg.
+
+<div id="fig-stadium">
+
+![](img/fig-stadium-1.png)
+
+Figure 9: Effekter på tettheten av larver i stadium 1, 2 og 3 (NB GLMM,
+rateratio ± 95 % KI, Kregnesteigen + Storrønningen). Verdier \> 1 =
+høyere tetthet.
+
+</div>
+
+<div id="tbl-stadium">
+
+Table 9: Likelihood-ratio-test for lukestatus året før i modellene per
+stadium, og rateratio for luket mot ikke luket.
+
+<div class="cell-output-display">
+
+| Stadium   | Nuller   | RR_luket | p_LRT |
+|:----------|:---------|---------:|------:|
+| Stadium 1 | 56 av 92 |     2.43 |  0.19 |
+| Stadium 2 | 40 av 92 |     0.91 |  0.76 |
+| Stadium 3 | 20 av 92 |     1.41 |  0.90 |
+
+</div>
 
 </div>
 
@@ -211,11 +464,50 @@ i juni, juli og august. Tallene over søylene er totalt antall larver.
 
 ### 7.1 Hva viser årets resultater
 
-<!-- Tiltakenes effekt per nå, endringer siden i fjor, usikkerhet. -->
+<!-- Tallene under oppdateres automatisk, men tolkningen er skrevet for dataene til og med 2026. Les gjennom og oppdater teksten hvert år. -->
+
+**Virker lukingen på lupinen?** Ja: lukingen reduserer lupinbestanden
+året etter. Et polygon som ble luket året før har i gjennomsnitt **0,75
+lupiner/m²**, mot **2,28 lupiner/m²** der ingenting ble gjort året før
+(RR 0,33, p \< 0,001), og hvert ekstra år med luking endrer tettheten
+med en faktor 0,53 (p = 0,0013). Delvis luking gir ikke samme effekt,
+delvis fordi det er de tetteste bestandene som bare blir delvis luket.
+Årseffekten viser også risikoen: når innsatsen går ned, kommer lupinen
+raskt tilbake. Invasjonen holdes i sjakk, men er ikke fjernet –
+**fortsatt årlig luking er nødvendig.**
+
+**Effekt på elvesandjeger.** Luking i 2025 hadde **ingen statistisk
+signifikant effekt på antall larver i 2026** på Kregnesteigen og
+Storrønningen. Flekker som ble luket hadde i gjennomsnitt 2,0 ganger
+larvetettheten i ikke-lukede flekker (95 % KI 0,9–4,5;
+likelihood-ratio-test p = 0,25). Retningen er positiv, men usikkerheten
+er stor, hovedsakelig fordi nesten alle okkuperte flekker ble luket –
+bare 11 undersøkelsespolygoner ligger i flekker som ikke ble luket.
+Effekten varierer ikke signifikant mellom måneder (p = 0,21).
+
+- Andre mål på luking gir samme bilde: antall år en flekk er luket (RR
+  1,18 per år, p = 0,13) og antall lupiner fjernet per m² året før (p =
+  0,082).
+- **Sammenlignet med kontrollen på Fornes** har lukede flekker 2,0
+  ganger larvetettheten (p = 0,23, Dunnett-justert) og ikke-lukede
+  flekker 1,3 ganger (p = 0,91).
+- **Habitat:** substrat har ingen effekt (p = 0,67). Vegetasjonsdekke og
+  slitasje trekker begge ned – omtrent 13 % færre larver per 10 %
+  vegetasjonsdekke (p = 0,073) og 23 % færre per slitasjeklasse (p =
+  0,068). Larvetettheten er 2,9 ganger høyere på Storrønningen enn på
+  Kregnesteigen (p = 0,0032).
+- **Per stadium:** stadium 1 p = 0,19, stadium 2 p = 0,76, stadium 3 p =
+  0,9 for luking året før.
 
 ### 7.2 Anbefaling for videreføring
 
 <!-- Hva er kunnskapsbehovet, om tiltaket (hvordan gjennomføres) og om effekten (variasjon mellom år, mellom lokaliteter). Anbefalinger for videreføring av delprosjektet – endringer i metodikk? Utvidelse? Endret frekvens for datainnsamling? Avslutning? -->
+
+Analysen har lav styrke for sammenligningen luket/ikke luket. Styrken
+vil øke hvis feltpersonalet også registrerer noen *ikke-lukede* flekker
+med elvesandjeger (eller søkte, men tomme flekker) på de to
+effektlokalitetene, og hvis Fornes fortsatt undersøkes som kontroll nå
+som lukingen også har startet der.
 
 ## 8. References
 

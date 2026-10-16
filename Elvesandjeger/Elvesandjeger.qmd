@@ -19,7 +19,7 @@ yearAdded: 2026
 yearLastUpdate: 2026
 status: incomplete # complete, incomplete eller deprecated
 Version: "0.1.0" # https://github.com/NINAnor/ecRxiv/wiki#versioning
-VersionComment: Første versjon, med data 2015–2026
+VersionComment: Første versjon, med data 2015–2026 og effekt av lupinluking
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision:
 writtenLanguage: Norwegian
@@ -73,6 +73,9 @@ library(anybadger)
 library(yaml)
 library(tibble)
 library(conflicted)
+library(glmmTMB)
+library(emmeans)
+library(patchwork)
 conflicts_prefer(dplyr::filter)
 conflicts_prefer(dplyr::lag)
 conflicts_prefer(dplyr::select)
@@ -204,11 +207,12 @@ meta |>
 <hr />
 
 ```{r data}
-#| code-summary: 'Kode for å lese masterfila.'
-# Rapporten bruker den ene masterfila som ligger i data/ (navnet kan endre seg fra år til år)
-master_file <- list.files(here("data"), pattern = "_master\\.csv$", full.names = TRUE)
-if (length(master_file) != 1) {
-  stop("Forventet nøyaktig én *_master.csv i data/, fant ", length(master_file))
+#| code-summary: 'Kode for å lese data.'
+# Hver fil i data/ finnes ved et mønster, slik at årstallene i filnavnet kan endre seg fra år til år
+read_one <- function(pattern, reader = read.csv) {
+  f <- list.files(here("data"), pattern = pattern, full.names = TRUE)
+  if (length(f) != 1) stop("Forventet nøyaktig én fil som passer '", pattern, "' i data/, fant ", length(f))
+  structure(reader(f), file = basename(f))
 }
 
 stage_lab <- c(stad1 = "Stadium 1", stad2 = "Stadium 2", stad3 = "Stadium 3", voksne = "Voksne")
@@ -216,10 +220,14 @@ site_lab <- c(Storr = "Storrønningen", Kreg = "Kregnesteigen", Forn = "Fornes",
 month_lev <- c("juni", "juli", "august")
 month_cols <- c(juni = "#2a78d6", juli = "#eb6834", august = "#1baf7a")
 stage_cols <- c("Stadium 1" = "#2a78d6", "Stadium 2" = "#eb6834", "Stadium 3" = "#1baf7a", "Voksne" = "#eda100")
+site_cols <- c("Storrønningen" = "#2a78d6", "Kregnesteigen" = "#eb6834", "Fornes" = "#1baf7a", "Gravråk" = "#eda100")
+luket_cols <- c(Kontroll = "#1baf7a", Nei = "#9a9891", Delvis = "#eda100", Ja = "#2a78d6")
 
-# Langt format: én rad per punkt/polygon og stadium. "larva"-radene er summer og utelates.
-obs <- read.csv2(master_file) |>
-  filter(stage %in% names(stage_lab), month %in% month_lev, site %in% names(site_lab)) |>
+# ---- Observasjoner (masterfil, langt format: én rad per punkt/polygon og stadium) ----
+master <- read_one("_master\\.csv$", read.csv2)
+master_file <- attr(master, "file")
+obs <- master |>
+  filter(stage %in% names(stage_lab), month %in% month_lev, site %in% names(site_lab)) |> # "larva"-radene er summer og utelates
   group_by(year, month, site, stage) |>
   summarise(obs = sum(obs, na.rm = TRUE), n_obs = n(), .groups = "drop") |>
   mutate(
@@ -227,7 +235,6 @@ obs <- read.csv2(master_file) |>
     stage = factor(stage, levels = names(stage_lab), labels = stage_lab),
     site = factor(site, levels = names(site_lab), labels = site_lab)
   )
-
 aar <- max(obs$year)
 first_year <- min(obs$year)
 
@@ -236,6 +243,45 @@ effort <- obs |>
   filter(stage == "Stadium 3") |>
   group_by(year, month) |>
   summarise(n_obs = sum(n_obs), .groups = "drop")
+
+# ---- Lupinluking per lokalitet og år ----
+clear_site <- read_one("^lupin_clearing_by_site_.*\\.csv$") |>
+  filter(site_name %in% names(site_cols)) |>
+  mutate(
+    site_name = factor(site_name, levels = names(site_cols)),
+    # Fornes har lukepolygoner først fra 2026; Gravråk 2021 har areal, men ikke antall lupiner
+    antall = if_else(site_name == "Fornes" & year < 2026, NA_integer_, antall),
+    lupins_per_m2 = if_else(antall > 0, lupins_per_m2, NA_real_)
+  )
+clear_years <- range(clear_site$year)
+
+# ---- Lupinluking per lukepolygon og år (panel) ----
+panel <- read_one("^lupin_clearing_polygon_panel_.*\\.csv$") |>
+  mutate(Luket_prev = factor(Luket_prev, levels = c("Nei", "Delvis", "Ja")),
+         site = factor(site_name), yearf = factor(year))
+
+# ---- Analysedata: hvert undersøkelsespolygon koblet til lukepolygonet det overlapper mest ----
+dat <- read_one("_analysis_data\\.csv$") |>
+  mutate(year = as.integer(substr(dato, 1, 4)))
+aar_eff <- max(dat$year)
+# Lukestatus året før undersøkelsen (Luket_yy), antall år luket før og lupiner per m2 året før
+# hentes fra kolonnenavnene, slik at koden fungerer for nye år uten endringer
+col_prev <- sprintf("Luket_%02d", (aar_eff - 1) %% 100)
+dat <- dat |>
+  mutate(
+    Luket_prev = factor(.data[[col_prev]], levels = c("Nei", "Delvis", "Ja")),
+    years_cleared_before = .data[[grep("^years_cleared_", names(dat), value = TRUE)]],
+    lupins_prev_per_m2 = .data[[grep("^lupins[0-9]+_per_m2$", names(dat), value = TRUE)]],
+    maaned = factor(maaned, levels = month_lev),
+    substrat = factor(substrat, levels = c("sand", "blanding", "silt")),
+    group = factor(recode(group, Control = "Kontroll"), levels = c("Kontroll", "Nei", "Delvis", "Ja")),
+    site = factor(site)
+  )
+dm <- dat |> filter(site %in% c("Kregnesteigen", "Storrønningen"), !is.na(slitasje)) |> droplevels() # effektlokaliteter
+dc <- dat |> filter(!is.na(group), !is.na(slitasje)) |> droplevels() # med Fornes som kontroll
+
+fp <- function(p) ifelse(p < 0.001, "< 0,001", paste("=", format(signif(p, 2), decimal.mark = ",")))
+num <- function(x, d = 2) formatC(x, format = "f", digits = d, decimal.mark = ",", big.mark = " ")
 
 theme_set(theme_minimal(base_size = 12) +
   theme(panel.grid.minor = element_blank(), legend.position = "top",
@@ -272,13 +318,67 @@ theme_set(theme_minimal(base_size = 12) +
 
 ### 3.2 Tiltak
 
-<!-- Beskrivelse av tiltak (luking av hagelupin), hva, når, hvem utfører. Legg inn bilde. -->
+<!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
+
+Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene. Lukingen registreres per lukepolygon og år som luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), med antall lupiner fjernet. Lukepolygonene for 2025–`r clear_years[2]` er slått sammen og renset i skript 1–3 i [`code/`](code/), og oppsummert per lokalitet og år av skript 7. Follstadøya har ikke overvåking av elvesandjeger og er ikke med.
+
+```{r fig-luking-areal}
+#| fig-cap: 'Areal luket per lokalitet og år (Ja = luket, Delvis = delvis luket). Ulik skala på y-aksen.'
+#| fig-height: 6
+#| fig-width: 10
+#| code-summary: 'Kode for figur.'
+clear_site |>
+  select(site_name, year, Ja = area_ja, Delvis = area_delvis) |>
+  pivot_longer(c(Ja, Delvis), names_to = "Luket", values_to = "area") |>
+  mutate(Luket = factor(Luket, levels = c("Delvis", "Ja"))) |>
+  ggplot(aes(year, area, fill = Luket)) +
+  geom_col(width = 0.75, colour = "white") +
+  facet_wrap(~site_name, scales = "free_y") +
+  scale_fill_manual(values = luket_cols[c("Delvis", "Ja")], name = "Luket") +
+  scale_x_continuous(breaks = clear_years[1]:clear_years[2]) +
+  scale_y_continuous(labels = scales::label_number(big.mark = " ")) +
+  labs(x = NULL, y = "Areal luket (m²)")
+```
+
+```{r fig-luking-lupiner}
+#| fig-cap: 'Antall lupiner fjernet (venstre) og lupiner fjernet per m² luket areal (høyre), per lokalitet og år. Fornes har lukepolygoner først fra 2026; Gravråk 2021 mangler antall.'
+#| fig-height: 5
+#| fig-width: 11
+#| code-summary: 'Kode for figur.'
+p1 <- ggplot(filter(clear_site, !is.na(antall)), aes(year, antall, colour = site_name)) +
+  geom_line(linewidth = 0.9) + geom_point(size = 2.5) +
+  scale_colour_manual(values = site_cols, name = NULL) +
+  scale_x_continuous(breaks = clear_years[1]:clear_years[2]) +
+  scale_y_continuous(labels = scales::label_number(big.mark = " ")) +
+  labs(x = NULL, y = "Lupiner fjernet")
+p2 <- ggplot(filter(clear_site, !is.na(lupins_per_m2)), aes(year, lupins_per_m2, colour = site_name)) +
+  geom_line(linewidth = 0.9) + geom_point(size = 2.5) +
+  scale_colour_manual(values = site_cols, name = NULL) +
+  scale_x_continuous(breaks = clear_years[1]:clear_years[2]) +
+  scale_y_log10() +
+  labs(x = NULL, y = "Lupiner per m² luket (log-skala)")
+p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = "top")
+```
+
+```{r tbl-luking}
+#| tbl-cap: 'Lupinluking per lokalitet og år: areal luket (m², Ja + Delvis), antall lupiner fjernet og lupiner per m² luket.'
+#| code-summary: 'Kode for tabell.'
+clear_site |>
+  transmute(Lokalitet = site_name, year,
+            `Areal luket (m²)` = round(area_cleared),
+            `Lupiner fjernet` = antall,
+            `Lupiner per m²` = round(lupins_per_m2, 2)) |>
+  pivot_longer(-c(Lokalitet, year), names_to = "Mål") |>
+  pivot_wider(names_from = year, values_from = value) |>
+  arrange(Lokalitet) |>
+  kable()
+```
 
 ## 4. Datainnsamling
 
-Elvesandjeger overvåkes på fire lokaliteter langs Gaula: Storrønningen, Kregnesteigen, Fornes og Gravråk. Larvehull (stadium 1–3) og voksne telles ved opptil tre besøk per sommer (juni, juli og august); enkelte besøk i mai og september er ikke med her. Fra `r first_year` til 2025 ble observasjonene registrert som GPS-punkter med antall. Fra 2026 tegnet observatørene i stedet et polygon rundt hver søkte flekk på et dronebilde. Antallene brukes som registrert, uavhengig av metode.
+Elvesandjeger overvåkes på fire lokaliteter langs Gaula: Storrønningen, Kregnesteigen, Fornes og Gravråk. Larvehull (stadium 1–3) og voksne telles ved opptil tre besøk per sommer (juni, juli og august); enkelte besøk i mai og september er ikke med her. Fra `r first_year` til 2025 ble observasjonene registrert som GPS-punkter med antall. Fra 2026 tegnet observatørene i stedet et polygon rundt hver søkte flekk på et dronebilde, og registrerte substrat, vegetasjonsdekke og slitasje (1–5) per polygon. Antallene brukes som registrert, uavhengig av metode.
 
-Alle observasjoner ligger i masterfila `r paste0("[", basename(master_file), "](data/", basename(master_file), ")")`, som lages av skriptet i [`code/`](code/). I masterfila er larvestadiene for 2024 rettet (stadium 1 og 3 var byttet om i 2024-shapefilene).
+Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 6 i [`code/`](code/). I masterfila er larvestadiene for 2024 rettet (stadium 1 og 3 var byttet om i 2024-shapefilene). For effektanalysen er hvert undersøkelsespolygon i `r aar_eff` koblet til lukepolygonet det overlapper mest (skript 7, `r attr(dat, "file")`).
 
 ```{r tbl-datainnsamling}
 #| tbl-cap: 'Antall observasjonspunkter (til og med 2025) eller polygoner (fra 2026) per besøksmåned og år. 0 = ikke undersøkt.'
@@ -293,10 +393,76 @@ effort |>
 
 ## 5. Dataanalyser
 
-<!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål).
-Effektanalysen av lupinluking (negativ binomial GLMM, glmmTMB) i elvesandjeger_dynamics_2026.qmd på P: kan flyttes hit når analysedataene legges i data/. -->
+<!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
-Tidsseriene under viser summen av registrerte individer per år, stadium og besøksmåned. Innsatsen (antall punkter/polygoner og hvilke lokaliteter som ble besøkt) varierer mellom år og måneder (@tbl-datainnsamling), så summene viser relativ forekomst og er ikke et bestandsestimat.
+**Utvikling over tid.** Tidsseriene viser summen av registrerte individer per år, stadium og besøksmåned. Innsatsen varierer mellom år og måneder (@tbl-datainnsamling), så summene viser relativ forekomst og er ikke et bestandsestimat.
+
+**Effekt av luking på lupin.** Dersom lukingen virker, skal et polygon som ble luket ha færre lupiner året etter. Dette testes med en negativ binomial GLMM (`glmmTMB`, nbinom2) på antall lupiner fjernet i et polygon de årene det ble luket (`r min(panel$year) + 1`–`r max(panel$year)`), med polygonarealet som offset, lukestatus året før (Nei / Delvis / Ja) som forklaringsvariabel, år og lokalitet som faste effekter og et tilfeldig konstantledd per polygon. En modell nummer to bruker antall tidligere år polygonet er luket.
+
+**Effekt av luking på elvesandjeger.** Effektanalysen bruker **Kregnesteigen og Storrønningen**, de to lokalitetene som har både lukepolygoner og observasjoner av elvesandjeger. Hvert undersøkelsespolygon i `r aar_eff` får lukestatusen (Nei / Delvis / Ja) til lukepolygonet det overlapper mest, **året før undersøkelsen** (`r aar_eff - 1`). Observasjonene på **Fornes** ligger utenfor alle lukepolygonene og brukes som **kontroll** uten lupinluking. Gravråk har for få observasjoner og er ikke med, og luking i undersøkelsesåret brukes ikke.
+
+Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon. Polygonene er tegnet rundt okkuperte flekker, så bare `r sum(dat$larvae == 0)` av `r nrow(dat)` har null larver; dataene er sterkt overspredte (varians/gjennomsnitt = `r num(var(dat$larvae) / mean(dat$larvae), 0)`), men ikke nullinflaterte. Modellen er derfor en **negativ binomial GLMM** med søkt areal som offset, måned, substrat, vegetasjonsdekke og slitasje som kovariater, lokalitet som fast effekt og et tilfeldig konstantledd per lukepolygon (de samme flekkene besøkes i juni, juli og august):
+
+`larver ~ luket året før + måned + substrat + vegetasjonsdekke + slitasje + lokalitet + offset(log areal) + (1 | lukepolygon)`
+
+Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for offset, og modellen er tilpasset hvert larvestadium for seg.
+
+```{r models}
+#| code-summary: 'Kode for modellene.'
+# ---- Lupintetthet og luking året før ----
+cleared <- panel |> filter(Luket %in% c("Ja", "Delvis"), year > min(year), !is.na(Luket_prev))
+lup_prev <- glmmTMB(Antall ~ Luket_prev + yearf + site + offset(log(area)) + (1 | unit), family = nbinom2, data = cleared)
+lup_nprev <- glmmTMB(Antall ~ n_prev_cleared + yearf + site + offset(log(area)) + (1 | unit), family = nbinom2, data = cleared)
+sp <- summary(lup_prev)$coefficients$cond
+sn <- summary(lup_nprev)$coefficients$cond
+em_prev <- as.data.frame(emmeans(lup_prev, ~Luket_prev, type = "response", offset = 0))
+em_year <- as.data.frame(emmeans(lup_prev, ~yearf, type = "response", offset = 0))
+
+# ---- Larver og luking året før ----
+f <- larvae ~ Luket_prev + maaned + substrat + veg_frac + slitasje + site + offset(log_area) + (1 | patch_id)
+m <- glmmTMB(f, family = nbinom2, data = dm)
+m_int <- update(m, . ~ . + Luket_prev:maaned)
+m_hist <- update(m, . ~ . - Luket_prev + years_cleared_before)
+m_dens <- update(m, . ~ . - Luket_prev + lupins_prev_per_m2)
+m_area <- glmmTMB(larvae ~ Luket_prev + maaned + substrat + veg_frac + slitasje + site + log_area + (1 | patch_id),
+                  family = nbinom2, data = dm)
+m_ctrl <- glmmTMB(larvae ~ group + maaned + substrat + veg_frac + slitasje + offset(log_area) + (1 | patch_id),
+                  family = nbinom2, data = dc)
+lrt <- function(m0, m1) { a <- anova(m0, m1); c(chisq = a$Chisq[2], df = a[["Chi Df"]][2], p = a[["Pr(>Chisq)"]][2]) }
+lrts <- rbind(
+  "Luket året før" = lrt(update(m, . ~ . - Luket_prev), m),
+  "Luket × måned" = lrt(m, m_int),
+  "Substrat" = lrt(update(m, . ~ . - substrat), m),
+  "Vegetasjonsdekke" = lrt(update(m, . ~ . - veg_frac), m),
+  "Slitasje" = lrt(update(m, . ~ . - slitasje), m),
+  "Lokalitet" = lrt(update(m, . ~ . - site), m)
+)
+s <- summary(m)$coefficients$cond
+
+# ---- Per larvestadium ----
+stage_models <- lapply(c(stad1 = "stad1", stad2 = "stad2", stad3 = "stad3"), function(st) {
+  glmmTMB(update(f, as.formula(paste(st, "~ ."))), family = nbinom2, data = dm)
+})
+stage_lrt <- sapply(stage_models, function(mm) anova(update(mm, . ~ . - Luket_prev), mm)[["Pr(>Chisq)"]][2])
+stage_coefs <- bind_rows(lapply(names(stage_models), function(st) {
+  ss <- summary(stage_models[[st]])$coefficients$cond
+  data.frame(stage = st, term = rownames(ss), estimate = ss[, 1], se = ss[, 2], p = ss[, 4], row.names = NULL)
+}))
+
+# Tabell med rateratioer (RR) og 95 % KI
+rr_tab <- function(model) {
+  ss <- summary(model)$coefficients$cond
+  data.frame(term = rownames(ss), RR = round(exp(ss[, 1]), 2),
+             KI95 = sprintf("%.2f–%.2f", exp(ss[, 1] - 1.96 * ss[, 2]), exp(ss[, 1] + 1.96 * ss[, 2])),
+             p = signif(ss[, 4], 2), row.names = NULL) |>
+    filter(term != "(Intercept)")
+}
+term_lab <- c(Luket_prevDelvis = "Delvis luket året før (mot ikke)", Luket_prevJa = "Luket året før (mot ikke)",
+              maanedjuli = "Juli (mot juni)", maanedaugust = "August (mot juni)",
+              substratblanding = "Substrat: blanding (mot sand)", substratsilt = "Substrat: silt (mot sand)",
+              veg_frac = "Vegetasjonsdekke (0 → 100 %)", slitasje = "Slitasje (per klasse)",
+              siteStorrønningen = "Storrønningen (mot Kregnesteigen)", log_area = "log(areal), RR per e-dobling (2,72 = proporsjonalt)")
+```
 
 ## 6. Resultater
 
@@ -307,7 +473,7 @@ larver_aar <- sum(tot_aar$obs[tot_aar$stage != "Voksne"])
 voksne_aar <- sum(tot_aar$obs[tot_aar$stage == "Voksne"])
 ```
 
-I `r aar` ble det registrert `r format(larver_aar, big.mark = " ")` larvehull (stadium 1–3) og `r format(voksne_aar, big.mark = " ")` voksne totalt for alle besøk og lokaliteter.
+I `r aar` ble det registrert `r num(larver_aar, 0)` larvehull (stadium 1–3) og `r num(voksne_aar, 0)` voksne totalt for alle besøk og lokaliteter.
 
 ### 6.1 Utvikling over tid
 
@@ -334,8 +500,6 @@ ggplot(tot, aes(year, obs, colour = month, group = interaction(month, run))) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-### 6.2 Lokaliteter
-
 ```{r fig-august-lokalitet}
 #| fig-cap: 'Antall i august per lokalitet og stadium (august er måneden som er undersøkt mest konsekvent). Ulik skala på y-aksen.'
 #| fig-height: 7
@@ -359,8 +523,6 @@ ggplot(aug, aes(year, obs, colour = stage, group = interaction(stage, run))) +
   labs(x = NULL, y = "Antall i august") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
-
-### 6.3 Sesongmønster
 
 I år der alle tre månedene er undersøkt, forventes stadium 3 (overvintrede larver) å dominere i juni, nye stadium 1-larver å komme i juli etter egglegging, og at disse skifter til stadium 2 innen august.
 
@@ -390,15 +552,204 @@ ggplot(seas, aes(month, share, fill = stage)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+### 6.2 Effekt av luking på lupin
+
+```{r tbl-lupin-luking}
+#| tbl-cap: 'Lupintetthet (lupiner fjernet per m²) i lukede polygoner som funksjon av luking året før. NB GLMM, n = polygon-år.'
+#| code-summary: 'Kode for tabell.'
+data.frame(
+  Effekt = c("Delvis luket året før (mot ikke)", "Luket året før (mot ikke)", "Per ekstra tidligere år luket"),
+  RR = round(exp(c(sp["Luket_prevDelvis", 1], sp["Luket_prevJa", 1], sn["n_prev_cleared", 1])), 2),
+  KI95 = c(sprintf("%.2f–%.2f", exp(sp["Luket_prevDelvis", 1] - 1.96 * sp["Luket_prevDelvis", 2]), exp(sp["Luket_prevDelvis", 1] + 1.96 * sp["Luket_prevDelvis", 2])),
+           sprintf("%.2f–%.2f", exp(sp["Luket_prevJa", 1] - 1.96 * sp["Luket_prevJa", 2]), exp(sp["Luket_prevJa", 1] + 1.96 * sp["Luket_prevJa", 2])),
+           sprintf("%.2f–%.2f", exp(sn["n_prev_cleared", 1] - 1.96 * sn["n_prev_cleared", 2]), exp(sn["n_prev_cleared", 1] + 1.96 * sn["n_prev_cleared", 2]))),
+  p = signif(c(sp["Luket_prevDelvis", 4], sp["Luket_prevJa", 4], sn["n_prev_cleared", 4]), 2)
+) |> kable()
+```
+
+```{r fig-lupin-luking}
+#| fig-cap: 'Venstre: lupintetthet i lukede polygoner etter lukestatus året før (punkter = polygon-år, +0,01 for å vise nuller; svart = modellert gjennomsnitt ± 95 % KI). Høyre: årseffekten fra samme modell (gjennomsnitt ± 95 % KI).'
+#| fig-height: 4.5
+#| fig-width: 10
+#| code-summary: 'Kode for figur.'
+pa <- ggplot(cleared, aes(Luket_prev, lupins_per_m2 + 0.01, colour = Luket_prev)) +
+  geom_jitter(width = 0.2, alpha = 0.4, size = 1.5) +
+  geom_pointrange(data = em_prev, aes(y = response, ymin = asymp.LCL, ymax = asymp.UCL),
+                  colour = "black", linewidth = 0.9, size = 0.9) +
+  scale_colour_manual(values = luket_cols, guide = "none") +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(x = "Luket året før", y = "Lupiner fjernet per m² (log-skala)")
+pb <- ggplot(em_year, aes(as.integer(as.character(yearf)), response)) +
+  geom_pointrange(aes(ymin = asymp.LCL, ymax = asymp.UCL), colour = "#2a78d6", linewidth = 0.9, size = 0.9) +
+  geom_line(colour = "#2a78d6") +
+  scale_x_continuous(breaks = sort(unique(cleared$year))) +
+  scale_y_log10() +
+  labs(x = NULL, y = "Lupiner per m² (modell, log-skala)")
+pa + pb
+```
+
+### 6.3 Effekt av luking på elvesandjeger
+
+```{r tbl-effekt-n}
+#| tbl-cap: 'Antall undersøkelsespolygoner per gruppe og måned. Kontroll = observasjoner på Fornes utenfor alle lukepolygoner; Nei/Delvis/Ja = lukestatus året før på Kregnesteigen og Storrønningen.'
+#| code-summary: 'Kode for tabell.'
+dc |>
+  count(group, maaned) |>
+  pivot_wider(names_from = maaned, values_from = n, values_fill = 0) |>
+  rename(Gruppe = group) |>
+  kable()
+```
+
+```{r tbl-effekt-koeff}
+#| tbl-cap: 'NB GLMM for larver per undersøkelsespolygon på Kregnesteigen og Storrønningen. RR = rateratio (multiplikativ effekt på larvetettheten). Referansenivåer: ikke luket året før, juni, sand, Kregnesteigen.'
+#| code-summary: 'Kode for tabell.'
+rr_tab(m) |>
+  mutate(term = recode(term, !!!term_lab)) |>
+  rename(Effekt = term) |>
+  kable()
+```
+
+```{r tbl-effekt-lrt}
+#| tbl-cap: 'Likelihood-ratio-tester for hvert ledd i modellen.'
+#| code-summary: 'Kode for tabell.'
+as.data.frame(lrts) |>
+  rownames_to_column("Ledd") |>
+  mutate(chisq = round(chisq, 2), p = signif(p, 2)) |>
+  kable()
+```
+
+```{r fig-effekt}
+#| fig-cap: 'Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95 % KI, midlet over måned, substrat og lokalitet, ved median vegetasjonsdekke og slitasje). Venstre: Kregnesteigen + Storrønningen etter lukestatus året før. Høyre: de samme gruppene sammenlignet med kontrollen på Fornes (uten luking).'
+#| fig-height: 4.5
+#| fig-width: 10
+#| code-summary: 'Kode for figur.'
+em <- as.data.frame(emmeans(m, ~Luket_prev, type = "response", offset = 0)) |>
+  mutate(group = as.character(Luket_prev), panel = "Kregnesteigen + Storrønningen")
+emc <- as.data.frame(emmeans(m_ctrl, ~group, type = "response", offset = 0)) |>
+  mutate(group = as.character(group), panel = "Med kontroll (Fornes)")
+bind_rows(em, emc) |>
+  mutate(group = factor(group, levels = names(luket_cols)),
+         panel = factor(panel, levels = c("Kregnesteigen + Storrønningen", "Med kontroll (Fornes)"))) |>
+  ggplot(aes(group, response, colour = group)) +
+  geom_pointrange(aes(ymin = asymp.LCL, ymax = asymp.UCL), linewidth = 0.8, size = 0.8) +
+  facet_wrap(~panel, scales = "free_x") +
+  scale_colour_manual(values = luket_cols, guide = "none") +
+  scale_y_log10() +
+  labs(x = paste("Lupinluking", aar_eff - 1), y = "Larver per m² søkt (log-skala)")
+```
+
+```{r fig-kovariater}
+#| fig-cap: 'Kovariateffekter fra modellen: predikert larvetetthet mot vegetasjonsdekke og slitasje (linje ± 95 % KI, for en luket flekk på Storrønningen i august; punkter = undersøkelsespolygoner) og etter substrat (gjennomsnitt ± 95 % KI).'
+#| fig-height: 4
+#| fig-width: 12
+#| code-summary: 'Kode for figur.'
+pred_cov <- function(var, values) {
+  nd <- data.frame(Luket_prev = "Ja", maaned = "august", substrat = "sand", veg_frac = median(dm$veg_frac),
+                   slitasje = median(dm$slitasje), site = "Storrønningen", log_area = 0, patch_id = NA)
+  nd <- nd[rep(1, length(values)), ]
+  nd[[var]] <- values
+  pr <- predict(m, newdata = nd, type = "link", se.fit = TRUE, re.form = NA)
+  mutate(nd, fit = exp(pr$fit), lo = exp(pr$fit - 1.96 * pr$se.fit), hi = exp(pr$fit + 1.96 * pr$se.fit))
+}
+pv <- pred_cov("veg_frac", seq(0, 0.75, 0.05))
+ps <- pred_cov("slitasje", 1:5)
+p_veg <- ggplot(pv, aes(veg_frac * 100, fit)) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), fill = "#cde2fb") +
+  geom_line(colour = "#2a78d6", linewidth = 1) +
+  geom_jitter(data = dm, aes(vegetasjon, larvae / area_m2), width = 2, alpha = 0.4, size = 1.5, colour = "grey40") +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(title = "Vegetasjonsdekke", x = "Dekning (%)", y = "Larver per m² (log)")
+p_sli <- ggplot(ps, aes(slitasje, fit)) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), fill = "#cde2fb") +
+  geom_line(colour = "#2a78d6", linewidth = 1) +
+  geom_jitter(data = dm, aes(slitasje, larvae / area_m2), width = 0.15, alpha = 0.4, size = 1.5, colour = "grey40") +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(title = "Slitasje", x = "Slitasje (1 ingen – 5 kraftig)", y = NULL)
+p_sub <- as.data.frame(emmeans(m, ~substrat, type = "response", offset = 0)) |>
+  ggplot(aes(substrat, response)) +
+  geom_pointrange(aes(ymin = asymp.LCL, ymax = asymp.UCL), colour = "#2a78d6", linewidth = 0.8, size = 0.8) +
+  scale_y_log10() +
+  labs(title = "Substrat", x = NULL, y = NULL)
+p_veg + p_sli + p_sub
+```
+
+**Sensitivitet: areal som kovariat i stedet for offset.** Hovedmodellen antar at antallet er proporsjonalt med søkt areal. Med log(areal) som estimert kovariat blir stigningen `r num(summary(m_area)$coefficients$cond["log_area", 1])` på log-skala (1 = proporsjonalt), fordi større polygoner tar med mer tom mark.
+
+```{r tbl-sensitivitet}
+#| tbl-cap: 'Hovedmodellen tilpasset med log(polygonareal) som kovariat i stedet for offset.'
+#| code-summary: 'Kode for tabell.'
+rr_tab(m_area) |>
+  filter(term %in% c("log_area", "Luket_prevJa", "Luket_prevDelvis", "veg_frac", "slitasje")) |>
+  mutate(term = recode(term, !!!term_lab)) |>
+  rename(Effekt = term) |>
+  kable()
+```
+
+**Per larvestadium.** Voksne modelleres ikke (få individer). Den samme modellen er tilpasset stadium 1, 2 og 3 hver for seg.
+
+```{r fig-stadium}
+#| fig-cap: 'Effekter på tettheten av larver i stadium 1, 2 og 3 (NB GLMM, rateratio ± 95 % KI, Kregnesteigen + Storrønningen). Verdier > 1 = høyere tetthet.'
+#| fig-height: 5
+#| fig-width: 9
+#| code-summary: 'Kode for figur.'
+stage_coefs |>
+  filter(term %in% c("Luket_prevJa", "Luket_prevDelvis", "veg_frac", "slitasje", "substratblanding", "substratsilt")) |>
+  mutate(stage = recode(stage, stad1 = "Stadium 1", stad2 = "Stadium 2", stad3 = "Stadium 3"),
+         per10 = term == "veg_frac",
+         estimate = if_else(per10, estimate / 10, estimate),
+         se = if_else(per10, se / 10, se),
+         term = recode(term, !!!term_lab, veg_frac = "Vegetasjonsdekke (per +10 %)"),
+         rr = exp(estimate), lo = exp(estimate - 1.96 * se), hi = exp(estimate + 1.96 * se)) |>
+  ggplot(aes(rr, term, colour = stage)) +
+  geom_vline(xintercept = 1, colour = "grey40", linetype = "dashed") +
+  geom_pointrange(aes(xmin = lo, xmax = hi), position = position_dodge(width = 0.6), linewidth = 0.7) +
+  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_x_log10() +
+  labs(x = "Rateratio (log-skala)", y = NULL)
+```
+
+```{r tbl-stadium}
+#| tbl-cap: 'Likelihood-ratio-test for lukestatus året før i modellene per stadium, og rateratio for luket mot ikke luket.'
+#| code-summary: 'Kode for tabell.'
+data.frame(
+  Stadium = c("Stadium 1", "Stadium 2", "Stadium 3"),
+  Nuller = sapply(c("stad1", "stad2", "stad3"), function(st) sprintf("%d av %d", sum(dm[[st]] == 0), nrow(dm))),
+  RR_luket = round(exp(stage_coefs$estimate[stage_coefs$term == "Luket_prevJa"]), 2),
+  p_LRT = signif(stage_lrt, 2), row.names = NULL
+) |> kable()
+```
+
+```{r effect-numbers}
+#| include: false
+rr <- exp(s["Luket_prevJa", 1])
+ci <- exp(s["Luket_prevJa", 1] + c(-1.96, 1.96) * s["Luket_prevJa", 2])
+hist_c <- summary(m_hist)$coefficients$cond["years_cleared_before", ]
+dens_c <- summary(m_dens)$coefficients$cond["lupins_prev_per_m2", ]
+ctr <- as.data.frame(contrast(emmeans(m_ctrl, ~group, type = "response", offset = 0), "trt.vs.ctrl", ref = "Kontroll"))
+ctr_p <- function(g) ctr$p.value[ctr$contrast == paste(g, "/ Kontroll")]
+ctr_r <- function(g) ctr$ratio[ctr$contrast == paste(g, "/ Kontroll")]
+```
+
 ## 7. Oppsummering
 
 ### 7.1 Hva viser årets resultater
 
-<!-- Tiltakenes effekt per nå, endringer siden i fjor, usikkerhet. -->
+<!-- Tallene under oppdateres automatisk, men tolkningen er skrevet for dataene til og med 2026. Les gjennom og oppdater teksten hvert år. -->
+
+**Virker lukingen på lupinen?** Ja: lukingen reduserer lupinbestanden året etter. Et polygon som ble luket året før har i gjennomsnitt **`r num(em_prev$response[em_prev$Luket_prev == "Ja"])` lupiner/m²**, mot **`r num(em_prev$response[em_prev$Luket_prev == "Nei"])` lupiner/m²** der ingenting ble gjort året før (RR `r num(exp(sp["Luket_prevJa", 1]))`, p `r fp(sp["Luket_prevJa", 4])`), og hvert ekstra år med luking endrer tettheten med en faktor `r num(exp(sn["n_prev_cleared", 1]))` (p `r fp(sn["n_prev_cleared", 4])`). Delvis luking gir ikke samme effekt, delvis fordi det er de tetteste bestandene som bare blir delvis luket. Årseffekten viser også risikoen: når innsatsen går ned, kommer lupinen raskt tilbake. Invasjonen holdes i sjakk, men er ikke fjernet – **fortsatt årlig luking er nødvendig.**
+
+**Effekt på elvesandjeger.** Luking i `r aar_eff - 1` hadde **ingen statistisk signifikant effekt på antall larver i `r aar_eff`** på Kregnesteigen og Storrønningen. Flekker som ble luket hadde i gjennomsnitt `r num(rr, 1)` ganger larvetettheten i ikke-lukede flekker (95 % KI `r num(ci[1], 1)`–`r num(ci[2], 1)`; likelihood-ratio-test p `r fp(lrts["Luket året før", "p"])`). Retningen er positiv, men usikkerheten er stor, hovedsakelig fordi nesten alle okkuperte flekker ble luket – bare `r sum(dm$Luket_prev == "Nei")` undersøkelsespolygoner ligger i flekker som ikke ble luket. Effekten varierer ikke signifikant mellom måneder (p `r fp(lrts["Luket × måned", "p"])`).
+
+- Andre mål på luking gir samme bilde: antall år en flekk er luket (RR `r num(exp(hist_c[1]))` per år, p `r fp(hist_c[4])`) og antall lupiner fjernet per m² året før (p `r fp(dens_c[4])`).
+- **Sammenlignet med kontrollen på Fornes** har lukede flekker `r num(ctr_r("Ja"), 1)` ganger larvetettheten (p `r fp(ctr_p("Ja"))`, Dunnett-justert) og ikke-lukede flekker `r num(ctr_r("Nei"), 1)` ganger (p `r fp(ctr_p("Nei"))`).
+- **Habitat:** substrat har ingen effekt (p `r fp(lrts["Substrat", "p"])`). Vegetasjonsdekke og slitasje trekker begge ned – omtrent `r round(100 * (1 - exp(s["veg_frac", 1] / 10)))` % færre larver per 10 % vegetasjonsdekke (p `r fp(lrts["Vegetasjonsdekke", "p"])`) og `r round(100 * (1 - exp(s["slitasje", 1])))` % færre per slitasjeklasse (p `r fp(lrts["Slitasje", "p"])`). Larvetettheten er `r num(exp(s["siteStorrønningen", 1]), 1)` ganger høyere på Storrønningen enn på Kregnesteigen (p `r fp(lrts["Lokalitet", "p"])`).
+- **Per stadium:** stadium 1 p `r fp(stage_lrt["stad1"])`, stadium 2 p `r fp(stage_lrt["stad2"])`, stadium 3 p `r fp(stage_lrt["stad3"])` for luking året før.
 
 ### 7.2 Anbefaling for videreføring
 
 <!-- Hva er kunnskapsbehovet, om tiltaket (hvordan gjennomføres) og om effekten (variasjon mellom år, mellom lokaliteter). Anbefalinger for videreføring av delprosjektet – endringer i metodikk? Utvidelse? Endret frekvens for datainnsamling? Avslutning? -->
+
+Analysen har lav styrke for sammenligningen luket/ikke luket. Styrken vil øke hvis feltpersonalet også registrerer noen *ikke-lukede* flekker med elvesandjeger (eller søkte, men tomme flekker) på de to effektlokalitetene, og hvis Fornes fortsatt undersøkes som kontroll nå som lukingen også har startet der.
 
 ## 8. References
 

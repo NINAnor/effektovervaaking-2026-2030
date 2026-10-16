@@ -13,8 +13,8 @@ Previous years' code: [NINAnor/effektovervaaking](https://github.com/NINAnor/eff
 | [Apen-grunnlendt-kalkmark](Apen-grunnlendt-kalkmark/) | Åpen grunnlendt kalkmark i boreonemoral sone | not set up |
 | [Dragehode](Dragehode/) | Dragehode (*Dracocephalum ruyschiana*) | not set up |
 | [Honningblom](Honningblom/) | Honningblom (*Herminium monorchis*) | not set up |
-| [Elvesandjeger](Elvesandjeger/) | Elvesandjeger (*Cicindela maritima*) | report draft, data 2015–2026 |
-| [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/) | Stor elvebreddedderkopp (*Arctosa cinerea*) | report draft, data 2020–2026 |
+| [Elvesandjeger](Elvesandjeger/) | Elvesandjeger (*Cicindela maritima*) | report draft, data 2015–2026, effect of lupin clearing |
+| [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/) | Stor elvebreddedderkopp (*Arctosa cinerea*) | report draft, data 2020–2026, effect of lupin clearing |
 | [Klippeblaavinge](Klippeblaavinge/) | Klippeblåvinge (*Scolitantides orion*) | not set up |
 | [Prikkrutevinge](Prikkrutevinge/) | Prikkrutevinge (*Melitaea cinxia*) | not set up |
 | [Tronderlav](Tronderlav/) | Trønderlav (*Erioderma pedicellatum*) | not set up |
@@ -30,7 +30,7 @@ Subproject/
 ├── _common.R          # ecRxiv helper functions (badges, metadata) – do not edit
 ├── references.bib
 ├── code/              # preprocessing: raw data on P: -> cleaned data in data/
-├── data/              # cleaned data (master file, Darwin Core where possible)
+├── data/              # cleaned data: master file, clearing/management data, analysis data (DwC where possible)
 └── img/               # figures (written by the .qmd) and photos
 ```
 
@@ -41,15 +41,31 @@ Subproject/
 
 A blank template for new subprojects is in [`templates/`](templates/).
 
+## Software environment (pixi)
+
+R, Quarto and all R packages are managed with [pixi](https://pixi.sh) (`pixi.toml`, versions locked in `pixi.lock`), so everyone renders with the same versions.
+
+```bash
+# once: install pixi (https://pixi.sh/latest/#installation), then from the repo root
+pixi install
+
+# render one or all reports (README.md + .html)
+pixi run render-elvesandjeger
+pixi run render-all
+
+# or work interactively with the pixi R / Quarto
+pixi shell
+```
+
+Packages that are only on GitHub (`anybadger`, used by ecRxiv's `_common.R`) are installed into the pixi environment by `tools/install_github_deps.R` the first time a render task runs. To add an R package, run `pixi add r-<package>` (conda-forge names), which updates `pixi.toml` and `pixi.lock`. When a new subproject gets a report, add a `render-<subproject>` task to `pixi.toml`.
+
 ## Each year
 
-1. Run the preprocessing in `code/` on the new field data.
-2. Replace the master/cleaned data file in `data/`.
-3. Open the subproject's `.Rproj` and run `quarto render Subproject.qmd` in the terminal (renders both `README.md` and the `.html`).
-4. Update `yearLastUpdate`, `Version`, `VersionComment` and the Log in the `.qmd`.
+1. Run the preprocessing in `code/` on the new field data and management (e.g. clearing) data.
+2. Replace the cleaned data files in `data/`. The reports find their files by pattern, so the year in the file name can change, but there must be exactly one file of each kind.
+3. Run `pixi run render-<subproject>` (renders both `README.md` and the `.html`).
+4. Read through the interpretation in section 7, and update `yearLastUpdate`, `Version`, `VersionComment` and the Log in the `.qmd`.
 5. Commit and push.
-
-Rendering requires the R packages `here`, `tidyverse`, `kableExtra`, `yaml`, `conflicted`, `dplyr` ≥ 1.2 and `anybadger` ≥ 0.1.1 (`remotes::install_github("lmeninato/anybadger")`).
 
 ## Submitting to ecRxiv
 

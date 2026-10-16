@@ -1,0 +1,33 @@
+[workspace]
+name = "effektovervaaking-2026-2030"
+description = "R + Quarto environment for rendering the subproject reports"
+channels = ["conda-forge"]
+platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
+
+[dependencies]
+r-base = "4.4.*"
+quarto = "*"
+# ecRxiv template (_common.R)
+r-here = "*"
+r-knitr = "*"
+r-rmarkdown = "*"
+r-kableextra = "*"
+r-yaml = "*"
+r-tibble = "*"
+r-conflicted = "*"
+r-dplyr = ">=1.2"
+r-rstudioapi = "*"
+r-remotes = "*"
+# analyses
+r-tidyverse = "*"
+r-glmmtmb = "*"
+r-emmeans = "*"
+r-patchwork = "*"
+
+[tasks]
+# R packages that are only on GitHub (anybadger) are installed into the pixi environment on first use
+install-github-deps = "Rscript tools/install_github_deps.R"
+
+render-elvesandjeger = { cmd = "quarto render Elvesandjeger.qmd", cwd = "Elvesandjeger", depends-on = ["install-github-deps"] }
+render-stor-elvebreddedderkopp = { cmd = "quarto render Stor-elvebreddedderkopp.qmd", cwd = "Stor-elvebreddedderkopp", depends-on = ["install-github-deps"] }
+render-all = { depends-on = ["render-elvesandjeger", "render-stor-elvebreddedderkopp"] }
