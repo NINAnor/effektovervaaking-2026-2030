@@ -1,0 +1,24 @@
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+renv/library/
+
+# Quarto rendering
+.quarto/
+*_cache/
+*_files/
+*.html
+/.luarc.json
+
+# Raw data stay on P: – never commit these
+*.gdb/
+*.zip
+*.tif
+*.tiff
+
+# Office / OS temp files
+~$*
+Thumbs.db
+.DS_Store
