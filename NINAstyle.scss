@@ -1,0 +1,31 @@
+/* NINAnor palette and typography, inspired by:
+   https://github.com/NINAnor/recreation_encroachment_accounts/blob/main/NINAstyle.scss
+*/
+
+/*-- scss:defaults --*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap');
+
+$primary: #425563;
+$secondary: #008C95;
+$headings-color: $primary;
+$link-color: $secondary;
+$font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
+$font-weight-normal: 300;
+$font-weight-light: 200;
+$headings-font-weight: 300;
+$headings-font-family: $font-family-sans-serif;
+$body-color: #000000;
+
+/*-- scss:rules --*/
+table thead tr {
+  background-color: rgba($primary, .8);
+  color: white;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: rgba($primary, .1);
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: white;
+}

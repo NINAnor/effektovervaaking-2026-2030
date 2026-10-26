@@ -1,0 +1,24 @@
+project:
+  type: book
+  output-dir: _site
+
+book:
+  title: "Effektovervåking 2026–2030"
+  author: "NINA"
+  description: >
+    Code, cleaned data and yearly result summaries for NINA's monitoring of
+    the effects of management actions for threatened species and habitat types
+    in Norway.
+  repo-url: https://github.com/NINAnor/effektovervaaking-2026-2030
+  repo-branch: main
+  chapters:
+    - index.qmd
+    - Elvesandjeger/README.md
+    - Stor-elvebreddedderkopp/README.md
+
+format:
+  html:
+    theme:
+      - cosmo
+      - NINAstyle.scss
+    toc: true

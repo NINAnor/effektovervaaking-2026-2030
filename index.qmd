@@ -1,0 +1,17 @@
+---
+title: "Effektovervåking 2026–2030"
+---
+
+Code, cleaned data and yearly result summaries for NINA's monitoring of the
+effects of management actions for threatened species and habitat types in
+Norway (*Overvåking av effekter av tiltak for trua arter og naturtyper*),
+funded by the Norwegian Environment Agency.
+
+Each subproject has its own folder. This book currently includes the reports
+for:
+
+- [Elvesandjeger](Elvesandjeger/README.md)
+- [Stor elvebreddedderkopp](Stor-elvebreddedderkopp/README.md)
+
+See the [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030)
+for the full subproject list and project workflow.
