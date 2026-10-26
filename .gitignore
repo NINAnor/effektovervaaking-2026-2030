@@ -25,3 +25,5 @@ Thumbs.db
 
 # pixi environment
 .pixi/
+
+/_site/
