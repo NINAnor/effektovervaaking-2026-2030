@@ -247,7 +247,7 @@ sept <- master |>
 aar <- max(sept$year)
 first_year <- min(sept$year)
 
-# Innsats: antall punkter (2020–2024) eller polygoner (fra 2025) per lokalitet
+# Antall punkter (2020–2024) eller polygoner (fra 2025) med funn per lokalitet (bare funn er registrert)
 effort <- sept |>
   group_by(year, site) |>
   summarise(n_units = n_distinct(paste(N, E, date)), .groups = "drop")
@@ -342,7 +342,7 @@ dato_nb <- function(d) paste0(as.integer(format(d, "%d")), ". ",
                                 "september", "oktober", "november", "desember")[as.integer(format(d, "%m"))])
 ```
 
-Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og Fornes (@fig-kart). Lokalitetene er de samme som for elvesandjeger, og består av sand- og grusflater (elveører) langs elva. Stor elvebreddedderkopp forekommer til sammen på om lag 15 lokaliteter langs Gaula [@hanssen_2023; @roos_2024].
+Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og Fornes (@fig-kart). Lokalitetene består av sand- og grusflater (elveører) langs elva. Stor elvebreddedderkopp forekommer til sammen på om lag 15 lokaliteter langs Gaula [@hanssen_2023; @roos_2024].
 
 Elveørene ligger stort sett på samme sted fra år til år, men systemet er likevel svært dynamisk. De årlige flommene endrer den finskala topografien, ved at sand avsettes og eroderes lokalt, og de påvirker vegetasjonsdekket på sandflatene. Stedegne arter, som gråor og klåved, vokser inn på elvebreddene. De større plantene tåler de årlige flommene, men de fanger opp sediment og endrer den lokale topografien ved å bygge opp forhøyede banker, og de endrer kornstørrelsesfordelingen i substratet. Både topografien og substratet er viktige for stor elvebreddedderkopp, som graver røret sitt i løs sand. Langs Gaula gror elvebreddene i tillegg generelt igjen fordi elva er senket av omfattende masseuttak fra elvebunnen [@roos_2024]. Tråkk fra mennesker og hunder er registrert på flere av lokalitetene [@roos_2025].
 
@@ -467,7 +467,7 @@ eng_liste <- function(x) if (length(x) <= 1) x else paste(paste(x[-length(x)], c
 luk_lok <- luk_aar |> filter(area_cleared > 0) |> arrange(desc(area_cleared))
 ```
 
-Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene, i de samme lukepolygonene som for elvesandjeger. Lukingen utføres av Midtnorsk Naturundersøkelse AS (MidNat), som har kartlagt og luket lupiner langs Gaula hvert år siden 2020 [@solberg_2020; @solberg_2022a; @solberg_2022b; @solberg_2023; @solberg_2024; @solberg_2025]. Gaula er ett av fem vassdrag som Statsforvalteren i Trøndelag har prioritert i sin satsing på å redusere utbredelsen av fremmede planter, og MidNat har hatt rammeavtale med Statsforvalteren i Trøndelag om kartlegging og bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge lupinene på overvåkingslokalitetene [@solberg_2025].
+Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene. Lukingen utføres av Midtnorsk Naturundersøkelse AS (MidNat), som har kartlagt og luket lupiner langs Gaula hvert år siden 2020 [@solberg_2020; @solberg_2022a; @solberg_2022b; @solberg_2023; @solberg_2024; @solberg_2025]. Gaula er ett av fem vassdrag som Statsforvalteren i Trøndelag har prioritert i sin satsing på å redusere utbredelsen av fremmede planter, og MidNat har hatt rammeavtale med Statsforvalteren i Trøndelag om kartlegging og bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge lupinene på overvåkingslokalitetene [@solberg_2025].
 
 Lupinene lukes i hovedsak manuelt med håndredskap, som hagegreip, potetgrev, sigd og løvetannstikker, slik at sandflatene forstyrres minst mulig, og noen steder slås de med ryddesag. Plantene tas opp med roten, og alt plantemateriale samles i tette sekker og leveres til godkjent mottak for fremmede arter [@roos_2024; @solberg_2025]. Ved delvis luking fjernes bare de større lupinene som kan sette frø i løpet av sesongen, og flere steder fjernes blomsterstander og frøbelger for å hindre frøspredning [@solberg_2025]. Hver lokalitet er delt inn i kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor mange lupiner som ble fjernet, og når og hvordan det ble luket [@roos_2024].
 
@@ -503,27 +503,54 @@ pa + pb + plot_layout(widths = c(1.3, 1))
 
 ## 4. Datainnsamling
 
-Stor elvebreddedderkopp overvåkes på fire lokaliteter langs Gaula: Storrønningen, Kregnesteigen, Fornes og Gravråk. Juvenile og voksne individer telles, hovedsakelig i september; enkelte besøk i juni–august er ikke med her. Fra `r first_year` til 2024 ble observasjonene registrert som GPS-punkter med antall per stadium. Fra september 2025 tegnet observatørene i stedet et polygon rundt hver søkte flekk på et dronebilde, og registrerte substrat, vegetasjonsdekke og slitasje per polygon. Pilotpolygonene fra Gravråk i september 2024 dupliserer punktregistreringene samme dag og er ikke brukt.
+```{r datainnsamling-aar}
+#| include: false
+datoer_aar <- sort(unique(as.Date(substr(sept$date[sept$year == aar], 1, 10))))
+dato_txt <- if (length(datoer_aar) == 1) dato_nb(datoer_aar) else paste0(as.integer(format(min(datoer_aar), "%d")), ".–", dato_nb(max(datoer_aar)))
+# Antall individer per år, måned og stadium (alle besøk)
+mnd_lev <- c("juni", "juli", "august", "september")
+ind_mnd <- master |>
+  filter(month %in% mnd_lev, site %in% names(site_cols)) |>
+  mutate(stage = factor(stage, levels = c("juvenile", "adult"), labels = names(stage_cols)),
+         month = factor(month, levels = mnd_lev)) |>
+  group_by(year, month, stage) |>
+  summarise(n = sum(obs, na.rm = TRUE), .groups = "drop")
+```
 
-Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 9 i [`code/`](code/). Polygonene inngår der som sentroider med areal. For effektanalysen er hvert undersøkelsespolygon (`r paste(eff_years, collapse = " og ")`) koblet til lukepolygonet det overlapper mest (skript 10, `r attr(dat, "file")`).
+Stor elvebreddedderkopp telles hvert år av Arne Endre Laugsand (NINA). Hovedtellingen gjøres i september, når edderkoppene samler seg på sandflatene for å grave overvintringshull. Da telles hull med juvenile og voksne individer. Hull som er dekket av en liten haug med sand eller småstein regnes som bebodd, mens hull som ikke er vedlikeholdt eller har falt sammen, ikke telles [@roos_2024]. Fram til 2024 ble det også registrert edderkopper ved tellingene av elvesandjeger i juni–august. Disse vises i @tbl-datainnsamling, men bare septembertellingene brukes i analysene, for å unngå dobbelttelling. I `r aar` ble tellingen gjort `r dato_txt`.
 
-Klima- og vannføringsdata er de samme som for elvesandjeger: vannføring ved Gaulfoss (NVE 122.9.0), nedbør og snø ved Leinstrand (MET SN67150) og temperatur ved E6 Kvål (MET SN67175, fra 2023), satt sammen til én daglig tabell av skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
+Fra 2020 til 2024 ble hvert funn registrert som et GPS-punkt med antall per stadium. Fra 2025 registreres dataene digitalt i ArcGIS Field Maps: observatøren tegner et polygon rundt hver flekk med edderkopper på et ortofoto fra drone, og registrerer antall juvenile og voksne, vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5) for hvert polygon. Dronebildene tas i juni med en DJI Mini i 20 m høyde, med en pikselstørrelse på ca. 0,7 cm [@roos_2025]. Pilotpolygonene fra Gravråk i september 2024 dupliserer punktregistreringene samme dag og er ikke brukt. Indikatorene er beskrevet i @tbl-indikatorer.
+
+```{r tbl-indikatorer}
+#| tbl-cap: 'Indikatorer for overvåking av stor elvebreddedderkopp.'
+#| code-summary: 'Kode for tabell.'
+tibble::tribble(
+  ~Indikator, ~`Variabel registrert i felt`, ~Utvalgsenhet, ~`Utlegging av utvalgsenhet`, ~`Antall utvalgsenheter`, ~`Frekvens for datainnsamling`,
+  "Populasjonsstørrelse voksne", "Antall voksne individer (bebodde hull)", "Polygon rundt hver flekk med funn (GPS-punkt 2020–2024)", "Heldekkende søk på sandflatene", "4 lokaliteter", "Årlig (september)",
+  "Populasjonsstørrelse juvenile", "Antall juvenile individer (bebodde hull)", "Som over", "Som over", "4 lokaliteter", "Årlig (september)",
+  "Habitat", "Vegetasjonsdekke (%), substrattype, slitasje (klasse 1–5)", "Som over", "Som over", "4 lokaliteter", "Årlig (september), fra 2025"
+) |>
+  kable()
+```
 
 ```{r tbl-datainnsamling}
-#| tbl-cap: 'Antall observasjonspunkter (2020–2024) eller polygoner (fra 2025) per lokalitet i september. 0 = ikke undersøkt.'
-#| code-summary: 'Kode for tabell over innsats.'
-effort |>
-  pivot_wider(names_from = site, values_from = n_units, values_fill = 0) |>
-  arrange(year) |>
-  rename(År = year) |>
-  kable()
+#| tbl-cap: 'Antall individer av stor elvebreddedderkopp registrert per år og måned, fordelt på juvenile og voksne (alle fire lokaliteter). – = ingen registreringer. Hovedtellingen er i september; registreringene i juni–august ble gjort under tellingene av elvesandjeger.'
+#| code-summary: 'Kode for tabell.'
+ind_mnd |>
+  pivot_wider(names_from = month, values_from = n) |>
+  arrange(stage, year) |>
+  mutate(across(any_of(mnd_lev), ~ ifelse(is.na(.x), "–", format(.x, big.mark = " ")))) |>
+  select(Stadium = stage, År = year, any_of(mnd_lev)) |>
+  kable(align = c("l", "l", rep("r", 4)))
 ```
 
 ## 5. Dataanalyser
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
-**Utvikling over tid.** Tidsseriene viser summen av registrerte individer i september per år og stadium. Innsatsen og metoden varierer mellom år (@tbl-datainnsamling), så summene viser relativ forekomst og er ikke et bestandsestimat.
+**Data og skript.** Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 9 i [`code/`](code/). Polygonene inngår der som sentroider med areal. For effektanalysen er hvert undersøkelsespolygon (`r paste(eff_years, collapse = " og ")`) koblet til lukepolygonet det overlapper mest (skript 10, `r attr(dat, "file")`). Klimatabellen lages av skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
+
+**Utvikling over tid.** Tidsseriene viser summen av registrerte individer i september per år og stadium. Søkeinnsatsen er ikke registrert, og registreringsmetoden er endret fra punkter til polygoner (avsnitt 4), så summene viser relativ forekomst og er ikke et bestandsestimat.
 
 **Effekt av luking.** Undersøkelsespolygonene fra september (`r paste(eff_years, collapse = " og ")`) er koblet til lukepolygonet de overlapper mest, og får lukestatusen til polygonet **året før undersøkelsen** (Nei / Delvis / Ja). Effektlokalitetene er **Kregnesteigen, Storrønningen og Gravråk**, som alle har lukepolygoner med både lukede og ikke-lukede flekker og observasjoner av edderkoppen. Edderkoppene på **Fornes** lever utenfor lukepolygonene og utgjør en **kontroll** uten lupinluking. Luking i undersøkelsesåret brukes ikke; slitasje er utelatt i påvente av ny digitalisering; substrat er slått sammen til sand / finsand–silt / blanding.
 
@@ -588,6 +615,24 @@ voksne_aar <- sum(tot$obs[tot$year == aar & tot$stage == "Voksne"])
 I september `r aar` ble det registrert `r num(juv_aar, 0)` juvenile og `r num(voksne_aar, 0)` voksne totalt for alle lokaliteter.
 
 ### 6.1 Utvikling over tid
+
+<!-- Figurvalg i 6.1 avgjøres senere: sesongfiguren (alle måneder) er flyttet hit fra avsnitt 4. -->
+
+```{r fig-sesong}
+#| fig-cap: 'Antall juvenile og voksne stor elvebreddedderkopp registrert per måned og år (alle fire lokaliteter, logaritmisk skala). Hovedtellingen er i september; fra 2025 telles det bare i september.'
+#| fig-height: 4.2
+#| fig-width: 12
+#| code-summary: 'Kode for figur.'
+ggplot(ind_mnd, aes(month, n + 1, colour = stage, group = stage)) +
+  geom_line(linewidth = 0.9) +
+  geom_point(size = 2.4) +
+  facet_wrap(~year, nrow = 1) +
+  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_x_discrete(labels = c(juni = "jun", juli = "jul", august = "aug", september = "sep"), drop = FALSE) +
+  scale_y_log10(breaks = c(1, 11, 101, 1001), labels = c("0", "10", "100", "1 000")) +
+  labs(x = NULL, y = "Antall individer (log-skala)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), panel.spacing.x = unit(0.8, "lines"))
+```
 
 ```{r fig-trend-total}
 #| fig-cap: 'Antall juvenile og voksne registrert i september per år, alle lokaliteter. Innsats og metode varierer mellom år.'

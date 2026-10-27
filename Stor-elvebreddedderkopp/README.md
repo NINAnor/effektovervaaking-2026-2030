@@ -112,10 +112,9 @@ Megan Nowell
 Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i
 Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og
 Fornes (<a href="#fig-kart" class="quarto-xref">Figur 1</a>).
-Lokalitetene er de samme som for elvesandjeger, og består av sand- og
-grusflater (elveører) langs elva. Stor elvebreddedderkopp forekommer til
-sammen på om lag 15 lokaliteter langs Gaula (Hanssen 2023; Roos mfl.
-2024).
+Lokalitetene består av sand- og grusflater (elveører) langs elva. Stor
+elvebreddedderkopp forekommer til sammen på om lag 15 lokaliteter langs
+Gaula (Hanssen 2023; Roos mfl. 2024).
 
 Elveørene ligger stort sett på samme sted fra år til år, men systemet er
 likevel svært dynamisk. De årlige flommene endrer den finskala
@@ -198,14 +197,13 @@ Arne Endre Laugsand (Gravråk september 2024, øvrige september 2025).
 
 <!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
 
-Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene,
-i de samme lukepolygonene som for elvesandjeger. Lukingen utføres av
-Midtnorsk Naturundersøkelse AS (MidNat), som har kartlagt og luket
-lupiner langs Gaula hvert år siden 2020 (Solberg 2020; Solberg og Vullum
-2022b, 2022a, 2023, 2024; Solberg mfl. 2025). Gaula er ett av fem
-vassdrag som Statsforvalteren i Trøndelag har prioritert i sin satsing
-på å redusere utbredelsen av fremmede planter, og MidNat har hatt
-rammeavtale med Statsforvalteren i Trøndelag om kartlegging og
+Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene.
+Lukingen utføres av Midtnorsk Naturundersøkelse AS (MidNat), som har
+kartlagt og luket lupiner langs Gaula hvert år siden 2020 (Solberg 2020;
+Solberg og Vullum 2022b, 2022a, 2023, 2024; Solberg mfl. 2025). Gaula er
+ett av fem vassdrag som Statsforvalteren i Trøndelag har prioritert i
+sin satsing på å redusere utbredelsen av fremmede planter, og MidNat har
+hatt rammeavtale med Statsforvalteren i Trøndelag om kartlegging og
 bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler
 til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge
 lupinene på overvåkingslokalitetene (Solberg mfl. 2025).
@@ -256,45 +254,70 @@ på Gravråk i oktober 2025 er ikke med i lukedataene.
 
 ## 4. Datainnsamling
 
-Stor elvebreddedderkopp overvåkes på fire lokaliteter langs Gaula:
-Storrønningen, Kregnesteigen, Fornes og Gravråk. Juvenile og voksne
-individer telles, hovedsakelig i september; enkelte besøk i juni–august
-er ikke med her. Fra 2020 til 2024 ble observasjonene registrert som
-GPS-punkter med antall per stadium. Fra september 2025 tegnet
-observatørene i stedet et polygon rundt hver søkte flekk på et
-dronebilde, og registrerte substrat, vegetasjonsdekke og slitasje per
-polygon. Pilotpolygonene fra Gravråk i september 2024 dupliserer
-punktregistreringene samme dag og er ikke brukt.
+Stor elvebreddedderkopp telles hvert år av Arne Endre Laugsand (NINA).
+Hovedtellingen gjøres i september, når edderkoppene samler seg på
+sandflatene for å grave overvintringshull. Da telles hull med juvenile
+og voksne individer. Hull som er dekket av en liten haug med sand eller
+småstein regnes som bebodd, mens hull som ikke er vedlikeholdt eller har
+falt sammen, ikke telles (Roos mfl. 2024). Fram til 2024 ble det også
+registrert edderkopper ved tellingene av elvesandjeger i juni–august.
+Disse vises i
+<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 3</a>, men bare
+septembertellingene brukes i analysene, for å unngå dobbelttelling. I
+2026 ble tellingen gjort 11.–14. september.
 
-Alle observasjoner ligger i masterfila
-[elvebreddedderkopp_obs_2020-2026_master.csv](data/elvebreddedderkopp_obs_2020-2026_master.csv),
-som lages av skript 9 i [`code/`](code/). Polygonene inngår der som
-sentroider med areal. For effektanalysen er hvert undersøkelsespolygon
-(2025 og 2026) koblet til lukepolygonet det overlapper mest (skript 10,
-elvebreddedderkopp_2025-2026_analysis_data.csv).
+Fra 2020 til 2024 ble hvert funn registrert som et GPS-punkt med antall
+per stadium. Fra 2025 registreres dataene digitalt i ArcGIS Field Maps:
+observatøren tegner et polygon rundt hver flekk med edderkopper på et
+ortofoto fra drone, og registrerer antall juvenile og voksne,
+vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5) for hvert
+polygon. Dronebildene tas i juni med en DJI Mini i 20 m høyde, med en
+pikselstørrelse på ca. 0,7 cm (Roos mfl. 2025). Pilotpolygonene fra
+Gravråk i september 2024 dupliserer punktregistreringene samme dag og er
+ikke brukt. Indikatorene er beskrevet i
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
 
-Klima- og vannføringsdata er de samme som for elvesandjeger: vannføring
-ved Gaulfoss (NVE 122.9.0), nedbør og snø ved Leinstrand (MET SN67150)
-og temperatur ved E6 Kvål (MET SN67175, fra 2023), satt sammen til én
-daglig tabell av skript 8 i
-[`Elvesandjeger/code/`](../Elvesandjeger/code/).
+<div id="tbl-indikatorer">
 
-<div id="tbl-datainnsamling">
-
-Tabell 2: Antall observasjonspunkter (2020–2024) eller polygoner (fra
-2025) per lokalitet i september. 0 = ikke undersøkt.
+Tabell 2: Indikatorer for overvåking av stor elvebreddedderkopp.
 
 <div class="cell-output-display">
 
-|   År | Storrønningen | Kregnesteigen | Fornes | Gravråk |
-|-----:|--------------:|--------------:|-------:|--------:|
-| 2020 |            29 |             0 |      0 |       0 |
-| 2021 |           118 |            84 |      0 |       0 |
-| 2022 |            30 |            60 |     19 |      25 |
-| 2023 |            44 |            41 |     32 |      47 |
-| 2024 |            98 |           205 |     65 |      59 |
-| 2025 |            56 |            11 |     53 |      20 |
-| 2026 |            22 |             9 |     17 |       9 |
+| Indikator | Variabel registrert i felt | Utvalgsenhet | Utlegging av utvalgsenhet | Antall utvalgsenheter | Frekvens for datainnsamling |
+|:---|:---|:---|:---|:---|:---|
+| Populasjonsstørrelse voksne | Antall voksne individer (bebodde hull) | Polygon rundt hver flekk med funn (GPS-punkt 2020–2024) | Heldekkende søk på sandflatene | 4 lokaliteter | Årlig (september) |
+| Populasjonsstørrelse juvenile | Antall juvenile individer (bebodde hull) | Som over | Som over | 4 lokaliteter | Årlig (september) |
+| Habitat | Vegetasjonsdekke (%), substrattype, slitasje (klasse 1–5) | Som over | Som over | 4 lokaliteter | Årlig (september), fra 2025 |
+
+</div>
+
+</div>
+
+<div id="tbl-datainnsamling">
+
+Tabell 3: Antall individer av stor elvebreddedderkopp registrert per år
+og måned, fordelt på juvenile og voksne (alle fire lokaliteter). – =
+ingen registreringer. Hovedtellingen er i september; registreringene i
+juni–august ble gjort under tellingene av elvesandjeger.
+
+<div class="cell-output-display">
+
+| Stadium  | År   | juni | juli | august | september |
+|:---------|:-----|-----:|-----:|-------:|----------:|
+| Juvenile | 2020 |    – |    3 |      6 |        30 |
+| Juvenile | 2021 |    1 |    – |      4 |       191 |
+| Juvenile | 2022 |    – |    – |      1 |       232 |
+| Juvenile | 2023 |    0 |    4 |     10 |       204 |
+| Juvenile | 2024 |   11 |    0 |     32 |     1 065 |
+| Juvenile | 2025 |    – |    – |      – |       615 |
+| Juvenile | 2026 |    – |    – |      – |     2 374 |
+| Voksne   | 2020 |    – |    2 |      1 |        18 |
+| Voksne   | 2021 |    3 |    – |      5 |       205 |
+| Voksne   | 2022 |    – |    – |      7 |        46 |
+| Voksne   | 2023 |    2 |    0 |     28 |        66 |
+| Voksne   | 2024 |    0 |    2 |     17 |       147 |
+| Voksne   | 2025 |    – |    – |      – |       503 |
+| Voksne   | 2026 |    – |    – |      – |       819 |
 
 </div>
 
@@ -304,11 +327,19 @@ Tabell 2: Antall observasjonspunkter (2020–2024) eller polygoner (fra
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
+**Data og skript.** Alle observasjoner ligger i masterfila
+[elvebreddedderkopp_obs_2020-2026_master.csv](data/elvebreddedderkopp_obs_2020-2026_master.csv),
+som lages av skript 9 i [`code/`](code/). Polygonene inngår der som
+sentroider med areal. For effektanalysen er hvert undersøkelsespolygon
+(2025 og 2026) koblet til lukepolygonet det overlapper mest (skript 10,
+elvebreddedderkopp_2025-2026_analysis_data.csv). Klimatabellen lages av
+skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
+
 **Utvikling over tid.** Tidsseriene viser summen av registrerte
-individer i september per år og stadium. Innsatsen og metoden varierer
-mellom år
-(<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 2</a>), så
-summene viser relativ forekomst og er ikke et bestandsestimat.
+individer i september per år og stadium. Søkeinnsatsen er ikke
+registrert, og registreringsmetoden er endret fra punkter til polygoner
+(avsnitt 4), så summene viser relativ forekomst og er ikke et
+bestandsestimat.
 
 **Effekt av luking.** Undersøkelsespolygonene fra september (2025 og
 2026) er koblet til lukepolygonet de overlapper mest, og får
@@ -347,11 +378,23 @@ for alle lokaliteter.
 
 ### 6.1 Utvikling over tid
 
+<!-- Figurvalg i 6.1 avgjøres senere: sesongfiguren (alle måneder) er flyttet hit fra avsnitt 4. -->
+
+<div id="fig-sesong">
+
+![](img/fig-sesong-1.png)
+
+Figur 3: Antall juvenile og voksne stor elvebreddedderkopp registrert
+per måned og år (alle fire lokaliteter, logaritmisk skala).
+Hovedtellingen er i september; fra 2025 telles det bare i september.
+
+</div>
+
 <div id="fig-trend-total">
 
 ![](img/fig-trend-total-1.png)
 
-Figur 3: Antall juvenile og voksne registrert i september per år, alle
+Figur 4: Antall juvenile og voksne registrert i september per år, alle
 lokaliteter. Innsats og metode varierer mellom år.
 
 </div>
@@ -360,7 +403,7 @@ lokaliteter. Innsats og metode varierer mellom år.
 
 ![](img/fig-trend-lokalitet-1.png)
 
-Figur 4: Antall juvenile og voksne i september per lokalitet (antall +
+Figur 5: Antall juvenile og voksne i september per lokalitet (antall +
 1, logaritmisk skala).
 
 </div>
@@ -369,7 +412,7 @@ Figur 4: Antall juvenile og voksne i september per lokalitet (antall +
 
 <div id="tbl-effekt-n">
 
-Tabell 3: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes;
+Tabell 4: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes;
 Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.
 
 <div class="cell-output-display">
@@ -387,7 +430,7 @@ Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.
 
 <div id="tbl-effekt-koeff">
 
-Tabell 4: NB GLMM for juvenile og voksne per undersøkelsespolygon på
+Tabell 5: NB GLMM for juvenile og voksne per undersøkelsespolygon på
 effektlokalitetene. RR = rateratio (multiplikativ effekt på antallet).
 Referansenivåer: ikke luket året før, første år, sand, Gravråk.
 Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
@@ -410,7 +453,7 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div id="tbl-effekt-lrt">
 
-Tabell 5: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
+Tabell 6: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
 er testet på polygonene der det er registrert. Signifikansnivå: \* p \<
 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
@@ -433,7 +476,7 @@ er testet på polygonene der det er registrert. Signifikansnivå: \* p \<
 
 ![](img/fig-effekt-1.png)
 
-Figur 5: Predikert antall juvenile og voksne i et undersøkelsespolygon
+Figur 6: Predikert antall juvenile og voksne i et undersøkelsespolygon
 på 50 m² etter lupinluking året før (NB GLMM, gjennomsnitt ± 95 % KI,
 midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 år (modell med samspill).
@@ -444,7 +487,7 @@ midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 
 ![](img/fig-kontroll-1.png)
 
-Figur 6: Kontrollen på Fornes (uten lupinluking) sammenlignet med
+Figur 7: Kontrollen på Fornes (uten lupinluking) sammenlignet med
 gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m²,
 gjennomsnitt ± 95 % KI).
 
@@ -460,7 +503,7 @@ for å være fast.
 
 <div id="tbl-veg-storrelse">
 
-Tabell 6: Vegetasjonsdekke og tetthet av juvenile per størrelsesklasse
+Tabell 7: Vegetasjonsdekke og tetthet av juvenile per størrelsesklasse
 og år (polygoner med registrert vegetasjon).
 
 <div class="cell-output-display">
@@ -484,7 +527,7 @@ og år (polygoner med registrert vegetasjon).
 
 <div id="tbl-veg-modeller">
 
-Tabell 7: Effekt av vegetasjonsdekke (0 → 100 %, log-skala) på antall
+Tabell 8: Effekt av vegetasjonsdekke (0 → 100 %, log-skala) på antall
 juvenile og voksne med tre spesifikasjoner: areal som offset
 (tetthetsmodell), areal som kovariat, og innen hvert år med areal som
 kovariat. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \<
@@ -511,7 +554,7 @@ kovariat. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \<
 
 <div id="tbl-klima">
 
-Tabell 8: Septemberbesøket per år: antall og eksponering. Høyeste
+Tabell 9: Septemberbesøket per år: antall og eksponering. Høyeste
 vannføring og dager \> 300 m³/s i sommersesongen (1. mai – besøket),
 høyeste vannføring de 30 dagene før besøket, nedbør i sesongen og
 snødager vinteren før.
@@ -536,17 +579,17 @@ snødager vinteren før.
 
 ![](img/fig-klima-1.png)
 
-Figur 7: Antall i september mot høyeste vannføring i sommersesongen
+Figur 8: Antall i september mot høyeste vannføring i sommersesongen
 (venstre) og nedbør i sommersesongen (høyre). Tallene = år.
 
 </div>
 
 <div id="tbl-klima-modeller">
 
-Tabell 9: Utforskende NB GLMM for antall i september per lokalitet og år
-(lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om
-gangen, og effekten av høyeste vannføring når det er tatt hensyn til en
-lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
+Tabell 10: Utforskende NB GLMM for antall i september per lokalitet og
+år (lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel
+om gangen, og effekten av høyeste vannføring når det er tatt hensyn til
+en lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
 log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p \< 0,05;
 \*\* p \< 0,01; \*\*\* p \< 0,001.
 
