@@ -199,19 +199,58 @@ Arne Endre Laugsand (Gravråk september 2024, øvrige september 2025).
 <!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
 
 Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene,
-de samme lukepolygonene som for elvesandjeger. Lukingen registreres per
-lukepolygon og år som luket (Ja), delvis luket (Delvis) eller ikke luket
-(Nei), med antall lupiner fjernet. Lukedataene lages av skript 1–3 og 7
-i [`Elvesandjeger/code/`](../Elvesandjeger/code/). Effekten av lukingen
-på selve lupinbestanden er analysert i [rapporten for
+i de samme lukepolygonene som for elvesandjeger. Lukingen utføres av
+Midtnorsk Naturundersøkelse AS (MidNat), som har kartlagt og luket
+lupiner langs Gaula hvert år siden 2020 (Solberg 2020; Solberg og Vullum
+2022b, 2022a, 2023, 2024; Solberg mfl. 2025). Gaula er ett av fem
+vassdrag som Statsforvalteren i Trøndelag har prioritert i sin satsing
+på å redusere utbredelsen av fremmede planter, og MidNat har hatt
+rammeavtale med Statsforvalteren i Trøndelag om kartlegging og
+bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler
+til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge
+lupinene på overvåkingslokalitetene (Solberg mfl. 2025).
+
+Lupinene lukes i hovedsak manuelt med håndredskap, som hagegreip,
+potetgrev, sigd og løvetannstikker, slik at sandflatene forstyrres minst
+mulig, og noen steder slås de med ryddesag. Plantene tas opp med roten,
+og alt plantemateriale samles i tette sekker og leveres til godkjent
+mottak for fremmede arter (Roos mfl. 2024; Solberg mfl. 2025). Ved
+delvis luking fjernes bare de større lupinene som kan sette frø i løpet
+av sesongen, og flere steder fjernes blomsterstander og frøbelger for å
+hindre frøspredning (Solberg mfl. 2025). Hver lokalitet er delt inn i
+kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år
+om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor
+mange lupiner som ble fjernet, og når og hvordan det ble luket (Roos
+mfl. 2024).
+
+To steder er det i tillegg fjernet vegetasjon med gravemaskin for å
+restaurere åpne sandflater. På Kregnesteigen ble en eng med gras, urter
+og lupiner restaurert i november 2022 (Roos mfl. 2023). På Gravråk, som
+over tid har grodd igjen med både stedegne arter og lupiner, ble nesten
+all vegetasjon fjernet fra et større område med anleggsmaskiner i
+oktober 2025, etter at det var luket og fjernet frøbelger i og rundt
+området gjennom sommeren (Solberg mfl. 2025). På Fornes fjernet MidNat
+blomsterstander og frøbelger fra 29. juni til 15. juli 2025, og Øya
+videregående skole luket lupiner der 2. oktober 2025 med midler fra
+Melhus kommune (Solberg mfl. 2025).
+
+I 2026 ble det luket 20 154 m² på lokalitetene (Storrønningen 12 507 m²,
+Gravråk 4 216 m², Fornes 2 827 m² og Kregnesteigen 604 m²), og 34 735
+lupiner ble fjernet. Alle lukede polygoner ble fullstendig luket; delvis
+luking ble ikke registrert. Utviklingen i lukingen per lokalitet er vist
+i <a href="#fig-luking" class="quarto-xref">Figur 2</a>, og effekten av
+lukingen på selve lupinbestanden er analysert i [rapporten for
 elvesandjeger](../Elvesandjeger/).
 
 <div id="fig-luking">
 
 ![](img/fig-luking-1.png)
 
-Figur 2: Areal luket (Ja = luket, Delvis = delvis luket) per lokalitet
-og år (venstre), og lupiner fjernet per m² luket (høyre).
+Figur 2: Areal luket (Ja = fullstendig luket, Delvis = delvis luket) per
+lokalitet og år (venstre), og lupiner fjernet per m² luket areal
+(høyre). Kilde: lukedata fra Midtnorsk Naturundersøkelse AS. Lukingen på
+Fornes i 2025 (Øya videregående skole) og restaureringen med gravemaskin
+på Gravråk i oktober 2025 er ikke med i lukedataene.
 
 </div>
 
@@ -351,18 +390,19 @@ Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.
 Tabell 4: NB GLMM for juvenile og voksne per undersøkelsespolygon på
 effektlokalitetene. RR = rateratio (multiplikativ effekt på antallet).
 Referansenivåer: ikke luket året før, første år, sand, Gravråk.
+Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
 | Effekt | RR_Juvenile | KI95_Juvenile | p_Juvenile | RR_Voksne | KI95_Voksne | p_Voksne |
-|:---|---:|:---|---:|---:|:---|---:|
-| Delvis luket året før (mot ikke) | 1.60 | 0.80–3.17 | 0.1800 | 3.61 | 1.42–9.13 | 0.0068 |
-| Luket året før (mot ikke) | 1.03 | 0.65–1.65 | 0.8900 | 1.12 | 0.51–2.44 | 0.7700 |
-| 2026 (mot 2025) | 1.55 | 1.01–2.40 | 0.0460 | 0.52 | 0.30–0.90 | 0.0190 |
-| Blanding (mot sand) | 0.50 | 0.25–0.99 | 0.0480 | 1.04 | 0.48–2.24 | 0.9200 |
-| Kregnesteigen (mot Gravråk) | 2.79 | 1.41–5.53 | 0.0032 | 1.28 | 0.40–4.09 | 0.6800 |
-| Storrønningen (mot Gravråk) | 0.80 | 0.49–1.32 | 0.3900 | 0.32 | 0.13–0.78 | 0.0130 |
-| log(areal), RR per e-dobling (2,72 = proporsjonalt) | 1.66 | 1.47–1.88 | 0.0000 | 1.76 | 1.49–2.08 | 0.0000 |
+|:---|---:|:---|:---|---:|:---|:---|
+| Delvis luket året før (mot ikke) | 1.60 | 0.80–3.17 | 0.18 | 3.61 | 1.42–9.13 | 0.0068\*\* |
+| Luket året før (mot ikke) | 1.03 | 0.65–1.65 | 0.89 | 1.12 | 0.51–2.44 | 0.77 |
+| 2026 (mot 2025) | 1.55 | 1.01–2.40 | 0.046\* | 0.52 | 0.30–0.90 | 0.019\* |
+| Blanding (mot sand) | 0.50 | 0.25–0.99 | 0.048\* | 1.04 | 0.48–2.24 | 0.92 |
+| Kregnesteigen (mot Gravråk) | 2.79 | 1.41–5.53 | 0.0032\*\* | 1.28 | 0.40–4.09 | 0.68 |
+| Storrønningen (mot Gravråk) | 0.80 | 0.49–1.32 | 0.39 | 0.32 | 0.13–0.78 | 0.013\* |
+| log(areal), RR per e-dobling (2,72 = proporsjonalt) | 1.66 | 1.47–1.88 | \<0.001\*\*\* | 1.76 | 1.49–2.08 | \<0.001\*\*\* |
 
 </div>
 
@@ -371,18 +411,19 @@ Referansenivåer: ikke luket året før, første år, sand, Gravråk.
 <div id="tbl-effekt-lrt">
 
 Tabell 5: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
-er testet på polygonene der det er registrert.
+er testet på polygonene der det er registrert. Signifikansnivå: \* p \<
+0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
-| Ledd             | Juvenile | Voksne |
-|:-----------------|---------:|-------:|
-| Luket året før   |  0.41000 | 0.0063 |
-| Luket × år       |  0.01100 | 0.0049 |
-| Substrat         |  0.04900 | 0.9200 |
-| Lokalitet        |  0.00730 | 0.0068 |
-| År               |  0.05000 | 0.0190 |
-| Vegetasjonsdekke |  0.00042 | 0.0093 |
+| Ledd             | Juvenile      | Voksne     |
+|:-----------------|:--------------|:-----------|
+| Luket året før   | 0.41          | 0.0063\*\* |
+| Luket × år       | 0.011\*       | 0.0049\*\* |
+| Substrat         | 0.049\*       | 0.92       |
+| Lokalitet        | 0.0073\*\*    | 0.0068\*\* |
+| År               | 0.0497\*      | 0.019\*    |
+| Vegetasjonsdekke | \<0.001\*\*\* | 0.0093\*\* |
 
 </div>
 
@@ -446,20 +487,21 @@ og år (polygoner med registrert vegetasjon).
 Tabell 7: Effekt av vegetasjonsdekke (0 → 100 %, log-skala) på antall
 juvenile og voksne med tre spesifikasjoner: areal som offset
 (tetthetsmodell), areal som kovariat, og innen hvert år med areal som
-kovariat.
+kovariat. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \<
+0,001.
 
 <div class="cell-output-display">
 
-| Stadium  | Spesifikasjon                  | Estimat |       p |   n |
-|:---------|:-------------------------------|--------:|--------:|----:|
-| Juvenile | Areal som offset (tetthet)     |   -2.96 | 1.0e-06 | 119 |
-| Juvenile | Areal som kovariat             |   -1.91 | 2.4e-04 | 119 |
-| Juvenile | Innen 2025, areal som kovariat |   -1.03 | 1.1e-01 |  79 |
-| Juvenile | Innen 2026, areal som kovariat |   -2.78 | 3.2e-04 |  40 |
-| Voksne   | Areal som offset (tetthet)     |   -2.85 | 2.8e-04 | 119 |
-| Voksne   | Areal som kovariat             |   -1.93 | 7.4e-03 | 119 |
-| Voksne   | Innen 2025, areal som kovariat |   -0.36 | 6.9e-01 |  79 |
-| Voksne   | Innen 2026, areal som kovariat |   -3.35 | 3.0e-03 |  40 |
+| Stadium  | Spesifikasjon                  | Estimat | p             |   n |
+|:---------|:-------------------------------|--------:|:--------------|----:|
+| Juvenile | Areal som offset (tetthet)     |   -2.96 | \<0.001\*\*\* | 119 |
+| Juvenile | Areal som kovariat             |   -1.91 | \<0.001\*\*\* | 119 |
+| Juvenile | Innen 2025, areal som kovariat |   -1.03 | 0.11          |  79 |
+| Juvenile | Innen 2026, areal som kovariat |   -2.78 | \<0.001\*\*\* |  40 |
+| Voksne   | Areal som offset (tetthet)     |   -2.85 | \<0.001\*\*\* | 119 |
+| Voksne   | Areal som kovariat             |   -1.93 | 0.0074\*\*    | 119 |
+| Voksne   | Innen 2025, areal som kovariat |   -0.36 | 0.69          |  79 |
+| Voksne   | Innen 2026, areal som kovariat |   -3.35 | 0.003\*\*     |  40 |
 
 </div>
 
@@ -505,28 +547,29 @@ Tabell 9: Utforskende NB GLMM for antall i september per lokalitet og år
 (lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om
 gangen, og effekten av høyeste vannføring når det er tatt hensyn til en
 lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
-log-skala; p fra likelihood-ratio-test.
+log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p \< 0,05;
+\*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
 | Respons | Variabel | Estimat | SE | p |
-|:---|:---|---:|---:|---:|
-| Juvenile | log(høyeste vannføring mai–sep) | -2.975 | 0.531 | 0.00053 |
-| Juvenile | Dager \> 300 m³/s mai–sep | -0.079 | 0.021 | 0.00460 |
-| Juvenile | log(høyeste vannføring 30 d før besøk) | -0.439 | 0.693 | 0.54000 |
-| Juvenile | Nedbør mai–sep (mm) | 0.004 | 0.005 | 0.38000 |
-| Juvenile | Nedbør 30 d før besøk (mm) | 0.005 | 0.011 | 0.65000 |
-| Juvenile | Snødager vinteren før | -0.003 | 0.017 | 0.86000 |
-| Juvenile | log(høyeste vannføring), gitt årstrend | -2.445 | 1.084 | 0.05000 |
-| Juvenile | log(høyeste vannføring), gitt årstrend + polygonmetode | -3.421 | 0.924 | 0.00420 |
-| Voksne | log(høyeste vannføring mai–sep) | -3.439 | 0.736 | 0.00230 |
-| Voksne | Dager \> 300 m³/s mai–sep | -0.088 | 0.028 | 0.01500 |
-| Voksne | log(høyeste vannføring 30 d før besøk) | -2.151 | 0.374 | 0.01500 |
-| Voksne | Nedbør mai–sep (mm) | 0.000 | 0.006 | 0.98000 |
-| Voksne | Nedbør 30 d før besøk (mm) | -0.001 | 0.014 | 0.96000 |
-| Voksne | Snødager vinteren før | -0.018 | 0.020 | 0.38000 |
-| Voksne | log(høyeste vannføring), gitt årstrend | -5.328 | 1.261 | 0.00310 |
-| Voksne | log(høyeste vannføring), gitt årstrend + polygonmetode | -4.178 | 1.247 | 0.00840 |
+|:---|:---|---:|---:|:---|
+| Juvenile | log(høyeste vannføring mai–sep) | -2.975 | 0.531 | \<0.001\*\*\* |
+| Juvenile | Dager \> 300 m³/s mai–sep | -0.079 | 0.021 | 0.0046\*\* |
+| Juvenile | log(høyeste vannføring 30 d før besøk) | -0.439 | 0.693 | 0.54 |
+| Juvenile | Nedbør mai–sep (mm) | 0.004 | 0.005 | 0.38 |
+| Juvenile | Nedbør 30 d før besøk (mm) | 0.005 | 0.011 | 0.65 |
+| Juvenile | Snødager vinteren før | -0.003 | 0.017 | 0.86 |
+| Juvenile | log(høyeste vannføring), gitt årstrend | -2.445 | 1.084 | 0.0501 |
+| Juvenile | log(høyeste vannføring), gitt årstrend + polygonmetode | -3.421 | 0.924 | 0.0042\*\* |
+| Voksne | log(høyeste vannføring mai–sep) | -3.439 | 0.736 | 0.0023\*\* |
+| Voksne | Dager \> 300 m³/s mai–sep | -0.088 | 0.028 | 0.015\* |
+| Voksne | log(høyeste vannføring 30 d før besøk) | -2.151 | 0.374 | 0.015\* |
+| Voksne | Nedbør mai–sep (mm) | 0.000 | 0.006 | 0.98 |
+| Voksne | Nedbør 30 d før besøk (mm) | -0.001 | 0.014 | 0.96 |
+| Voksne | Snødager vinteren før | -0.018 | 0.020 | 0.38 |
+| Voksne | log(høyeste vannføring), gitt årstrend | -5.328 | 1.261 | 0.0031\*\* |
+| Voksne | log(høyeste vannføring), gitt årstrend + polygonmetode | -4.178 | 1.247 | 0.0084\*\* |
 
 </div>
 
@@ -574,7 +617,7 @@ log-skala; p fra likelihood-ratio-test.
   september**: årene med de største vår- og sommerflommene hadde færrest
   edderkopper, og årene med de minste flommene flest. Effekten holder
   også når det er tatt hensyn til en lineær årstrend (voksne p = 0,0031,
-  juvenile p = 0,05) og metodeskiftet i 2025 (voksne p = 0,0084,
+  juvenile p = 0,0501) og metodeskiftet i 2025 (voksne p = 0,0084,
   juvenile p = 0,0042). Det er biologisk rimelig – edderkoppene lever i
   ganger på den laveste, mest flomutsatte sanden, og flommen kommer når
   juvenilene er små. Men serien er kort, og høyeste vannføring har gått
@@ -619,6 +662,64 @@ Roos, Ruben E., Marianne Evju, Anders Endrestøl, mfl. 2024. *Overvåking
 av effekter av tiltak for åtte trua arter og en naturtype i 2024*. NINA
 Rapport No. 2538. Norsk institutt for naturforskning.
 <https://hdl.handle.net/11250/3169493>.
+
+</div>
+
+<div id="ref-roos_2023" class="csl-entry">
+
+Roos, Ruben E., Marianne Evju, Anders Endrestøl, Oddvar Hanssen, og
+Megan Nowell. 2023. *Overvåking av effekter av tiltak for seks trua
+arter og en naturtype i 2023*. NINA Rapport No. 2377. Norsk institutt
+for naturforskning. <https://hdl.handle.net/11250/3106536>.
+
+</div>
+
+<div id="ref-solberg_2020" class="csl-entry">
+
+Solberg, K. A. 2020. *Kartlegging av fremmede arter, og bekjempelse av
+lupiner, langs Gaula i 2020*. MidNat Rapport Nos. 4-2020. Midtnorsk
+Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2025" class="csl-entry">
+
+Solberg, K. A., S. Daaland, og J. Vullum. 2025. *Fremmede planter langs
+Gaula 2025 – kartlegging, bekjempelse og tiltak for elvesandjeger*.
+MidNat Rapport Nos. 7-2025. Midtnorsk Naturundersøkelse AS.
+<https://www.midnat.no/gauldalen/>.
+
+</div>
+
+<div id="ref-solberg_2022b" class="csl-entry">
+
+Solberg, K. A., og J. Vullum. 2022a. *Bekjempelse av hagelupin og
+rynkerose på to elveører med elvesandjeger-bestander, i Melhus kommune,
+2022*. MidNat Rapport Nos. 10-2022. Midtnorsk Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2022a" class="csl-entry">
+
+Solberg, K. A., og J. Vullum. 2022b. *Bekjempelse og kartlegging av
+lupiner langs Gaula i 2021*. MidNat Rapport Nos. 2-2022. Midtnorsk
+Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2023" class="csl-entry">
+
+Solberg, K. A., og J. Vullum. 2023. *Fremmede planter langs Gaula 2023 –
+kartlegging, bekjempelse og tiltak for elvesandjeger*. MidNat Rapport
+Nos. 5-2023. Midtnorsk Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2024" class="csl-entry">
+
+Solberg, K. A., og J. Vullum. 2024. *Fremmede planter langs Gaula 2024 –
+kartlegging og bekjempelse*. MidNat Rapport Nos. 6-2024. Midtnorsk
+Naturundersøkelse AS.
 
 </div>
 
