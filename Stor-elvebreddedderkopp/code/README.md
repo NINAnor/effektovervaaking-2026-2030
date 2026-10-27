@@ -1,6 +1,6 @@
 # Code – Stor elvebreddedderkopp
 
-Preprocessing that turns the raw field data on P: into the files in [`../data/`](../data/) that the report reads. These scripts are **not** part of the ecRxiv submission. They read from and write to `05 Elvedyr/Data` on P:.
+Preprocessing that turns the raw field data on P: into the files in [`../data/`](../data/) that the report reads. These scripts are **not** part of the ecRxiv submission. `install_github_deps.R` is not preprocessing – it installs GitHub-only R packages into the pixi environment (see [`../pixi.toml`](../pixi.toml)). They read from and write to `05 Elvedyr/Data` on P:.
 
 | Script | Does | Output used by the report |
 |---|---|---|
@@ -13,7 +13,7 @@ The lupin clearing data (`Lupinluking_2025_2026_clean.shp` and `lupin_clearing_b
 
 1. Put the new field data on P:, run the clearing scripts in `Elvesandjeger/code/`, then scripts 9 and 10 here (update the years in them).
 2. Replace the four files in [`../data/`](../data/) (master, clearing by site, analysis data, daily climate) with the new ones and delete the old ones. The report finds them by pattern (`*_master.csv`, `lupin_clearing_by_site_*.csv`, `*_analysis_data.csv`, `daily_climate_hydrology_*.csv`), so there must be exactly one of each.
-3. From the repo root, run `pixi run render-stor-elvebreddedderkopp`.
+3. From the `Stor-elvebreddedderkopp/` folder, run `pixi run render` (first time: `pixi install`).
 4. Read through section 7 (interpretation) and update `yearLastUpdate`, `Version`, `VersionComment` and the Log in `Stor-elvebreddedderkopp.qmd`.
 
 ## Climate and hydrology

@@ -25,6 +25,7 @@ Previous years' code: [NINAnor/effektovervaaking](https://github.com/NINAnor/eff
 ```
 Subproject/
 ├── Subproject.Rproj   # open this – here::here() then points to the subproject folder
+├── pixi.toml          # optional: the subproject's own software environment (+ pixi.lock)
 ├── Subproject.qmd     # result summary (ecRxiv template) – reads only data/ and img/
 ├── README.md          # generated from Subproject.qmd – do not edit by hand
 ├── _common.R          # ecRxiv helper functions (badges, metadata) – do not edit
@@ -41,29 +42,31 @@ Subproject/
 
 A blank template for new subprojects is in [`templates/`](templates/).
 
-## Software environment (pixi)
+## Software environment
 
-R, Quarto and all R packages are managed with [pixi](https://pixi.sh) (`pixi.toml`, versions locked in `pixi.lock`), so everyone renders with the same versions.
+Each subproject manages its own software environment, so subprojects can use different tools and versions. The Elvedyr subprojects ([Elvesandjeger](Elvesandjeger/), [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/)) use [pixi](https://pixi.sh): R, Quarto and all R packages are listed in the subproject's `pixi.toml`, with exact versions locked in `pixi.lock`.
 
 ```bash
-# once: install pixi (https://pixi.sh/latest/#installation), then from the repo root
+# once: install pixi (https://pixi.sh/latest/#installation), then from the subproject folder
+cd Stor-elvebreddedderkopp
 pixi install
 
-# render one or all reports (README.md + .html)
-pixi run render-elvesandjeger
-pixi run render-all
+# render the report (README.md + .html)
+pixi run render
 
-# or work interactively with the pixi R / Quarto
+# or work interactively with that subproject's R / Quarto
 pixi shell
 ```
 
-Packages that are only on GitHub (`anybadger`, used by ecRxiv's `_common.R`) are installed into the pixi environment by `tools/install_github_deps.R` the first time a render task runs. To add an R package, run `pixi add r-<package>` (conda-forge names), which updates `pixi.toml` and `pixi.lock`. When a new subproject gets a report, add a `render-<subproject>` task to `pixi.toml`.
+Packages that are only on GitHub (`anybadger`, used by ecRxiv's `_common.R`) are installed by `code/install_github_deps.R` the first time `pixi run render` runs. To add an R package, run `pixi add r-<package>` (conda-forge names) in the subproject folder.
+
+The repository root is a Quarto book (`_quarto.yml`, `index.qmd`) that collects the subproject `README.md` files and is published to GitHub Pages on every push to `main`. Add a new subproject's `README.md` to `chapters` in `_quarto.yml` once its report exists.
 
 ## Each year
 
 1. Run the preprocessing in `code/` on the new field data and management (e.g. clearing) data.
 2. Replace the cleaned data files in `data/`. The reports find their files by pattern, so the year in the file name can change, but there must be exactly one file of each kind.
-3. Run `pixi run render-<subproject>` (renders both `README.md` and the `.html`).
+3. Render the subproject's `.qmd` (in the Elvedyr subprojects: `pixi run render` from the subproject folder). This renders both `README.md` and the `.html`.
 4. Read through the interpretation in section 7, and update `yearLastUpdate`, `Version`, `VersionComment` and the Log in the `.qmd`.
 5. Commit and push.
 

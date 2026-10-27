@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell
-2026-10-16
+2026-10-27
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
