@@ -11,7 +11,7 @@ Megan Nowell
 - [5. Dataanalyser](#5-dataanalyser)
 - [6. Resultater](#6-resultater)
 - [7. Oppsummering](#7-oppsummering)
-- [8. References](#8-references)
+- [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
 
 <!--# Rapporten leser kun filer i data/ og img/. Rådata ligger på P:, og koden som lager masterfila ligger i code/. -->
@@ -44,7 +44,7 @@ Megan Nowell
 >
 > <div id="tbl-meta2">
 >
-> Table 1: Indicator metadata
+> Tabell 1: Indicator metadata
 >
 > <div class="cell-output-display">
 >
@@ -109,11 +109,77 @@ Megan Nowell
 
 <!-- Hvor, kart, plassering av lokalitetene i Norge. Status og utfordringer/påvirkninger. -->
 
+Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i
+Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og
+Fornes (<a href="#fig-kart" class="quarto-xref">Figur 1</a>).
+Lokalitetene er de samme som for elvesandjeger, og består av sand- og
+grusflater (elveører) langs elva. Stor elvebreddedderkopp forekommer til
+sammen på om lag 15 lokaliteter langs Gaula (Hanssen 2023; Roos mfl.
+2024).
+
+Elveørene ligger stort sett på samme sted fra år til år, men systemet er
+likevel svært dynamisk. De årlige flommene endrer den finskala
+topografien, ved at sand avsettes og eroderes lokalt, og de påvirker
+vegetasjonsdekket på sandflatene. Stedegne arter, som gråor og klåved,
+vokser inn på elvebreddene. De større plantene tåler de årlige flommene,
+men de fanger opp sediment og endrer den lokale topografien ved å bygge
+opp forhøyede banker, og de endrer kornstørrelsesfordelingen i
+substratet. Både topografien og substratet er viktige for stor
+elvebreddedderkopp, som graver røret sitt i løs sand. Langs Gaula gror
+elvebreddene i tillegg generelt igjen fordi elva er senket av omfattende
+masseuttak fra elvebunnen (Roos mfl. 2024). Tråkk fra mennesker og
+hunder er registrert på flere av lokalitetene (Roos mfl. 2025).
+
+Hagelupin er en svært invasiv fremmedart. Frø føres med elva fra
+forekomster lenger opp i vassdraget, og frø fra lupinene på selve
+lokalitetene spirer, slik at lupinen raskt etablerer seg på nytt. Tette
+lupinbestander gror igjen de åpne sandflatene som stor
+elvebreddedderkopp og andre arter knyttet til åpne elveører er avhengige
+av.
+
+Flom og vær varierer mye fra år til år (avsnitt 6.3). I 2026 toppet
+vårflommen ved Gaulfoss seg på 388 m³/s 24. mai, den minste vårflommen i
+perioden 2020–2026, og vannføringen var over 300 m³/s i 1 dag i
+mai–august, mot 6–28 dager i de andre årene. Det kom ingen sommerflom;
+høyeste vannføring i juli–september var 233 m³/s. Snødybden ved
+Leinstrand var høyst 18 cm i januar–mai (18–42 cm i de andre årene), og
+nedbøren i mai–august var 387 mm, den høyeste i perioden.
+
+**Gravråk** ligger på østsiden av Gaula, vest for Gravråk-gårdene.
+Lokaliteten er en 600 m lang grusør med litt sand og silt inn mot
+vegetasjonen (Hanssen 2023; Roos mfl. 2024).
+
+**Kregnesteigen** ligger på vestsiden av Gaula, sør for Gravråk og vest
+for Skjerdingstad. Lokaliteten er en langsmal elveør i en innersving, om
+lag 1 km lang og 20–50 m bred ved normal vannstand. Gjengroing med gråor
+og flommene i august 2023 har endret lokaliteten, og flommene la
+samtidig igjen mye ny sand på store deler av elveøra (Hanssen 2023; Roos
+mfl. 2024). Området er mye brukt til laksefiske, og nær elvekanten og en
+gapahuk er det svært stor slitasje fra ferdsel (Roos mfl. 2025).
+
+**Storrønningen** ligger på vestsiden av Gaula ved Kvål. Elveøra er 1,3
+km lang, og de nederste 500 m er et om lag 50 m bredt overløp der det
+jevnlig avsettes sand og silt. Gjengroing og styrtregnflommer har
+forringet leveområdene de senere årene (Hanssen 2023; Roos mfl. 2024).
+Det ligger en hundeskole like ved lokaliteten, og dronebilder viser
+tydelige spor etter hunder i sandområdene der det er registrert flest
+voksne edderkopper (Roos mfl. 2025).
+
+**Fornes** ligger én kilometer oppstrøms Kvålsbrua, ved utløpet av
+Gammelelva naturreservat på østsiden av Gaula. Lokaliteten er en elveør
+på 28 daa som i hovedsak ble dannet mellom 2005 og 2009. Den har store
+sandflater med silt i og rundt et frodig klåvedkratt på østsiden mot
+Gammelelva, og store flater med grus og stein og lite vegetasjon på
+vestsiden (Hanssen 2023; Roos mfl. 2024). Edderkoppene på Fornes holder
+i hovedsak til på sandflatene utenfor lukeområdet
+(<a href="#fig-kart" class="quarto-xref">Figur 1</a>), og Fornes brukes
+derfor som kontroll i effektanalysen.
+
 <div id="fig-kart">
 
 ![](img/fig-kart-1.jpeg)
 
-Figure 1: Lokalitetene for overvåking av stor elvebreddedderkopp langs
+Figur 1: Lokalitetene for overvåking av stor elvebreddedderkopp langs
 nedre Gaula i Trøndelag. Til venstre: oversikt over lukeområdene (grå)
 og utsnittene for hver lokalitet (rød stiplet ramme); det innfelte
 kartet viser plasseringen i Norge (Trøndelag i mørk grå). Til høyre, fra
@@ -142,7 +208,7 @@ elvesandjeger](../Elvesandjeger/).
 
 ![](img/fig-luking-1.png)
 
-Figure 2: Areal luket (Ja = luket, Delvis = delvis luket) per lokalitet
+Figur 2: Areal luket (Ja = luket, Delvis = delvis luket) per lokalitet
 og år (venstre), og lupiner fjernet per m² luket (høyre).
 
 </div>
@@ -174,7 +240,7 @@ daglig tabell av skript 8 i
 
 <div id="tbl-datainnsamling">
 
-Table 2: Antall observasjonspunkter (2020–2024) eller polygoner (fra
+Tabell 2: Antall observasjonspunkter (2020–2024) eller polygoner (fra
 2025) per lokalitet i september. 0 = ikke undersøkt.
 
 <div class="cell-output-display">
@@ -200,7 +266,7 @@ Table 2: Antall observasjonspunkter (2020–2024) eller polygoner (fra
 **Utvikling over tid.** Tidsseriene viser summen av registrerte
 individer i september per år og stadium. Innsatsen og metoden varierer
 mellom år
-(<a href="#tbl-datainnsamling" class="quarto-xref">Table 2</a>), så
+(<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 2</a>), så
 summene viser relativ forekomst og er ikke et bestandsestimat.
 
 **Effekt av luking.** Undersøkelsespolygonene fra september (2025 og
@@ -244,7 +310,7 @@ for alle lokaliteter.
 
 ![](img/fig-trend-total-1.png)
 
-Figure 3: Antall juvenile og voksne registrert i september per år, alle
+Figur 3: Antall juvenile og voksne registrert i september per år, alle
 lokaliteter. Innsats og metode varierer mellom år.
 
 </div>
@@ -253,7 +319,7 @@ lokaliteter. Innsats og metode varierer mellom år.
 
 ![](img/fig-trend-lokalitet-1.png)
 
-Figure 4: Antall juvenile og voksne i september per lokalitet (antall +
+Figur 4: Antall juvenile og voksne i september per lokalitet (antall +
 1, logaritmisk skala).
 
 </div>
@@ -262,8 +328,8 @@ Figure 4: Antall juvenile og voksne i september per lokalitet (antall +
 
 <div id="tbl-effekt-n">
 
-Table 3: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes; Nei
-/ Delvis / Ja = lukestatus året før på effektlokalitetene.
+Tabell 3: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes;
+Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.
 
 <div class="cell-output-display">
 
@@ -280,7 +346,7 @@ Table 3: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes; Nei
 
 <div id="tbl-effekt-koeff">
 
-Table 4: NB GLMM for juvenile og voksne per undersøkelsespolygon på
+Tabell 4: NB GLMM for juvenile og voksne per undersøkelsespolygon på
 effektlokalitetene. RR = rateratio (multiplikativ effekt på antallet).
 Referansenivåer: ikke luket året før, første år, sand, Gravråk.
 
@@ -302,7 +368,7 @@ Referansenivåer: ikke luket året før, første år, sand, Gravråk.
 
 <div id="tbl-effekt-lrt">
 
-Table 5: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
+Tabell 5: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
 er testet på polygonene der det er registrert.
 
 <div class="cell-output-display">
@@ -324,7 +390,7 @@ er testet på polygonene der det er registrert.
 
 ![](img/fig-effekt-1.png)
 
-Figure 5: Predikert antall juvenile og voksne i et undersøkelsespolygon
+Figur 5: Predikert antall juvenile og voksne i et undersøkelsespolygon
 på 50 m² etter lupinluking året før (NB GLMM, gjennomsnitt ± 95 % KI,
 midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 år (modell med samspill).
@@ -335,7 +401,7 @@ midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 
 ![](img/fig-kontroll-1.png)
 
-Figure 6: Kontrollen på Fornes (uten lupinluking) sammenlignet med
+Figur 6: Kontrollen på Fornes (uten lupinluking) sammenlignet med
 gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m²,
 gjennomsnitt ± 95 % KI).
 
@@ -351,8 +417,8 @@ for å være fast.
 
 <div id="tbl-veg-storrelse">
 
-Table 6: Vegetasjonsdekke og tetthet av juvenile per størrelsesklasse og
-år (polygoner med registrert vegetasjon).
+Tabell 6: Vegetasjonsdekke og tetthet av juvenile per størrelsesklasse
+og år (polygoner med registrert vegetasjon).
 
 <div class="cell-output-display">
 
@@ -375,7 +441,7 @@ Table 6: Vegetasjonsdekke og tetthet av juvenile per størrelsesklasse og
 
 <div id="tbl-veg-modeller">
 
-Table 7: Effekt av vegetasjonsdekke (0 → 100 %, log-skala) på antall
+Tabell 7: Effekt av vegetasjonsdekke (0 → 100 %, log-skala) på antall
 juvenile og voksne med tre spesifikasjoner: areal som offset
 (tetthetsmodell), areal som kovariat, og innen hvert år med areal som
 kovariat.
@@ -401,7 +467,7 @@ kovariat.
 
 <div id="tbl-klima">
 
-Table 8: Septemberbesøket per år: antall og eksponering. Høyeste
+Tabell 8: Septemberbesøket per år: antall og eksponering. Høyeste
 vannføring og dager \> 300 m³/s i sommersesongen (1. mai – besøket),
 høyeste vannføring de 30 dagene før besøket, nedbør i sesongen og
 snødager vinteren før.
@@ -426,14 +492,14 @@ snødager vinteren før.
 
 ![](img/fig-klima-1.png)
 
-Figure 7: Antall i september mot høyeste vannføring i sommersesongen
+Figur 7: Antall i september mot høyeste vannføring i sommersesongen
 (venstre) og nedbør i sommersesongen (høyre). Tallene = år.
 
 </div>
 
 <div id="tbl-klima-modeller">
 
-Table 9: Utforskende NB GLMM for antall i september per lokalitet og år
+Tabell 9: Utforskende NB GLMM for antall i september per lokalitet og år
 (lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om
 gangen, og effekten av høyeste vannføring når det er tatt hensyn til en
 lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
@@ -522,9 +588,37 @@ log-skala; p fra likelihood-ratio-test.
 
 <!-- Hva er kunnskapsbehovet, om tiltaket (hvordan gjennomføres) og om effekten (variasjon mellom år, mellom lokaliteter). Anbefalinger for videreføring av delprosjektet – endringer i metodikk? Utvidelse? Endret frekvens for datainnsamling? Avslutning? -->
 
-## 8. References
+## 8. Referanser
 
-<div id="refs">
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-hanssen_2023" class="csl-entry">
+
+Hanssen, Oddvar. 2023. *Oppfølging av handlingsplan for elvesandjeger
+*Cicindela maritima*, og registreringer av stor elvebreddedderkopp
+*Arctosa cinerea*. Rapportering for perioden 2015–2020*. NINA Rapport
+No. 1815. Norsk institutt for naturforskning.
+<https://hdl.handle.net/11250/3049395>.
+
+</div>
+
+<div id="ref-roos_2025" class="csl-entry">
+
+Roos, Ruben E., Mathias Andreasen, Fia Bengtsson, mfl. 2025. *Overvåking
+av effekter av tiltak trua natur i 2025. Resultater for ti arter og én
+naturtype*. NINA Rapport No. 2695. Norsk institutt for naturforskning.
+<https://nva.sikt.no/registration/019ad9d2e908-b8b219d4-fb21-40f8-a34a-e1c577293c9a>.
+
+</div>
+
+<div id="ref-roos_2024" class="csl-entry">
+
+Roos, Ruben E., Marianne Evju, Anders Endrestøl, mfl. 2024. *Overvåking
+av effekter av tiltak for åtte trua arter og en naturtype i 2024*. NINA
+Rapport No. 2538. Norsk institutt for naturforskning.
+<https://hdl.handle.net/11250/3169493>.
+
+</div>
 
 </div>
 

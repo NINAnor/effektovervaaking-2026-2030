@@ -23,6 +23,7 @@ VersionComment: Første versjon, med data 2020–2026, effekt av lupinluking og 
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision:
 writtenLanguage: Norwegian
+lang: nb
 format:
   gfm:
     output-file: README.md
@@ -302,6 +303,52 @@ theme_set(theme_minimal(base_size = 12, base_family = fig_font) +
 ### 3.1 Beskrivelse av lokalitetene
 
 <!-- Hvor, kart, plassering av lokalitetene i Norge. Status og utfordringer/påvirkninger. -->
+
+```{r intro-klima}
+#| include: false
+# Flom og vær i rapporteringsåret, sammenlignet med de andre årene i den daglige klimatabellen
+daily_intro <- read_one("^daily_climate_hydrology_.*\\.csv$") |>
+  mutate(date = as.Date(date), mon = as.integer(format(date, "%m")))
+klima_aar <- daily_intro |>
+  group_by(year) |>
+  summarise(
+    spring_peak = max(q[mon %in% 4:6], na.rm = TRUE),
+    spring_date = date[mon %in% 4:6][which.max(q[mon %in% 4:6])],
+    summer_peak = max(q[mon %in% 7:9], na.rm = TRUE),
+    d300 = sum(q[mon %in% 5:8] > 300, na.rm = TRUE),
+    snow_max = max(snow_depth[mon %in% 1:5], na.rm = TRUE),
+    precip = sum(precip[mon %in% 5:8], na.rm = TRUE),
+    .groups = "drop"
+  )
+k <- filter(klima_aar, year == aar)
+k_andre <- filter(klima_aar, year != aar)
+kl_years <- range(klima_aar$year)
+# "den minste"/"den største" osv. regnes ut fra dataene
+rang <- function(x, alle, liten, stor) {
+  if (x <= min(alle)) paste("den", liten) else if (x >= max(alle)) paste("den", stor) else NA_character_
+}
+vaarflom_rang <- rang(k$spring_peak, klima_aar$spring_peak, "minste", "største")
+nedbor_rang <- rang(k$precip, klima_aar$precip, "laveste", "høyeste")
+dato_nb <- function(d) paste0(as.integer(format(d, "%d")), ". ",
+                              c("januar", "februar", "mars", "april", "mai", "juni", "juli", "august",
+                                "september", "oktober", "november", "desember")[as.integer(format(d, "%m"))])
+```
+
+Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og Fornes (@fig-kart). Lokalitetene er de samme som for elvesandjeger, og består av sand- og grusflater (elveører) langs elva. Stor elvebreddedderkopp forekommer til sammen på om lag 15 lokaliteter langs Gaula [@hanssen_2023; @roos_2024].
+
+Elveørene ligger stort sett på samme sted fra år til år, men systemet er likevel svært dynamisk. De årlige flommene endrer den finskala topografien, ved at sand avsettes og eroderes lokalt, og de påvirker vegetasjonsdekket på sandflatene. Stedegne arter, som gråor og klåved, vokser inn på elvebreddene. De større plantene tåler de årlige flommene, men de fanger opp sediment og endrer den lokale topografien ved å bygge opp forhøyede banker, og de endrer kornstørrelsesfordelingen i substratet. Både topografien og substratet er viktige for stor elvebreddedderkopp, som graver røret sitt i løs sand. Langs Gaula gror elvebreddene i tillegg generelt igjen fordi elva er senket av omfattende masseuttak fra elvebunnen [@roos_2024]. Tråkk fra mennesker og hunder er registrert på flere av lokalitetene [@roos_2025].
+
+Hagelupin er en svært invasiv fremmedart. Frø føres med elva fra forekomster lenger opp i vassdraget, og frø fra lupinene på selve lokalitetene spirer, slik at lupinen raskt etablerer seg på nytt. Tette lupinbestander gror igjen de åpne sandflatene som stor elvebreddedderkopp og andre arter knyttet til åpne elveører er avhengige av.
+
+Flom og vær varierer mye fra år til år (avsnitt 6.3). I `r aar` toppet vårflommen ved Gaulfoss seg på `r num(k$spring_peak, 0)` m³/s `r dato_nb(k$spring_date)``r if (!is.na(vaarflom_rang)) paste0(", ", vaarflom_rang, " vårflommen i perioden ", kl_years[1], "–", kl_years[2])`, og vannføringen var over 300 m³/s i `r k$d300` `r ifelse(k$d300 == 1, "dag", "dager")` i mai–august, mot `r min(k_andre$d300)`–`r max(k_andre$d300)` dager i de andre årene. `r if (k$summer_peak < 300) paste0("Det kom ingen sommerflom; høyeste vannføring i juli–september var ", num(k$summer_peak, 0), " m³/s.") else paste0("Høyeste vannføring i juli–september var ", num(k$summer_peak, 0), " m³/s.")` Snødybden ved Leinstrand var høyst `r num(k$snow_max, 0)` cm i januar–mai (`r num(min(k_andre$snow_max), 0)`–`r num(max(k_andre$snow_max), 0)` cm i de andre årene), og nedbøren i mai–august var `r num(k$precip, 0)` mm`r if (!is.na(nedbor_rang)) paste0(", ", nedbor_rang, " i perioden")`.
+
+**Gravråk** ligger på østsiden av Gaula, vest for Gravråk-gårdene. Lokaliteten er en 600 m lang grusør med litt sand og silt inn mot vegetasjonen [@hanssen_2023; @roos_2024].
+
+**Kregnesteigen** ligger på vestsiden av Gaula, sør for Gravråk og vest for Skjerdingstad. Lokaliteten er en langsmal elveør i en innersving, om lag 1 km lang og 20–50 m bred ved normal vannstand. Gjengroing med gråor og flommene i august 2023 har endret lokaliteten, og flommene la samtidig igjen mye ny sand på store deler av elveøra [@hanssen_2023; @roos_2024]. Området er mye brukt til laksefiske, og nær elvekanten og en gapahuk er det svært stor slitasje fra ferdsel [@roos_2025].
+
+**Storrønningen** ligger på vestsiden av Gaula ved Kvål. Elveøra er 1,3 km lang, og de nederste 500 m er et om lag 50 m bredt overløp der det jevnlig avsettes sand og silt. Gjengroing og styrtregnflommer har forringet leveområdene de senere årene [@hanssen_2023; @roos_2024]. Det ligger en hundeskole like ved lokaliteten, og dronebilder viser tydelige spor etter hunder i sandområdene der det er registrert flest voksne edderkopper [@roos_2025].
+
+**Fornes** ligger én kilometer oppstrøms Kvålsbrua, ved utløpet av Gammelelva naturreservat på østsiden av Gaula. Lokaliteten er en elveør på 28 daa som i hovedsak ble dannet mellom 2005 og 2009. Den har store sandflater med silt i og rundt et frodig klåvedkratt på østsiden mot Gammelelva, og store flater med grus og stein og lite vegetasjon på vestsiden [@hanssen_2023; @roos_2024]. Edderkoppene på Fornes holder i hovedsak til på sandflatene utenfor lukeområdet (@fig-kart), og Fornes brukes derfor som kontroll i effektanalysen.
 
 ```{r fig-kart}
 #| fig-cap: 'Lokalitetene for overvåking av stor elvebreddedderkopp langs nedre Gaula i Trøndelag. Til venstre: oversikt over lukeområdene (grå) og utsnittene for hver lokalitet (rød stiplet ramme); det innfelte kartet viser plasseringen i Norge (Trøndelag i mørk grå). Til høyre, fra nord til sør: lukeområdet (hvitt) og edderkoppområdet (oransje) på hver lokalitet, og et bilde fra lokaliteten. Lukeområdet er minste konvekse polygon rundt lukepolygonene 2025–2026, og edderkoppområdet minste konvekse polygon rundt undersøkelsespolygonene for edderkopp 2025–2026. Ortofoto: © Norge i bilder (Kartverket, Geovekst). Elvelinje: NVE. Foto: Arne Endre Laugsand (Gravråk september 2024, øvrige september 2025).'
@@ -790,7 +837,7 @@ ci_txt <- function(ss, term) paste0(num(exp(ss[term, 1] - 1.96 * ss[term, 2])), 
 
 <!-- Hva er kunnskapsbehovet, om tiltaket (hvordan gjennomføres) og om effekten (variasjon mellom år, mellom lokaliteter). Anbefalinger for videreføring av delprosjektet – endringer i metodikk? Utvidelse? Endret frekvens for datainnsamling? Avslutning? -->
 
-## 8. References
+## 8. Referanser
 
 ::: {#refs}
 :::
