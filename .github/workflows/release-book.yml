@@ -49,6 +49,11 @@ jobs:
         with:
           tinytex: true
 
+      - name: Install SVG conversion tool
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes librsvg2-bin
+
       - name: Render HTML book
         run: quarto render --to html
 
