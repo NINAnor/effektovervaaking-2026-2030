@@ -138,12 +138,14 @@ elvebreddedderkopp og andre arter knyttet til åpne elveører er avhengige
 av.
 
 Flom og vær varierer mye fra år til år (avsnitt 6.3). I 2026 toppet
-vårflommen ved Gaulfoss seg på 388 m³/s 24. mai, den minste vårflommen i
-perioden 2020–2026, og vannføringen var over 300 m³/s i 1 dag i
-mai–august, mot 6–28 dager i de andre årene. Det kom ingen sommerflom;
-høyeste vannføring i juli–september var 233 m³/s. Snødybden ved
-Leinstrand var høyst 18 cm i januar–mai (18–42 cm i de andre årene), og
-nedbøren i mai–august var 387 mm, den høyeste i perioden.
+vårflommen ved Gaulfoss, den nærmeste vannføringsstasjonen (NVE), seg på
+388 m³/s 24. mai, den minste vårflommen i perioden 2020–2026, og
+vannføringen var over 300 m³/s i 1 dag i mai–august, mot 6–28 dager i de
+andre årene. Det kom ingen sommerflom; høyeste vannføring i
+juli–september var 233 m³/s. Snødybden ved Leinstrand, den nærmeste
+værstasjonen med målinger av nedbør og snø (Meteorologisk institutt),
+var høyst 18 cm i januar–mai (18–42 cm i de andre årene), og nedbøren i
+mai–august var 387 mm, den høyeste i perioden.
 
 **Gravråk** ligger på østsiden av Gaula, vest for Gravråk-gårdene.
 Lokaliteten er en 600 m lang grusør med litt sand og silt inn mot
