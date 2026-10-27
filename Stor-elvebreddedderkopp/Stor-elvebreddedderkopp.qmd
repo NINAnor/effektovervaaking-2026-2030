@@ -517,9 +517,76 @@ ind_mnd <- master |>
   summarise(n = sum(obs, na.rm = TRUE), .groups = "drop")
 ```
 
-Stor elvebreddedderkopp telles hvert år av Arne Endre Laugsand (NINA). Hovedtellingen gjøres i september, når edderkoppene samler seg på sandflatene for å grave overvintringshull. Da telles hull med juvenile og voksne individer. Hull som er dekket av en liten haug med sand eller småstein regnes som bebodd, mens hull som ikke er vedlikeholdt eller har falt sammen, ikke telles [@roos_2024]. Fram til 2024 ble det også registrert edderkopper ved tellingene av elvesandjeger i juni–august. Disse vises i @tbl-datainnsamling, men bare septembertellingene brukes i analysene, for å unngå dobbelttelling. I `r aar` ble tellingen gjort `r dato_txt`.
+```{r obs-polygoner}
+#| include: false
+# Registreringspolygoner (fra 2025) og besøksdatoene i rapporteringsåret
+obs_poly <- st_read(list.files(here("data"), pattern = "_polygoner_.*\\.gpkg$", full.names = TRUE), quiet = TRUE) |>
+  filter(site %in% names(site_cols)) |>
+  mutate(date = as.Date(substr(as.character(date), 1, 10)))
+besok <- obs_poly |>
+  st_drop_geometry() |>
+  filter(year == aar) |>
+  group_by(site) |>
+  summarise(datoer = paste(sapply(sort(unique(date)), dato_nb), collapse = ", "), first = min(date), .groups = "drop") |>
+  arrange(first)
+besok_txt <- eng_liste(paste0("på ", besok$site, " ", besok$datoer))
+```
 
-Fra 2020 til 2024 ble hvert funn registrert som et GPS-punkt med antall per stadium. Fra 2025 registreres dataene digitalt i ArcGIS Field Maps: observatøren tegner et polygon rundt hver flekk med edderkopper på et ortofoto fra drone, og registrerer antall juvenile og voksne, vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5) for hvert polygon. Dronebildene tas i juni med en DJI Mini i 20 m høyde, med en pikselstørrelse på ca. 0,7 cm [@roos_2025]. Pilotpolygonene fra Gravråk i september 2024 dupliserer punktregistreringene samme dag og er ikke brukt. Indikatorene er beskrevet i @tbl-indikatorer.
+Stor elvebreddedderkopp registreres ved å telle hull med juvenile og voksne individer. Edderkoppen graver et silkeforet rør ned i løs sand og er godt kamuflert, så hullene er lettere å oppdage enn selve dyret [@roos_2024]. Antallet edderkopper på sandflatene øker kraftig i løpet av september, når de graver dype overvintringshull som de til slutt tetter med en liten haug av sand eller småstein. Hull som er dekket på denne måten regnes som bebodd, mens hull som ikke er vedlikeholdt eller har falt sammen, ikke telles [@roos_2024]. Hver lokalitet undersøkes én gang i året, i september. Fram til og med 2024 ble edderkopper også registrert under tellingene av elvesandjeger i juni–august (@tbl-datainnsamling), men for å unngå dobbelttelling av individer brukes bare registreringene fra september i analysene. I `r aar` ble lokalitetene undersøkt `r besok_txt`.
+
+Registreringene gjøres i felt i ArcGIS Field Maps. Feltteknikeren digitaliserer et polygon rundt hver flekk med hull, med et høyoppløselig dronebilde tatt i juni `r aar` som bakgrunnskart, slik at avgrensningen blir presis (@fig-obskart). Innenfor polygonet telles juvenile og voksne individer, og det registreres vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5). Disse variablene gjør det mulig å skille effekten av lupinlukingen fra andre faktorer som påvirker forekomsten av edderkopper. Fram til og med 2024 ble hvert funn i stedet registrert som et GPS-punkt med antall per stadium. Indikatorene er beskrevet i @tbl-indikatorer.
+
+```{r fig-obskart}
+#| fig-cap: !expr 'paste0("Registreringspolygoner for stor elvebreddedderkopp i ", aar, " per lokalitet, farget etter antall juvenile (øverst) og voksne (nederst) individer registrert i polygonet (logaritmisk fargeskala). Polygoner uten individer av stadiet er vist med hvit omriss. Polygonene er gjennomsiktige fordi de kan overlappe. Ortofoto: © Norge i bilder (Kartverket, Geovekst).")'
+#| fig-height: 6.8
+#| fig-width: 12
+#| dev: 'ragg_jpeg'
+#| fig-ext: 'jpeg'
+#| dpi: 130
+#| dev.args: !expr list(quality = 88, units = 'in', res = 130)
+#| code-summary: 'Kode for kart.'
+utsnitt_obs <- st_read(here("data", "kart_elvedyr.gpkg"), "utsnitt", quiet = TRUE)
+site_file_obs <- c("Storrønningen" = "Storronningen", "Kregnesteigen" = "Kregnesteigen", "Fornes" = "Fornes", "Gravråk" = "Gravrak")
+# Ett polygon per rad og stadium (juvenile, voksne), bare rapporteringsåret
+obs_aar <- obs_poly |>
+  filter(year == aar) |>
+  select(site, juvenile, voksne) |>
+  tidyr::pivot_longer(c(juvenile, voksne), names_to = "stadium", values_to = "n") |>
+  mutate(stadium = factor(stadium, levels = c("juvenile", "voksne"), labels = c("Juvenile", "Voksne")),
+         n = ifelse(is.na(n) | n == 0, NA_real_, n))
+n_max <- max(obs_aar$n, na.rm = TRUE)
+# Kvadratisk utsnitt rundt årets polygoner på hver lokalitet (innenfor ortofotoets utsnitt)
+zoom_bb <- function(s) {
+  ob <- st_bbox(filter(obs_aar, site == s))
+  fb <- st_bbox(filter(utsnitt_obs, site == s))
+  half <- max(diff(ob[c("xmin", "xmax")]), diff(ob[c("ymin", "ymax")])) / 2 * 1.15 + 15
+  cx <- min(max(mean(ob[c("xmin", "xmax")]), fb["xmin"] + half), fb["xmax"] - half)
+  cy <- min(max(mean(ob[c("ymin", "ymax")]), fb["ymin"] + half), fb["ymax"] - half)
+  c(xmin = cx - half, xmax = cx + half, ymin = cy - half, ymax = cy + half)
+}
+obs_panel <- function(s, st) {
+  fb <- st_bbox(filter(utsnitt_obs, site == s))
+  bb <- zoom_bb(s)
+  foto <- as.raster(magick::image_read(here("data", paste0("ortofoto_", site_file_obs[s], ".jpg"))))
+  ggplot() +
+    annotation_raster(foto, xmin = fb["xmin"], xmax = fb["xmax"], ymin = fb["ymin"], ymax = fb["ymax"], interpolate = TRUE) +
+    geom_sf(data = filter(obs_aar, site == s, stadium == st), aes(fill = n), colour = "white", linewidth = 0.3, alpha = 0.75) +
+    scale_fill_gradientn(colours = c("#fde725", "#f89540", "#cc4778", "#7e03a8"), trans = "log10", limits = c(1, n_max),
+                         na.value = NA, name = "Antall individer", breaks = c(1, 10, 100, 1000)[c(1, 10, 100, 1000) <= n_max]) +
+    annotation_scale(location = "bl", width_hint = 0.3, height = unit(0.1, "cm"), text_cex = 0.55, text_family = fig_font,
+                     text_col = "white", line_col = "white", bar_cols = c("black", "white")) +
+    coord_sf(xlim = bb[c("xmin", "xmax")], ylim = bb[c("ymin", "ymax")], datum = NA, expand = FALSE) +
+    labs(title = if (st == "Juvenile") s else NULL) +
+    theme_void(base_size = 11, base_family = fig_font) +
+    theme(plot.title = element_text(face = "bold", size = 11, hjust = 0.5))
+}
+rad_tekst <- function(t) wrap_elements(full = grid::textGrob(t, rot = 90, gp = grid::gpar(fontfamily = fig_font, fontface = "bold", fontsize = 11)))
+paneler <- list(rad_tekst("Juvenile"))
+paneler <- c(paneler, lapply(names(site_cols), obs_panel, st = "Juvenile"), list(rad_tekst("Voksne")), lapply(names(site_cols), obs_panel, st = "Voksne"))
+wrap_plots(paneler, ncol = 5, widths = c(0.12, 1, 1, 1, 1)) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom", legend.key.width = unit(1.6, "cm"), legend.title = element_text(vjust = 0.8))
+```
 
 ```{r tbl-indikatorer}
 #| tbl-cap: 'Indikatorer for overvåking av stor elvebreddedderkopp.'
@@ -534,7 +601,7 @@ tibble::tribble(
 ```
 
 ```{r tbl-datainnsamling}
-#| tbl-cap: 'Antall individer av stor elvebreddedderkopp registrert per år og måned, fordelt på juvenile og voksne (alle fire lokaliteter). – = ingen registreringer. Hovedtellingen er i september; registreringene i juni–august ble gjort under tellingene av elvesandjeger.'
+#| tbl-cap: 'Antall individer av stor elvebreddedderkopp registrert per år og måned, fordelt på juvenile og voksne (alle fire lokaliteter). – = ingen registreringer. Registreringene i juni–august ble gjort under tellingene av elvesandjeger; bare septemberregistreringene brukes i analysene.'
 #| code-summary: 'Kode for tabell.'
 ind_mnd |>
   pivot_wider(names_from = month, values_from = n) |>

@@ -254,28 +254,46 @@ på Gravråk i oktober 2025 er ikke med i lukedataene.
 
 ## 4. Datainnsamling
 
-Stor elvebreddedderkopp telles hvert år av Arne Endre Laugsand (NINA).
-Hovedtellingen gjøres i september, når edderkoppene samler seg på
-sandflatene for å grave overvintringshull. Da telles hull med juvenile
-og voksne individer. Hull som er dekket av en liten haug med sand eller
-småstein regnes som bebodd, mens hull som ikke er vedlikeholdt eller har
-falt sammen, ikke telles (Roos mfl. 2024). Fram til 2024 ble det også
-registrert edderkopper ved tellingene av elvesandjeger i juni–august.
-Disse vises i
-<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 3</a>, men bare
-septembertellingene brukes i analysene, for å unngå dobbelttelling. I
-2026 ble tellingen gjort 11.–14. september.
+Stor elvebreddedderkopp registreres ved å telle hull med juvenile og
+voksne individer. Edderkoppen graver et silkeforet rør ned i løs sand og
+er godt kamuflert, så hullene er lettere å oppdage enn selve dyret (Roos
+mfl. 2024). Antallet edderkopper på sandflatene øker kraftig i løpet av
+september, når de graver dype overvintringshull som de til slutt tetter
+med en liten haug av sand eller småstein. Hull som er dekket på denne
+måten regnes som bebodd, mens hull som ikke er vedlikeholdt eller har
+falt sammen, ikke telles (Roos mfl. 2024). Hver lokalitet undersøkes én
+gang i året, i september. Fram til og med 2024 ble edderkopper også
+registrert under tellingene av elvesandjeger i juni–august
+(<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 3</a>), men
+for å unngå dobbelttelling av individer brukes bare registreringene fra
+september i analysene. I 2026 ble lokalitetene undersøkt på
+Storrønningen 11. september, på Fornes 12. september, på Kregnesteigen
+13. september og på Gravråk 14. september.
 
-Fra 2020 til 2024 ble hvert funn registrert som et GPS-punkt med antall
-per stadium. Fra 2025 registreres dataene digitalt i ArcGIS Field Maps:
-observatøren tegner et polygon rundt hver flekk med edderkopper på et
-ortofoto fra drone, og registrerer antall juvenile og voksne,
-vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5) for hvert
-polygon. Dronebildene tas i juni med en DJI Mini i 20 m høyde, med en
-pikselstørrelse på ca. 0,7 cm (Roos mfl. 2025). Pilotpolygonene fra
-Gravråk i september 2024 dupliserer punktregistreringene samme dag og er
-ikke brukt. Indikatorene er beskrevet i
+Registreringene gjøres i felt i ArcGIS Field Maps. Feltteknikeren
+digitaliserer et polygon rundt hver flekk med hull, med et høyoppløselig
+dronebilde tatt i juni 2026 som bakgrunnskart, slik at avgrensningen
+blir presis (<a href="#fig-obskart" class="quarto-xref">Figur 3</a>).
+Innenfor polygonet telles juvenile og voksne individer, og det
+registreres vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5).
+Disse variablene gjør det mulig å skille effekten av lupinlukingen fra
+andre faktorer som påvirker forekomsten av edderkopper. Fram til og med
+2024 ble hvert funn i stedet registrert som et GPS-punkt med antall per
+stadium. Indikatorene er beskrevet i
 <a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+
+<div id="fig-obskart">
+
+![](img/fig-obskart-1.jpeg)
+
+Figur 3: Registreringspolygoner for stor elvebreddedderkopp i 2026 per
+lokalitet, farget etter antall juvenile (øverst) og voksne (nederst)
+individer registrert i polygonet (logaritmisk fargeskala). Polygoner
+uten individer av stadiet er vist med hvit omriss. Polygonene er
+gjennomsiktige fordi de kan overlappe. Ortofoto: © Norge i bilder
+(Kartverket, Geovekst).
+
+</div>
 
 <div id="tbl-indikatorer">
 
@@ -297,8 +315,9 @@ Tabell 2: Indikatorer for overvåking av stor elvebreddedderkopp.
 
 Tabell 3: Antall individer av stor elvebreddedderkopp registrert per år
 og måned, fordelt på juvenile og voksne (alle fire lokaliteter). – =
-ingen registreringer. Hovedtellingen er i september; registreringene i
-juni–august ble gjort under tellingene av elvesandjeger.
+ingen registreringer. Registreringene i juni–august ble gjort under
+tellingene av elvesandjeger; bare septemberregistreringene brukes i
+analysene.
 
 <div class="cell-output-display">
 
@@ -384,7 +403,7 @@ for alle lokaliteter.
 
 ![](img/fig-sesong-1.png)
 
-Figur 3: Antall juvenile og voksne stor elvebreddedderkopp registrert
+Figur 4: Antall juvenile og voksne stor elvebreddedderkopp registrert
 per måned og år (alle fire lokaliteter, logaritmisk skala).
 Hovedtellingen er i september; fra 2025 telles det bare i september.
 
@@ -394,7 +413,7 @@ Hovedtellingen er i september; fra 2025 telles det bare i september.
 
 ![](img/fig-trend-total-1.png)
 
-Figur 4: Antall juvenile og voksne registrert i september per år, alle
+Figur 5: Antall juvenile og voksne registrert i september per år, alle
 lokaliteter. Innsats og metode varierer mellom år.
 
 </div>
@@ -403,7 +422,7 @@ lokaliteter. Innsats og metode varierer mellom år.
 
 ![](img/fig-trend-lokalitet-1.png)
 
-Figur 5: Antall juvenile og voksne i september per lokalitet (antall +
+Figur 6: Antall juvenile og voksne i september per lokalitet (antall +
 1, logaritmisk skala).
 
 </div>
@@ -476,7 +495,7 @@ er testet på polygonene der det er registrert. Signifikansnivå: \* p \<
 
 ![](img/fig-effekt-1.png)
 
-Figur 6: Predikert antall juvenile og voksne i et undersøkelsespolygon
+Figur 7: Predikert antall juvenile og voksne i et undersøkelsespolygon
 på 50 m² etter lupinluking året før (NB GLMM, gjennomsnitt ± 95 % KI,
 midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 år (modell med samspill).
@@ -487,7 +506,7 @@ midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 
 ![](img/fig-kontroll-1.png)
 
-Figur 7: Kontrollen på Fornes (uten lupinluking) sammenlignet med
+Figur 8: Kontrollen på Fornes (uten lupinluking) sammenlignet med
 gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m²,
 gjennomsnitt ± 95 % KI).
 
@@ -579,7 +598,7 @@ snødager vinteren før.
 
 ![](img/fig-klima-1.png)
 
-Figur 8: Antall i september mot høyeste vannføring i sommersesongen
+Figur 9: Antall i september mot høyeste vannføring i sommersesongen
 (venstre) og nedbør i sommersesongen (høyre). Tallene = år.
 
 </div>
