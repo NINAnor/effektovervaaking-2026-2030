@@ -109,6 +109,23 @@ Megan Nowell
 
 <!-- Hvor, kart, plassering av lokalitetene i Norge. Status og utfordringer/påvirkninger. -->
 
+<div id="fig-kart">
+
+![](img/fig-kart-1.jpeg)
+
+Figure 1: Lokalitetene for overvåking av stor elvebreddedderkopp langs
+nedre Gaula i Trøndelag. Til venstre: oversikt over lukeområdene (grå)
+og utsnittene for hver lokalitet (rød stiplet ramme); det innfelte
+kartet viser plasseringen i Norge (Trøndelag i mørk grå). Til høyre, fra
+nord til sør: lukeområdet (hvitt) og edderkoppområdet (oransje) på hver
+lokalitet, og et bilde fra lokaliteten. Lukeområdet er minste konvekse
+polygon rundt lukepolygonene 2025–2026, og edderkoppområdet minste
+konvekse polygon rundt undersøkelsespolygonene for edderkopp 2025–2026.
+Ortofoto: © Norge i bilder (Kartverket, Geovekst). Elvelinje: NVE. Foto:
+Arne Endre Laugsand (Gravråk september 2024, øvrige september 2025).
+
+</div>
+
 ### 3.2 Tiltak
 
 <!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
@@ -125,7 +142,7 @@ elvesandjeger](../Elvesandjeger/).
 
 ![](img/fig-luking-1.png)
 
-Figure 1: Areal luket (Ja = luket, Delvis = delvis luket) per lokalitet
+Figure 2: Areal luket (Ja = luket, Delvis = delvis luket) per lokalitet
 og år (venstre), og lupiner fjernet per m² luket (høyre).
 
 </div>
@@ -227,7 +244,7 @@ for alle lokaliteter.
 
 ![](img/fig-trend-total-1.png)
 
-Figure 2: Antall juvenile og voksne registrert i september per år, alle
+Figure 3: Antall juvenile og voksne registrert i september per år, alle
 lokaliteter. Innsats og metode varierer mellom år.
 
 </div>
@@ -236,7 +253,7 @@ lokaliteter. Innsats og metode varierer mellom år.
 
 ![](img/fig-trend-lokalitet-1.png)
 
-Figure 3: Antall juvenile og voksne i september per lokalitet (antall +
+Figure 4: Antall juvenile og voksne i september per lokalitet (antall +
 1, logaritmisk skala).
 
 </div>
@@ -307,7 +324,7 @@ er testet på polygonene der det er registrert.
 
 ![](img/fig-effekt-1.png)
 
-Figure 4: Predikert antall juvenile og voksne i et undersøkelsespolygon
+Figure 5: Predikert antall juvenile og voksne i et undersøkelsespolygon
 på 50 m² etter lupinluking året før (NB GLMM, gjennomsnitt ± 95 % KI,
 midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 år (modell med samspill).
@@ -318,7 +335,7 @@ midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 
 ![](img/fig-kontroll-1.png)
 
-Figure 5: Kontrollen på Fornes (uten lupinluking) sammenlignet med
+Figure 6: Kontrollen på Fornes (uten lupinluking) sammenlignet med
 gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m²,
 gjennomsnitt ± 95 % KI).
 
@@ -409,7 +426,7 @@ snødager vinteren før.
 
 ![](img/fig-klima-1.png)
 
-Figure 6: Antall i september mot høyeste vannføring i sommersesongen
+Figure 7: Antall i september mot høyeste vannføring i sommersesongen
 (venstre) og nedbør i sommersesongen (høyre). Tallene = år.
 
 </div>

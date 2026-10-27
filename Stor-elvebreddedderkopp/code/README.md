@@ -19,3 +19,11 @@ The lupin clearing data (`Lupinluking_2025_2026_clean.shp` and `lupin_clearing_b
 ## Climate and hydrology
 
 `daily_climate_hydrology_*.csv` in [`../data/`](../data/) is made by script 8 in [`Elvesandjeger/code/`](../../Elvesandjeger/code/) – replace it each year together with the Elvesandjeger copy. The report computes the exposure before each September visit and the exploratory models itself (as script 11 on P: did), so no other climate files are needed.
+
+## Site map (section 3.1)
+
+`make_map_data.R` builds everything the site map needs: `data/kart_elvedyr.gpkg` (Norway outline, Gaula from NVE Elvenett, a convex hull per site around the lupin clearing polygons and around the spider survey polygons, and the square frame per site), `data/ortofoto_<site>.jpg` (Norge i bilder orthophoto for each frame, from the open Geonorge WMS) and `img/foto_<site>.jpg` (the site photos by Arne Endre Laugsand, turned upright). It reads from P: and the R: drive (`/data/R/GeoSpatialData`), and downloads the orthophotos from the internet. Rerun it when the clearing polygons, the spider polygons or the photos change: `pixi run Rscript code/make_map_data.R`.
+
+## Font
+
+The figures use Aptos when it is installed, and otherwise fall back to the default sans-serif font. Aptos comes with Microsoft 365. On the NINA RStudio server it is installed per user in `~/.local/share/fonts/Aptos` (download: Microsoft Aptos Fonts from download.microsoft.com). The font files are not part of the repo because their licence does not allow redistribution.
