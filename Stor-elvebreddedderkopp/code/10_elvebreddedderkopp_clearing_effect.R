@@ -4,8 +4,9 @@
 #Design: survey polygons from September 2025 and 2026 are linked to the clearing
 #polygon they overlap most. Effect sites = Kregnesteigen, Storrønningen and
 #Gravråk (clearing polygons with both cleared and uncleared patches, and spider
-#observations). Fornes = control: the spiders there live outside all clearing
-#polygons. Predictor of interest: clearing in the year before the survey
+#observations). Fornes = control: the spider polygons there that lie outside the
+#clearing polygons (most of them); Fornes polygons overlapping a clearing polygon
+#are left out of the control. Predictor of interest: clearing in the year before the survey
 #(Luket_24 for the 2025 polygons, Luket_25 for the 2026 polygons). Slitasje is
 #not used (to be re-digitised). Substrate collapsed to sand / finsand_silt /
 #blanding; vegetation cover in % (missing for 61 polygons in 2025).

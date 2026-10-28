@@ -12,8 +12,9 @@
 #        lupin polygon (the same patches are visited in June, July and August).
 #        Design: the effect analysis uses Kregnesteigen and Storrønningen, the two
 #        sites with both clearing polygons and beetle observations. The Fornes
-#        observations lie outside every clearing polygon and are used as a
-#        control group (no lupin clearing). Gravråk has only 2 observations and is
+#        survey polygons outside the clearing polygons are used as a control
+#        group (no lupin clearing); Fornes polygons overlapping a clearing polygon
+#        are left out. Gravråk has only 2 observations and is
 #        left out. Clearing done in 2026 is not used.
 #Part 4: models at the lupin-polygon level (August, Kregnesteigen + Storrønningen):
 #        larvae summed per clearing polygon, zeros for polygons without

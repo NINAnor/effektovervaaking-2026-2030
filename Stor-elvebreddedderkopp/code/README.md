@@ -27,3 +27,7 @@ The lupin clearing data (`Lupinluking_2025_2026_clean.shp` and `lupin_clearing_b
 ## Font
 
 The figures use Aptos when it is installed, and otherwise fall back to the default sans-serif font. Aptos comes with Microsoft 365. On the NINA RStudio server it is installed per user in `~/.local/share/fonts/Aptos` (download: Microsoft Aptos Fonts from download.microsoft.com). The font files are not part of the repo because their licence does not allow redistribution.
+
+## Registration polygons (map in section 4)
+
+`data/elvebreddedderkopp_polygoner_<years>.gpkg` holds the spider registration polygons from ArcGIS Field Maps (from 2025), one row per polygon with counts of juveniles and adults. Each year, export the polygons for all years to this file (on P: they are in `05 Elvedyr/Data/Elevebreddedderkopp/<year>/elvebreddedderkopp_<year>.shp`) and delete the old file; the report finds it by the pattern `_polygoner_*.gpkg` and maps the reporting year's polygons.

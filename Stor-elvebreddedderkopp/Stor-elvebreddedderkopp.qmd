@@ -267,6 +267,8 @@ dat <- read_one("_analysis_data\\.csv$") |>
 eff_years <- sort(unique(dat$year))
 dm <- dat |> filter(site %in% c("Kregnesteigen", "Storrønningen", "Gravråk")) |> droplevels() # effektlokaliteter
 dc <- dat |> filter(!is.na(group)) |> droplevels() # med Fornes som kontroll
+# Fornes-polygoner som overlapper et lukepolygon er holdt utenfor kontrollen
+fornes_ov <- dat |> filter(site == "Fornes", is.na(group)) |> count(year)
 
 fp <- function(p) ifelse(p < 0.001, "< 0,001", paste("=", format(signif(p, ifelse(signif(p, 2) == 0.05, 3, 2)), decimal.mark = ",")))
 num <- function(x, d = 2) formatC(x, format = "f", digits = d, decimal.mark = ",", big.mark = " ")
@@ -615,17 +617,21 @@ ind_mnd |>
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
+Hovedmålet med analysene er å finne ut om lupinlukingen gir flere edderkopper. Antallet edderkopper påvirkes også av andre forhold: habitatet i hver flekk (substrattype, vegetasjonsdekke og slitasje) og klima, snø og vannføring, som varierer fra år til år. Disse variablene tas med i analysene for å skille effekten av lupinlukingen fra andre faktorer som påvirker bestanden.
+
 **Data og skript.** Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 9 i [`code/`](code/). Polygonene inngår der som sentroider med areal. For effektanalysen er hvert undersøkelsespolygon (`r paste(eff_years, collapse = " og ")`) koblet til lukepolygonet det overlapper mest (skript 10, `r attr(dat, "file")`). Klimatabellen lages av skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
 
-**Utvikling over tid.** Tidsseriene viser summen av registrerte individer i september per år og stadium. Søkeinnsatsen er ikke registrert, og registreringsmetoden er endret fra punkter til polygoner (avsnitt 4), så summene viser relativ forekomst og er ikke et bestandsestimat.
+**Utvikling over tid.** Tidsseriene viser summen av registrerte individer i september per år og stadium. Registreringene gjøres av en erfaren feltarbeider med god kjennskap til artene og lokalitetene, med samme innsats hvert år og på alle lokaliteter. Ikke alle individer blir nødvendigvis oppdaget. I 2024 ble registreringene gjort av den nye og den tidligere feltarbeideren sammen, og fra 2025 av den nye alene. Samme år ble registreringsmetoden endret fra punkter til polygoner (avsnitt 4). Nedgangen i antall juvenile fra 2024 til 2025 kan derfor delvis skyldes bytte av feltarbeider og metode. Summene er derfor en indeks for relativ forekomst som kan sammenlignes mellom år og lokaliteter, og ikke et bestandsestimat.
 
-**Effekt av luking.** Undersøkelsespolygonene fra september (`r paste(eff_years, collapse = " og ")`) er koblet til lukepolygonet de overlapper mest, og får lukestatusen til polygonet **året før undersøkelsen** (Nei / Delvis / Ja). Effektlokalitetene er **Kregnesteigen, Storrønningen og Gravråk**, som alle har lukepolygoner med både lukede og ikke-lukede flekker og observasjoner av edderkoppen. Edderkoppene på **Fornes** lever utenfor lukepolygonene og utgjør en **kontroll** uten lupinluking. Luking i undersøkelsesåret brukes ikke; slitasje er utelatt i påvente av ny digitalisering; substrat er slått sammen til sand / finsand–silt / blanding.
+**Effekt av luking.** Undersøkelsespolygonene fra september (`r paste(eff_years, collapse = " og ")`) er koblet til lukepolygonet de overlapper mest, og får lukestatusen til polygonet **året før undersøkelsen** (Nei / Delvis / Ja). Effektlokalitetene er **Kregnesteigen, Storrønningen og Gravråk**, som alle har lukepolygoner med både lukede og ikke-lukede flekker og observasjoner av edderkoppen. På **Fornes** lever de fleste edderkoppene utenfor lukepolygonene. Undersøkelsespolygonene som ligger utenfor lukepolygonene, utgjør en **kontroll** uten lupinluking, mens polygonene som overlapper et lukepolygon (`r paste(fornes_ov$n, "i", fornes_ov$year, collapse = " og ")`), er holdt utenfor analysen. Luking i undersøkelsesåret brukes ikke.
 
-Antallene er sterkt overspredte, men ikke nullinflaterte. Modellen er en **negativ binomial GLMM** (`glmmTMB`, nbinom2) per stadium med luking året før, år, substrat og lokalitet som faste effekter og et tilfeldig konstantledd per lukepolygon. Polygonarealet inngår som **kovariat, ikke som offset**: antallet øker langsommere enn arealet fordi store polygoner tar med mer tom mark, og polygonene var mye større i 2026 enn i 2025. Prediksjoner vises for et standard polygon på 50 m².
+Antallene er sterkt overspredte, men ikke nullinflaterte. Modellen er en **negativ binomial GLMM** (`glmmTMB`, nbinom2) per stadium med luking året før, år, substrat og lokalitet som faste effekter og et tilfeldig konstantledd per lukepolygon. Årseffekten fanger opp forskjeller mellom år som er felles for alle lokaliteter, som flom og vær, og lokalitetseffekten faste forskjeller mellom lokalitetene. Polygonarealet inngår som **kovariat, ikke som offset**: antallet øker langsommere enn arealet fordi store polygoner tar med mer tom mark, og polygonene var mye større i 2026 enn i 2025. Prediksjoner vises for et standard polygon på 50 m².
 
 `antall ~ luket året før + år + substrat + lokalitet + log(areal) + (1 | lukepolygon)`
 
-**Klima, snø og vannføring.** Antallet i september er sammenholdt med vannføring, nedbør og snø i fire vinduer: sommersesongen (1. mai til besøket), de 30 dagene før besøket og vinteren før (1. oktober – 30. april). Antall per lokalitet og år er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og år som tilfeldige effekter. For høyeste vannføring i sesongen er det i tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til polygoner i 2025.
+**Habitatvariabler.** Substrattype inngår i modellen, slått sammen til sand / finsand–silt / blanding. Vegetasjonsdekke og slitasje mangler for `r sum(is.na(dat$veg_frac) | is.na(dat$slitasje))` av undersøkelsespolygonene (alle fra `r paste(sort(unique(dat$year[is.na(dat$veg_frac) | is.na(dat$slitasje)])), collapse = " og ")`) og er derfor testet hver for seg ved å legge dem til i modellen for polygonene der de er registrert. I `r aar` ble slitasje registrert direkte i felt i ArcGIS Field Maps.
+
+**Klima, snø og vannføring.** Vannføring, nedbør og snø er målt på én stasjon og er derfor like for alle lokaliteter i et gitt år. Med bare `r length(eff_years)` år i effektanalysen kan de ikke skilles fra årseffekten i effektmodellen, og de er i stedet analysert for hele tidsserien. Antallet i september er sammenholdt med vannføring, nedbør og snø i fire vinduer: sommersesongen (1. mai til besøket), de 30 dagene før besøket og vinteren før (1. oktober – 30. april). Antall per lokalitet og år er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og år som tilfeldige effekter. For høyeste vannføring i sesongen er det i tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til polygoner i 2025. Analysen viser om endringer i antall kan skyldes flom og vær snarere enn lukingen.
 
 ```{r models}
 #| code-summary: 'Kode for modellene.'
@@ -636,9 +642,10 @@ fit <- function(resp) {
   lrt <- function(m0, m1) anova(m0, m1)[["Pr(>Chisq)"]][2]
   m_int <- update(m, . ~ . + Luket_prev:yearf)
   m_hist <- update(m, . ~ . - Luket_prev + years_cleared_before)
-  dv <- d |> filter(!is.na(veg_frac))
+  dv <- d |> filter(!is.na(veg_frac), !is.na(slitasje))
   m_veg <- glmmTMB(update(f, . ~ . + veg_frac), family = nbinom2, data = dv)
   m_veg0 <- glmmTMB(f, family = nbinom2, data = dv)
+  m_slit <- glmmTMB(update(f, . ~ . + slitasje), family = nbinom2, data = dv)
   dk <- d |> filter(site != "Kregnesteigen") |> droplevels()
   m_k <- glmmTMB(f, family = nbinom2, data = dk)
   dcc <- dc |> filter(!is.na(.data[[resp]]))
@@ -648,7 +655,7 @@ fit <- function(resp) {
     m = m, m_hist = m_hist, m_k = m_k,
     lrt = c("Luket året før" = lrt(update(m, . ~ . - Luket_prev), m), "Luket × år" = lrt(m, m_int),
             "Substrat" = lrt(update(m, . ~ . - substrat), m), "Lokalitet" = lrt(update(m, . ~ . - site), m),
-            "År" = lrt(update(m, . ~ . - yearf), m), "Vegetasjonsdekke" = lrt(m_veg0, m_veg)),
+            "År" = lrt(update(m, . ~ . - yearf), m), "Vegetasjonsdekke" = lrt(m_veg0, m_veg), "Slitasje" = lrt(m_veg0, m_slit)),
     em = as.data.frame(emmeans(m, ~Luket_prev, type = "response", at = at50)),
     em_year = as.data.frame(emmeans(m_int, ~ Luket_prev | yearf, type = "response", at = at50)),
     em_c = as.data.frame(emmeans(m_c, ~group, type = "response", at = at50)),
@@ -737,7 +744,7 @@ ggplot(bysite, aes(year, obs + 1, colour = site)) +
 ### 6.2 Effekt av luking på stor elvebreddedderkopp
 
 ```{r tbl-effekt-n}
-#| tbl-cap: 'Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes; Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.'
+#| tbl-cap: 'Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes (polygoner utenfor lukepolygonene); Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.'
 #| code-summary: 'Kode for tabell.'
 dc |>
   count(group, year) |>
@@ -757,7 +764,7 @@ bind_rows(lapply(names(res), function(n) mutate(rr_tab(res[[n]]$m), stage = n)))
 ```
 
 ```{r tbl-effekt-lrt}
-#| tbl-cap: 'Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke er testet på polygonene der det er registrert. Signifikansnivå: \* p < 0,05; \*\* p < 0,01; \*\*\* p < 0,001.'
+#| tbl-cap: 'Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke og slitasje er testet hver for seg på polygonene der de er registrert. Signifikansnivå: \* p < 0,05; \*\* p < 0,01; \*\*\* p < 0,001.'
 #| code-summary: 'Kode for tabell.'
 bind_rows(lapply(names(res), function(n) data.frame(Ledd = names(res[[n]]$lrt), p = p_sig(res[[n]]$lrt), stage = n))) |>
   pivot_wider(names_from = stage, values_from = p) |>
@@ -785,7 +792,7 @@ ggplot(pred, aes(Luket_prev, response, colour = Luket_prev)) +
 ```
 
 ```{r fig-kontroll}
-#| fig-cap: 'Kontrollen på Fornes (uten lupinluking) sammenlignet med gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m², gjennomsnitt ± 95 % KI).'
+#| fig-cap: 'Kontrollen på Fornes (undersøkelsespolygoner utenfor lukepolygonene, uten lupinluking) sammenlignet med gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m², gjennomsnitt ± 95 % KI).'
 #| fig-height: 4.5
 #| fig-width: 10
 #| code-summary: 'Kode for figur.'
@@ -962,7 +969,7 @@ ci_txt <- function(ss, term) paste0(num(exp(ss[term, 1] - 1.96 * ss[term, 2])), 
 - **Full luking året før endrer ikke antallet edderkopper.** Juvenile: RR `r num(exp(sj["Luket_prevJa", 1]))` (95 % KI `r ci_txt(sj, "Luket_prevJa")`), voksne `r num(exp(sa["Luket_prevJa", 1]))` (`r ci_txt(sa, "Luket_prevJa")`) sammenlignet med flekker som ikke ble luket; ingen av dem skiller seg fra kontrollen på Fornes (juvenile p `r fp(cj$p.value[cj$contrast == "Ja / Kontroll"])`, voksne p `r fp(ca$p.value[ca$contrast == "Ja / Kontroll"])`).
 - **Delvis lukede flekker har flest edderkopper** – voksne `r num(exp(sa["Luket_prevDelvis", 1]), 1)` ganger nivået i ikke-lukede flekker (p `r fp(sa["Luket_prevDelvis", 4])`), juvenile `r num(exp(sj["Luket_prevDelvis", 1]), 1)` ganger (p `r fp(sj["Luket_prevDelvis", 4])`). **Dette er en Kregnesteigen-effekt, ikke en lukeeffekt:** i 2026 ligger alle «Delvis»-flekkene på Kregnesteigen (lokaliteten med kraftig økning i 2026), og i 2025 fantes «Delvis» bare på Storrønningen, der det ikke gjorde noen forskjell. Uten Kregnesteigen blir RR for delvis luking `r num(exp(kj["Luket_prevDelvis", 1]))` (juvenile, p `r fp(kj["Luket_prevDelvis", 4])`) og `r num(exp(ka["Luket_prevDelvis", 1]))` (voksne, p `r fp(ka["Luket_prevDelvis", 4])`).
 - **Lukehistorikk:** antall tidligere år en flekk er luket har ingen effekt på juvenile (RR `r num(exp(hj[1]))` per år, p `r fp(hj[4])`), men henger sammen med flere voksne (`r num(exp(ha[1]))` per år, p `r fp(ha[4])`). Det tyder på en gevinst av langvarig luking, men med samme forbehold om Kregnesteigen.
-- **Habitat:** vegetasjonsdekke reduserer antallet for begge stadier (juvenile p `r fp(res$Juvenile$lrt["Vegetasjonsdekke"])`, voksne p `r fp(res$Voksne$lrt["Vegetasjonsdekke"])`), og kontrollen viser at dette ikke skyldes tetthetsmetoden: effekten finnes også med areal som kovariat og innen ett enkelt år. Juvenile er færre på blandet substrat (RR `r num(exp(sj["substratblanding", 1]))`, p `r fp(sj["substratblanding", 4])`); substrat betyr ikke noe for voksne.
+- **Habitat:** vegetasjonsdekke reduserer antallet for begge stadier (juvenile p `r fp(res$Juvenile$lrt["Vegetasjonsdekke"])`, voksne p `r fp(res$Voksne$lrt["Vegetasjonsdekke"])`), og kontrollen viser at dette ikke skyldes tetthetsmetoden: effekten finnes også med areal som kovariat og innen ett enkelt år. Juvenile er færre på blandet substrat (RR `r num(exp(sj["substratblanding", 1]))`, p `r fp(sj["substratblanding", 4])`); substrat betyr ikke noe for voksne. Slitasje har ingen effekt (juvenile p `r fp(res$Juvenile$lrt["Slitasje"])`, voksne p `r fp(res$Voksne$lrt["Slitasje"])`).
 - Stigningen for log(areal) (`r num(sj["log_area", 1])` for juvenile, `r num(sa["log_area", 1])` for voksne, mot 1 hvis antallet var proporsjonalt med arealet) bekrefter at antallet øker mye langsommere enn polygonarealet. Tetthet per m² avhenger derfor av hvordan polygonet er tegnet, og sammenligninger mellom år med ulik polygonstørrelse bør gjøres med areal i modellen, som her.
 
 - **Vannføring:** det sterkeste mønsteret i datasettet er sammenhengen mellom **høyeste vannføring i sommersesongen og antallet i september**: årene med de største vår- og sommerflommene hadde færrest edderkopper, og årene med de minste flommene flest. Effekten holder også når det er tatt hensyn til en lineær årstrend (voksne p `r fp(cl_p("adults", "log_qmax_trend"))`, juvenile p `r fp(cl_p("juveniles", "log_qmax_trend"))`) og metodeskiftet i 2025 (voksne p `r fp(cl_p("adults", "log_qmax_trend_method"))`, juvenile p `r fp(cl_p("juveniles", "log_qmax_trend_method"))`). Det er biologisk rimelig – edderkoppene lever i ganger på den laveste, mest flomutsatte sanden, og flommen kommer når juvenilene er små. Men serien er kort, og høyeste vannføring har gått ned gjennom perioden (r = `r num(r_trend)` med år), så trend og flom kan ikke skilles sikkert. Nedbør og snø vinteren før viser ingen sammenheng (p `r fp(min(climate_res$p_LRT[climate_res$predictor %in% c("precip_season", "precip_30d", "snow_days_winter")]))` eller høyere). Høyeste vannføring de 30 dagene før besøket henger sammen med antall voksne (p `r fp(cl_p("adults", "log_qmax_30d"))`), men ikke juvenile (p `r fp(cl_p("juveniles", "log_qmax_30d"))`). Hypotesen – **lave sommerflommer lar bestanden bygge seg opp på sandbankene** – bør testes på en lengre serie og med oversvømmelsesterskler per sandbanke.

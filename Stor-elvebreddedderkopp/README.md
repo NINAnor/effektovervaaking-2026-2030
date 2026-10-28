@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-10-27
+2026-10-28
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -346,6 +346,13 @@ analysene.
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
+Hovedmålet med analysene er å finne ut om lupinlukingen gir flere
+edderkopper. Antallet edderkopper påvirkes også av andre forhold:
+habitatet i hver flekk (substrattype, vegetasjonsdekke og slitasje) og
+klima, snø og vannføring, som varierer fra år til år. Disse variablene
+tas med i analysene for å skille effekten av lupinlukingen fra andre
+faktorer som påvirker bestanden.
+
 **Data og skript.** Alle observasjoner ligger i masterfila
 [elvebreddedderkopp_obs_2020-2026_master.csv](data/elvebreddedderkopp_obs_2020-2026_master.csv),
 som lages av skript 9 i [`code/`](code/). Polygonene inngår der som
@@ -355,40 +362,60 @@ elvebreddedderkopp_2025-2026_analysis_data.csv). Klimatabellen lages av
 skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
 
 **Utvikling over tid.** Tidsseriene viser summen av registrerte
-individer i september per år og stadium. Søkeinnsatsen er ikke
-registrert, og registreringsmetoden er endret fra punkter til polygoner
-(avsnitt 4), så summene viser relativ forekomst og er ikke et
-bestandsestimat.
+individer i september per år og stadium. Registreringene gjøres av en
+erfaren feltarbeider med god kjennskap til artene og lokalitetene, med
+samme innsats hvert år og på alle lokaliteter. Ikke alle individer blir
+nødvendigvis oppdaget. I 2024 ble registreringene gjort av den nye og
+den tidligere feltarbeideren sammen, og fra 2025 av den nye alene. Samme
+år ble registreringsmetoden endret fra punkter til polygoner (avsnitt
+4). Nedgangen i antall juvenile fra 2024 til 2025 kan derfor delvis
+skyldes bytte av feltarbeider og metode. Summene er derfor en indeks for
+relativ forekomst som kan sammenlignes mellom år og lokaliteter, og ikke
+et bestandsestimat.
 
 **Effekt av luking.** Undersøkelsespolygonene fra september (2025 og
 2026) er koblet til lukepolygonet de overlapper mest, og får
 lukestatusen til polygonet **året før undersøkelsen** (Nei / Delvis /
 Ja). Effektlokalitetene er **Kregnesteigen, Storrønningen og Gravråk**,
 som alle har lukepolygoner med både lukede og ikke-lukede flekker og
-observasjoner av edderkoppen. Edderkoppene på **Fornes** lever utenfor
-lukepolygonene og utgjør en **kontroll** uten lupinluking. Luking i
-undersøkelsesåret brukes ikke; slitasje er utelatt i påvente av ny
-digitalisering; substrat er slått sammen til sand / finsand–silt /
-blanding.
+observasjoner av edderkoppen. På **Fornes** lever de fleste edderkoppene
+utenfor lukepolygonene. Undersøkelsespolygonene som ligger utenfor
+lukepolygonene, utgjør en **kontroll** uten lupinluking, mens polygonene
+som overlapper et lukepolygon (2 i 2025 og 2 i 2026), er holdt utenfor
+analysen. Luking i undersøkelsesåret brukes ikke.
 
 Antallene er sterkt overspredte, men ikke nullinflaterte. Modellen er en
 **negativ binomial GLMM** (`glmmTMB`, nbinom2) per stadium med luking
 året før, år, substrat og lokalitet som faste effekter og et tilfeldig
-konstantledd per lukepolygon. Polygonarealet inngår som **kovariat, ikke
-som offset**: antallet øker langsommere enn arealet fordi store
-polygoner tar med mer tom mark, og polygonene var mye større i 2026 enn
-i 2025. Prediksjoner vises for et standard polygon på 50 m².
+konstantledd per lukepolygon. Årseffekten fanger opp forskjeller mellom
+år som er felles for alle lokaliteter, som flom og vær, og
+lokalitetseffekten faste forskjeller mellom lokalitetene. Polygonarealet
+inngår som **kovariat, ikke som offset**: antallet øker langsommere enn
+arealet fordi store polygoner tar med mer tom mark, og polygonene var
+mye større i 2026 enn i 2025. Prediksjoner vises for et standard polygon
+på 50 m².
 
 `antall ~ luket året før + år + substrat + lokalitet + log(areal) + (1 | lukepolygon)`
 
-**Klima, snø og vannføring.** Antallet i september er sammenholdt med
-vannføring, nedbør og snø i fire vinduer: sommersesongen (1. mai til
-besøket), de 30 dagene før besøket og vinteren før (1. oktober – 30.
-april). Antall per lokalitet og år er modellert med én
-eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og
-år som tilfeldige effekter. For høyeste vannføring i sesongen er det i
-tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til
-polygoner i 2025.
+**Habitatvariabler.** Substrattype inngår i modellen, slått sammen til
+sand / finsand–silt / blanding. Vegetasjonsdekke og slitasje mangler for
+61 av undersøkelsespolygonene (alle fra 2025) og er derfor testet hver
+for seg ved å legge dem til i modellen for polygonene der de er
+registrert. I 2026 ble slitasje registrert direkte i felt i ArcGIS Field
+Maps.
+
+**Klima, snø og vannføring.** Vannføring, nedbør og snø er målt på én
+stasjon og er derfor like for alle lokaliteter i et gitt år. Med bare 2
+år i effektanalysen kan de ikke skilles fra årseffekten i
+effektmodellen, og de er i stedet analysert for hele tidsserien.
+Antallet i september er sammenholdt med vannføring, nedbør og snø i fire
+vinduer: sommersesongen (1. mai til besøket), de 30 dagene før besøket
+og vinteren før (1. oktober – 30. april). Antall per lokalitet og år er
+modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM
+med lokalitet og år som tilfeldige effekter. For høyeste vannføring i
+sesongen er det i tillegg tatt hensyn til en lineær årstrend og til
+metodeskiftet til polygoner i 2025. Analysen viser om endringer i antall
+kan skyldes flom og vær snarere enn lukingen.
 
 ## 6. Resultater
 
@@ -431,8 +458,9 @@ Figur 6: Antall juvenile og voksne i september per lokalitet (antall +
 
 <div id="tbl-effekt-n">
 
-Tabell 4: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes;
-Nei / Delvis / Ja = lukestatus året før på effektlokalitetene.
+Tabell 4: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes
+(polygoner utenfor lukepolygonene); Nei / Delvis / Ja = lukestatus året
+før på effektlokalitetene.
 
 <div class="cell-output-display">
 
@@ -473,8 +501,8 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 <div id="tbl-effekt-lrt">
 
 Tabell 6: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
-er testet på polygonene der det er registrert. Signifikansnivå: \* p \<
-0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
+og slitasje er testet hver for seg på polygonene der de er registrert.
+Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
@@ -486,6 +514,7 @@ er testet på polygonene der det er registrert. Signifikansnivå: \* p \<
 | Lokalitet        | 0.0073\*\*    | 0.0068\*\* |
 | År               | 0.0497\*      | 0.019\*    |
 | Vegetasjonsdekke | \<0.001\*\*\* | 0.0093\*\* |
+| Slitasje         | 0.6           | 0.48       |
 
 </div>
 
@@ -506,9 +535,10 @@ midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
 
 ![](img/fig-kontroll-1.png)
 
-Figur 8: Kontrollen på Fornes (uten lupinluking) sammenlignet med
-gruppene på effektlokalitetene (NB GLMM, alle år, polygon på 50 m²,
-gjennomsnitt ± 95 % KI).
+Figur 8: Kontrollen på Fornes (undersøkelsespolygoner utenfor
+lukepolygonene, uten lupinluking) sammenlignet med gruppene på
+effektlokalitetene (NB GLMM, alle år, polygon på 50 m², gjennomsnitt ±
+95 % KI).
 
 </div>
 
@@ -666,7 +696,8 @@ log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p \< 0,05;
   (juvenile p \< 0,001, voksne p = 0,0093), og kontrollen viser at dette
   ikke skyldes tetthetsmetoden: effekten finnes også med areal som
   kovariat og innen ett enkelt år. Juvenile er færre på blandet substrat
-  (RR 0,50, p = 0,048); substrat betyr ikke noe for voksne.
+  (RR 0,50, p = 0,048); substrat betyr ikke noe for voksne. Slitasje har
+  ingen effekt (juvenile p = 0,6, voksne p = 0,48).
 
 - Stigningen for log(areal) (0,51 for juvenile, 0,57 for voksne, mot 1
   hvis antallet var proporsjonalt med arealet) bekrefter at antallet

@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell
-2026-10-27
+2026-10-28
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -225,11 +225,25 @@ Table 3: Antall observasjonspunkter (til og med 2025) eller polygoner
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
+Hovedmålet med analysene er å finne ut om lupinlukingen gir flere
+elvesandjegere. Antallet larver påvirkes også av andre forhold:
+habitatet i hver flekk (substrattype, vegetasjonsdekke og slitasje) og
+klima, snø og vannføring. Disse variablene tas med i analysene for å
+skille effekten av lupinlukingen fra andre faktorer som påvirker
+bestanden.
+
 **Utvikling over tid.** Tidsseriene viser summen av registrerte
-individer per år, stadium og besøksmåned. Innsatsen varierer mellom år
-og måneder
-(<a href="#tbl-datainnsamling" class="quarto-xref">Table 3</a>), så
-summene viser relativ forekomst og er ikke et bestandsestimat.
+individer per år, stadium og besøksmåned. Registreringene gjøres av en
+erfaren feltarbeider med god kjennskap til artene og lokalitetene, med
+samme innsats ved hvert besøk og på alle lokaliteter. Ikke alle
+individer blir nødvendigvis oppdaget. Hvilke måneder som er undersøkt,
+er ikke helt likt alle år
+(<a href="#tbl-datainnsamling" class="quarto-xref">Table 3</a>), og
+tidsseriene vises derfor per besøksmåned. I 2024 ble registreringene
+gjort av den nye og den tidligere feltarbeideren sammen, og fra 2025 av
+den nye alene, og i 2026 ble registreringsmetoden endret fra punkter til
+polygoner. Summene er derfor en indeks for relativ forekomst som kan
+sammenlignes mellom år og lokaliteter, og ikke et bestandsestimat.
 
 **Effekt av luking på lupin.** Dersom lukingen virker, skal et polygon
 som ble luket ha færre lupiner året etter. Dette testes med en negativ
@@ -244,10 +258,12 @@ luket.
 **Kregnesteigen og Storrønningen**, de to lokalitetene som har både
 lukepolygoner og observasjoner av elvesandjeger. Hvert
 undersøkelsespolygon i 2026 får lukestatusen (Nei / Delvis / Ja) til
-lukepolygonet det overlapper mest, **året før undersøkelsen** (2025).
-Observasjonene på **Fornes** ligger utenfor alle lukepolygonene og
-brukes som **kontroll** uten lupinluking. Gravråk har for få
-observasjoner og er ikke med, og luking i undersøkelsesåret brukes ikke.
+lukepolygonet det overlapper mest, **året før undersøkelsen** (2025). På
+**Fornes** brukes undersøkelsespolygonene som ligger utenfor
+lukepolygonene (19), som **kontroll** uten lupinluking, mens polygonene
+som overlapper et lukepolygon (20), er holdt utenfor analysen. Gravråk
+har for få observasjoner og er ikke med, og luking i undersøkelsesåret
+brukes ikke.
 
 Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon.
 Polygonene er tegnet rundt okkuperte flekker, så bare 3 av 133 har null
@@ -255,23 +271,30 @@ larver; dataene er sterkt overspredte (varians/gjennomsnitt = 45), men
 ikke nullinflaterte. Modellen er derfor en **negativ binomial GLMM** med
 søkt areal som offset, måned, substrat, vegetasjonsdekke og slitasje som
 kovariater, lokalitet som fast effekt og et tilfeldig konstantledd per
-lukepolygon (de samme flekkene besøkes i juni, juli og august):
+lukepolygon (de samme flekkene besøkes i juni, juli og august).
+Habitatvariablene substrat, vegetasjonsdekke og slitasje er med slik at
+effekten av lukingen sammenlignes mellom flekker med likt habitat, og
+måned fanger opp forskjeller mellom besøkene, blant annet i vannføring
+og vær:
 
 `larver ~ luket året før + måned + substrat + vegetasjonsdekke + slitasje + lokalitet + offset(log areal) + (1 | lukepolygon)`
 
 Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for
 offset, og modellen er tilpasset hvert larvestadium for seg.
 
-**Klima, snø og vannføring.** Vannføringen der de overvåkede sandbankene
-oversvømmes er ikke kjent, så vannføringen brukes direkte som
-eksponeringsindeks: høyeste vannføring og antall dager over 300 m³/s
+**Klima, snø og vannføring.** Vannføring, nedbør og snø er målt på én
+stasjon og er derfor like for alle lokaliteter ved samme besøk. De er
+derfor analysert for seg, for alle år. Vannføringen der de overvåkede
+sandbankene oversvømmes er ikke kjent, så vannføringen brukes direkte
+som eksponeringsindeks: høyeste vannføring og antall dager over 300 m³/s
 siden forrige besøk (for junibesøket: siden 1. september året før), og
 høyeste vannføring og nedbør de 14 dagene før besøket. Larver per
 lokalitet og besøk (Storrønningen, Kregnesteigen og Fornes) er modellert
 med én eksponeringsvariabel om gangen i en utforskende NB GLMM med måned
 som fast effekt og lokalitet og år som tilfeldige effekter. Med én
 målestasjon får alle lokaliteter samme eksponering, så testen hviler på
-antall besøk.
+antall besøk. Analysen viser om endringer i antall kan skyldes flom og
+vær snarere enn lukingen.
 
 ## 6. Resultater
 
@@ -347,7 +370,7 @@ gjennomsnitt ± 95 % KI). Høyre: årseffekten fra samme modell
 <div id="tbl-effekt-n">
 
 Table 5: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
-observasjoner på Fornes utenfor alle lukepolygoner; Nei/Delvis/Ja =
+undersøkelsespolygoner på Fornes utenfor lukepolygonene; Nei/Delvis/Ja =
 lukestatus året før på Kregnesteigen og Storrønningen.
 
 <div class="cell-output-display">
