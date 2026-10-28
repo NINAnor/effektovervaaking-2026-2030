@@ -424,7 +424,37 @@ for alle lokaliteter.
 
 ### 6.1 Utvikling over tid
 
-<!-- Figurvalg i 6.1 avgjøres senere: sesongfiguren (alle måneder) er flyttet hit fra avsnitt 4. -->
+**Hvorfor bare september.** Fra 2020 til 2024 ble lokalitetene undersøkt
+flere ganger gjennom sommeren, sammen med tellingene av elvesandjeger.
+Tellingene viste at antallet individer når en topp i september: 80–97 %
+av årets registrerte individer ble funnet i september
+(<a href="#fig-sesong" class="quarto-xref">Figur 4</a>). De samme
+individene kan registreres ved flere besøk, så å summere over sommeren
+gir dobbelttelling. De siste to årene er arten derfor bare registrert i
+september. Det gir tilstrekkelige data til å overvåke bestanden og
+reduserer samtidig kostnadene ved overvåkingen. Tidsseriene under bygger
+bare på septembertellingene.
+
+**Utvikling i bestanden.** Alle fire lokaliteter er undersøkt hvert år
+siden 2022; tallene før det omfatter færre lokaliteter. Siden 2023 har
+antallet økt for både juvenile og voksne
+(<a href="#fig-trend-total" class="quarto-xref">Figur 5</a>), noe som er
+positivt for bestanden. Antall voksne økte fra 66 i 2023 til 819 i 2026,
+og antall juvenile fra 204 til 2 374. Tellingene i 2026 er de høyeste
+som er registrert for begge stadier. Antall juvenile gikk ned fra 1 065
+i 2024 til 615 i 2025, samme år som det ble byttet feltarbeider og
+registreringsmetode (avsnitt 5), før det økte kraftig igjen i 2026.
+
+**Lokalitetene.** Tellingene startet i 2020 på Storrønningen, 2021 på
+Kregnesteigen og 2022 på Fornes og Gravråk. Økningen ses på alle
+lokalitetene
+(<a href="#fig-trend-lokalitet" class="quarto-xref">Figur 6</a>), men
+Kregnesteigen har klart flest individer: i 2026 ble 71 % av de juvenile
+og 52 % av de voksne registrert der. På Kregnesteigen, Fornes og Gravråk
+var antallet i 2026 det høyeste som er registrert for begge stadier. På
+Storrønningen var antallet juvenile det høyeste som er registrert (197,
+mot 190 i 2024), men ikke antallet voksne, som gikk ned fra 193 i 2025
+til 75 i 2026.
 
 <div id="fig-sesong">
 
@@ -441,7 +471,8 @@ Hovedtellingen er i september; fra 2025 telles det bare i september.
 ![](img/fig-trend-total-1.png)
 
 Figur 5: Antall juvenile og voksne registrert i september per år, alle
-lokaliteter. Innsats og metode varierer mellom år.
+lokaliteter. Registreringsmetoden ble endret fra punkter til polygoner i
+2025.
 
 </div>
 

@@ -233,16 +233,19 @@ read_one <- function(pattern, reader = read.csv) {
   structure(reader(f), file = basename(f))
 }
 
-stage_cols <- c(Juvenile = "#2a78d6", Voksne = "#eb6834")
+# stadier i svart (linjetype/symbol), lokaliteter i farger, lukestatus i magenta
+stage_lev <- c("Juvenile", "Voksne")
+stage_lty <- c(Juvenile = "solid", Voksne = "dashed")
+stage_shp <- c(Juvenile = 16, Voksne = 21)
 site_cols <- c("Storrønningen" = "#2a78d6", "Kregnesteigen" = "#eb6834", "Fornes" = "#1baf7a", "Gravråk" = "#eda100")
-luket_cols <- c(Kontroll = "#1baf7a", Nei = "#9a9891", Delvis = "#eda100", Ja = "#2a78d6")
+luket_cols <- c(Kontroll = "#4d4d4d", Nei = "#5b8c2a", Delvis = "#d6619b", Ja = "#8e1b5c") # lukestatus: ikke luket grønn, luket magenta (delvis lys, ja mørk), kontroll grå
 
 # ---- Observasjoner (masterfil, langt format: én rad per punkt/polygon og stadium). Hovedtellingen er i september ----
 master <- read_one("_master\\.csv$", read.csv2)
 master_file <- attr(master, "file")
 sept <- master |>
   filter(month == "september", site %in% names(site_cols)) |>
-  mutate(stage = factor(stage, levels = c("juvenile", "adult"), labels = names(stage_cols)),
+  mutate(stage = factor(stage, levels = c("juvenile", "adult"), labels = stage_lev),
          site = factor(site, levels = names(site_cols)))
 aar <- max(sept$year)
 first_year <- min(sept$year)
@@ -513,7 +516,7 @@ dato_txt <- if (length(datoer_aar) == 1) dato_nb(datoer_aar) else paste0(as.inte
 mnd_lev <- c("juni", "juli", "august", "september")
 ind_mnd <- master |>
   filter(month %in% mnd_lev, site %in% names(site_cols)) |>
-  mutate(stage = factor(stage, levels = c("juvenile", "adult"), labels = names(stage_cols)),
+  mutate(stage = factor(stage, levels = c("juvenile", "adult"), labels = stage_lev),
          month = factor(month, levels = mnd_lev)) |>
   group_by(year, month, stage) |>
   summarise(n = sum(obs, na.rm = TRUE), .groups = "drop")
@@ -682,26 +685,29 @@ term_lab <- c(Luket_prevDelvis = "Delvis luket året før (mot ikke)", Luket_pre
 ```{r totals}
 #| include: false
 tot <- sept |> group_by(year, stage) |> summarise(obs = sum(obs, na.rm = TRUE), .groups = "drop")
-juv_aar <- sum(tot$obs[tot$year == aar & tot$stage == "Juvenile"])
-voksne_aar <- sum(tot$obs[tot$year == aar & tot$stage == "Voksne"])
 ```
 
-I september `r aar` ble det registrert `r num(juv_aar, 0)` juvenile og `r num(voksne_aar, 0)` voksne totalt for alle lokaliteter.
+I september 2026 ble det registrert 2 374 juvenile og 819 voksne totalt for alle lokaliteter.
 
 ### 6.1 Utvikling over tid
 
-<!-- Figurvalg i 6.1 avgjøres senere: sesongfiguren (alle måneder) er flyttet hit fra avsnitt 4. -->
+**Hvorfor bare september.** Fra 2020 til 2024 ble lokalitetene undersøkt flere ganger gjennom sommeren, sammen med tellingene av elvesandjeger. Tellingene viste at antallet individer når en topp i september: 80–97 % av årets registrerte individer ble funnet i september (@fig-sesong). De samme individene kan registreres ved flere besøk, så å summere over sommeren gir dobbelttelling. De siste to årene er arten derfor bare registrert i september. Det gir tilstrekkelige data til å overvåke bestanden og reduserer samtidig kostnadene ved overvåkingen. Tidsseriene under bygger bare på septembertellingene.
+
+**Utvikling i bestanden.** Alle fire lokaliteter er undersøkt hvert år siden 2022; tallene før det omfatter færre lokaliteter. Siden 2023 har antallet økt for både juvenile og voksne (@fig-trend-total), noe som er positivt for bestanden. Antall voksne økte fra 66 i 2023 til 819 i 2026, og antall juvenile fra 204 til 2 374. Tellingene i 2026 er de høyeste som er registrert for begge stadier. Antall juvenile gikk ned fra 1 065 i 2024 til 615 i 2025, samme år som det ble byttet feltarbeider og registreringsmetode (avsnitt 5), før det økte kraftig igjen i 2026.
+
+**Lokalitetene.** Tellingene startet i 2020 på Storrønningen, 2021 på Kregnesteigen og 2022 på Fornes og Gravråk. Økningen ses på alle lokalitetene (@fig-trend-lokalitet), men Kregnesteigen har klart flest individer: i 2026 ble 71 % av de juvenile og 52 % av de voksne registrert der. På Kregnesteigen, Fornes og Gravråk var antallet i 2026 det høyeste som er registrert for begge stadier. På Storrønningen var antallet juvenile det høyeste som er registrert (197, mot 190 i 2024), men ikke antallet voksne, som gikk ned fra 193 i 2025 til 75 i 2026.
 
 ```{r fig-sesong}
 #| fig-cap: 'Antall juvenile og voksne stor elvebreddedderkopp registrert per måned og år (alle fire lokaliteter, logaritmisk skala). Hovedtellingen er i september; fra 2025 telles det bare i september.'
 #| fig-height: 4.2
 #| fig-width: 12
 #| code-summary: 'Kode for figur.'
-ggplot(ind_mnd, aes(month, n + 1, colour = stage, group = stage)) +
-  geom_line(linewidth = 0.9) +
-  geom_point(size = 2.4) +
+ggplot(ind_mnd, aes(month, n + 1, linetype = stage, shape = stage, group = stage)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2.4, fill = "white") +
   facet_wrap(~year, nrow = 1) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_linetype_manual(values = stage_lty, name = NULL) +
+  scale_shape_manual(values = stage_shp, name = NULL) +
   scale_x_discrete(labels = c(juni = "jun", juli = "jul", august = "aug", september = "sep"), drop = FALSE) +
   scale_y_log10(breaks = c(1, 11, 101, 1001), labels = c("0", "10", "100", "1 000")) +
   labs(x = NULL, y = "Antall individer (log-skala)") +
@@ -709,14 +715,15 @@ ggplot(ind_mnd, aes(month, n + 1, colour = stage, group = stage)) +
 ```
 
 ```{r fig-trend-total}
-#| fig-cap: 'Antall juvenile og voksne registrert i september per år, alle lokaliteter. Innsats og metode varierer mellom år.'
+#| fig-cap: 'Antall juvenile og voksne registrert i september per år, alle lokaliteter. Registreringsmetoden ble endret fra punkter til polygoner i 2025.'
 #| fig-height: 5
 #| fig-width: 8
 #| code-summary: 'Kode for figur.'
-ggplot(tot, aes(year, obs, colour = stage)) +
-  geom_line(linewidth = 0.9) +
-  geom_point(size = 2.5) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
+ggplot(tot, aes(year, obs, linetype = stage, shape = stage)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2.5, fill = "white") +
+  scale_linetype_manual(values = stage_lty, name = NULL) +
+  scale_shape_manual(values = stage_shp, name = NULL) +
   scale_x_continuous(breaks = first_year:aar) +
   scale_y_continuous(labels = scales::label_number(big.mark = " ")) +
   labs(x = NULL, y = "Antall i september")
@@ -781,7 +788,7 @@ pred <- bind_rows(lapply(names(res), function(n) {
             mutate(res[[n]]$em_year, yearf = as.character(yearf))) |>
     mutate(stage = n)
 })) |>
-  mutate(stage = factor(stage, levels = names(stage_cols)),
+  mutate(stage = factor(stage, levels = stage_lev),
          yearf = factor(yearf, levels = c("alle år", as.character(eff_years))))
 ggplot(pred, aes(Luket_prev, response, colour = Luket_prev)) +
   geom_pointrange(aes(ymin = asymp.LCL, ymax = asymp.UCL), linewidth = 0.8, size = 0.8) +
@@ -797,7 +804,7 @@ ggplot(pred, aes(Luket_prev, response, colour = Luket_prev)) +
 #| fig-width: 10
 #| code-summary: 'Kode for figur.'
 bind_rows(lapply(names(res), function(n) mutate(res[[n]]$em_c, stage = n))) |>
-  mutate(stage = factor(stage, levels = names(stage_cols))) |>
+  mutate(stage = factor(stage, levels = stage_lev)) |>
   ggplot(aes(group, response, colour = group)) +
   geom_pointrange(aes(ymin = asymp.LCL, ymax = asymp.UCL), linewidth = 0.8, size = 0.8) +
   facet_wrap(~stage, scales = "free_y") +
@@ -917,15 +924,15 @@ vis |>
 #| code-summary: 'Kode for figur.'
 vl <- vis |>
   pivot_longer(c(juveniles, adults), names_to = "stage", values_to = "n") |>
-  mutate(stage = factor(stage, levels = c("juveniles", "adults"), labels = names(stage_cols)))
-pq <- ggplot(vl, aes(q_max_season, n + 1, colour = stage)) +
-  geom_point(size = 3) + geom_text(aes(label = year), vjust = -0.9, size = 3, show.legend = FALSE) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
+  mutate(stage = factor(stage, levels = c("juveniles", "adults"), labels = stage_lev))
+pq <- ggplot(vl, aes(q_max_season, n + 1, shape = stage)) +
+  geom_point(size = 3, fill = "white") + geom_text(aes(label = year), vjust = -0.9, size = 3, show.legend = FALSE) +
+  scale_shape_manual(values = stage_shp, name = NULL) +
   scale_y_log10(labels = scales::label_number(big.mark = " ")) +
   labs(x = "Høyeste vannføring mai–september (m³/s)", y = "Antall + 1 (log-skala)")
-pp <- ggplot(vl, aes(precip_season, n + 1, colour = stage)) +
-  geom_point(size = 3) + geom_text(aes(label = year), vjust = -0.9, size = 3, show.legend = FALSE) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
+pp <- ggplot(vl, aes(precip_season, n + 1, shape = stage)) +
+  geom_point(size = 3, fill = "white") + geom_text(aes(label = year), vjust = -0.9, size = 3, show.legend = FALSE) +
+  scale_shape_manual(values = stage_shp, name = NULL) +
   scale_y_log10(labels = scales::label_number(big.mark = " ")) +
   labs(x = "Nedbør mai–september (mm)", y = NULL)
 pq + pp + plot_layout(guides = "collect") & theme(legend.position = "top")

@@ -218,10 +218,14 @@ read_one <- function(pattern, reader = read.csv) {
 stage_lab <- c(stad1 = "Stadium 1", stad2 = "Stadium 2", stad3 = "Stadium 3", voksne = "Voksne")
 site_lab <- c(Storr = "Storrønningen", Kreg = "Kregnesteigen", Forn = "Fornes", Grav = "Gravråk")
 month_lev <- c("juni", "juli", "august")
-month_cols <- c(juni = "#2a78d6", juli = "#eb6834", august = "#1baf7a")
-stage_cols <- c("Stadium 1" = "#2a78d6", "Stadium 2" = "#eb6834", "Stadium 3" = "#1baf7a", "Voksne" = "#eda100")
+# stadier og måneder i svart/grått (linjetype/symbol), lokaliteter i farger, lukestatus i magenta
+month_cols <- c(juni = "#b3b3b3", juli = "#6e6e6e", august = "#000000")
+month_shp <- c(juni = 21, juli = 17, august = 16)
+stage_grey <- c("Stadium 1" = "#c6c6c6", "Stadium 2" = "#8a8a8a", "Stadium 3" = "#4a4a4a", "Voksne" = "#000000")
+stage_lty <- c("Stadium 1" = "solid", "Stadium 2" = "dashed", "Stadium 3" = "dotted", "Voksne" = "dotdash")
+stage_shp <- c("Stadium 1" = 16, "Stadium 2" = 21, "Stadium 3" = 17, "Voksne" = 15)
 site_cols <- c("Storrønningen" = "#2a78d6", "Kregnesteigen" = "#eb6834", "Fornes" = "#1baf7a", "Gravråk" = "#eda100")
-luket_cols <- c(Kontroll = "#1baf7a", Nei = "#9a9891", Delvis = "#eda100", Ja = "#2a78d6")
+luket_cols <- c(Kontroll = "#4d4d4d", Nei = "#5b8c2a", Delvis = "#d6619b", Ja = "#8e1b5c") # lukestatus: ikke luket grønn, luket magenta (delvis lys, ja mørk), kontroll grå
 
 # ---- Observasjoner (masterfil, langt format: én rad per punkt/polygon og stadium) ----
 master <- read_one("_master\\.csv$", read.csv2)
@@ -500,11 +504,12 @@ tot <- obs |>
   mutate(run = cumsum(c(1, diff(year) > 1))) |> # bryt linjene der det mangler år
   ungroup()
 
-ggplot(tot, aes(year, obs, colour = month, group = interaction(month, run))) +
+ggplot(tot, aes(year, obs, colour = month, shape = month, group = interaction(month, run))) +
   geom_line(linewidth = 0.8) +
-  geom_point(size = 2.2) +
+  geom_point(size = 2.2, fill = "white") +
   facet_wrap(~stage, scales = "free_y", ncol = 2) +
   scale_colour_manual(values = month_cols, name = "Besøksmåned") +
+  scale_shape_manual(values = month_shp, name = "Besøksmåned") +
   scale_x_continuous(breaks = first_year:aar) +
   labs(x = NULL, y = "Totalt antall (alle lokaliteter)") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -524,11 +529,12 @@ aug <- obs |>
   mutate(run = cumsum(c(1, diff(year) > 1))) |>
   ungroup()
 
-ggplot(aug, aes(year, obs, colour = stage, group = interaction(stage, run))) +
-  geom_line(linewidth = 0.8) +
-  geom_point(size = 2) +
+ggplot(aug, aes(year, obs, linetype = stage, shape = stage, group = interaction(stage, run))) +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 2, fill = "white") +
   facet_wrap(~site, scales = "free_y", ncol = 2) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
+  scale_linetype_manual(values = stage_lty, name = NULL) +
+  scale_shape_manual(values = stage_shp, name = NULL) +
   scale_x_continuous(breaks = first_year:aar) +
   labs(x = NULL, y = "Antall i august") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -556,7 +562,7 @@ ggplot(seas, aes(month, share, fill = stage)) +
   geom_text(data = distinct(seas, year, month, total),
             aes(x = month, y = 1.05, label = total), inherit.aes = FALSE, size = 3) +
   facet_wrap(~year, nrow = 1) +
-  scale_fill_manual(values = stage_cols, name = NULL) +
+  scale_fill_manual(values = stage_grey, name = NULL) +
   scale_y_continuous(labels = scales::label_percent(), breaks = c(0, 0.5, 1)) +
   labs(x = NULL, y = "Andel av larvene") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -710,10 +716,10 @@ stage_coefs |>
          se = if_else(per10, se / 10, se),
          term = recode(term, !!!term_lab, veg_frac = "Vegetasjonsdekke (per +10 %)"),
          rr = exp(estimate), lo = exp(estimate - 1.96 * se), hi = exp(estimate + 1.96 * se)) |>
-  ggplot(aes(rr, term, colour = stage)) +
+  ggplot(aes(rr, term, shape = stage)) +
   geom_vline(xintercept = 1, colour = "grey40", linetype = "dashed") +
-  geom_pointrange(aes(xmin = lo, xmax = hi), position = position_dodge(width = 0.6), linewidth = 0.7) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), position = position_dodge(width = 0.6), linewidth = 0.7, fill = "white") +
+  scale_shape_manual(values = stage_shp, name = NULL) +
   scale_x_log10() +
   labs(x = "Rateratio (log-skala)", y = NULL)
 ```
@@ -850,10 +856,10 @@ visits |>
   pivot_longer(c(stad1, stad2, stad3), names_to = "stage", values_to = "n") |>
   mutate(stage = factor(stage_lab[stage], levels = stage_lab[1:3])) |>
   ggplot(aes(q_max_14d, n + 1, colour = stage, shape = month)) +
-  geom_point(size = 3) +
+  geom_point(size = 3, fill = "white", stroke = 1) +
   geom_text(aes(label = year), vjust = -0.9, size = 2.8, show.legend = FALSE) +
-  scale_colour_manual(values = stage_cols, name = NULL) +
-  scale_shape_discrete(name = "Besøk") +
+  scale_colour_manual(values = stage_grey, name = NULL) +
+  scale_shape_manual(values = month_shp, name = "Besøk") +
   scale_y_log10(labels = scales::label_number(big.mark = " ")) +
   labs(x = "Høyeste vannføring 14 dager før besøket (m³/s)", y = "Larver telt + 1 (log-skala)")
 ```
