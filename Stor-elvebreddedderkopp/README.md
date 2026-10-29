@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-10-28
+2026-10-29
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -397,12 +397,23 @@ på 50 m².
 
 `antall ~ luket året før + år + substrat + lokalitet + log(areal) + (1 | lukepolygon)`
 
-**Habitatvariabler.** Substrattype inngår i modellen, slått sammen til
-sand / finsand–silt / blanding. Vegetasjonsdekke og slitasje mangler for
-61 av undersøkelsespolygonene (alle fra 2025) og er derfor testet hver
-for seg ved å legge dem til i modellen for polygonene der de er
-registrert. I 2026 ble slitasje registrert direkte i felt i ArcGIS Field
-Maps.
+**Slik leses resultatene.** Effektene er oppgitt som **rateratio (RR)**:
+hvor mange ganger høyere eller lavere antallet er enn i en
+referansegruppe når de andre variablene i modellen holdes like. RR = 1
+betyr ingen forskjell, RR = 2 dobbelt så mange og RR = 0,5 halvparten så
+mange. **KI95** er 95 % konfidensintervallet, som viser usikkerheten i
+anslaget: intervallet omfatter de effektene som er forenlige med
+dataene. Når intervallet inneholder 1, kan effekten ikke skilles fra
+ingen effekt. p-verdien angir hvor sannsynlig et like stort utslag er
+hvis det i virkeligheten ikke er noen effekt, og p \< 0,05 regnes som
+statistisk signifikant.
+
+**Habitatvariabler.** Substrattype (sand eller blanding) inngår i
+modellen. Finsand og silt ble ikke registrert. Vegetasjonsdekke og
+slitasje mangler for 61 av undersøkelsespolygonene (alle fra 2025) og er
+derfor testet hver for seg ved å legge dem til i modellen for polygonene
+der de er registrert. I 2026 ble slitasje registrert direkte i felt i
+ArcGIS Field Maps.
 
 **Klima, snø og vannføring.** Vannføring, nedbør og snø er målt på én
 stasjon og er derfor like for alle lokaliteter i et gitt år. Med bare 2
@@ -487,6 +498,63 @@ Figur 6: Antall juvenile og voksne i september per lokalitet (antall +
 
 ### 6.2 Effekt av luking på stor elvebreddedderkopp
 
+Effekten av lupinluking er analysert for undersøkelsespolygonene på de
+tre effektlokalitetene Gravråk, Kregnesteigen og Storrønningen i 2025 og
+2026. <a href="#tbl-effekt-n" class="quarto-xref">Tabell 4</a> viser
+hvor mange polygoner som inngår i hver gruppe. I 2025 var det 87
+polygoner på effektlokalitetene og 51 kontrollpolygoner på Fornes, i
+2026 40 og 15. Polygonene var større i 2026, så de var færre.
+Datagrunnlaget for 2026 er derfor mindre, og særlig gruppen delvis luket
+(6 polygoner) er liten.
+<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 5</a> viser
+resultatene fra hovedmodellen for begge år samlet: hvor mange ganger
+høyere eller lavere antallet er for hver variabel enn i referansegruppen
+(RR), med 95 % konfidensintervall (KI95) og p-verdi.
+<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a> viser om hver
+variabel samlet bidrar til å forklare antallet (likelihood-ratio-test),
+om effekten av luking var forskjellig mellom årene (luking × år), og om
+vegetasjonsdekke og slitasje har betydning.
+
+**Full luking.** Når begge årene ses samlet, hadde flekker som ble luket
+året før, ikke flere edderkopper enn flekker som ikke ble luket
+(<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 5</a>).
+Rateratioen var 1,03 for juvenile (KI95 0,65–1,65) og 1,12 for voksne
+(KI95 0,51–2,44), og begge intervallene omfatter 1.
+
+**Delvis luking.** Delvis lukede flekker hadde flest edderkopper: 3,6
+ganger så mange voksne som ikke-lukede flekker (KI95 1,42–9,13, p =
+0,0068) og 1,6 ganger så mange juvenile (KI95 0,80–3,17, p = 0,18).
+
+**Forskjell mellom år.** Testen av samspill mellom luking og år viser at
+effekten av luking ikke var den samme i 2025 og 2026 (juvenile p =
+0,011, voksne p = 0,0049;
+<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a>). Effekten er
+derfor også beregnet for hvert år for seg
+(<a href="#fig-effekt" class="quarto-xref">Figur 7</a>).
+
+**Andre faktorer.** Vegetasjonsdekke reduserte antallet for begge
+stadier (juvenile p \< 0,001, voksne p = 0,0093), mens slitasje ikke
+hadde noen effekt (juvenile p = 0,60, voksne p = 0,48). Juvenile var
+færre på blandet substrat enn på sand (RR 0,50, KI95 0,25–0,99, p =
+0,048); for voksne betydde substratet ikke noe. Kregnesteigen hadde 2,8
+ganger så mange juvenile per polygon som Gravråk (p = 0,0032), og
+Storrønningen hadde færre voksne (RR 0,32, p = 0,013).
+
+**Polygonareal.** Polygonene varierer fra under 5 m² til over 500 m², og
+store polygoner har naturlig flere individer. Arealet er derfor med i
+modellen slik at gruppene sammenlignes ved samme polygonstørrelse. Hvis
+antallet økte i takt med arealet (samme tetthet overalt), ville en
+dobling av arealet gi dobbelt så mange individer. I stedet ga en dobling
+bare 1,42 ganger så mange juvenile (KI95 1,30–1,55) og 1,48 ganger så
+mange voksne (KI95 1,32–1,66). Store polygoner omfatter altså mye tom,
+ofte vegetert, mark. Dette er viktig av to grunner. For det første vil
+tetthet per m² (antall ÷ areal) være misvisende: store polygoner ser ut
+til å ha lav tetthet, og fordi polygonene var mye større i 2026 enn i
+2025, ville 2026 se dårligere ut enn det var. Derfor er arealet tatt med
+i modellen i stedet for å regne om til tetthet. For det andre påvirker
+måten polygonene tegnes på antallet per polygon, så polygonene bør
+avgrenses på samme måte fra år til år.
+
 <div id="tbl-effekt-n">
 
 Tabell 4: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes
@@ -509,8 +577,10 @@ før på effektlokalitetene.
 <div id="tbl-effekt-koeff">
 
 Tabell 5: NB GLMM for juvenile og voksne per undersøkelsespolygon på
-effektlokalitetene. RR = rateratio (multiplikativ effekt på antallet).
-Referansenivåer: ikke luket året før, første år, sand, Gravråk.
+effektlokalitetene. RR = rateratio (hvor mange ganger høyere eller
+lavere antallet er enn i referansegruppen); KI95 = 95 %
+konfidensintervall. Referansenivåer: ikke luket året før, første år,
+sand, Gravråk. Polygonareal er gitt per dobling av arealet.
 Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
@@ -523,7 +593,7 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 | Blanding (mot sand) | 0.50 | 0.25–0.99 | 0.048\* | 1.04 | 0.48–2.24 | 0.92 |
 | Kregnesteigen (mot Gravråk) | 2.79 | 1.41–5.53 | 0.0032\*\* | 1.28 | 0.40–4.09 | 0.68 |
 | Storrønningen (mot Gravråk) | 0.80 | 0.49–1.32 | 0.39 | 0.32 | 0.13–0.78 | 0.013\* |
-| log(areal), RR per e-dobling (2,72 = proporsjonalt) | 1.66 | 1.47–1.88 | \<0.001\*\*\* | 1.76 | 1.49–2.08 | \<0.001\*\*\* |
+| Polygonareal, per dobling (2 = proporsjonalt) | 1.42 | 1.30–1.55 | \<0.001\*\*\* | 1.48 | 1.32–1.66 | \<0.001\*\*\* |
 
 </div>
 
@@ -551,16 +621,112 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 </div>
 
+**Effekt per år og betydningen av Kregnesteigen.**
+<a href="#fig-effekt" class="quarto-xref">Figur 7</a> og
+<a href="#tbl-effekt-aar" class="quarto-xref">Tabell 7</a> viser
+effekten av luking for begge år samlet, for hvert år for seg og uten
+Kregnesteigen. Rateratioen sammenligner delvis luket og luket med ikke
+luket. En verdi over 1 betyr flere edderkopper enn i ikke-lukede
+flekker, og der konfidensintervallet krysser den stiplede linjen ved 1,
+er forskjellen ikke sikker.
+
+Kregnesteigen krever særlig oppmerksomhet. Alle undersøkelsespolygonene
+der var luket eller delvis luket, så lokaliteten har ingen ikke-lukede
+flekker å sammenligne med. I 2026 lå i tillegg alle de delvis lukede
+flekkene på Kregnesteigen (i 2025 lå de bare på Storrønningen), og
+Kregnesteigen hadde den kraftigste økningen fra 2025 til 2026. Modellen
+tar hensyn til forskjeller mellom lokalitetene, men antar at forskjellen
+er den samme hvert år. Når én lokalitet øker mer enn de andre et år, kan
+modellen derfor tilskrive økningen til den lukegruppen som bare finnes
+der. For å teste dette er analysen gjentatt uten Kregnesteigen (nederste
+rad i <a href="#fig-effekt" class="quarto-xref">Figur 7</a>).
+
+I 2025 skilte verken delvis lukede eller lukede flekker seg fra
+ikke-lukede. I 2026 hadde delvis lukede flekker 4,1 ganger så mange
+juvenile (KI95 1,48–11,5, p = 0,0043) og 11 ganger så mange voksne (KI95
+2,58–47,1, p \< 0,001). Uten Kregnesteigen forsvinner denne effekten (RR
+0,85 for juvenile, p = 0,64, og 2,17 for voksne, p = 0,21). Effekten av
+delvis luking skyldes derfor trolig lokaliteten mer enn lukingen.
+
+Lukede flekker hadde i 2026 3,6 ganger så mange voksne som ikke-lukede
+(KI95 1,16–11,3, p = 0,023) og 1,7 ganger så mange juvenile (KI95
+0,85–3,32, p = 0,17). Effekten for voksne holder også uten Kregnesteigen
+(RR 3,1, KI95 1,03–9,2, p = 0,044; ikke vist i figuren), og den ses både
+på Gravråk (observert 4,0 mot 0,8 voksne per 50 m² i lukede og
+ikke-lukede flekker) og på Storrønningen (1,7 mot 0,1). Noe av
+forskjellen skyldes at det var svært få voksne i de ikke-lukede flekkene
+i 2026. Det er som forventet: stor elvebreddedderkopp er knyttet til
+åpen sandmark og kan ikke grave seg ned der vegetasjonen er tett. Det er
+nettopp derfor lupinene lukes, for å åpne opp arealer slik at stor
+elvebreddedderkopp og elvesandjeger får tilgang til den habitaten de
+trenger. Resultatet bygger likevel på få polygoner (bare 2 lukede
+polygoner på Gravråk), og det er et resultat fra ett år som må bekreftes
+i de kommende årene. For juvenile var det ingen tydelig effekt, og
+lokalitetene pekte i ulike retninger. Vi vet ikke nok om hvordan voksne
+velger hvor de legger eggene, eller hvor mye juvenile flytter på seg,
+til å si hvorfor lukingen ser ut til å ha større betydning for voksne
+enn for juvenile.
+
+<div id="tbl-effekt-aar">
+
+Tabell 7: Effekt av luking året før per år, sammenlignet med ikke-lukede
+flekker (modell med samspill luking × år). RR = rateratio; KI95 = 95 %
+konfidensintervall. Intervaller og p-verdier er justert for to
+sammenligninger per år (Dunnett). Signifikansnivå: \* p \< 0,05; \*\* p
+\< 0,01; \*\*\* p \< 0,001.
+
+<div class="cell-output-display">
+
+| År | Sammenligning | RR_Juvenile | KI95_Juvenile | p_Juvenile | RR_Voksne | KI95_Voksne | p_Voksne |
+|:---|:---|---:|:---|:---|---:|:---|:---|
+| 2025 | Delvis luket mot ikke luket | 0.76 | 0.30–1.95 | 0.73 | 1.74 | 0.49–6.15 | 0.52 |
+| 2025 | Luket mot ikke luket | 0.79 | 0.42–1.51 | 0.64 | 0.67 | 0.26–1.74 | 0.55 |
+| 2026 | Delvis luket mot ikke luket | 4.11 | 1.48–11.45 | 0.0043\*\* | 11.02 | 2.58–47.14 | \<0.001\*\*\* |
+| 2026 | Luket mot ikke luket | 1.68 | 0.85–3.32 | 0.17 | 3.63 | 1.16–11.31 | 0.023\* |
+
+</div>
+
+</div>
+
 <div id="fig-effekt">
 
 ![](img/fig-effekt-1.png)
 
-Figur 7: Predikert antall juvenile og voksne i et undersøkelsespolygon
-på 50 m² etter lupinluking året før (NB GLMM, gjennomsnitt ± 95 % KI,
-midlet over lokalitet og substrat): alle år samlet (hovedmodell) og per
-år (modell med samspill).
+Figur 7: Effekt av lupinluking året før på antall juvenile og voksne per
+undersøkelsespolygon, sammenlignet med ikke-lukede flekker (rateratio,
+RR, med 95 % KI, log-skala). RR = 1 (stiplet linje) betyr ingen
+forskjell. Alle år: hovedmodellen; 2025 og 2026: modell med samspill
+luking × år (KI justert for to sammenligninger); uten Kregnesteigen:
+hovedmodellen uten Kregnesteigen.
 
 </div>
+
+**Sammenligning med kontrollen på Fornes.** Sammenligningen mellom
+lukede og ikke-lukede flekker på effektlokalitetene sier ikke alene om
+lukingen gir flere edderkopper enn om ingenting ble gjort. De
+ikke-lukede flekkene ligger på de samme lokalitetene som de lukede og
+kan være påvirket av lukingen rundt dem, og hvilke flekker som blir
+luket, er ikke tilfeldig. Fornes brukes derfor som kontroll. Lokaliteten
+ligger i samme område, undersøkes på samme måte og samme tid, og de
+fleste edderkoppene lever utenfor lukepolygonene. Kontrollen fanger
+dermed opp variasjon mellom år, for eksempel på grunn av flom og vær,
+uten påvirkning fra lupinlukingen. Kontrollen består av
+undersøkelsespolygonene på Fornes som ikke overlapper et lukepolygon (51
+i 2025 og 15 i 2026). Fordi kontrollen bare finnes på én lokalitet, kan
+modellen ikke samtidig ta hensyn til forskjeller mellom lokalitetene.
+Forskjeller mellom kontrollen og gruppene på effektlokalitetene kan
+derfor også skyldes lokaliteten.
+
+<a href="#fig-kontroll" class="quarto-xref">Figur 8</a> viser predikert
+antall i et polygon på 50 m² for begge år samlet. Ikke-lukede og lukede
+flekker hadde omtrent like mange edderkopper som kontrollen: 4,8 og 6,1
+juvenile mot 4,8 i kontrollen (p ≥ 0,51), og 3,1 og 4,0 voksne mot 3,9
+(p ≥ 0,82). Delvis lukede flekker hadde 2,7 ganger så mange juvenile som
+kontrollen (13,0 mot 4,8, p \< 0,001) og 3,0 ganger så mange voksne
+(11,6 mot 3,9, p = 0,012), men som vist over henger dette sammen med
+Kregnesteigen i 2026. Samlet tyder sammenligningen på at antallet
+edderkopper i lukede flekker er på samme nivå som på en lokalitet uten
+luking.
 
 <div id="fig-kontroll">
 
@@ -573,60 +739,33 @@ effektlokalitetene (NB GLMM, alle år, polygon på 50 m², gjennomsnitt ±
 
 </div>
 
-**Kontroll: vegetasjonsdekke, polygonstørrelse og tetthet.** Polygonene
-er tegnet rundt okkuperte flekker og varierer mye i størrelse mellom år,
-så en «tetthet» (antall ÷ areal) kan være misvisende: et stort polygon
-tar med mer tom, ofte vegetert, mark. Tabellene viser hvordan
-vegetasjonsdekke og tetthet av juvenile varierer med polygonstørrelse,
-og om effekten av vegetasjonsdekke holder når arealet estimeres i stedet
-for å være fast.
+**Habitat.** <a href="#fig-habitat" class="quarto-xref">Figur 9</a>
+viser hvor individene ble funnet, uavhengig av lukehistorikk. Figuren
+bygger på 2025 og 2026 samlet: 136 polygoner med registrert
+vegetasjonsdekke og slitasje og 196 med registrert substrat. De fleste
+individene lever i åpne flekker. 77 % av de juvenile og 66 % av de
+voksne ble funnet i polygoner med høyst 25 % vegetasjonsdekke, og flest
+i polygoner med 25 % (66 % av de juvenile og 53 % av de voksne).
+Polygoner helt uten vegetasjon var sjeldne (7 av 136), så klassen 0 %
+har få individer. Bare 5 % av de juvenile og 8 % av de voksne ble funnet
+i polygoner med 75 % vegetasjonsdekke eller mer, og de voksne er altså
+noe mer spredt mot vegeterte flekker enn de juvenile. Dette stemmer med
+effektmodellen, der antallet gikk ned med økende vegetasjonsdekke
+(<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a>). Nesten
+alle individene ble funnet på sand (98 % av de juvenile og 94 % av de
+voksne). De fleste ble funnet i polygoner med slitasje i klasse 3 (81 %
+av de juvenile og 66 % av de voksne), men slitasje kan bare ses på sand
+og sier lite om hvilket habitat edderkoppene foretrekker. Figuren viser
+hvor individene er innenfor flekkene der edderkoppene finnes, og sier
+ikke hvor mye av lokalitetene som har de ulike habitatene.
 
-<div id="tbl-veg-storrelse">
+<div id="fig-habitat">
 
-Tabell 7: Vegetasjonsdekke og tetthet av juvenile per størrelsesklasse
-og år (polygoner med registrert vegetasjon).
+![](img/fig-habitat-1.png)
 
-<div class="cell-output-display">
-
-|   År | Areal (m²)   |   n | Vegetasjon (%) | Juvenile per m² |
-|-----:|:-------------|----:|---------------:|----------------:|
-| 2025 | (0,5\]       |  33 |             17 |           0.531 |
-| 2025 | (5,20\]      |  14 |             31 |           0.262 |
-| 2025 | (20,100\]    |  23 |             21 |           0.123 |
-| 2025 | (100,500\]   |   7 |             34 |           0.077 |
-| 2025 | (500,5e+03\] |   2 |             38 |           0.076 |
-| 2026 | (0,5\]       |   3 |             75 |           0.829 |
-| 2026 | (5,20\]      |   4 |             44 |           0.162 |
-| 2026 | (20,100\]    |  14 |             42 |           0.140 |
-| 2026 | (100,500\]   |  26 |             42 |           0.142 |
-| 2026 | (500,5e+03\] |  10 |             44 |           0.191 |
-
-</div>
-
-</div>
-
-<div id="tbl-veg-modeller">
-
-Tabell 8: Effekt av vegetasjonsdekke (0 → 100 %, log-skala) på antall
-juvenile og voksne med tre spesifikasjoner: areal som offset
-(tetthetsmodell), areal som kovariat, og innen hvert år med areal som
-kovariat. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \<
-0,001.
-
-<div class="cell-output-display">
-
-| Stadium  | Spesifikasjon                  | Estimat | p             |   n |
-|:---------|:-------------------------------|--------:|:--------------|----:|
-| Juvenile | Areal som offset (tetthet)     |   -2.96 | \<0.001\*\*\* | 119 |
-| Juvenile | Areal som kovariat             |   -1.91 | \<0.001\*\*\* | 119 |
-| Juvenile | Innen 2025, areal som kovariat |   -1.03 | 0.11          |  79 |
-| Juvenile | Innen 2026, areal som kovariat |   -2.78 | \<0.001\*\*\* |  40 |
-| Voksne   | Areal som offset (tetthet)     |   -2.85 | \<0.001\*\*\* | 119 |
-| Voksne   | Areal som kovariat             |   -1.93 | 0.0074\*\*    | 119 |
-| Voksne   | Innen 2025, areal som kovariat |   -0.36 | 0.69          |  79 |
-| Voksne   | Innen 2026, areal som kovariat |   -3.35 | 0.003\*\*     |  40 |
-
-</div>
+Figur 9: Andel av alle registrerte juvenile og voksne per klasse av
+vegetasjonsdekke, substrattype og slitasje, 2025 og 2026 samlet. Hver
+variabel bruker polygonene der den er registrert (alle lokaliteter).
 
 </div>
 
@@ -634,7 +773,7 @@ kovariat. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \<
 
 <div id="tbl-klima">
 
-Tabell 9: Septemberbesøket per år: antall og eksponering. Høyeste
+Tabell 8: Septemberbesøket per år: antall og eksponering. Høyeste
 vannføring og dager \> 300 m³/s i sommersesongen (1. mai – besøket),
 høyeste vannføring de 30 dagene før besøket, nedbør i sesongen og
 snødager vinteren før.
@@ -659,17 +798,17 @@ snødager vinteren før.
 
 ![](img/fig-klima-1.png)
 
-Figur 9: Antall i september mot høyeste vannføring i sommersesongen
+Figur 10: Antall i september mot høyeste vannføring i sommersesongen
 (venstre) og nedbør i sommersesongen (høyre). Tallene = år.
 
 </div>
 
 <div id="tbl-klima-modeller">
 
-Tabell 10: Utforskende NB GLMM for antall i september per lokalitet og
-år (lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel
-om gangen, og effekten av høyeste vannføring når det er tatt hensyn til
-en lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
+Tabell 9: Utforskende NB GLMM for antall i september per lokalitet og år
+(lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om
+gangen, og effekten av høyeste vannføring når det er tatt hensyn til en
+lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på
 log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p \< 0,05;
 \*\* p \< 0,01; \*\*\* p \< 0,001.
 
