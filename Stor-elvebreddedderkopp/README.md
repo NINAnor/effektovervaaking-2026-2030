@@ -113,6 +113,16 @@ grusdominerte elveavsetninger i seks vassdrag i Trøndelag (Öberg 2013;
 rødliste for arter 2021 fordi bestandene er fragmenterte og egnede
 leveområder fortsatt blir færre (Åström mfl. 2017; Artsdatabanken 2021).
 
+<div id="fig-art">
+
+![](img/foto_stor_elvebreddedderkopp.jpg)
+
+Figur 1: En voksen hunn av stor elvebreddedderkopp forbereder seg til
+overvintringen. Gravråk, 25. september 2023. Foto: Oddvar Hanssen/NINA
+(Roos mfl. 2023).
+
+</div>
+
 Edderkoppen graver et silkeforet rør ned i løs sand og jakter derfra på
 byttedyr som biller, fluer og andre virvelløse dyr (Åkra 2010). Den er
 godt kamuflert, så hullene er vanligvis lettere å oppdage enn selve
@@ -185,7 +195,7 @@ vær.
 
 Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i
 Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og
-Fornes (<a href="#fig-kart" class="quarto-xref">Figur 1</a>).
+Fornes (<a href="#fig-kart" class="quarto-xref">Figur 2</a>).
 Lokalitetene består av sand- og grusflater (elveører) langs elva. Stor
 elvebreddedderkopp forekommer til sammen på om lag 15 lokaliteter langs
 Gaula (Hanssen 2023; Roos mfl. 2024).
@@ -247,14 +257,14 @@ sandflater med silt i og rundt et frodig klåvedkratt på østsiden mot
 Gammelelva, og store flater med grus og stein og lite vegetasjon på
 vestsiden (Hanssen 2023; Roos mfl. 2024). Edderkoppene på Fornes holder
 i hovedsak til på sandflatene utenfor lukeområdet
-(<a href="#fig-kart" class="quarto-xref">Figur 1</a>), og Fornes brukes
+(<a href="#fig-kart" class="quarto-xref">Figur 2</a>), og Fornes brukes
 derfor som kontroll i effektanalysen.
 
 <div id="fig-kart">
 
 ![](img/fig-kart-1.jpeg)
 
-Figur 1: Lokalitetene for overvåking av stor elvebreddedderkopp langs
+Figur 2: Lokalitetene for overvåking av stor elvebreddedderkopp langs
 nedre Gaula i Trøndelag. Til venstre: oversikt over lukeområdene (grå)
 og utsnittene for hver lokalitet (rød stiplet ramme); det innfelte
 kartet viser plasseringen i Norge (Trøndelag i mørk grå). Til høyre, fra
@@ -293,7 +303,7 @@ om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor
 mange lupiner som ble fjernet, og når og hvordan det ble luket (Roos
 mfl. 2024).
 
-<a href="#fig-foto-luking" class="quarto-xref">Figur 2</a> viser
+<a href="#fig-foto-luking" class="quarto-xref">Figur 3</a> viser
 eksempler på flekker før og etter luking i 2026.
 
 <div id="fig-foto-luking">
@@ -325,7 +335,7 @@ data-ref-parent="fig-foto-luking" />
 
 </div>
 
-Figur 2: Lupinluking i 2026, før og etter luking. Foto: Midtnorsk
+Figur 3: Lupinluking i 2026, før og etter luking. Foto: Midtnorsk
 Naturundersøkelse AS (MidNat).
 
 </div>
@@ -345,7 +355,7 @@ I 2026 ble det luket 20 154 m² på lokalitetene (Storrønningen 12 507 m²,
 Gravråk 4 216 m², Fornes 2 827 m² og Kregnesteigen 604 m²), og 34 735
 lupiner ble fjernet. Alle lukede polygoner ble fullstendig luket; delvis
 luking ble ikke registrert. Utviklingen i lukingen per lokalitet er vist
-i <a href="#fig-luking" class="quarto-xref">Figur 3</a>, og effekten av
+i <a href="#fig-luking" class="quarto-xref">Figur 4</a>, og effekten av
 lukingen på selve lupinbestanden er analysert i [rapporten for
 elvesandjeger](../Elvesandjeger/).
 
@@ -353,7 +363,7 @@ elvesandjeger](../Elvesandjeger/).
 
 ![](img/fig-luking-1.png)
 
-Figur 3: Areal luket (Ja = fullstendig luket, Delvis = delvis luket) per
+Figur 4: Areal luket (Ja = fullstendig luket, Delvis = delvis luket) per
 lokalitet og år (venstre), og lupiner fjernet per m² luket areal
 (høyre). Kilde: lukedata fra Midtnorsk Naturundersøkelse AS. Lukingen på
 Fornes i 2025 (Øya videregående skole) og restaureringen med gravemaskin
@@ -384,7 +394,7 @@ Storrønningen 11. september, på Fornes 12. september, på Kregnesteigen
 Registreringene gjøres i felt i ArcGIS Field Maps. Feltteknikeren
 digitaliserer et polygon rundt hver flekk med hull, med et høyoppløselig
 dronebilde tatt i juni 2026 som bakgrunnskart, slik at avgrensningen
-blir presis (<a href="#fig-obskart" class="quarto-xref">Figur 4</a>).
+blir presis (<a href="#fig-obskart" class="quarto-xref">Figur 5</a>).
 Innenfor polygonet telles juvenile og voksne individer, og det
 registreres vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5).
 Disse variablene gjør det mulig å skille effekten av lupinlukingen fra
@@ -397,7 +407,7 @@ stadium. Indikatorene er beskrevet i
 
 ![](img/fig-obskart-1.jpeg)
 
-Figur 4: Registreringspolygoner for stor elvebreddedderkopp i 2026 per
+Figur 5: Registreringspolygoner for stor elvebreddedderkopp i 2026 per
 lokalitet, farget etter antall juvenile (øverst) og voksne (nederst)
 individer registrert i polygonet (logaritmisk fargeskala). Polygoner
 uten individer av stadiet er vist med hvit omriss. Polygonene er
@@ -552,7 +562,7 @@ for alle lokaliteter.
 flere ganger gjennom sommeren, sammen med tellingene av elvesandjeger.
 Tellingene viste at antallet individer når en topp i september: 80–97 %
 av årets registrerte individer ble funnet i september
-(<a href="#fig-sesong" class="quarto-xref">Figur 5</a>). De samme
+(<a href="#fig-sesong" class="quarto-xref">Figur 6</a>). De samme
 individene kan registreres ved flere besøk, så å summere over sommeren
 gir dobbelttelling. De siste to årene er arten derfor bare registrert i
 september. Det gir tilstrekkelige data til å overvåke bestanden og
@@ -562,7 +572,7 @@ bare på septembertellingene.
 **Utvikling i bestanden.** Alle fire lokaliteter er undersøkt hvert år
 siden 2022; tallene før det omfatter færre lokaliteter. Siden 2023 har
 antallet økt for både juvenile og voksne
-(<a href="#fig-trend-total" class="quarto-xref">Figur 6</a>), noe som er
+(<a href="#fig-trend-total" class="quarto-xref">Figur 7</a>), noe som er
 positivt for bestanden. Antall voksne økte fra 66 i 2023 til 819 i 2026,
 og antall juvenile fra 204 til 2 374. Tellingene i 2026 er de høyeste
 som er registrert for begge stadier. Antall juvenile gikk ned fra 1 065
@@ -572,7 +582,7 @@ registreringsmetode (avsnitt 5), før det økte kraftig igjen i 2026.
 **Lokalitetene.** Tellingene startet i 2020 på Storrønningen, 2021 på
 Kregnesteigen og 2022 på Fornes og Gravråk. Økningen ses på alle
 lokalitetene
-(<a href="#fig-trend-lokalitet" class="quarto-xref">Figur 7</a>), men
+(<a href="#fig-trend-lokalitet" class="quarto-xref">Figur 8</a>), men
 Kregnesteigen har klart flest individer: i 2026 ble 71 % av de juvenile
 og 52 % av de voksne registrert der. På Kregnesteigen, Fornes og Gravråk
 var antallet i 2026 det høyeste som er registrert for begge stadier. På
@@ -584,7 +594,7 @@ til 75 i 2026.
 
 ![](img/fig-sesong-1.png)
 
-Figur 5: Antall juvenile og voksne stor elvebreddedderkopp registrert
+Figur 6: Antall juvenile og voksne stor elvebreddedderkopp registrert
 per måned og år (alle fire lokaliteter, logaritmisk skala).
 Hovedtellingen er i september; fra 2025 telles det bare i september.
 
@@ -594,7 +604,7 @@ Hovedtellingen er i september; fra 2025 telles det bare i september.
 
 ![](img/fig-trend-total-1.png)
 
-Figur 6: Antall juvenile og voksne registrert i september per år, alle
+Figur 7: Antall juvenile og voksne registrert i september per år, alle
 lokaliteter. Registreringsmetoden ble endret fra punkter til polygoner i
 2025.
 
@@ -604,7 +614,7 @@ lokaliteter. Registreringsmetoden ble endret fra punkter til polygoner i
 
 ![](img/fig-trend-lokalitet-1.png)
 
-Figur 7: Antall juvenile og voksne i september per lokalitet (antall +
+Figur 8: Antall juvenile og voksne i september per lokalitet (antall +
 1, logaritmisk skala).
 
 </div>
@@ -643,7 +653,7 @@ effekten av luking ikke var den samme i 2025 og 2026 (juvenile p =
 0,011, voksne p = 0,0049;
 <a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a>). Effekten er
 derfor også beregnet for hvert år for seg
-(<a href="#fig-effekt" class="quarto-xref">Figur 8</a>).
+(<a href="#fig-effekt" class="quarto-xref">Figur 9</a>).
 
 **Andre faktorer.** Vegetasjonsdekke reduserte antallet for begge
 stadier (juvenile p \< 0,001, voksne p = 0,0093), mens slitasje ikke
@@ -735,7 +745,7 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 </div>
 
 **Effekt per år og betydningen av Kregnesteigen.**
-<a href="#fig-effekt" class="quarto-xref">Figur 8</a> og
+<a href="#fig-effekt" class="quarto-xref">Figur 9</a> og
 <a href="#tbl-effekt-aar" class="quarto-xref">Tabell 7</a> viser
 effekten av luking for begge år samlet, for hvert år for seg og uten
 Kregnesteigen. Rateratioen sammenligner delvis luket og luket med ikke
@@ -752,7 +762,7 @@ tar hensyn til forskjeller mellom lokalitetene, men antar at forskjellen
 er den samme hvert år. Når én lokalitet øker mer enn de andre et år, kan
 modellen derfor tilskrive økningen til den lukegruppen som bare finnes
 der. For å teste dette er analysen gjentatt uten Kregnesteigen (nederste
-rad i <a href="#fig-effekt" class="quarto-xref">Figur 8</a>).
+rad i <a href="#fig-effekt" class="quarto-xref">Figur 9</a>).
 
 I 2025 skilte verken delvis lukede eller lukede flekker seg fra
 ikke-lukede. I 2026 hadde delvis lukede flekker 4,1 ganger så mange
@@ -805,7 +815,7 @@ sammenligninger per år (Dunnett). Signifikansnivå: \* p \< 0,05; \*\* p
 
 ![](img/fig-effekt-1.png)
 
-Figur 8: Effekt av lupinluking året før på antall juvenile og voksne per
+Figur 9: Effekt av lupinluking året før på antall juvenile og voksne per
 undersøkelsespolygon, sammenlignet med ikke-lukede flekker (rateratio,
 RR, med 95 % KI, log-skala). RR = 1 (stiplet linje) betyr ingen
 forskjell. Alle år: hovedmodellen; 2025 og 2026: modell med samspill
@@ -830,7 +840,7 @@ modellen ikke samtidig ta hensyn til forskjeller mellom lokalitetene.
 Forskjeller mellom kontrollen og gruppene på effektlokalitetene kan
 derfor også skyldes lokaliteten.
 
-<a href="#fig-kontroll" class="quarto-xref">Figur 9</a> viser predikert
+<a href="#fig-kontroll" class="quarto-xref">Figur 10</a> viser predikert
 antall i et polygon på 50 m² for begge år samlet. Ikke-lukede og lukede
 flekker hadde omtrent like mange edderkopper som kontrollen: 4,8 og 6,1
 juvenile mot 4,8 i kontrollen (p ≥ 0,51), og 3,1 og 4,0 voksne mot 3,9
@@ -845,14 +855,14 @@ luking.
 
 ![](img/fig-kontroll-1.png)
 
-Figur 9: Kontrollen på Fornes (undersøkelsespolygoner utenfor
+Figur 10: Kontrollen på Fornes (undersøkelsespolygoner utenfor
 lukepolygonene, uten lupinluking) sammenlignet med gruppene på
 effektlokalitetene (NB GLMM, alle år, polygon på 50 m², gjennomsnitt ±
 95 % KI).
 
 </div>
 
-**Habitat.** <a href="#fig-habitat" class="quarto-xref">Figur 10</a>
+**Habitat.** <a href="#fig-habitat" class="quarto-xref">Figur 11</a>
 viser hvor individene ble funnet, uavhengig av lukehistorikk. Figuren
 bygger på 2025 og 2026 samlet: 136 polygoner med registrert
 vegetasjonsdekke og slitasje og 196 med registrert substrat. De fleste
@@ -876,7 +886,7 @@ ikke hvor mye av lokalitetene som har de ulike habitatene.
 
 ![](img/fig-habitat-1.png)
 
-Figur 10: Andel av alle registrerte juvenile og voksne per klasse av
+Figur 11: Andel av alle registrerte juvenile og voksne per klasse av
 vegetasjonsdekke, substrattype og slitasje, 2025 og 2026 samlet. Hver
 variabel bruker polygonene der den er registrert (alle lokaliteter).
 
@@ -897,7 +907,7 @@ seks av sju år kom den høyeste vannføringen i mai eller juni, under
 vårflommen. Bare i 2023 kom den i august, etter kraftig regn. Årene med
 de største flommene hadde færrest edderkopper i september, og årene med
 de minste flommene flest
-(<a href="#fig-klima" class="quarto-xref">Figur 11</a>,
+(<a href="#fig-klima" class="quarto-xref">Figur 12</a>,
 <a href="#tbl-klima-modeller" class="quarto-xref">Tabell 9</a>).
 Sammenhengen gjelder både juvenile (p \< 0,001) og voksne (p = 0,0023),
 og den holder også når det er tatt hensyn til en lineær årstrend og
@@ -944,7 +954,7 @@ høyeste vannføring de 30 dagene før besøket, og nedbør i sesongen.
 
 ![](img/fig-klima-1.png)
 
-Figur 11: Antall i september mot høyeste vannføring i sommersesongen
+Figur 12: Antall i september mot høyeste vannføring i sommersesongen
 (venstre) og nedbør i sommersesongen (høyre). Tallene = år.
 
 </div>
