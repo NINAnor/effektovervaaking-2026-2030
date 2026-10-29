@@ -295,21 +295,29 @@ theme_set(theme_minimal(base_size = 12, base_family = fig_font) +
 ## English summary
 
 ## 1. Innledning
-<!-- Om arten/naturtypen: Organismegruppe, Status rødlista, Utbredelse, Trusler. Kort om dette delprosjektet (hvilke tiltak ser det på effekten av, hvor). -->
+Stor elvebreddedderkopp *Arctosa cinerea* er en edderkopp i familien ulveedderkopper (Lycosidae). I Norge finnes arten bare på sand- og grusdominerte elveavsetninger i seks vassdrag i Trøndelag [@oberg_2013; @astrom_2017]. Den er vurdert som sterkt truet (EN) på Norsk rødliste for arter 2021 fordi bestandene er fragmenterte og egnede leveområder fortsatt blir færre [@astrom_2017; @artsdatabanken_2021].
+
+Edderkoppen graver et silkeforet rør ned i løs sand og jakter derfra på byttedyr som biller, fluer og andre virvelløse dyr [@aakra_2010]. Den er godt kamuflert, så hullene er vanligvis lettere å oppdage enn selve dyret. Arten har en toårig livssyklus, og voksne individer kan derfor treffes det meste av året [@roos_2023]. Den trenger åpne sandflater med lite vegetasjon der den kan grave seg ned [@roos_2025].
+
+Stor elvebreddedderkopp er avhengig av den naturlige dynamikken i elva. Flom flytter sand og grus, slik at det dannes nye, åpne flater mens de gamle gror igjen. Arten kan ta i bruk nye områder raskt: etter de kraftige flommene i august 2023 ble det lagt opp nye sandflater på flere av lokalitetene langs Gaula, og i slutten av september var mange av dem allerede tatt i bruk [@roos_2023]. Edderkoppen virket da mer robust mot flommene enn elvesandjeger, trolig fordi den raskt utnytter nye områder og fordi levehullene er forsterket med silke. Områdene med høyest tetthet ser ut til å fungere som kildebestander for rekolonisering etter slike forstyrrelser [@roos_2023].
+
+Arten trues av fragmentering og forringelse av leveområdene som følge av landbruk langs vassdragene, flomforbygninger, vassdragsregulering og gjengroing, blant annet med den fremmede arten hagelupin *Lupinus polyphyllus*. Ved Gaula har omfattende masseuttak fra elvebunnen senket elva og bidratt til at elvebreddene gror igjen [@roos_2023].
+
+Dette delprosjektet overvåker effekten av luking av hagelupin på stor elvebreddedderkopp på fire lokaliteter langs Gaula i Trøndelag: Storrønningen, Kregnesteigen, Gravråk og Fornes. Lupinene lukes for å åpne opp gjengrodde arealer, slik at sanda igjen blir tilgjengelig som leveområde for arten. Fornes, der de fleste edderkoppene holder til utenfor lukeområdet, brukes som kontroll. Elvesandjeger *Cicindela maritima* overvåkes på de samme lokalitetene og rapporteres i et eget delprosjekt.
 
 ## 2. Formål med delprosjektet
 
 ### 2.1 Målsetning med tiltakene
 
-<!-- Hva er målsetningen med tiltakene som gjennomføres. Hvilke indikatorer skal tiltakene endre. -->
+Formålet med tiltaket, luking av hagelupin *Lupinus polyphyllus*, er å åpne opp gjengrodde arealer slik at elveavsetningene igjen blir tilgjengelige som leveområde for stor elvebreddedderkopp [@roos_2024; @roos_2025]. Tiltaket skal redusere vegetasjonsdekket på sandflatene og dermed øke antallet juvenile og voksne individer, som er indikatorene i overvåkingen (@tbl-indikatorer).
 
 ### 2.2 Formål med overvåking
 
-<!-- Hva skal overvåkingen avdekke. -->
+Formålet med overvåkingen er å følge bestanden av stor elvebreddedderkopp på fire lokaliteter langs Gaula og fastslå effekten av lupinlukingen på bestanden [@roos_2024; @roos_2025]. Overvåkingen skal også vise hvordan habitatet (vegetasjonsdekke, substrattype og slitasje), flom og vær påvirker antallet, slik at effekten av lukingen kan skilles fra andre forhold.
 
 ### 2.3 Forventninger
 
-<!-- Hva forventer vi å observere av endringer i indikatorene – på kort og lang sikt. -->
+Det forventes at arealer der lupinene er luket, blir tatt i bruk av stor elvebreddedderkopp [@roos_2024; @roos_2025]. På kort sikt forventer vi flere individer i lukede enn i ikke-lukede flekker, fordi arten raskt kan ta i bruk nye, åpne sandflater [@roos_2023]. På lang sikt forventer vi at bestanden på lokalitetene øker eller holder seg stabil, men antallet vil fortsatt variere mye fra år til år på grunn av flom og vær.
 
 ## 3. Overvåkingslokalitetene
 
@@ -462,8 +470,6 @@ right <- wrap_plots(rows, ncol = 1)
 
 ### 3.2 Tiltak
 
-<!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
-
 ```{r tiltak-aar}
 #| include: false
 # Lukingen i rapporteringsåret, fra lukedataene i data/
@@ -475,6 +481,18 @@ luk_lok <- luk_aar |> filter(area_cleared > 0) |> arrange(desc(area_cleared))
 Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene. Lukingen utføres av Midtnorsk Naturundersøkelse AS (MidNat), som har kartlagt og luket lupiner langs Gaula hvert år siden 2020 [@solberg_2020; @solberg_2022a; @solberg_2022b; @solberg_2023; @solberg_2024; @solberg_2025]. Gaula er ett av fem vassdrag som Statsforvalteren i Trøndelag har prioritert i sin satsing på å redusere utbredelsen av fremmede planter, og MidNat har hatt rammeavtale med Statsforvalteren i Trøndelag om kartlegging og bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge lupinene på overvåkingslokalitetene [@solberg_2025].
 
 Lupinene lukes i hovedsak manuelt med håndredskap, som hagegreip, potetgrev, sigd og løvetannstikker, slik at sandflatene forstyrres minst mulig, og noen steder slås de med ryddesag. Plantene tas opp med roten, og alt plantemateriale samles i tette sekker og leveres til godkjent mottak for fremmede arter [@roos_2024; @solberg_2025]. Ved delvis luking fjernes bare de større lupinene som kan sette frø i løpet av sesongen, og flere steder fjernes blomsterstander og frøbelger for å hindre frøspredning [@solberg_2025]. Hver lokalitet er delt inn i kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor mange lupiner som ble fjernet, og når og hvordan det ble luket [@roos_2024].
+
+@fig-foto-luking viser eksempler på flekker før og etter luking i 2026.
+
+::: {#fig-foto-luking layout-nrow="3"}
+![Storrønningen 12](img/foto_luking_Storronningen.jpg){#fig-foto-luking-stor}
+
+![Kregnesteigen 7b](img/foto_luking_Kregnesteigen.jpg){#fig-foto-luking-kreg}
+
+![Fornes 4, der både etablerte lupiner og mange frøplanter ble luket](img/foto_luking_Fornes.jpg){#fig-foto-luking-forn}
+
+Lupinluking i 2026, før og etter luking. Foto: Midtnorsk Naturundersøkelse AS (MidNat).
+:::
 
 To steder er det i tillegg fjernet vegetasjon med gravemaskin for å restaurere åpne sandflater. På Kregnesteigen ble en eng med gras, urter og lupiner restaurert i november 2022 [@roos_2023]. På Gravråk, som over tid har grodd igjen med både stedegne arter og lupiner, ble nesten all vegetasjon fjernet fra et større område med anleggsmaskiner i oktober 2025, etter at det var luket og fjernet frøbelger i og rundt området gjennom sommeren [@solberg_2025]. På Fornes fjernet MidNat blomsterstander og frøbelger fra 29. juni til 15. juli 2025, og Øya videregående skole luket lupiner der 2. oktober 2025 med midler fra Melhus kommune [@solberg_2025].
 
@@ -620,7 +638,7 @@ ind_mnd |>
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
 
-Hovedmålet med analysene er å finne ut om lupinlukingen gir flere edderkopper. Antallet edderkopper påvirkes også av andre forhold: habitatet i hver flekk (substrattype, vegetasjonsdekke og slitasje) og klima, snø og vannføring, som varierer fra år til år. Disse variablene tas med i analysene for å skille effekten av lupinlukingen fra andre faktorer som påvirker bestanden.
+Hovedmålet med analysene er å finne ut om lupinlukingen gir flere edderkopper. Antallet edderkopper påvirkes også av andre forhold: habitatet i hver flekk (substrattype, vegetasjonsdekke og slitasje) og vannføring og nedbør, som varierer fra år til år. Disse variablene tas med i analysene for å skille effekten av lupinlukingen fra andre faktorer som påvirker bestanden.
 
 **Data og skript.** Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", master_file, ")")`, som lages av skript 9 i [`code/`](code/). Polygonene inngår der som sentroider med areal. For effektanalysen er hvert undersøkelsespolygon (`r paste(eff_years, collapse = " og ")`) koblet til lukepolygonet det overlapper mest (skript 10, `r attr(dat, "file")`). Klimatabellen lages av skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
 
@@ -636,7 +654,7 @@ Antallene er sterkt overspredte, men ikke nullinflaterte. Modellen er en **negat
 
 **Habitatvariabler.** Substrattype (sand eller blanding) inngår i modellen. Finsand og silt ble ikke registrert. Vegetasjonsdekke og slitasje mangler for `r sum(is.na(dat$veg_frac) | is.na(dat$slitasje))` av undersøkelsespolygonene (alle fra `r paste(sort(unique(dat$year[is.na(dat$veg_frac) | is.na(dat$slitasje)])), collapse = " og ")`) og er derfor testet hver for seg ved å legge dem til i modellen for polygonene der de er registrert. I `r aar` ble slitasje registrert direkte i felt i ArcGIS Field Maps.
 
-**Klima, snø og vannføring.** Vannføring, nedbør og snø er målt på én stasjon og er derfor like for alle lokaliteter i et gitt år. Med bare `r length(eff_years)` år i effektanalysen kan de ikke skilles fra årseffekten i effektmodellen, og de er i stedet analysert for hele tidsserien. Antallet i september er sammenholdt med vannføring, nedbør og snø i fire vinduer: sommersesongen (1. mai til besøket), de 30 dagene før besøket og vinteren før (1. oktober – 30. april). Antall per lokalitet og år er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og år som tilfeldige effekter. For høyeste vannføring i sesongen er det i tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til polygoner i 2025. Analysen viser om endringer i antall kan skyldes flom og vær snarere enn lukingen.
+**Vannføring og nedbør.** Vannføring og nedbør er målt på én stasjon og er derfor like for alle lokaliteter i et gitt år. Med bare `r length(eff_years)` år i effektanalysen kan de ikke skilles fra årseffekten i effektmodellen, og de er i stedet analysert for hele tidsserien. Antallet i september er sammenholdt med vannføring og nedbør i to perioder: sommersesongen (1. mai til besøket) og de 30 dagene før besøket. Snødybde ble vurdert som et mål på snøsmeltingen, men er ikke tatt med fordi vannføringen fanger opp både snøsmelting og regnflom. Antall per lokalitet og år er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med lokalitet og år som tilfeldige effekter. For høyeste vannføring i sesongen er det i tillegg tatt hensyn til en lineær årstrend og til metodeskiftet til polygoner i 2025. Analysen viser om endringer i antall kan skyldes flom og vær snarere enn lukingen.
 
 ```{r models}
 #| code-summary: 'Kode for modellene.'
@@ -898,21 +916,28 @@ ggplot(hab, aes(klasse, andel)) +
   theme(legend.position = "bottom")
 ```
 
-### 6.3 Klima, snø og vannføring
+### 6.3 Vannføring og nedbør
+
+Stor elvebreddedderkopp er tilpasset dynamiske elvesystemer der flom stadig flytter sand og grus. Flommen skaper nye, åpne sandflater og holder vegetasjonen nede, men kan også vaske bort eller oversvømme leveområdene i perioder. Vannføring og nedbør er derfor tatt med fordi de også påvirker bestandsutviklingen, og fordi de må tas hensyn til når effekten av lupinlukingen skal vurderes.
+
+Høyeste vannføring i sommersesongen varierte fra 388 m³/s i 2026 til 829 m³/s i 2020 (@tbl-klima). I seks av sju år kom den høyeste vannføringen i mai eller juni, under vårflommen. Bare i 2023 kom den i august, etter kraftig regn. Årene med de største flommene hadde færrest edderkopper i september, og årene med de minste flommene flest (@fig-klima, @tbl-klima-modeller). Sammenhengen gjelder både juvenile (p < 0,001) og voksne (p = 0,0023), og den holder også når det er tatt hensyn til en lineær årstrend og metodeskiftet i 2025 (juvenile p = 0,0042, voksne p = 0,0084). Nedbør i sesongen og de 30 dagene før besøket hadde ingen sammenheng med antallet (p ≥ 0,38). Serien er likevel kort, og den høyeste vannføringen har gått ned gjennom perioden samtidig som antallet edderkopper har økt. Det er derfor vanskelig å skille effekten av flom fra en generell økning i bestanden.
+
+Snødybde ble først tatt med for å se om snøsmeltingen påvirket flommene. Snødybden ved målestasjonen hang ikke sammen med størrelsen på vårflommen, og heller ikke med antallet edderkopper. Vannføringen fanger opp både snøsmelting og regnflom, så snø er ikke tatt med i analysen.
+
+Resultatene tyder på at bestanden av stor elvebreddedderkopp henger sammen med flomregimet i elva. Bevaring av arten bør derfor ikke bare handle om å luke lupiner, men også om å ta vare på den naturlige dynamikken i elva som skaper og fornyer sandflatene.
 
 ```{r climate-data}
 #| code-summary: 'Kode for klimadata og eksponering før septemberbesøket.'
 daily <- read_one("^daily_climate_hydrology_.*\\.csv$") |> mutate(date = as.Date(date))
 
-# Eksponering: sommersesongen (1. mai – besøket), 30 og 14 dager før besøket, og vinteren før (1. okt – 30. apr)
+# Eksponering: sommersesongen (1. mai – besøket) og 30 dager før besøket
 exposure <- function(d) {
   y <- as.integer(format(d, "%Y"))
   season <- daily[daily$date >= as.Date(paste0(y, "-05-01")) & daily$date <= d, ]
   w30 <- daily[daily$date > d - 30 & daily$date <= d, ]
-  win <- daily[daily$date >= as.Date(paste0(y - 1, "-10-01")) & daily$date <= as.Date(paste0(y, "-04-30")), ]
   c(q_max_season = max(season$q, na.rm = TRUE), d_over300_season = sum(season$q > 300, na.rm = TRUE),
     q_max_30d = max(w30$q, na.rm = TRUE), precip_season = sum(season$precip, na.rm = TRUE),
-    precip_30d = sum(w30$precip, na.rm = TRUE), snow_days_winter = sum(win$snow_depth > 0, na.rm = TRUE))
+    precip_30d = sum(w30$precip, na.rm = TRUE))
 }
 sept_cl <- master |>
   filter(month == "september", year >= min(daily$year)) |>
@@ -934,7 +959,7 @@ sv <- cbind(sv, t(sapply(sv$date, exposure))) |>
 # og effekten av høyeste vannføring når det er tatt hensyn til en lineær trend og metodeskiftet i 2025
 climate_res <- bind_rows(lapply(c("juveniles", "adults"), function(resp) {
   m0 <- glmmTMB(as.formula(paste(resp, "~ 1 + (1 | site) + (1 | yearf)")), family = nbinom2, data = sv)
-  one <- bind_rows(lapply(c("log_qmax_season", "d_over300_season", "log_qmax_30d", "precip_season", "precip_30d", "snow_days_winter"), function(v) {
+  one <- bind_rows(lapply(c("log_qmax_season", "d_over300_season", "log_qmax_30d", "precip_season", "precip_30d"), function(v) {
     m1 <- glmmTMB(as.formula(paste(resp, "~", v, "+ (1 | site) + (1 | yearf)")), family = nbinom2, data = sv)
     ss <- summary(m1)$coefficients$cond[v, ]
     data.frame(response = resp, predictor = v, estimate = ss[1], se = ss[2], p_LRT = anova(m0, m1)[["Pr(>Chisq)"]][2], row.names = NULL)
@@ -951,17 +976,15 @@ climate_res <- bind_rows(lapply(c("juveniles", "adults"), function(resp) {
   )
   bind_rows(one, trend)
 }))
-cl_p <- function(resp, pred) climate_res$p_LRT[climate_res$response == resp & climate_res$predictor == pred]
-r_trend <- cor(vis$year, vis$q_max_season)
 ```
 
 ```{r tbl-klima}
-#| tbl-cap: 'Septemberbesøket per år: antall og eksponering. Høyeste vannføring og dager > 300 m³/s i sommersesongen (1. mai – besøket), høyeste vannføring de 30 dagene før besøket, nedbør i sesongen og snødager vinteren før.'
+#| tbl-cap: 'Septemberbesøket per år: antall og eksponering. Høyeste vannføring og dager > 300 m³/s i sommersesongen (1. mai – besøket), høyeste vannføring de 30 dagene før besøket, og nedbør i sesongen.'
 #| code-summary: 'Kode for tabell.'
 vis |>
   transmute(År = year, Dato = format(as.Date(date), "%d.%m"), Enheter = n_units, Juvenile = juveniles, Voksne = adults,
             `Q maks sesong` = round(q_max_season), `Dager >300 sesong` = d_over300_season, `Q maks 30 d` = round(q_max_30d),
-            `Nedbør sesong` = round(precip_season), `Snødager vinter` = snow_days_winter) |>
+            `Nedbør sesong` = round(precip_season)) |>
   kable()
 ```
 
@@ -994,7 +1017,7 @@ climate_res |>
          Variabel = recode(predictor,
                            log_qmax_season = "log(høyeste vannføring mai–sep)", d_over300_season = "Dager > 300 m³/s mai–sep",
                            log_qmax_30d = "log(høyeste vannføring 30 d før besøk)", precip_season = "Nedbør mai–sep (mm)",
-                           precip_30d = "Nedbør 30 d før besøk (mm)", snow_days_winter = "Snødager vinteren før",
+                           precip_30d = "Nedbør 30 d før besøk (mm)",
                            log_qmax_trend = "log(høyeste vannføring), gitt årstrend",
                            log_qmax_trend_method = "log(høyeste vannføring), gitt årstrend + polygonmetode"),
          Estimat = round(estimate, 3), SE = round(se, 3), p = p_sig(p_LRT)) |>
@@ -1002,32 +1025,19 @@ climate_res |>
   kable()
 ```
 
-```{r effect-numbers}
-#| include: false
-sj <- summary(res$Juvenile$m)$coefficients$cond
-sa <- summary(res$Voksne$m)$coefficients$cond
-hj <- summary(res$Juvenile$m_hist)$coefficients$cond["years_cleared_before", ]
-ha <- summary(res$Voksne$m_hist)$coefficients$cond["years_cleared_before", ]
-kj <- summary(res$Juvenile$m_k)$coefficients$cond
-ka <- summary(res$Voksne$m_k)$coefficients$cond
-cj <- res$Juvenile$contr_c
-ca <- res$Voksne$contr_c
-ci_txt <- function(ss, term) paste0(num(exp(ss[term, 1] - 1.96 * ss[term, 2])), "–", num(exp(ss[term, 1] + 1.96 * ss[term, 2])))
-```
 
 ## 7. Oppsummering
 
 ### 7.1 Hva viser årets resultater
 
-<!-- Tallene under oppdateres automatisk, men tolkningen er skrevet for dataene til og med 2026. Les gjennom og oppdater teksten hvert år. -->
+<!-- Teksten er skrevet for dataene til og med 2026. Oppdater tallene og tolkningen manuelt hvert år. -->
 
-- **Full luking året før endrer ikke antallet edderkopper.** Juvenile: RR `r num(exp(sj["Luket_prevJa", 1]))` (95 % KI `r ci_txt(sj, "Luket_prevJa")`), voksne `r num(exp(sa["Luket_prevJa", 1]))` (`r ci_txt(sa, "Luket_prevJa")`) sammenlignet med flekker som ikke ble luket; ingen av dem skiller seg fra kontrollen på Fornes (juvenile p `r fp(cj$p.value[cj$contrast == "Ja / Kontroll"])`, voksne p `r fp(ca$p.value[ca$contrast == "Ja / Kontroll"])`).
-- **Delvis lukede flekker har flest edderkopper** – voksne `r num(exp(sa["Luket_prevDelvis", 1]), 1)` ganger nivået i ikke-lukede flekker (p `r fp(sa["Luket_prevDelvis", 4])`), juvenile `r num(exp(sj["Luket_prevDelvis", 1]), 1)` ganger (p `r fp(sj["Luket_prevDelvis", 4])`). **Dette er en Kregnesteigen-effekt, ikke en lukeeffekt:** i 2026 ligger alle «Delvis»-flekkene på Kregnesteigen (lokaliteten med kraftig økning i 2026), og i 2025 fantes «Delvis» bare på Storrønningen, der det ikke gjorde noen forskjell. Uten Kregnesteigen blir RR for delvis luking `r num(exp(kj["Luket_prevDelvis", 1]))` (juvenile, p `r fp(kj["Luket_prevDelvis", 4])`) og `r num(exp(ka["Luket_prevDelvis", 1]))` (voksne, p `r fp(ka["Luket_prevDelvis", 4])`).
-- **Lukehistorikk:** antall tidligere år en flekk er luket har ingen effekt på juvenile (RR `r num(exp(hj[1]))` per år, p `r fp(hj[4])`), men henger sammen med flere voksne (`r num(exp(ha[1]))` per år, p `r fp(ha[4])`). Det tyder på en gevinst av langvarig luking, men med samme forbehold om Kregnesteigen.
-- **Habitat:** vegetasjonsdekke reduserer antallet for begge stadier (juvenile p `r fp(res$Juvenile$lrt["Vegetasjonsdekke"])`, voksne p `r fp(res$Voksne$lrt["Vegetasjonsdekke"])`), og kontrollen viser at dette ikke skyldes tetthetsmetoden: effekten finnes også med areal som kovariat og innen ett enkelt år. Juvenile er færre på blandet substrat (RR `r num(exp(sj["substratblanding", 1]))`, p `r fp(sj["substratblanding", 4])`); substrat betyr ikke noe for voksne. Slitasje har ingen effekt (juvenile p `r fp(res$Juvenile$lrt["Slitasje"])`, voksne p `r fp(res$Voksne$lrt["Slitasje"])`).
-- Stigningen for log(areal) (`r num(sj["log_area", 1])` for juvenile, `r num(sa["log_area", 1])` for voksne, mot 1 hvis antallet var proporsjonalt med arealet) bekrefter at antallet øker mye langsommere enn polygonarealet. Tetthet per m² avhenger derfor av hvordan polygonet er tegnet, og sammenligninger mellom år med ulik polygonstørrelse bør gjøres med areal i modellen, som her.
-
-- **Vannføring:** det sterkeste mønsteret i datasettet er sammenhengen mellom **høyeste vannføring i sommersesongen og antallet i september**: årene med de største vår- og sommerflommene hadde færrest edderkopper, og årene med de minste flommene flest. Effekten holder også når det er tatt hensyn til en lineær årstrend (voksne p `r fp(cl_p("adults", "log_qmax_trend"))`, juvenile p `r fp(cl_p("juveniles", "log_qmax_trend"))`) og metodeskiftet i 2025 (voksne p `r fp(cl_p("adults", "log_qmax_trend_method"))`, juvenile p `r fp(cl_p("juveniles", "log_qmax_trend_method"))`). Det er biologisk rimelig – edderkoppene lever i ganger på den laveste, mest flomutsatte sanden, og flommen kommer når juvenilene er små. Men serien er kort, og høyeste vannføring har gått ned gjennom perioden (r = `r num(r_trend)` med år), så trend og flom kan ikke skilles sikkert. Nedbør og snø vinteren før viser ingen sammenheng (p `r fp(min(climate_res$p_LRT[climate_res$predictor %in% c("precip_season", "precip_30d", "snow_days_winter")]))` eller høyere). Høyeste vannføring de 30 dagene før besøket henger sammen med antall voksne (p `r fp(cl_p("adults", "log_qmax_30d"))`), men ikke juvenile (p `r fp(cl_p("juveniles", "log_qmax_30d"))`). Hypotesen – **lave sommerflommer lar bestanden bygge seg opp på sandbankene** – bør testes på en lengre serie og med oversvømmelsesterskler per sandbanke.
+- **Bestanden har økt.** Antallet i september har økt siden 2023, og i 2026 ble det registrert flest individer i hele overvåkingsperioden: 2 374 juvenile og 819 voksne. Alle lokaliteter hadde sitt høyeste antall i 2026, bortsett fra voksne på Storrønningen.
+- **Full luking ga flere voksne i 2026.** Over begge år samlet hadde lukede flekker ikke flere edderkopper enn ikke-lukede (RR 1,03 for juvenile og 1,12 for voksne), og de lå på samme nivå som kontrollen på Fornes. I 2026 hadde lukede flekker likevel 3,6 ganger så mange voksne som ikke-lukede (p = 0,023). Effekten holder også uten Kregnesteigen (RR 3,1, p = 0,044) og ses både på Gravråk og Storrønningen. At det er få voksne i ikke-lukede flekker, er som forventet, fordi arten ikke kan grave seg ned der vegetasjonen er tett. Resultatet bygger på få polygoner og ett år og må bekreftes i de kommende årene.
+- **Effekten av delvis luking skyldes lokaliteten.** Delvis lukede flekker hadde flest edderkopper, men i 2026 lå alle på Kregnesteigen, som hadde den kraftigste økningen. Uten Kregnesteigen forsvinner effekten (RR 0,85 for juvenile og 2,17 for voksne, ikke signifikant).
+- **Edderkoppene lever i åpne flekker på sand.** 77 % av de juvenile og 66 % av de voksne ble funnet i polygoner med høyst 25 % vegetasjonsdekke, og antallet gikk ned med økende vegetasjonsdekke (juvenile p < 0,001, voksne p = 0,0093). Nesten alle individene ble funnet på sand. Slitasje hadde ingen effekt.
+- **Polygonarealet må være med i modellen.** En dobling av polygonarealet ga bare 1,42 ganger så mange juvenile og 1,48 ganger så mange voksne. Tetthet per m² er derfor misvisende, og polygonene bør avgrenses på samme måte fra år til år.
+- **Flom påvirker bestanden.** Årene med de største flommene hadde færrest edderkopper i september, også når det er tatt hensyn til en årstrend og metodeskiftet i 2025. Serien er likevel kort, og høyeste vannføring har gått ned gjennom perioden samtidig som bestanden har økt, så flom og trend kan ikke skilles sikkert. Nedbør og snø hadde ingen sammenheng med antallet. Bevaring av arten bør derfor også ta vare på den naturlige dynamikken i elva, ikke bare luke lupiner.
 
 ### 7.2 Anbefaling for videreføring
 
