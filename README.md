@@ -11,7 +11,7 @@ Previous years' code: [NINAnor/effektovervaaking](https://github.com/NINAnor/eff
 | Folder | Species / habitat type | Status |
 |---|---|---|
 | [Apen-grunnlendt-kalkmark](Apen-grunnlendt-kalkmark/) | Åpen grunnlendt kalkmark i boreonemoral sone | not set up |
-| [Dragehode](Dragehode/) | Dragehode (*Dracocephalum ruyschiana*) | not set up |
+| [Dragehode](Dragehode/) | Dragehode (*Dracocephalum ruyschiana*) | report draft, mowing experiment 2023–2026 and basic monitoring at Horgen 2017–2026 |
 | [Honningblom](Honningblom/) | Honningblom (*Herminium monorchis*) | not set up |
 | [Elvesandjeger](Elvesandjeger/) | Elvesandjeger (*Cicindela maritima*) | report draft, data 2015–2026, effect of lupin clearing, climate and hydrology |
 | [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/) | Stor elvebreddedderkopp (*Arctosa cinerea*) | report draft, data 2020–2026, effect of lupin clearing, climate and hydrology |
@@ -44,7 +44,7 @@ A blank template for new subprojects is in [`templates/`](templates/).
 
 ## Software environment
 
-Each subproject manages its own software environment, so subprojects can use different tools and versions. The Elvedyr subprojects ([Elvesandjeger](Elvesandjeger/), [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/)) use [pixi](https://pixi.sh): R, Quarto and all R packages are listed in the subproject's `pixi.toml`, with exact versions locked in `pixi.lock`.
+Each subproject manages its own software environment, so subprojects can use different tools and versions. The Elvedyr subprojects ([Elvesandjeger](Elvesandjeger/), [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/)) and [Dragehode](Dragehode/) use [pixi](https://pixi.sh): R, Quarto and all R packages are listed in the subproject's `pixi.toml`, with exact versions locked in `pixi.lock`.
 
 ```bash
 # once: install pixi (https://pixi.sh/latest/#installation), then from the subproject folder

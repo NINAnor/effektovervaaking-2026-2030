@@ -15,6 +15,8 @@ library(readxl)
 library(here)
 library(tidyr)
 library(ggplot2)
+library(stringr)
+library(openxlsx)
 ```
 
 ## Importing data

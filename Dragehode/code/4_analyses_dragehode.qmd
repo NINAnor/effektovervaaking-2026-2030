@@ -474,7 +474,7 @@ ggsave(
 df_nmds <- df %>% 
   filter(year %in% c(2023, 2024, 2025))
 
-df_nmds <- dcast(df_nmds, plot_id_full + year + treatment + presence_dragehode ~ species, value.var = "species_cover",
+df_nmds <- reshape2::dcast(df_nmds, plot_id_full + year + treatment + presence_dragehode ~ species, value.var = "species_cover",
                  fun.aggregate = sum, fill = 0)
 
 #Create species dataset

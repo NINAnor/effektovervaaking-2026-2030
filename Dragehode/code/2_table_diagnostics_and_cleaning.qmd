@@ -80,7 +80,9 @@ Sys.setlocale(locale='no_NB.utf8')
 
 ## Packages
 packages <- c("dplyr", "readxl", "sf", "tidyr", "openxlsx", "stringr",
-              "httr", "jsonlite", "purrr", "data.table", "readr", "mapview")
+              "httr", "jsonlite", "purrr", "data.table", "readr")
+# mapview is only needed for the map check (check_GIS = TRUE)
+if (check_GIS) packages <- c(packages, "mapview")
 
 # Require or install packages function
 ipak <- function(pkg){

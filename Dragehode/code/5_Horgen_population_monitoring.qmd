@@ -59,7 +59,7 @@ lokalitetsnavn <- "Horgen"
 datafil <- here::here("data", "Dragehode_overvåking_DATA_2026.xlsx")
 korreksjonsfil <- here::here("data", "siriskuddogind.xlsx")
 funksjonsfil <- here::here("Rsource", "functions_pop.R")
-resultatmappe <- "data/Derived_data/Horgen"
+resultatmappe <- here::here("data", "derived_data", "Horgen")
 figurmappe <- here::here("img")
 
 # Retain the interval used in the original scripts: 50%, rather than 95%.
@@ -71,10 +71,12 @@ set.seed(20261005)
 for (sti in c(datafil, korreksjonsfil, funksjonsfil)) {
   if (!file.exists(sti)) stop("File not found: ", sti)
 }
-for (sti in c(resultatmappe, figurmappe, "data/derived_data")) {
+for (sti in c(resultatmappe, figurmappe, here::here("data", "derived_data"))) {
   dir.create(sti, recursive = TRUE, showWarnings = FALSE)
 }
 source(funksjonsfil, encoding = "UTF-8")
+# functions_pop.R saves intermediate results to the relative path data/derived_data/, so run the next chunks from the project folder
+knitr::opts_knit$set(root.dir = here::here())
 
 for (navn in c("beregn.dekning", "beregn.popstruktur", "beregn.vekstrate")) {
   if (!exists(navn, mode = "function")) {
@@ -371,7 +373,7 @@ figur_retning
 
 # Export results
 
-Results are saved in `data/derived_data/Horgen/` and figures in `Figurer/Horgen/`. Shared RDS files from the old scripts are not overwritten.
+Results are saved in `data/derived_data/Horgen/` and figures in `img/`. Shared RDS files from the old scripts are not overwritten.
 
 ```{r}
 #| label: export-results
