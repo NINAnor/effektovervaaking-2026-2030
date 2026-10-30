@@ -51,6 +51,18 @@ hist <- read.csv2("./Elvesandjeger/elvesandjeger_obs_2015-2025.csv", stringsAsFa
     source = "gps_point", area_m2 = NA_real_
   )
 stopifnot(!any(is.na(hist$date)), !any(is.na(hist$N)))
+
+# Coordinate fixes in the source file:
+# - 2025 is in WGS84 (spat_ref = "wgs84", decimal degrees); all other years are UTM 32 -> transform to UTM 32
+i_wgs <- hist$spat_ref == "wgs84"
+xy <- st_coordinates(st_transform(st_as_sf(hist[i_wgs, ], coords = c("E", "N"), crs = 4326), 25832))
+hist$E[i_wgs] <- xy[, "X"]
+hist$N[i_wgs] <- xy[, "Y"]
+hist$spat_ref[i_wgs] <- "utm32"
+# - One Storrønningen point on 29 June 2022 has a missing digit in N (701189 instead of 701189x).
+#   The points recorded before and after it are at N 7011891-7011902, so it is set to 7011895 (within 5 m).
+hist$N[hist$N == 701189] <- 7011895
+stopifnot(all(hist$spat_ref == "utm32"), all(hist$N > 7e6))
 table(hist$year, hist$month)
 table(hist$stage)
 

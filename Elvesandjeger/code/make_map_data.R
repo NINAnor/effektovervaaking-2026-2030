@@ -76,17 +76,12 @@ lukeomrade <- st_read(file.path(p_elvedyr, "Lupinluking_2026/Lupinluking_2025_20
   st_convex_hull()
 
 # Records with larvae or adults in the last three years (GPS points to 2025, polygon centroids from 2026)
-# The master file has UTM 32 coordinates, except 2025, which is in WGS84 (spat_ref) with decimal commas
-master <- read.csv2(list.files(here::here("data"), "_master\\.csv$", full.names = TRUE), colClasses = c(N = "character", E = "character")) %>%
-  mutate(N = as.numeric(sub(",", ".", N)), E = as.numeric(sub(",", ".", E)))
+master <- read.csv2(list.files(here::here("data"), "_master\\.csv$", full.names = TRUE))
 last_years <- seq(max(master$year) - 2, max(master$year))
 recs <- master %>%
   filter(year %in% last_years, site %in% names(master_codes), stage != "larva", obs > 0, !is.na(N), !is.na(E)) %>%
-  distinct(site, spat_ref, N, E, year)
-to_utm <- function(d, crs) st_transform(st_as_sf(d, coords = c("E", "N"), crs = crs), 25832)
-sandjegeromrade <- rbind(to_utm(filter(recs, spat_ref == "utm32"), 25832),
-                         to_utm(filter(recs, spat_ref == "wgs84"), 4326)) %>%
-  filter(st_coordinates(.)[, 2] > 7e6) %>% # leaves out points with a mistyped north coordinate
+  distinct(site, N, E, year)
+sandjegeromrade <- st_as_sf(recs, coords = c("E", "N"), crs = 25832) %>%
   mutate(site = unname(master_codes[site])) %>%
   group_by(site) %>%
   summarise(n_punkter = n(), aar = paste(range(year), collapse = "-")) %>%
