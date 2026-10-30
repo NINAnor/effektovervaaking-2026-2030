@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-10-29
+2026-10-30
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -130,22 +130,28 @@ dyret. Arten har en toårig livssyklus, og voksne individer kan derfor
 treffes det meste av året (Roos mfl. 2023). Den trenger åpne sandflater
 med lite vegetasjon der den kan grave seg ned (Roos mfl. 2025).
 
-Stor elvebreddedderkopp er avhengig av den naturlige dynamikken i elva.
-Flom flytter sand og grus, slik at det dannes nye, åpne flater mens de
-gamle gror igjen. Arten kan ta i bruk nye områder raskt: etter de
-kraftige flommene i august 2023 ble det lagt opp nye sandflater på flere
-av lokalitetene langs Gaula, og i slutten av september var mange av dem
-allerede tatt i bruk (Roos mfl. 2023). Edderkoppen virket da mer robust
-mot flommene enn elvesandjeger, trolig fordi den raskt utnytter nye
-områder og fordi levehullene er forsterket med silke. Områdene med
-høyest tetthet ser ut til å fungere som kildebestander for
-rekolonisering etter slike forstyrrelser (Roos mfl. 2023).
+I en naturlig elv er det balanse mellom gjengroing og nydanning: flom
+eroderer og legger opp nye sand- og grusflater, mens de gamle gror
+igjen. I Gaula er denne dynamikken langt på vei stoppet.
+Elveforbygninger har låst elveløpet, og omfattende grusuttak har senket
+elvebunnen slik at moderate flommer ikke lenger når opp på breddene. Fra
+1956 til 2014 forsvant omtrent 37 % av de åpne elveørene mellom Støren
+og Gaulosen, og forbindelsen mellom dem ble redusert med omtrent 62 %
+(Åström mfl. 2017). Det dannes få nye sandflater, og de som finnes i
+dag, er derfor svært verdifulle for arten. Arten kan likevel ta i bruk
+nye områder raskt: etter de kraftige flommene i august 2023 ble det lagt
+opp nye sandflater på flere av lokalitetene langs Gaula, og i slutten av
+september var mange av dem allerede tatt i bruk (Roos mfl. 2023).
+Edderkoppen virket da mer robust mot flommene enn elvesandjeger, trolig
+fordi den raskt utnytter nye områder og fordi levehullene er forsterket
+med silke. Områdene med høyest tetthet ser ut til å fungere som
+kildebestander for rekolonisering etter slike forstyrrelser (Roos mfl.
+2023).
 
 Arten trues av fragmentering og forringelse av leveområdene som følge av
 landbruk langs vassdragene, flomforbygninger, vassdragsregulering og
 gjengroing, blant annet med den fremmede arten hagelupin *Lupinus
-polyphyllus*. Ved Gaula har omfattende masseuttak fra elvebunnen senket
-elva og bidratt til at elvebreddene gror igjen (Roos mfl. 2023).
+polyphyllus*.
 
 Dette delprosjektet overvåker effekten av luking av hagelupin på stor
 elvebreddedderkopp på fire lokaliteter langs Gaula i Trøndelag:
@@ -172,10 +178,7 @@ overvåkingen
 
 Formålet med overvåkingen er å følge bestanden av stor
 elvebreddedderkopp på fire lokaliteter langs Gaula og fastslå effekten
-av lupinlukingen på bestanden (Roos mfl. 2024, 2025). Overvåkingen skal
-også vise hvordan habitatet (vegetasjonsdekke, substrattype og
-slitasje), flom og vær påvirker antallet, slik at effekten av lukingen
-kan skilles fra andre forhold.
+av lupinlukingen på bestanden (Roos mfl. 2024, 2025).
 
 ### 2.3 Forventninger
 
@@ -239,8 +242,9 @@ for Skjerdingstad. Lokaliteten er en langsmal elveør i en innersving, om
 lag 1 km lang og 20–50 m bred ved normal vannstand. Gjengroing med gråor
 og flommene i august 2023 har endret lokaliteten, og flommene la
 samtidig igjen mye ny sand på store deler av elveøra (Hanssen 2023; Roos
-mfl. 2024). Området er mye brukt til laksefiske, og nær elvekanten og en
-gapahuk er det svært stor slitasje fra ferdsel (Roos mfl. 2025).
+mfl. 2024). Området er populært for laksefiske, og enkelte steder,
+særlig nær elvekanten ved fiskerhytta og gapahuken, er det mye slitasje
+fra ferdsel (Roos mfl. 2025).
 
 **Storrønningen** ligger på vestsiden av Gaula ved Kvål. Elveøra er 1,3
 km lang, og de nederste 500 m er et om lag 50 m bredt overløp der det
@@ -252,11 +256,16 @@ voksne edderkopper (Roos mfl. 2025).
 
 **Fornes** ligger én kilometer oppstrøms Kvålsbrua, ved utløpet av
 Gammelelva naturreservat på østsiden av Gaula. Lokaliteten er en elveør
-på 28 daa som i hovedsak ble dannet mellom 2005 og 2009. Den har store
-sandflater med silt i og rundt et frodig klåvedkratt på østsiden mot
-Gammelelva, og store flater med grus og stein og lite vegetasjon på
-vestsiden (Hanssen 2023; Roos mfl. 2024). Edderkoppene på Fornes holder
-i hovedsak til på sandflatene utenfor lukeområdet
+på 28 daa med store sandflater med silt i og rundt et frodig klåvedkratt
+på østsiden mot Gammelelva, og store flater med grus og stein og lite
+vegetasjon på vestsiden (Hanssen 2023; Roos mfl. 2024). Flybilder viser
+at det ble tatt ut grus på østsiden av elva på 1980-tallet, og i 1998
+var det nesten ingen åpen elveør her. Dagens elveør bygde seg opp mellom
+2005 og 2009 og ble raskt kolonisert av klåved, som fanget opp silt og
+gjorde flatene egnet for elvebreddfaunaen (Hanssen 2023). Flybilder fra
+2014–2026 viser at vegetasjonen siden har spredt seg over store deler av
+elveøra. Edderkoppene på Fornes holder i hovedsak til på sandflatene
+utenfor lukeområdet
 (<a href="#fig-kart" class="quarto-xref">Figur 2</a>), og Fornes brukes
 derfor som kontroll i effektanalysen.
 
@@ -1082,11 +1091,11 @@ Lukingen holder eksisterende leveområder åpne, men nye leveområder
 skapes bare av elva selv. Arten er avhengig av at flom flytter sand og
 grus og danner nye sandflater, og forvaltningen bør derfor også ta
 hensyn til inngrep som reduserer den naturlige dynamikken i elva, som
-masseuttak, flomforbygninger og regulering. Restaureringen med
-gravemaskin på Kregnesteigen i 2022 og på Gravråk i 2025 har skapt store
-åpne arealer. Kregnesteigen hadde den kraftigste økningen i 2026. Vi kan
-ikke si at økningen skyldes restaureringen, men utviklingen på Gravråk
-bør følges de kommende årene.
+masseuttak og flomforbygninger. Restaureringen med gravemaskin på
+Kregnesteigen i 2022 og på Gravråk i 2025 har skapt store åpne arealer.
+Kregnesteigen hadde den kraftigste økningen i 2026. Vi kan ikke si at
+økningen skyldes restaureringen, men utviklingen på Gravråk bør følges
+de kommende årene.
 
 Skilt ved de mest besøkte stedene, som fiskeplassene og gapahuken på
 Kregnesteigen og områdene som brukes til hundetrening på Storrønningen,

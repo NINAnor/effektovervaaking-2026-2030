@@ -87,8 +87,8 @@ serien. Lukingen reduserer lupinbestanden, men lupinen kom raskt tilbake
 i 2026 etter mindre luking i 2025. Flekker som ble luket, hadde dobbelt
 så mange larver som flekker som ikke ble luket, men forskjellen var ikke
 signifikant, blant annet fordi det er få ikke-lukede flekker å
-sammenligne med. Fullstendig luking hvert år og overvåking bør
-videreføres, og tråkk i kjerneområdene bør reduseres.
+sammenligne med. Luking hvert år og overvåking bør videreføres, og tråkk
+i kjerneområdene bør reduseres.
 
 ## English summary
 
@@ -100,7 +100,7 @@ in the series. Lupin removal reduces the lupin population, but lupins
 returned quickly in 2026 after less removal in 2025. Patches where
 lupins were removed had twice as many larvae as patches that were not,
 but the difference was not significant, partly because there are few
-uncleared patches to compare with. Full lupin removal every year and
+uncleared patches to compare with. Lupin removal every year and
 monitoring should be continued, and trampling in the core areas should
 be reduced.
 
@@ -118,25 +118,25 @@ al. 2021).
 
 <div id="fig-art">
 
-<div id="fig-art-hull">
-
-<img src="img/foto_hull.jpg" data-ref-parent="fig-art" />
-
-(a) Larvehull, juli 2026. Foto: Arne Endre Laugsand/NINA
-
-</div>
-
 <div id="fig-art-voksen">
 
 <img src="img/foto_elvesandjeger_voksen.jpg"
 data-ref-parent="fig-art" />
 
-(b) Voksen elvesandjeger. Foto: Oddvar Hanssen/NINA (Roos et al. 2024)
+(a) Voksen elvesandjeger. Foto: Oddvar Hanssen/NINA (Roos et al. 2024)
 
 </div>
 
-Figure 1: Elvesandjeger: hull etter larver i sanden (blyanten viser
-størrelsen) og en voksen bille.
+<div id="fig-art-hull">
+
+<img src="img/foto_hull.jpg" data-ref-parent="fig-art" />
+
+(b) Larvehull, juli 2026. Foto: Arne Endre Laugsand/NINA
+
+</div>
+
+Figure 1: Elvesandjeger: en voksen bille og hull etter larver i sanden
+(blyanten viser størrelsen).
 
 </div>
 
@@ -147,19 +147,30 @@ larvestadiet kan bestemmes ut fra størrelsen på hullet (Roos et al.
 avsettes på roligere og høyereliggende flater under flom (Ødegaard and
 Hanssen 2010; Roos et al. 2024). De voksne billene er aktive i solskinn.
 
-Elvesandjeger er avhengig av den naturlige dynamikken i elva. Flom
-legger opp nye sand- og siltflater, mens de gamle gror igjen, og
-elveløpet endrer seg over tid (Ødegaard and Hanssen 2010). Ved Gaula har
+I en naturlig elv er det balanse mellom gjengroing og nydanning: flom
+eroderer og legger opp nye sand- og siltflater, mens de gamle gror igjen
+(Ødegaard and Hanssen 2010). I Gaula er denne dynamikken langt på vei
+stoppet. Elveforbygninger har låst elveløpet, og omfattende grusuttak
+har senket elvebunnen slik at moderate flommer ikke lenger når opp på
+breddene. Fra 1956 til 2014 forsvant omtrent 37 % av de åpne elveørene
+mellom Støren og Gaulosen, og forbindelsen mellom dem ble redusert med
+omtrent 62 % (Åström et al. 2017). Det dannes få nye sandflater, og de
+som finnes i dag, er derfor svært verdifulle for arten. Ved Gaula har
 arten forsvunnet fra seks lokaliteter siden 1980-tallet og finnes nå
-bare på fire (Roos et al. 2023). Store arealer gjør det mulig for arten
-å flytte seg innenfor lokalitetene etter flom og styrtregn, og områdene
-med stabile bestander fungerer som kildebestander (Roos et al. 2025).
+bare på fire (Roos et al. 2023). Overvåkingen over tid har vist at arten
+er svært avhengig av egnet substrat, og at noen kjerneområder er viktige
+år etter år som kildebestander, mens elvedynamikken endrer hvilke
+leveområder som er tilgjengelige (Roos et al. 2025). Det finnes ikke
+store arealer med egnet habitat, og når disse blir invadert av lupiner,
+settes bestandene under stort press fordi det er få nye steder å
+kolonisere. Arten forsøker å etablere seg på nye steder, men etter flom
+endres den romlige fordelingen av larvehull utenfor kjerneområdene mye.
 
 Arten trues av vassdragsregulering og kanalisering som endrer eller
 reduserer dynamikken i elva, og av gjengroing, blant annet med den
 fremmede arten hagelupin *Lupinus polyphyllus*. Larvehullene kan
-dessuten ødelegges direkte av kjøring og tråkk fra mennesker og hunder
-(Evju et al. 2022; Roos et al. 2025).
+dessuten ødelegges direkte av tråkk fra mennesker og hunder (Evju et al.
+2022; Roos et al. 2025).
 
 Dette delprosjektet overvåker effekten av luking av hagelupin på
 elvesandjeger på fire lokaliteter langs Gaula i Melhus kommune i
@@ -185,11 +196,7 @@ i overvåkingen
 
 Formålet med overvåkingen er å følge bestanden av elvesandjeger på fire
 lokaliteter langs Gaula og fastslå effekten av lupinlukingen på
-bestanden (Roos et al. 2024, 2025). Overvåkingen skal også vise om
-lukingen reduserer lupinbestanden, og hvordan habitatet
-(vegetasjonsdekke, substrattype og slitasje), flom og vær påvirker
-antallet larver, slik at effekten av lukingen kan skilles fra andre
-forhold.
+bestanden (Roos et al. 2024, 2025).
 
 ### 2.3 Forventninger
 
@@ -254,8 +261,9 @@ største sand- og siltflatene med elvesandjeger nedstrøms svingen, som en
 smal sone inn mot kantvegetasjonen. Gjengroing med gråor og flommene i
 august 2023 forringet leveområdet der, og arten finnes nå i stor grad på
 en flate om lag 100 m oppstrøms som ble restaurert med gravemaskin i
-2022 (Roos et al. 2024, 2025). Området er mye brukt til laksefiske, og
-det er mange fotspor på sandflatene (Roos et al. 2025).
+2022 (Roos et al. 2024, 2025). Området er populært for laksefiske, og
+enkelte steder, særlig nær elvekanten ved fiskerhytta og gapahuken, er
+det mye slitasje fra ferdsel (Roos et al. 2025).
 
 **Storrønningen** ligger på vestsiden av Gaula ved Kvål. Elveøra er 1,3
 km lang, og de nederste 500 m er et om lag 50 m bredt overløp der det
@@ -269,12 +277,24 @@ etter hunder i kjerneområdene for elvesandjeger (Roos et al. 2025).
 
 **Fornes** ligger én kilometer oppstrøms Kvålsbrua, ved utløpet av
 Gammelelva naturreservat på østsiden av Gaula. Lokaliteten er en elveør
-på 28 daa som i hovedsak ble dannet mellom 2005 og 2009. Den har store
-sandflater med silt i og rundt et frodig klåvedkratt på østsiden mot
-Gammelelva, og store flater med grus og stein og lite vegetasjon på
-vestsiden (Hanssen 2023; Roos et al. 2024). Lupinene på Fornes ble først
-luket i 2025 og 2026, og de fleste registreringene av elvesandjeger
-ligger utenfor lukeområdet
+på 28 daa med store sandflater med silt i og rundt et frodig klåvedkratt
+på østsiden mot Gammelelva, og store flater med grus og stein og lite
+vegetasjon på vestsiden (Hanssen 2023; Roos et al. 2024). Flybilder
+viser at det ble tatt ut grus på østsiden av elva på 1980-tallet, og i
+1998 var det nesten ingen åpen elveør her. Dagens elveør bygde seg opp
+mellom 2005 og 2009 og ble raskt kolonisert av klåved, som fanget opp
+silt og gjorde flatene egnet for elvesandjeger (Hanssen 2023). Flybilder
+fra 2014–2026 viser at vegetasjonen siden har spredt seg over store
+deler av elveøra. Larvene lever her mest på små, forhøyede siltputer og
+flater nedstrøms klåvedbuskene, mens de voksne bruker de store
+sandflatene. Elvesandjeger ble funnet på Fornes første gang i august
+2017, da det ble registrert seks larvehull fra egg lagt våren 2016.
+Arten koloniserte trolig lokaliteten på egen hånd fra Storrønningen, om
+lag 2 km nedstrøms. For å styrke den nye bestanden ble det satt ut
+voksne biller fra Storrønningen og Kregnesteigen i 2018 (12 individer)
+og fra Storrønningen i 2020 (20 individer) (Hanssen 2023). Lupinene på
+Fornes ble luket første gang i 2025, og de fleste registreringene av
+elvesandjeger ligger utenfor lukeområdet
 (<a href="#fig-kart" class="quarto-xref">Figure 2</a>). Fornes brukes
 derfor som kontroll i effektanalysen.
 
@@ -378,9 +398,10 @@ Lukeinnsatsen har variert mye mellom år og lokaliteter
 ble det luket 21 465 m² i 2024, men bare 5 101 m² i 2025, og i 2026 ble
 det igjen luket 12 507 m². På Kregnesteigen ble det luket om lag 17 700
 m² hvert år i 2023–2025, i 2025 mest som delvis luking, mens det bare
-ble luket 604 m² i 2026. Fornes ble luket første gang i 2026 (2 827 m²)
-i lukedataene. Lukingen på Fornes i 2025 (Øya videregående skole) og
-restaureringen med gravemaskin på Gravråk i oktober 2025 er ikke med i
+ble luket 604 m² i 2026. På Fornes ble det luket første gang i 2025, av
+Øya videregående skole, men denne lukingen er ikke med i lukedataene.
+Lukedataene for Fornes starter derfor i 2026 (2 827 m²). Restaureringen
+med gravemaskin på Gravråk i oktober 2025 er heller ikke med i
 lukedataene.
 
 <div id="fig-luking-areal">
@@ -542,14 +563,15 @@ den nye alene, og i 2026 ble registreringsmetoden endret fra punkter til
 polygoner. Summene er derfor en indeks for relativ forekomst som kan
 sammenlignes mellom år og lokaliteter, og ikke et bestandsestimat.
 
-**Effekt av luking på lupin.** Dersom lukingen virker, skal et polygon
-som ble luket ha færre lupiner året etter. Dette testes med en negativ
-binomial GLMM (`glmmTMB`, nbinom2) på antall lupiner fjernet i et
-polygon de årene det ble luket (2021–2026), med polygonarealet som
-offset, lukestatus året før (Nei / Delvis / Ja) som forklaringsvariabel,
-år og lokalitet som faste effekter og et tilfeldig konstantledd per
-polygon. En modell nummer to bruker antall tidligere år polygonet er
-luket.
+**Effekt av luking på lupin.** Midtnorsk Naturundersøkelse registrerer
+antall lupiner i hvert lukepolygon samtidig med lukingen. Antallet et år
+er derfor et resultat av lukingen årene før, ikke av lukingen samme år.
+Lupintettheten (lupiner per m²) sammenlignes etter hvordan polygonet ble
+luket årene før: fullt luket året før, delvis luket året før, ett år
+uten luking, to år eller mer uten luking, eller luket for første gang.
+Dette testes med en negativ binomial GLMM (`glmmTMB`, nbinom2) på antall
+lupiner, med polygonarealet som offset, lukehistorikk, år og lokalitet
+som faste effekter og et tilfeldig konstantledd per polygon (2021–2026).
 
 **Effekt av luking på elvesandjeger.** Effektanalysen bruker
 **Kregnesteigen og Storrønningen**, de to lokalitetene som har både
@@ -683,54 +705,87 @@ i juni, juli og august. Tallene over søylene er totalt antall larver.
 
 ### 6.2 Effekt av luking på lupin
 
-Lukingen reduserer lupinbestanden
+**Lukehistorikk.** Lupintettheten i et polygon avhenger av hvordan det
+er luket årene før
 (<a href="#tbl-lupin-luking" class="quarto-xref">Table 5</a>,
 <a href="#fig-lupin-luking" class="quarto-xref">Figure 9</a>). I
-polygoner som ble luket året før, ble det fjernet 0,75 lupiner per m²,
-mot 2,28 per m² i polygoner som ikke ble luket året før (RR 0,33, KI95
-0,21–0,51, p \< 0,001). Jo flere år et polygon er luket, desto færre
-lupiner er det: hvert ekstra år med luking halverer omtrent tettheten
-(RR 0,53, p = 0,0013). Polygoner som bare ble delvis luket året før,
-hadde derimot flere lupiner (4,3 per m², RR 1,90, p = 0,060). Ved delvis
-luking fjernes bare de største plantene, så mange lupiner står igjen og
-kan spre frø.
+polygoner som ble fullt luket året før, var det 0,8 lupiner per m².
+Polygoner som sto ett år uten luking, hadde 2,1 lupiner per m² (RR 2,51
+mot fullt luket året før, p = 0,016), omtrent like mange som polygoner
+som ble luket for første gang (2,0 per m², RR 2,40, p = 0,003).
+Polygoner som hadde stått to år eller mer uten luking, hadde 7,8 lupiner
+per m² (RR 9,37, p \< 0,001). Allerede etter ett år uten luking er
+lupintettheten altså tilbake på nivået fra før lukingen startet, og
+etter to år er den mye høyere.
 
-Lupintettheten i de lukede polygonene gikk ned fra 8,0 per m² i 2021 til
-0,58 per m² i 2025, men økte til 5,2 per m² i 2026. Økningen kom etter
-et år med mye mindre luking: på Storrønningen ble det luket 5 101 m² i
-2025, mot 21 465 m² i 2024, og på Kregnesteigen var lukingen i 2025 for
-det meste delvis
-(<a href="#tbl-luking" class="quarto-xref">Table 2</a>). Lupinen kommer
-altså raskt tilbake når lukingen reduseres, og lukingen må gjentas hvert
-år for å holde bestanden nede.
+**Delvis luking.** Polygoner som ble delvis luket året før, hadde 4,6
+lupiner per m², over fem ganger så mange som polygoner som ble fullt
+luket (RR 5,51, p \< 0,001). Delvis luking holder altså ikke lupinen
+nede på samme måte som full luking. Delvis luking kan være bedre for
+elvesandjeger, fordi den gir mindre forstyrrelse av sanden og
+larvehullene, men den må være effektiv nok til å hindre at lupinen
+setter frø og sprer seg.
+
+**Utvikling over år.** Lupintettheten i de lukede polygonene gikk ned
+fra 4,8 per m² i 2020 til 0,82 i 2024 og 0,17 i 2025, men økte igjen til
+1,7 per m² i 2026
+(<a href="#tbl-luking" class="quarto-xref">Table 2</a>). Den lave
+tettheten i 2025 kom etter flere år med mye luking: i 2024 ble 44 700 m²
+luket, det meste fullt. I 2025 ble bare 11 900 m² fullt luket, og
+økningen i 2026 kom særlig fra polygoner på Storrønningen som ikke var
+luket i 2024 og 2025. Lupinen kommer altså raskt tilbake når lukingen
+stopper opp, og lukingen må gjentas hvert år.
+
+**Substrat.** Vi undersøkte også om lupintettheten henger sammen med
+substratet i lukepolygonene, ved å bruke substratet som er registrert i
+undersøkelsespolygonene for elvesandjeger og stor elvebreddedderkopp i
+2025–2026. Det var ingen sammenheng mellom andelen sand, blanding eller
+silt og lupintettheten (Spearman, p \> 0,3). Substratet er bare
+registrert i flekkene der artene ble funnet, og bare 16 lukepolygoner
+har slike data, så analysen sier lite om hvor lupinen vokser best.
 
 <div id="tbl-lupin-luking">
 
-Table 5: Lupintetthet (lupiner fjernet per m²) i lukede polygoner som
-funksjon av luking året før. NB GLMM, n = polygon-år. RR = rateratio;
-KI95 = 95 % konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \<
-0,01; \*\*\* p \< 0,001.
+Table 5: Lupintetthet (lupiner per m²) i lukede polygoner etter
+lukehistorikk. NB GLMM, n = polygon-år. RR = rateratio; KI95 = 95 %
+konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01;
+\*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
-| Effekt                           |   RR | KI95      | p             |
-|:---------------------------------|-----:|:----------|:--------------|
-| Delvis luket året før (mot ikke) | 1.90 | 0.97–3.71 | 0.06          |
-| Luket året før (mot ikke)        | 0.33 | 0.21–0.51 | \<0.001\*\*\* |
-| Per ekstra tidligere år luket    | 0.53 | 0.36–0.78 | 0.0013\*\*    |
+| Effekt | n | RR | KI95 | p |
+|:---|---:|---:|:---|:---|
+| Delvis luket året før (mot fullt luket året før) | 35 | 5.51 | 2.62–11.57 | \<0.001\*\*\* |
+| 1 år uten luking (mot fullt luket året før) | 34 | 2.51 | 1.19–5.31 | 0.016\* |
+| 2 år eller mer uten luking (mot fullt luket året før) | 17 | 9.37 | 3.64–24.10 | \<0.001\*\*\* |
+| Første gang luket (mot fullt luket året før) | 39 | 2.40 | 1.34–4.30 | 0.0032\*\* |
 
 </div>
 
 </div>
+
+<a href="#fig-lupin-luking" class="quarto-xref">Figure 9</a> viser
+lupintettheten i hvert lukepolygon og år (punkter), gruppert etter
+hvordan polygonet var luket årene før, og det modellerte gjennomsnittet
+med 95 % konfidensintervall (svart). Y-aksen er logaritmisk, slik at
+hver linje betyr ti ganger så mange lupiner. Spredningen innen hver
+gruppe er stor, fordi polygonene er ulike og har ulik lukehistorikk
+lenger tilbake. Polygoner som ble fullt luket året før, skiller seg
+likevel tydelig ut: gjennomsnittet er under én lupin per m², og mange av
+polygonene hadde under 0,1 lupin per m², altså nesten ingen lupiner.
+Etter ett år uten luking og i polygoner som ble luket for første gang,
+er gjennomsnittet rundt to lupiner per m². Etter delvis luking og etter
+to år eller mer uten luking er det høyest, og her er det få polygoner
+med under 0,1 lupin per m². Intervallene er brede for disse gruppene
+fordi det er få polygon-år (35 og 17).
 
 <div id="fig-lupin-luking">
 
 ![](img/fig-lupin-luking-1.png)
 
-Figure 9: Venstre: lupintetthet i lukede polygoner etter lukestatus året
-før (punkter = polygon-år, +0,01 for å vise nuller; svart = modellert
-gjennomsnitt ± 95 % KI). Høyre: årseffekten fra samme modell
-(gjennomsnitt ± 95 % KI).
+Figure 9: Lupintetthet i lukede polygoner etter lukehistorikk (punkter =
+polygon-år, +0,01 for å vise nuller; svart = modellert gjennomsnitt ± 95
+% KI).
 
 </div>
 
@@ -1085,13 +1140,15 @@ Estimat på log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p
 <!-- Teksten er skrevet for dataene til og med 2026. Oppdater tallene og tolkningen manuelt hvert år. -->
 
 **Lukingen holder lupinbestanden nede, men bare så lenge den gjentas.**
-I polygoner som ble luket året før, var det tre ganger færre lupiner enn
-i polygoner som ikke ble luket, og tettheten går ned for hvert år et
-polygon lukes. Delvis luking ga ikke samme effekt, fordi mange planter
-står igjen og kan spre frø. I 2025 ble det luket mye mindre på
-Storrønningen, og på Kregnesteigen var lukingen for det meste delvis. I
-2026 var lupintettheten i de lukede polygonene nesten ti ganger så høy
-som året før. Lupinen kommer altså raskt tilbake når lukingen reduseres.
+Allerede etter ett år uten luking var lupintettheten tilbake på nivået
+fra før lukingen startet, og etter to år eller mer uten luking var den
+ni ganger så høy som i polygoner som ble fullt luket året før. Polygoner
+som bare ble delvis luket, hadde fem ganger så mange lupiner året etter
+som polygoner som ble fullt luket. I 2025 ble det fullt luket mye mindre
+enn året før, og i 2026 var lupintettheten i de lukede polygonene ti
+ganger så høy som i 2025, særlig i polygoner på Storrønningen som ikke
+var luket på to år. Lupinen kommer altså raskt tilbake når lukingen
+stopper opp, og lukingen må gjentas hvert år.
 
 **Bestanden tok seg opp i 2026 etter et svært dårlig 2025.** 2025 var
 det dårligste året siden overvåkingen ble etablert, men i 2026 økte
@@ -1139,21 +1196,30 @@ derfor mindre om bestanden enn antallet larver.
 
 ### 7.2 Anbefaling for videreføring
 
-**Tiltak.** Vi anbefaler å videreføre fullstendig luking av hagelupin
-hvert år. Resultatene fra 2026 viser at lupinen raskt kommer tilbake når
-lukingen reduseres, og at delvis luking ikke reduserer lupinbestanden.
-Kjerneområdene med stabile bestander av elvesandjeger fungerer som
-kildebestander og bør prioriteres, og områdene rundt bør holdes åpne som
-buffersoner som arten kan flytte til etter flom og styrtregn (Roos et
-al. 2025). Den restaurerte flaten på Kregnesteigen, der store deler av
-bestanden har holdt til siden 2023, var i ferd med å gro igjen i 2025 og
-bør lukes på nytt (Roos et al. 2025). Utviklingen på Gravråk etter
-restaureringen med gravemaskin i 2025 bør følges.
+**Tiltak.** Vi anbefaler full luking av hagelupin i alle lukepolygonene
+hvert år. Allerede ett år uten luking gir like mange lupiner som før
+lukingen startet, og etter to år uten luking er det mange flere. Et
+opphold i lukingen kan derfor sette arbeidet flere år tilbake.
+Polygonene som ikke er luket på to år eller mer, bør prioriteres, og på
+Kregnesteigen, der det bare ble luket 604 m² i 2026, bør hele
+lokaliteten lukes fullt i 2027. Delvis luking kan være skånsommere for
+elvesandjeger fordi den forstyrrer sanden og larvehullene mindre, men i
+dag gir den over fem ganger så mange lupiner året etter som full luking.
+Delvis luking bør derfor bare brukes der det er nødvendig av hensyn til
+larvehullene, og den må gjøres så grundig at lupinen ikke får sette frø.
+Frøstandene bør fjernes før de modner. Kjerneområdene med stabile
+bestander av elvesandjeger fungerer som kildebestander og bør
+prioriteres, og områdene rundt bør holdes åpne som buffersoner som arten
+kan flytte til etter flom og styrtregn (Roos et al. 2025). Den
+restaurerte flaten på Kregnesteigen, der store deler av bestanden har
+holdt til siden 2023, var i ferd med å gro igjen i 2025 og bør lukes på
+nytt (Roos et al. 2025). Utviklingen på Gravråk etter restaureringen med
+gravemaskin i 2025 bør følges.
 
 Lukingen holder eksisterende leveområder åpne, men nye sand- og
 siltflater skapes bare av elva selv. Forvaltningen bør derfor også ta
 hensyn til inngrep som reduserer den naturlige dynamikken i elva, som
-masseuttak, flomforbygninger og regulering.
+masseuttak og flomforbygninger.
 
 Larvehullene er sårbare for tråkk fra mennesker og hunder. Skilt som
 informerer om at sandflatene er leveområder for en truet art, er et
@@ -1175,6 +1241,16 @@ forsinket effekt av lukingen kan påvises.
 ## 8. Referanser
 
 <div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-astrom_2017" class="csl-entry">
+
+Åström, Jens, Frode Ødegaard, Oddvar Hanssen, and Sandra Åström. 2017.
+*Endring i Leveområder for Elvesandjeger Og Stor Elvebreddedderkopp Ved
+Gaula. Forekomst Og Dynamikk Av Elveører Fra 1947 Til 2014*. NINA
+Rapport No. 1314. Norsk institutt for naturforskning.
+<http://hdl.handle.net/11250/2429548>.
+
+</div>
 
 <div id="ref-dn_2009" class="csl-entry">
 

@@ -15,7 +15,8 @@
 # - data/ortofoto_<site>.jpg: Norge i bilder orthophoto covering exactly the site frame
 #   (Kartverket/Geovekst, WMS https://wms.geonorge.no/skwms1/wms.nib, layer "ortofoto")
 # - img/foto_<site>.jpg:      site photo, turned upright (EXIF orientation) and resized
-# - img/foto_hull.jpg:        photo of larval holes for the introduction
+# - img/foto_hull.jpg:        photo of larval holes for the introduction, cropped to the pencil and
+#                             holes and sized as img/foto_elvesandjeger_voksen.jpg (610 x 516)
 #
 #Only the four monitoring sites are kept (Follstadøya has clearing but no elvesandjeger monitoring).
 #Run again when the clearing polygons, the master file or the site photos change.
@@ -130,6 +131,8 @@ if (dir.exists(p_photos)) {
   image_read(file.path(p_photos, "elvesandjeger_hull_2026.jpg")) %>%
     image_orient() %>%
     image_resize("1280x1280>") %>%
+    image_crop("851x720+60+350") %>% # pencil and cluster of holes
+    image_resize("610x516!") %>%     # same size as the adult photo
     image_write(here::here("img", "foto_hull.jpg"), quality = 85)
 }
 
