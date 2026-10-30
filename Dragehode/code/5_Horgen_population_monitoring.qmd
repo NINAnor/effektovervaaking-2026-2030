@@ -1,0 +1,393 @@
+---
+title: "Northern dragonhead at Horgen"
+subtitle: "Data management, analyses and figures"
+author: "Olav Skarpaas, Matthew Grainger and Ruben Erik Roos"
+lang: en
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false
+    code-tools: true
+    embed-resources: true
+editor: source
+execute:
+  echo: true
+  message: false
+  warning: true
+  error: false
+  cache: false
+  freeze: false
+---
+
+This document builds upon earlier workflows from <https://ninanor.github.io/Dragehode/>. It is modified so only results for Horgen are presented. Original Norwegian input column names, sheet names and project function names are retained for compatibility.
+
+# Setup
+
+## Before you start
+
+The analysis requires these existing files:
+
+-   `data/Dragehode_overvåking_DATA_year.xlsx`, with the sheets Lokalitetsdata, Transektdata, Rutedata and Artsdata. This data can be updated yearly.
+-   `data/siriskuddogind.xlsx`, containing calibration data for shoots and individuals as in some years shoots were counted in stead of individuals.
+-   `Rsource/functions_pop.R`, containing the project's calculation functions.
+
+Install any missing packages once in the R console:
+
+``` r
+install.packages(c("boot", "rio", "tidyverse", "rstanarm"))
+```
+
+## Settings and packages
+
+Paths are relative to the project folder. Change them here if your files are located elsewhere. The trend model may take a few minutes to run.
+
+```{r}
+library(boot)
+library(rio)
+library(tidyverse)
+library(rstanarm)
+library(here)
+```
+
+Settings.
+
+```{r}
+#| label: setup
+
+lokalitetsnavn <- "Horgen"
+datafil <- here::here("data", "Dragehode_overvåking_DATA_2026.xlsx")
+korreksjonsfil <- here::here("data", "siriskuddogind.xlsx")
+funksjonsfil <- here::here("Rsource", "functions_pop.R")
+resultatmappe <- "data/Derived_data/Horgen"
+figurmappe <- here::here("img")
+
+# Retain the interval used in the original scripts: 50%, rather than 95%.
+# Change to c(0.025, 0.975) if you want 95% intervals.
+intervallkvantiler <- c(0.25, 0.75)
+intervallprosent <- 100 * diff(intervallkvantiler)
+set.seed(20261005)
+
+for (sti in c(datafil, korreksjonsfil, funksjonsfil)) {
+  if (!file.exists(sti)) stop("File not found: ", sti)
+}
+for (sti in c(resultatmappe, figurmappe, "data/derived_data")) {
+  dir.create(sti, recursive = TRUE, showWarnings = FALSE)
+}
+source(funksjonsfil, encoding = "UTF-8")
+
+for (navn in c("beregn.dekning", "beregn.popstruktur", "beregn.vekstrate")) {
+  if (!exists(navn, mode = "function")) {
+    stop("The functions file is missing this function: ", navn)
+  }
+}
+theme_set(theme_classic(base_size = 12))
+```
+
+# Data import
+
+Import directly from Excel on each run to use the latest data without relying on previously saved RDS files.
+
+```{r}
+#| label: import-data
+lokalitetsdata <- as.data.frame(import(datafil, sheet = "Lokalitetsdata", na = c("NA", " ")))
+transektdata <- as.data.frame(import(datafil, sheet = "Transektdata", na = c("NA", " ")))
+rutedata <- as.data.frame(import(datafil, sheet = "Rutedata", na = c("NA", " ")))
+artsdata <- as.data.frame(import(datafil, sheet = "Artsdata", na = c("NA", " ")))
+korreksjonsdata <- as.data.frame(import(korreksjonsfil))
+```
+
+# Data management, cleaning and quality checks
+
+## Check columns and retain Horgen
+
+These checks provide a clear error message if an expected column is missing. Datasets are kept as ordinary data frames because the original functions use column extraction such as `data[, "column"]`.
+
+```{r}
+#| label: filter-horgen
+sjekk_kolonner <- function(dat, kolonner, navn) {
+  mangler <- setdiff(kolonner, names(dat))
+  if (length(mangler)) {
+    stop(navn, " is missing columns: ", paste(mangler, collapse = ", "))
+  }
+}
+sjekk_kolonner(lokalitetsdata,
+  c("Lokalitet", "År", "Design", "Lokalitetsbredde"), "Lokalitetsdata")
+sjekk_kolonner(transektdata,
+  c("Lokalitet", "År", "Dragehode", "Forekomst dragehode (m)"), "Transektdata")
+sjekk_kolonner(rutedata,
+  c("Lokalitet", "År", "RuteID", "Avst", "Veg.planter", "Fert.planter",
+    "Småplanter", "Ant.DR", "Veg.høyde"), "Rutedata")
+sjekk_kolonner(artsdata,
+  c("Rute", "År", "Dekning", "Vedplante i feltsjikt (NY)"), "Artsdata")
+
+behold_horgen <- function(dat) {
+  dat <- dat %>%
+    filter(trimws(as.character(Lokalitet)) == lokalitetsnavn) %>%
+    mutate(Lokalitet = factor(lokalitetsnavn)) %>%
+    arrange(År)
+  if (!nrow(dat)) stop("No Horgen rows were found in one of the main datasets.")
+  as.data.frame(dat)
+}
+
+# Link species data to plot data using Rute/RuteID and year.
+# First check that Horgen plot keys are not also used at other localities.
+horgen_nokler <- rutedata %>%
+  filter(trimws(as.character(Lokalitet)) == lokalitetsnavn) %>%
+  distinct(RuteID, År)
+if (!"Lokalitet" %in% names(artsdata)) {
+  overlapp <- rutedata %>%
+    filter(!is.na(Lokalitet), trimws(as.character(Lokalitet)) != lokalitetsnavn) %>%
+    semi_join(horgen_nokler, by = c("RuteID", "År"))
+  if (nrow(overlapp)) {
+    stop("Artsdata has no Lokalitet column, and Horgen plot keys also occur at other localities. Resolve the linkage before analysis.")
+  }
+} else {
+  artsdata <- artsdata %>%
+    filter(trimws(as.character(Lokalitet)) == lokalitetsnavn)
+}
+artsdata <- as.data.frame(artsdata %>%
+  semi_join(horgen_nokler, by = c("Rute" = "RuteID", "År" = "År")))
+
+lokalitetsdata <- behold_horgen(lokalitetsdata)
+transektdata <- behold_horgen(transektdata)
+rutedata <- behold_horgen(rutedata)
+```
+
+## Check years and duplicates
+
+There should be one locality record per year and one record per plot and year. Duplicates are not removed automatically; resolve them in the source data.
+
+```{r}
+#| label: check-data
+for (dat in list(lokalitetsdata, transektdata, rutedata, artsdata)) {
+  if (!is.numeric(dat$År) || anyNA(dat$År) || any(dat$År != floor(dat$År))) {
+    stop("År must contain numeric integers with no missing values in the filtered data.")
+  }
+}
+if (anyDuplicated(lokalitetsdata$År)) {
+  stop("Lokalitetsdata contains multiple Horgen rows for the same year.")
+}
+if (anyNA(rutedata$RuteID) || anyDuplicated(rutedata[c("RuteID", "År")])) {
+  stop("Rutedata contains missing RuteID values or duplicate plot-year records.")
+}
+if (length(unique(rutedata$År)) < 2) {
+  stop("Growth-rate and trend analyses require at least two years of plot data.")
+}
+if (!all(rutedata$År %in% lokalitetsdata$År)) {
+  stop("Some years in rutedata are missing from lokalitetsdata.")
+}
+antallskolonner <- c("Veg.planter", "Fert.planter", "Småplanter", "Ant.DR")
+for (kolonne in antallskolonner) {
+  x <- rutedata[[kolonne]]
+  if (!is.numeric(x) || any(x < 0, na.rm = TRUE) || any(!is.finite(x) & !is.na(x))) {
+    stop("Check the numeric values in Rutedata: ", kolonne)
+  }
+}
+
+oversikt <- rutedata %>%
+  group_by(År) %>%
+  summarise(Number_of_plots = n(),
+            Plots_with_dragons_head = sum(Ant.DR > 0, na.rm = TRUE),
+            Plots_with_missing_counts = sum(is.na(Ant.DR)), .groups = "drop")
+knitr::kable(oversikt, col.names = c("Year", "Number of plots", "Plots with dragon’s head", "Plots with missing counts"), caption = "Recorded plots at Horgen before shoot-count correction")
+```
+
+## Clean transect data and calculate woody plant cover
+
+The original function interprets missing species records as zero woody plant cover. Check that Artsdata is complete: missing records do not necessarily represent true absence.
+
+```{r}
+#| label: clean-cover
+x <- trimws(as.character(transektdata$`Forekomst dragehode (m)`))
+x[tolower(x) %in% c("ingen", "")] <- NA_character_
+transektdata$`Forekomst dragehode (m)` <- x
+artsdata$Vedplante <- artsdata$`Vedplante i feltsjikt (NY)`
+rutedata$Vedpl.dekn <- beregn.dekning(rutedata, artsdata, "Vedplante")
+```
+
+## Correct shoot counts in 2019–2020
+
+Retain the original regressions without an intercept for vegetative and fertile shoots. Predicted numbers of individuals are rounded before calculating the total. Small plants are not corrected, following the original workflow. Calibration data are not filtered to Horgen; they provide the common basis for the conversion. Columns 6–11 must follow the original order: `x1, x2, x3, y1, y2, y3`. Check this if new columns have been added to Excel.
+
+```{r}
+#| label: correct-shoot-counts
+rutedata_ukorrigert <- rutedata
+i <- rutedata$År %in% c(2019, 2020)
+korreksjonsmodeller <- list()
+if (any(i)) {
+  if (ncol(korreksjonsdata) < 11) stop("The calibration file must contain at least 11 columns.")
+  names(korreksjonsdata)[6:11] <- c("x1", "x2", "x3", "y1", "y2", "y3")
+  for (kolonne in c("x2", "x3", "y2", "y3")) {
+    if (!is.numeric(korreksjonsdata[[kolonne]])) {
+      stop("The calibration column must be numeric: ", kolonne)
+    }
+  }
+  m_veg <- lm(y2 ~ 0 + x2, data = korreksjonsdata)
+  m_fert <- lm(y3 ~ 0 + x3, data = korreksjonsdata)
+  korreksjonsmodeller <- list(vegetative = m_veg, fertile = m_fert)
+  newdat <- data.frame(x2 = rutedata$Veg.planter[i], x3 = rutedata$Fert.planter[i])
+  rutedata$Veg.planter[i] <- round(predict(m_veg, newdata = newdat))
+  rutedata$Fert.planter[i] <- round(predict(m_fert, newdata = newdat))
+  rutedata$Ant.DR[i] <- rutedata$Småplanter[i] +
+    rutedata$Veg.planter[i] + rutedata$Fert.planter[i]
+}
+korreksjonsoversikt <- data.frame(
+  År = rutedata$År[i], RuteID = rutedata$RuteID[i],
+  Count_before = rutedata_ukorrigert$Ant.DR[i], Count_after = rutedata$Ant.DR[i])
+knitr::kable(korreksjonsoversikt, col.names = c("Year", "Plot ID", "Count before", "Count after"), caption = "Check of shoot-count correction")
+```
+
+# Analyses
+
+## Population size and structure
+
+Use the project's existing bootstrap function with the same interval settings as before. The function also saves intermediate results in `data/derived_data/`. The estimate for the whole locality differs from the sum of plants in the plots.
+
+```{r}
+#| label: population-estimates
+popstr <- beregn.popstruktur(
+  lokalitetsnavn, lokalitetsdata, transektdata, rutedata,
+  sma = "Småplanter", quantiles = intervallkvantiler)
+lokalitetsestimater <- setNames(list(popstr), lokalitetsnavn)
+
+# Create a tidy long-format table directly from the estimates and intervals.
+populasjonstabell <- bind_rows(
+  tibble(År = popstr$year, Gruppe = "Total", Antall = popstr$nTot,
+         Nedre = popstr$Tot.CI[, 1], Øvre = popstr$Tot.CI[, 2]),
+  tibble(År = popstr$year, Gruppe = "Fertile", Antall = popstr$nFert,
+         Nedre = popstr$Fert.CI[, 1], Øvre = popstr$Fert.CI[, 2]),
+  tibble(År = popstr$year, Gruppe = "Vegetative", Antall = popstr$nVeg,
+         Nedre = popstr$Veg.CI[, 1], Øvre = popstr$Veg.CI[, 2]),
+  tibble(År = popstr$year, Gruppe = "Small plants", Antall = popstr$nSma,
+         Nedre = popstr$Sma.CI[, 1], Øvre = popstr$Sma.CI[, 2])) %>%
+  mutate(Gruppe = factor(Gruppe, levels = c("Total", "Fertile", "Vegetative", "Small plants"))) %>%
+  arrange(Gruppe, År)
+knitr::kable(populasjonstabell, digits = 1,
+             col.names = c("Year", "Group", "Count", "Lower", "Upper"),
+             caption = paste0("Horgen: population estimates with ", intervallprosent, "% intervals"))
+```
+
+## Growth rates in permanent plots
+
+Retain the existing calculation of the ratio of counts between consecutive survey years. If survey years are missing, the ratio spans multiple years and is not an annualised growth rate. Zero or infinite ratios cannot be log-transformed and receive `NA` in `logR`. These rows remain in the data. Records without vegetation height are retained in the growth-rate dataset; a model-specific subset can be created separately later.
+
+```{r}
+#| label: growth-rates
+popvekstdata <- beregn.vekstrate(rutedata, "Ant.DR", "RuteID")
+popvekstdata$logR <- NA_real_
+gyldig <- is.finite(popvekstdata$vekstrate) & popvekstdata$vekstrate > 0
+popvekstdata$logR[gyldig] <- log(popvekstdata$vekstrate[gyldig])
+vekstrateoversikt <- popvekstdata %>%
+  group_by(År) %>%
+  summarise(Number_of_logR_values = sum(is.finite(logR)),
+            Median_logR = if (any(is.finite(logR))) median(logR, na.rm = TRUE) else NA_real_,
+            .groups = "drop")
+knitr::kable(vekstrateoversikt, digits = 3,
+             col.names = c("Year", "Number of logR values", "Median logR"))
+```
+
+## Direction of the population trend
+
+This is a separate analysis of annual total population estimates, rather than plot-level growth rates. Retain the Bayesian linear regression with a Gaussian response from `direction_plots.qmd`. Centre year to make the intercept easier to interpret. The model uses the default priors in `rstanarm` and treats annual estimates as observed values. Uncertainty in the bootstrap estimates and any temporal autocorrelation are not incorporated into this model. Interpret the probabilities within these assumptions.
+
+A continuous model provides probabilities of a positive or negative trend. It does not provide a separate probability of stability unless we define a threshold for a practically negligible change.
+
+```{r}
+#| label: trend-model
+trenddata <- populasjonstabell %>%
+  filter(Gruppe == "Total", is.finite(Antall), is.finite(År)) %>%
+  transmute(year = År, nTot = Antall) %>%
+  arrange(year)
+if (nrow(trenddata) < 3 || n_distinct(trenddata$year) < 3) {
+  stop("The trend model requires at least three years of valid population estimates.")
+}
+trenddata$year_centered <- trenddata$year - mean(trenddata$year)
+trendmodell <- stan_glm(
+  nTot ~ year_centered, data = trenddata, family = gaussian(),
+  chains = 4, iter = 2000, seed = 20261005, refresh = 0)
+print(trendmodell)
+
+# Review model warnings and diagnostics before interpreting the results.
+print(summary(trendmodell), digits = 2)
+posterior <- as.matrix(trendmodell)
+trendtrekk <- tibble(Change_per_year = posterior[, "year_centered"]) %>%
+  mutate(Direction = if_else(Change_per_year > 0, "Increase", "Decrease"))
+trendoppsummering <- tibble(
+  Probability_increase = mean(trendtrekk$Change_per_year > 0),
+  Probability_decrease = mean(trendtrekk$Change_per_year < 0),
+  Median_change_per_year = median(trendtrekk$Change_per_year),
+  Lower_95 = quantile(trendtrekk$Change_per_year, 0.025),
+  Upper_95 = quantile(trendtrekk$Change_per_year, 0.975))
+knitr::kable(trendoppsummering, digits = 3)
+```
+
+# Figures
+
+## Population development
+
+```{r}
+#| label: fig-population
+#| fig-cap: "Estimated population size at Horgen. Bands show the interval selected under Settings."
+#| fig-width: 9
+#| fig-height: 5
+gruppefarger <- c("Total" = "darkgrey", "Fertile" = "darkred",
+                  "Vegetative" = "darkgreen", "Small plants" = "darkblue")
+figur_populasjon <- ggplot(populasjonstabell, aes(År, Antall, colour = Gruppe)) +
+  geom_ribbon(aes(ymin = Nedre, ymax = Øvre, fill = Gruppe),
+              alpha = 0.15, colour = NA) +
+  geom_line(linewidth = 0.8) + geom_point(size = 2) +
+  scale_colour_manual(values = gruppefarger) +
+  scale_fill_manual(values = gruppefarger, guide = "none") +
+  scale_x_continuous(breaks = sort(unique(populasjonstabell$År))) +
+  labs(title = lokalitetsnavn, x = "Year", y = "Estimated number of individuals",
+       subtitle = paste0(intervallprosent, "% bootstrap intervals"), colour = NULL) +
+  theme(legend.position = "bottom")
+figur_populasjon
+```
+
+## Direction of change
+
+The x-axis shows the change in the estimated number of individuals per year. It does not show a change in the proportion of occupied plots, as the original axis label suggested. Probabilities are calculated directly from posterior draws of the year effect.
+
+```{r}
+#| label: fig-direction
+#| fig-cap: "Posterior distribution of annual change in the population estimate at Horgen."
+#| fig-width: 8
+#| fig-height: 5
+figur_retning <- ggplot(trendtrekk, aes(Change_per_year, fill = Direction)) +
+  geom_histogram(bins = 60, position = "stack", colour = NA) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  scale_fill_manual(values = c("Decrease" = "#D55E00", "Increase" = "#0072B2")) +
+  labs(title = lokalitetsnavn,
+       subtitle = sprintf("Probability of increase: %.1f %% | decrease: %.1f %%",
+         100 * trendoppsummering$Probability_increase,
+         100 * trendoppsummering$Probability_decrease),
+       x = "Change in the estimated number of individuals per year",
+       y = "Number of posterior draws", fill = NULL) +
+  theme(legend.position = "bottom")
+figur_retning
+```
+
+# Export results
+
+Results are saved in `data/derived_data/Horgen/` and figures in `Figurer/Horgen/`. Shared RDS files from the old scripts are not overwritten.
+
+```{r}
+#| label: export-results
+saveRDS(list(lokalitetsdata = lokalitetsdata, transektdata = transektdata,
+             rutedata = rutedata, artsdata = artsdata),
+        file.path(resultatmappe, "rensede_data_Horgen.RDS"))
+saveRDS(korreksjonsoversikt, file.path(resultatmappe, "skuddkorreksjon_Horgen.RDS"))
+saveRDS(korreksjonsmodeller, file.path(resultatmappe, "korreksjonsmodeller_Horgen.RDS"))
+saveRDS(lokalitetsestimater, file.path(resultatmappe, "lokalitetsestimater_Horgen.RDS"))
+saveRDS(popvekstdata, file.path(resultatmappe, "popvekstdata_Horgen.RDS"))
+saveRDS(trendmodell, file.path(resultatmappe, "trendmodell_Horgen.RDS"))
+write_csv(populasjonstabell, file.path(resultatmappe, "populasjonsestimater_Horgen.csv"))
+write_csv(trendoppsummering, file.path(resultatmappe, "trendoppsummering_Horgen.csv"))
+ggsave(file.path(figurmappe, "populasjonsutvikling_Horgen.png"),
+       plot = figur_populasjon, width = 9, height = 5, dpi = 300)
+ggsave(file.path(figurmappe, "trendretning_Horgen.png"),
+       plot = figur_retning, width = 8, height = 5, dpi = 300)
+writeLines(capture.output(sessionInfo()), file.path(resultatmappe, "sessionInfo.txt"))
+```

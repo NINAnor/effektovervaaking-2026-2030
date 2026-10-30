@@ -1,0 +1,311 @@
+---
+title: "3_merging_data"
+format: html
+---
+
+# Datamerging
+
+This script combines 2026 data for Effektovervåking dragehode with the data used for analyses in 2025. This data contains registrations for 2023, 2024 and 2025. This script will produce a combined dataset that allows for analyses of data from all three years.
+
+## Required packages
+
+```{r}
+library(dplyr)
+library(readxl)
+library(here)
+library(tidyr)
+library(ggplot2)
+```
+
+## Importing data
+
+```{r}
+
+# File paths
+old_path <- here::here("data", "Dragehode_2025_cleaned.xlsx")
+new_path <- here::here("data", "S123_2026", "Effekt_dragehode_2026_processed", "Exports", "Effekt_dragehode_2026_data_analyses.xlsx")
+output_path <- here::here("data", "Dragehode_2023_2026_analyses.xlsx")
+
+# Import as text to ensure compatible column types.
+# Measurement columns are converted to numeric below.
+old <- read_excel(
+  old_path,
+  sheet = 1,
+  col_types = "text")
+
+plots_2026 <- read_excel(
+  new_path,
+  sheet = "plots",
+  col_types = "text")
+
+species_2026 <- read_excel(
+  new_path,
+  sheet = "plot_species_long",
+  col_types = "text")
+
+
+```
+
+## Merging 2026 data to 2023-2025 dataframe
+
+```{r}
+
+# Standardise plot IDs
+old <- old %>%
+  mutate(
+    plot_id_full = str_replace_all(plot_id_full, "_", "-")
+  )
+
+plots_2026 <- plots_2026 %>%
+  mutate(
+    main_plot_id = str_replace_all(main_plot_id, "_", "-")
+  )
+
+species_2026 <- species_2026 %>%
+  mutate(
+    main_plot_id = str_replace_all(main_plot_id, "_", "-")
+  )
+
+# Provisional correction of H. perforatum in 2024.
+# The 0.1% record is probably Hypericum maculatum.
+old <- old %>%
+  mutate(
+    species = if_else(
+      year == "2024" &
+        plot_id_full == "H-B-S-D-1" &
+        species == "Hypericum_perforatum" &
+        as.numeric(species_cover) == 0.1,
+      "Hypericum_maculatum",
+      species
+    )
+  )
+
+# Remove completely identical rows, including the exact duplicate in 2025
+old <- old %>%
+  distinct()
+
+# Columns identifying one plot visit
+join_key <- c(
+  "main_location_id",
+  "main_plot_id",
+  "event_time"
+)
+
+# Check that the plot sheet has one row per plot visit
+duplicate_plots <- plots_2026 %>%
+  count(across(all_of(join_key))) %>%
+  filter(n > 1)
+
+if (nrow(duplicate_plots) > 0) {
+  print(duplicate_plots)
+  stop("The 2026 plot sheet contains duplicate plot visits.")
+}
+
+# Check that every species record has a matching plot visit
+unmatched_species <- species_2026 %>%
+  anti_join(plots_2026, by = join_key)
+
+if (nrow(unmatched_species) > 0) {
+  print(unmatched_species)
+  stop("Some 2026 species records have no matching plot visit.")
+}
+
+# Join species records to plot measurements.
+# Select only species-level columns here to avoid duplicate cover columns.
+new <- species_2026 %>%
+  select(
+    all_of(join_key),
+    plot_species,
+    plot_cover_species,
+    plot_subplot_count
+  ) %>%
+  left_join(
+    plots_2026,
+    by = join_key
+  )
+
+# Reformat 2026 to match the older analysis table
+new <- new %>%
+  transmute(
+    parenteventid = parentglobalid,
+
+    plot_id_full = main_plot_id,
+
+    # Separate the polygon ID and final plot number
+    polygon_id = str_remove(main_plot_id, "-[0-9]+$"),
+    plot_id = str_extract(main_plot_id, "[0-9]+$"),
+
+    # Actual management is not recorded in the supplied 2026 workbook
+    treatment_realised = NA_character_,
+
+    cover_field_layer = plot_cover_fieldlayer,
+
+    count_dragehode_seedlings = plot_freq_focalspecies1,
+    count_dragehode_vegetative = plot_freq_focalspecies2,
+    count_dragehode_fertile = plot_freq_focalspecies3,
+
+    cover_bottom_layer = plot_cover_bottomlayer,
+    cover_litter = plot_cover_litter,
+    cover_rock = plot_cover_bedrock,
+    cover_bare_soil = plot_cover_baresoil,
+    cover_woody_plants_field_layer = plot_cover_lowwoody,
+    cover_shrub_layer = plot_cover_shrubs,
+    cover_tree_layer = plot_cover_trees,
+
+    species = plot_species,
+
+    # Convert proportions in the 2026 export back to percentage cover
+    species_cover = as.numeric(plot_cover_species) * 100,
+
+    year = substr(event_time, 1, 4),
+    month = substr(event_time, 5, 6),
+    day = substr(event_time, 7, 8),
+
+    vegheight1 = plot_height_vegetation1,
+    vegheight2 = plot_height_vegetation2,
+    vegheight3 = plot_height_vegetation3,
+    vegheight4 = plot_height_vegetation4,
+
+    # Assigned mowing treatment, derived from the plot ID
+    treatment = case_when(
+      str_detect(main_plot_id, "^H-[^-]+-IS-") ~ "ingen",
+      str_detect(main_plot_id, "^H-[^-]+-S-") ~ "slått",
+      TRUE ~ NA_character_
+    ),
+
+    plot_subplot_count = plot_subplot_count
+  )
+
+# Measurement columns that should be numeric
+numeric_cols <- c(
+  "cover_field_layer",
+  "count_dragehode_seedlings",
+  "count_dragehode_vegetative",
+  "count_dragehode_fertile",
+  "cover_bottom_layer",
+  "cover_litter",
+  "cover_rock",
+  "cover_bare_soil",
+  "cover_woody_plants_field_layer",
+  "cover_shrub_layer",
+  "cover_tree_layer",
+  "species_cover",
+  paste0("vegheight", 1:4)
+)
+
+# Convert numeric columns, stopping if unexpected text is encountered
+numeric_checked <- function(x) {
+  out <- suppressWarnings(as.numeric(x))
+
+  invalid <- !is.na(x) & str_trim(as.character(x)) != "" & is.na(out)
+
+  if (any(invalid)) {
+    stop(
+      "Unexpected text in a numeric column: ",
+      paste(unique(x[invalid]), collapse = ", ")
+    )
+  }
+
+  out
+}
+
+old <- old %>%
+  mutate(
+    across(all_of(numeric_cols), numeric_checked),
+    plot_subplot_count = NA_real_
+  )
+
+new <- new %>%
+  mutate(
+    across(
+      all_of(c(numeric_cols, "plot_subplot_count")),
+      numeric_checked
+    )
+  )
+
+# Determine observed dragehode presence in 2026 from counts or cover.
+# This is separate from assigned D/ID treatment.
+dragehode_counts <- c(
+  "count_dragehode_seedlings",
+  "count_dragehode_vegetative",
+  "count_dragehode_fertile"
+)
+
+new <- new %>%
+  mutate(
+    presence_dragehode = case_when(
+      if_any(all_of(dragehode_counts), ~ .x > 0) |
+        (species == "Dracocephalum_ruyschiana" &
+           species_cover > 0) ~ "present",
+
+      if_all(all_of(dragehode_counts), ~ !is.na(.x)) ~ "fravær",
+
+      species == "Dracocephalum_ruyschiana" &
+        !is.na(species_cover) ~ "fravær",
+
+      TRUE ~ NA_character_
+    )
+  )
+
+# Match the older column order, followed by the new subplot-count column
+new <- new %>%
+  select(all_of(names(old)))
+
+# Append 2026 observations to the older table
+dat <- bind_rows(old, new) %>%
+  arrange(
+    year,
+    month,
+    day,
+    plot_id_full,
+    species
+  )
+
+dat <- dat %>%
+  mutate(
+    parenteventid = if_else(
+      is.na(parenteventid),
+      NA_character_,
+      paste0(
+        "{",
+        str_remove_all(parenteventid, "[{}]"),
+        "}"
+      )
+    )
+  ) %>%
+  select(-any_of(c("polygon_id", "plot_id")))
+
+# Validate the combined table
+stopifnot(
+  nrow(dat) == nrow(old) + nrow(new),
+  !anyNA(new$treatment),
+  all(is.na(dat$species_cover) |
+        between(dat$species_cover, 0, 100)),
+  all(is.na(dat$plot_subplot_count[dat$year != "2026"]))
+)
+
+# Number of plot visits per year
+dat %>%
+  distinct(year, month, day, plot_id_full) %>%
+  count(year) %>%
+  print()
+```
+
+## Export data
+
+```{r}
+
+# Export one table in one sheet
+dir.create(
+  dirname(output_path),
+  recursive = TRUE,
+  showWarnings = FALSE)
+
+write.xlsx(
+  list(data = dat),
+  file = output_path,
+  overwrite = TRUE,
+  asTable = FALSE,
+  keepNA = FALSE,
+  firstRow = TRUE)
+```
