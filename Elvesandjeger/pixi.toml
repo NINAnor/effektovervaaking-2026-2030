@@ -23,6 +23,10 @@ r-tidyverse = "*"
 r-glmmtmb = "*"
 r-emmeans = "*"
 r-patchwork = "*"
+r-sf = ">=1.1_3,<2"
+r-ggspatial = ">=1.1.11,<2"
+r-magick = ">=2.9.1,<3"
+r-ragg = ">=1.5.2,<2"
 
 [tasks]
 # R packages that are only on GitHub (anybadger, used by _common.R) are installed into the pixi environment on first use

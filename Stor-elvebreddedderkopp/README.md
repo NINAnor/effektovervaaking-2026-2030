@@ -418,7 +418,8 @@ gjennomsiktige fordi de kan overlappe. Ortofoto: © Norge i bilder
 
 <div id="tbl-indikatorer">
 
-Tabell 2: Indikatorer for overvåking av stor elvebreddedderkopp.
+Tabell 2: Indikatorer for overvåking av stor elvebreddedderkopp og
+effekten av lupinluking.
 
 <div class="cell-output-display">
 
@@ -428,6 +429,7 @@ Tabell 2: Indikatorer for overvåking av stor elvebreddedderkopp.
 | Populasjonsstørrelse juvenile | Antall juvenile: synlige individer og bebodde hull | Som over | Som over | 4 lokaliteter | 2020–2026: årlig, én telling i september |
 | Habitat i flekkene | Vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5) | Polygon rundt hver flekk med funn | Som over | 4 lokaliteter | 2025–2026: årlig, i september |
 | Habitat på lokalitetene | Dronebilder (ortofoto og høydemodell), brukt som bakgrunnskart ved registreringen | Hele lokaliteten | Dronefotografering | 4 lokaliteter | 2024–2026: årlig, i juni før feltarbeidet |
+| Luking | Lukestatus i tre klasser (Nei, Delvis, Ja) og antall lupiner fjernet | Lukepolygon | Kartfestede polygoner innenfor lokalitetene | 4 lokaliteter | 2020–2026: årlig (data fra MidNat) |
 
 </div>
 

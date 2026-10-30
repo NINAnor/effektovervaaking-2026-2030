@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell
-2026-10-28
+2026-10-30
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -11,7 +11,7 @@ Megan Nowell
 - [5. Dataanalyser](#5-dataanalyser)
 - [6. Resultater](#6-resultater)
 - [7. Oppsummering](#7-oppsummering)
-- [8. References](#8-references)
+- [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
 
 <!--# Rapporten leser kun filer i data/ og img/. Rådata ligger på P:, og koden som lager masterfila ligger i code/. -->
@@ -80,50 +80,314 @@ Megan Nowell
 
 ## Oppsummering
 
-<!-- <standardisert oppsummering, lik den som leveres i hovedrapport> -->
+Elvesandjeger overvåkes på fire lokaliteter langs Gaula, der hagelupin
+lukes hvert år. Etter et svært dårlig år i 2025 økte bestanden igjen i
+2026, med mange nye larver og flere voksne enn noen gang tidligere i
+serien. Lukingen reduserer lupinbestanden, men lupinen kom raskt tilbake
+i 2026 etter mindre luking i 2025. Flekker som ble luket, hadde dobbelt
+så mange larver som flekker som ikke ble luket, men forskjellen var ikke
+signifikant, blant annet fordi det er få ikke-lukede flekker å
+sammenligne med. Fullstendig luking hvert år og overvåking bør
+videreføres, og tråkk i kjerneområdene bør reduseres.
 
 ## English summary
 
+The tiger beetle *Cicindela maritima* is monitored at four sites along
+the river Gaula, where garden lupin (*Lupinus polyphyllus*) is removed
+every year. After a very poor year in 2025, the population increased
+again in 2026, with many new larvae and more adults than ever recorded
+in the series. Lupin removal reduces the lupin population, but lupins
+returned quickly in 2026 after less removal in 2025. Patches where
+lupins were removed had twice as many larvae as patches that were not,
+but the difference was not significant, partly because there are few
+uncleared patches to compare with. Full lupin removal every year and
+monitoring should be continued, and trampling in the core areas should
+be reduced.
+
 ## 1. Innledning
 
-<!-- Om arten/naturtypen: Organismegruppe, Status rødlista, Utbredelse, Trusler. Kort om dette delprosjektet (hvilke tiltak ser det på effekten av, hvor). -->
+Elvesandjeger *Cicindela maritima* er en løpebille (Carabidae) som i
+Norge er knyttet til sand- og siltflater langs større elver. Arten
+finnes i Tanavassdraget, Altaelva, Gaula i Trøndelag, Gudbrandsdalslågen
+med Ottavassdraget og Glomma med Folla (Direktoratet for
+naturforvaltning 2009; Ødegaard et al. 2014; Hanssen 2023). Fordi den
+lever i sterkt fragmenterte leveområder med få forekomster, er den
+vurdert som sterkt truet (EN) på Norsk rødliste for arter 2021, og den
+har vært prioritert art etter naturmangfoldloven siden 2011 (Ødegaard et
+al. 2021).
+
+<div id="fig-art">
+
+<div id="fig-art-hull">
+
+<img src="img/foto_hull.jpg" data-ref-parent="fig-art" />
+
+(a) Larvehull, juli 2026. Foto: Arne Endre Laugsand/NINA
+
+</div>
+
+<div id="fig-art-voksen">
+
+<img src="img/foto_elvesandjeger_voksen.jpg"
+data-ref-parent="fig-art" />
+
+(b) Voksen elvesandjeger. Foto: Oddvar Hanssen/NINA (Roos et al. 2024)
+
+</div>
+
+Figure 1: Elvesandjeger: hull etter larver i sanden (blyanten viser
+størrelsen) og en voksen bille.
+
+</div>
+
+Hunnen legger eggene direkte i sanden, og larvene utvikler seg over to
+til tre år før de blir voksne. Larvene lever i ganger i sanden, og
+larvestadiet kan bestemmes ut fra størrelsen på hullet (Roos et al.
+2024). Arten er avhengig av finere substrat som silt og finsand, som
+avsettes på roligere og høyereliggende flater under flom (Ødegaard and
+Hanssen 2010; Roos et al. 2024). De voksne billene er aktive i solskinn.
+
+Elvesandjeger er avhengig av den naturlige dynamikken i elva. Flom
+legger opp nye sand- og siltflater, mens de gamle gror igjen, og
+elveløpet endrer seg over tid (Ødegaard and Hanssen 2010). Ved Gaula har
+arten forsvunnet fra seks lokaliteter siden 1980-tallet og finnes nå
+bare på fire (Roos et al. 2023). Store arealer gjør det mulig for arten
+å flytte seg innenfor lokalitetene etter flom og styrtregn, og områdene
+med stabile bestander fungerer som kildebestander (Roos et al. 2025).
+
+Arten trues av vassdragsregulering og kanalisering som endrer eller
+reduserer dynamikken i elva, og av gjengroing, blant annet med den
+fremmede arten hagelupin *Lupinus polyphyllus*. Larvehullene kan
+dessuten ødelegges direkte av kjøring og tråkk fra mennesker og hunder
+(Evju et al. 2022; Roos et al. 2025).
+
+Dette delprosjektet overvåker effekten av luking av hagelupin på
+elvesandjeger på fire lokaliteter langs Gaula i Melhus kommune i
+Trøndelag: Storrønningen, Kregnesteigen, Gravråk og Fornes. Lupinene
+lukes for å åpne opp gjengrodde arealer, slik at sand- og siltflatene
+igjen blir tilgjengelige som leveområde for arten. Stor
+elvebreddedderkopp *Arctosa cinerea* overvåkes på de samme lokalitetene
+og rapporteres i et eget delprosjekt.
 
 ## 2. Formål med delprosjektet
 
 ### 2.1 Målsetning med tiltakene
 
-<!-- Hva er målsetningen med tiltakene som gjennomføres. Hvilke indikatorer skal tiltakene endre. -->
+Formålet med tiltaket, luking av hagelupin *Lupinus polyphyllus*, er å
+åpne opp gjengrodde arealer slik at elveavsetningene igjen blir
+tilgjengelige som leveområde for elvesandjeger (Roos et al. 2024, 2025).
+Tiltaket skal redusere lupinbestanden og vegetasjonsdekket på sand- og
+siltflatene og dermed øke antallet larver og voksne, som er indikatorene
+i overvåkingen
+(<a href="#tbl-indikatorer" class="quarto-xref">Table 3</a>).
 
 ### 2.2 Formål med overvåking
 
-<!-- Hva skal overvåkingen avdekke. -->
+Formålet med overvåkingen er å følge bestanden av elvesandjeger på fire
+lokaliteter langs Gaula og fastslå effekten av lupinlukingen på
+bestanden (Roos et al. 2024, 2025). Overvåkingen skal også vise om
+lukingen reduserer lupinbestanden, og hvordan habitatet
+(vegetasjonsdekke, substrattype og slitasje), flom og vær påvirker
+antallet larver, slik at effekten av lukingen kan skilles fra andre
+forhold.
 
 ### 2.3 Forventninger
 
-<!-- Hva forventer vi å observere av endringer i indikatorene – på kort og lang sikt. -->
+Det forventes at arealer der lupinene er luket, blir tatt i bruk til
+egglegging av elvesandjeger, og at lukingen på sikt vil øke utbredelsen
+og bestanden på lokalitetene (Roos et al. 2025). Effekten kommer trolig
+med en forsinkelse: arten ser ikke ut til å trives på sterkt forstyrrede
+sandflater, så de lukede flatene tas trolig i bruk året etter lukingen,
+etter at en vinter og en vårflom har jevnet dem ut (Roos et al. 2024).
+Fordi larvene bruker to til tre år på å bli voksne, vil en effekt på
+antallet voksne komme enda senere. Antallet vil fortsatt variere mye fra
+år til år på grunn av flom og vær.
 
 ## 3. Overvåkingslokalitetene
 
 ### 3.1 Beskrivelse av lokalitetene
 
-<!-- Hvor, kart, plassering av lokalitetene i Norge. Status og utfordringer/påvirkninger. -->
+Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i
+Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og
+Fornes (<a href="#fig-kart" class="quarto-xref">Figure 2</a>).
+Lokalitetene består av sand- og grusflater (elveører) langs elva, og de
+er for tiden de eneste kjente lokalitetene for elvesandjeger i Trøndelag
+(Roos et al. 2024).
+
+Elveørene ligger stort sett på samme sted fra år til år, men systemet er
+likevel svært dynamisk. De årlige flommene endrer den finskala
+topografien, ved at sand og silt avsettes og eroderes lokalt, og de
+påvirker vegetasjonsdekket på flatene. Stedegne arter, som gråor og
+klåved, vokser inn på elvebreddene, fanger opp sediment og endrer
+topografien og kornstørrelsen i substratet. Langs Gaula gror
+elvebreddene i tillegg generelt igjen fordi elva er senket av omfattende
+masseuttak fra elvebunnen (Roos et al. 2023). Tråkk fra mennesker og
+hunder er registrert i kjerneområdene for elvesandjeger på flere av
+lokalitetene (Roos et al. 2025).
+
+Hagelupin er en svært invasiv fremmedart. Frø føres med elva fra
+forekomster lenger opp i vassdraget, og frø fra lupinene på selve
+lokalitetene spirer, slik at lupinen raskt etablerer seg på nytt. Tette
+lupinbestander gror igjen de åpne sand- og siltflatene som elvesandjeger
+er avhengig av.
+
+Flom og vær varierer mye fra år til år (avsnitt 6.4). I 2026 toppet
+vårflommen ved Gaulfoss, den nærmeste vannføringsstasjonen (NVE), seg på
+388 m³/s 24. mai, den minste vårflommen i perioden 2020–2026, og
+vannføringen var over 300 m³/s i 1 dag i mai–august, mot 6–28 dager i de
+andre årene. Det kom ingen sommerflom; høyeste vannføring i
+juli–september var 233 m³/s. Nedbøren ved Leinstrand, den nærmeste
+værstasjonen med nedbørsmålinger (Meteorologisk institutt), var 387 mm i
+mai–august, den høyeste i perioden.
+
+**Gravråk** ligger på østsiden av Gaula, vest for Gravråk-gårdene.
+Lokaliteten er en 600 m lang grusør med litt sand og silt inn mot
+vegetasjonen. Den har hatt noen små siltflater og en liten, ustabil
+bestand av elvesandjeger i mange år (Hanssen 2023; Roos et al. 2024).
+Sommeren 2023 ble det ikke funnet elvesandjeger her (Roos et al. 2023),
+men i 2024 og 2025 ble det igjen registrert larver (Roos et al. 2025).
+
+**Kregnesteigen** ligger på vestsiden av Gaula, sør for Gravråk og vest
+for Skjerdingstad. Lokaliteten er en langsmal elveør i en innersving, om
+lag 1 km lang og 20–50 m bred ved normal vannstand. Fram til 2023 lå de
+største sand- og siltflatene med elvesandjeger nedstrøms svingen, som en
+smal sone inn mot kantvegetasjonen. Gjengroing med gråor og flommene i
+august 2023 forringet leveområdet der, og arten finnes nå i stor grad på
+en flate om lag 100 m oppstrøms som ble restaurert med gravemaskin i
+2022 (Roos et al. 2024, 2025). Området er mye brukt til laksefiske, og
+det er mange fotspor på sandflatene (Roos et al. 2025).
+
+**Storrønningen** ligger på vestsiden av Gaula ved Kvål. Elveøra er 1,3
+km lang, og de nederste 500 m er et om lag 50 m bredt overløp der det
+jevnlig avsettes sand og silt, og der det har vært en bestand av
+elvesandjeger i mange år. Gjengroing og styrtregnflommer har forringet
+leveområdene de senere årene. I 2021 etablerte arten seg på en nylig
+avsatt siltflate i den øvre delen, og en stadig større del av bestanden
+har holdt til der (Hanssen 2023; Roos et al. 2024). Det ligger en
+hundeskole like ved lokaliteten, og dronebilder viser omfattende spor
+etter hunder i kjerneområdene for elvesandjeger (Roos et al. 2025).
+
+**Fornes** ligger én kilometer oppstrøms Kvålsbrua, ved utløpet av
+Gammelelva naturreservat på østsiden av Gaula. Lokaliteten er en elveør
+på 28 daa som i hovedsak ble dannet mellom 2005 og 2009. Den har store
+sandflater med silt i og rundt et frodig klåvedkratt på østsiden mot
+Gammelelva, og store flater med grus og stein og lite vegetasjon på
+vestsiden (Hanssen 2023; Roos et al. 2024). Lupinene på Fornes ble først
+luket i 2025 og 2026, og de fleste registreringene av elvesandjeger
+ligger utenfor lukeområdet
+(<a href="#fig-kart" class="quarto-xref">Figure 2</a>). Fornes brukes
+derfor som kontroll i effektanalysen.
+
+<div id="fig-kart">
+
+![](img/fig-kart-1.jpeg)
+
+Figure 2: Lokalitetene for overvåking av elvesandjeger langs nedre Gaula
+i Trøndelag. Til venstre: oversikt over lukeområdene (grå) og utsnittene
+for hver lokalitet (rød stiplet ramme); det innfelte kartet viser
+plasseringen i Norge (Trøndelag i mørk grå). Til høyre, fra nord til
+sør: lukeområdet (hvitt) og elvesandjegerområdet (oransje) på hver
+lokalitet, og et bilde fra lokaliteten. Lukeområdet er minste konvekse
+polygon rundt lukepolygonene 2025–2026, og elvesandjegerområdet minste
+konvekse polygon rundt registreringene av larver og voksne de tre siste
+årene. Ortofoto: © Norge i bilder (Kartverket, Geovekst). Elvelinje:
+NVE. Foto: Arne Endre Laugsand/NINA (Fornes og Kregnesteigen juni 2026,
+Gravråk og Storrønningen juli 2026).
+
+</div>
 
 ### 3.2 Tiltak
 
-<!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
-
 Tiltaket er luking av hagelupin (*Lupinus polyphyllus*) på lokalitetene.
-Lukingen registreres per lukepolygon og år som luket (Ja), delvis luket
-(Delvis) eller ikke luket (Nei), med antall lupiner fjernet.
-Lukepolygonene for 2025–2026 er slått sammen og renset i skript 1–3 i
-[`code/`](code/), og oppsummert per lokalitet og år av skript 7.
-Follstadøya har ikke overvåking av elvesandjeger og er ikke med.
+Lukingen utføres av Midtnorsk Naturundersøkelse AS (MidNat), som har
+kartlagt og luket lupiner langs Gaula hvert år siden 2020 (Solberg 2020;
+Solberg and Vullum 2022b, 2022a, 2023, 2024; Solberg et al. 2025). Gaula
+er ett av fem vassdrag som Statsforvalteren i Trøndelag har prioritert i
+sin satsing på å redusere utbredelsen av fremmede planter, og MidNat har
+hatt rammeavtale med Statsforvalteren i Trøndelag om kartlegging og
+bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler
+til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge
+lupinene på overvåkingslokalitetene (Solberg et al. 2025).
+
+Lupinene lukes i hovedsak manuelt med håndredskap, som hagegreip,
+potetgrev, sigd og løvetannstikker, slik at sandflatene forstyrres minst
+mulig, og noen steder slås de med ryddesag. Plantene tas opp med roten,
+og alt plantemateriale samles i tette sekker og leveres til godkjent
+mottak for fremmede arter (Roos et al. 2024; Solberg et al. 2025). Ved
+delvis luking fjernes bare de større lupinene som kan sette frø i løpet
+av sesongen, og flere steder fjernes blomsterstander og frøbelger for å
+hindre frøspredning (Solberg et al. 2025). Hver lokalitet er delt inn i
+kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år
+om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor
+mange lupiner som ble fjernet, og når og hvordan det ble luket (Roos et
+al. 2024). Follstadøya blir også luket, men har ikke overvåking av
+elvesandjeger og er ikke med her.
+
+<a href="#fig-foto-luking" class="quarto-xref">Figure 3</a> viser
+eksempler på flekker før og etter luking i 2026.
+
+<div id="fig-foto-luking">
+
+<div id="fig-foto-luking-forn">
+
+<img src="img/foto_luking_Fornes.jpg"
+data-ref-parent="fig-foto-luking" />
+
+(a) Fornes 4, der både etablerte lupiner og mange frøplanter ble luket
+
+</div>
+
+<div id="fig-foto-luking-kreg">
+
+<img src="img/foto_luking_Kregnesteigen.jpg"
+data-ref-parent="fig-foto-luking" />
+
+(b) Kregnesteigen 7b
+
+</div>
+
+<div id="fig-foto-luking-grav">
+
+<img src="img/foto_luking_Gravrak.jpg"
+data-ref-parent="fig-foto-luking" />
+
+(c) Gravråk 15
+
+</div>
+
+Figure 3: Lupinluking i 2026, før og etter luking. Foto: Midtnorsk
+Naturundersøkelse AS (MidNat).
+
+</div>
+
+To steder er det i tillegg fjernet vegetasjon med gravemaskin for å
+restaurere åpne sandflater. På Kregnesteigen ble en eng med gras, urter
+og lupiner restaurert i november 2022, og i 2023–2024 flyttet store
+deler av elvesandjegerbestanden på lokaliteten dit (Roos et al. 2023,
+2025). På Gravråk, som over tid har grodd igjen med både stedegne arter
+og lupiner, ble nesten all vegetasjon fjernet fra et større område med
+anleggsmaskiner i oktober 2025, etter at det var luket og fjernet
+frøbelger i og rundt området gjennom sommeren (Solberg et al. 2025). På
+Fornes fjernet MidNat blomsterstander og frøbelger fra 29. juni til 15.
+juli 2025, og Øya videregående skole luket lupiner der 2. oktober 2025
+med midler fra Melhus kommune (Solberg et al. 2025).
+
+Lukeinnsatsen har variert mye mellom år og lokaliteter
+(<a href="#fig-luking-areal" class="quarto-xref">Figure 4</a>,
+<a href="#tbl-luking" class="quarto-xref">Table 2</a>). På Storrønningen
+ble det luket 21 465 m² i 2024, men bare 5 101 m² i 2025, og i 2026 ble
+det igjen luket 12 507 m². På Kregnesteigen ble det luket om lag 17 700
+m² hvert år i 2023–2025, i 2025 mest som delvis luking, mens det bare
+ble luket 604 m² i 2026. Fornes ble luket første gang i 2026 (2 827 m²)
+i lukedataene. Lukingen på Fornes i 2025 (Øya videregående skole) og
+restaureringen med gravemaskin på Gravråk i oktober 2025 er ikke med i
+lukedataene.
 
 <div id="fig-luking-areal">
 
 ![](img/fig-luking-areal-1.png)
 
-Figure 1: Areal luket per lokalitet og år (Ja = luket, Delvis = delvis
+Figure 4: Areal luket per lokalitet og år (Ja = luket, Delvis = delvis
 luket). Ulik skala på y-aksen.
 
 </div>
@@ -132,7 +396,7 @@ luket). Ulik skala på y-aksen.
 
 ![](img/fig-luking-lupiner-1.png)
 
-Figure 2: Antall lupiner fjernet (venstre) og lupiner fjernet per m²
+Figure 5: Antall lupiner fjernet (venstre) og lupiner fjernet per m²
 luket areal (høyre), per lokalitet og år. Fornes har lukepolygoner først
 fra 2026; Gravråk 2021 mangler antall.
 
@@ -141,24 +405,25 @@ fra 2026; Gravråk 2021 mangler antall.
 <div id="tbl-luking">
 
 Table 2: Lupinluking per lokalitet og år: areal luket (m², Ja + Delvis),
-antall lupiner fjernet og lupiner per m² luket.
+antall lupiner fjernet og lupiner per m² luket. – = ikke registrert.
+Kilde: lukedata fra Midtnorsk Naturundersøkelse AS.
 
 <div class="cell-output-display">
 
-| Lokalitet | Mål | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|:---|:---|---:|---:|---:|---:|---:|---:|---:|
-| Storrønningen | Areal luket (m²) | 10751.00 | 14363.00 | 11238.00 | 16056.00 | 21465.00 | 5101.00 | 12507.00 |
-| Storrønningen | Lupiner fjernet | 56846.00 | 37172.00 | 5134.00 | 8551.00 | 7526.00 | 1318.00 | 25592.00 |
-| Storrønningen | Lupiner per m² | 5.29 | 2.59 | 0.46 | 0.53 | 0.35 | 0.26 | 2.05 |
-| Kregnesteigen | Areal luket (m²) | 0.00 | 2203.00 | 2941.00 | 17643.00 | 17981.00 | 17684.00 | 604.00 |
-| Kregnesteigen | Lupiner fjernet | 5750.00 | 5400.00 | 19130.00 | 29593.00 | 22217.00 | 1125.00 | 448.00 |
-| Kregnesteigen | Lupiner per m² | NA | 2.45 | 6.50 | 1.68 | 1.24 | 0.06 | 0.74 |
-| Fornes | Areal luket (m²) | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 2827.00 |
-| Fornes | Lupiner fjernet | NA | NA | NA | NA | NA | NA | 5150.00 |
-| Fornes | Lupiner per m² | NA | NA | NA | NA | NA | NA | 1.82 |
-| Gravråk | Areal luket (m²) | 0.00 | 2768.00 | 0.00 | 445.00 | 5226.00 | 5115.00 | 4216.00 |
-| Gravråk | Lupiner fjernet | 0.00 | 0.00 | 0.00 | 4535.00 | 6915.00 | 2409.00 | 3545.00 |
-| Gravråk | Lupiner per m² | NA | NA | NA | 10.19 | 1.32 | 0.47 | 0.84 |
+| Lokalitet     | Mål              |   2020 |   2021 |   2022 |   2023 |   2024 |   2025 |   2026 |
+|:--------------|:-----------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Storrønningen | Areal luket (m²) | 10 751 | 14 363 | 11 238 | 16 056 | 21 465 |  5 101 | 12 507 |
+| Storrønningen | Lupiner fjernet  | 56 846 | 37 172 |  5 134 |  8 551 |  7 526 |  1 318 | 25 592 |
+| Storrønningen | Lupiner per m²   |   5,29 |   2,59 |   0,46 |   0,53 |   0,35 |   0,26 |   2,05 |
+| Kregnesteigen | Areal luket (m²) |      0 |  2 203 |  2 941 | 17 643 | 17 981 | 17 684 |    604 |
+| Kregnesteigen | Lupiner fjernet  |  5 750 |  5 400 | 19 130 | 29 593 | 22 217 |  1 125 |    448 |
+| Kregnesteigen | Lupiner per m²   |      – |   2,45 |   6,50 |   1,68 |   1,24 |   0,06 |   0,74 |
+| Fornes        | Areal luket (m²) |      0 |      0 |      0 |      0 |      0 |      0 |  2 827 |
+| Fornes        | Lupiner fjernet  |      – |      – |      – |      – |      – |      – |  5 150 |
+| Fornes        | Lupiner per m²   |      – |      – |      – |      – |      – |      – |   1,82 |
+| Gravråk       | Areal luket (m²) |      0 |  2 768 |      0 |    445 |  5 226 |  5 115 |  4 216 |
+| Gravråk       | Lupiner fjernet  |      0 |      0 |      0 |  4 535 |  6 915 |  2 409 |  3 545 |
+| Gravråk       | Lupiner per m²   |      – |      – |      – |  10,19 |   1,32 |   0,47 |   0,84 |
 
 </div>
 
@@ -166,14 +431,47 @@ antall lupiner fjernet og lupiner per m² luket.
 
 ## 4. Datainnsamling
 
-Elvesandjeger overvåkes på fire lokaliteter langs Gaula: Storrønningen,
-Kregnesteigen, Fornes og Gravråk. Larvehull (stadium 1–3) og voksne
-telles ved opptil tre besøk per sommer (juni, juli og august); enkelte
-besøk i mai og september er ikke med her. Fra 2015 til 2025 ble
-observasjonene registrert som GPS-punkter med antall. Fra 2026 tegnet
-observatørene i stedet et polygon rundt hver søkte flekk på et
-dronebilde, og registrerte substrat, vegetasjonsdekke og slitasje (1–5)
-per polygon. Antallene brukes som registrert, uavhengig av metode.
+Overvåkingen av elvesandjeger langs Gaula ble etablert i 2015, etter at
+arten ble kartlagt fra 2009 (Ødegaard et al. 2014; Hanssen 2023). Det
+gjøres en totalkartlegging av lokalitetene: alle egnede arealer med silt
+og finsand gjennomsøkes, og larvehull (stadium 1–3) og voksne telles.
+Larvestadiet bestemmes ut fra størrelsen på hullet, og det tas hensyn
+til ikke å tråkke på hullene (Roos et al. 2024). Hver lokalitet besøkes
+opptil tre ganger hver sommer, i juni, juli og august, slik at de ulike
+generasjonene fanges opp (Roos et al. 2024). Besøkene legges så langt
+som mulig til dager uten regn. Larvehullene kan telles i de fleste
+værforhold, men de voksne billene er bare aktive i solskinn, så antallet
+voksne avhenger mye av været på besøksdagen.
+
+Fra 2015 til 2025 ble antall hull per stadium registrert per GPS-punkt
+med håndholdt GPS, med en ny posisjon for hver 2–5 m (Roos et al. 2024).
+Fra 2026 registreres elvesandjeger i ArcGIS Field Maps: feltteknikeren
+tegner et polygon rundt hver flekk med hull på et dronebilde tatt i juni
+samme år, og registrerer antall larver per stadium og voksne,
+substrattype, vegetasjonsdekke (%) og slitasje (klasse 1–5) per polygon.
+Antallene brukes som registrert, uavhengig av metode. Indikatorene er
+oppsummert i <a href="#tbl-indikatorer" class="quarto-xref">Table 3</a>,
+og antall registreringer per besøk i
+<a href="#tbl-datainnsamling" class="quarto-xref">Table 4</a>.
+
+<div id="tbl-indikatorer">
+
+Table 3: Indikatorer for overvåking av elvesandjeger og effekten av
+lupinluking.
+
+<div class="cell-output-display">
+
+| Indikator | Variabel registrert i felt | Utvalgsenhet | Utlegging av utvalgsenhet | Antall utvalgsenheter | Frekvens for datainnsamling |
+|:---|:---|:---|:---|:---|:---|
+| Populasjonsstørrelse larver | Antall larvehull i stadium 1, 2 og 3 | GPS-punkt (til og med 2025), polygon rundt hver flekk med funn (fra 2026) | Totalkartlegging av sand- og siltflatene | 4 lokaliteter | 2015–2026: årlig, opptil tre ganger hver sommer (juni, juli og august) |
+| Populasjonsstørrelse voksne | Antall voksne | Som over | Som over | 4 lokaliteter | Som over |
+| Habitat i flekkene | Vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5) | Polygon rundt hver flekk med funn | Som over | 4 lokaliteter | 2026: ved hvert besøk |
+| Habitat på lokalitetene | Dronebilder (ortofoto og høydemodell), brukt som bakgrunnskart ved registreringen | Hele lokaliteten | Dronefotografering | 4 lokaliteter | 2024–2026: årlig, i juni |
+| Luking | Lukestatus i tre klasser (Nei, Delvis, Ja) og antall lupiner fjernet | Lukepolygon | Kartfestede polygoner innenfor lokalitetene | 4 lokaliteter | 2020–2026: årlig (data fra MidNat) |
+
+</div>
+
+</div>
 
 Alle observasjoner ligger i masterfila
 [elvesandjeger_obs_2015-2026_master.csv](data/elvesandjeger_obs_2015-2026_master.csv),
@@ -190,14 +488,13 @@ Klima- og vannføringsdata er satt sammen til én daglig tabell av skript
   referanseverdier: middelflom 1 008 m³/s, 5-årsflom 1 304 m³/s.
   Snøsmeltingen gir vårflommen, og flommene avgjør om – og hvor lenge –
   sandbankene står under vann.
-- **Nedbør, snødekke og snødybde ved Leinstrand** (MET SN67150,
-  nedstrøms lokalitetene).
+- **Nedbør ved Leinstrand** (MET SN67150, nedstrøms lokalitetene).
 - **Døgnmiddeltemperatur ved E6 Kvål** (MET SN67175), bare fra april
   2023 og med hull.
 
 <div id="tbl-datainnsamling">
 
-Table 3: Antall observasjonspunkter (til og med 2025) eller polygoner
+Table 4: Antall observasjonspunkter (til og med 2025) eller polygoner
 (fra 2026) per besøksmåned og år. 0 = ikke undersøkt.
 
 <div class="cell-output-display">
@@ -228,9 +525,9 @@ Table 3: Antall observasjonspunkter (til og med 2025) eller polygoner
 Hovedmålet med analysene er å finne ut om lupinlukingen gir flere
 elvesandjegere. Antallet larver påvirkes også av andre forhold:
 habitatet i hver flekk (substrattype, vegetasjonsdekke og slitasje) og
-klima, snø og vannføring. Disse variablene tas med i analysene for å
-skille effekten av lupinlukingen fra andre faktorer som påvirker
-bestanden.
+vannføring og nedbør, som varierer fra år til år og mellom besøk. Disse
+variablene tas med i analysene for å skille effekten av lupinlukingen
+fra andre faktorer som påvirker bestanden.
 
 **Utvikling over tid.** Tidsseriene viser summen av registrerte
 individer per år, stadium og besøksmåned. Registreringene gjøres av en
@@ -238,7 +535,7 @@ erfaren feltarbeider med god kjennskap til artene og lokalitetene, med
 samme innsats ved hvert besøk og på alle lokaliteter. Ikke alle
 individer blir nødvendigvis oppdaget. Hvilke måneder som er undersøkt,
 er ikke helt likt alle år
-(<a href="#tbl-datainnsamling" class="quarto-xref">Table 3</a>), og
+(<a href="#tbl-datainnsamling" class="quarto-xref">Table 4</a>), og
 tidsseriene vises derfor per besøksmåned. I 2024 ble registreringene
 gjort av den nye og den tidligere feltarbeideren sammen, og fra 2025 av
 den nye alene, og i 2026 ble registreringsmetoden endret fra punkter til
@@ -282,9 +579,19 @@ og vær:
 Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for
 offset, og modellen er tilpasset hvert larvestadium for seg.
 
-**Klima, snø og vannføring.** Vannføring, nedbør og snø er målt på én
-stasjon og er derfor like for alle lokaliteter ved samme besøk. De er
-derfor analysert for seg, for alle år. Vannføringen der de overvåkede
+**Slik leses resultatene.** Effektene er gitt som rateratio (RR): hvor
+mange ganger høyere eller lavere larvetettheten er enn i
+referansegruppen, når de andre variablene i modellen holdes like. RR = 1
+betyr ingen forskjell, RR = 2 dobbelt så mange larver og RR = 0,5
+halvparten så mange. KI95 er 95 % konfidensintervall: intervallet som
+med 95 % sikkerhet inneholder den sanne effekten. Hvis intervallet
+omfatter 1, kan vi ikke si sikkert at det er en forskjell. p-verdien er
+sannsynligheten for å få en så stor forskjell hvis det egentlig ikke er
+noen effekt, og p \< 0,05 regnes som statistisk signifikant.
+
+**Vannføring og nedbør.** Vannføring og nedbør er målt på én stasjon og
+er derfor like for alle lokaliteter ved samme besøk. De er derfor
+analysert for seg, for alle år. Vannføringen der de overvåkede
 sandbankene oversvømmes er ikke kjent, så vannføringen brukes direkte
 som eksponeringsindeks: høyeste vannføring og antall dager over 300 m³/s
 siden forrige besøk (for junibesøket: siden 1. september året før), og
@@ -303,11 +610,50 @@ totalt for alle besøk og lokaliteter.
 
 ### 6.1 Utvikling over tid
 
+**Utvikling i bestanden.** Fra 2017, da alle lokalitetene ble undersøkt
+i august, og fram til 2023 ble det registrert mellom 1 100 og 3 100
+larvehull per besøk, med flest i august 2022 (3 133)
+(<a href="#fig-trend-stadium-maaned" class="quarto-xref">Figure 6</a>).
+Deretter gikk antallet ned, og 2025 var det dårligste året siden
+overvåkingen ble etablert, med under 1 000 larvehull per besøk og bare
+308 i august. I 2026 økte antallet igjen, til 1 081 larvehull i juli og
+930 i august, men junibesøket ga bare 293 larvehull, det laveste i juni
+siden 2016. Fra 2026 ble registreringsmetoden endret fra punkter til
+polygoner, så sammenligningen med tidligere år må gjøres med
+forsiktighet.
+
+**Larvestadiene.** I juli 2026 ble det registrert 717 larver i stadium
+1, det nest høyeste av årene med julibesøk, etter juli 2023 (856). Det
+tyder på at det ble lagt mange egg i 2026, og i august hadde mange av
+disse larvene gått over til stadium 2. Antallet larver i stadium 3 var
+derimot lavt i 2026, og i august (138) var det det laveste i hele
+serien. Stadium 3 er de eldste larvene, så det lave antallet gjenspeiler
+trolig de svake årsklassene fra 2024 og 2025. Mønsteret gjennom sesongen
+er som forventet: de overvintrede stadium 3-larvene dominerer i juni,
+nye stadium 1-larver kommer i juli etter egglegging, og disse går over
+til stadium 2 innen august
+(<a href="#fig-sesong" class="quarto-xref">Figure 8</a>).
+
+**Voksne.** Det ble registrert 67 voksne i 2026, de fleste i juni (49),
+og det er det høyeste antallet i serien. I 2025 ble det ikke funnet
+voksne. De voksne er bare aktive i solskinn, så antallet varierer mye
+med været på besøksdagen og sier mindre om bestanden enn larvene.
+
+**Lokalitetene.** August er den måneden som er undersøkt mest
+konsekvent, og den brukes for å sammenligne lokalitetene
+(<a href="#fig-august-lokalitet" class="quarto-xref">Figure 7</a>).
+Storrønningen har hatt den største bestanden i hele perioden. Etter et
+svært dårlig år i 2025 økte antallet larver i stadium 2 der til 380 i
+august 2026, på nivå med årene før 2024. På Kregnesteigen har antallet
+vært lavt siden 2024, og det var fortsatt lavt i 2026. På Fornes var
+antallet larver i stadium 1 og 2 i august 2026 det høyeste siden 2021.
+På Gravråk ble det bare funnet noen få larver.
+
 <div id="fig-trend-stadium-maaned">
 
 ![](img/fig-trend-stadium-maaned-1.png)
 
-Figure 3: Totalt antall larvehull (stadium 1–3) og voksne per år,
+Figure 6: Totalt antall larvehull (stadium 1–3) og voksne per år,
 fordelt på besøksmåned (alle lokaliteter). Manglende punkter = måneden
 ble ikke undersøkt det året.
 
@@ -317,7 +663,7 @@ ble ikke undersøkt det året.
 
 ![](img/fig-august-lokalitet-1.png)
 
-Figure 4: Antall i august per lokalitet og stadium (august er måneden
+Figure 7: Antall i august per lokalitet og stadium (august er måneden
 som er undersøkt mest konsekvent). Ulik skala på y-aksen.
 
 </div>
@@ -330,25 +676,48 @@ juli etter egglegging, og at disse skifter til stadium 2 innen august.
 
 ![](img/fig-sesong-1.png)
 
-Figure 5: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk
+Figure 8: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk
 i juni, juli og august. Tallene over søylene er totalt antall larver.
 
 </div>
 
 ### 6.2 Effekt av luking på lupin
 
+Lukingen reduserer lupinbestanden
+(<a href="#tbl-lupin-luking" class="quarto-xref">Table 5</a>,
+<a href="#fig-lupin-luking" class="quarto-xref">Figure 9</a>). I
+polygoner som ble luket året før, ble det fjernet 0,75 lupiner per m²,
+mot 2,28 per m² i polygoner som ikke ble luket året før (RR 0,33, KI95
+0,21–0,51, p \< 0,001). Jo flere år et polygon er luket, desto færre
+lupiner er det: hvert ekstra år med luking halverer omtrent tettheten
+(RR 0,53, p = 0,0013). Polygoner som bare ble delvis luket året før,
+hadde derimot flere lupiner (4,3 per m², RR 1,90, p = 0,060). Ved delvis
+luking fjernes bare de største plantene, så mange lupiner står igjen og
+kan spre frø.
+
+Lupintettheten i de lukede polygonene gikk ned fra 8,0 per m² i 2021 til
+0,58 per m² i 2025, men økte til 5,2 per m² i 2026. Økningen kom etter
+et år med mye mindre luking: på Storrønningen ble det luket 5 101 m² i
+2025, mot 21 465 m² i 2024, og på Kregnesteigen var lukingen i 2025 for
+det meste delvis
+(<a href="#tbl-luking" class="quarto-xref">Table 2</a>). Lupinen kommer
+altså raskt tilbake når lukingen reduseres, og lukingen må gjentas hvert
+år for å holde bestanden nede.
+
 <div id="tbl-lupin-luking">
 
-Table 4: Lupintetthet (lupiner fjernet per m²) i lukede polygoner som
-funksjon av luking året før. NB GLMM, n = polygon-år.
+Table 5: Lupintetthet (lupiner fjernet per m²) i lukede polygoner som
+funksjon av luking året før. NB GLMM, n = polygon-år. RR = rateratio;
+KI95 = 95 % konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \<
+0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
-| Effekt                           |   RR | KI95      |       p |
-|:---------------------------------|-----:|:----------|--------:|
-| Delvis luket året før (mot ikke) | 1.90 | 0.97–3.71 | 6.0e-02 |
-| Luket året før (mot ikke)        | 0.33 | 0.21–0.51 | 5.0e-07 |
-| Per ekstra tidligere år luket    | 0.53 | 0.36–0.78 | 1.3e-03 |
+| Effekt                           |   RR | KI95      | p             |
+|:---------------------------------|-----:|:----------|:--------------|
+| Delvis luket året før (mot ikke) | 1.90 | 0.97–3.71 | 0.06          |
+| Luket året før (mot ikke)        | 0.33 | 0.21–0.51 | \<0.001\*\*\* |
+| Per ekstra tidligere år luket    | 0.53 | 0.36–0.78 | 0.0013\*\*    |
 
 </div>
 
@@ -358,7 +727,7 @@ funksjon av luking året før. NB GLMM, n = polygon-år.
 
 ![](img/fig-lupin-luking-1.png)
 
-Figure 6: Venstre: lupintetthet i lukede polygoner etter lukestatus året
+Figure 9: Venstre: lupintetthet i lukede polygoner etter lukestatus året
 før (punkter = polygon-år, +0,01 for å vise nuller; svart = modellert
 gjennomsnitt ± 95 % KI). Høyre: årseffekten fra samme modell
 (gjennomsnitt ± 95 % KI).
@@ -367,9 +736,43 @@ gjennomsnitt ± 95 % KI). Høyre: årseffekten fra samme modell
 
 ### 6.3 Effekt av luking på elvesandjeger
 
+Effekten av lupinluking på elvesandjeger er analysert for
+undersøkelsespolygonene på Kregnesteigen og Storrønningen i 2026,
+sammenlignet med lukestatusen i 2025.
+<a href="#tbl-effekt-n" class="quarto-xref">Table 6</a> viser hvor mange
+undersøkelsespolygoner som inngår i hver gruppe ved hvert besøk. De
+fleste lå i flekker som ble luket i 2025, og det er få i flekker som
+ikke ble luket (11 til sammen). Alle de ikke-lukede flekkene ligger på
+Storrønningen og alle de delvis lukede på Kregnesteigen, så
+sammenligningen mellom disse gruppene er også en sammenligning mellom
+lokalitetene.
+<a href="#tbl-effekt-koeff" class="quarto-xref">Table 7</a> viser
+resultatene fra modellen, og
+<a href="#tbl-effekt-lrt" class="quarto-xref">Table 8</a> viser om hver
+variabel samlet bidrar til å forklare antallet larver.
+
+**Luking.** Lukingen i 2025 hadde ingen statistisk signifikant effekt på
+antallet larver i 2026 (likelihood-ratio-test p = 0,25). Flekker som ble
+luket, hadde i gjennomsnitt 2,0 ganger så høy larvetetthet som flekker
+som ikke ble luket (KI95 0,90–4,52, p = 0,086), og delvis lukede flekker
+2,2 ganger (KI95 0,67–6,89, p = 0,20). Retningen er positiv, men
+usikkerheten er stor fordi det er så få ikke-lukede flekker. Effekten
+var ikke forskjellig mellom besøkene (p = 0,21). Også i 2025 fant vi
+ingen signifikant effekt av luking, men en tendens til flere larver der
+det var fullstendig luket (Roos et al. 2025).
+
+**Andre faktorer.** Larvetettheten var 2,9 ganger høyere på
+Storrønningen enn på Kregnesteigen (p = 0,0011), og den var lavere i
+juli og august enn i juni. Vegetasjonsdekke og slitasje trakk begge ned:
+omtrent 13 % færre larver per 10 prosentpoeng mer vegetasjonsdekke (p =
+0,062) og 23 % færre per slitasjeklasse (p = 0,066), men ingen av
+effektene var signifikante. Substrattype hadde ingen effekt (p = 0,67).
+Vegetasjonsdekke og slitasje er bare registrert i 2026, så dette er
+første år de kan testes.
+
 <div id="tbl-effekt-n">
 
-Table 5: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
+Table 6: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
 undersøkelsespolygoner på Fornes utenfor lukepolygonene; Nei/Delvis/Ja =
 lukestatus året før på Kregnesteigen og Storrønningen.
 
@@ -388,23 +791,26 @@ lukestatus året før på Kregnesteigen og Storrønningen.
 
 <div id="tbl-effekt-koeff">
 
-Table 6: NB GLMM for larver per undersøkelsespolygon på Kregnesteigen og
-Storrønningen. RR = rateratio (multiplikativ effekt på larvetettheten).
-Referansenivåer: ikke luket året før, juni, sand, Kregnesteigen.
+Table 7: NB GLMM for larver per undersøkelsespolygon på Kregnesteigen og
+Storrønningen. RR = rateratio (hvor mange ganger høyere eller lavere
+larvetettheten er enn i referansegruppen); KI95 = 95 %
+konfidensintervall. Referansenivåer: ikke luket året før, juni, sand,
+Kregnesteigen. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p
+\< 0,001.
 
 <div class="cell-output-display">
 
-| Effekt                            |   RR | KI95      |       p |
-|:----------------------------------|-----:|:----------|--------:|
-| Delvis luket året før (mot ikke)  | 2.15 | 0.67–6.89 | 0.20000 |
-| Luket året før (mot ikke)         | 2.02 | 0.90–4.52 | 0.08600 |
-| Juli (mot juni)                   | 0.48 | 0.25–0.91 | 0.02400 |
-| August (mot juni)                 | 0.30 | 0.16–0.56 | 0.00021 |
-| Substrat: blanding (mot sand)     | 1.26 | 0.70–2.27 | 0.43000 |
-| Substrat: silt (mot sand)         | 1.43 | 0.56–3.68 | 0.45000 |
-| Vegetasjonsdekke (0 → 100 %)      | 0.24 | 0.05–1.08 | 0.06200 |
-| Slitasje (per klasse)             | 0.77 | 0.58–1.02 | 0.06600 |
-| Storrønningen (mot Kregnesteigen) | 2.91 | 1.54–5.53 | 0.00110 |
+| Effekt                            |   RR | KI95      | p             |
+|:----------------------------------|-----:|:----------|:--------------|
+| Delvis luket året før (mot ikke)  | 2.15 | 0.67–6.89 | 0.2           |
+| Luket året før (mot ikke)         | 2.02 | 0.90–4.52 | 0.086         |
+| Juli (mot juni)                   | 0.48 | 0.25–0.91 | 0.024\*       |
+| August (mot juni)                 | 0.30 | 0.16–0.56 | \<0.001\*\*\* |
+| Substrat: blanding (mot sand)     | 1.26 | 0.70–2.27 | 0.43          |
+| Substrat: silt (mot sand)         | 1.43 | 0.56–3.68 | 0.45          |
+| Vegetasjonsdekke (0 → 100 %)      | 0.24 | 0.05–1.08 | 0.062         |
+| Slitasje (per klasse)             | 0.77 | 0.58–1.02 | 0.066         |
+| Storrønningen (mot Kregnesteigen) | 2.91 | 1.54–5.53 | 0.0011\*\*    |
 
 </div>
 
@@ -412,28 +818,41 @@ Referansenivåer: ikke luket året før, juni, sand, Kregnesteigen.
 
 <div id="tbl-effekt-lrt">
 
-Table 7: Likelihood-ratio-tester for hvert ledd i modellen.
+Table 8: Likelihood-ratio-tester for hvert ledd i modellen.
+Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
-| Ledd             | chisq |  df |      p |
-|:-----------------|------:|----:|-------:|
-| Luket året før   |  2.74 |   2 | 0.2500 |
-| Luket × måned    |  5.92 |   4 | 0.2100 |
-| Substrat         |  0.80 |   2 | 0.6700 |
-| Vegetasjonsdekke |  3.22 |   1 | 0.0730 |
-| Slitasje         |  3.33 |   1 | 0.0680 |
-| Lokalitet        |  8.67 |   1 | 0.0032 |
+| Ledd             | chisq |  df | p          |
+|:-----------------|------:|----:|:-----------|
+| Luket året før   |  2.74 |   2 | 0.25       |
+| Luket × måned    |  5.92 |   4 | 0.21       |
+| Substrat         |  0.80 |   2 | 0.67       |
+| Vegetasjonsdekke |  3.22 |   1 | 0.073      |
+| Slitasje         |  3.33 |   1 | 0.068      |
+| Lokalitet        |  8.67 |   1 | 0.0032\*\* |
 
 </div>
 
 </div>
+
+**Sammenligning med kontrollen på Fornes.** Fornes brukes som kontroll
+fordi lokaliteten ligger i samme område og undersøkes på samme måte og i
+de samme besøksrundene, og fordi de fleste registreringene av
+elvesandjeger ligger utenfor lukeområdet. Kontrollen består av
+undersøkelsespolygonene på Fornes som ikke overlapper et lukepolygon.
+Fordi kontrollen bare finnes på én lokalitet, kan modellen ikke samtidig
+ta hensyn til forskjeller mellom lokalitetene. Lukede flekker hadde 2,0
+ganger så høy larvetetthet som kontrollen (p = 0,23), ikke-lukede
+flekker 1,3 ganger (p = 0,91) og delvis lukede flekker 0,9 ganger (p =
+0,98) (<a href="#fig-effekt" class="quarto-xref">Figure 10</a>). Ingen
+av gruppene skilte seg altså sikkert fra kontrollen.
 
 <div id="fig-effekt">
 
 ![](img/fig-effekt-1.png)
 
-Figure 7: Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95
+Figure 10: Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95
 % KI, midlet over måned, substrat og lokalitet, ved median
 vegetasjonsdekke og slitasje). Venstre: Kregnesteigen + Storrønningen
 etter lukestatus året før. Høyre: de samme gruppene sammenlignet med
@@ -445,7 +864,7 @@ kontrollen på Fornes (uten luking).
 
 ![](img/fig-kovariater-1.png)
 
-Figure 8: Kovariateffekter fra modellen: predikert larvetetthet mot
+Figure 11: Kovariateffekter fra modellen: predikert larvetetthet mot
 vegetasjonsdekke og slitasje (linje ± 95 % KI, for en luket flekk på
 Storrønningen i august; punkter = undersøkelsespolygoner) og etter
 substrat (gjennomsnitt ± 95 % KI).
@@ -453,37 +872,50 @@ substrat (gjennomsnitt ± 95 % KI).
 </div>
 
 **Sensitivitet: areal som kovariat i stedet for offset.** Hovedmodellen
-antar at antallet er proporsjonalt med søkt areal. Med log(areal) som
-estimert kovariat blir stigningen 0,53 på log-skala (1 = proporsjonalt),
-fordi større polygoner tar med mer tom mark.
+antar at antallet larver er proporsjonalt med polygonarealet, det vil si
+at en dobling av arealet gir dobbelt så mange larver. Når arealet i
+stedet estimeres i modellen, gir en dobling av arealet bare 1,44 ganger
+så mange larver
+(<a href="#tbl-sensitivitet" class="quarto-xref">Table 9</a>), fordi
+større polygoner tar med mer tom mark. Med areal som kovariat blir
+effekten av luking svakere (RR 1,39, p = 0,35). Konklusjonen er den
+samme: det er ingen sikker effekt av lukingen i 2025 på larvene i 2026.
 
 <div id="tbl-sensitivitet">
 
-Table 8: Hovedmodellen tilpasset med log(polygonareal) som kovariat i
-stedet for offset.
+Table 9: Hovedmodellen tilpasset med log(polygonareal) som kovariat i
+stedet for offset. Polygonareal er gitt per dobling av arealet.
+Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
-| Effekt                                              |   RR | KI95      |     p |
-|:----------------------------------------------------|-----:|:----------|------:|
-| Delvis luket året før (mot ikke)                    | 0.76 | 0.27–2.10 | 0.590 |
-| Luket året før (mot ikke)                           | 1.39 | 0.70–2.74 | 0.350 |
-| Vegetasjonsdekke (0 → 100 %)                        | 0.33 | 0.10–1.06 | 0.062 |
-| Slitasje (per klasse)                               | 0.85 | 0.67–1.07 | 0.160 |
-| log(areal), RR per e-dobling (2,72 = proporsjonalt) | 1.69 | 1.47–1.95 | 0.000 |
+| Effekt                                        |   RR | KI95      | p             |
+|:----------------------------------------------|-----:|:----------|:--------------|
+| Delvis luket året før (mot ikke)              | 0.76 | 0.27–2.10 | 0.59          |
+| Luket året før (mot ikke)                     | 1.39 | 0.70–2.74 | 0.35          |
+| Vegetasjonsdekke (0 → 100 %)                  | 0.33 | 0.10–1.06 | 0.062         |
+| Slitasje (per klasse)                         | 0.85 | 0.67–1.07 | 0.16          |
+| Polygonareal, per dobling (2 = proporsjonalt) | 1.44 | 1.31–1.59 | \<0.001\*\*\* |
 
 </div>
 
 </div>
 
-**Per larvestadium.** Voksne modelleres ikke (få individer). Den samme
-modellen er tilpasset stadium 1, 2 og 3 hver for seg.
+**Per larvestadium.** Den samme modellen er tilpasset stadium 1, 2 og 3
+hver for seg (<a href="#fig-stadium" class="quarto-xref">Figure 12</a>,
+<a href="#tbl-stadium" class="quarto-xref">Table 10</a>). Voksne
+modelleres ikke, fordi antallet avhenger mye av været på besøksdagen.
+Ingen av stadiene viste en signifikant effekt av luking. Stadium 1, de
+yngste larvene fra eggene som ble lagt i 2026, hadde den største
+rateratioen for lukede flekker (RR 2,43, p = 0,19). Det er dette stadiet
+vi først venter at skal respondere, fordi de voksne legger eggene i åpne
+flater.
 
 <div id="fig-stadium">
 
 ![](img/fig-stadium-1.png)
 
-Figure 9: Effekter på tettheten av larver i stadium 1, 2 og 3 (NB GLMM,
+Figure 12: Effekter på tettheten av larver i stadium 1, 2 og 3 (NB GLMM,
 rateratio ± 95 % KI, Kregnesteigen + Storrønningen). Verdier \> 1 =
 høyere tetthet.
 
@@ -491,53 +923,81 @@ høyere tetthet.
 
 <div id="tbl-stadium">
 
-Table 9: Likelihood-ratio-test for lukestatus året før i modellene per
-stadium, og rateratio for luket mot ikke luket.
+Table 10: Likelihood-ratio-test for lukestatus året før i modellene per
+stadium, og rateratio for luket mot ikke luket. Nuller =
+undersøkelsespolygoner uten larver i stadiet. Signifikansnivå: \* p \<
+0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
 | Stadium   | Nuller   | RR_luket | p_LRT |
-|:----------|:---------|---------:|------:|
-| Stadium 1 | 56 av 92 |     2.43 |  0.19 |
-| Stadium 2 | 40 av 92 |     0.91 |  0.76 |
-| Stadium 3 | 20 av 92 |     1.41 |  0.90 |
+|:----------|:---------|---------:|:------|
+| Stadium 1 | 56 av 92 |     2.43 | 0.19  |
+| Stadium 2 | 40 av 92 |     0.91 | 0.76  |
+| Stadium 3 | 20 av 92 |     1.41 | 0.9   |
 
 </div>
 
 </div>
 
-### 6.4 Klima, snø og vannføring
+### 6.4 Vannføring og nedbør
+
+Elvesandjeger er tilpasset dynamiske elvesystemer der flom stadig legger
+opp nye sand- og siltflater. Flommen skaper nye leveområder, men kan
+også oversvømme larvehullene eller flytte sanden de ligger i. Vannføring
+og nedbør er derfor tatt med fordi de også påvirker bestandsutviklingen,
+og fordi de må tas hensyn til når effekten av lupinlukingen skal
+vurderes.
+
+Høyeste døgnmiddelvannføring ved Gaulfoss var 388–829 m³/s i 2020–2026,
+og ingen år nådde middelflom (1 008 m³/s) som døgnmiddel
+(<a href="#fig-hydrologi" class="quarto-xref">Figure 13</a>,
+<a href="#tbl-hydrologi" class="quarto-xref">Table 11</a>). Vårflommen
+kom i april–juni, og i 2026 var den den minste i perioden (388 m³/s).
+Den eneste store sommerflommen i serien kom 8. august 2023 (755 m³/s),
+ni dager før augustbesøket, og antallet larver i stadium 1 falt fra 856
+i juli til 99 i august det året
+(<a href="#tbl-besok-eksponering" class="quarto-xref">Table 12</a>).
+Stadium 1-larvene har de grunneste gangene og er trolig mest utsatt for
+oversvømmelse og sandflytting.
+
+I de utforskende modellene hadde verken høyeste vannføring de 14 dagene
+før besøket, antall dager over 300 m³/s siden forrige besøk eller
+nedbøren de 14 dagene før besøket noen påviselig effekt på antallet
+larver (p = 0,21–0,92;
+<a href="#tbl-klima-modeller" class="quarto-xref">Table 13</a>). Med én
+målestasjon får alle lokaliteter samme eksponering, og serien inneholder
+ennå ikke et år med en flom over middelflom, så testen har lav styrke.
 
 <div id="fig-hydrologi">
 
 ![](img/fig-hydrologi-1.png)
 
-Figure 10: Daglig vannføring ved Gaulfoss, snødybde og nedbør ved
-Leinstrand, med besøkene for elvesandjeger (oransje). Referanselinjer
-for vannføring: 300 (prikket) og 500 m³/s (stiplet) og middelflom, 1 008
-m³/s (heltrukket).
+Figure 13: Daglig vannføring ved Gaulfoss og nedbør ved Leinstrand, med
+besøkene for elvesandjeger (oransje). Referanselinjer for vannføring:
+300 (prikket) og 500 m³/s (stiplet) og middelflom, 1 008 m³/s
+(heltrukket).
 
 </div>
 
 <div id="tbl-hydrologi">
 
-Table 10: Årlig oppsummering av vannføring, snø og klima. Vårflom =
-høyeste vannføring april–juni; dager \> 300 / 500 m³/s; snødager = dager
-med snø på bakken januar–mai; siste snø = siste dag med snø før august;
-nedbør mai–august; temperatur ved Kvål der den finnes (vinter =
-des–feb).
+Table 11: Årlig oppsummering av vannføring og nedbør. Vårflom = høyeste
+vannføring april–juni; årsmaks = høyeste vannføring i året; dager \> 300
+m³/s i april–juni og juli–august, og dager \> 500 m³/s; nedbør i
+mai–august ved Leinstrand. Døgnmiddelverdier.
 
 <div class="cell-output-display">
 
-| År | Vårflom | Vårflom dato | Årsmaks | Årsmaks dato | \>300 apr–jun | \>300 jul–aug | \>500 | Snø maks (cm) | Snødager jan–mai | Siste snø | Nedbør mai–aug | Temp des–feb | Temp apr–mai | Temp juni |
-|---:|---:|:---|---:|:---|---:|---:|---:|---:|---:|:---|---:|---:|---:|---:|
-| 2020 | 829 | 07.06 | 829 | 07.06 | 28 | 0 | 11 | 24 | 57 | 13.05 | 256 | NA | NA | NA |
-| 2021 | 618 | 16.05 | 618 | 16.05 | 18 | 4 | 5 | 28 | 84 | 14.04 | 266 | NA | NA | NA |
-| 2022 | 715 | 25.05 | 715 | 25.05 | 20 | 1 | 8 | 40 | 79 | 03.05 | 366 | NA | NA | NA |
-| 2023 | 580 | 15.05 | 755 | 08.08 | 13 | 4 | 4 | 42 | 98 | 04.05 | 261 | NA | 7.6 | 15.0 |
-| 2024 | 509 | 11.06 | 509 | 11.06 | 14 | 0 | 1 | 24 | 51 | 26.03 | 368 | -2.5 | 9.9 | 13.8 |
-| 2025 | 561 | 18.04 | 561 | 18.04 | 11 | 0 | 1 | 42 | 51 | 04.04 | 330 | 0.3 | 7.8 | 13.0 |
-| 2026 | 388 | 24.05 | 388 | 24.05 | 1 | 0 | 0 | 18 | 69 | 26.04 | 387 | -2.8 | 8.8 | 14.6 |
+| År | Vårflom | Vårflom dato | Årsmaks | Årsmaks dato | \>300 apr–jun | \>300 jul–aug | \>500 | Nedbør mai–aug |
+|---:|---:|:---|---:|:---|---:|---:|---:|---:|
+| 2020 | 829 | 07.06 | 829 | 07.06 | 28 | 0 | 11 | 256 |
+| 2021 | 618 | 16.05 | 618 | 16.05 | 18 | 4 | 5 | 266 |
+| 2022 | 715 | 25.05 | 715 | 25.05 | 20 | 1 | 8 | 366 |
+| 2023 | 580 | 15.05 | 755 | 08.08 | 13 | 4 | 4 | 261 |
+| 2024 | 509 | 11.06 | 509 | 11.06 | 14 | 0 | 1 | 368 |
+| 2025 | 561 | 18.04 | 561 | 18.04 | 11 | 0 | 1 | 330 |
+| 2026 | 388 | 24.05 | 388 | 24.05 | 1 | 0 | 0 | 387 |
 
 </div>
 
@@ -547,8 +1007,7 @@ des–feb).
 
 ![](img/fig-hydrologi-tidspunkt-1.png)
 
-Figure 11: Tidspunkt for siste dag med snø, vårflomtoppen og
-junibesøket, per år.
+Figure 14: Tidspunkt for vårflomtoppen og junibesøket, per år.
 
 </div>
 
@@ -556,14 +1015,14 @@ junibesøket, per år.
 
 ![](img/fig-hydrologi-besok-1.png)
 
-Figure 12: Larver per besøk og stadium (alle lokaliteter) mot høyeste
+Figure 15: Larver per besøk og stadium (alle lokaliteter) mot høyeste
 vannføring de 14 dagene før besøket. Tallene = år.
 
 </div>
 
 <div id="tbl-besok-eksponering">
 
-Table 11: Innsats og antall per besøk: antall GPS-punkter (til og med
+Table 12: Innsats og antall per besøk: antall GPS-punkter (til og med
 2025) eller polygoner (fra 2026), larver totalt og per stadium, og
 eksponering før besøket (høyeste vannføring og nedbør de 14 dagene før;
 høyeste vannføring og dager \> 300 m³/s siden forrige besøk, eller
@@ -598,15 +1057,16 @@ siden 1. september for junibesøket).
 
 <div id="tbl-klima-modeller">
 
-Table 12: Utforskende NB GLMM for larver per lokalitet og besøk
+Table 13: Utforskende NB GLMM for larver per lokalitet og besøk
 (Storrønningen, Kregnesteigen, Fornes; måned som fast effekt, lokalitet
 og år som tilfeldige effekter) med én eksponeringsvariabel om gangen.
-Estimat på log-skala; p fra likelihood-ratio-test.
+Estimat på log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p
+\< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
 
-| Respons     | Variabel                               | Estimat |    SE |    p |
-|:------------|:---------------------------------------|--------:|------:|-----:|
+| Respons     | Variabel                               | Estimat |    SE | p    |
+|:------------|:---------------------------------------|--------:|------:|:-----|
 | Alle larver | log(høyeste vannføring 14 d før besøk) |  -0.221 | 0.182 | 0.23 |
 | Alle larver | Dager \> 300 m³/s siden forrige besøk  |  -0.002 | 0.019 | 0.92 |
 | Alle larver | Nedbør 14 d før besøk (mm)             |  -0.005 | 0.004 | 0.23 |
@@ -622,72 +1082,229 @@ Estimat på log-skala; p fra likelihood-ratio-test.
 
 ### 7.1 Hva viser årets resultater
 
-<!-- Tallene under oppdateres automatisk, men tolkningen er skrevet for dataene til og med 2026. Les gjennom og oppdater teksten hvert år. -->
+<!-- Teksten er skrevet for dataene til og med 2026. Oppdater tallene og tolkningen manuelt hvert år. -->
 
-**Virker lukingen på lupinen?** Ja: lukingen reduserer lupinbestanden
-året etter. Et polygon som ble luket året før har i gjennomsnitt **0,75
-lupiner/m²**, mot **2,28 lupiner/m²** der ingenting ble gjort året før
-(RR 0,33, p \< 0,001), og hvert ekstra år med luking endrer tettheten
-med en faktor 0,53 (p = 0,0013). Delvis luking gir ikke samme effekt,
-delvis fordi det er de tetteste bestandene som bare blir delvis luket.
-Årseffekten viser også risikoen: når innsatsen går ned, kommer lupinen
-raskt tilbake. Invasjonen holdes i sjakk, men er ikke fjernet –
-**fortsatt årlig luking er nødvendig.**
+**Lukingen holder lupinbestanden nede, men bare så lenge den gjentas.**
+I polygoner som ble luket året før, var det tre ganger færre lupiner enn
+i polygoner som ikke ble luket, og tettheten går ned for hvert år et
+polygon lukes. Delvis luking ga ikke samme effekt, fordi mange planter
+står igjen og kan spre frø. I 2025 ble det luket mye mindre på
+Storrønningen, og på Kregnesteigen var lukingen for det meste delvis. I
+2026 var lupintettheten i de lukede polygonene nesten ti ganger så høy
+som året før. Lupinen kommer altså raskt tilbake når lukingen reduseres.
 
-**Effekt på elvesandjeger.** Luking i 2025 hadde **ingen statistisk
-signifikant effekt på antall larver i 2026** på Kregnesteigen og
-Storrønningen. Flekker som ble luket hadde i gjennomsnitt 2,0 ganger
-larvetettheten i ikke-lukede flekker (95 % KI 0,9–4,5;
-likelihood-ratio-test p = 0,25). Retningen er positiv, men usikkerheten
-er stor, hovedsakelig fordi nesten alle okkuperte flekker ble luket –
-bare 11 undersøkelsespolygoner ligger i flekker som ikke ble luket.
-Effekten varierer ikke signifikant mellom måneder (p = 0,21).
+**Bestanden tok seg opp i 2026 etter et svært dårlig 2025.** 2025 var
+det dårligste året siden overvåkingen ble etablert, men i 2026 økte
+antallet larver igjen. I juli 2026 ble det registrert mange nye stadium
+1-larver, så det ble lagt mange egg i år, og det ble registrert flere
+voksne enn noen gang tidligere i serien. Antallet stadium 3-larver var
+derimot det laveste i serien, noe som trolig gjenspeiler de svake
+årsklassene fra 2024 og 2025. Storrønningen og Fornes hadde flere larver
+enn året før, mens Kregnesteigen fortsatt hadde lave antall.
 
-- Andre mål på luking gir samme bilde: antall år en flekk er luket (RR
-  1,18 per år, p = 0,13) og antall lupiner fjernet per m² året før (p =
-  0,082).
-- **Sammenlignet med kontrollen på Fornes** har lukede flekker 2,0
-  ganger larvetettheten (p = 0,23, Dunnett-justert) og ikke-lukede
-  flekker 1,3 ganger (p = 0,91).
-- **Habitat:** substrat har ingen effekt (p = 0,67). Vegetasjonsdekke og
-  slitasje trekker begge ned – omtrent 13 % færre larver per 10 %
-  vegetasjonsdekke (p = 0,073) og 23 % færre per slitasjeklasse (p =
-  0,068). Larvetettheten er 2,9 ganger høyere på Storrønningen enn på
-  Kregnesteigen (p = 0,0032).
-- **Per stadium:** stadium 1 p = 0,19, stadium 2 p = 0,76, stadium 3 p =
-  0,9 for luking året før.
+**Ingen sikker effekt av lukingen på larvene.** Flekker som ble luket i
+2025, hadde i gjennomsnitt dobbelt så høy larvetetthet i 2026 som
+flekker som ikke ble luket, men forskjellen var ikke signifikant. Også i
+2025 var det en tendens til flere larver der det var fullstendig luket,
+uten at effekten var signifikant (Roos et al. 2025). Det er flere
+grunner til at effekten er vanskelig å påvise. Nesten alle flekkene der
+arten finnes, er luket, så det er få ikke-lukede flekker å sammenligne
+med, og de ligger alle på Storrønningen. De delvis lukede flekkene
+ligger alle på Kregnesteigen, så effekten av delvis luking kan ikke
+skilles fra lokaliteten. I tillegg ventes effekten å komme med en
+forsinkelse: de voksne legger eggene i åpne flater året etter lukingen,
+og larvene bruker to til tre år på å bli voksne. Det passer med at
+stadium 1, larvene fra årets egg, hadde den største effekten av
+lukingen, selv om heller ikke den var signifikant.
 
-**Klima og vannføring.**
+**Vegetasjon og tråkk.** Vegetasjonsdekke og slitasje ble registrert for
+første gang i 2026. Begge trakk antallet larver ned, men effektene var
+ikke signifikante. Retningen stemmer med at arten trenger åpne sand- og
+siltflater, og med at larvehullene kan ødelegges av tråkk (Evju et al.
+2022). I 2025 viste dronebilder omfattende spor etter hunder i
+kjerneområdene på Storrønningen (Roos et al. 2025). Slitasje registreres
+bare som et øyeblikksbilde på besøksdagen, og regn kan vaske bort
+fotspor, så flere år med data trengs før vi kan si noe sikkert om
+effekten av tråkk.
 
-- Årlig høyeste vannføring ved Gaulfoss var 388–829 m³/s i 2020–2026;
-  ingen år nådde middelflom (1 008 m³/s), så serien inneholder ennå ikke
-  et år der sandbankene sto lenge under vann.
-- I de utforskende modellene har verken høyeste vannføring, dager over
-  300 m³/s eller nedbør før besøket en påviselig effekt (p = 0,21–0,92)
-  når variasjonen mellom år er tatt med.
-- Den eneste sommerflommen i serien (8. august 2023, 755 m³/s) kom ni
-  dager før augustbesøket og falt sammen med et kraftig fall i stadium
-  1-larver fra juli til august. Stadium 1-larvene har de grunneste
-  gangene og er mest utsatt for oversvømmelse og sandflytting.
-- Innsatsen varierer mellom besøk og blander seg med signalet mellom år
-  (f.eks. august 2025 med få punkter). Videre analyser av klima og
-  bestand trenger et mål på innsats per besøk, oversvømmelsesterskler
-  per sandbanke (drone-DEM + vannstand) og en lengre vannføringsserie
-  som inkluderer år med store flommer.
+**Flom.** Ingen av flom- og nedbørsvariablene hadde en påviselig effekt
+på antallet larver. Sommerflommen i august 2023 falt likevel sammen med
+et kraftig fall i antallet stadium 1-larver, som har de grunneste
+gangene. Serien inneholder ennå ikke et år med flom over middelflom, så
+vi vet ikke hvordan en stor flom påvirker bestanden.
+
+**Voksne og vær.** De voksne er bare aktive i solskinn, og antallet
+varierer derfor mye med været på besøksdagen. Antallet voksne sier
+derfor mindre om bestanden enn antallet larver.
 
 ### 7.2 Anbefaling for videreføring
 
-<!-- Hva er kunnskapsbehovet, om tiltaket (hvordan gjennomføres) og om effekten (variasjon mellom år, mellom lokaliteter). Anbefalinger for videreføring av delprosjektet – endringer i metodikk? Utvidelse? Endret frekvens for datainnsamling? Avslutning? -->
+**Tiltak.** Vi anbefaler å videreføre fullstendig luking av hagelupin
+hvert år. Resultatene fra 2026 viser at lupinen raskt kommer tilbake når
+lukingen reduseres, og at delvis luking ikke reduserer lupinbestanden.
+Kjerneområdene med stabile bestander av elvesandjeger fungerer som
+kildebestander og bør prioriteres, og områdene rundt bør holdes åpne som
+buffersoner som arten kan flytte til etter flom og styrtregn (Roos et
+al. 2025). Den restaurerte flaten på Kregnesteigen, der store deler av
+bestanden har holdt til siden 2023, var i ferd med å gro igjen i 2025 og
+bør lukes på nytt (Roos et al. 2025). Utviklingen på Gravråk etter
+restaureringen med gravemaskin i 2025 bør følges.
 
-Analysen har lav styrke for sammenligningen luket/ikke luket. Styrken
-vil øke hvis feltpersonalet også registrerer noen *ikke-lukede* flekker
-med elvesandjeger (eller søkte, men tomme flekker) på de to
-effektlokalitetene, og hvis Fornes fortsatt undersøkes som kontroll nå
-som lukingen også har startet der.
+Lukingen holder eksisterende leveområder åpne, men nye sand- og
+siltflater skapes bare av elva selv. Forvaltningen bør derfor også ta
+hensyn til inngrep som reduserer den naturlige dynamikken i elva, som
+masseuttak, flomforbygninger og regulering.
 
-## 8. References
+Larvehullene er sårbare for tråkk fra mennesker og hunder. Skilt som
+informerer om at sandflatene er leveområder for en truet art, er et
+enkelt tiltak, og i de mest sårbare kjerneområdene kan det vurderes å
+kanalisere ferdselen eller innføre båndtvang (Roos et al. 2025).
 
-<div id="refs">
+**Overvåking.** Registreringen i ArcGIS Field Maps, som ble tatt i bruk
+i 2026, gir nyttig informasjon om vegetasjonsdekke, substrattype og
+slitasje i hver flekk, i tillegg til antall larver per stadium og
+voksne. Vi anbefaler å følge denne protokollen med besøk i juni, juli og
+august hvert år. Polygonene bør holdes små og avgrenses slik at hvert
+polygon gjenspeiler én kombinasjon av vegetasjonsdekke og substrattype.
+Været på besøksdagen, særlig sol eller overskyet, bør registreres, slik
+at antallet voksne kan tolkes. Fornes bør fortsatt brukes som kontroll,
+med undersøkelsespolygonene utenfor lukeområdet, nå som lukingen også
+har startet der. Overvåkingen bør fortsette, slik at en eventuell
+forsinket effekt av lukingen kan påvises.
+
+## 8. Referanser
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-dn_2009" class="csl-entry">
+
+Direktoratet for naturforvaltning. 2009. *Handlingsplan for
+Elvesandjeger *Cicindela Maritima**. DN-Rapport Nos. 2009-3.
+Direktoratet for naturforvaltning.
+
+</div>
+
+<div id="ref-evju_2022b" class="csl-entry">
+
+Evju, Marianne, Ruben E. Roos, Anders Endrestøl, Megan Nowell, Oddvar
+Hanssen, and Ellen E. Ombler. 2022. *Effektovervåking Av Trua Arter Og
+Naturtyper 2022*. NINA Rapport No. 2196. Norsk institutt for
+naturforskning. <https://brage.nina.no/nina-xmlui/handle/11250/3035335>.
+
+</div>
+
+<div id="ref-hanssen_2023" class="csl-entry">
+
+Hanssen, Oddvar. 2023. *Oppfølging Av Handlingsplan for Elvesandjeger
+*Cicindela Maritima*, Og Registreringer Av Stor Elvebreddedderkopp
+*Arctosa Cinerea*. Rapportering for Perioden 2015–2020*. NINA Rapport
+No. 1815. Norsk institutt for naturforskning.
+<https://hdl.handle.net/11250/3049395>.
+
+</div>
+
+<div id="ref-odegaard_2010" class="csl-entry">
+
+Ødegaard, Frode, and Oddvar Hanssen. 2010. *Elvesandjeger *Cicindela
+Maritima**. Artsdatabankens faktaark nr. 115. Artsdatabanken.
+<https://www.artsdatabanken.no>.
+
+</div>
+
+<div id="ref-odegaard_2014" class="csl-entry">
+
+Ødegaard, Frode, Oddvar Hanssen, Sandra Åström, and Ulf Hansen. 2014.
+*Oppfølging Av Handlingsplan for Elvesandjeger, *Cicindela Maritima*.
+Sluttrapport for Perioden 2009–2013*. NINA Rapport No. 1034. Norsk
+institutt for naturforskning. <http://hdl.handle.net/11250/2372336>.
+
+</div>
+
+<div id="ref-odegaard_2021" class="csl-entry">
+
+Ødegaard, Frode, Oddvar Hanssen, Arne E. Laugsand, and Stefan Olberg.
+2021. *Biller: Vurdering Av Elvesandjeger *Cicindela Maritima* for
+Norge. Rødlista for Arter 2021*. Artsdatabanken.
+<https://www.artsdatabanken.no/lister/rodlisteforarter/2021/12703>.
+
+</div>
+
+<div id="ref-roos_2025" class="csl-entry">
+
+Roos, Ruben E., Mathias Andreasen, Fia Bengtsson, et al. 2025.
+*Overvåking Av Effekter Av Tiltak Trua Natur i 2025. Resultater for Ti
+Arter Og Én Naturtype*. NINA Rapport No. 2695. Norsk institutt for
+naturforskning.
+<https://nva.sikt.no/registration/019ad9d2e908-b8b219d4-fb21-40f8-a34a-e1c577293c9a>.
+
+</div>
+
+<div id="ref-roos_2024" class="csl-entry">
+
+Roos, Ruben E., Marianne Evju, Anders Endrestøl, et al. 2024.
+*Overvåking Av Effekter Av Tiltak for Åtte Trua Arter Og En Naturtype i
+2024*. NINA Rapport No. 2538. Norsk institutt for naturforskning.
+<https://hdl.handle.net/11250/3169493>.
+
+</div>
+
+<div id="ref-roos_2023" class="csl-entry">
+
+Roos, Ruben E., Marianne Evju, Anders Endrestøl, Oddvar Hanssen, and
+Megan Nowell. 2023. *Overvåking Av Effekter Av Tiltak for Seks Trua
+Arter Og En Naturtype i 2023*. NINA Rapport No. 2377. Norsk institutt
+for naturforskning. <https://hdl.handle.net/11250/3106536>.
+
+</div>
+
+<div id="ref-solberg_2020" class="csl-entry">
+
+Solberg, K. A. 2020. *Kartlegging Av Fremmede Arter, Og Bekjempelse Av
+Lupiner, Langs Gaula i 2020*. MidNat Rapport Nos. 4-2020. Midtnorsk
+Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2025" class="csl-entry">
+
+Solberg, K. A., S. Daaland, and J. Vullum. 2025. *Fremmede Planter Langs
+Gaula 2025 – Kartlegging, Bekjempelse Og Tiltak for Elvesandjeger*.
+MidNat Rapport Nos. 7-2025. Midtnorsk Naturundersøkelse AS.
+<https://www.midnat.no/gauldalen/>.
+
+</div>
+
+<div id="ref-solberg_2022b" class="csl-entry">
+
+Solberg, K. A., and J. Vullum. 2022a. *Bekjempelse Av Hagelupin Og
+Rynkerose På to Elveører Med Elvesandjeger-Bestander, i Melhus Kommune,
+2022*. MidNat Rapport Nos. 10-2022. Midtnorsk Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2022a" class="csl-entry">
+
+Solberg, K. A., and J. Vullum. 2022b. *Bekjempelse Og Kartlegging Av
+Lupiner Langs Gaula i 2021*. MidNat Rapport Nos. 2-2022. Midtnorsk
+Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2023" class="csl-entry">
+
+Solberg, K. A., and J. Vullum. 2023. *Fremmede Planter Langs Gaula 2023
+– Kartlegging, Bekjempelse Og Tiltak for Elvesandjeger*. MidNat Rapport
+Nos. 5-2023. Midtnorsk Naturundersøkelse AS.
+
+</div>
+
+<div id="ref-solberg_2024" class="csl-entry">
+
+Solberg, K. A., and J. Vullum. 2024. *Fremmede Planter Langs Gaula 2024
+– Kartlegging Og Bekjempelse*. MidNat Rapport Nos. 6-2024. Midtnorsk
+Naturundersøkelse AS.
+
+</div>
 
 </div>
 
