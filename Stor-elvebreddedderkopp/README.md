@@ -398,8 +398,10 @@ avgrensningen blir presis
 polygonet telles juvenile og voksne individer, og det registreres
 vegetasjonsdekke (%), substrattype og slitasje (klasse 1–5). Fram til og
 med 2024 ble hvert funn i stedet registrert som et GPS-punkt med antall
-per stadium. Indikatorene er beskrevet i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+per stadium. Metoden ble endret for å redusere de geometriske feilene
+fra den håndholdte GPS-en, gi bedre kontroll over hvilke områder som har
+hull, og samtidig registrere habitatvariabler. Indikatorene er beskrevet
+i <a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
 
 <div id="fig-obskart">
 

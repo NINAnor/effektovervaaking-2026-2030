@@ -581,7 +581,7 @@ clear_site |>
 
 Overvåkingen av elvesandjeger langs Gaula ble etablert i 2015, etter at arten ble kartlagt fra 2009 [@odegaard_2014; @hanssen_2023]. Det gjøres en totalkartlegging av lokalitetene: alle egnede arealer med silt og finsand gjennomsøkes, og larvehull (stadium 1–3) og voksne telles. Larvestadiet bestemmes ut fra størrelsen på hullet, og det tas hensyn til ikke å tråkke på hullene [@roos_2024]. Hver lokalitet besøkes opptil tre ganger hver sommer, i juni, juli og august, slik at de ulike generasjonene fanges opp [@roos_2024]. Besøkene legges så langt som mulig til dager uten regn. Larvehullene kan telles i de fleste værforhold, men de voksne billene er bare aktive i solskinn, så antallet voksne avhenger mye av været på besøksdagen.
 
-Fra `r first_year` til 2025 ble antall hull per stadium registrert per GPS-punkt med håndholdt GPS, med en ny posisjon for hver 2–5 m [@roos_2024]. Fra 2026 registreres elvesandjeger i ArcGIS Field Maps. Feltteknikeren tegner polygoner rundt områder med larvehull der substratet og vegetasjonsdekket er mest mulig likt. Larvehullene ligger ofte i samlinger, og et polygon omfatter gjerne én samling. Et dronebilde tatt i juni samme år brukes som høyoppløselig bakgrunnskart, slik at feltteknikeren kan avgrense polygonene presist. For hvert polygon registreres antall larver per stadium og voksne, substrattype, vegetasjonsdekke (%) og slitasje (klasse 1–5). Antallene brukes som registrert, uavhengig av metode. Indikatorene er oppsummert i @tbl-indikatorer.
+Fra `r first_year` til 2025 ble antall hull per stadium registrert per GPS-punkt med håndholdt GPS, med en ny posisjon for hver 2–5 m [@roos_2024]. Fra 2026 registreres elvesandjeger med polygoner i ArcGIS Field Maps. Metoden ble endret for å redusere de geometriske feilene fra den håndholdte GPS-en, gi bedre kontroll over hvilke områder som har larvehull, og samtidig registrere habitatvariabler. Feltteknikeren tegner polygoner rundt områder med larvehull der substratet og vegetasjonsdekket er mest mulig likt. Larvehullene ligger ofte i samlinger, og et polygon omfatter gjerne én samling. Et dronebilde tatt i juni samme år brukes som høyoppløselig bakgrunnskart, slik at feltteknikeren kan avgrense polygonene presist. For hvert polygon registreres antall larver per stadium og voksne, substrattype, vegetasjonsdekke (%) og slitasje (klasse 1–5). Antallene brukes som registrert, uavhengig av metode. Indikatorene er oppsummert i @tbl-indikatorer.
 
 ```{r tbl-indikatorer}
 #| tbl-cap: 'Indikatorer for overvåking av elvesandjeger og effekten av lupinluking.'
@@ -605,19 +605,21 @@ Alle observasjoner ligger i masterfila `r paste0("[", master_file, "](data/", ma
 
 Hovedmålet med analysene er å finne ut om lupinlukingen gir flere elvesandjegere. Antallet larver påvirkes også av andre forhold: habitatet i hvert polygon (substrattype, vegetasjonsdekke og slitasje) og vannføring og nedbør, som varierer fra år til år og mellom besøk. Disse variablene tas med i analysene for å skille effekten av lupinlukingen fra andre faktorer som påvirker bestanden.
 
-**Utvikling over tid.** Tidsseriene viser summen av registrerte individer per år, stadium og besøksmåned. Registreringene gjøres av en erfaren feltarbeider med god kjennskap til artene og lokalitetene, med samme innsats ved hvert besøk og på alle lokaliteter. Ikke alle individer blir nødvendigvis oppdaget. Hvilke måneder som er undersøkt, er ikke helt likt alle år (@fig-trend-stadium-maaned), og tidsseriene vises derfor per besøksmåned. I 2024 ble registreringene gjort av den nye og den tidligere feltarbeideren sammen, og fra 2025 av den nye alene, og i 2026 ble registreringsmetoden endret fra punkter til polygoner. Summene er derfor en indeks for relativ forekomst som kan sammenlignes mellom år og lokaliteter, og ikke et bestandsestimat.
+**Utvikling over tid.** Tidsseriene viser summen av registrerte individer per år, stadium og besøksmåned. Registreringene gjøres av en erfaren feltarbeider med god kjennskap til artene og lokalitetene, med samme innsats ved hvert besøk og på alle lokaliteter. Ikke alle individer blir nødvendigvis oppdaget, så summene er en indeks for relativ forekomst som kan sammenlignes mellom år og lokaliteter, og ikke et bestandsestimat. Hvilke måneder som er undersøkt, er ikke helt likt alle år (@fig-trend-stadium-maaned), og tidsseriene vises derfor per besøksmåned.
 
-**Effekt av luking på lupin.** Midtnorsk Naturundersøkelse registrerer antall lupiner i hvert lukepolygon samtidig med lukingen. Antallet et år er derfor et resultat av lukingen årene før, ikke av lukingen samme år. Lupintettheten (lupiner per m²) sammenlignes etter hvordan polygonet ble luket årene før: fullt luket året før, delvis luket året før, ett år uten luking, to år eller mer uten luking, eller luket for første gang. Dette testes med en negativ binomial GLMM (`glmmTMB`, nbinom2) på antall lupiner, med polygonarealet som offset, lukehistorikk, år og lokalitet som faste effekter og et tilfeldig konstantledd per polygon (`r min(panel$year) + 1`–`r max(panel$year)`).
+**Effekt av luking på lupin.** Dataene fra Midtnorsk Naturundersøkelse inneholder antall lupiner i hvert lukepolygon, registrert samtidig med lukingen, og om polygonet ble fullt luket, delvis luket eller ikke luket. I vår analyse regner vi om antallet til lupintetthet (lupiner per m² av polygonarealet), slik at polygoner av ulik størrelse kan sammenlignes, og deler polygonene inn etter hvordan de ble luket årene før: fullt luket året før, delvis luket året før, ett år uten luking, to år eller mer uten luking, eller luket for første gang. Forskjellene i lupintetthet mellom disse gruppene testes med en negativ binomial GLMM (`glmmTMB`, nbinom2) på antall lupiner, med polygonarealet som offset, lukehistorikk, år og lokalitet som faste effekter og et tilfeldig konstantledd per polygon (`r min(panel$year) + 1`–`r max(panel$year)`).
 
-**Effekt av luking på elvesandjeger.** Effektanalysen bruker **Kregnesteigen og Storrønningen**, de to lokalitetene som har både lukepolygoner og observasjoner av elvesandjeger. Hvert undersøkelsespolygon i `r aar_eff` får lukestatusen (Nei / Delvis / Ja) til lukepolygonet det overlapper mest, **året før undersøkelsen** (`r aar_eff - 1`). På **Fornes** brukes undersøkelsespolygonene som ligger utenfor lukepolygonene (`r sum(dat$site == "Fornes" & dat$group %in% "Kontroll")`), som **kontroll** uten lupinluking, mens polygonene som overlapper et lukepolygon (`r sum(dat$site == "Fornes" & is.na(dat$group))`), er holdt utenfor analysen. Gravråk har for få observasjoner og er ikke med, og luking i undersøkelsesåret brukes ikke.
+**Effekt av luking på elvesandjeger.** Effektanalysen bruker **Kregnesteigen og Storrønningen**. Elvesandjeger finnes også på Gravråk og Fornes, men på Gravråk ble det bare registrert noen få larver i `r aar_eff` (`r sum(dat$larvae[dat$site == "Gravråk"])` larvehull i `r sum(dat$site == "Gravråk")` polygoner), for få til å inngå, og Fornes brukes som kontroll. Hvert undersøkelsespolygon i `r aar_eff` får lukestatusen (Nei / Delvis / Ja) til lukepolygonet det overlapper mest, **året før undersøkelsen** (`r aar_eff - 1`). På **Fornes** brukes undersøkelsespolygonene som ligger utenfor lukepolygonene (`r sum(dat$site == "Fornes" & dat$group %in% "Kontroll")`), som **kontroll** uten lupinluking, mens polygonene som overlapper et lukepolygon (`r sum(dat$site == "Fornes" & is.na(dat$group))`), er holdt utenfor analysen. Luking i undersøkelsesåret brukes ikke.
 
-Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon. Polygonene er tegnet rundt samlinger av larvehull, så bare `r sum(dat$larvae == 0)` av `r nrow(dat)` har null larver; dataene er sterkt overspredte (varians/gjennomsnitt = `r num(var(dat$larvae) / mean(dat$larvae), 0)`), men ikke nullinflaterte. Modellen er derfor en **negativ binomial GLMM** med søkt areal som offset, måned, substrat, vegetasjonsdekke og slitasje som kovariater, lokalitet som fast effekt og et tilfeldig konstantledd per lukepolygon (de samme områdene besøkes i juni, juli og august). Habitatvariablene substrat, vegetasjonsdekke og slitasje er med slik at effekten av lukingen sammenlignes mellom polygoner med likt habitat, og måned fanger opp forskjeller mellom besøkene, blant annet i vannføring og vær:
+Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon. Polygonene er tegnet rundt samlinger av larvehull, så bare `r sum(dat$larvae == 0)` av `r nrow(dat)` har null larver (to av dem ble tegnet rundt voksne biller, og ett har verken larver eller voksne); dataene er sterkt overspredte (varians/gjennomsnitt = `r num(var(dat$larvae) / mean(dat$larvae), 0)`), men ikke nullinflaterte. Modellen er derfor en **negativ binomial GLMM** med søkt areal som offset, måned, substrat, vegetasjonsdekke og slitasje som kovariater, lokalitet som fast effekt og et tilfeldig konstantledd per lukepolygon (de samme områdene besøkes i juni, juli og august). Habitatvariablene substrat, vegetasjonsdekke og slitasje er med slik at effekten av lukingen sammenlignes mellom polygoner med likt habitat, og måned fanger opp forskjeller mellom besøkene, blant annet i vannføring og vær:
 
 `larver ~ luket året før + måned + substrat + vegetasjonsdekke + slitasje + lokalitet + offset(log areal) + (1 | lukepolygon)`
 
 Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for offset, og modellen er tilpasset hvert larvestadium for seg.
 
 **Slik leses resultatene.** Effektene er gitt som rateratio (RR): hvor mange ganger høyere eller lavere larvetettheten er enn i referansegruppen, når de andre variablene i modellen holdes like. RR = 1 betyr ingen forskjell, RR = 2 dobbelt så mange larver og RR = 0,5 halvparten så mange. KI95 er 95 % konfidensintervall: intervallet som med 95 % sikkerhet inneholder den sanne effekten. Hvis intervallet omfatter 1, kan vi ikke si sikkert at det er en forskjell. p-verdien er sannsynligheten for å få en så stor forskjell hvis det egentlig ikke er noen effekt, og p < 0,05 regnes som statistisk signifikant.
+
+**Fornes og Gravråk.** Utviklingen på de to lokalitetene som ikke er med i effektanalysen, beskrives ut fra augusttellingene, sammen med tidspunktene for utsetting av biller og larver, luking og restaurering. Hver lokalitet har bare én tidsserie og ingen kontroll, så sammenhengene kan ikke testes statistisk.
 
 **Vannføring og nedbør.** Vannføringen er målt ved Gaulfoss (NVE, stasjon 122.9.0; middelflom 1 008 m³/s, 5-årsflom 1 304 m³/s) og nedbøren ved Leinstrand (MET SN67150, nedstrøms lokalitetene), og de er satt sammen til én daglig tabell av skript 8 i [`code/`](code/). Vannføringen fanger opp både snøsmelting og regnflom, og snø er derfor ikke tatt med. Vannføring og nedbør er målt på én stasjon og er derfor like for alle lokaliteter ved samme besøk. De er derfor analysert for seg, for alle år. Vannføringen der de overvåkede sandbankene oversvømmes er ikke kjent, så vannføringen brukes direkte som eksponeringsindeks: høyeste vannføring og antall dager over 300 m³/s siden forrige besøk (for junibesøket: siden 1. september året før), og høyeste vannføring og nedbør de 14 dagene før besøket. Larver per lokalitet og besøk (Storrønningen, Kregnesteigen og Fornes) er modellert med én eksponeringsvariabel om gangen i en utforskende NB GLMM med måned som fast effekt og lokalitet og år som tilfeldige effekter. Med én målestasjon får alle lokaliteter samme eksponering, så testen hviler på antall besøk. Analysen viser om endringer i antall kan skyldes flom og vær snarere enn lukingen.
 
@@ -703,7 +705,7 @@ I 2026 ble det registrert 2 304 larvehull (stadium 1–3) og 67 voksne totalt fo
 
 ### 6.1 Utvikling over tid
 
-**Utvikling i bestanden.** Fra 2017, da alle lokalitetene ble undersøkt i august, og fram til 2023 ble det registrert mellom 1 100 og 3 100 larvehull per besøk, med flest i august 2022 (3 133) (@fig-trend-stadium-maaned). Deretter gikk antallet ned, og 2025 var det dårligste året siden overvåkingen ble etablert, med under 1 000 larvehull per besøk og bare 308 i august. I 2026 økte antallet igjen, til 1 081 larvehull i juli og 930 i august, men junibesøket ga bare 293 larvehull, det laveste i juni siden 2016. Fordi registreringsmetoden ble endret i 2026, må sammenligningen med tidligere år gjøres med forsiktighet (avsnitt 5).
+**Utvikling i bestanden.** Fra 2017, da alle lokalitetene ble undersøkt i august, og fram til 2023 ble det registrert mellom 1 100 og 3 100 larvehull per besøk, med flest i august 2022 (3 133) (@fig-trend-stadium-maaned). Deretter gikk antallet ned, og 2025 var det dårligste året siden overvåkingen ble etablert, med under 1 000 larvehull per besøk og bare 308 i august. I 2026 økte antallet igjen, til 1 081 larvehull i juli og 930 i august, men junibesøket ga bare 293 larvehull, det laveste i juni siden 2016. Fordi registreringsmetoden ble endret i 2026, må sammenligningen med tidligere år gjøres med forsiktighet (avsnitt 4).
 
 **Larvestadiene.** I juli 2026 ble det registrert 717 larver i stadium 1, det nest høyeste av årene med julibesøk, etter juli 2023 (856). Det tyder på at det ble lagt mange egg i 2026, og i august hadde mange av disse larvene gått over til stadium 2. Antallet larver i stadium 3 var derimot lavt i 2026, og i august (138) var det det laveste i hele serien. Stadium 3 er de eldste larvene, så det lave antallet gjenspeiler trolig de svake årsklassene fra 2024 og 2025. Mønsteret gjennom sesongen er som forventet: de overvintrede stadium 3-larvene dominerer i juni, nye stadium 1-larver kommer i juli etter egglegging, og disse går over til stadium 2 innen august (@fig-sesong).
 
@@ -1126,6 +1128,50 @@ climate_res |>
 ```
 
 
+### 6.5 Fornes og Gravråk: utsetting, luking og restaurering
+
+**Fornes.** Elvesandjeger koloniserte Fornes fra Storrønningen i 2015–2016, og i august 2017 ble det bare funnet fem larvehull (@fig-fornes-gravrak). I mai 2018 ble det satt ut 12 voksne biller fra Storrønningen og Kregnesteigen, og i august samme år ble det registrert 127 larvehull, hvorav 90 i stadium 1 og 2 fra eggene som ble lagt det året og trolig var avkom etter de utsatte billene [@hanssen_2023]. I 2019 og 2020 ble det lagt få nye egg, og i august 2020 ble det satt ut 20 nyklekte voksne fra Storrønningen. I august 2021 ble det registrert 564 larvehull, hvorav 497 i stadium 1 og 2. Siden har Fornes hatt en stabil bestand med 100–500 larvehull per besøk, bortsett fra det dårlige året 2025, som gjaldt alle lokalitetene. Begge utsettingene ble altså fulgt av en tydelig økning i antallet unge larver neste sesong. Vi kan ikke utelukke at økningen hadde kommet uansett, fordi arten samtidig vandret inn naturlig, men mønsteret tyder på at utsettingen av voksne bidro til at bestanden ble etablert. Fornes ble luket første gang i 2025, og det er for tidlig å se en effekt av lukingen der.
+
+**Gravråk.** Gravråk har hatt en liten og ustabil bestand i mange år, med 6–16 larvehull i august. I juli 2019 ble det satt ut 11 larver i stadium 3 og én puppe fra Storrønningen i kunstige hull. Bare fire av hullene var igjen i slutten av august, de andre ble trolig vasket bort av en regnflom, og det ble ikke sett noen effekt i 2020 [@hanssen_2023]. Augusttellingen i 2019 (15 larver i stadium 3) omfatter trolig også noen av de utsatte larvene. Det ble luket 4 200–5 200 m² hvert år i 2024–2026, men antallet larver økte ikke året etter (8–15 larvehull per besøk i 2025 og 1–6 i 2026). Gravråk er i hovedsak en grusør med lite sand og silt, så mangel på egnet substrat begrenser trolig bestanden mer enn lupinene. Restaureringen med gravemaskin i oktober 2025 er det første tiltaket som også endrer substratet. Flatene ventes å bli tatt i bruk etter at en vinter og en vårflom har jevnet dem ut, så effekten kan først vurderes i 2027.
+
+**Erfaringer fra Follstadøya.** På Follstadøya, som lukes, men ikke overvåkes, ble det satt ut både voksne og larver i 2019–2020. Det eneste resultatet var én voksen bille i 2021. Hovedårsakene var trolig at lupinene hadde tatt over de beste siltflatene, og at de åpne flatene hadde for mye sand og for lite silt [@hanssen_2023].
+
+```{r fig-fornes-gravrak}
+#| fig-cap: 'Antall larvehull i august per stadium på Fornes og Gravråk. Piler: utsetting av voksne biller (Fornes, mai 2018 og august 2020) og larver (Gravråk, juli 2019), og restaurering med gravemaskin (Gravråk, oktober 2025). Grønn strek under aksen: år med luking i lukedataene (Fornes ble også luket i 2025, men det er ikke med i lukedataene). Manglende søyle = ikke undersøkt i august. Ulik skala på y-aksen.'
+#| fig-height: 6
+#| fig-width: 10
+#| code-summary: 'Kode for figur.'
+fg <- obs |>
+  filter(site %in% c("Fornes", "Gravråk"), month == "august", stage != "Voksne") |>
+  group_by(site, year, stage) |>
+  summarise(obs = sum(obs), .groups = "drop")
+fg_max <- fg |> group_by(site) |> summarise(ymax = max(tapply(obs, year, sum)))
+hendelser <- tribble(
+  ~site, ~x, ~tekst,
+  "Fornes", 2017.6, "12 voksne satt ut",
+  "Fornes", 2020.5, "20 voksne satt ut",
+  "Gravråk", 2018.7, "12 larver satt ut",
+  "Gravråk", 2025.5, "Gravemaskin"
+) |> left_join(fg_max, by = "site")
+luket <- clear_site |>
+  filter(site_name %in% c("Fornes", "Gravråk"), area_cleared > 0) |>
+  transmute(site = as.character(site_name), year) |>
+  left_join(fg_max, by = "site")
+ggplot(fg, aes(year, obs, fill = stage)) +
+  geom_col(width = 0.75, colour = "white") +
+  geom_segment(data = hendelser, aes(x = x, xend = x, y = ymax * 1.18, yend = ymax * 1.03), inherit.aes = FALSE,
+               arrow = arrow(length = unit(0.15, "cm")), colour = "#8e1b5c") +
+  geom_text(data = hendelser, aes(x = x, y = ymax * 1.24, label = tekst), inherit.aes = FALSE,
+            size = 3, colour = "#8e1b5c") +
+  geom_segment(data = luket, aes(x = year - 0.4, xend = year + 0.4, y = -ymax * 0.04, yend = -ymax * 0.04),
+               inherit.aes = FALSE, linewidth = 2, colour = "#5b8c2a") +
+  facet_wrap(~site, ncol = 1, scales = "free_y") +
+  scale_fill_manual(values = stage_grey, name = NULL) +
+  scale_x_continuous(breaks = first_year:aar) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.1))) +
+  labs(x = NULL, y = "Larvehull i august")
+```
+
 ## 7. Oppsummering
 
 ### 7.1 Hva viser årets resultater
@@ -1142,6 +1188,8 @@ climate_res |>
 
 **Flom.** Ingen av flom- og nedbørsvariablene hadde en påviselig effekt på antallet larver. Sommerflommen i august 2023 falt likevel sammen med et kraftig fall i antallet stadium 1-larver, som har de grunneste gangene. Serien inneholder ennå ikke et år med flom over middelflom, så vi vet ikke hvordan en stor flom påvirker bestanden.
 
+**Fornes og Gravråk.** På Fornes ble begge utsettingene av voksne biller fulgt av en tydelig økning i antallet unge larver, og lokaliteten har nå en stabil bestand. På Gravråk har verken utsettingen av larver i 2019 eller lukingen i 2024–2026 gitt flere larver. Der begrenser trolig mangelen på sand og silt bestanden mer enn lupinene. Erfaringene tyder på at utsetting av voksne virker der det finnes nok egnet siltflate, mens utsetting av larver ikke har virket.
+
 **Voksne og vær.** De voksne er bare aktive i solskinn, og antallet varierer derfor mye med været på besøksdagen. Antallet voksne sier derfor mindre om bestanden enn antallet larver.
 
 ### 7.2 Anbefaling for videreføring
@@ -1149,6 +1197,8 @@ climate_res |>
 **Tiltak.** Vi anbefaler full luking av hagelupin i alle lukepolygonene hvert år. Allerede ett år uten luking gir like mange lupiner som før lukingen startet, og etter to år uten luking er det mange flere. Et opphold i lukingen kan derfor sette arbeidet flere år tilbake. Polygonene som ikke er luket på to år eller mer, bør prioriteres, og på Kregnesteigen, der det bare ble luket 604 m² i 2026, bør hele lokaliteten lukes fullt i 2027. Delvis luking kan være skånsommere for elvesandjeger fordi den forstyrrer sanden og larvehullene mindre, men i dag gir den over fem ganger så mange lupiner året etter som full luking. Delvis luking bør derfor bare brukes der det er nødvendig av hensyn til larvehullene, og den må gjøres så grundig at lupinen ikke får sette frø. Frøstandene bør fjernes før de modner. Kjerneområdene med stabile bestander av elvesandjeger fungerer som kildebestander og bør prioriteres, og områdene rundt bør holdes åpne som buffersoner som arten kan flytte til etter flom og styrtregn [@roos_2025]. Den restaurerte flaten på Kregnesteigen, der store deler av bestanden har holdt til siden 2023, var i ferd med å gro igjen i 2025 og bør lukes på nytt [@roos_2025]. Utviklingen på Gravråk etter restaureringen med gravemaskin i 2025 bør følges.
 
 Lukingen holder eksisterende leveområder åpne, men nye sand- og siltflater skapes bare av elva selv. Forvaltningen bør derfor også ta hensyn til inngrep som reduserer den naturlige dynamikken i elva, som masseuttak og flomforbygninger.
+
+På Gravråk bør det vurderes å sette ut voksne biller fra Storrønningen eller Kregnesteigen når den restaurerte flaten har stabilisert seg, slik det ble gjort med godt resultat på Fornes. Antallet stadium 1-larver der bør følges opp i 2027, året etter restaureringen.
 
 Larvehullene er sårbare for tråkk fra mennesker og hunder. Skilt som informerer om at sandflatene er leveområder for en truet art, er et enkelt tiltak, og i de mest sårbare kjerneområdene kan det vurderes å kanalisere ferdselen eller innføre båndtvang [@roos_2025].
 
