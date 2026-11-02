@@ -115,17 +115,15 @@ md_badge <- function(tag) {
 }
 ```
 
-::: {.content-visible when-format="gfm"}
-::: {.callout-note}
-Denne siden er generert fra [`Dragehode.qmd`](Dragehode.qmd). Ikke rediger `README.md` direkte.
-For å oppdatere: kjør skriptene i [`code/`](code/) slik at analysefilene i [`data/`](data/) blir oppdatert, og kjør `pixi run render`.
-Se [`code/README.md`](code/README.md) for rekkefølgen.
+:::: {.content-visible when-format="gfm"}
+::: callout-note
+Denne siden er generert fra [`Dragehode.qmd`](Dragehode.qmd). Ikke rediger `README.md` direkte. For å oppdatere: kjør skriptene i [`code/`](code/) slik at analysefilene i [`data/`](data/) blir oppdatert, og kjør `pixi run render`. Se [`code/README.md`](code/README.md) for rekkefølgen.
 :::
 
 `r paste(md_badge(status_badge(as.character(st))), md_badge(version_badge(as.character(version[[1]]))), md_badge(data_badge(as.character(badges[[1]]))), md_badge(code_badge(as.character(badges[[2]]))), md_badge(open_science_badge(as.character(badges[[3]]))), md_badge(license_badge()))`
-:::
+::::
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ```{r reviewers}
 #| echo: false
 #| results: asis
@@ -150,7 +148,6 @@ if (!is.null(yaml_data$codeReviewers)) {
 ```
 
 ::: {layout-ncol="6"}
-
 ```{r statusBadge}
 #| echo: false
 status_badge(as.character(st))
@@ -180,14 +177,14 @@ open_science_badge(as.character(badges[[3]]))
 #| echo: false
 license_badge()
 ```
-
 :::
-:::
+::::
 
 > **Recommended citation**: `r paste(auth, " ", year, ". ", name, " (ID: ", folder_name, ") ", "v. ", version, ". ecRxiv: ", url, sep="")`
 
 ::: {.callout-tip collapse="true"}
 ## Metadata
+
 ```{r tbl-meta2}
 #| tbl-cap: 'Indicator metadata'
 #| echo: false
@@ -216,7 +213,12 @@ meta |>
 ## Log
 
 <!--# Legg til en kort linje for hver oppdatering -->
-- 30. okt. 2026 – Første versjon, skjøtselsforsøket 2023–2026 og basisovervåkingen 2017–2026
+
+30. okt. 2026 – Første versjon, skjøtselsforsøket 2023–2026 og basisovervåkingen 2017–2026
+
+<!-- -->
+
+2.  nov. 2026 - oppdatert Innledning
 :::
 
 <hr />
@@ -308,11 +310,11 @@ theme_set(theme_minimal(base_size = 12, base_family = fig_font) +
 
 ## Oppsummering
 
-Dragehode er vurdert som sårbar (VU) i Norge. På Horgen i Frogn kommune overvåker vi et skjøtselsforsøk der halvparten av 20 overvåkingsruter slås sent annethvert år, første gang i 2023 og andre gang i 2025. Bestanden på hele lokaliteten har gått kraftig ned siden 2017, fra 877 til 229 individer i 2026, og det er få småplanter. Slåtten har så langt ikke gitt noen effekt på dragehode i overvåkingsrutene, noe som er som forventet for en langlivet art. Sommeren etter hver slått var vegetasjonen om lag 8 cm lavere i de slåtte rutene, men effekten varte bare ett år. Artsrikdommen og dekningen av pollinatorplanter varierte mellom år, men ikke mellom behandlingene. Slått annethvert år og overvåking hvert år bør videreføres, og registreringene bør gjøres i juni hvert år.
+Dragehode *Dracocephalum ruyschiana* er en prioritert art og vurdert som sårbar (VU) i Norge. NINA overvåker en populasjon på Horgen i Frogn kommune. Bestanden på lokaliteten har gått kraftig tilbake, et modellbasert estimat på 877 individer i 2017 til 229 i 2026, og det er få småplanter. I 2023 ble det igangsatt et skjøtselsforsøk der halvparten av 20 overvåkingsruter slås sent i vekstsesongen annethvert år. Rutene ble slått første gang i 2023 og andre gang i 2025. Slåtten har så langt ikke vist noen påvisbar effekt på dragehode i overvåkingsrutene. Sommeren etter hver slått var vegetasjonen om lag 8 cm lavere i de slåtte rutene, men effekten varte bare ett år. Artsrikdommen og dekningen av pollinatorplanter varierte mellom år, men ikke mellom behandlingene. For en langlivet art som dragehode kan det imidlertid ta tid før effektene blir synlige, og slått annethvert år og årlig overvåking bør derfor videreføres. I 2026 ble det også igangsatt et spiringsforsøk på lokaliteten.
 
 ## English summary
 
-Northern dragonhead *Dracocephalum ruyschiana* is assessed as vulnerable (VU) in Norway. At Horgen in Frogn municipality we monitor a management experiment in which half of 20 monitoring plots are mown late in the season every second year, first in 2023 and again in 2025. The population at the whole site has declined strongly since 2017, from 877 to 229 individuals in 2026, and there are few small plants. So far, mowing has had no effect on dragonhead in the monitoring plots, which is expected for a long-lived species. In the summer after each mowing, the vegetation was about 8 cm lower in the mown plots, but the effect lasted only one year. Species richness and the cover of pollinator plants varied between years, but not between treatments. Mowing every second year and annual monitoring should continue, and the surveys should be done in June every year.
+Northern dragonhead (*Dracocephalum ruyschiana*) is designated as a priority species and assessed as Vulnerable (VU) in Norway. NINA monitors a population at Horgen in Frogn municipality. The population at the site has declined sharply, from a model-based estimate of 877 individuals in 2017 to 229 in 2026, with few seedlings present. In 2023, a management experiment was initiated in which half of the 20 monitoring plots are mown late in the growing season every other year. The plots were first mown in 2023 and again in 2025. So far, mowing has had no detectable effect on *D. ruyschiana* in the monitoring plots. In the summer following each mowing event, vegetation was approximately 8 cm shorter in the mown plots, but this effect lasted only one year. Species richness and the cover of plants providing floral resources for pollinators varied between years, but not between treatments. For a long-lived species such as *D. ruyschiana*, effects may take time to become apparent, so mowing every other year and annual monitoring should continue. A germination experiment was initiated at the site in 2026.
 
 ## 1. Innledning
 
@@ -320,7 +322,7 @@ Dragehode *Dracocephalum ruyschiana* er en urt i leppeblomstfamilien som vokser 
 
 <!--# Bilde av dragehode legges inn her senere -->
 
-Mange skjøtselstiltak for dragehode gjennomføres av ulike aktører. Aktuelle metoder er blant annet høstbeite, slått, brenning og rydding av gjengroingsarter, og målet er å åpne opp lokalitetene og redusere konkurransen fra andre arter [@larsen_2022]. NINA har vurdert ulike skjøtselsmetoder [@evju_2022b; @roos_2023b] og foreslått å teste effekten av slått. Slått er enkelt å standardisere mellom lokaliteter, det er mulig å ha både behandlings- og kontrollruter på samme lokalitet, det er noe uenighet om effekten av slått for dragehode, og det er behov for skjøtselsmetoder som også tar vare på andre naturverdier på dragehodelokalitetene [@roos_2023a].
+Mange skjøtselstiltak for dragehode gjennomføres av ulike aktører. Aktuelle metoder er blant annet høstbeite, slått, brenning og rydding av gjengroingsarter. Det overordnede målet av de ulike tiltakene er å begrense gjengroing og åpne opp leveområder etter at tradisjonell arealbruk har opphørt [@larsen_2022]. NINA har vurdert ulike skjøtselsmetoder [@evju_2022b; @roos_2023b] og foreslått å teste effekten av slått. Slått er enkelt å standardisere mellom lokaliteter, og det er mulig å ha både behandlings- og kontrollruter på samme lokalitet. I tillegg er det noe uenighet om effekten av slått for dragehode, og det er behov for skjøtselsmetoder som også tar vare på andre naturverdier på dragehodelokalitetene [@roos_2023a].
 
 Dette delprosjektet overvåker effekten av sen slått annethvert år på dragehode på Horgen i Frogn kommune, der dragehodebestanden er i tilbakegang [@evju_2024]. Forsøket ble etablert i 2023 [@roos_2023a].
 
@@ -342,7 +344,7 @@ Fjerning av biomasse og åpning av vegetasjonsdekket forventes å gi økt rekrut
 
 ### 3.1 Beskrivelse av lokalitetene
 
-Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1). Lokaliteten er den nordøstre delen av en åkerholme omgitt av kornåker. Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med roser, eik og andre løvtrær, og var ikke slått på flere år før forsøket startet [@roos_2023a].
+Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1). Lokaliteten er den nordøstre delen av en åkerholme omgitt av kornåker. Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med roser, eik og bringebær, og var ikke slått på flere år før forsøket startet [@roos_2023a].
 
 Mot toppen av skråningen er jordsmonnet grunt og tørt, med skrinn og kortvokst vegetasjon, mens vegetasjonen er frodigere nederst mot åkerkanten og traktorveien. Dragehode finnes i begge delene. Skråningen ble derfor delt i seks striper, som hver har ruter både med og uten dragehode, og tre av stripene slås [@roos_2023a].
 
@@ -380,11 +382,11 @@ tibble(year = 2023:aar) |>
 
 Forsøket består av 20 faste overvåkingsruter på 1 × 1 m: fem ruter med dragehode som slås, fem ruter med dragehode som ikke slås (kontroll), fem ruter uten dragehode som slås og fem ruter uten dragehode som ikke slås [@roos_2023a]. Rutene er kartfestet med høypresisjons-GPS. Datainnsamlingen følger protokollen i @roos_2023a og registreres i ArcGIS Survey123. I hver rute registreres:
 
-- antall småplanter, vegetative og fertile individer av dragehode, som i basisovervåkingen av dragehode [@evju_2023], og forekomst av dragehode i 16 småruter på 25 × 25 cm
-- dekning av dragehode
-- vegetasjonshøyde i rutens fire hjørner
-- dekning av feltsjikt, bunnsjikt, strø, bar jord, berg og vedplanter i feltsjiktet
-- dekning av alle karplanter, de første to årene og deretter annethvert år (2023, 2024 og 2025)
+-   antall småplanter, vegetative og fertile individer av dragehode, som i basisovervåkingen av dragehode [@evju_2023], og forekomst av dragehode i 16 småruter på 25 × 25 cm
+-   dekning av dragehode
+-   vegetasjonshøyde i rutens fire hjørner
+-   dekning av feltsjikt, bunnsjikt, strø, bar jord, berg og vedplanter i feltsjiktet
+-   dekning av alle karplanter, de første to årene og deretter annethvert år (2023, 2024 og 2025)
 
 Registreringene gjøres før slåtten de årene det slås. I 2023, 2024 og 2026 ble rutene registrert i juni, mens de i 2025 ble registrert i begynnelsen av august (@tbl-tiltak). Indikatorene er oppsummert i @tbl-indikatorer.
 
@@ -422,7 +424,7 @@ Forsøket er et før–etter-forsøk med kontroll. Registreringene i 2023 ble gj
 
 **Basisovervåkingen.** Bestanden på hele lokaliteten er estimert med bootstrapping fra transekt- og rutedataene i basisovervåkingen, og retningen på utviklingen er beregnet med en bayesiansk lineær regresjon av de årlige estimatene mot år (`rstanarm`) [@evju_2023]. Analysene gjøres i `code/5_Horgen_population_monitoring.qmd`.
 
-**Slik leses resultatene.** p-verdien er sannsynligheten for å få en så stor forskjell hvis det egentlig ikke er noen effekt, og p < 0,05 regnes som statistisk signifikant. Med bare fem ruter i hver gruppe med dragehode er det vanskelig å påvise annet enn store effekter.
+**Slik leses resultatene.** p-verdien er sannsynligheten for å få en så stor forskjell hvis det egentlig ikke er noen effekt, og p \< 0,05 regnes som statistisk signifikant. Med bare fem ruter i hver gruppe med dragehode er det vanskelig å påvise annet enn store effekter.
 
 Datasettet er tilgjengelig på NINAs IPT og i GBIF [@nina_ipt_dragehode].
 
@@ -579,7 +581,7 @@ ruter |>
 
 Det var i gjennomsnitt 12–14 karplantearter per rute. Artsrikdommen varierte mellom år (p = 0,008) og var høyest i 2024, men det var ingen forskjell mellom rutene som slås og ikke slås (p = 0,98) og ingen forskjell i utviklingen (samspill p = 0,88; @fig-artsrikdom, @tbl-modeller).
 
-Dekningen av pollinatorplanter var lav i tørkesommeren 2023 (15–18 %), mye høyere i 2024 (34–38 %) og noe lavere i 2025 (24–30 %). Forskjellen mellom årene var signifikant (p < 0,001), men det var ingen forskjell mellom behandlingene (p = 0,67) og ingen forskjell i utviklingen (samspill p = 0,45). Dekningen var litt høyere i de slåtte rutene i 2024 og 2025, men forskjellen var ikke signifikant. Variasjonen mellom år skyldes trolig været, og at rutene ble registrert i august i 2025. Det ble ikke gjort full vegetasjonsanalyse i 2026.
+Dekningen av pollinatorplanter var lav i tørkesommeren 2023 (15–18 %), mye høyere i 2024 (34–38 %) og noe lavere i 2025 (24–30 %). Forskjellen mellom årene var signifikant (p \< 0,001), men det var ingen forskjell mellom behandlingene (p = 0,67) og ingen forskjell i utviklingen (samspill p = 0,45). Dekningen var litt høyere i de slåtte rutene i 2024 og 2025, men forskjellen var ikke signifikant. Variasjonen mellom år skyldes trolig været, og at rutene ble registrert i august i 2025. Det ble ikke gjort full vegetasjonsanalyse i 2026.
 
 ```{r fig-artsrikdom}
 #| fig-cap: 'Gjennomsnittlig antall karplantearter (venstre) og summert dekning av pollinatorplanter (høyre) i rutene som slås og ikke slås, med 95 % konfidensintervall (alle 20 ruter). Full vegetasjonsanalyse ble gjort i 2023–2025. Registreringene i 2023 ble gjort før den første slåtten, og registreringene i 2025 ble gjort i august, før den andre slåtten.'
@@ -627,7 +629,6 @@ as.data.frame(perm) |>
   kable()
 ```
 
-
 ## 7. Oppsummering
 
 ### 7.1 Hva viser årets resultater
@@ -657,13 +658,13 @@ as.data.frame(perm) |>
 
 **CRediT statement**
 
-* Data curation: RER, IMM
-* Formal analysis: RER
-* Software: RER, IMM (Ida M. Mienna), OS (Olav Skarpaas), MG (Matthew Grainger)
-* Visualization: RER
-* Writing – original draft: RER
+-   Data curation: RER, IMM
+-   Formal analysis: RER
+-   Software: RER, IMM (Ida M. Mienna), OS (Olav Skarpaas), MG (Matthew Grainger)
+-   Visualization: RER
+-   Writing – original draft: RER
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info
 
@@ -674,4 +675,4 @@ This information is mainly aimed at developers that need to recreate the R envir
 sessionInfo()
 ```
 :::
-:::
+::::
