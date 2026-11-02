@@ -324,7 +324,7 @@ Dragehode *Dracocephalum ruyschiana* er en urt i leppeblomstfamilien som vokser 
 
 Mange skjøtselstiltak for dragehode gjennomføres av ulike aktører. Aktuelle metoder er blant annet høstbeite, slått, brenning og rydding av gjengroingsarter. Det overordnede målet av de ulike tiltakene er å begrense gjengroing og åpne opp leveområder etter at tradisjonell arealbruk har opphørt [@larsen_2022]. NINA har vurdert ulike skjøtselsmetoder [@evju_2022b; @roos_2023b] og foreslått å teste effekten av slått. Slått er enkelt å standardisere mellom lokaliteter, og det er mulig å ha både behandlings- og kontrollruter på samme lokalitet. I tillegg er det noe uenighet om effekten av slått for dragehode, og det er behov for skjøtselsmetoder som også tar vare på andre naturverdier på dragehodelokalitetene [@roos_2023a].
 
-Dette delprosjektet overvåker effekten av sen slått annethvert år på dragehode på Horgen i Frogn kommune, der dragehodebestanden er i tilbakegang [@evju_2024]. Forsøket ble etablert i 2023 [@roos_2023a].
+Dette delprosjektet overvåker effekten av sen slått annethvert år på dragehode på Horgen i Frogn kommune, der dragehodebestanden er i tilbakegang [@evju_2024]. Forsøket ble etablert i 2023 [@roos_2023a]. I tillegg ble det i 2026 etablert et spiringsforsøk, for å undersøke om dragehodeplantene klarer å formere seg.
 
 ## 2. Formål med delprosjektet
 
@@ -354,7 +354,7 @@ Horgen har vært med i basisovervåkingen av dragehode siden 2017, og bestanden 
 
 ### 3.2 Tiltak
 
-Den første slåtten ble gjort 1. september 2023, etter frøsetting, med ryddesag med tretanns sagblad. Ryddesag ble valgt fordi bakken er ujevn med tuer av sandholdig jord og gras, hovedsakelig sauesvingel. Slåtten kappet og forstyrret noen av grastuene, og den åpne jorda kan gi plass til frøplanter av dragehode. Rosekratt og oppslag av eik, ask og rogn ble fjernet med beskjæringssaks der de var for tykke for ryddesagen. Høyet ble raket opp og fjernet to dager etter [@roos_2023a]. Det ble ikke slått i 2024. Den andre slåtten ble gjort i september 2025 på samme måte, og høyet ble raket bort [@roos_2025]. Neste slått er planlagt i 2027 (@tbl-tiltak).
+Den første slåtten ble gjort 1. september 2023, etter frøsetting, med ryddesag med tretanns sagblad. Ryddesag ble valgt fordi bakken er ujevn med tuer av sandholdig jord og gras, hovedsakelig sauesvingel. Slåtten kappet og forstyrret noen av grastuene, og den åpne jorda kan gi plass til frøplanter av dragehode. Rosekratt og oppslag av eik, ask og rogn ble fjernet med beskjæringssaks der de var for tykke for ryddesagen. Høyet ble raket opp og fjernet to dager etter [@roos_2023a]. Den andre slåtten ble gjort i september 2025 på samme måte, og høyet ble raket bort [@roos_2025]. Neste slått er planlagt i 2027 (@tbl-tiltak). Det ble ikke slått i 2024 og 2026.
 
 <!--# Bilde av slåtten legges inn her senere -->
 
@@ -377,6 +377,10 @@ tibble(year = 2023:aar) |>
   rename(År = year) |>
   kable()
 ```
+
+Høsten 2026 ble det etablert et frøspiringsforsøk på Horgen. Forsøksfeltet ligger utenfor dagens forekomst og ble ryddet for kratt og slått før såing. Frø ble samlet fra ti dragehodeplanter på lokaliteten. Totalt 160 frø, halvparten ubehandlede og halvparten skarifisert med kniv, ble sådd i ti faste ruter 11. september. I tillegg inngår 75 frø i et forsøk under kontrollerte forhold, med ubehandlede frø og frø skarifisert med kniv eller sandpapir, etter to måneders kuldestratifisering. Overskuddsfrø ble spredt ved den opprinnelige bestanden.
+
+<!--# Bilde av frøspiringseksperimentet og kart over rutene legges inn her senere -->
 
 ## 4. Datainnsamling
 
