@@ -62,7 +62,7 @@ version_badge <- function(my_version_number) {
   )
 
   image_link(
-    version_badge_path,
+    paste0("img/", version_badge_name),
     "https://github.com/NINAnor/ecRxiv/wiki#naming-convention"
   )
 }
