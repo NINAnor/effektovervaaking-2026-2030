@@ -23,6 +23,7 @@ VersionComment: Første versjon, med data 2015–2026, effekt av lupinluking og 
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision:
 writtenLanguage: Norwegian
+lang: nb
 format:
   gfm:
     output-file: README.md
@@ -338,7 +339,7 @@ Elvesandjeger: en voksen bille og hull etter larver i sanden (blyanten viser st�
 Hunnen legger eggene ett og ett i silt eller finsand om våren og forsommeren. Larvene går gjennom tre stadier, og larveutviklingen antas å ta to år: larvene overvintrer i stadium 2, forpupper seg i stadium 3 sensommeren året etter, og de nyklekte voksne overvintrer og legger egg våren etter (@fig-livssyklus) [@hanssen_2023]. Arten er likevel lite studert, og kunnskapen om livssyklusen bygger på spredte observasjoner i felt. Det er derfor usikkert hvor lenge hvert stadium varer, og hvor mye dette varierer mellom år [@hanssen_2023; @roos_2025]. Larvene lever i ganger i sanden, og larvestadiet kan bestemmes ut fra størrelsen på hullet [@roos_2024]. Larven jakter på insekter fra åpningen, og larvene ser ut til å bli i den samme gangen gjennom hele larvetiden [@hanssen_2023]. Arten er avhengig av finere substrat som silt og finsand, som avsettes på roligere og høyereliggende flater under flom [@odegaard_2010; @roos_2024]. De voksne billene er aktive i solskinn.
 
 ```{r fig-livssyklus}
-#| fig-cap: 'Skjematisk livssyklus for elvesandjeger ved Gaula, etter @hanssen_2023 og tellingene 2015–2026. Mørke felt viser når stadiet vanligvis finnes, lyse felt viser variasjon som er observert, men som er usikker. Tidspunktene varierer mellom år. Trekantene viser når tellingene gjøres (juni, juli og august).'
+#| fig-cap: 'Antatt livssyklus for elvesandjeger ved Gaula, basert på @hanssen_2023 og tellingene 2015–2026. Livssyklusen er ikke undersøkt direkte, så virkeligheten kan avvike noe fra figuren, og den kan være annerledes i deler av Europa med mildere vintre. Mørke felt viser når stadiet vanligvis finnes, lyse felt viser variasjon som er observert, men som er usikker. Tidspunktene varierer mellom år. Trekantene viser når tellingene gjøres (juni, juli og august).'
 #| fig-height: 4.2
 #| fig-width: 10
 #| code-summary: 'Kode for figur.'
