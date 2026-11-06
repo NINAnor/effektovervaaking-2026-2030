@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell
-2026-10-30
+2026-11-06
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -114,7 +114,16 @@ naturforvaltning 2009; Ødegaard et al. 2014; Hanssen 2023). Fordi den
 lever i sterkt fragmenterte leveområder med få forekomster, er den
 vurdert som sterkt truet (EN) på Norsk rødliste for arter 2021, og den
 har vært prioritert art etter naturmangfoldloven siden 2011 (Ødegaard et
-al. 2021).
+al. 2021). Utenfor Norge finnes arten i Nord- og Vest-Europa og østover
+i Russland, der den mange steder lever på sandstrender og sanddyner ved
+havet. I Norge lever den bare langs elver, og arten har lenge vært i
+tilbakegang både i Europa og i det meste av Skandinavia (Hanssen 2023).
+Arten er sjelden også i nabolandene, og i Finland er den vurdert som
+sårbar (VU) (Laji.fi 2019). Over 80 % av alle funn av arten i GBIF er
+fra Norge, de fleste fra NINAs kartlegging og overvåking (GBIF.org
+2026). Det betyr ikke at det finnes flere elvesandjegere i Norge enn i
+andre land, men at arten er godt kartlagt og overvåket her, og det viser
+hvor viktig overvåkingsprogrammet er for kunnskapen om arten.
 
 <div id="fig-art">
 
@@ -140,12 +149,33 @@ Figure 1: Elvesandjeger: en voksen bille og hull etter larver i sanden
 
 </div>
 
-Hunnen legger eggene direkte i sanden, og larvene utvikler seg over to
-til tre år før de blir voksne. Larvene lever i ganger i sanden, og
-larvestadiet kan bestemmes ut fra størrelsen på hullet (Roos et al.
-2024). Arten er avhengig av finere substrat som silt og finsand, som
-avsettes på roligere og høyereliggende flater under flom (Ødegaard and
-Hanssen 2010; Roos et al. 2024). De voksne billene er aktive i solskinn.
+Hunnen legger eggene ett og ett i silt eller finsand om våren og
+forsommeren. Larvene går gjennom tre stadier, og larveutviklingen antas
+å ta to år: larvene overvintrer i stadium 2, forpupper seg i stadium 3
+sensommeren året etter, og de nyklekte voksne overvintrer og legger egg
+våren etter (<a href="#fig-livssyklus" class="quarto-xref">Figure 2</a>)
+(Hanssen 2023). Arten er likevel lite studert, og kunnskapen om
+livssyklusen bygger på spredte observasjoner i felt. Det er derfor
+usikkert hvor lenge hvert stadium varer, og hvor mye dette varierer
+mellom år (Hanssen 2023; Roos et al. 2025). Larvene lever i ganger i
+sanden, og larvestadiet kan bestemmes ut fra størrelsen på hullet (Roos
+et al. 2024). Larven jakter på insekter fra åpningen, og larvene ser ut
+til å bli i den samme gangen gjennom hele larvetiden (Hanssen 2023).
+Arten er avhengig av finere substrat som silt og finsand, som avsettes
+på roligere og høyereliggende flater under flom (Ødegaard and Hanssen
+2010; Roos et al. 2024). De voksne billene er aktive i solskinn.
+
+<div id="fig-livssyklus">
+
+![](img/fig-livssyklus-1.png)
+
+Figure 2: Skjematisk livssyklus for elvesandjeger ved Gaula, etter
+Hanssen (2023) og tellingene 2015–2026. Mørke felt viser når stadiet
+vanligvis finnes, lyse felt viser variasjon som er observert, men som er
+usikker. Tidspunktene varierer mellom år. Trekantene viser når
+tellingene gjøres (juni, juli og august).
+
+</div>
 
 I en naturlig elv er det balanse mellom gjengroing og nydanning: flom
 eroderer og legger opp nye sand- og siltflater, mens de gamle gror igjen
@@ -201,9 +231,9 @@ og bestanden på lokalitetene (Roos et al. 2025). Effekten kommer trolig
 med en forsinkelse: arten ser ikke ut til å trives på sterkt forstyrrede
 sandflater, så de lukede flatene tas trolig i bruk året etter lukingen,
 etter at en vinter og en vårflom har jevnet dem ut (Roos et al. 2024).
-Fordi larvene bruker to til tre år på å bli voksne, vil en effekt på
-antallet voksne komme enda senere. Antallet vil fortsatt variere mye fra
-år til år på grunn av flom og vær.
+Fordi larveutviklingen trolig tar to år, vil en effekt på antallet
+voksne komme enda senere. Antallet vil fortsatt variere mye fra år til
+år på grunn av flom og vær.
 
 ## 3. Overvåkingslokalitetene
 
@@ -211,7 +241,7 @@ antallet voksne komme enda senere. Antallet vil fortsatt variere mye fra
 
 Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i
 Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og
-Fornes (<a href="#fig-kart" class="quarto-xref">Figure 2</a>).
+Fornes (<a href="#fig-kart" class="quarto-xref">Figure 3</a>).
 Lokalitetene består av sand- og grusflater (elveører) langs elva.
 
 Elveørene ligger stort sett på samme sted fra år til år, men systemet er
@@ -283,14 +313,14 @@ lag 2 km nedstrøms. For å styrke den nye bestanden ble det satt ut
 voksne biller fra Storrønningen og Kregnesteigen i 2018 (12 individer)
 og fra Storrønningen i 2020 (20 individer) (Hanssen 2023). De fleste
 registreringene av elvesandjeger på Fornes ligger utenfor lukeområdet
-(<a href="#fig-kart" class="quarto-xref">Figure 2</a>), og Fornes brukes
+(<a href="#fig-kart" class="quarto-xref">Figure 3</a>), og Fornes brukes
 derfor som kontroll i effektanalysen.
 
 <div id="fig-kart">
 
 ![](img/fig-kart-1.jpeg)
 
-Figure 2: Lokalitetene for overvåking av elvesandjeger langs nedre Gaula
+Figure 3: Lokalitetene for overvåking av elvesandjeger langs nedre Gaula
 i Trøndelag. Til venstre: oversikt over lukeområdene (grå) og utsnittene
 for hver lokalitet (rød stiplet ramme); det innfelte kartet viser
 plasseringen i Norge (Trøndelag i mørk grå). Til høyre, fra nord til
@@ -331,7 +361,7 @@ mange lupiner som ble fjernet, og når og hvordan det ble luket (Roos et
 al. 2024). Follstadøya blir også luket, men har ikke overvåking av
 elvesandjeger og er ikke med her.
 
-<a href="#fig-foto-luking" class="quarto-xref">Figure 3</a> viser
+<a href="#fig-foto-luking" class="quarto-xref">Figure 4</a> viser
 eksempler på lukepolygoner før og etter luking i 2026.
 
 <div id="fig-foto-luking">
@@ -363,7 +393,7 @@ data-ref-parent="fig-foto-luking" />
 
 </div>
 
-Figure 3: Lupinluking i 2026, før og etter luking. Foto: Midtnorsk
+Figure 4: Lupinluking i 2026, før og etter luking. Foto: Midtnorsk
 Naturundersøkelse AS (MidNat).
 
 </div>
@@ -380,7 +410,7 @@ videregående skole luket lupiner der 2. oktober 2025 med midler fra
 Melhus kommune (Solberg et al. 2025).
 
 Lukeinnsatsen har variert mye mellom år og lokaliteter
-(<a href="#fig-luking-areal" class="quarto-xref">Figure 4</a>,
+(<a href="#fig-luking-areal" class="quarto-xref">Figure 5</a>,
 <a href="#tbl-luking" class="quarto-xref">Table 2</a>). På Storrønningen
 ble det luket 21 465 m² i 2024, men bare 5 101 m² i 2025, og i 2026 ble
 det igjen luket 12 507 m². På Kregnesteigen ble det luket om lag 17 700
@@ -393,7 +423,7 @@ Fornes starter i 2026 (2 827 m²).
 
 ![](img/fig-luking-areal-1.png)
 
-Figure 4: Areal luket per lokalitet og år (Ja = luket, Delvis = delvis
+Figure 5: Areal luket per lokalitet og år (Ja = luket, Delvis = delvis
 luket). Ulik skala på y-aksen.
 
 </div>
@@ -402,7 +432,7 @@ luket). Ulik skala på y-aksen.
 
 ![](img/fig-luking-lupiner-1.png)
 
-Figure 5: Antall lupiner fjernet (venstre) og lupiner fjernet per m²
+Figure 6: Antall lupiner fjernet (venstre) og lupiner fjernet per m²
 luket areal (høyre), per lokalitet og år. Fornes har lukepolygoner først
 fra 2026; Gravråk 2021 mangler antall.
 
@@ -507,11 +537,16 @@ lupinlukingen fra andre faktorer som påvirker bestanden.
 individer per år, stadium og besøksmåned. Registreringene gjøres av en
 erfaren feltarbeider med god kjennskap til artene og lokalitetene, med
 samme innsats ved hvert besøk og på alle lokaliteter. Ikke alle
-individer blir nødvendigvis oppdaget, så summene er en indeks for
-relativ forekomst som kan sammenlignes mellom år og lokaliteter, og ikke
-et bestandsestimat. Hvilke måneder som er undersøkt, er ikke helt likt
-alle år
-(<a href="#fig-trend-stadium-maaned" class="quarto-xref">Figure 6</a>),
+individer blir oppdaget. Larvene lukker hullet i perioder, når de
+skifter hud, før forpuppingen og når de forbereder seg til overvintring,
+og under og etter regn er mange hull midlertidig lukket (Hanssen 2023).
+Hullene etter stadium 1 er dessuten små og lette å overse. En telling
+viser derfor bare larvene som har åpent hull på besøksdagen, og antallet
+avhenger av hvor langt larvene har kommet i utviklingen. Summene er
+derfor en indeks for relativ forekomst som kan sammenlignes mellom år og
+lokaliteter, og ikke et bestandsestimat. Hvilke måneder som er
+undersøkt, er ikke helt likt alle år
+(<a href="#fig-trend-stadium-maaned" class="quarto-xref">Figure 7</a>),
 og tidsseriene vises derfor per besøksmåned.
 
 **Effekt av luking på lupin.** Dataene fra Midtnorsk Naturundersøkelse
@@ -601,25 +636,33 @@ totalt for alle besøk og lokaliteter.
 **Utvikling i bestanden.** Fra 2017, da alle lokalitetene ble undersøkt
 i august, og fram til 2023 ble det registrert mellom 1 100 og 3 100
 larvehull per besøk, med flest i august 2022 (3 133)
-(<a href="#fig-trend-stadium-maaned" class="quarto-xref">Figure 6</a>).
+(<a href="#fig-trend-stadium-maaned" class="quarto-xref">Figure 7</a>).
 Deretter gikk antallet ned, og 2025 var det dårligste året siden
 overvåkingen ble etablert, med under 1 000 larvehull per besøk og bare
 308 i august. I 2026 økte antallet igjen, til 1 081 larvehull i juli og
 930 i august, men junibesøket ga bare 293 larvehull, det laveste i juni
-siden 2016. Fordi registreringsmetoden ble endret i 2026, må
-sammenligningen med tidligere år gjøres med forsiktighet (avsnitt 4).
+siden 2016.
 
-**Larvestadiene.** I juli 2026 ble det registrert 717 larver i stadium
-1, det nest høyeste av årene med julibesøk, etter juli 2023 (856). Det
-tyder på at det ble lagt mange egg i 2026, og i august hadde mange av
-disse larvene gått over til stadium 2. Antallet larver i stadium 3 var
-derimot lavt i 2026, og i august (138) var det det laveste i hele
-serien. Stadium 3 er de eldste larvene, så det lave antallet gjenspeiler
-trolig de svake årsklassene fra 2024 og 2025. Mønsteret gjennom sesongen
-er som forventet: de overvintrede stadium 3-larvene dominerer i juni,
-nye stadium 1-larver kommer i juli etter egglegging, og disse går over
-til stadium 2 innen august
-(<a href="#fig-sesong" class="quarto-xref">Figure 8</a>).
+**Larvestadiene.** I juni 2026 ble det bare funnet 6 larver i stadium 1,
+men i juli ble det registrert 717, det nest høyeste av årene med
+julibesøk, etter juli 2023 (856). Disse larvene kom fra egg som ble lagt
+våren og forsommeren 2026 av voksne som klekte sensommeren 2025 og
+overvintret (Hanssen 2023). Fra juli til august gikk antallet i stadium
+1 ned til 178, mens stadium 2 økte fra 41 til 614, så mange av larvene
+hadde skiftet hud til stadium 2. Antallet larver i stadium 3 var derimot
+lavt i 2026, og i august (138) var det det laveste i hele serien.
+Stadium 3 er de eldste larvene, så det lave antallet gjenspeiler trolig
+den svake årsklassen fra 2025. Tellingene kan likevel ikke brukes til å
+følge en årsklasse fra ett stadium til det neste. I flere år ble det
+registrert flere stadium 3-larver enn det ble registrert larver i
+stadium 1 og 2 i august året før. På Storrønningen og Kregnesteigen ble
+det for eksempel registrert 298 stadium 3-larver i juli 2026, mot 121
+larver i stadium 1 og 2 i august 2025. Mange larver må altså ha hatt
+lukket hull ved augusttellingen. Mønsteret gjennom sesongen er som
+forventet: de overvintrede stadium 3-larvene dominerer i juni, nye
+stadium 1-larver klekker og dukker opp i juli, og disse går over til
+stadium 2 innen august
+(<a href="#fig-sesong" class="quarto-xref">Figure 9</a>).
 
 **Voksne.** Det ble registrert 67 voksne i 2026, de fleste i juni (49),
 og det er det høyeste antallet i serien. I 2025 ble det ikke funnet
@@ -628,7 +671,7 @@ med været på besøksdagen og sier mindre om bestanden enn larvene.
 
 **Lokalitetene.** August er den måneden som er undersøkt mest
 konsekvent, og den brukes for å sammenligne lokalitetene
-(<a href="#fig-august-lokalitet" class="quarto-xref">Figure 7</a>).
+(<a href="#fig-august-lokalitet" class="quarto-xref">Figure 8</a>).
 Storrønningen har hatt den største bestanden i hele perioden. Etter et
 svært dårlig år i 2025 økte antallet larver i stadium 2 der til 380 i
 august 2026, på nivå med årene før 2024. På Kregnesteigen har antallet
@@ -640,7 +683,7 @@ På Gravråk ble det bare funnet noen få larver.
 
 ![](img/fig-trend-stadium-maaned-1.png)
 
-Figure 6: Totalt antall larvehull (stadium 1–3) og voksne per år,
+Figure 7: Totalt antall larvehull (stadium 1–3) og voksne per år,
 fordelt på besøksmåned (alle lokaliteter). Manglende punkter = måneden
 ble ikke undersøkt det året.
 
@@ -650,7 +693,7 @@ ble ikke undersøkt det året.
 
 ![](img/fig-august-lokalitet-1.png)
 
-Figure 7: Antall i august per lokalitet og stadium (august er måneden
+Figure 8: Antall i august per lokalitet og stadium (august er måneden
 som er undersøkt mest konsekvent). Ulik skala på y-aksen.
 
 </div>
@@ -659,7 +702,7 @@ som er undersøkt mest konsekvent). Ulik skala på y-aksen.
 
 ![](img/fig-sesong-1.png)
 
-Figure 8: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk
+Figure 9: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk
 i juni, juli og august. Tallene over søylene er totalt antall larver.
 
 </div>
@@ -669,7 +712,7 @@ i juni, juli og august. Tallene over søylene er totalt antall larver.
 **Lukehistorikk.** Lupintettheten i et polygon avhenger av hvordan det
 er luket årene før
 (<a href="#tbl-lupin-luking" class="quarto-xref">Table 4</a>,
-<a href="#fig-lupin-luking" class="quarto-xref">Figure 9</a>). I
+<a href="#fig-lupin-luking" class="quarto-xref">Figure 10</a>). I
 polygoner som ble fullt luket året før, var det 0,8 lupiner per m².
 Polygoner som sto ett år uten luking, hadde 2,1 lupiner per m² (RR 2,51
 mot fullt luket året før, p = 0,016), omtrent like mange som polygoner
@@ -713,7 +756,7 @@ konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01;
 
 </div>
 
-<a href="#fig-lupin-luking" class="quarto-xref">Figure 9</a> viser
+<a href="#fig-lupin-luking" class="quarto-xref">Figure 10</a> viser
 lupintettheten i hvert lukepolygon og år (punkter), gruppert etter
 hvordan polygonet var luket årene før, og det modellerte gjennomsnittet
 med 95 % konfidensintervall (svart). Y-aksen er logaritmisk, slik at
@@ -732,9 +775,9 @@ fordi det er få polygon-år (35 og 17).
 
 ![](img/fig-lupin-luking-1.png)
 
-Figure 9: Lupintetthet i lukede polygoner etter lukehistorikk (punkter =
-polygon-år, +0,01 for å vise nuller; svart = modellert gjennomsnitt ± 95
-% KI).
+Figure 10: Lupintetthet i lukede polygoner etter lukehistorikk (punkter
+= polygon-år, +0,01 for å vise nuller; svart = modellert gjennomsnitt ±
+95 % KI).
 
 </div>
 
@@ -852,14 +895,14 @@ modellen ikke samtidig ta hensyn til forskjeller mellom lokalitetene.
 Lukede polygoner hadde 2,0 ganger så høy larvetetthet som kontrollen (p
 = 0,23), ikke-lukede polygoner 1,3 ganger (p = 0,91) og delvis lukede
 polygoner 0,9 ganger (p = 0,98)
-(<a href="#fig-effekt" class="quarto-xref">Figure 10</a>). Ingen av
+(<a href="#fig-effekt" class="quarto-xref">Figure 11</a>). Ingen av
 gruppene skilte seg altså sikkert fra kontrollen.
 
 <div id="fig-effekt">
 
 ![](img/fig-effekt-1.png)
 
-Figure 10: Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95
+Figure 11: Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95
 % KI, midlet over måned, substrat og lokalitet, ved median
 vegetasjonsdekke og slitasje). Venstre: Kregnesteigen + Storrønningen
 etter lukestatus året før. Høyre: de samme gruppene sammenlignet med
@@ -871,7 +914,7 @@ kontrollen på Fornes (uten luking).
 
 ![](img/fig-kovariater-1.png)
 
-Figure 11: Kovariateffekter fra modellen: predikert larvetetthet mot
+Figure 12: Kovariateffekter fra modellen: predikert larvetetthet mot
 vegetasjonsdekke og slitasje (linje ± 95 % KI, for et luket polygon på
 Storrønningen i august; punkter = undersøkelsespolygoner) og etter
 substrat (gjennomsnitt ± 95 % KI).
@@ -909,20 +952,19 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 </div>
 
 **Per larvestadium.** Den samme modellen er tilpasset stadium 1, 2 og 3
-hver for seg (<a href="#fig-stadium" class="quarto-xref">Figure 12</a>,
+hver for seg (<a href="#fig-stadium" class="quarto-xref">Figure 13</a>,
 <a href="#tbl-stadium" class="quarto-xref">Table 9</a>). Voksne
 modelleres ikke, fordi antallet avhenger mye av været på besøksdagen.
 Ingen av stadiene viste en signifikant effekt av luking. Stadium 1, de
-yngste larvene fra eggene som ble lagt i 2026, hadde den største
-rateratioen for lukede polygoner (RR 2,43, p = 0,19). Det er dette
-stadiet vi først venter at skal respondere, fordi de voksne legger
-eggene i åpne flater.
+yngste larvene, som klekte i 2026, hadde den største rateratioen for
+lukede polygoner (RR 2,43, p = 0,19). Det er dette stadiet vi først
+venter at skal respondere, fordi de voksne legger eggene i åpne flater.
 
 <div id="fig-stadium">
 
 ![](img/fig-stadium-1.png)
 
-Figure 12: Effekter på tettheten av larver i stadium 1, 2 og 3 (NB GLMM,
+Figure 13: Effekter på tettheten av larver i stadium 1, 2 og 3 (NB GLMM,
 rateratio ± 95 % KI, Kregnesteigen + Storrønningen). Verdier \> 1 =
 høyere tetthet.
 
@@ -958,7 +1000,7 @@ vurderes.
 
 Høyeste døgnmiddelvannføring ved Gaulfoss var 388–829 m³/s i 2020–2026,
 og ingen år nådde middelflom (1 008 m³/s) som døgnmiddel
-(<a href="#fig-hydrologi" class="quarto-xref">Figure 13</a>,
+(<a href="#fig-hydrologi" class="quarto-xref">Figure 14</a>,
 <a href="#tbl-hydrologi" class="quarto-xref">Table 10</a>). Vårflommen
 kom i april–juni, og i 2026 var den den minste i perioden (388 m³/s).
 Den eneste store sommerflommen i serien kom 8. august 2023 (755 m³/s),
@@ -980,7 +1022,7 @@ lav styrke.
 
 ![](img/fig-hydrologi-1.png)
 
-Figure 13: Daglig vannføring ved Gaulfoss og nedbør ved Leinstrand, med
+Figure 14: Daglig vannføring ved Gaulfoss og nedbør ved Leinstrand, med
 besøkene for elvesandjeger (oransje). Referanselinjer for vannføring:
 300 (prikket) og 500 m³/s (stiplet) og middelflom, 1 008 m³/s
 (heltrukket).
@@ -1014,7 +1056,7 @@ mai–august ved Leinstrand. Døgnmiddelverdier.
 
 ![](img/fig-hydrologi-tidspunkt-1.png)
 
-Figure 14: Tidspunkt for vårflomtoppen og junibesøket, per år.
+Figure 15: Tidspunkt for vårflomtoppen og junibesøket, per år.
 
 </div>
 
@@ -1022,7 +1064,7 @@ Figure 14: Tidspunkt for vårflomtoppen og junibesøket, per år.
 
 ![](img/fig-hydrologi-besok-1.png)
 
-Figure 15: Larver per besøk og stadium (alle lokaliteter) mot høyeste
+Figure 16: Larver per besøk og stadium (alle lokaliteter) mot høyeste
 vannføring de 14 dagene før besøket. Tallene = år.
 
 </div>
@@ -1089,7 +1131,7 @@ Estimat på log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p
 
 **Fornes.** Elvesandjeger koloniserte Fornes fra Storrønningen i
 2015–2016, og i august 2017 ble det bare funnet fem larvehull
-(<a href="#fig-fornes-gravrak" class="quarto-xref">Figure 16</a>). I mai
+(<a href="#fig-fornes-gravrak" class="quarto-xref">Figure 17</a>). I mai
 2018 ble det satt ut 12 voksne biller fra Storrønningen og
 Kregnesteigen, og i august samme år ble det registrert 127 larvehull,
 hvorav 90 i stadium 1 og 2 fra eggene som ble lagt det året og trolig
@@ -1130,7 +1172,7 @@ hadde for mye sand og for lite silt (Hanssen 2023).
 
 ![](img/fig-fornes-gravrak-1.png)
 
-Figure 16: Antall larvehull i august per stadium på Fornes og Gravråk.
+Figure 17: Antall larvehull i august per stadium på Fornes og Gravråk.
 Piler: utsetting av voksne biller (Fornes, mai 2018 og august 2020) og
 larver (Gravråk, juli 2019), og restaurering med gravemaskin (Gravråk,
 oktober 2025). Grønn strek under aksen: år med luking i lukedataene
@@ -1158,12 +1200,15 @@ stopper opp, og lukingen må gjentas hvert år.
 
 **Bestanden tok seg opp i 2026 etter et svært dårlig 2025.** 2025 var
 det dårligste året siden overvåkingen ble etablert, men i 2026 økte
-antallet larver igjen. I juli 2026 ble det registrert mange nye stadium
-1-larver, så det ble lagt mange egg i år, og det ble registrert flere
-voksne enn noen gang tidligere i serien. Antallet stadium 3-larver var
-derimot det laveste i serien, noe som trolig gjenspeiler de svake
-årsklassene fra 2024 og 2025. Storrønningen og Fornes hadde flere larver
-enn året før, mens Kregnesteigen fortsatt hadde lave antall.
+antallet larver igjen. De voksne klekker sensommeren, overvintrer og
+legger egg våren og forsommeren året etter, og larveutviklingen antas å
+ta to år (Hanssen 2023). Det ble registrert flere voksne enn noen gang
+tidligere i serien, og i juli 2026 ble det registrert mange nyklekte
+stadium 1-larver fra eggene de la. Antallet stadium 3-larver var derimot
+det laveste i serien. Stadium 3-larvene i 2026 kommer fra egg som ble
+lagt i 2025, så det lave antallet gjenspeiler trolig den svake
+årsklassen fra 2025. Storrønningen og Fornes hadde flere larver enn året
+før, mens Kregnesteigen fortsatt hadde lave antall.
 
 **Ingen sikker effekt av lukingen på larvene.** Polygoner som ble luket
 i 2025, hadde i gjennomsnitt dobbelt så høy larvetetthet i 2026 som
@@ -1176,9 +1221,9 @@ polygoner å sammenligne med, og de ligger alle på Storrønningen. De
 delvis lukede polygonene ligger alle på Kregnesteigen, så effekten av
 delvis luking kan ikke skilles fra lokaliteten. I tillegg ventes
 effekten å komme med en forsinkelse: de voksne legger eggene i åpne
-flater året etter lukingen, og larvene bruker to til tre år på å bli
-voksne. Det passer med at stadium 1, larvene fra årets egg, hadde den
-største effekten av lukingen, selv om heller ikke den var signifikant.
+flater etter lukingen, og larveutviklingen tar trolig to år. Det passer
+med at stadium 1, de yngste larvene, hadde den største effekten av
+lukingen, selv om heller ikke den var signifikant.
 
 **Vegetasjon og tråkk.** Vegetasjonsdekke og slitasje ble registrert for
 første gang i 2026. Begge trakk antallet larver ned, men effektene var
@@ -1288,6 +1333,13 @@ naturforskning. <https://brage.nina.no/nina-xmlui/handle/11250/3035335>.
 
 </div>
 
+<div id="ref-gbif_2026" class="csl-entry">
+
+GBIF.org. 2026. *GBIF Occurrence Download: *Cicindela Maritima**.
+<https://doi.org/10.15468/dl.h96esk>.
+
+</div>
+
 <div id="ref-hanssen_2023" class="csl-entry">
 
 Hanssen, Oddvar. 2023. *Oppfølging Av Handlingsplan for Elvesandjeger
@@ -1295,6 +1347,14 @@ Hanssen, Oddvar. 2023. *Oppfølging Av Handlingsplan for Elvesandjeger
 *Arctosa Cinerea*. Rapportering for Perioden 2015–2020*. NINA Rapport
 No. 1815. Norsk institutt for naturforskning.
 <https://hdl.handle.net/11250/3049395>.
+
+</div>
+
+<div id="ref-laji_2019" class="csl-entry">
+
+Laji.fi. 2019. **Cicindela Maritima*. Uhanalaisuusluokka 2019: VU*.
+Finnish Biodiversity Information Facility.
+<https://laji.fi/en/taxon/MX.188495>.
 
 </div>
 
