@@ -3,7 +3,7 @@ check_anybadger <- function() {
     stop(
       "Package 'anybadger' is required.\n",
       "Install with:\n",
-      'remotes::install_github("lmeninato/anybadger")',
+      'remotes::install_url("https://github.com/lmeninato/anybadger/archive/aa3abe54538ab5664add5b8ea87c5957d1293787.tar.gz")',
       call. = FALSE
     )
   }
@@ -13,7 +13,7 @@ check_anybadger <- function() {
       "This project requires anybadger >= 0.1.1.\n",
       "The CRAN version (0.1.0) is broken.\n\n",
       "Install with:\n",
-      'remotes::install_github("lmeninato/anybadger")',
+      'remotes::install_url("https://github.com/lmeninato/anybadger/archive/aa3abe54538ab5664add5b8ea87c5957d1293787.tar.gz")',
       call. = FALSE
     )
   }
