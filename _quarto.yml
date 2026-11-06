@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: _site
+  execute-dir: file
 
 book:
   title: "Effektovervåking 2026–2030"
@@ -13,8 +14,9 @@ book:
   repo-branch: main
   chapters:
     - index.qmd
-    - Elvesandjeger/README.md
-    - Stor-elvebreddedderkopp/README.md
+    - Elvesandjeger/Elvesandjeger.qmd
+    - Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd
+    - Dragehode/Dragehode.qmd
 
 format:
   html:

@@ -60,7 +60,13 @@ pixi shell
 
 Packages that are only on GitHub (`anybadger`, used by ecRxiv's `_common.R`) are installed by `code/install_github_deps.R` the first time `pixi run render` runs. To add an R package, run `pixi add r-<package>` (conda-forge names) in the subproject folder.
 
-The repository root is a Quarto book (`_quarto.yml`, `index.qmd`) that collects the subproject `README.md` files and is published to GitHub Pages on every push to `main`. Add a new subproject's `README.md` to `chapters` in `_quarto.yml` once its report exists.
+The repository root is a Quarto book (`_quarto.yml`, `index.qmd`) that renders the subproject `.qmd` reports directly and is published to GitHub Pages on every push to `main`. Its shared Pixi environment is defined in the root `pixi.toml` and locked in `pixi.lock`. Add a report's `.qmd` to `chapters` in `_quarto.yml` when it should appear on the website. The website build does not regenerate the subproject `README.md` files or run preprocessing.
+
+```bash
+# from the repository root
+pixi install --locked
+pixi run render-site
+```
 
 ## Each year
 
