@@ -3,6 +3,7 @@ name: Publish Quarto book
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -24,6 +25,13 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Require main branch
+        run: |
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "Pages must be published from main (got $GITHUB_REF)." >&2
+            exit 1
+          fi
+
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@v0.8.8
         with:
@@ -33,6 +41,66 @@ jobs:
 
       - name: Render book
         run: pixi run render-site
+
+      - name: Add tagged release versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p _site/versions
+
+          cat > _site/versions/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Previous versions · Effektovervåking 2026–2030</title>
+          </head>
+          <body>
+            <h1>Previous versions</h1>
+            <p><a href="../">View the latest version</a></p>
+            <ul>
+          HTML
+
+          release_tags=$(gh release list --json tagName --limit 1000 --jq '.[].tagName' | sort -Vr)
+          if [[ -n "$release_tags" ]]; then
+            while IFS= read -r tag; do
+              # Match the release workflow's tag rules and keep each tag one path segment.
+              if [[ ! "$tag" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+                echo "Skipping unsupported release tag: $tag" >&2
+                continue
+              fi
+
+              tmpdir=$(mktemp -d "$RUNNER_TEMP/release-site-XXXXXX")
+              if ! gh release download "$tag" \
+                --pattern effektovervaaking-book-html.zip \
+                --dir "$tmpdir"; then
+                echo "Skipping $tag: release has no site archive." >&2
+                rm -rf "$tmpdir"
+                continue
+              fi
+
+              version_dir="_site/versions/$tag"
+              mkdir -p "$version_dir"
+              unzip -q "$tmpdir/effektovervaaking-book-html.zip" -d "$version_dir"
+              rm -rf "$tmpdir"
+
+              if [[ ! -f "$version_dir/index.html" ]]; then
+                echo "Skipping $tag: archive has no root index.html." >&2
+                rm -rf "$version_dir"
+                continue
+              fi
+
+              printf '  <li><a href="./%s/">%s</a></li>\n' "$tag" "$tag" >> _site/versions/index.html
+            done <<< "$release_tags"
+          fi
+
+          cat >> _site/versions/index.html <<'HTML'
+            </ul>
+          </body>
+          </html>
+          HTML
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

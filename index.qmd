@@ -15,3 +15,5 @@ This book includes reports for:
 
 See the [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030)
 for the full subproject list and project workflow.
+
+Browse [previous website versions](versions/).
