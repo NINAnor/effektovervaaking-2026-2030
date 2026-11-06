@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-10-30
+2026-11-06
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -489,11 +489,10 @@ skript 8 i [`Elvesandjeger/code/`](../Elvesandjeger/code/).
 individer i september per år og stadium. Registreringene gjøres av en
 erfaren feltarbeider med god kjennskap til artene og lokalitetene, med
 samme innsats hvert år og på alle lokaliteter. Ikke alle individer blir
-nødvendigvis oppdaget. I 2024 ble registreringene gjort av den nye og
-den tidligere feltarbeideren sammen, og fra 2025 av den nye alene. Samme
-år ble registreringsmetoden endret fra punkter til polygoner (avsnitt
-4). Summene er derfor en indeks for relativ forekomst som kan
-sammenlignes mellom år og lokaliteter, og ikke et bestandsestimat.
+nødvendigvis oppdaget. I 2025 ble registreringsmetoden endret fra
+punkter til polygoner (avsnitt 4). Summene er derfor en indeks for
+relativ forekomst som kan sammenlignes mellom år og lokaliteter, og ikke
+et bestandsestimat.
 
 **Effekt av luking.** Undersøkelsespolygonene fra september (2025 og
 2026) er koblet til lukepolygonet de overlapper mest, og får
@@ -574,8 +573,8 @@ antallet økt for både juvenile og voksne
 positivt for bestanden. Antall voksne økte fra 66 i 2023 til 819 i 2026,
 og antall juvenile fra 204 til 2 374. Tellingene i 2026 er de høyeste
 som er registrert for begge stadier. Antall juvenile gikk ned fra 1 065
-i 2024 til 615 i 2025, samme år som det ble byttet feltarbeider og
-registreringsmetode (avsnitt 5), før det økte kraftig igjen i 2026.
+i 2024 til 615 i 2025, samme år som registreringsmetoden ble endret
+(avsnitt 5), før det økte kraftig igjen i 2026.
 
 **Lokalitetene.** Tellingene startet i 2020 på Storrønningen, 2021 på
 Kregnesteigen og 2022 på Fornes og Gravråk. Økningen ses på alle
