@@ -15,6 +15,7 @@ Previous years' code: [NINAnor/effektovervaaking](https://github.com/NINAnor/eff
 | [Honningblom](Honningblom/) | Honningblom (*Herminium monorchis*) | not set up |
 | [Elvesandjeger](Elvesandjeger/) | Elvesandjeger (*Cicindela maritima*) | report draft, data 2015–2026, effect of lupin clearing, climate and hydrology |
 | [Stor-elvebreddedderkopp](Stor-elvebreddedderkopp/) | Stor elvebreddedderkopp (*Arctosa cinerea*) | report draft, data 2020–2026, effect of lupin clearing, climate and hydrology |
+| [Kystlynghei](Kystlynghei/) | Kystlynghei | report draft, satellite monitoring of succession and management effects |
 | [Klippeblaavinge](Klippeblaavinge/) | Klippeblåvinge (*Scolitantides orion*) | not set up |
 | [Prikkrutevinge](Prikkrutevinge/) | Prikkrutevinge (*Melitaea cinxia*) | not set up |
 | [Tronderlav](Tronderlav/) | Trønderlav (*Erioderma pedicellatum*) | not set up |
@@ -60,7 +61,7 @@ pixi shell
 
 Packages that are not on conda-forge (`anybadger`, used by ecRxiv's `_common.R`) are installed from a pinned public source archive by `code/install_github_deps.R` the first time `pixi run render` runs. To add an R package, run `pixi add r-<package>` (conda-forge names) in the subproject folder.
 
-The repository root is a Quarto book (`_quarto.yml`, `index.qmd`) that renders the subproject `.qmd` reports directly and is published to GitHub Pages on every push to `main`. Published releases are also available under `/versions/<tag>/`; creating a release with the **Release Quarto book** workflow rebuilds Pages to include it. Its shared Pixi environment is defined in the root `pixi.toml` and locked in `pixi.lock`. Add a report's `.qmd` to `chapters` in `_quarto.yml` when it should appear on the website. The website build does not regenerate the subproject `README.md` files or run preprocessing.
+The repository root is a Quarto book (`_quarto.yml`, `index.qmd`) that renders the subproject `.qmd` reports directly and is published to GitHub Pages on every push to `main`. Kystlynghei is included as a Git submodule. Its report links to the published report, and its methodology chapter is rendered directly from `Kystlynghei/report/kystlynghei_methods.qmd`. Clone with `git clone --recurse-submodules`, or initialize/update submodules with `git submodule update --init --recursive`. Published releases are also available under `/versions/<tag>/`; creating a release with the **Release Quarto book** workflow rebuilds Pages to include it. Its shared Pixi environment is defined in the root `pixi.toml` and locked in `pixi.lock`. Add a report's `.qmd` to `chapters` in `_quarto.yml` when it should appear on the website. The website build does not regenerate the subproject `README.md` files or run preprocessing.
 
 ```bash
 # from the repository root

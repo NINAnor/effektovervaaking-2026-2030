@@ -28,3 +28,6 @@ Thumbs.db
 
 /_site/
 /_release-pdf/
+
+/.quarto/
+**/*.quarto_ipynb
