@@ -70,6 +70,10 @@ pixi install --locked
 pixi run render-site
 ```
 
+## Troubleshooting
+
+If Pixi or Quarto fails to install dependencies or render the book when the repository is cloned to the P: drive, you may see an error such as `ERROR: database is locked`. The drive may be causing compatibility or file-access issues. Clone the repository to a different storage location, such as your home folder, and try again. If the problem persists, use a VDI environment.
+
 ## Each year
 
 1. Run the preprocessing in `code/` on the new field data and management (e.g. clearing) data.
