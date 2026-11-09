@@ -28,7 +28,11 @@ r-systemfonts = "*"
 r-readxl = "*"
 r-lmertest = "*"
 r-vegan = "*"
+r-gt = ">=1.4.0,<2"
 
 [tasks]
 install-report-deps = "Rscript scripts/install_report_dependencies.R"
 render-site = { cmd = "quarto render", depends-on = ["install-report-deps"], env = { LANG = "C.UTF-8", LC_ALL = "C.UTF-8" } }
+
+[target.linux-64.dependencies]
+r-leaflet = ">=2.2.3,<3"
