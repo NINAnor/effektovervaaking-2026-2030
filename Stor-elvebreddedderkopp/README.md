@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-11-06
+2026-11-10
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)

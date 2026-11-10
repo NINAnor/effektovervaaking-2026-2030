@@ -241,7 +241,8 @@ month_shp <- c(juni = 21, juli = 17, august = 16)
 stage_grey <- c("Stadium 1" = "#c6c6c6", "Stadium 2" = "#8a8a8a", "Stadium 3" = "#4a4a4a", "Voksne" = "#000000")
 stage_lty <- c("Stadium 1" = "solid", "Stadium 2" = "dashed", "Stadium 3" = "dotted", "Voksne" = "dotdash")
 stage_shp <- c("Stadium 1" = 16, "Stadium 2" = 21, "Stadium 3" = 17, "Voksne" = 15)
-site_cols <- c("Storrønningen" = "#2a78d6", "Kregnesteigen" = "#eb6834", "Fornes" = "#1baf7a", "Gravråk" = "#eda100")
+site_cols <- c("Storrønningen" = "#0f4c5c", "Kregnesteigen" = "#2a9d8f", "Fornes" = "#5fc4c0", "Gravråk" = "#a8d08d") # lokaliteter: teal-skala og lys grønn
+site_shapes <- c("Storrønningen" = 16, "Kregnesteigen" = 17, "Fornes" = 15, "Gravråk" = 18)
 luket_cols <- c(Kontroll = "#4d4d4d", Nei = "#5b8c2a", Delvis = "#d6619b", Ja = "#8e1b5c") # lukestatus: ikke luket grønn, luket magenta (delvis lys, ja mørk), kontroll grå
 
 # ---- Observasjoner (masterfil, langt format: én rad per punkt/polygon og stadium) ----
@@ -607,15 +608,17 @@ clear_site |>
 #| fig-height: 5
 #| fig-width: 11
 #| code-summary: 'Kode for figur.'
-p1 <- ggplot(filter(clear_site, !is.na(antall)), aes(year, antall, colour = site_name)) +
+p1 <- ggplot(filter(clear_site, !is.na(antall)), aes(year, antall, colour = site_name, shape = site_name)) +
   geom_line(linewidth = 0.9) + geom_point(size = 2.5) +
   scale_colour_manual(values = site_cols, name = NULL) +
+  scale_shape_manual(values = site_shapes, name = NULL) +
   scale_x_continuous(breaks = clear_years[1]:clear_years[2]) +
   scale_y_continuous(labels = scales::label_number(big.mark = " ")) +
   labs(x = NULL, y = "Lupiner fjernet")
-p2 <- ggplot(filter(clear_site, !is.na(dens_ja)), aes(year, dens_ja, colour = site_name)) +
+p2 <- ggplot(filter(clear_site, !is.na(dens_ja)), aes(year, dens_ja, colour = site_name, shape = site_name)) +
   geom_line(linewidth = 0.9) + geom_point(size = 2.5) +
   scale_colour_manual(values = site_cols, name = NULL) +
+  scale_shape_manual(values = site_shapes, name = NULL) +
   scale_x_continuous(breaks = clear_years[1]:clear_years[2]) +
   scale_y_log10() +
   labs(x = NULL, y = "Lupiner per m², fullt luket (log-skala)")

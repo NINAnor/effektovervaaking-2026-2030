@@ -237,7 +237,8 @@ read_one <- function(pattern, reader = read.csv) {
 stage_lev <- c("Juvenile", "Voksne")
 stage_lty <- c(Juvenile = "solid", Voksne = "dashed")
 stage_shp <- c(Juvenile = 16, Voksne = 21)
-site_cols <- c("Storrønningen" = "#2a78d6", "Kregnesteigen" = "#eb6834", "Fornes" = "#1baf7a", "Gravråk" = "#eda100")
+site_cols <- c("Storrønningen" = "#0f4c5c", "Kregnesteigen" = "#2a9d8f", "Fornes" = "#5fc4c0", "Gravråk" = "#a8d08d") # lokaliteter: teal-skala og lys grønn
+site_shapes <- c("Storrønningen" = 16, "Kregnesteigen" = 17, "Fornes" = 15, "Gravråk" = 18)
 luket_cols <- c(Kontroll = "#4d4d4d", Nei = "#5b8c2a", Delvis = "#d6619b", Ja = "#8e1b5c") # lukestatus: ikke luket grønn, luket magenta (delvis lys, ja mørk), kontroll grå
 
 # ---- Observasjoner (masterfil, langt format: én rad per punkt/polygon og stadium). Hovedtellingen er i september ----
@@ -519,9 +520,10 @@ pa <- clear_site |>
   scale_y_continuous(labels = scales::label_number(big.mark = " ")) +
   labs(x = NULL, y = "Areal luket (m²)") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-pb <- ggplot(filter(clear_site, !is.na(lupins_per_m2)), aes(year, lupins_per_m2, colour = site_name)) +
+pb <- ggplot(filter(clear_site, !is.na(lupins_per_m2)), aes(year, lupins_per_m2, colour = site_name, shape = site_name)) +
   geom_line(linewidth = 0.9) + geom_point(size = 2.5) +
   scale_colour_manual(values = site_cols, name = NULL) +
+  scale_shape_manual(values = site_shapes, name = NULL) +
   scale_x_continuous(breaks = clear_years[1]:clear_years[2]) +
   scale_y_log10() +
   labs(x = NULL, y = "Lupiner per m² luket (log-skala)")
@@ -765,11 +767,12 @@ bysite <- sept |>
   group_by(year, site, stage) |>
   summarise(obs = sum(obs, na.rm = TRUE), .groups = "drop")
 
-ggplot(bysite, aes(year, obs + 1, colour = site)) +
+ggplot(bysite, aes(year, obs + 1, colour = site, shape = site)) +
   geom_line(linewidth = 0.8) +
   geom_point(size = 2) +
   facet_wrap(~stage, ncol = 1, scales = "free_y") +
   scale_colour_manual(values = site_cols, name = NULL) +
+  scale_shape_manual(values = site_shapes, name = NULL) +
   scale_x_continuous(breaks = first_year:aar) +
   scale_y_log10(labels = scales::label_number(big.mark = " ")) +
   labs(x = NULL, y = "Antall + 1 (log-skala)")
