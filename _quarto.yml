@@ -18,6 +18,7 @@ book:
     - Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd
     - Dragehode/Dragehode.qmd
     - Kystlynghei/report/kystlynghei_condition_report.qmd
+  appendices:
     - Kystlynghei/report/kystlynghei_methods.qmd
 
 format:
