@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell
-2026-11-06
+2026-11-10
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -356,12 +356,16 @@ og alt plantemateriale samles i tette sekker og leveres til godkjent
 mottak for fremmede arter (Roos mfl. 2024; Solberg mfl. 2025). Ved
 delvis luking fjernes bare de større lupinene som kan sette frø i løpet
 av sesongen, og flere steder fjernes blomsterstander og frøbelger for å
-hindre frøspredning (Solberg mfl. 2025). Hver lokalitet er delt inn i
-kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år
-om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor
-mange lupiner som ble fjernet, og når og hvordan det ble luket (Roos
-mfl. 2024). Follstadøya blir også luket, men har ikke overvåking av
-elvesandjeger og er ikke med her.
+hindre frøspredning (Solberg mfl. 2025). Hensikten med delvis luking var
+å gi polygonene et år med mindre forstyrrelse for elvesandjeger,
+samtidig som lupinene ikke fikk spre frø. Fra 2026 lukes polygonene
+enten fullt eller ikke i det hele tatt, for å begrense forstyrrelsen av
+larvene.Hver lokalitet er delt inn i kartfestede lukepolygoner, og
+MidNat registrerer for hvert polygon og år om det er luket (Ja), delvis
+luket (Delvis) eller ikke luket (Nei), hvor mange lupiner som ble
+fjernet, og når og hvordan det ble luket (Roos mfl. 2024). Follstadøya
+blir også luket, men har ikke overvåking av elvesandjeger og er ikke med
+her.
 
 <a href="#fig-foto-luking" class="quarto-xref">Figur 4</a> viser
 eksempler på lukepolygoner før og etter luking i 2026.
@@ -434,34 +438,38 @@ luket). Ulik skala på y-aksen.
 
 ![](img/fig-luking-lupiner-1.png)
 
-Figur 6: Antall lupiner fjernet (venstre) og lupiner fjernet per m²
-luket areal (høyre), per lokalitet og år. Fornes har lukepolygoner først
-fra 2026; Gravråk 2021 mangler antall.
+Figur 6: Antall lupiner fjernet (venstre) og lupintetthet i polygonene
+som ble fullt luket (høyre), per lokalitet og år. Ved delvis luking
+telles bare de større plantene som fjernes, så disse polygonene er ikke
+med i tettheten. Fornes har lukepolygoner først fra 2026; Gravråk 2021
+mangler antall.
 
 </div>
 
 <div id="tbl-luking">
 
 Tabell 2: Lupinluking per lokalitet og år: areal luket (m², Ja +
-Delvis), antall lupiner fjernet og lupiner per m² luket. – = ikke
-registrert. Kilde: lukedata fra Midtnorsk Naturundersøkelse AS.
+Delvis), antall lupiner fjernet og lupintetthet (lupiner per m²) i
+polygonene som ble fullt luket. – = ikke registrert eller ingen
+polygoner fullt luket. Kilde: lukedata fra Midtnorsk Naturundersøkelse
+AS.
 
 <div class="cell-output-display">
 
-| Lokalitet     | Mål              |   2020 |   2021 |   2022 |   2023 |   2024 |   2025 |   2026 |
-|:--------------|:-----------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| Storrønningen | Areal luket (m²) | 10 751 | 14 363 | 11 238 | 16 056 | 21 465 |  5 101 | 12 507 |
-| Storrønningen | Lupiner fjernet  | 56 846 | 37 172 |  5 134 |  8 551 |  7 526 |  1 318 | 25 592 |
-| Storrønningen | Lupiner per m²   |   5,29 |   2,59 |   0,46 |   0,53 |   0,35 |   0,26 |   2,05 |
-| Kregnesteigen | Areal luket (m²) |      0 |  2 203 |  2 941 | 17 643 | 17 981 | 17 684 |    604 |
-| Kregnesteigen | Lupiner fjernet  |  5 750 |  5 400 | 19 130 | 29 593 | 22 217 |  1 125 |    448 |
-| Kregnesteigen | Lupiner per m²   |      – |   2,45 |   6,50 |   1,68 |   1,24 |   0,06 |   0,74 |
-| Fornes        | Areal luket (m²) |      0 |      0 |      0 |      0 |      0 |      0 |  2 827 |
-| Fornes        | Lupiner fjernet  |      – |      – |      – |      – |      – |      – |  5 150 |
-| Fornes        | Lupiner per m²   |      – |      – |      – |      – |      – |      – |   1,82 |
-| Gravråk       | Areal luket (m²) |      0 |  2 768 |      0 |    445 |  5 226 |  5 115 |  4 216 |
-| Gravråk       | Lupiner fjernet  |      0 |      0 |      0 |  4 535 |  6 915 |  2 409 |  3 545 |
-| Gravråk       | Lupiner per m²   |      – |      – |      – |  10,19 |   1,32 |   0,47 |   0,84 |
+| Lokalitet | Mål | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
+|:---|:---|---:|---:|---:|---:|---:|---:|---:|
+| Storrønningen | Areal luket (m²) | 10 751 | 14 363 | 11 238 | 16 056 | 21 465 | 5 101 | 12 507 |
+| Storrønningen | Lupiner fjernet | 56 846 | 37 172 | 5 134 | 8 551 | 7 526 | 1 318 | 25 592 |
+| Storrønningen | Lupiner per m², fullt luket | 4,76 | 2,59 | 0,83 | 0,70 | 0,41 | 0,28 | 2,05 |
+| Kregnesteigen | Areal luket (m²) | 0 | 2 203 | 2 941 | 17 643 | 17 981 | 17 684 | 604 |
+| Kregnesteigen | Lupiner fjernet | 5 750 | 5 400 | 19 130 | 29 593 | 22 217 | 1 125 | 448 |
+| Kregnesteigen | Lupiner per m², fullt luket | – | 2,45 | 6,50 | 1,87 | 1,24 | 0,23 | 0,74 |
+| Fornes | Areal luket (m²) | 0 | 0 | 0 | 0 | 0 | 0 | 2 827 |
+| Fornes | Lupiner fjernet | – | – | – | – | – | – | 5 150 |
+| Fornes | Lupiner per m², fullt luket | – | – | – | – | – | – | 1,82 |
+| Gravråk | Areal luket (m²) | 0 | 2 768 | 0 | 445 | 5 226 | 5 115 | 4 216 |
+| Gravråk | Lupiner fjernet | 0 | – | 0 | 4 535 | 6 915 | 2 409 | 3 545 |
+| Gravråk | Lupiner per m², fullt luket | – | – | – | 9,23 | 1,32 | 0,47 | 0,84 |
 
 </div>
 
@@ -552,13 +560,17 @@ undersøkt, er ikke helt likt alle år
 og tidsseriene vises derfor per besøksmåned.
 
 **Effekt av luking på lupin.** Dataene fra Midtnorsk Naturundersøkelse
-inneholder antall lupiner i hvert lukepolygon, registrert samtidig med
-lukingen, og om polygonet ble fullt luket, delvis luket eller ikke
-luket. I vår analyse regner vi om antallet til lupintetthet (lupiner per
-m² av polygonarealet), slik at polygoner av ulik størrelse kan
-sammenlignes, og deler polygonene inn etter hvordan de ble luket årene
-før: fullt luket året før, delvis luket året før, ett år uten luking, to
-år eller mer uten luking, eller luket for første gang. Forskjellene i
+inneholder for hvert lukepolygon og år om polygonet ble fullt luket,
+delvis luket eller ikke luket, og antallet lupiner som ble fjernet. Ved
+full luking fjernes alle lupinene, så antallet viser hvor mange lupiner
+som sto i polygonet. Ved delvis luking telles bare de større plantene
+som ble fjernet, og antallet sier derfor ikke hvor mange lupiner som sto
+der. Analysen bruker derfor bare polygoner som ble fullt luket i det
+aktuelle året. Antallet regnes om til lupintetthet (lupiner per m² av
+polygonarealet), slik at polygoner av ulik størrelse kan sammenlignes,
+og polygonene deles inn etter hvordan de ble luket årene før: fullt
+luket året før, delvis luket året før, ett år uten luking, to år eller
+mer uten luking, eller luket for første gang. Forskjellene i
 lupintetthet mellom disse gruppene testes med en negativ binomial GLMM
 (`glmmTMB`, nbinom2) på antall lupiner, med polygonarealet som offset,
 lukehistorikk, år og lokalitet som faste effekter og et tilfeldig
@@ -711,36 +723,41 @@ juni, juli og august. Tallene over søylene er totalt antall larver.
 
 ### 6.2 Effekt av luking på lupin
 
-**Lukehistorikk.** Lupintettheten i et polygon avhenger av hvordan det
-er luket årene før
+**Lukehistorikk.** Lupintettheten i polygonene som ble fullt luket,
+avhenger av hvordan de var luket årene før
 (<a href="#tbl-lupin-luking" class="quarto-xref">Tabell 4</a>,
 <a href="#fig-lupin-luking" class="quarto-xref">Figur 10</a>). I
-polygoner som ble fullt luket året før, var det 0,8 lupiner per m².
-Polygoner som sto ett år uten luking, hadde 2,1 lupiner per m² (RR 2,51
-mot fullt luket året før, p = 0,016), omtrent like mange som polygoner
-som ble luket for første gang (2,0 per m², RR 2,40, p = 0,003).
-Polygoner som hadde stått to år eller mer uten luking, hadde 7,8 lupiner
-per m² (RR 9,37, p \< 0,001). Allerede etter ett år uten luking er
-lupintettheten altså tilbake på nivået fra før lukingen startet, og
-etter to år er den mye høyere.
+polygoner som også ble fullt luket året før, var det 1,0 lupin per m².
+Etter to år eller mer uten luking hadde tettheten økt kraftig, til 5,9
+lupiner per m² (RR 5,81, p \< 0,001), og polygoner som ble luket for
+første gang, hadde 2,5 lupiner per m² (RR 2,43, p \< 0,001). Polygoner
+som sto ett år uten luking, hadde 0,7 lupin per m², og var ikke
+signifikant forskjellige fra polygoner som ble fullt luket året før (RR
+0,68, p = 0,29). Nesten alle disse (30 av 33) var fullt luket året før
+pausen. Ett år uten luking etter full luking ga altså ikke flere
+lupiner, men etter to år uten luking var tettheten nesten seks ganger så
+høy.
 
-**Delvis luking.** Polygoner som ble delvis luket året før, hadde 4,6
-lupiner per m², over fem ganger så mange som polygoner som ble fullt
-luket (RR 5,51, p \< 0,001). Delvis luking holder altså ikke lupinen
-nede på samme måte som full luking.
+**Delvis luking.** Polygoner som ble delvis luket året før, hadde 1,3
+lupiner per m² da de ble fullt luket, og var ikke signifikant
+forskjellige fra polygoner som ble fullt luket året før (RR 1,27, p =
+0,52). Når de større plantene ble fjernet før de satte frø, holdt delvis
+luking lupinen nede omtrent like godt som full luking fram til neste
+luking.
 
-**Utvikling over år.** Lupintettheten i de lukede polygonene gikk ned
-fra 4,8 per m² i 2020 til 0,82 i 2024 og 0,17 i 2025, men økte igjen til
-1,7 per m² i 2026
+**Utvikling over år.** Lupintettheten i polygonene som ble fullt luket,
+gikk ned fra 4,8 per m² i 2020 til 0,88 i 2024 og 0,35 i 2025, men økte
+igjen til 1,7 per m² i 2026
 (<a href="#tbl-luking" class="quarto-xref">Tabell 2</a>). Den lave
 tettheten i 2025 kom etter flere år med mye luking: i 2024 ble 44 700 m²
-luket, det meste fullt. I 2025 ble bare 11 900 m² fullt luket, og
-økningen i 2026 kom særlig fra polygoner på Storrønningen som ikke var
-luket i 2024 og 2025.
+luket, det meste fullt. I 2025 ble bare 11 900 m² fullt luket og 16 000
+m² delvis luket. Økningen i 2026 kom særlig fra tolv polygoner på
+Storrønningen som ikke var luket i 2024 og 2025. De hadde 3,5 lupiner
+per m², og nesten halvparten av lupinene som ble fjernet i 2026.
 
 <div id="tbl-lupin-luking">
 
-Tabell 4: Lupintetthet (lupiner per m²) i lukede polygoner etter
+Tabell 4: Lupintetthet (lupiner per m²) i fullt lukede polygoner etter
 lukehistorikk. NB GLMM, n = polygon-år. RR = rateratio; KI95 = 95 %
 konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01;
 \*\*\* p \< 0,001.
@@ -749,37 +766,35 @@ konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01;
 
 | Effekt | n | RR | KI95 | p |
 |:---|---:|---:|:---|:---|
-| Delvis luket året før (mot fullt luket året før) | 35 | 5.51 | 2.62–11.57 | \<0.001\*\*\* |
-| 1 år uten luking (mot fullt luket året før) | 34 | 2.51 | 1.19–5.31 | 0.016\* |
-| 2 år eller mer uten luking (mot fullt luket året før) | 17 | 9.37 | 3.64–24.10 | \<0.001\*\*\* |
-| Første gang luket (mot fullt luket året før) | 39 | 2.40 | 1.34–4.30 | 0.0032\*\* |
+| Delvis luket året før (mot fullt luket året før) | 35 | 1.27 | 0.62–2.62 | 0.52 |
+| 1 år uten luking (mot fullt luket året før) | 33 | 0.68 | 0.33–1.38 | 0.29 |
+| 2 år eller mer uten luking (mot fullt luket året før) | 15 | 5.81 | 2.52–13.42 | \<0.001\*\*\* |
+| Første gang luket (mot fullt luket året før) | 35 | 2.43 | 1.49–3.96 | \<0.001\*\*\* |
 
 </div>
 
 </div>
 
 <a href="#fig-lupin-luking" class="quarto-xref">Figur 10</a> viser
-lupintettheten i hvert lukepolygon og år (punkter), gruppert etter
-hvordan polygonet var luket årene før, og det modellerte gjennomsnittet
-med 95 % konfidensintervall (svart). Y-aksen er logaritmisk, slik at
-hver linje betyr ti ganger så mange lupiner. Spredningen innen hver
-gruppe er stor, fordi polygonene er ulike og har ulik lukehistorikk
-lenger tilbake. Polygoner som ble fullt luket året før, skiller seg
-likevel tydelig ut: gjennomsnittet er under én lupin per m², og mange av
-polygonene hadde under 0,1 lupin per m², altså nesten ingen lupiner.
-Etter ett år uten luking og i polygoner som ble luket for første gang,
-er gjennomsnittet rundt to lupiner per m². Etter delvis luking og etter
-to år eller mer uten luking er det høyest, og her er det få polygoner
-med under 0,1 lupin per m². Intervallene er brede for disse gruppene
-fordi det er få polygon-år (35 og 17).
+lupintettheten i hvert fullt lukede polygon og år (punkter), gruppert
+etter hvordan polygonet var luket årene før, og det modellerte
+gjennomsnittet med 95 % konfidensintervall (svart). Y-aksen er
+logaritmisk, slik at hver linje betyr ti ganger så mange lupiner.
+Spredningen innen hver gruppe er stor, fordi polygonene er ulike og har
+ulik lukehistorikk lenger tilbake. Etter full luking, delvis luking og
+ett år uten luking er gjennomsnittet rundt én lupin per m² eller lavere.
+Polygoner som ble luket for første gang, og særlig polygoner som ikke
+var luket på to år eller mer, skiller seg ut med høyere tetthet.
+Intervallet er bredt for polygonene som ikke var luket på to år eller
+mer, fordi det bare er 15 polygon-år.
 
 <div id="fig-lupin-luking">
 
 ![](img/fig-lupin-luking-1.png)
 
-Figur 10: Lupintetthet i lukede polygoner etter lukehistorikk (punkter =
-polygon-år, +0,01 for å vise nuller; svart = modellert gjennomsnitt ± 95
-% KI).
+Figur 10: Lupintetthet i fullt lukede polygoner etter lukehistorikk
+(punkter = polygon-år, +0,01 for å vise nuller; svart = modellert
+gjennomsnitt ± 95 % KI).
 
 </div>
 
@@ -1190,15 +1205,30 @@ Manglende søyle = ikke undersøkt i august. Ulik skala på y-aksen.
 <!-- Teksten er skrevet for dataene til og med 2026. Oppdater tallene og tolkningen manuelt hvert år. -->
 
 **Lukingen holder lupinbestanden nede, men bare så lenge den gjentas.**
-Allerede etter ett år uten luking var lupintettheten tilbake på nivået
-fra før lukingen startet, og etter to år eller mer uten luking var den
-ni ganger så høy som i polygoner som ble fullt luket året før. Polygoner
-som bare ble delvis luket, hadde fem ganger så mange lupiner året etter
-som polygoner som ble fullt luket. I 2025 ble det fullt luket mye mindre
-enn året før, og i 2026 var lupintettheten i de lukede polygonene ti
+I polygoner som ble luket hvert år, holdt lupintettheten seg lav. Ett år
+uten luking etter full luking ga ikke flere lupiner, men etter to år
+eller mer uten luking var tettheten nesten seks ganger så høy som i
+polygoner som ble fullt luket året før. Delvis luking, der de større
+plantene ble fjernet før de satte frø, holdt lupinen nede omtrent like
+godt som full luking. I 2025 ble det fullt luket mye mindre enn året
+før, og i 2026 var lupintettheten i de fullt lukede polygonene fem
 ganger så høy som i 2025, særlig i polygoner på Storrønningen som ikke
 var luket på to år. Lupinen kommer altså raskt tilbake når lukingen
-stopper opp, og lukingen må gjentas hvert år.
+stopper opp.
+
+**Frøbanken.** Tellingene viser bare lupinene som står i polygonene
+hvert år, ikke frøbanken. Hagelupin danner en langvarig frøbank, og
+frøene kan ligge i jorda i mer enn 50 år uten å miste spireevnen
+(Fremstad 2012). Når blomsterstander og frøbelger fjernes, både ved full
+og delvis luking, kommer det færre nye frø i jorda, og over tid bør
+frøbanken bli mindre, selv om det fortsatt kommer opp lupiner i
+polygonene de nærmeste årene. Frøbanken fylles likevel på av lupiner som
+står igjen i og rundt lukeområdene, og trolig også av frø som føres med
+elva fra bestander lenger opp (Hanssen 2023). Effekten av lukingen kan
+derfor ikke vurderes bare ut fra antallet lupiner fra ett år til det
+neste. Luking år etter år er nødvendig, og arbeidet som Midtnorsk
+Naturundersøkelse, Melhus kommune, Øya videregående skole og andre gjør
+langs Gaula, er viktig for å holde lupininvasjonen under kontroll.
 
 **Bestanden tok seg opp i 2026 etter et svært dårlig 2025.** 2025 var
 det dårligste året siden overvåkingen ble etablert, men i 2026 økte
@@ -1257,25 +1287,24 @@ derfor mindre om bestanden enn antallet larver.
 
 ### 7.2 Anbefaling for videreføring
 
-**Tiltak.** Vi anbefaler full luking av hagelupin i alle lukepolygonene
-hvert år. Allerede ett år uten luking gir like mange lupiner som før
-lukingen startet, og etter to år uten luking er det mange flere. Et
-opphold i lukingen kan derfor sette arbeidet flere år tilbake.
+**Tiltak.** Vi anbefaler luking av hagelupin i alle lukepolygonene hvert
+år. Ett år uten luking etter full luking ga ikke flere lupiner, men
+etter to år uten luking var tettheten nesten seks ganger så høy. Et
+lengre opphold i lukingen kan derfor sette arbeidet flere år tilbake.
 Polygonene som ikke er luket på to år eller mer, bør prioriteres, og på
 Kregnesteigen, der det bare ble luket 604 m² i 2026, bør hele
-lokaliteten lukes fullt i 2027. Delvis luking kan være skånsommere for
-elvesandjeger fordi den forstyrrer sanden og larvehullene mindre, men i
-dag gir den over fem ganger så mange lupiner året etter som full luking.
-Delvis luking bør derfor bare brukes der det er nødvendig av hensyn til
-larvehullene, og den må gjøres så grundig at lupinen ikke får sette frø.
-Frøstandene bør fjernes før de modner. Kjerneområdene med stabile
-bestander av elvesandjeger fungerer som kildebestander og bør
-prioriteres, og områdene rundt bør holdes åpne som buffersoner som arten
-kan flytte til etter flom og styrtregn (Roos mfl. 2025). Den restaurerte
-flaten på Kregnesteigen, der store deler av bestanden har holdt til
-siden 2023, var i ferd med å gro igjen i 2025 og bør lukes på nytt (Roos
-mfl. 2025). Utviklingen på Gravråk etter restaureringen med gravemaskin
-i 2025 bør følges.
+lokaliteten lukes fullt i 2027. Ett år uten luking etter full luking ga
+ikke flere lupiner, så praksisen fra 2026, der polygonene enten lukes
+fullt eller får stå i fred, kan begrense forstyrrelsen av larvene uten
+at lupinen tar seg opp igjen, så lenge ingen polygoner står mer enn ett
+år uten luking. Frøstandene bør fjernes før de modner. Kjerneområdene
+med stabile bestander av elvesandjeger fungerer som kildebestander og
+bør prioriteres, og områdene rundt bør holdes åpne som buffersoner som
+arten kan flytte til etter flom og styrtregn (Roos mfl. 2025). Den
+restaurerte flaten på Kregnesteigen, der store deler av bestanden har
+holdt til siden 2023, var i ferd med å gro igjen i 2025 og bør lukes på
+nytt (Roos mfl. 2025). Utviklingen på Gravråk etter restaureringen med
+gravemaskin i 2025 bør følges.
 
 Lukingen holder eksisterende leveområder åpne, men nye sand- og
 siltflater skapes bare av elva selv. Forvaltningen bør derfor også ta
@@ -1322,6 +1351,12 @@ Evju, Marianne, Ruben E. Roos, Anders Endrestøl, Megan Nowell, Oddvar
 Hanssen, og Ellen E. Ombler. 2022. *Effektovervåking av trua arter og
 naturtyper 2022*. NINA Rapport No. 2196. Norsk institutt for
 naturforskning. <https://brage.nina.no/nina-xmlui/handle/11250/3035335>.
+
+</div>
+
+<div id="ref-fremstad_2012" class="csl-entry">
+
+Fremstad, Eli. 2012. *Hagelupin *Lupinus polyphyllus**. Artsdatabanken.
 
 </div>
 
