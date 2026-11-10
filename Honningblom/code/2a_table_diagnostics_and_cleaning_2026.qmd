@@ -1,0 +1,196 @@
+# Datavask og -prosessering av vegetasjonsdata
+
+*Skrevet av Ida M. Mienna*
+
+*18.08.2025*
+
+Her bør du gjøre den datarengjøringen du ellers ville ha gjort i Excel. Grunnen til å gjøre dette her er å ha en reproduserbar metode som både andre, men også du selv, kan bruke for å kjøre gjennom datarengjøringen og ende opp med de samme resultatene som før.
+
+Selve diagnostikken for datarengjøringen vil kjøres nedenfor under seksjonen "\*\*IKKE gjør endringer under her\*\*". Dette er (forhåpentligvis) for å gjøre det mer åpenbart hvilke deler av tabellen som må endres. Jeg har lagt til noen typiske temaer nedenfor, men disse kan videre bearbeides under "IKKE ENDRE NEDENFOR" om nødvendig.
+
+Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ctrl+Alt+R. Du vil finne én ny fil med navnet "ditt_prosjekt_navn_export_dirty.xlsx" i din eksportmappe.
+
+```{r}
+
+# The table should have the same structure and colnames as in export_dirty.xlsx.
+filepath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/04 Honningblom/Herminium monorchis/Herminium_monorchis_2026/Honningblom_2026_processed/Honningblom_2026_export_dirty.xlsx"
+
+filepath <- here::here("data", 
+                       "S123_2026", 
+                       "Honningblom_2026_processed", 
+                       "Honningblom_2026_export_dirty.xlsx")
+
+# What should the exported files be marked as?
+project <- "Honningblom_2026"
+
+# Path to folder where the processed directories and files should be exported
+outputpath <- here::here("data", 
+                       "S123_2026")
+```
+
+```{r}
+## If you have collected high-precision GPS points, let collctd_hpcoords be TRUE 
+## and add the full file path with the coordinates. The coordinates should be in
+## a csv format as when exporting the GPS points report. If you do not have 
+## collctd_hpcoords, change hpcoords to FALSE.
+collctd_hpcoords <- FALSE
+
+hpcoordspath <- "insert-your-path-here"
+
+# Which crs do the coordinates have? Please write EPSG:XXXXX (see example)
+hpcrs <- "EPSG:25832" # EUREF89 UTM sone 32
+
+# If you have check_GIS <- TRUE, you can further check if the plots are OK for analyses (e.g. use as ground truth for remote sensing). A map will pop up to in your Viewer-console (by default in your bottom right) where you can zoom in on your data. Hold the cursor above a plot to see its label.
+# If you did not use a high-precision GPS, this step will not work so change check_GIS to FALSE.
+
+check_GIS <- FALSE
+
+```
+
+Hvis du ønsker, kan du få ut en diagnostikk-mappe ("Diagnostics") som viser informasjon om plot ID, artsnavn, koordinater osv.
+
+```{r}
+## Export files for diagnostics? (Yes=TRUE, No=FALSE)
+export_diagnostics <- TRUE
+
+```
+
+```{r}
+
+## DO NOT CHANGE but you can add your own packages if necessary (IMPORTING PACKAGES)
+
+# Open files (import function and run)
+source(here::here("Rsource", "functions.R"))
+
+dat <- readxl::read_excel(filepath)
+
+if(collctd_hpcoords){
+  hpcoords <- read.table(hpcoordspath, header = FALSE, sep = ",", 
+                         stringsAsFactors = FALSE, fill = TRUE, skip=1)
+}
+
+Sys.setlocale(locale='no_NB.utf8')
+
+## Packages
+packages <- c("dplyr", "readxl", "sf", "tidyr", "openxlsx", "stringr",
+              "httr", "jsonlite", "purrr", "data.table", "readr", "mapview")
+
+# Require or install packages function
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+
+ipak(packages)
+```
+
+## Datavask
+
+Under her gjør du vask av dataene dine. Under er eksempler på hvordan dette kan gjøres, men du kan gjøre endringene under som du vil.
+
+I skriptet vil endringer gjort under Datavsk prosesseres i "IKKE gjør endringer". Det som per nå
+
+Lokasjonsnavn
+
+#### Rutenavn
+
+```{r}
+
+# fjerner testruter
+dat <- dat %>%
+  filter(main_location_id != "Feltspatveien")
+
+# endrer lokalitetsnavn så det er riktig stavet
+dat <- dat %>%
+  mutate(main_location_id = recode(
+    main_location_id,
+    "Skipstadsnd" = "Skipstadsand",
+    "Ski" = "Skipstadsand",
+    "Skjevik" = "Skjellvik",
+    "Skjellvi" = "Skjellvik"
+  ))
+
+# endrer den ruta som har byttet kolonne for rute/lokalitet
+dat <- dat %>%
+  mutate(
+    temp = main_location_id,
+    main_location_id = if_else(parentglobalid == "{8A834C23-F128-4C41-B690-0C15EA5AA6BA}", main_plot_id, main_location_id),
+    main_plot_id = if_else(parentglobalid == "{8A834C23-F128-4C41-B690-0C15EA5AA6BA}", temp, main_plot_id)
+  ) %>%
+  select(-temp)
+
+# endrer rutenavn på feilpuncha navn
+dat <- dat %>%
+   mutate(main_plot_id = case_when(
+    
+    parentglobalid == "{9429B408-7256-4916-93F2-F84743CA0F30}" ~ "TEN4", # Er feilregistrert som TEN44,
+    parentglobalid == "{996FC2EE-256B-49B7-81E9-6E009DBFBF6D}" ~ "SKI15", # har en rar postfix,
+    parentglobalid =="{3440341E-6913-45F8-8C9B-5F0C439E2B7E}" ~ "SKJ10", # er feilregistrert som SKJ100,
+    TRUE ~ main_plot_id))
+
+# fjerner dobbeltinnlagt TEN5
+dat <- dat %>%
+  filter(parentglobalid != "{244F37BC-1AC4-4C14-B84E-0CBB62C08E2E}")
+
+
+
+```
+
+#### Artsnavn
+
+```{r}
+
+## EXAMPLE:
+# Fix spelling errors in the dataset.
+dat <- dat %>%
+    mutate(plot_species = case_when(
+    plot_species == "Selinum_carvifolium" ~ "Selinum_carvifolia",
+    plot_species == "Potentilla_anserina" ~ "Argentina_anserina",
+    
+    TRUE ~ plot_species
+    
+  ))
+
+# Fix misidentifications in the dataset
+# det er svartor i SKJ27, ikke gråor
+dat <- dat %>%
+    mutate(plot_species = case_when(
+    plot_species == "Alnus_incana" ~ "Alnus_glutinosa",
+   
+    TRUE ~ plot_species
+    
+  ))
+
+```
+
+#### Koordinater
+
+Sjekk om navn er riktig plassert på riktige steder. Sjekk også om koordinatnøyaktigheten er god nok.
+
+```{r}
+
+# EXAMPLE:
+# If there are rows that should be removed
+
+
+```
+
+## \*\*IKKE gjør endringer under her\*\*
+
+```{r}
+
+# Create a folder for diagnostics (if it does not exist) 
+diagnostics_folder <- paste0(outputpath, "/Diagnostics/") 
+
+if (!dir.exists(diagnostics_folder)) { 
+  dir.create(diagnostics_folder) 
+  cat(paste0("Directory created for diagnostics: ", diagnostics_folder)) 
+  }
+
+```
+
+```{r}
+process_and_diagnose(dat)
+```

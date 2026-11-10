@@ -1,0 +1,371 @@
+---
+title: "4_data_to_DwC"
+format: html
+---
+
+# Data to Darwin Core
+
+This script converts data to DarwinCore format.
+
+## Required packages
+
+```{r}
+library(dplyr)
+library(readxl)
+library(writexl)
+library(readr)
+library(lubridate)
+library(readr)
+library(stringr)
+library(data.table)
+library(kableExtra)
+library(tidyr)
+library(forcats)
+library(here)
+library(openxlsx)
+```
+
+## Import data
+
+```{r}
+
+df <- readxl::read_excel(here::here("Data", 
+"Herminium_monorchis_masterfile_v_2026.xlsx"), sheet= "Plot_herminium")    
+#subsetting 2026-data
+df <- df %>%
+  filter(Year == 2026)
+
+## Import dataset on environmental variables for MeasurementOrFact sheet
+df2 <-readxl::read_excel(here::here("Data", 
+"Herminium_monorchis_masterfile_v_2026.xlsx"),sheet= "Plot_environment")                            
+df2 <- df2 %>%
+  filter(Year == 2026)
+
+## import dataset for making Events, including observer, date etc
+df3 <-readxl::read_excel(here::here("Data", "Herminium_monorchis_masterfile_v_2026.xlsx"), sheet= "Plot_General")
+
+```
+
+## Load data template
+
+```{r}
+# What the data should look like
+occ = read_excel(here::here("Data", "Herminium_Monitoring_NINA_EventCore_importskjema_2025.xlsx"),
+                 sheet = "Occurrence")
+
+event = read_excel(here::here("Data", "Herminium_Monitoring_NINA_EventCore_importskjema_2025.xlsx"), 
+                 sheet = "Event")
+
+event <- event %>%
+  filter(year == 2025)
+event <- event %>%
+  rename(Plot_ID_new = locationID)
+
+measOrFact = read_excel(here::here("Data", "Herminium_Monitoring_NINA_EventCore_importskjema_2025.xlsx"),  
+                 sheet = "MeasurementOrFact")
+
+```
+
+## Creating DwC file
+
+```{r}
+#Create eventID
+df3 = df3 %>% 
+  mutate(eventID = paste("NINA.Herminium.Monitoring",Locality, Year, Plot_ID_new, sep = "."), parentEventID = paste("NINA.Herminium.Monitoring",Locality, Year, sep="."))
+
+# linking general info with Hm info, for easy making of occurrence table
+df_joined <- df %>%
+  left_join(df3, by = "Plot_ID_new")
+
+## Create occurrence table
+hbOcc2026 <- df_joined %>%
+  transmute(
+    eventID = eventID,
+    basisOfRecord = "HumanObservation",
+    occurrenceRemarks = "",
+    recordNumber = "",
+    recordedBy = Observer,
+    individualCount = Herminium_count_total,
+    organismQuantity = "",
+    sex = "",
+    
+    lifeStage = if_else(
+      Herminium_count_total == 0,
+      "",
+      paste(
+        Herminium_count_fertile, "fertile",
+        Herminium_count_vegetative, "vegetative"
+      ),
+      missing = ""
+    ),
+    
+    establishmentMeans = "",
+    
+    occurrenceStatus = if_else(
+      Herminium_count_total == 0,
+      "absent",
+      "present",
+      missing = ""
+    ),
+    
+    preparations = "",
+    organismRemarks = "",
+    identifiedBy = "",
+    identificationRemarks = "",
+    typeStatus = "",
+    identificationQualifier = "",
+    scientificName = "Herminium monorchis",
+    LatinskNavnID = "99524",
+    kingdom = "Plantae",
+    phylum = "Magnoliophyta",
+    class = "Monocots",
+    order = "Asparagales",
+    family = "Orchidaceae",
+    genus = "Herminium",
+    specificEpithet = "monorchis",
+    subspecies = "",
+    scientificNameAuthorship = "(L.) R.Br.",
+    vernacularName = "honningblom",
+    taxonRemarks = "HumanObservation"
+  )
+
+
+
+# linking general info with environment info, for easy making of occurrence table
+df_joined2 <- df2 %>%
+  left_join(df3, by = "Plot_ID_new")
+
+hbMoF2026 <- df_joined2 %>%
+  select(
+    eventID,
+    Observer,
+    Date,
+    Vegetation_height_mean,
+    Fieldlayer_cover,
+    Groundlayer_cover,
+    Litter_cover
+  ) %>%
+  pivot_longer(
+    cols = c(
+      Vegetation_height_mean,
+      Fieldlayer_cover,
+      Groundlayer_cover,
+      Litter_cover
+    ),
+    names_to = "source_variable",
+    values_to = "measurementValue"
+  ) %>%
+  filter(!is.na(measurementValue)) %>%
+  mutate(
+    measurementType = recode(
+      source_variable,
+      Vegetation_height_mean = "Vegetation.height",
+      Fieldlayer_cover = "Field.layer",
+      Groundlayer_cover = "Bottom.layer",
+      Litter_cover = "Litter"
+    ),
+    measurementID = "",
+    measurementAccuracy = "",
+    measurementUnit = case_when(
+      measurementType == "Vegetation.height" ~ "cm",
+      TRUE ~ "%"
+    ),
+    measurementDeterminedBy = Observer,
+    measurementDeterminedDate = Date,
+    measurementMethod = "Visual estimate",
+    measurementRemarks = "Sampling protocol and variables described in Roos et al. 2024"
+  ) %>%
+  select(
+    eventID,
+    measurementID,
+    measurementType,
+    measurementValue,
+    measurementAccuracy,
+    measurementUnit,
+    measurementDeterminedBy,
+    measurementDeterminedDate,
+    measurementMethod,
+    measurementRemarks
+  )
+
+## Making event table
+
+# Oppslagstabell med informasjon fra tidligere Event-data
+event_lookup <- event %>%
+  select(
+    Plot_ID_new,
+    habitat,
+    habitatNiN,
+    versionNiN,
+    UTMsone,
+    UTMnord,
+    UTMost,
+    coordinateUncertaintyInMeters
+  ) %>%
+  distinct(Plot_ID_new, .keep_all = TRUE)
+
+
+# Én Event-rad per prøveflate
+plot_events <- df_joined2 %>%
+  left_join(
+    event_lookup,
+    by = "Plot_ID_new"
+  ) %>%
+  transmute(
+    # Metadata
+    type = "",
+    license = "",
+    datasetName = "Herminium monorchis_monitoring",
+    ownerInstitutionCode = "Norwegian Institute for Nature Research",
+    informationWithheld = "",
+    dataGeneralizations = "",
+    dynamicProperties = "",
+    ansvarligNINA = "Marianne Evju",
+    
+    # Event
+    eventID = eventID,
+    parentEventID = parentEventID,
+    
+    samplingProtocol = paste(
+      "Recording of number of ramets of H. monorchis,",
+      "counted separately for vegetative and fertile ramets,",
+      "vegetation cover and height, in permanently marked plots.",
+      "For details, see Roos et al. (2024)."
+    ),
+    
+    sampleSizeValue = 0.25,
+    sampleSizeUnit = "square metre",
+    samplingEffort = "",
+    
+    eventDate = format(Date, "%Y-%m-%d"),
+    eventTime = "",
+    year = Year.x,
+    month = month,
+    day = day,
+    
+    habitat = habitat,
+    habitatNiN = habitatNiN,
+    versionNiN = versionNiN,
+    
+    fieldNumber = "",
+    fieldNotes = "",
+    eventRemarks = "",
+    
+    # Location
+    locationID = Plot_ID_new,
+    country = "Norway",
+    stateProvince = "Østfold",
+    county = "Hvaler",
+    locality = Locality.x,
+    
+    longitude = "",
+    latitude = "",
+    originalkoordinat_longitude = "",
+    originalkoordinat_latitude = "",
+    
+    UTMsone = UTMsone,
+    UTMost = UTMost,
+    UTMnord = UTMnord,
+    
+    footprintWKT = "",
+    coordinateUncertaintyInMeters = coordinateUncertaintyInMeters,
+    coordinatePrecision = "",
+    
+    minimumElevationInMeters = "",
+    maximumElevationInMeters = "",
+    minimumDepthInMeters = "",
+    maximumDepthInMeters = "",
+    locationAccordingTo = ""
+  ) %>%
+  distinct(eventID, .keep_all = TRUE)
+
+parent_events <- df_joined2 %>%
+  distinct(parentEventID, .keep_all = TRUE) %>%
+  transmute(
+    # Metadata
+    type = "",
+    license = "",
+    datasetName = "Herminium monorchis_monitoring",
+    ownerInstitutionCode = "Norwegian Institute for Nature Research",
+    informationWithheld = "",
+    dataGeneralizations = "",
+    dynamicProperties = "",
+    ansvarligNINA = "Marianne Evju",
+    
+    # Event
+    eventID = parentEventID,
+    parentEventID = NA_character_,
+    
+    samplingProtocol = "",
+    sampleSizeValue = NA_real_,
+    sampleSizeUnit = "",
+    samplingEffort = "",
+    
+    eventDate = format(Date, "%Y-%m-%d"),
+    eventTime = "",
+    year = Year.x,
+    month = month,
+    day = day,
+    
+    habitat = "",
+    habitatNiN = "",
+    versionNiN = "",
+    
+    fieldNumber = "",
+    fieldNotes = "",
+    eventRemarks = "",
+    
+    # Location
+    locationID = "",
+    country = "Norway",
+    stateProvince = "Østfold",
+    county = "Hvaler",
+    locality = Locality.x,
+    
+    longitude = "",
+    latitude = "",
+    originalkoordinat_longitude = "",
+    originalkoordinat_latitude = "",
+    
+    UTMsone = NA,
+    UTMost = NA_real_,
+    UTMnord = NA_real_,
+    
+    footprintWKT = "",
+    coordinateUncertaintyInMeters = NA_real_,
+    coordinatePrecision = "",
+    
+    minimumElevationInMeters = "",
+    maximumElevationInMeters = "",
+    minimumDepthInMeters = "",
+    maximumDepthInMeters = "",
+    locationAccordingTo = ""
+  )
+
+
+Event2026 <- bind_rows(
+  parent_events,
+  plot_events
+)
+```
+
+## Create and output excel file
+
+```{r}
+
+wb <- createWorkbook()
+
+addWorksheet(wb, "Event")
+writeData(wb, "Event", Event2026)
+
+addWorksheet(wb, "Occurrence")
+writeData(wb, "Occurrence", hbOcc2026)
+
+addWorksheet(wb,"MeasurementOrFact")
+writeData(wb,"MeasurementOrFact",hbMoF2026)
+
+saveWorkbook(wb, here::here("Data", 
+                            "Herminium_Monitoring_NINA_EventCore_2026.xlsx"), overwrite = TRUE)
+
+
+```

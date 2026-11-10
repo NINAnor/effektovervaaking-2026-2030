@@ -1,0 +1,197 @@
+---
+title: "6_Plot based counts"
+format: html
+---
+
+This script creates figures for the number of H. monorchis individuals in the monitoring plots.
+
+## Install packages
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(sciplot)
+library(boot)
+library(Matrix)
+library(lme4)
+library(vegan)
+library(tibble)
+library(lubridate)
+library(tidyr)
+library(stringr)
+library(here)
+library(openxlsx)
+
+
+
+```
+
+## Load data
+
+```{r}
+
+df <- read_excel(here::here("data", "Herminium_monorchis_masterfile_v_2026.xlsx"), sheet="Plot_herminium",na=c("NA"))
+```
+
+## Create figures
+
+### Number of individuals per plot, per locality
+
+```{r}
+
+# Create and save a figure for one locality
+create_figure <- function(locality_name, all_plots_only = FALSE) {
+
+  locality_data <- df %>%
+    filter(locality_name == Locality)
+
+  if (all_plots_only) {
+    plot_data <- locality_data %>%
+      mutate(plot_type = "Alle ruter")
+  } else {
+    plot_data <- bind_rows(
+      locality_data %>%
+        filter(All_years == 1) %>%
+        mutate(plot_type = "Opprinnelige ruter"),
+
+      locality_data %>%
+        mutate(plot_type = "Alle ruter")
+    )
+  }
+
+  plot_data <- plot_data %>%
+    mutate(
+      plot_type = factor(
+        plot_type,
+        levels = c("Opprinnelige ruter", "Alle ruter")
+      )
+    ) %>%
+    group_by(plot_type, Year) %>%
+    summarise(
+      n = sum(!is.na(Herminium_density_0.25m2)),
+      mean_density = mean(Herminium_density_0.25m2, na.rm = TRUE),
+      se = sd(Herminium_density_0.25m2, na.rm = TRUE) / sqrt(n),
+      .groups = "drop"
+    )
+
+  # Plot means ± standard errors
+  p <- ggplot(
+    plot_data,
+    aes(x = Year, y = mean_density, group = 1)
+  ) +
+    geom_line() +
+    geom_point(size = 2) +
+    geom_errorbar(
+      aes(
+        ymin = mean_density - se,
+        ymax = mean_density + se
+      ),
+      width = 0.15
+    ) +
+    facet_wrap(~ plot_type, nrow = 1) +
+    labs(
+      title = locality_name,
+      x = "År",
+      y = "Antall individer per 0,25 m²"
+    ) +
+    theme_bw(base_size = 16)
+
+  # Save figure
+  ggsave(
+    filename = here::here(
+      "img",
+      paste0(locality_name, "_antall.jpg")
+    ),
+    plot = p,
+    width = if (all_plots_only) 17.5 else 35,
+    height = 20,
+    units = "cm",
+    dpi = 300
+  )
+
+  return(p)
+}
+
+# Create and save figures
+p_skipstadsand <- create_figure("Skipstadsand")
+p_skjellvik <- create_figure("Skjellvik")
+p_teneskjaer <- create_figure("Teneskjaer")
+p_filletassen <- create_figure("Filletassen", all_plots_only = TRUE)
+
+# Display figures
+p_skipstadsand
+p_skjellvik
+p_teneskjaer
+p_filletassen
+```
+
+### Percentage of fertile individuals
+
+```{r}
+
+# Replace NA fractions with zero and summarise per locality and year
+# Replace NA with zero except in 2018, when data are missing
+fertile_summary <- df %>%
+  mutate(
+    Herminium_fraction_fertile = if_else(
+      Year == 2018,
+      Herminium_fraction_fertile,
+      coalesce(Herminium_fraction_fertile, 0)
+    )
+  ) %>%
+  group_by(Locality, Year) %>%
+  summarise(
+    n = sum(!is.na(Herminium_fraction_fertile)),
+    mean_fraction = if (n > 0) {
+      mean(Herminium_fraction_fertile, na.rm = TRUE)
+    } else {
+      NA_real_
+    },
+    se = if (n > 1) {
+      sd(Herminium_fraction_fertile, na.rm = TRUE) / sqrt(n)
+    } else {
+      NA_real_
+    },
+    .groups = "drop"
+  )
+
+# Plot means ± standard errors
+p_fertile <- ggplot(
+  fertile_summary,
+  aes(x = Year, y = mean_fraction, group = 1)
+) +
+  geom_line() +
+  geom_point(size = 2) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(0, mean_fraction - se),
+      ymax = pmin(1, mean_fraction + se)
+    ),
+    width = 0.15
+  ) +
+  facet_wrap(~ Locality, ncol = 2) +
+  scale_y_continuous(
+    labels = scales::label_percent(decimal.mark = ","),
+    limits = c(0, 1)
+  ) +
+  labs(
+    x = "År",
+    y = "Andel fertile individer"
+  ) +
+  theme_bw(base_size = 16) +
+  coord_cartesian(ylim = c(0, 0.5))
+
+# Display figure
+p_fertile
+
+# Save figure
+ggsave(
+  filename = here::here("img", "Andel_fertile_per_lokalitet.jpg"),
+  plot = p_fertile,
+  width = 30,
+  height = 22,
+  units = "cm",
+  dpi = 300
+)
+```

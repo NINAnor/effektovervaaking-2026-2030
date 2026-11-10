@@ -1,0 +1,713 @@
+---
+title: "3_cleaning_and_merging_data"
+format: html
+---
+
+# Cleaning and merging data
+
+Data export from script 2 needs to be reformatted to fit with dataset from previous years.
+
+## Load packages
+
+```{r}
+
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(sciplot)
+library(boot)
+library(Matrix)
+library(lme4)
+library(vegan)
+library(tibble)
+library(lubridate)
+library(tidyr)
+library(stringr)
+library(here)
+library(openxlsx)
+```
+
+## Import data
+
+```{r}
+
+#Plot data
+
+plot_2026 <- read_excel(here::here("data", 
+                                   "S123_2026", 
+                                   "Exports", 
+                                   "Honningblom_2026_data_analyses.xlsx"), sheet = "plots")
+
+plot_2014_25_herminium <- read_excel(here::here("data",
+                                                "Herminium_monorchis_masterfile_v_2025.xlsx"),sheet="Plot_herminium")
+
+plot_2014_25_environment <- read_excel(here::here("data",
+                                                "Herminium_monorchis_masterfile_v_2025.xlsx"),sheet="Plot_environment")
+
+#import species data
+
+plot_species_2026 <- read_excel(here::here("data", 
+                                           "S123_2026",
+                                           "Exports", 
+                                           "Honningblom_2026_data_analyses.xlsx"), sheet = "plot_species_long")
+
+species_list_2026 <- read_excel(here::here("data", 
+                                           "S123_2026", 
+                                           "Diagnostics", 
+                                       "Honningblom_2026_plot_species_names.xlsx"), sheet = "Sheet 1")
+
+# importing locality file 
+locality_2014_25_herminium <- read_excel(here::here("data", 
+                                                  "Herminium_monorchis_masterfile_v_2025.xlsx"), sheet = "Locality")
+  
+
+#importing transect data
+transect_2026 <- read_excel(here::here("data", 
+                                       "S123_2026", 
+                                       "Honningblom_2026_transect_processed", 
+                                       "Honningblom_2026_transect_transect_export_dirty.xlsx"), sheet = "Sheet 1")
+
+transect_2014_25 <- read_excel(here::here("data", 
+                                          "Herminium_monorchis_masterfile_v_2025.xlsx"), sheet = "Transect")
+
+
+#import other sheets from old masterfile
+
+Plot_soil_fungi <- read_excel(here::here("data", "Herminium_monorchis_masterfile_v_2025.xlsx"), sheet="Plot_soil_fungi")
+
+Locality_root_seed_fungi <- read_excel(here::here("data", "Herminium_monorchis_masterfile_v_2025.xlsx") ,sheet="Locality_root_seed_fungi")
+
+Plot_plants <- read_excel(here::here("data", "Herminium_monorchis_masterfile_v_2025.xlsx"), sheet="Plot_plants")
+
+Plot_gps <- read_excel(here::here("data", "Herminium_monorchis_masterfile_v_2025.xlsx"), sheet="Plot_gps")
+
+Reintroduction <- read_excel(here::here("data",
+                                        "Herminium_monorchis_masterfile_v_2025.xlsx"),sheet="Reintroduction")
+
+
+```
+
+## Reformatting datasets
+
+```{r}
+## reformatting datasets
+plot_2014_25_environment<- plot_2014_25_environment %>%
+  mutate(
+    across(c(5:12,15,18:23),as.numeric)
+  )
+
+plot_2014_25_herminium <- plot_2014_25_herminium %>%
+  mutate(
+    across(c(7,9:14),as.numeric)
+  )
+
+plot_2026 <- plot_2026 %>%
+  mutate(main_date = as.Date(main_date, format = "%Y%m%d"),
+         year = as.numeric(year))
+
+# creating variable names that correspond to existing dataset
+
+plot_2026_rev <- plot_2026 %>%
+  rename(
+    Date = main_date,
+    Year = year,
+    Locality = main_location_id,
+    Plot_ID_new = main_plot_id,
+    Observer = main_observant_name,
+    Fieldlayer_cover = plot_cover_fieldlayer,
+    Groundlayer_cover = plot_cover_bottomlayer,
+    Litter_cover = plot_cover_litter,
+    Lowwoody_cover = plot_cover_lowwoody,
+    Vegetation_height_1 = plot_height_vegetation1,
+    Vegetation_height_2 = plot_height_vegetation2,
+    Vegetation_height_3 = plot_height_vegetation3,
+    Vegetation_height_4 = plot_height_vegetation4,
+    Herminium_count_fertile = plot_freq_focalspecies2,
+    Herminium_count_vegetative = plot_freq_focalspecies1
+  )
+
+plot_2026_rev <- plot_2026_rev %>%
+  mutate(Comment = paste(plot_management_type, plot_management_comments, main_comments, plot_vegetation_comments, sep = ";"))
+
+#creating variables for Mowing and Grazing (percentage cover)
+plot_2026_rev <- plot_2026_rev %>%
+  mutate(value = 1) %>%   # hjelpekolonne
+  pivot_wider(
+    names_from = plot_management_type,
+    values_from = value,
+    values_fill = 0,
+    names_prefix = "plot_"
+  )
+
+plot_2026_rev <- plot_2026_rev %>%
+  mutate(
+    Mowing = case_when(
+      plot_Slått == 1 ~ plot_management_cover,
+      TRUE ~ NA_real_
+    ),
+    Grazing = case_when(
+      plot_Beite == 1 ~ plot_management_cover,
+      TRUE ~ NA_real_
+    ))
+
+# for plots with Beite,Bur, include cover in "Grazing" variable
+plot_2026_rev <- plot_2026_rev %>%
+  mutate(Grazing = if_else(Plot_ID_new %in% c("TEN5","TEN4"),
+                               100,
+                               Grazing)
+  )
+
+# add zeros to empty rows
+plot_2026_rev <- plot_2026_rev %>%
+  mutate(
+    Mowing = replace_na(Mowing, 0),
+    Grazing = replace_na(Grazing, 0)
+  )
+
+## splitting into three separate sheets, one for herminium and one for environment, and one general with info on dates, observer etc. 
+plot_2026_herminium <- plot_2026_rev %>%
+  select(c(Locality,Year,Plot_ID_new,Herminium_count_fertile,Herminium_count_vegetative)
+  )
+
+
+plot_2026_environment <- plot_2026_rev %>%
+  select(c(Locality,Year,Plot_ID_new,Vegetation_height_1,Vegetation_height_2,Vegetation_height_3,Vegetation_height_4,Fieldlayer_cover,Groundlayer_cover,Litter_cover,Lowwoody_cover,Mowing,Grazing,Comment)
+  )
+
+plot_2026_general <- plot_2026_rev %>%
+  select(c(Locality,Year,month,day,Date,Observer,Plot_ID_new))
+```
+
+## Finalizing Herminium sheet
+
+```{r}
+### plot_herminium
+## adding the variables that are missing
+plot_2026_herminium <- plot_2026_herminium %>%
+  mutate(
+    Herminium_count_total = coalesce(Herminium_count_vegetative, 0) +
+      coalesce(Herminium_count_fertile, 0),
+    
+    Herminium_fraction_fertile = if_else(
+      Herminium_count_total == 0 |
+        is.na(Herminium_count_vegetative) |
+        is.na(Herminium_count_fertile),
+      NA_real_,
+      Herminium_count_fertile / Herminium_count_total
+    )
+  )
+  
+
+# merging the two files into one
+Plot_herminium <- bind_rows(
+  plot_2014_25_herminium,
+  plot_2026_herminium
+) %>%
+  mutate(
+    Locality = replace(Locality, Locality == "Teneskjær", "Teneskjaer"), 
+    Locality = replace(Locality, Locality == "Skipstadsand.", "Skipstadsand")
+  )
+
+vars_to_copy <- c(
+  "Plot_ID_old",
+  "All_years",
+  "Active",
+  "Plot_size",
+  "Compass_direction",
+  "Distance_from_center"
+)
+
+values_2025 <- Plot_herminium %>%
+  filter(Year == 2025) %>%
+  select(Plot_ID_new, all_of(vars_to_copy)) %>%
+  distinct(Plot_ID_new, .keep_all = TRUE) %>%
+  rename_with(
+    ~ paste0(.x, "_2025"),
+    all_of(vars_to_copy)
+  )
+
+Plot_herminium <- Plot_herminium %>%
+  left_join(values_2025, by = "Plot_ID_new") %>%
+  mutate(
+    Plot_ID_old = if_else(
+      Year == 2026 & is.na(Plot_ID_old),
+      Plot_ID_old_2025,
+      Plot_ID_old
+    ),
+    All_years = if_else(
+      Year == 2026 & is.na(All_years),
+      All_years_2025,
+      All_years
+    ),
+    Active = if_else(
+      Year == 2026 & is.na(Active),
+      Active_2025,
+      Active
+    ),
+    Plot_size = if_else(
+      Year == 2026 & is.na(Plot_size),
+      Plot_size_2025,
+      Plot_size
+    ),
+    Compass_direction = if_else(
+      Year == 2026 & is.na(Compass_direction),
+      Compass_direction_2025,
+      Compass_direction
+    ),
+    Distance_from_center = if_else(
+      Year == 2026 & is.na(Distance_from_center),
+      Distance_from_center_2025,
+      Distance_from_center
+    )
+  ) %>%
+  select(-ends_with("_2025"))
+
+
+# Calculate indivuals per 0,25 m²
+Plot_herminium <- Plot_herminium %>%
+  mutate(
+    Herminium_density_0.25m2 = Herminium_count_total * 0.25 / Plot_size
+  )
+```
+
+## Finalizing environment sheet
+
+```{r}
+
+### plot_environment
+#include mean vegetation height
+plot_2026_environment <- plot_2026_environment %>%
+  mutate(Vegetation_height_mean = rowMeans(
+    select(.,Vegetation_height_1:Vegetation_height_4),
+    na.rm=TRUE
+  ))  
+
+plot_species_2026 <- plot_species_2026 %>%
+  rename(Plot_ID_new = main_plot_id)
+
+species_list_2026 <- species_list_2026 %>%
+  mutate(
+    Overgrowth_species = NA_integer_,
+    Redlist_species = NA_integer_
+  )
+
+# coding overgrowth and redlist species
+species_list_2026 <- species_list_2026 %>%
+  mutate(
+    Overgrowth_species = case_when(
+      pref_popular_name %in% c(
+        "svartor",
+        "sløke",
+        "åkertistel",
+        "myrtistel",
+        "veitistel",
+        "mjødurt",
+        "einer",
+        "strandkjeks",
+        "pors",
+        "furuslekta",
+        "furu",
+        "modell",
+        "slåpetorn",
+        "roseslekta",
+        "vierslekta",
+        "rogn"
+      ) ~ 1,
+      TRUE ~ 0
+    ),
+    Redlist_species = case_when(
+      pref_popular_name %in% c(
+        "hjertegras",
+        "tusengylden",
+        "engmarihand",
+        "bukkebeinurt",
+        "ormetunge",
+        "krattalant",
+        "bitterblåfjær",
+        "krusfrø",
+        "gulfrøstjerne",
+        "kystfrøstjerne"
+      ) ~ 1,
+      TRUE ~ 0
+    )
+  )
+
+# including popular name and coding them in the plot species file
+plot_species_2026 <- plot_species_2026 %>%
+  left_join(
+    species_list_2026 %>%
+      select(original_name, pref_popular_name),
+    by = c("plot_species" = "original_name")
+  )
+
+plot_species_2026 <- plot_species_2026 %>%
+  left_join(
+    species_list_2026 %>%
+      select(
+        original_name,
+        pref_popular_name,
+        Overgrowth_species,
+        Redlist_species
+      ),
+    by = c("plot_species" = "original_name")
+  )
+
+# listing species in each category in the plot_environment dataset
+species_summary <- plot_species_2026 %>%
+  select(
+    Plot_ID_new,
+    pref_popular_name.x,
+    Overgrowth_species,
+    Redlist_species
+  ) %>%
+  pivot_longer(
+    cols = c(Overgrowth_species, Redlist_species),
+    names_to = "species_category",
+    values_to = "selected"
+  ) %>%
+  filter(
+    selected == 1,
+    !is.na(pref_popular_name.x),
+    pref_popular_name.x != ""
+  ) %>%
+  distinct(
+    Plot_ID_new,
+    species_category,
+    pref_popular_name.x
+  ) %>%
+  group_by(Plot_ID_new, species_category) %>%
+  summarise(
+    species = paste(
+      sort(unique(pref_popular_name.x)),
+      collapse = ", "
+    ),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = species_category,
+    values_from = species
+  )
+
+
+plot_2026_environment <- plot_2026_environment %>%
+  left_join(
+    species_summary,
+    by = "Plot_ID_new"
+  )
+
+## making cover variables for overgrowth and redlist species
+
+species_cover_summary <- plot_species_2026 %>%
+  select(
+    Plot_ID_new,
+    pref_popular_name.x,
+    plot_cover_species,
+    Overgrowth_species,
+    Redlist_species
+  ) %>%
+  
+  # Gjør kategoriene om til langformat
+  pivot_longer(
+    cols = c(Overgrowth_species, Redlist_species),
+    names_to = "species_category",
+    values_to = "selected"
+  ) %>%
+  
+  # Behold bare arter kodet med 1
+  filter(
+    selected == 1,
+    !is.na(pref_popular_name.x),
+    pref_popular_name.x != ""
+  ) %>%
+  
+  # Summer hvis samme art forekommer flere ganger i samme rute
+  group_by(
+    Plot_ID_new,
+    species_category,
+    pref_popular_name.x
+  ) %>%
+  summarise(
+    species_cover = sum(plot_cover_species, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  
+  # Sorterer arter alfabetisk slik at arter og dekning får samme rekkefølge
+  arrange(
+    Plot_ID_new,
+    species_category,
+    pref_popular_name.x
+  ) %>%
+  
+  # Lager artsliste, liste over dekning og total dekning
+  group_by(Plot_ID_new, species_category) %>%
+  summarise(
+    species = paste(pref_popular_name.x, collapse = ", "),
+    cover_per_species = paste(species_cover, collapse = ", "),
+    total_cover = sum(species_cover, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  
+  # Lager separate kolonner for gjengroingsarter og rødlistearter
+  pivot_wider(
+    names_from = species_category,
+    values_from = c(species, cover_per_species, total_cover),
+    names_glue = "{species_category}_{.value}"
+  ) %>%
+  
+  rename(
+    Overgrowth_species = Overgrowth_species_species,
+    Overgrowth_cover_per_species =
+      Overgrowth_species_cover_per_species,
+    Overgrowth_cover =
+      Overgrowth_species_total_cover,
+    
+    Redlist_species = Redlist_species_species,
+    Redlist_cover_per_species =
+      Redlist_species_cover_per_species,
+    Redlist_cover =
+      Redlist_species_total_cover
+  )
+
+# linking with the plot data
+plot_2026_environment <- plot_2026_environment %>%
+  select(
+    -any_of(c(
+      "Overgrowth_species",
+      "Overgrowth_cover_per_species",
+      "Overgrowth_cover",
+      "Redlist_species",
+      "Redlist_cover_per_species",
+      "Redlist_cover"
+    ))
+  ) %>%
+  left_join(
+    species_cover_summary,
+    by = "Plot_ID_new"
+  ) %>%
+  mutate(
+    Overgrowth_cover = replace_na(Overgrowth_cover, 0),
+    Redlist_cover = replace_na(Redlist_cover, 0)
+  )
+
+# Metadata
+plot_2026_general <- plot_2026_general %>%
+  mutate(Observer = recode(
+    Observer,
+    "RR" = "Roos, Ruben Erik",
+    "AS" = "Skrindo, Astrid Brekke",
+    ",AS" = "Skrindo, Astrid Brekke",
+    "As" = "Skrindo, Astrid Brekke",
+    "ASP" = "Skrindo, Astrid Brekke",
+    "ASSkjellvik" = "Skrindo, Astrid Brekke"
+  ))
+
+```
+
+Merge the datafiles
+
+```{r}
+# merging the two files into one
+Plot_environment <- bind_rows(plot_2014_25_environment, plot_2026_environment) 
+
+vars_to_copy <- c(
+  "Plot_ID_old",
+  "All_years",
+  "Active",
+  "Plot_size",
+  "Compass_direction",
+  "Distance_from_center"
+)
+
+values_2025 <- Plot_herminium %>%
+  filter(Year == 2025) %>%
+  select(Plot_ID_new, all_of(vars_to_copy)) %>%
+  distinct(Plot_ID_new, .keep_all = TRUE) %>%
+  rename_with(
+    ~ paste0(.x, "_2025"),
+    all_of(vars_to_copy)
+  )
+
+Plot_herminium <- Plot_herminium %>%
+  left_join(values_2025, by = "Plot_ID_new") %>%
+  mutate(
+    Plot_ID_old = if_else(
+      Year == 2026 & is.na(Plot_ID_old),
+      Plot_ID_old_2025,
+      Plot_ID_old
+    ),
+    All_years = if_else(
+      Year == 2026 & is.na(All_years),
+      All_years_2025,
+      All_years
+    ),
+    Active = if_else(
+      Year == 2026 & is.na(Active),
+      Active_2025,
+      Active
+    ),
+    Plot_size = if_else(
+      Year == 2026 & is.na(Plot_size),
+      Plot_size_2025,
+      Plot_size
+    ),
+    Compass_direction = if_else(
+      Year == 2026 & is.na(Compass_direction),
+      Compass_direction_2025,
+      Compass_direction
+    ),
+    Distance_from_center = if_else(
+      Year == 2026 & is.na(Distance_from_center),
+      Distance_from_center_2025,
+      Distance_from_center
+    )
+  ) %>%
+  select(-ends_with("_2025"))
+```
+
+## Locality data
+
+```{r}
+# adding data from 2026
+locality_2014_25_herminium <- locality_2014_25_herminium %>%
+  mutate(Date = as.Date(Date, format = "%Y%m%d"),
+         Year = as.numeric(Year))
+
+nye_2026 <- locality_2014_25_herminium %>%
+  filter(Year == 2025) %>%
+  mutate(Year = 2026)
+
+nye_2026 <- nye_2026 %>%
+  mutate(
+    Date = case_when(
+      Locality == "Filletassen" ~ as.POSIXct("01.07.2026", format = "%d.%m.%Y", tz = "UTC"),
+      Locality == "Skipstadsand" ~ as.POSIXct("30.06.2026", format = "%d.%m.%Y", tz = "UTC"),
+      Locality == "Skjellvik" ~ as.POSIXct("02.07.2026", format = "%d.%m.%Y", tz = "UTC"),
+      Locality == "Teneskjaer" ~ as.POSIXct("30.06.2026", format = "%d.%m.%Y", tz = "UTC"),
+      TRUE ~ Date
+    ),  
+    Observer = case_when(
+      Locality == "Filletassen" ~ "RR",
+      Locality == "Skipstadsand" ~ "RR, ABS",
+      Locality == "Skjellvik" ~ "RR, ABS",
+      Locality == "Teneskjær" ~ "RR, ABS",
+      TRUE ~ Observer
+    )
+  )
+
+locality_2014_26_herminium <- bind_rows(locality_2014_25_herminium, nye_2026) %>%
+  arrange(Year, Locality)
+
+## changing info on time-use and other comments
+locality_2014_26_herminium <- locality_2014_26_herminium %>%
+  mutate(
+    Time_use = case_when(
+      Locality == "Filletassen" & Year == 2026 ~ 4.5,
+      Locality == "Skipstadsand" & Year == 2026 ~ 8,
+      Locality == "Skjellvik" & Year == 2026 ~ 14,
+      Locality == "Teneskjær" & Year == 2026 ~ 7,
+      TRUE ~ Time_use
+    ),
+    Comment = case_when(
+      Locality == "Filletassen" & Year == 2026 ~ "Inkludert reise, en person jobbet fra ca. 9-12",
+      Locality == "Skipstadsand" & Year == 2026 ~ "To personer 10.30-14.30, inkl. NRK-intervju",
+      Locality == "Skjellvik" & Year == 2026 ~ "To personer, 8-16, ekstremt dårlig vær",
+      Locality == "Teneskjær" & Year == 2026 ~ "To personer, 16-19.30",
+      TRUE ~ Comment
+    )
+  )
+
+```
+
+## Transect data
+
+```{r}
+# removing test data
+transect_2026 <- transect_2026 %>%
+  filter(main_location_id != "Feltspatveien")
+# renaming variables to fit with current dataset
+transect_2026 <- transect_2026 %>%
+  rename(
+    Date = event_time,
+    Year = year,
+    Locality = main_location_id,
+    Transect_ID = main_transect_id,
+    Transect_length = transect_length,
+    Comment = transect_registration_comments,
+    Presence_m = plot_subplots,
+    Presence_half_m = ruter_05
+  )
+
+# making variables "Number_half_m_presence" and "Number_m_presence"
+transect_2026 <- transect_2026 %>%
+  mutate(
+    Number_half_m_presence = if_else(
+      is.na(Presence_half_m) | Presence_half_m == "", 
+      0L, str_count(Presence_half_m, ",") + 1L
+    ),
+    Number_m_presence = if_else(
+      is.na(Presence_m) | Presence_m == "",
+      0L, str_count(Presence_m, ",") + 1L
+    )
+  )
+
+# saving the columns I need, and changing columns to align with old data
+transect_2026_clean <- transect_2026 %>%
+  select(c(Locality, Year, Date, Transect_ID, Transect_length,Number_half_m_presence,Number_m_presence,Presence_m,Presence_half_m,Comment))
+transect_2026_clean <- transect_2026_clean %>%
+  mutate(
+    Year = as.numeric(Year),
+    Date = as.POSIXct(as.character(Date),format = "%Y%m%d",tz = "UTC"),
+    Number_half_m_presence = as.character(Number_half_m_presence),
+    Number_m_presence = as.character(Number_m_presence)
+    )
+  
+
+```
+
+Merging with existing data
+
+```{r}
+Transect_2014_26 <- bind_rows(transect_2014_25, transect_2026_clean) 
+
+```
+
+## Assemble masterfile
+
+```{r}
+
+wb <- createWorkbook()
+
+addWorksheet(wb, "Locality")
+writeData(wb, "Locality", locality_2014_26_herminium)
+
+addWorksheet(wb, "Transect")
+writeData(wb, "Transect", Transect_2014_26)
+
+addWorksheet(wb, "Plot_herminium")
+writeData(wb, "Plot_herminium", Plot_herminium)
+
+addWorksheet(wb, "Plot_environment")
+writeData(wb, "Plot_environment", Plot_environment)
+
+addWorksheet(wb,"Plot_General")
+writeData(wb,"Plot_General",plot_2026_general)
+
+addWorksheet(wb,"Plot_soil_fungi")
+writeData(wb,"Plot_soil_fungi",Plot_soil_fungi)
+
+addWorksheet(wb,"Locality_root_seed_fungi")
+writeData(wb,"Locality_root_seed_fungi",Locality_root_seed_fungi)
+
+addWorksheet(wb,"Plot_plants")
+writeData(wb,"Plot_plants",Plot_plants)
+
+addWorksheet(wb,"Plot_gps")
+writeData(wb,"Plot_gps",Plot_gps)
+
+addWorksheet(wb,"Reintroduction")
+writeData(wb,"Reintroduction",Reintroduction)
+
+
+#Save file
+saveWorkbook(wb, here::here("data", "Herminium_monorchis_masterfile_v_2026.xlsx"), overwrite = TRUE)
+```

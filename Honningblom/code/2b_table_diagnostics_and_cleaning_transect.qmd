@@ -1,0 +1,151 @@
+# Datavask og -prosessering av vegetasjonsdata
+
+*Skrevet av Ida M. Mienna*
+
+*18.08.2025*
+
+CHANGES CHANGES CHANGES x2 tester hvordan dette lagres
+
+endringer som kan påvirke lokalt?
+
+hvordan endres dette lokalt og på nett?
+
+Her bør du gjøre den datarengjøringen du ellers ville ha gjort i Excel. Grunnen til å gjøre dette her er å ha en reproduserbar metode som både andre, men også du selv, kan bruke for å kjøre gjennom datarengjøringen og ende opp med de samme resultatene som før.
+
+Selve diagnostikken for datarengjøringen vil kjøres nedenfor under seksjonen "\*\*IKKE gjør endringer under her\*\*". Dette er (forhåpentligvis) for å gjøre det mer åpenbart hvilke deler av tabellen som må endres. Jeg har lagt til noen typiske temaer nedenfor, men disse kan videre bearbeides under "IKKE ENDRE NEDENFOR" om nødvendig.
+
+Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ctrl+Alt+R. Du vil finne én ny fil med navnet "ditt_prosjekt_navn_export_dirty.xlsx" i din eksportmappe.
+
+```{r}
+
+# The table should have the same structure and colnames as in export_dirty.xlsx.
+
+filepath <- here::here("Data", 
+                       "S123_2026", 
+                      "Honningblom_2026_transect_processed", 
+                      "Honningblom_2026_transect_transect_export_dirty.xlsx")
+
+## Output path
+# Path to folder where the processed directories and files should be exported
+
+outputpath <- here::here("data", 
+                       "S123_2026/")
+
+
+## Project name
+# What should the exported files be marked as?
+
+project <- "Honningblom_2026_transect"
+```
+
+```{r}
+## If you have collected high-precision GPS points, let collctd_hpcoords be TRUE 
+## and add the full file path with the coordinates. The coordinates should be in
+## a csv format as when exporting the GPS points report. If you do not have 
+## collctd_hpcoords, change hpcoords to FALSE.
+collctd_hpcoords <- FALSE
+
+hpcoordspath <- "insert-your-path-here"
+
+# Which crs do the coordinates have? Please write EPSG:XXXXX (see example)
+hpcrs <- "EPSG:25832" # EUREF89 UTM sone 32
+
+# If you have check_GIS <- TRUE, you can further check if the plots are OK for analyses (e.g. use as ground truth for remote sensing). A map will pop up to in your Viewer-console (by default in your bottom right) where you can zoom in on your data. Hold the cursor above a plot to see its label.
+# If you did not use a high-precision GPS, this step will not work so change check_GIS to FALSE.
+
+check_GIS <- FALSE
+
+```
+
+Hvis du ønsker, kan du få ut en diagnostikk-mappe ("Diagnostics") som viser informasjon om plot ID, artsnavn, koordinater osv.
+
+```{r}
+## Export files for diagnostics? (Yes=TRUE, No=FALSE)
+export_diagnostics <- TRUE
+
+```
+
+```{r}
+
+## DO NOT CHANGE but you can add your own packages if necessary (IMPORTING PACKAGES)
+
+# Open files (import function and run)
+source(here::here("Rsource", "functions.R"))
+
+dat <- readxl::read_excel(filepath)
+
+if(collctd_hpcoords){
+  hpcoords <- read.table(hpcoordspath, header = FALSE, sep = ",", 
+                         stringsAsFactors = FALSE, fill = TRUE, skip=1)
+}
+
+Sys.setlocale(locale='no_NB.utf8')
+
+## Packages
+packages <- c("dplyr", "readxl", "sf", "tidyr", "openxlsx", "stringr",
+              "httr", "jsonlite", "purrr", "data.table", "readr", "mapview")
+
+# Require or install packages function
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+
+ipak(packages)
+```
+
+## Datavask
+
+Under her gjør du vask av dataene dine. Under er eksempler på hvordan dette kan gjøres, men du kan gjøre endringene under som du vil.
+
+I skriptet vil endringer gjort under Datavsk prosesseres i "IKKE gjør endringer". Det som per nå
+
+Lokasjonsnavn
+
+#### Rutenavn
+
+```{r}
+
+```
+
+#### Artsnavn
+
+```{r}
+
+## EXAMPLE:
+# Fix spelling errors in the dataset.
+
+```
+
+#### Koordinater
+
+Sjekk om navn er riktig plassert på riktige steder. Sjekk også om koordinatnøyaktigheten er god nok.
+
+```{r}
+
+# EXAMPLE:
+# If there are rows that should be removed
+
+
+```
+
+## \*\*IKKE gjør endringer under her\*\*
+
+```{r}
+
+# Create a folder for diagnostics (if it does not exist) 
+diagnostics_folder <- paste0(outputpath, "Diagnostics/")
+
+if (!dir.exists(diagnostics_folder)) {
+  dir.create(diagnostics_folder)
+  cat(paste0("Directory created for diagnostics: ", diagnostics_folder))
+}
+
+
+```
+
+```{r}
+process_and_diagnose(dat)
+```

@@ -1,0 +1,529 @@
+---
+title: "Herminium_population_estimates"
+format: html
+---
+
+This script estimates population sizes of H. monorchis at the four localities on Hvaler, Norway. The original version of the script is written by Bård Pedersen and its functions are included in Rfunctions.
+
+## Language settings
+
+Before getting started, we can run this line to make sure R can read Norwegian letters.
+
+```{r}
+ #| label: Language settings 
+ #| warning: false
+
+Sys.setlocale(locale='no_NB.utf8')
+```
+
+## Load packages
+
+Load required packages.
+
+```{r}
+ #| label: Language settings 
+ #| warning: false
+
+library(readxl)
+library(tidyverse)
+library(boot)
+library(rio)
+library(reshape2)
+library(here)
+```
+
+## Load required functions
+
+Load the functions from Rfunctions.R. Keep this file in the working directory used when running this script.
+
+```{r}
+#| label: load-functions
+#| message: false
+source(here::here("Rsource","Rfunctions_honningblom26.R"), encoding = "UTF-8")
+```
+
+## Data import
+
+Let's import the data. There are three data files needed. The first contains data on the localities. The second contains observations of H. monorchis along transects. The last contains data on H. monorchis in the plots.
+
+```{r}
+#| message: false
+
+data_path <- here::here(
+  "data",
+  "Herminium_monorchis_masterfile_v_2026.xlsx")
+
+df_locality <- readxl::read_excel(data_path,
+  sheet = "Locality",
+  na = c("", "NA")) %>%
+  as.data.frame()
+
+df_transect <- readxl::read_excel(
+  data_path,
+  sheet = "Transect",
+  na = c("", "NA", " ")) %>%
+  as.data.frame()
+
+df_plot <- readxl::read_excel(
+  data_path,
+  sheet = "Plot_herminium",
+  na = c("", "NA")) %>%
+  as.data.frame()
+```
+
+## Data cleaning and wrangling
+
+Before we can start the analyses, the data needs to be cleaned somewhat.
+
+```{r}
+#| label: data-wrangling
+#| warning: false
+#| message: false
+
+# Standardize spelling of the Teneskjær locality so it is recognized correctly. 
+df_locality <- df_locality %>%
+  mutate(Locality = recode(trimws(Locality), "Teneskjær" = "Teneskjaer"))
+
+df_transect <- df_transect %>%
+  mutate(Locality = recode(trimws(Locality), "Teneskjær" = "Teneskjaer"))
+
+df_plot <- df_plot %>%
+  mutate(Locality = recode(trimws(Locality), "Teneskjær" = "Teneskjaer"))
+
+#sort(unique(df_plot$Plot_ID_new))
+
+# Allocate new plot IDs to plots that lack an identifier.
+
+df_plot$Plot_ID_orig <- df_plot$Plot_ID_new # Tar vare på opprinnelig input
+
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKI.10.A"] <- "SKI10"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKI.5.A"] <- "SKI5"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKX.2.A"] <- "SKJ51"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKX.4.A"] <- "SKJ52"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKX.5.A"] <- "SKJ53"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKX.9.A"] <- "SKJ54"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKY.1.A"] <- "SKJ55"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKY.5.A"] <- "SKJ56"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKY.6.A"] <- "SKJ57"
+df_plot$Plot_ID_new[df_plot$Plot_ID_old == "SKY.8.A"] <- "SKJ58"
+
+#rutedata$Rute_orig <- rutedata$Rute # Tar vare på opprinnelig input
+#rutedata$Rute <- rutedata$Rute.ID # Kopierer variabler for å unngå rekoding senere i skriptet
+
+#table(sort(df_plot$Plot_ID_new)) # Check
+```
+
+## Population estimates
+
+Run the script to estimate population size for each locality.
+
+```{r}
+
+# Les, initier og beregn designvariabler - felles kode for alle lokaliteter.
+
+roser <- unique(df_locality$Locality[df_locality$Design == "Rose"])
+linjer <- unique(df_locality$Locality[df_locality$Design == "Line"])
+forekomst.transekt <- rep("",length(c(roser,linjer)))
+transekt.rute.lengde <- transekt.rute.bredde <- rep(0,length(c(roser,linjer)))
+names(forekomst.transekt) <- names(transekt.rute.lengde) <- names(transekt.rute.bredde) <- c(roser,linjer)
+forekomst.transekt[roser] <- "Number_half_m_presence"
+forekomst.transekt[linjer] <- "Number_m_presence"
+transekt.rute.lengde[roser] <- transekt.rute.bredde[roser] <- 0.5
+transekt.rute.lengde[linjer] <- 1
+transekt.rute.bredde[linjer] <- 0.5
+analyse.rute.lengde <- transekt.rute.bredde
+forekomst.avstand <- "Presence_m"
+n.analyseruter.per.transektruter <- transekt.rute.lengde / analyse.rute.lengde
+
+localities <- unique(df_locality$Locality)
+nboot <- 2000  # Antall simuleringer
+grense <- 0.05 # Når andelen transektruter med Honningblom er mindre enn grense,
+# gjennomføres parametrisk estimering av forekomstarealet. Kan 
+# settes lavere når en har mange transektruter, og individuelt 
+# for hver populasjon. Men da må scriptet endres tilsvarende
+# på linje 365 og 426.
+pop <- list() # Resultat-objekt
+
+for (loc in localities) {
+  
+  # Organiser transektdatasettet i ei transektrute x ÅrMedTransektdata matrise
+  # 1) Finn alle transekter og gi dem navn
+  # 2) Finn transektenes lengde, utled antall ruter langs hvert transekt og
+  #    navngi rutene.
+  # 3) Lag matrisa og fyll den med presence/absence data
+  
+  transectyears <- sort(unique(df_locality$Year[df_locality$Locality == loc]))
+  design <- unique(df_locality[df_locality$Locality==loc,"Design"])
+  forekomst.avstand <- if (design == "Rose") {"Presence_half_m"} else {"Presence_m"}
+  transects <- df_transect[df_transect$Locality == loc,]
+  transects$names <- paste(transects$Locality,transects$Transect_ID,sep = "_")
+  transektbredde <- df_locality[df_locality$Locality==loc,"Transect_width"] [1]#Hvis dette ikke heter "Transektbredde" i datafilen, forårsaker det en feil. Usikker hvor det da må endres til "Transect_width" også?
+  
+  transektlengder <-  as.numeric(transects$Transect_length)
+  transektrutenavn <- NULL
+  for (tname in unique(transects$names)) {
+    rutesequence <- 1:as.integer(transektlengder[transects$names == tname][1]/
+                                   transekt.rute.lengde[loc])
+    transektrutenavn <- c(transektrutenavn,
+                          paste(tname,
+                                (rutesequence - 1)*transekt.rute.lengde[loc],
+                                sep = "_"))
+  }
+  
+  transektruteserier <- matrix(0,nrow = length(transektrutenavn),ncol = length(transectyears))
+  dimnames(transektruteserier) <- list(transektrutenavn,paste(transectyears))
+  
+  for (tname in unique(transects$names)) {
+    for (year in transectyears) {
+      forekomstruter <- 
+        as.numeric(unlist(sapply(transects[transects$names == tname &
+                                             transects$Year == year,
+                                           forekomst.avstand],strsplit,split=',')))
+      if (length(forekomstruter) > 0 && !anyNA(forekomstruter)) {
+        forekomstruter <- paste(tname,forekomstruter,sep = "_")
+        transektruteserier[forekomstruter,as.character(year)] <- 1
+      } 
+    }
+  }
+  
+  # Organiser analysedatasettet i ei analyserute x ÅrMedAnalyser matrise
+  # Tar i utgangspunktet med alle analyserutene fra lokaliteten, fjerner
+  # deretter rutene som aldri i løpet av tidsserien inngår i forekomstarealet
+  # og år uten data. Denne prosedyren kan virke unødvendig, men er trolig
+  # nødvendig for å inkludere analyserutene som i starten var utenfor 
+  # forekomstarealet, men som senere blir en del av det.
+  
+  analyse.rute.data <- df_plot[df_plot$Locality == loc,]
+  
+  ####################################################################################
+  #### Her er roten til alt ondt i 2022! Koden nedenfor er en ad hoc tilpasning til fjorårets
+  #### input data der ingen av variablene "Rute" og "Rute.ID" var komplette.
+  #### Koden under fungerte bra i fjor, men ikke i år fordi variabelen Rute nå ikke er oppgitt
+  #### for flere analyseruter i 2022-dataene. Koden nedenfor introduserer dermed i effekt 
+  #### flere nye ruter som bare er observert i 2022. Dette skaper igjen problemer i 
+  #### bootstrap rutinen nedenfor fordi sjansene for at bootstrapping gir datasett der
+  #### alle ruter har 0 individer øker betraktelig i forhold til i fjor. Dermed oppstår det
+  #### problemer når en under likelihood-estimeringen leter etter optima vha. funksjonen
+  #### nlminb (linje 118).
+  #### Koden på linjene 231 - 245 medfører at ingen ruter mangler navn slik at koden på
+  #### linjer 343 - 344 blir overflødig. Men jeg lar den likevel stå.
+  
+#mangler.navn <- is.na(analyse.rute.data$Plot_ID_old)
+#analyse.rute.data$Plot_ID_old[mangler.navn] <- analyse.rute.data$Plot_ID_new[mangler.navn]
+  
+  #### Slutt på alt ondt!
+  ####################################################################################
+  
+  analyseruter <- sort(unique(analyse.rute.data$Plot_ID_new))
+  years <- sort(unique(analyse.rute.data$Year))
+  
+  analyseruteserier <- matrix(NA,nrow = length(analyseruter),
+                              ncol=length(years))
+  dimnames(analyseruteserier)[[1]] <- analyseruter
+  dimnames(analyseruteserier)[[2]] <- years
+  fertilitetsserier <- sterilitetsserier <- analyseruteserier
+  tetthet <- round(analyse.rute.data$Herminium_count_total/analyse.rute.data$Plot_size)
+  fert.tetthet <- round(analyse.rute.data$Herminium_count_fertile/analyse.rute.data$Plot_size)
+  veg.tetthet <- tetthet - fert.tetthet
+  
+  for (i in 1:length(tetthet)) {
+    analyseruteserier[analyse.rute.data$Plot_ID_new[i],
+                      as.character(analyse.rute.data$Year[i])] <- tetthet[i]
+    fertilitetsserier[analyse.rute.data$Plot_ID_new[i],
+                      as.character(analyse.rute.data$Year[i])] <- fert.tetthet[i]
+    sterilitetsserier[analyse.rute.data$Plot_ID_new[i],
+                      as.character(analyse.rute.data$Year[i])] <- veg.tetthet[i]
+  }
+  
+  ta.med <- rowSums(analyseruteserier,na.rm = T) > 0
+  analyseruteserier <- analyseruteserier[ta.med,]
+  fertilitetsserier <- fertilitetsserier[ta.med,]
+  sterilitetsserier <- sterilitetsserier[ta.med,]
+  ta.med <- apply(analyseruteserier,2,notOnlyNAs)
+  analyseruteserier <- analyseruteserier[,ta.med]
+  fertilitetsserier <- fertilitetsserier[,ta.med]
+  sterilitetsserier <- sterilitetsserier[,ta.med]
+  
+  years <- dimnames(analyseruteserier)[[2]]
+  
+  
+  minsize <- as.integer(years)
+  names(minsize) <- years
+  minfert <- minsize
+  for(year in years) {
+    minsize[year] <- sum(analyse.rute.data$Herminium_count_total[analyse.rute.data$Year == as.integer(year)],na.rm = T)
+    minfert[year] <- sum(analyse.rute.data$Herminium_count_fertile[analyse.rute.data$Year == as.integer(year)],na.rm = T)
+  }
+  
+  # For Skjellvik populasjonen gjøres antagelsen at transekt-datasettet fra 2021 
+  # også reflekterer forekomstarealet gjennom hele perioden 2014 - 2020. 
+  # Denne antagelsen er ikke rimelig for Teneskjær. Her er det 
+  # dessuten ikke mulig å estimere et forekomstareal ut fra transektdatasettet.
+  
+  # For Skjellvik populasjonen estimeres forekomstarealet for årene 2014-2017 
+  # og 2019 - 2020 fra transektdatasettet for 2021. I praksis, kopieres 
+  # transektdataene for 2021 for disse 6 årene. For Filletassen, Skjellvik og 
+  # Skipstadsand estimeres forekomstarealet som andel transektruter med 
+  # honningblom * størrelse av undersøkt areal. Størrelse av undersøkt areal er
+  # i linje-designet ved Skjellvik, Skipstadsand og Teneskjær lik 
+  # transektbredden * summerte transekt-lengder. I rose-designet settes 
+  # størrelsen av det undersøkte arealet lik summen av sektorenes areal, der
+  # kun de reelle sektorene telles med, dvs. de som har ei transektrute.
+  
+  # For Teneskjær ser det ut til at forekomstarealet er blitt redusert i løpet
+  # perioden mellom 2014 og 2021. Det antas at det ikke har skjedd endringer i
+  # transektrutene gjennom perioden. Ei negativ binomisk fordeling tilpasses
+  # datasett fra hvert år, dvs. analysedata fra det aktuelle året samt
+  # transektdataene, basert på en veid likelihood funksjon. Vektene i funksjonen
+  # er antall observasjoner i årets analysedatasett og i transektdataene.
+  # Forekomstarealet ved Teneskjær for et aktuelt år estimeres som 
+  # fat * størrelsen av det undersøkte arealet: 
+  
+  # fat <- pnbinom(0,par[1],par[2],lower.tail = FALSE)
+  
+  # Dette vil medføre at det estimerte forekomstarealet vil gå ned i løpet av 
+  # perioden fordi antall individer i flere av analyserutene er redusert til 0.
+  
+  # For Skipstadsand-populasjonen benyttes samme tilnærming som for populasjonen
+  # på Teneskjær. Ved skipstadsand er det kun to forekomstruter i transektene,
+  # noe som gir svært usikre estimat av forekomstarealet. En parametrisk
+  # tilnærming reduserer usikkerheten noe sammenliknet med en ikke-parametrisk
+  # bootstrap tilnærming, naturlig nok, men usikkerheten er fortsatt svært stor.
+  
+  # Den negative binomiske fordelingen (NB) ser ut til å fungere bedre som modell for
+  # den romlige fordelingen av Honningblom enn andre aktuelle fordelinger som er
+  # utprøvd: poisson, hurdeled poisson, zeroinflated poisson, hurdeled NB og 
+  # zeroinflated NB.
+  
+  if (loc %in% c("Skipstadsand","Teneskjaer","Skjellvik")) {
+    years.without.transect <- years[which(!(years %in% transectyears))]
+    first.year.with.transect <- min(transectyears)
+    ex.transektruteserier <- matrix(transektruteserier[,as.character(first.year.with.transect)],
+                                    nrow = dim(transektruteserier)[1], 
+                                    ncol = length(years.without.transect))
+    transektruteserier <- cbind(ex.transektruteserier,transektruteserier)
+    dimnames(transektruteserier)[[2]] <- paste(c(years.without.transect,transectyears))
+  }
+  
+  popsize <- matrix(0,nrow = nboot+1, ncol = length(years))
+  dimnames(popsize)[[2]] <- years
+  forekomstareal <- vegsize <- fertsize <- popsize
+  
+  returned.stuff <- estim.pop.size(transektruteserier = transektruteserier,
+                                   analyseruteserier = analyseruteserier,
+                                   transects = transects,
+                                   transektlengder = transektlengder,
+                                   design = design,
+                                   n.analyseruter.per.transektruter = 
+                                     n.analyseruter.per.transektruter,
+                                   transekt.rute.lengde = transekt.rute.lengde,
+                                   loc = loc,
+                                   transektbredde = transektbredde,
+                                   years = years,
+                                   grense = grense)
+  
+  popsize[1,] <- round(returned.stuff$popsize)
+  popsize[1,popsize[1,] < minsize] <- minsize[popsize[1,] < minsize]
+  forekomstareal[1,] <- returned.stuff$fa
+  
+  fertsize[1,] <- round(popsize[1,] * apply(rbind(fertilitetsserier,analyseruteserier),2,ratioest))
+  #fertsize[1,] <- estim.pop.size(transektruteserier = transektruteserier,
+  #                                       analyseruteserier = fertilitetsserier,
+  #                                       transects = transects,
+  #                                       transektlengder = transektlengder,
+  #                                       design = design,
+  #                                       n.analyseruter.per.transektruter = 
+  #                                         n.analyseruter.per.transektruter,
+  #                                       transekt.rute.lengde = transekt.rute.lengde,
+  #                                       loc = loc,
+  #                                       transektbredde = transektbredde,
+  #                                       years = years,
+  #                                       grense = grense)$popsize
+  fertsize[1,is.na(fertsize[1,])] <- 0
+  fertsize[1,fertsize[1,] < minfert] <- minfert[fertsize[1,] < minfert]
+  
+  vegsize[1,] <- popsize[1,] - fertsize[1,] 
+  
+  # Estimer usikkerheten gjennom permutasjoner/ikke-parametrisk bootstrap.
+  # For Skjellvik bootstrap transektrutetidsseriene og estimer
+  # forekomstarealet for hvert bootstrapsample (og år). Tilsvarende, bootstrap
+  # analysetidsseriene og estimer tetthet for hvert bootstrapsample (og år).
+  # For Filletassen bootstrap transektrutetidsseriene og beregn forekomstarealet
+  # for hver permutasjon og år uten å endre undersøkelsesområdet i hvert sample. 
+  # Bootstrap analysetidsseriene og estimer tetthet for hvert bootstrapsample 
+  # (og år).
+  # For Teneskjær bootstrap analysetidsseriene og estimer forekomstarealet og 
+  # tettheten for hver permutasjon og år.
+  # For Skipstadsand bootstrap transektrutetidsseriene, bootstrap 
+  # analysetidsseriene og estimer forekomstarealet for hvert år fra hvert par av 
+  # bootstrapsampler. Benytt bootstrap sample fra analysetidsseriene til også
+  # å estimere tetthet innenfor forekomstarealet for hvert år.
+  # I Praksis, slik estimeringen nå er programmert, kan de samme resampling-
+  # rutinene benyttes for alle populasjonene.
+  #
+  # For hver simulering beregn populasjonsstørrelsen for hvert år og estimer 
+  # konfidens-intervallet fra fordelingen av populasjonsstørrelser for hvert år.
+  # Dog med den begrensning at populasjonsstørrelsen er større eller lik 
+  # antallet individer observert i analyserutene
+  # 
+  # Tilsvarende for estimering av forekomstareal og antall fertile planter.
+  
+  for (i in 1:nboot) {
+    boot.names <- sample(dimnames(transektruteserier)[[1]],replace = T) 
+    transektruteserier.boot <- transektruteserier[boot.names,]
+    boot.names <- sample(dimnames(analyseruteserier)[[1]],replace = T)
+    analyseruteserier.boot <- analyseruteserier[boot.names,]
+    fertilitetsserier.boot <- fertilitetsserier[boot.names,]
+    returned.stuff <- estim.pop.size(transektruteserier = transektruteserier.boot,
+                                     analyseruteserier = analyseruteserier.boot,
+                                     transects = transects,
+                                     transektlengder = transektlengder,
+                                     design = design,
+                                     n.analyseruter.per.transektruter = 
+                                       n.analyseruter.per.transektruter,
+                                     transekt.rute.lengde = transekt.rute.lengde,
+                                     loc = loc,
+                                     transektbredde = transektbredde,
+                                     years = years,
+                                     grense = grense)
+    popsize[i+1,] <- round(returned.stuff$popsize)
+    popsize[i+1,popsize[i+1,] < minsize] <- minsize[popsize[i+1,] < minsize]
+    forekomstareal[i+1,] <- returned.stuff$fa
+    fertsize[i+1,] <- round(popsize[i+1,] * apply(rbind(fertilitetsserier.boot,analyseruteserier.boot),2,ratioest))
+    #  fertsize[i+1,] <- estim.pop.size(transektruteserier = transektruteserier.boot,
+    #                                   analyseruteserier = fertilitetsserier.boot,
+    #                                   transects = transects,
+    #                                   transektlengder = transektlengder,
+    #                                   design = design,
+    #                                   n.analyseruter.per.transektruter = 
+    #                                     n.analyseruter.per.transektruter,
+    #                                   transekt.rute.lengde = transekt.rute.lengde,
+    #                                   loc = loc,
+    #                                   transektbredde = transektbredde,
+    #                                   years = years,
+    #                                   grense = grense)$popsize
+    fertsize[i+1,is.na(fertsize[i+1,])] <- 0
+    fertsize[i+1,fertsize[i+1,] < minfert] <- minfert[fertsize[i+1,] < minfert]
+    vegsize[i+1,] <- popsize[i+1,] - fertsize[i+1,]
+    message(paste("Lokalitet:",loc,", Permutasjon:",i))
+  }
+  sizecofint <- round(apply(popsize[2:nboot+1,],2,quantile,probs =c(0.025,0.975)))
+  fertcofint <- round(apply(fertsize[2:nboot+1,],2,quantile,probs =c(0.025,0.975)))
+  vegcofint <- round(apply(vegsize[2:nboot+1,],2,quantile,probs =c(0.025,0.975)))
+  forekomstcofint <- apply(forekomstareal[2:nboot+1,],2,quantile,probs =c(0.025,0.975))
+  pop[[loc]][["size"]] <- rbind(popsize[1,],sizecofint)
+  pop[[loc]][["fert"]] <- rbind(fertsize[1,],fertcofint)
+  pop[[loc]][["veg"]] <- rbind(vegsize[1,],vegcofint)
+  pop[[loc]][["forekomst"]] <- rbind(forekomstareal[1,],forekomstcofint)
+  dimnames(pop[[loc]][["size"]])[[1]][1] <- "est"
+  dimnames(pop[[loc]][["fert"]])[[1]][1] <- "est"
+  dimnames(pop[[loc]][["veg"]])[[1]][1] <- "est"
+  dimnames(pop[[loc]][["forekomst"]])[[1]][1] <- "est"
+}
+
+print(pop)
+sink(here::here("data", "pop2026.txt"))
+print(pop)
+sink()
+```
+
+## Convert and export data as dataframe
+
+Let's export the pop data we need as a data.frame.
+
+```{r}
+
+#Get the data (list format) into a dataframe
+df.pop <- data.frame(melt(pop))
+df.pop <- df.pop %>% 
+  rename("Estimate" = Var1, 
+         "Year" = Var2,
+         "Value" = value,
+         "Pop.variable" = L2, 
+         "Locality" = L1) %>% 
+  mutate(Estimate = recode(Estimate, est = "est",
+                                                '2.5%' = "lower",
+                                                '97.5%' = "upper")) %>% 
+  mutate_if(is.numeric, round, 1)
+
+#Export data
+write.csv(df.pop,
+  here::here("data", "Herminium_pop_2026.csv"),
+  row.names = FALSE)
+```
+
+## Create figure
+
+```{r}
+
+years <- sizes <- NULL
+
+for (loc in localities) {
+  years <- c(years, as.integer(dimnames(pop[[loc]]$size)[[2]]))
+  sizes <- c(sizes, log(pop[[loc]]$size["97.5%", ]))}
+
+xlimits <- c(min(years) - 0.5, max(years) + 0.5)
+ylimits <- c(0, max(sizes) + 0.5)
+
+dir.create(
+  here::here("Figures"),
+  recursive = TRUE,
+  showWarnings = FALSE)
+
+png(
+  filename = here::here("img", "Alle_lokaliteter.png"),
+  width = 840,
+  height = 840)
+
+par(mfrow = c(2, 2))
+
+for (loc in localities) {plot(
+    as.integer(dimnames(pop[[loc]]$size)[[2]]),
+    log(pop[[loc]]$size["est", ]),
+    col = 1, pch = 19, cex = 1, type = "o",
+    ylim = ylimits, xlim = xlimits,
+    xlab = "År",
+    ylab = "Antall individer",
+    axes = FALSE, cex.lab = 1.25,
+    main = loc)
+
+  axis(1, at = c(xlimits[1], (xlimits[1] + 0.5):(xlimits[2] - 0.5)),
+    labels = c("", as.character((xlimits[1] + 0.5):(xlimits[2] - 0.5))),
+    pos = 0,
+    cex.lab = 1.25,
+    cex.axis = 1.25)
+
+  axis(2,
+    at = c(0, log(c(10, 100, 1000, 10000, exp(ylimits[2])))),
+    labels = c("", as.character(c(10, 100, 1000, 10000)), ""),
+    pos = xlimits[1],
+    cex.lab = 1.25,
+    cex.axis = 1.25)
+
+  polygon(c(as.integer(dimnames(pop[[loc]]$size)[[2]]),
+      rev(as.integer(dimnames(pop[[loc]]$size)[[2]]))),
+    c(log(pop[[loc]]$size["97.5%", ]),
+      rev(log(pop[[loc]]$size["2.5%", ]))),
+    col = rgb(0.5, 0.5, 0.5, alpha = 0.2),
+    border = NA)
+
+  points(as.integer(dimnames(pop[[loc]]$fert)[[2]]),
+    log(pop[[loc]]$fert["est", ]),
+    col = 2, pch = 19, cex = 1, type = "o")
+
+  polygon(c(as.integer(dimnames(pop[[loc]]$fert)[[2]]),
+      rev(as.integer(dimnames(pop[[loc]]$fert)[[2]]))),
+    c(log(pop[[loc]]$fert["97.5%", ]),
+      rev(log(pop[[loc]]$fert["2.5%", ]))),
+    col = rgb(1, 0, 0, alpha = 0.2),
+    border = NA)
+}
+
+dev.off()
+
+#Visualise figure here
+
+knitr::include_graphics(
+  here::here("img", "Alle_lokaliteter.png")
+)
+```

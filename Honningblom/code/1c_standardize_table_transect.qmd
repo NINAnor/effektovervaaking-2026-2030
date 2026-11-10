@@ -1,0 +1,67 @@
+# Standardiser rå tabell til dirty-tabell
+
+*Skrevet av Ida M. Mienna*
+
+*29.09.2026*
+
+Dette skriptet tar den rå Excel-fila fra [1a_unpack_survey123.qmd](1a_unpack_survey123.qmd) (filen som slutter på "\_raw.xlsx", med hver tabell/ark urørt) og kobler sammen hovedtabellen med eventuelle repeat-tabeller (artsregistreringer osv.), før det standardiserer kolonnenavn/-struktur slik at resultatet passer inn i [2_table_diagnostics_and_cleaning.qmd](2_table_diagnostics_and_cleaning.qmd).
+
+Ruteprosjekter (med `main_plot_id`) og transektprosjekter (med `main_transect_id`, f.eks. pollinatorregistreringer) håndteres automatisk hver for seg. Du trenger ikke gjøre noe manuelt for dette - skriptet oppdager selv hvilken type prosjektet ditt er.
+
+Filstien MÅ bestå av "/" og IKKE "\\". I tillegg kan den ikke inneholde æ,ø,å eller andre spesielle bokstaver.
+
+Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ctrl+Alt+R. Du vil finne én ny fil i din eksportmappe - "ditt_prosjekt_navn_export_dirty.xlsx" for ruteprosjekter, eller "ditt_prosjekt_navn_transect_export_dirty.xlsx" for transektprosjekter.
+
+```{r}
+
+## File path to the raw table written by 1a_unpack_survey123.qmd
+
+filepath <- here::here("data", 
+                       "S123_2026", 
+                       "Honningblom_2026_transect_processed",
+                       "Honningblom_2026_transect_raw.xlsx")
+
+## Output path
+# Path to folder where the processed directories and files should be exported
+
+outputpath <- here::here("data", 
+                       "S123_2026")
+
+## Project name
+# What should the exported files be marked as?
+
+project <- "Honningblom_2026_transect"
+
+```
+
+## \*\*IKKE gjør endringer under her\*\*
+
+```{r}
+#| label: inputs
+#| echo: true
+#| code-fold: false         # keep THIS one open
+#| message: false
+
+Sys.setlocale("LC_CTYPE", "nb_NO.UTF-8")
+
+## Packages
+packages <- c("here", "dplyr", "readxl", "stringr", "openxlsx", "rlang")
+
+# Open files (import function and run)
+source(here::here("Rsource", "functions.R"))
+
+# Require or install packages function
+ipak(packages)
+```
+
+```{r}
+#| label: standardize
+#| echo: true
+#| code-fold: false         # keep THIS one open
+#| message: false
+
+standardize_survey123_table(filepath = filepath,
+                             outputpath = outputpath,
+                             project = project)
+
+```
