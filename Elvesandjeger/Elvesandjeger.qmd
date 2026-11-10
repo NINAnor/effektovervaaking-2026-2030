@@ -566,7 +566,7 @@ right <- wrap_plots(rows, ncol = 1)
 
 Tiltaket er luking av hagelupin på lokalitetene. Lukingen utføres av Midtnorsk Naturundersøkelse AS (MidNat), som har kartlagt og luket lupiner langs Gaula hvert år siden 2020 [@solberg_2020; @solberg_2022a; @solberg_2022b; @solberg_2023; @solberg_2024; @solberg_2025]. Gaula er ett av fem vassdrag som Statsforvalteren i Trøndelag har prioritert i sin satsing på å redusere utbredelsen av fremmede planter, og MidNat har hatt rammeavtale med Statsforvalteren i Trøndelag om kartlegging og bekjempelse i Gaulavassdraget i 2023–2025, i tillegg til tilskuddsmidler til tiltak for natur. NINA har gitt MidNat i oppdrag å kartlegge lupinene på overvåkingslokalitetene [@solberg_2025].
 
-Lupinene lukes i hovedsak manuelt med håndredskap, som hagegreip, potetgrev, sigd og løvetannstikker, slik at sandflatene forstyrres minst mulig, og noen steder slås de med ryddesag. Plantene tas opp med roten, og alt plantemateriale samles i tette sekker og leveres til godkjent mottak for fremmede arter [@roos_2024; @solberg_2025]. Ved delvis luking fjernes bare de større lupinene som kan sette frø i løpet av sesongen, og flere steder fjernes blomsterstander og frøbelger for å hindre frøspredning [@solberg_2025]. Hensikten med delvis luking var å gi polygonene et år med mindre forstyrrelse for elvesandjeger, samtidig som lupinene ikke fikk spre frø. Fra 2026 lukes polygonene enten fullt eller ikke i det hele tatt, for å begrense forstyrrelsen av larvene.Hver lokalitet er delt inn i kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor mange lupiner som ble fjernet, og når og hvordan det ble luket [@roos_2024]. Follstadøya blir også luket, men har ikke overvåking av elvesandjeger og er ikke med her.
+Lupinene lukes i hovedsak manuelt med håndredskap, som hagegreip, potetgrev, sigd og løvetannstikker, slik at sandflatene forstyrres minst mulig, og noen steder slås de med ryddesag. Plantene tas opp med roten, og alt plantemateriale samles i tette sekker og leveres til godkjent mottak for fremmede arter [@roos_2024; @solberg_2025]. Ved delvis luking fjernes bare de større lupinene som kan sette frø i løpet av sesongen, og flere steder fjernes blomsterstander og frøbelger for å hindre frøspredning [@solberg_2025]. Hensikten med delvis luking var å gi polygonene et år med mindre forstyrrelse for elvesandjeger, samtidig som lupinene ikke fikk spre frø.Hver lokalitet er delt inn i kartfestede lukepolygoner, og MidNat registrerer for hvert polygon og år om det er luket (Ja), delvis luket (Delvis) eller ikke luket (Nei), hvor mange lupiner som ble fjernet, og når og hvordan det ble luket [@roos_2024]. Follstadøya blir også luket, men har ikke overvåking av elvesandjeger og er ikke med her.
 
 @fig-foto-luking viser eksempler på lukepolygoner før og etter luking i 2026.
 
@@ -674,7 +674,7 @@ Responsen er antall larver (stadium 1–3) i et undersøkelsespolygon. Polygonen
 
 `larver ~ luket året før + måned + substrat + vegetasjonsdekke + slitasje + lokalitet + offset(log areal) + (1 | lukepolygon)`
 
-Som sensitivitetsanalyse er log(areal) brukt som kovariat i stedet for offset, og modellen er tilpasset hvert larvestadium for seg.
+Modellen er i tillegg tilpasset hvert larvestadium for seg.
 
 **Slik leses resultatene.** Effektene er gitt som rateratio (RR): hvor mange ganger høyere eller lavere larvetettheten er enn i referansegruppen, når de andre variablene i modellen holdes like. RR = 1 betyr ingen forskjell, RR = 2 dobbelt så mange larver og RR = 0,5 halvparten så mange. KI95 er 95 % konfidensintervall: intervallet som med 95 % sikkerhet inneholder den sanne effekten. Hvis intervallet omfatter 1, kan vi ikke si sikkert at det er en forskjell. p-verdien er sannsynligheten for å få en så stor forskjell hvis det egentlig ikke er noen effekt, og p < 0,05 regnes som statistisk signifikant.
 
@@ -711,8 +711,6 @@ m <- glmmTMB(f, family = nbinom2, data = dm)
 m_int <- update(m, . ~ . + Luket_prev:maaned)
 m_hist <- update(m, . ~ . - Luket_prev + years_cleared_before)
 m_dens <- update(m, . ~ . - Luket_prev + lupins_prev_per_m2)
-m_area <- glmmTMB(larvae ~ Luket_prev + maaned + substrat + veg_frac + slitasje + site + log_area + (1 | patch_id),
-                  family = nbinom2, data = dm)
 m_ctrl <- glmmTMB(larvae ~ group + maaned + substrat + veg_frac + slitasje + offset(log_area) + (1 | patch_id),
                   family = nbinom2, data = dc)
 lrt <- function(m0, m1) { a <- anova(m0, m1); c(chisq = a$Chisq[2], df = a[["Chi Df"]][2], p = a[["Pr(>Chisq)"]][2]) }
@@ -850,9 +848,9 @@ ggplot(seas, aes(month, share, fill = stage)) +
 
 ### 6.2 Effekt av luking på lupin
 
-**Lukehistorikk.** Lupintettheten i polygonene som ble fullt luket, avhenger av hvordan de var luket årene før (@tbl-lupin-luking, @fig-lupin-luking). I polygoner som også ble fullt luket året før, var det 1,0 lupin per m². Etter to år eller mer uten luking hadde tettheten økt kraftig, til 5,9 lupiner per m² (RR 5,81, p < 0,001), og polygoner som ble luket for første gang, hadde 2,5 lupiner per m² (RR 2,43, p < 0,001). Polygoner som sto ett år uten luking, hadde 0,7 lupin per m², og var ikke signifikant forskjellige fra polygoner som ble fullt luket året før (RR 0,68, p = 0,29). Nesten alle disse (30 av 33) var fullt luket året før pausen. Ett år uten luking etter full luking ga altså ikke flere lupiner, men etter to år uten luking var tettheten nesten seks ganger så høy.
+**Lukehistorikk.** Lupintettheten i polygonene som ble fullt luket, avhenger av hvordan de var luket årene før (@tbl-lupin-luking, @fig-lupin-luking). I polygoner som også ble fullt luket året før, var det 1,0 lupin per m². Etter to år eller mer uten luking hadde tettheten økt kraftig, til 5,9 lupiner per m² (RR 5,81, p < 0,001), og polygoner som ble luket for første gang, hadde 2,5 lupiner per m² (RR 2,43, p < 0,001). Polygoner som sto ett år uten luking, hadde 0,7 lupin per m², og var ikke signifikant forskjellige fra polygoner som ble fullt luket året før (RR 0,68, p = 0,29). Nesten alle disse (30 av 33) var fullt luket året før pausen. Ett år uten luking etter full luking ga altså ikke flere lupiner. Den kraftige økningen etter to år eller mer uten luking tyder likevel på at lupinene i et år uten luking bidrar til frøbanken og gir nye frøplanter, og at virkningen først blir synlig året etter. Et år uten luking bør derfor unngås der det er mulig.
 
-**Delvis luking.** Polygoner som ble delvis luket året før, hadde 1,3 lupiner per m² da de ble fullt luket, og var ikke signifikant forskjellige fra polygoner som ble fullt luket året før (RR 1,27, p = 0,52). Når de større plantene ble fjernet før de satte frø, holdt delvis luking lupinen nede omtrent like godt som full luking fram til neste luking.
+**Delvis luking.** Polygoner som ble delvis luket året før, hadde 1,3 lupiner per m² da de ble fullt luket, og var ikke signifikant forskjellige fra polygoner som ble fullt luket året før (RR 1,27, p = 0,52). Sammenligningen bygger på 35 polygon-år, nesten alle fra Storrønningen (33) og de fleste fra polygoner som ble delvis luket i 2022 og fullt luket i 2023 (23). Den store delvise lukingen på Kregnesteigen i 2025 er ikke med, fordi nesten ingen av disse polygonene ble fullt luket i 2026. Når de større plantene ble fjernet før de satte frø, var det altså ingen tegn til at delvis luking ga flere lupiner enn full luking fram til neste luking.
 
 **Utvikling over år.** Lupintettheten i polygonene som ble fullt luket, gikk ned fra 4,8 per m² i 2020 til 0,88 i 2024 og 0,35 i 2025, men økte igjen til 1,7 per m² i 2026 (@tbl-luking). Den lave tettheten i 2025 kom etter flere år med mye luking: i 2024 ble 44 700 m² luket, det meste fullt. I 2025 ble bare 11 900 m² fullt luket og 16 000 m² delvis luket. Økningen i 2026 kom særlig fra tolv polygoner på Storrønningen som ikke var luket i 2024 og 2025. De hadde 3,5 lupiner per m², og nesten halvparten av lupinene som ble fjernet i 2026.
 
@@ -893,11 +891,13 @@ pa
 
 ### 6.3 Effekt av luking på elvesandjeger
 
-@tbl-effekt-n viser hvor mange undersøkelsespolygoner som inngår i hver gruppe ved hvert besøk. De fleste lå i polygoner som ble luket i 2025, og det er få i polygoner som ikke ble luket (11 til sammen). Alle de ikke-lukede polygonene ligger på Storrønningen og alle de delvis lukede på Kregnesteigen, så sammenligningen mellom disse gruppene er også en sammenligning mellom lokalitetene. @tbl-effekt-koeff viser resultatene fra modellen, og @tbl-effekt-lrt viser om hver variabel samlet bidrar til å forklare antallet larver.
+@tbl-effekt-n viser hvor mange undersøkelsespolygoner som inngår i hver gruppe ved hvert besøk. De fleste lå i polygoner som ble luket i 2025, og det er få i polygoner som ikke ble luket (11 til sammen). Alle de ikke-lukede polygonene ligger på Storrønningen og alle de delvis lukede på Kregnesteigen, så sammenligningen mellom disse gruppene er også en sammenligning mellom lokalitetene. @tbl-effekt-koeff viser resultatene fra modellen, og @tbl-effekt-lrt viser om hver variabel samlet bidrar til å forklare antallet larver. RR og KI95 leses som forklart i avsnitt 5: RR over 1 betyr flere larver enn i referansegruppen og RR under 1 færre, og hvis KI95 omfatter 1, kan vi ikke si sikkert at det er en forskjell.
 
-**Luking.** Lukingen i 2025 hadde ingen statistisk signifikant effekt på antallet larver i 2026 (likelihood-ratio-test p = 0,25). Polygoner som ble luket, hadde i gjennomsnitt 2,0 ganger så høy larvetetthet som polygoner som ikke ble luket (KI95 0,90–4,52, p = 0,086), og delvis lukede polygoner 2,2 ganger (KI95 0,67–6,89, p = 0,20). Retningen er positiv, men usikkerheten er stor fordi det er så få ikke-lukede polygoner. Effekten var ikke forskjellig mellom besøkene (p = 0,21). Også i 2025 fant vi ingen signifikant effekt av luking, men en tendens til flere larver der det var fullstendig luket [@roos_2025].
+**Luking.** Lukingen i 2025 hadde ingen statistisk signifikant effekt på antallet larver i 2026 (likelihood-ratio-test p = 0,25). Polygoner som ble luket, hadde i gjennomsnitt 2,0 ganger så høy larvetetthet som polygoner som ikke ble luket (KI95 0,90–4,52, p = 0,086), og delvis lukede polygoner 2,2 ganger (KI95 0,67–6,89, p = 0,20). Retningen er positiv, men usikkerheten er stor fordi det er så få ikke-lukede polygoner. For lukede polygoner betyr KI95 0,90–4,52 at dataene passer med alt fra 10 % lavere til 4,5 ganger så høy larvetetthet som i ikke-lukede polygoner. Intervallet omfatter 1, så effekten er ikke signifikant, men det meste av intervallet ligger over 1. Effekten var ikke forskjellig mellom besøkene (p = 0,21). Også i 2025 fant vi ingen signifikant effekt av luking, men en tendens til flere larver der det var fullstendig luket [@roos_2025].
 
-**Andre faktorer.** Larvetettheten var 2,9 ganger høyere på Storrønningen enn på Kregnesteigen (p = 0,0011), og den var lavere i juli og august enn i juni. Vegetasjonsdekke og slitasje trakk begge ned: omtrent 13 % færre larver per 10 prosentpoeng mer vegetasjonsdekke (p = 0,062) og 23 % færre per slitasjeklasse (p = 0,066), men ingen av effektene var signifikante. Substrattype hadde ingen effekt (p = 0,67). Vegetasjonsdekke og slitasje er bare registrert i 2026, så dette er første år de kan testes.
+**Andre faktorer.** Larvetettheten var 2,9 ganger høyere på Storrønningen enn på Kregnesteigen (p = 0,0011). Tettheten per m² var lavere i juli og august enn i juni, men det betyr ikke at det ble færre larver. På Storrønningen økte antallet fra 37 i juni til 625 i juli, da de nye stadium 1-larvene kom til. Polygonene ble tegnet svært små i juni (median 1–2 m²), og det gir høy tetthet per m². Måned er med i modellen for å justere for slike forskjeller mellom besøkene, ikke fordi effekten er av interesse i seg selv. Vegetasjonsdekke og slitasje trakk begge ned: omtrent 13 % færre larver per 10 prosentpoeng mer vegetasjonsdekke (p = 0,062) og 23 % færre per slitasjeklasse (p = 0,066), men ingen av effektene var signifikante. Substrattype hadde ingen effekt (p = 0,67). Vegetasjonsdekke og slitasje er bare registrert i 2026, så dette er første år de kan testes.
+
+**Tolkning av modellene.** At effektene ikke er signifikante, betyr ikke at de ikke finnes. Modellen bygger på ett år med polygondata, få ikke-lukede polygoner og en lukestatus som henger sammen med lokaliteten, og den kan derfor bare påvise store og tydelige effekter. Bestanden av elvesandjeger er svært dynamisk og påvirkes samtidig av mange forhold, som flom, vær, habitat og tråkk, i tillegg til lukingen. Modellresultatene må derfor tolkes sammen med de andre dataene: tidsseriene, lukedataene og erfaringene fra lokalitetene. Lukedataene viser at lupinen kommer raskt tilbake når lukingen stopper opp (avsnitt 6.2). På Storrønningen og Kregnesteigen var de beste siltflatene tett begrodd av hagelupin i 2016, og etter omfattende luking økte antallet registrerte larvehull kraftig i 2017 og 2018 [@hanssen_2023].
 
 ```{r tbl-effekt-n}
 #| tbl-cap: 'Antall undersøkelsespolygoner per gruppe og måned. Kontroll = undersøkelsespolygoner på Fornes utenfor lukepolygonene; Nei/Delvis/Ja = lukestatus året før på Kregnesteigen og Storrønningen.'
@@ -910,7 +910,7 @@ dc |>
 ```
 
 ```{r tbl-effekt-koeff}
-#| tbl-cap: 'NB GLMM for larver per undersøkelsespolygon på Kregnesteigen og Storrønningen. RR = rateratio (hvor mange ganger høyere eller lavere larvetettheten er enn i referansegruppen); KI95 = 95 % konfidensintervall. Referansenivåer: ikke luket året før, juni, sand, Kregnesteigen. Signifikansnivå: \\* p < 0,05; \\*\\* p < 0,01; \\*\\*\\* p < 0,001.'
+#| tbl-cap: 'NB GLMM for larver per undersøkelsespolygon på Kregnesteigen og Storrønningen. RR = rateratio (hvor mange ganger høyere eller lavere larvetettheten er enn i referansegruppen); KI95 = 95 % konfidensintervall. Referansenivåer: ikke luket året før, juni, sand, Kregnesteigen. Måned og lokalitet er med for å justere for forskjeller mellom besøkene og lokalitetene. Signifikansnivå: \\* p < 0,05; \\*\\* p < 0,01; \\*\\*\\* p < 0,001.'
 #| code-summary: 'Kode for tabell.'
 rr_tab(m) |>
   mutate(term = recode(term, !!!term_lab)) |>
@@ -984,18 +984,6 @@ p_sub <- as.data.frame(emmeans(m, ~substrat, type = "response", offset = 0)) |>
 p_veg + p_sli + p_sub
 ```
 
-**Sensitivitet: areal som kovariat i stedet for offset.** Hovedmodellen antar at antallet larver er proporsjonalt med polygonarealet, det vil si at en dobling av arealet gir dobbelt så mange larver. Når arealet i stedet estimeres i modellen, gir en dobling av arealet bare 1,44 ganger så mange larver (@tbl-sensitivitet), fordi større polygoner tar med mer tom mark. Med areal som kovariat blir effekten av luking svakere (RR 1,39, p = 0,35). Konklusjonen er den samme: det er ingen sikker effekt av lukingen i 2025 på larvene i 2026.
-
-```{r tbl-sensitivitet}
-#| tbl-cap: 'Hovedmodellen tilpasset med log(polygonareal) som kovariat i stedet for offset. Polygonareal er gitt per dobling av arealet. Signifikansnivå: \\* p < 0,05; \\*\\* p < 0,01; \\*\\*\\* p < 0,001.'
-#| code-summary: 'Kode for tabell.'
-rr_tab(m_area) |>
-  filter(term %in% c("log_area", "Luket_prevJa", "Luket_prevDelvis", "veg_frac", "slitasje")) |>
-  mutate(term = recode(term, !!!term_lab)) |>
-  rename(Effekt = term) |>
-  kable()
-```
-
 **Per larvestadium.** Den samme modellen er tilpasset stadium 1, 2 og 3 hver for seg (@fig-stadium, @tbl-stadium). Voksne modelleres ikke, fordi antallet avhenger mye av været på besøksdagen. Ingen av stadiene viste en signifikant effekt av luking. Stadium 1, de yngste larvene, som klekte i 2026, hadde den største rateratioen for lukede polygoner (RR 2,43, p = 0,19). Det er dette stadiet vi først venter at skal respondere, fordi de voksne legger eggene i åpne flater.
 
 ```{r fig-stadium}
@@ -1034,7 +1022,7 @@ data.frame(
 
 Elvesandjeger er tilpasset dynamiske elvesystemer der flom stadig legger opp nye sand- og siltflater. Flommen skaper nye leveområder, men kan også oversvømme larvehullene eller flytte sanden de ligger i. Vannføring og nedbør er derfor tatt med fordi de også påvirker bestandsutviklingen, og fordi de må tas hensyn til når effekten av lupinlukingen skal vurderes.
 
-Høyeste døgnmiddelvannføring ved Gaulfoss var 388–829 m³/s i 2020–2026, og ingen år nådde middelflom (1 008 m³/s) som døgnmiddel (@fig-hydrologi, @tbl-hydrologi). Vårflommen kom i april–juni, og i 2026 var den den minste i perioden (388 m³/s). Den eneste store sommerflommen i serien kom 8. august 2023 (755 m³/s), ni dager før augustbesøket, og antallet larver i stadium 1 falt fra 856 i juli til 99 i august det året (@tbl-besok-eksponering). Stadium 1-larvene har de grunneste gangene og er trolig mest utsatt for oversvømmelse og sandflytting.
+Høyeste døgnmiddelvannføring ved Gaulfoss var 388–829 m³/s i 2020–2026, og ingen år nådde middelflom (1 008 m³/s) som døgnmiddel (@fig-hydrologi). Vårflommen kom i april–juni, og i 2026 var den den minste i perioden (388 m³/s). Den eneste store sommerflommen i serien kom 8. august 2023 (755 m³/s), ni dager før augustbesøket, og antallet larver i stadium 1 falt fra 856 i juli til 99 i august det året. Stadium 1-larvene har de grunneste gangene og er trolig mest utsatt for oversvømmelse og sandflytting.
 
 I de utforskende modellene hadde verken høyeste vannføring de 14 dagene før besøket, antall dager over 300 m³/s siden forrige besøk eller nedbøren de 14 dagene før besøket noen påviselig effekt på antallet larver (p = 0,21–0,92; @tbl-klima-modeller). Serien inneholder ennå ikke et år med en flom over middelflom, så testen har lav styrke.
 
@@ -1116,64 +1104,6 @@ ggplot(dl, aes(date, value)) +
   labs(x = NULL, y = NULL)
 ```
 
-```{r tbl-hydrologi}
-#| tbl-cap: 'Årlig oppsummering av vannføring og nedbør. Vårflom = høyeste vannføring april–juni; årsmaks = høyeste vannføring i året; dager > 300 m³/s i april–juni og juli–august, og dager > 500 m³/s; nedbør i mai–august ved Leinstrand. Døgnmiddelverdier.'
-#| code-summary: 'Kode for tabell.'
-yearly |>
-  transmute(År = year, Vårflom = round(spring_peak), `Vårflom dato` = format(spring_peak_date, "%d.%m"),
-            `Årsmaks` = round(q_max), `Årsmaks dato` = format(q_max_date, "%d.%m"),
-            `>300 apr–jun` = d_over300_AprJun, `>300 jul–aug` = d_over300_JulAug, `>500` = d_over500,
-            `Nedbør mai–aug` = round(precip_MayAug)) |>
-  kable()
-```
-
-```{r fig-hydrologi-tidspunkt}
-#| fig-cap: 'Tidspunkt for vårflomtoppen og junibesøket, per år.'
-#| fig-height: 4
-#| fig-width: 9
-#| code-summary: 'Kode for figur.'
-yearly |>
-  select(year, spring_peak_date) |>
-  left_join(vis_dates |> filter(month == "juni") |> select(year, june_visit = date), by = "year") |>
-  pivot_longer(-year, names_to = "event", values_to = "date") |>
-  filter(!is.na(date)) |>
-  mutate(doy = as.integer(format(date, "%j")),
-         event = recode(event, spring_peak_date = "Vårflomtopp", june_visit = "Junibesøk")) |>
-  ggplot(aes(doy, factor(year), colour = event)) +
-  geom_point(size = 3.5) +
-  scale_colour_manual(values = c("Vårflomtopp" = "#2a78d6", "Junibesøk" = "#eb6834"), name = NULL) +
-  scale_x_continuous(breaks = c(60, 91, 121, 152, 182), labels = c("1. mar", "1. apr", "1. mai", "1. jun", "1. jul")) +
-  labs(x = NULL, y = NULL)
-```
-
-```{r fig-hydrologi-besok}
-#| fig-cap: 'Larver per besøk og stadium (alle lokaliteter) mot høyeste vannføring de 14 dagene før besøket. Tallene = år.'
-#| fig-height: 5.5
-#| fig-width: 9
-#| code-summary: 'Kode for figur.'
-visits |>
-  pivot_longer(c(stad1, stad2, stad3), names_to = "stage", values_to = "n") |>
-  mutate(stage = factor(stage_lab[stage], levels = stage_lab[1:3])) |>
-  ggplot(aes(q_max_14d, n + 1, colour = stage, shape = month)) +
-  geom_point(size = 3, fill = "white", stroke = 1) +
-  geom_text(aes(label = year), vjust = -0.9, size = 2.8, show.legend = FALSE) +
-  scale_colour_manual(values = stage_grey, name = NULL) +
-  scale_shape_manual(values = month_shp, name = "Besøk") +
-  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
-  labs(x = "Høyeste vannføring 14 dager før besøket (m³/s)", y = "Larver telt + 1 (log-skala)")
-```
-
-```{r tbl-besok-eksponering}
-#| tbl-cap: 'Innsats og antall per besøk: antall GPS-punkter (til og med 2025) eller polygoner (fra 2026), larver totalt og per stadium, og eksponering før besøket (høyeste vannføring og nedbør de 14 dagene før; høyeste vannføring og dager > 300 m³/s siden forrige besøk, eller siden 1. september for junibesøket).'
-#| code-summary: 'Kode for tabell.'
-visits |>
-  transmute(År = year, Måned = month, Dato = format(date, "%d.%m"), Punkter = n_points, Larver = larvae,
-            `St. 1` = stad1, `St. 2` = stad2, `St. 3` = stad3,
-            `Q maks 14 d` = round(q_max_14d), `Nedbør 14 d` = round(precip_14d),
-            `Q maks siden forrige` = round(q_max_since_prev), `Dager >300 siden forrige` = d_over300_since_prev) |>
-  kable()
-```
-
 ```{r tbl-klima-modeller}
 #| tbl-cap: 'Utforskende NB GLMM for larver per lokalitet og besøk (Storrønningen, Kregnesteigen, Fornes; måned som fast effekt, lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om gangen. Estimat på log-skala; p fra likelihood-ratio-test. Signifikansnivå: \\* p < 0,05; \\*\\* p < 0,01; \\*\\*\\* p < 0,001.'
 #| code-summary: 'Kode for tabell.'
@@ -1238,7 +1168,7 @@ ggplot(fg, aes(year, obs, fill = stage)) +
 
 <!-- Teksten er skrevet for dataene til og med 2026. Oppdater tallene og tolkningen manuelt hvert år. -->
 
-**Lukingen holder lupinbestanden nede, men bare så lenge den gjentas.** I polygoner som ble luket hvert år, holdt lupintettheten seg lav. Ett år uten luking etter full luking ga ikke flere lupiner, men etter to år eller mer uten luking var tettheten nesten seks ganger så høy som i polygoner som ble fullt luket året før. Delvis luking, der de større plantene ble fjernet før de satte frø, holdt lupinen nede omtrent like godt som full luking. I 2025 ble det fullt luket mye mindre enn året før, og i 2026 var lupintettheten i de fullt lukede polygonene fem ganger så høy som i 2025, særlig i polygoner på Storrønningen som ikke var luket på to år. Lupinen kommer altså raskt tilbake når lukingen stopper opp.
+**Lukingen holder lupinbestanden nede, men bare så lenge den gjentas.** I polygoner som ble luket hvert år, holdt lupintettheten seg lav. Ett år uten luking etter full luking ga ikke flere lupiner, men etter to år eller mer uten luking var tettheten nesten seks ganger så høy som i polygoner som ble fullt luket året før. Der de større plantene ble fjernet før de satte frø, var det ingen tegn til at delvis luking ga flere lupiner enn full luking, men sammenligningen bygger nesten bare på Storrønningen. I 2025 ble det fullt luket mye mindre enn året før, og i 2026 var lupintettheten i de fullt lukede polygonene fem ganger så høy som i 2025, særlig i polygoner på Storrønningen som ikke var luket på to år. Lupinen kommer altså raskt tilbake når lukingen stopper opp.
 
 **Frøbanken.** Tellingene viser bare lupinene som står i polygonene hvert år, ikke frøbanken. Hagelupin danner en langvarig frøbank, og frøene kan ligge i jorda i mer enn 50 år uten å miste spireevnen [@fremstad_2012]. Når blomsterstander og frøbelger fjernes, både ved full og delvis luking, kommer det færre nye frø i jorda, og over tid bør frøbanken bli mindre, selv om det fortsatt kommer opp lupiner i polygonene de nærmeste årene. Frøbanken fylles likevel på av lupiner som står igjen i og rundt lukeområdene, og trolig også av frø som føres med elva fra bestander lenger opp [@hanssen_2023]. Effekten av lukingen kan derfor ikke vurderes bare ut fra antallet lupiner fra ett år til det neste. Luking år etter år er nødvendig, og arbeidet som Midtnorsk Naturundersøkelse, Melhus kommune, Øya videregående skole og andre gjør langs Gaula, er viktig for å holde lupininvasjonen under kontroll.
 
@@ -1256,7 +1186,9 @@ ggplot(fg, aes(year, obs, fill = stage)) +
 
 ### 7.2 Anbefaling for videreføring
 
-**Tiltak.** Vi anbefaler luking av hagelupin i alle lukepolygonene hvert år. Ett år uten luking etter full luking ga ikke flere lupiner, men etter to år uten luking var tettheten nesten seks ganger så høy. Et lengre opphold i lukingen kan derfor sette arbeidet flere år tilbake. Polygonene som ikke er luket på to år eller mer, bør prioriteres, og på Kregnesteigen, der det bare ble luket 604 m² i 2026, bør hele lokaliteten lukes fullt i 2027. Ett år uten luking etter full luking ga ikke flere lupiner, så praksisen fra 2026, der polygonene enten lukes fullt eller får stå i fred, kan begrense forstyrrelsen av larvene uten at lupinen tar seg opp igjen, så lenge ingen polygoner står mer enn ett år uten luking. Frøstandene bør fjernes før de modner. Kjerneområdene med stabile bestander av elvesandjeger fungerer som kildebestander og bør prioriteres, og områdene rundt bør holdes åpne som buffersoner som arten kan flytte til etter flom og styrtregn [@roos_2025]. Den restaurerte flaten på Kregnesteigen, der store deler av bestanden har holdt til siden 2023, var i ferd med å gro igjen i 2025 og bør lukes på nytt [@roos_2025]. Utviklingen på Gravråk etter restaureringen med gravemaskin i 2025 bør følges.
+**Modellresultater og forvaltning.** Analysene kombinerer ulike typer data: tellinger over mange år, lukedata fra MidNat og habitatregistreringer fra ett år. Elvesandjeger har en svært dynamisk bestand som avhenger av mange forhold, ikke bare lupinlukingen, og forvaltningen bør ikke styres av om enkelte modellresultater er signifikante. At effekten av lukingen på larvene ikke var signifikant, er derfor ikke et argument for å luke mindre. Uten luking kommer lupinen raskt tilbake, og sandflatene som arten er avhengig av, gror igjen.
+
+**Tiltak.** Vi anbefaler luking av hagelupin i alle lukepolygonene hvert år. Ett år uten luking etter full luking ga ikke flere lupiner, men etter to år uten luking var tettheten nesten seks ganger så høy. Et lengre opphold i lukingen kan derfor sette arbeidet flere år tilbake. Polygonene som ikke er luket på to år eller mer, bør prioriteres, og på Kregnesteigen, der det bare ble luket 604 m² i 2026, bør hele lokaliteten lukes i 2027. Ved delvis luking fjernes de større plantene før de setter frø, og sanden og larvehullene forstyrres mindre. Det var ingen tegn til at delvis luking ga flere lupiner enn full luking fram til neste luking. Delvis luking er derfor et godt alternativ i polygoner med mange larvehull, så lenge lupinene ikke får sette frø. Frøstandene bør fjernes før de modner. Kjerneområdene med stabile bestander av elvesandjeger fungerer som kildebestander og bør prioriteres, og områdene rundt bør holdes åpne som buffersoner som arten kan flytte til etter flom og styrtregn [@roos_2025]. Den restaurerte flaten på Kregnesteigen, der store deler av bestanden har holdt til siden 2023, var i ferd med å gro igjen i 2025 og bør lukes på nytt [@roos_2025]. Utviklingen på Gravråk etter restaureringen med gravemaskin i 2025 bør følges.
 
 Lukingen holder eksisterende leveområder åpne, men nye sand- og siltflater skapes bare av elva selv. Forvaltningen bør derfor også ta hensyn til inngrep som reduserer den naturlige dynamikken i elva, som masseuttak og flomforbygninger.
 
