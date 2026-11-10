@@ -86,7 +86,7 @@ lukes hvert år. Etter et svært dårlig år i 2025 økte bestanden igjen i
 serien. Lukingen reduserer lupinbestanden, men lupinen kom raskt tilbake
 i 2026 etter mindre luking i 2025. Polygoner som ble luket, hadde
 dobbelt så mange larver som polygoner som ikke ble luket, men
-forskjellen var ikke signifikant, blant annet fordi det er få
+forskjellen var ikke statistisk signifikant, blant annet fordi det er få
 ikke-lukede polygoner å sammenligne med. Luking hvert år og overvåking
 bør videreføres, og tråkk i kjerneområdene bør reduseres.
 
@@ -99,10 +99,10 @@ again in 2026, with many new larvae and more adults than ever recorded
 in the series. Lupin removal reduces the lupin population, but lupins
 returned quickly in 2026 after less removal in 2025. Patches where
 lupins were removed had twice as many larvae as patches that were not,
-but the difference was not significant, partly because there are few
-uncleared patches to compare with. Lupin removal every year and
-monitoring should be continued, and trampling in the core areas should
-be reduced.
+but the difference was not statistically significant, partly because
+there are few uncleared patches to compare with. Lupin removal every
+year and monitoring should be continued, and trampling in the core areas
+should be reduced.
 
 ## 1. Innledning
 
@@ -729,16 +729,16 @@ Etter to år eller mer uten luking hadde tettheten økt kraftig, til 5,9
 lupiner per m² (RR 5,81, p \< 0,001), og polygoner som ble luket for
 første gang, hadde 2,5 lupiner per m² (RR 2,43, p \< 0,001). Polygoner
 som sto ett år uten luking, hadde 0,7 lupin per m², og var ikke
-signifikant forskjellige fra polygoner som ble fullt luket året før (RR
-0,68, p = 0,29). Nesten alle disse (30 av 33) var fullt luket året før
-pausen. Ett år uten luking etter full luking ga altså ikke flere
-lupiner. Den kraftige økningen etter to år eller mer uten luking tyder
-likevel på at lupinene i et år uten luking bidrar til frøbanken og gir
-nye frøplanter, og at virkningen først blir synlig året etter. Et år
-uten luking bør derfor unngås der det er mulig.
+statistisk signifikant forskjellige fra polygoner som ble fullt luket
+året før (RR 0,68, p = 0,29). Nesten alle disse (30 av 33) var fullt
+luket året før pausen. Ett år uten luking etter full luking ga altså
+ikke flere lupiner. Den kraftige økningen etter to år eller mer uten
+luking tyder likevel på at lupinene i et år uten luking bidrar til
+frøbanken og gir nye frøplanter, og at virkningen først blir synlig året
+etter. Et år uten luking bør derfor unngås der det er mulig.
 
 **Delvis luking.** Polygoner som ble delvis luket året før, hadde 1,3
-lupiner per m² da de ble fullt luket, og var ikke signifikant
+lupiner per m² da de ble fullt luket, og var ikke statistisk signifikant
 forskjellige fra polygoner som ble fullt luket året før (RR 1,27, p =
 0,52). Sammenligningen bygger på 35 polygon-år, nesten alle fra
 Storrønningen (33) og de fleste fra polygoner som ble delvis luket i
@@ -835,10 +835,10 @@ positiv, men usikkerheten er stor fordi det er så få ikke-lukede
 polygoner. For lukede polygoner betyr KI95 0,90–4,52 at dataene passer
 med alt fra 10 % lavere til 4,5 ganger så høy larvetetthet som i
 ikke-lukede polygoner. Intervallet omfatter 1, så effekten er ikke
-signifikant, men det meste av intervallet ligger over 1. Effekten var
-ikke forskjellig mellom besøkene (p = 0,21). Også i 2025 fant vi ingen
-signifikant effekt av luking, men en tendens til flere larver der det
-var fullstendig luket (Roos mfl. 2025).
+statistisk signifikant, men det meste av intervallet ligger over 1.
+Effekten var ikke forskjellig mellom besøkene (p = 0,21). Også i 2025
+fant vi ingen statistisk signifikant effekt av luking, men en tendens
+til flere larver der det var fullstendig luket (Roos mfl. 2025).
 
 **Andre faktorer.** Larvetettheten var 2,9 ganger høyere på
 Storrønningen enn på Kregnesteigen (p = 0,0011). Tettheten per m² var
@@ -850,13 +850,13 @@ for å justere for slike forskjeller mellom besøkene, ikke fordi effekten
 er av interesse i seg selv. Vegetasjonsdekke og slitasje trakk begge
 ned: omtrent 13 % færre larver per 10 prosentpoeng mer vegetasjonsdekke
 (p = 0,062) og 23 % færre per slitasjeklasse (p = 0,066), men ingen av
-effektene var signifikante. Substrattype hadde ingen effekt (p = 0,67).
-Vegetasjonsdekke og slitasje er bare registrert i 2026, så dette er
-første år de kan testes.
+effektene var statistisk signifikante. Substrattype hadde ingen effekt
+(p = 0,67). Vegetasjonsdekke og slitasje er bare registrert i 2026, så
+dette er første år de kan testes.
 
-**Tolkning av modellene.** At effektene ikke er signifikante, betyr ikke
-at de ikke finnes. Modellen bygger på ett år med polygondata, få
-ikke-lukede polygoner og en lukestatus som henger sammen med
+**Tolkning av modellene.** At effektene ikke er statistisk signifikante,
+betyr ikke at de ikke finnes. Modellen bygger på ett år med polygondata,
+få ikke-lukede polygoner og en lukestatus som henger sammen med
 lokaliteten, og den kan derfor bare påvise store og tydelige effekter.
 Bestanden av elvesandjeger er svært dynamisk og påvirkes samtidig av
 mange forhold, som flom, vær, habitat og tråkk, i tillegg til lukingen.
@@ -971,10 +971,11 @@ substrat (gjennomsnitt ± 95 % KI).
 hver for seg (<a href="#fig-stadium" class="quarto-xref">Figur 13</a>,
 <a href="#tbl-stadium" class="quarto-xref">Tabell 8</a>). Voksne
 modelleres ikke, fordi antallet avhenger mye av været på besøksdagen.
-Ingen av stadiene viste en signifikant effekt av luking. Stadium 1, de
-yngste larvene, som klekte i 2026, hadde den største rateratioen for
-lukede polygoner (RR 2,43, p = 0,19). Det er dette stadiet vi først
-venter at skal respondere, fordi de voksne legger eggene i åpne flater.
+Ingen av stadiene viste en statistisk signifikant effekt av luking.
+Stadium 1, de yngste larvene, som klekte i 2026, hadde den største
+rateratioen for lukede polygoner (RR 2,43, p = 0,19). Det er dette
+stadiet vi først venter at skal respondere, fordi de voksne legger
+eggene i åpne flater.
 
 <div id="fig-stadium">
 
@@ -1132,10 +1133,13 @@ eller mer uten luking var tettheten nesten seks ganger så høy som i
 polygoner som ble fullt luket året før. Der de større plantene ble
 fjernet før de satte frø, var det ingen tegn til at delvis luking ga
 flere lupiner enn full luking, men sammenligningen bygger nesten bare på
-Storrønningen. I 2025 ble det fullt luket mye mindre enn året før, og i
-2026 var lupintettheten i de fullt lukede polygonene fem ganger så høy
-som i 2025, særlig i polygoner på Storrønningen som ikke var luket på to
-år. Lupinen kommer altså raskt tilbake når lukingen stopper opp.
+Storrønningen. Lupinene som står igjen ved delvis luking, kan likevel
+bidra til frøbanken, for eksempel hvis noen av dem rekker å sette frø,
+og vegetasjonsdekket øker når de får vokse videre. I 2025 ble det fullt
+luket mye mindre enn året før, og i 2026 var lupintettheten i de fullt
+lukede polygonene fem ganger så høy som i 2025, særlig i polygoner på
+Storrønningen som ikke var luket på to år. Lupinen kommer altså raskt
+tilbake når lukingen stopper opp.
 
 **Frøbanken.** Tellingene viser bare lupinene som står i polygonene
 hvert år, ikke frøbanken. Hagelupin danner en langvarig frøbank, og
@@ -1165,25 +1169,27 @@ før, mens Kregnesteigen fortsatt hadde lave antall.
 
 **Ingen sikker effekt av lukingen på larvene.** Polygoner som ble luket
 i 2025, hadde i gjennomsnitt dobbelt så høy larvetetthet i 2026 som
-polygoner som ikke ble luket, men forskjellen var ikke signifikant. Også
-i 2025 var det en tendens til flere larver der det var fullstendig
-luket, uten at effekten var signifikant (Roos mfl. 2025). Det er flere
-grunner til at effekten er vanskelig å påvise. Nesten alle polygonene
-der arten finnes, ligger i lukede områder, så det er få ikke-lukede
-polygoner å sammenligne med, og de ligger alle på Storrønningen. De
-delvis lukede polygonene ligger alle på Kregnesteigen, så effekten av
-delvis luking kan ikke skilles fra lokaliteten. I tillegg ventes
-effekten å komme med en forsinkelse: de voksne legger eggene i åpne
-flater etter lukingen, og larveutviklingen tar trolig to år. Det passer
-med at stadium 1, de yngste larvene, hadde den største effekten av
-lukingen, selv om heller ikke den var signifikant.
+polygoner som ikke ble luket, men forskjellen var ikke statistisk
+signifikant. At en effekt ikke er statistisk signifikant, betyr ikke at
+den er uten betydning, bare at dataene ikke er sikre nok til å påvise
+den. Også i 2025 var det en tendens til flere larver der det var
+fullstendig luket, uten at effekten var statistisk signifikant (Roos
+mfl. 2025). Det er flere grunner til at effekten er vanskelig å påvise.
+Nesten alle polygonene der arten finnes, ligger i lukede områder, så det
+er få ikke-lukede polygoner å sammenligne med, og de ligger alle på
+Storrønningen. De delvis lukede polygonene ligger alle på Kregnesteigen,
+så effekten av delvis luking kan ikke skilles fra lokaliteten. I tillegg
+ventes effekten å komme med en forsinkelse: de voksne legger eggene i
+åpne flater etter lukingen, og larveutviklingen tar trolig to år. Det
+passer med at stadium 1, de yngste larvene, hadde den største effekten
+av lukingen, selv om heller ikke den var statistisk signifikant.
 
 **Vegetasjon og tråkk.** Vegetasjonsdekke og slitasje ble registrert for
 første gang i 2026. Begge trakk antallet larver ned, men effektene var
-ikke signifikante. Retningen stemmer med at arten trenger åpne sand- og
-siltflater, og med at larvehullene kan ødelegges av tråkk (Evju mfl.
-2022). I 2025 viste dronebilder omfattende spor etter hunder i
-kjerneområdene på Storrønningen (Roos mfl. 2025). Slitasje registreres
+ikke statistisk signifikante. Retningen stemmer med at arten trenger
+åpne sand- og siltflater, og med at larvehullene kan ødelegges av tråkk
+(Evju mfl. 2022). I 2025 viste dronebilder omfattende spor etter hunder
+i kjerneområdene på Storrønningen (Roos mfl. 2025). Slitasje registreres
 bare som et øyeblikksbilde på besøksdagen, og regn kan vaske bort
 fotspor, så flere år med data trengs før vi kan si noe sikkert om
 effekten av tråkk.
@@ -1213,9 +1219,10 @@ data: tellinger over mange år, lukedata fra MidNat og
 habitatregistreringer fra ett år. Elvesandjeger har en svært dynamisk
 bestand som avhenger av mange forhold, ikke bare lupinlukingen, og
 forvaltningen bør ikke styres av om enkelte modellresultater er
-signifikante. At effekten av lukingen på larvene ikke var signifikant,
-er derfor ikke et argument for å luke mindre. Uten luking kommer lupinen
-raskt tilbake, og sandflatene som arten er avhengig av, gror igjen.
+statistisk signifikante. At effekten av lukingen på larvene ikke var
+statistisk signifikant, er derfor ikke et argument for å luke mindre.
+Uten luking kommer lupinen raskt tilbake, og sandflatene som arten er
+avhengig av, gror igjen.
 
 **Tiltak.** Vi anbefaler luking av hagelupin i alle lukepolygonene hvert
 år. Ett år uten luking etter full luking ga ikke flere lupiner, men
@@ -1223,11 +1230,15 @@ etter to år uten luking var tettheten nesten seks ganger så høy. Et
 lengre opphold i lukingen kan derfor sette arbeidet flere år tilbake.
 Polygonene som ikke er luket på to år eller mer, bør prioriteres, og på
 Kregnesteigen, der det bare ble luket 604 m² i 2026, bør hele
-lokaliteten lukes i 2027. Ved delvis luking fjernes de større plantene
-før de setter frø, og sanden og larvehullene forstyrres mindre. Det var
-ingen tegn til at delvis luking ga flere lupiner enn full luking fram
-til neste luking. Delvis luking er derfor et godt alternativ i polygoner
-med mange larvehull, så lenge lupinene ikke får sette frø. Frøstandene
+lokaliteten lukes i 2027. Delvis luking er ikke det samme som å la
+polygonene stå uten luking. Den brukes som en skånsom forvaltning: de
+større plantene fjernes før de setter frø, mens sanden og larvehullene
+forstyrres mindre enn ved full luking. Det var ingen tegn til at delvis
+luking ga flere lupiner enn full luking fram til neste luking, og delvis
+luking kan derfor være et godt alternativ i polygoner med mange
+larvehull. Delvis luking hindrer likevel ikke at vegetasjonsdekket øker,
+og den stopper ikke helt at det kommer nye frø i frøbanken. Om delvis
+luking er god nok over tid, må følges opp de kommende årene. Frøstandene
 bør fjernes før de modner. Kjerneområdene med stabile bestander av
 elvesandjeger fungerer som kildebestander og bør prioriteres, og
 områdene rundt bør holdes åpne som buffersoner som arten kan flytte til
@@ -1258,11 +1269,8 @@ slitasje i hvert polygon, i tillegg til antall larver per stadium og
 voksne. Vi anbefaler å følge denne protokollen med besøk i juni, juli og
 august hvert år. Polygonene bør holdes små og avgrenses slik at hvert
 polygon gjenspeiler én kombinasjon av vegetasjonsdekke og substrattype.
-Været på besøksdagen, særlig sol eller overskyet, bør registreres, slik
-at antallet voksne kan tolkes. Fornes bør fortsatt brukes som kontroll,
-med undersøkelsespolygonene utenfor lukeområdet, nå som lukingen også
-har startet der. Overvåkingen bør fortsette, slik at en eventuell
-forsinket effekt av lukingen kan påvises.
+Overvåkingen bør fortsette, slik at en eventuell forsinket effekt av
+lukingen kan påvises.
 
 ## 8. Referanser
 
