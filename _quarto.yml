@@ -19,6 +19,7 @@ book:
     - Dragehode/Dragehode.qmd
     - Honningblom/Honningblom.qmd
     - Tronderlav/Tronderlav.qmd
+    - Askeglye/Askeglye.qmd
     - Kystlynghei/report/kystlynghei_condition_report.qmd
   appendices:
     - Kystlynghei/report/kystlynghei_methods.qmd
