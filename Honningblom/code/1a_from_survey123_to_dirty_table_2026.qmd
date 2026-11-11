@@ -35,7 +35,7 @@ project <- "Honningblom_2026"
 ## \*\*IKKE gjør endringer under her\*\*
 
 ```{r}
-#| label: inputs
+#| label: packages
 #| echo: true
 #| code-fold: false         # keep THIS one open
 #| message: false
