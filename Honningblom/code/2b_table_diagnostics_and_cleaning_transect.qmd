@@ -20,7 +20,7 @@ Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ct
 
 # The table should have the same structure and colnames as in export_dirty.xlsx.
 
-filepath <- here::here("Data", 
+filepath <- here::here("data", 
                        "S123_2026", 
                       "Honningblom_2026_transect_processed", 
                       "Honningblom_2026_transect_transect_export_dirty.xlsx")
