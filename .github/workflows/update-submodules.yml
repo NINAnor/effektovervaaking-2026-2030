@@ -1,0 +1,36 @@
+name: Update submodules
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update submodules
+        run: git submodule update --init --remote
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ github.token }}
+          branch: automation/update-submodules
+          delete-branch: true
+          commit-message: Update submodules
+          title: Update submodules
+          body: |
+            Updates each submodule to its latest commit on the configured remote branch.
+
+            This pull request was created automatically.
+          base: main
