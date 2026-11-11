@@ -24,8 +24,10 @@ book:
     - Trondertorvmose/Trondertorvmose.qmd
     - Svartkurle/Svartkurle.qmd
     - Kystlynghei/report/kystlynghei_condition_report.qmd
+    - effektovervaking_forests/docs/forest_monitoring_report.qmd
   appendices:
     - Kystlynghei/report/kystlynghei_methods.qmd
+    - effektovervaking_forests/docs/forest_monitoring_methods.qmd
 
 format:
   html:
