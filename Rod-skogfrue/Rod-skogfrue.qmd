@@ -227,11 +227,13 @@ Rød skogfrue (*Cephalanthera rubra*) er en orkidé som er vurdert som sterkt tr
 Trusler mot rød skogfrue er blant annet beskrevet i handlingsplanen for arten [@dn_2006]. De omfatter tap av habitat på grunn av utbygging og økt ferdsel, slitasje og plukking i tillegg til selve habitattapet. Hogst, især åpne hogstformer som flatehogst, anses som en trussel, med slitasje, kjørespor og markberedning og i tillegg negativ påvirkning på mykorrhiza-relasjoner som arten skal ha med skogstrær. Rød skogfrue foretrekker relativt lysåpne voksesteder, og fortetting av busk- og tresjikt og tette einstapebestand er negativt. Dette er satt i sammenheng med redusert utmarksbeite. Beite av blomstrende skudd fra hjortevilt er et problem i enkelte forekomster.
 
 ```{r fig-rod-skogfrue}
-#| fig-cap: 'Blomstrende skudd av rød skogfrue i Bjørkedokk. Foto: Ruben E. Roos/NINA.'
+#| fig-cap: 'Blomstrende skudd av rød skogfrue i Bjørkedokk.'
 #| code-summary: 'Kode for figur.'
 #| out-width: 40%
 include_graphics("img/rod_skogfrue_bjorkedokk.jpg")
 ```
+
+<!--# Fotograf mangler for bildene fra utkastet (figur 1–4). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
 
 Arten opptrer klumpvis i små bestander eller som enkeltindivider i lokalitetene. Disse bestandene dekker oftest små arealer, bare noen få m², og selv innen disse arealene kan dekningen av tre-, busk- og feltsjikt variere. Arten har variabel blomstring mellom år og kan også ha flere års underjordisk dvaleperiode. I små lokaliteter kan den derfor tilsynelatende være borte i flere år på rad, for så å sette overjordsskudd. Arten spres vegetativt med jordstengel, og det reelle genetiske individantallet per lokalitet er trolig lavere enn antallet skudd.
 
@@ -291,14 +293,14 @@ Det er utarbeidet skjøtselsplan for lokalitetene Bjørkedokk i Drammen kommune 
 I 2026 ble det i forbindelse med basisovervåkingen av rød skogfrue fjernet einstape i en dellokalitet øst for hoppbakken (@fig-hoppbakken). Det ble også fjernet einstapeskudd og klippet vekk greiner av gran i noen flere dellokaliteter rundt hoppbakken og i «baklia». Drammen kommune har ryddet løvoppslag nedenfor Røyskattlia 10 høsten 2026 (@fig-royskattlia). Ut over dette er det også tidligere år i forbindelse med basisovervåkingen gjennomført spredt rydding av einstape og busker på lokalitetene.
 
 ```{r fig-baklia}
-#| fig-cap: 'Dellokalitet «baklia» i Bjørkedokk der einer, småtrær og einstape er fjernet. Foto: Ruben E. Roos/NINA.'
+#| fig-cap: 'Dellokalitet «baklia» i Bjørkedokk der einer, småtrær og einstape er fjernet.'
 #| code-summary: 'Kode for figur.'
 #| out-width: 60%
 include_graphics("img/bjorkedokk_baklia_ryddet.jpg")
 ```
 
 ```{r fig-hoppbakken}
-#| fig-cap: 'Dellokalitet øst for hoppbakken i Bjørkedokk før og etter fjerning av einstape i 2026. Foto: Ruben E. Roos/NINA.'
+#| fig-cap: 'Dellokalitet øst for hoppbakken i Bjørkedokk før og etter fjerning av einstape i 2026.'
 #| fig-subcap:
 #|   - 'Før'
 #|   - 'Etter'
@@ -308,7 +310,7 @@ include_graphics(c("img/bjorkedokk_hoppbakken_for.jpg", "img/bjorkedokk_hoppbakk
 ```
 
 ```{r fig-royskattlia}
-#| fig-cap: 'Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og 13 i Bjørkedokk før fjerning av løvoppslag. Foto: Ruben E. Roos/NINA.'
+#| fig-cap: 'Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og 13 i Bjørkedokk før fjerning av løvoppslag.'
 #| fig-subcap:
 #|   - ''
 #|   - ''
