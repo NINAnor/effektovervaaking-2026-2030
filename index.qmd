@@ -13,6 +13,7 @@ This book includes reports for:
 - [Stor elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd)
 - [Dragehode](Dragehode/Dragehode.qmd)
 - [Kystlynghei: Methodology](Kystlynghei/report/kystlynghei_methods.qmd)
+- [Forest monitoring report](effektovervaking_forests/docs/index.html)
 
 See the [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030)
 for the full subproject list and project workflow.

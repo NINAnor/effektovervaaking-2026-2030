@@ -1,3 +1,6 @@
 [submodule "Kystlynghei"]
 	path = Kystlynghei
 	url = https://github.com/andrewdotg/kystlynghei_condition.git
+[submodule "effektovervaking_forests"]
+	path = effektovervaking_forests
+	url = https://github.com/NINAnor/effektovervaking_forests.git
