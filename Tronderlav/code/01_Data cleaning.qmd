@@ -45,7 +45,7 @@ There are many individual datasets to load here. Each logger has a file name wit
 
 ```{r}
 
-data_folder <- here::here("Data", "Raw_climate_data")
+data_folder <- here::here("data", "Raw_climate_data")
 
 # 1. List all CSV files
 files <- list.files(path = data_folder, pattern = "\\.csv$", full.names = TRUE)
@@ -295,11 +295,11 @@ daily_data_lux <- all_data %>%
 ```{r}
 readr::write_csv(
   daily_data,
-  here::here("Data", "daily_data.csv")
+  here::here("data", "daily_data.csv")
 )
 
 readr::write_csv(
   daily_data_lux,
-  here::here("Data", "daily_data_lux.csv")
+  here::here("data", "daily_data_lux.csv")
 )
 ```

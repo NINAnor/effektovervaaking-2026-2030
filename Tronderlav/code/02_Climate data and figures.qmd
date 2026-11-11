@@ -1,0 +1,623 @@
+---
+title: "02_Climate data figures and analyses"
+format: html
+editor: visual
+---
+
+This script is for making figures and analyse the climate data for Effektovervåking Trønderlav. Overall aim is to assess to what extend the translocation localities differ climatically from the original locality called Tegningfallet.
+
+## Required packages
+
+```{r}
+library(tidyverse)
+library(vroom)
+library(janitor)
+library(lubridate)
+library(tidyr) 
+library(knitr)
+library(skimr)
+library(gt)
+library(readxl)
+library(lme4)
+library(lmerTest)
+library(emmeans)
+library(performance)
+library(MuMIn)
+library(broom.mixed)
+library(ggbeeswarm)
+library(here)
+```
+
+## Loading data
+
+Two cleaned data files are prepared in script 01_Data cleaning and imported here.
+
+```{r}
+daily_data <- readr::read_csv(here::here("data", "daily_data.csv"))
+
+daily_data_lux <- readr::read_csv(here::here("data", "daily_data_lux.csv"))
+```
+
+## Microclimatic at the localities
+
+Let's make some figures to explore microclimate variables at our localities.
+
+### Microclimate throughout the year
+
+```{r}
+#Reorder factor levels:   
+locality_order <- c(
+  "Tegningfallet1", "Tegningfallet2", "Eldåa", "Nekfallet",
+  "Flatdalsåsen", "Gulsvikelvi", "Sagåa", "Trøndelag")
+
+daily_data$locality <- factor(
+  daily_data$locality,
+  levels = locality_order)
+
+daily_data_lux$locality <- factor(
+  daily_data_lux$locality,
+  levels = locality_order)
+```
+
+Make plots and save figures.
+
+```{r}
+
+#Create a plotting funtion that works for all plots
+plot_microclimate <- function(data, variable, y_label) {
+  
+  ggplot(data, aes(x = date, y = {{ variable }})) +
+    geom_line(color = "steelblue") +
+    labs(
+      x = "Dato",
+      y = y_label
+    ) +
+    facet_wrap(~locality) +
+    theme_minimal()
+}
+
+#Make the plots
+p.air_temp <- plot_microclimate(
+  daily_data,
+  mean_temp_C,
+  "Temperatur (°C)")
+
+p.rel_hum <- plot_microclimate(
+  daily_data,
+  mean_rh,
+  "Relativ luftfuktighet (%)")
+
+p.dew_point <- plot_microclimate(
+  daily_data,
+  mean_dp,
+  "Duggpunkt (°C)")
+
+p.abs_hum <- plot_microclimate(
+  daily_data,
+  mean_ah,
+  "Absolutt luftfuktighet (g/m³)")
+
+p.lux <- plot_microclimate(
+  daily_data_lux, 
+  max_lux, 
+  "Maksimal lysintensitet (lux)") + scale_x_date(
+    date_breaks = "1 year",
+    date_labels = "%Y")
+
+p.lux.mean <- plot_microclimate(
+  daily_data_lux, 
+  mean_lux, 
+  "Gjennomsnittlig lysintensitet (lux)") + scale_x_date(
+    date_breaks = "1 year",
+    date_labels = "%Y")
+  
+#Display plots
+p.air_temp
+p.rel_hum
+p.dew_point
+p.abs_hum
+p.lux
+p.lux.mean
+
+#Save plots
+ggsave(
+  filename = here::here("img", "air_temperature.png"),
+  plot = p.air_temp,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+ggsave(
+  filename = here::here("img", "relative_humidity.png"),
+  plot = p.rel_hum,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+ggsave(
+  filename = here::here("img", "dew_point.png"),
+  plot = p.dew_point,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+ggsave(
+  filename = here::here("img", "absolute_humidity.png"),
+  plot = p.abs_hum,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+ggsave(
+  filename = here::here("img", "light_intensity_max.png"),
+  plot = p.lux,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+ggsave(
+  filename = here::here("img", "light_intensity_mean.png"),
+  plot = p.lux.mean,
+  width = 16,
+  height = 12,
+  units = "cm")
+```
+
+Create some overview tables if needed.
+
+```{r}
+summarize_range <- function(data, variable) {
+  data %>%
+    group_by(locality, year) %>%
+    summarize(
+      max = max({{ variable }}, na.rm = TRUE),
+      min = min({{ variable }}, na.rm = TRUE),
+      diff = max - min,
+      .groups = "drop"
+    )
+}
+
+summary_temp <- summarize_range(daily_data, mean_temp_C)
+summary_rh   <- summarize_range(daily_data, mean_rh)
+summary_dp   <- summarize_range(daily_data, mean_dp)
+summary_ah   <- summarize_range(daily_data, mean_ah)
+summary_lux  <- summarize_range(daily_data_lux, max_lux)
+```
+
+### Time above a certain threshold
+
+Here, we explore the time relative humidity is above a threshold of 90%, which should respond to the lichen being able to hydrate and be photosynthetically active.
+
+```{r}
+
+# set parameters 
+threshold_RH   <- 90 # % rh we want to set, should correspond to ecological activity of lichen 
+max_gap_hours  <- 6  # ignore intervals > this (e.g., logger outages)
+
+# Calculate percentage of observed time with RH >= threshold
+res_overall <- all_data %>%
+  filter(type == "temp") %>%
+  arrange(locality, timestamp) %>%
+  group_by(locality) %>%
+  mutate(
+    dt_h = as.numeric(
+      difftime(lead(timestamp), timestamp, units = "hours")
+    ),
+    above = rh_percent >= threshold_RH
+  ) %>%
+  # Remove invalid intervals and long gaps
+  filter(
+    !is.na(dt_h),
+    dt_h > 0,
+    dt_h <= max_gap_hours
+  ) %>%
+  summarise(
+    hours_above   = sum(above * dt_h, na.rm = TRUE),
+    hours_observed = sum(dt_h, na.rm = TRUE),
+    n_intervals   = n(),
+    pct_time_RH90 = 100 * hours_above / hours_observed,
+    .groups = "drop"
+  )
+
+# Set locality order
+locality_order <- c(
+  "Tegningfallet1",
+  "Tegningfallet2",
+  "Eldåa",
+  "Nekfallet",
+  "Flatdalsåsen",
+  "Gulsvikelvi",
+  "Sagåa",
+  "Trøndelag"
+)
+
+res_overall$locality <- factor(
+  res_overall$locality,
+  levels = locality_order
+)
+
+# Plot
+p.rh90 <- ggplot(res_overall, aes(x = locality, y = pct_time_RH90)) +
+  geom_col(fill = "steelblue") +
+  geom_text(
+    aes(label = sprintf("%.1f%%", pct_time_RH90)),
+    vjust = -0.4,
+    size = 3.5
+  ) +
+  scale_y_continuous(
+    labels = function(x) paste0(x, "%"),
+    expand = expansion(mult = c(0, 0.06))
+  ) +
+  labs(
+    x = NULL,
+    y = "% av logget tid med relativ luftfuktighet ≥ 90%"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1)
+  )
+
+p.rh90
+
+#Save plot
+
+ggsave(
+  filename = here::here("img", "time_above_rh_90.png"),
+  plot = p.rh90,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+```
+
+Let's do the same for light intensity.
+
+```{r}
+
+# Explore which localities have high light intensity for the largest proportion of time
+
+# Parameters
+threshold_lux  <- 10000  # Light threshold (lux)
+max_gap_hours  <- 6      # Ignore intervals longer than this (e.g. logger outages)
+
+# Calculate percentage of observed time with light >= threshold
+res_lux <- all_data %>%
+  filter(type == "lux") %>%
+  arrange(locality, timestamp) %>%
+  group_by(locality) %>%
+  mutate(
+    dt_h = as.numeric(
+      difftime(lead(timestamp), timestamp, units = "hours")
+    ),
+    above = light_lux >= threshold_lux
+  ) %>%
+  # Remove invalid intervals and long gaps
+  filter(
+    !is.na(dt_h),
+    dt_h > 0,
+    dt_h <= max_gap_hours
+  ) %>%
+  summarise(
+    hours_above    = sum(above * dt_h, na.rm = TRUE),
+    hours_observed = sum(dt_h, na.rm = TRUE),
+    n_intervals    = n(),
+    pct_time_lux10k = 100 * hours_above / hours_observed,
+    .groups = "drop"
+  )
+
+# Set locality order
+res_lux$locality <- factor(
+  res_lux$locality,
+  levels = locality_order
+)
+
+# Plot
+p.lux10k <- ggplot(res_lux, aes(x = locality, y = pct_time_lux10k)) +
+  geom_col(fill = "steelblue") +
+  geom_text(
+    aes(label = sprintf("%.1f%%", pct_time_lux10k)),
+    vjust = -0.4,
+    size = 3.5
+  ) +
+  scale_y_continuous(
+    labels = function(x) paste0(x, "%"),
+    expand = expansion(mult = c(0, 0.06))
+  ) +
+  labs(
+    x = NULL,
+    y = "% av logget tid med lysintensitet ≥ 10 000 lux",
+    subtitle = sprintf(
+      "Intervals > %g h ignored; threshold = %g lux",
+      max_gap_hours,
+      threshold_lux
+    )
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1)
+  )
+
+p.lux10k
+
+#Save plot
+ggsave(
+  filename = here::here("img", "time_above_lux_10k.png"),
+  plot = p.lux10k,
+  width = 16,
+  height = 12,
+  units = "cm")
+```
+
+## Compare microclimate against Tegningfallet
+
+Now, let's compare the climate at the translocation localities with Tegningfallet.
+
+```{r}
+# First, we must create a combined Tegningfallet reference series against which to test the other localities. Here, when available, the average daily values are used, otherwise only data from one of the loggers is used. 
+
+tegningfallet_temp <- daily_data %>%
+  filter(locality %in% c("Tegningfallet1", "Tegningfallet2")) %>%
+  group_by(date) %>%
+  summarise(
+    temp_tegn = ifelse(
+      all(is.na(mean_temp_C)),
+      NA_real_,
+      mean(mean_temp_C, na.rm = TRUE)),
+    .groups = "drop")
+
+# Then, we can join this back to the full dataset and calculate the difference
+temp_comparison <- daily_data %>%
+  left_join(tegningfallet_temp, by = "date") %>%
+  mutate(diff_temp = mean_temp_C - temp_tegn)
+
+#Create a plot
+p.temp_comparison <- temp_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_temp)) %>%
+  ggplot(aes(
+    x = date,
+    y = diff_temp,
+    color = locality)) +
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed") +
+  geom_line() +
+  facet_wrap(
+    ~year,
+    scales = "free_x") +
+  scale_x_date(
+    date_breaks = "2 months",
+    date_labels = "%b") +
+  labs(x = NULL,
+    y = "Temperaturforskjell fra Tegningfallet (°C)",
+    color = "Lokalitet") +
+  theme_minimal()
+
+p.temp_comparison
+
+#This figure is a bit messy, let's try facet wrapping by locality also
+ggplot(
+  temp_comparison,
+  aes(x = date, y = diff_temp)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_line(color = "steelblue") +
+  facet_grid(locality ~ year, scales = "free_x") +
+  labs(x = NULL,
+    y = "Temperaturforskjell fra Tegningfallet (°C)") +
+  theme_minimal()
+```
+
+That figure is hard to get information out of, let's leave it for now.
+
+In stead, we can make some simpler comparisons,
+
+```{r}
+
+# Combined Tegningfallet reference for relative humidity
+tegningfallet_rh <- daily_data %>%
+  filter(locality %in% c("Tegningfallet1", "Tegningfallet2")) %>%
+  group_by(date) %>%
+  summarise(rh_tegn = ifelse(
+      all(is.na(mean_rh)),
+      NA_real_,
+      mean(mean_rh, na.rm = TRUE)),
+    .groups = "drop")
+
+# Compare all localities with combined Tegningfallet
+humidity_comparison <- daily_data %>%
+  left_join(tegningfallet_rh, by = "date") %>%
+  mutate(diff_rh = mean_rh - rh_tegn,
+    year = lubridate::year(date),
+    month = lubridate::month(date))
+
+# Plot mean difference ± SE
+p.rh_comparison <- humidity_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_rh)) %>%
+  ggplot(aes(x = locality, y = diff_rh)) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "steelblue") +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.2) +
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed") +
+  labs(
+    x = "Lokalitet",
+    y = "Forskjell i relativ luftfuktighet \nfra Tegningfallet (%)") +
+  theme_minimal()
+
+p.rh_comparison
+
+#Save plot
+ggsave(
+  filename = here::here("img", "comparison_rh.png"),
+  plot = p.rh_comparison,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+# Let's do the same for dew point
+# Combined Tegningfallet reference for dew point
+tegningfallet_dp <- daily_data %>%
+  filter(locality %in% c("Tegningfallet1", "Tegningfallet2")) %>%
+  group_by(date) %>%
+  summarise(
+    dp_tegn = ifelse(
+      all(is.na(mean_dp)),
+      NA_real_,
+      mean(mean_dp, na.rm = TRUE)),
+    .groups = "drop")
+
+# Compare all localities with combined Tegningfallet
+dewpoint_comparison <- daily_data %>%
+  left_join(tegningfallet_dp, by = "date") %>%
+  mutate(
+    diff_dp = mean_dp - dp_tegn,
+    year = lubridate::year(date),
+    month = lubridate::month(date))
+
+# Plot mean difference ± SE
+p.dp_comparison <- dewpoint_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_dp)) %>%
+  ggplot(aes(x = locality, y = diff_dp)) +
+  stat_summary(fun = mean,
+    geom = "bar",
+    fill = "steelblue") +
+  stat_summary(fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.2) +
+  geom_hline(yintercept = 0,
+    linetype = "dashed") +
+  labs(x = "Lokalitet",
+    y = "Forskjell i duggpunkt fra Tegningfallet (°C)") +
+  theme_minimal()
+
+p.dp_comparison
+
+#Save plot
+ggsave(filename = here::here("img", "comparison_dp.png"),
+  plot = p.dp_comparison,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+# Let's try for light intensity
+# Combined Tegningfallet reference for light intensity
+tegningfallet_lux <- daily_data_lux %>%
+  filter(locality %in% c("Tegningfallet1", "Tegningfallet2")) %>%
+  group_by(date) %>%
+  summarise(
+    lux_tegn = ifelse(
+      all(is.na(mean_lux)),
+      NA_real_,
+      mean(mean_lux, na.rm = TRUE)),
+    .groups = "drop")
+
+# Compare all localities with combined Tegningfallet
+lux_comparison <- daily_data_lux %>%
+  left_join(tegningfallet_lux, by = "date") %>%
+  mutate(diff_lux = mean_lux - lux_tegn,
+    rel_diff_lux = (mean_lux - lux_tegn) / lux_tegn,
+    year = lubridate::year(date),
+    month = lubridate::month(date))
+
+# Keep locality order consistent
+lux_comparison$locality <- factor(
+  lux_comparison$locality,
+  levels = locality_order)
+
+# Plot mean difference ± SE
+p.lux_comparison <- lux_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_lux)) %>%
+  ggplot(aes(x = locality, y = diff_lux)) +
+  stat_summary(fun = mean,
+    geom = "bar",
+    fill = "steelblue") +
+  stat_summary(fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.2) +
+  geom_hline(yintercept = 0,
+    linetype = "dashed") +
+  labs(x = "Lokalitet",
+    y = "Forskjell i gjennomsnittlig lysintensitet \nfra Tegningfallet (lux)") +
+  theme_minimal()
+
+
+p.lux_comparison
+
+#Save plot
+ggsave(filename = here::here("img", "comparison_lux.png"),
+  plot = p.lux_comparison,
+  width = 16,
+  height = 12,
+  units = "cm")
+```
+
+### Test differences for significance
+
+These are some very simple tests, that do not really take into account any temporal autocorrelation!
+
+```{r}
+#Relative humidity
+
+# Exclude the two reference loggers
+rh_model_data <- humidity_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_rh))
+
+# Linear model
+model_rh <- lm(diff_rh ~ 0 + locality, data = rh_model_data)
+
+summary(model_rh)
+
+# Estimated differences from Tegningfallet
+emmeans(model_rh, ~ locality)
+
+# Test whether differences are significantly different from zero
+test(emmeans(model_rh, ~ locality),
+  null = 0,
+  adjust = "holm")
+
+#Dew point
+dp_model_data <- dewpoint_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_dp))
+
+# Linear model
+model_dp <- lm(diff_dp ~ 0 + locality, data = dp_model_data)
+
+summary(model_dp)
+
+# Estimated differences from Tegningfallet
+emmeans(model_dp, ~ locality)
+
+# Test whether differences are significantly different from zero
+test(emmeans(model_dp, ~ locality),
+  null = 0,
+  adjust = "holm")
+
+
+#Light intensity
+lux_model_data <- lux_comparison %>%
+  filter(!locality %in% c("Tegningfallet1", "Tegningfallet2"),
+    !is.na(diff_lux))
+
+# Linear model
+model_lux <- lm(diff_lux ~ 0 + locality, data = lux_model_data)
+
+summary(model_lux)
+
+emmeans(model_lux, ~ locality)
+test(emmeans(model_lux, ~ locality), null = 0, adjust = "holm")
+```
+
+## Multivariate, distance-based microclimate analysis
+
+We can try a multivariate, distance-based microclimate analysis, using the combined Tegningfallet reference and comparing temperature, humidity, and light intensity across localities. To be included in next version...
