@@ -193,26 +193,6 @@ i fire punkter, ett i hver himmelretning, omtrent 1 meter fra kanten av
 analyseruta. En sammenstilling av datainnsamlingen er inkludert i NINA
 Prosjektnotat 788, som er levert til Statsforvalteren i Trøndelag.
 
-<!--# Indikatortabellen i Word-utkastet var kopiert fra dragehode. Tabellen under er satt opp ut fra teksten over og variablene i datafila (Vegetasjonsanalyser_overvåking_data.xlsx), og må kontrolleres av forfatterne. Fyll inn hvor ofte tilveksten i vekstforsøket måles. -->
-
-<div id="tbl-indikatorer">
-
-Tabell 2: Indikatorer og datainnsamling for trøndertorvmose.
-
-<div class="cell-output-display">
-
-| Indikator | Variabel registrert i felt | Utvalgsenhet | Utlegging av utvalgsenhet | Antall utvalgsenheter | Frekvens for datainnsamling |
-|:---|:---|:---|:---|:---|:---|
-| Forekomst av trøndertorvmose | Forekomst i 16 småruter per fastrute | Fastrute 0,5 × 0,5 m | Subjektivt, på forekomster av trøndertorvmose | 24 fastruter (14 eksisterende og 10 nye) | Hvert femte år (2016, 2021, 2026) |
-| Dekning av trøndertorvmose | Dekning (%) i fastruta | Fastrute 0,5 × 0,5 m | Subjektivt, på forekomster av trøndertorvmose | 24 fastruter | Hvert femte år |
-| Artssammensetning | Forekomst av alle moser og karplanter i 16 småruter | Fastrute 0,5 × 0,5 m | Subjektivt, på forekomster av trøndertorvmose | 24 fastruter | Hvert femte år |
-| Torvdybde | Torvdybde (cm) i fire punkter, ett i hver himmelretning, ca. 1 m fra ruta | Fastrute | Ved hver fastrute | 24 fastruter | 2026 |
-| Tilvekst i vekstforsøk | Biomasse av trøndertorvmose | Bioreaktor | Veksthus, Ringve botaniske hage | – | Gjennom vinteren 2026/27 |
-
-</div>
-
-</div>
-
 ## 5. Dataanalyser
 
 Det er ikke gjennomført dataanalyser for trøndertorvmose i 2026. Det er
