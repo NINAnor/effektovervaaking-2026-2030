@@ -213,10 +213,6 @@ meta |>
 Skriv tekst her, og så kan du henvise til figurer slik
 (@fig-innledning), og til referanser slik [@nater_ni2025_2025].
 
-## English summary
-
-## 1. Innledning
-
 Askeglye *Collema leptaleum* er kritisk truet (CR) i Norge og er i
 Europa bare kjent fra Vestrheim og Sanden i Leikanger, Sogndal kommune.
 Rapporteringen for 2026 sammenstiller gjennomførte tiltak, kartfestede
@@ -226,12 +222,44 @@ thalliene i årets dokumentasjon. Siste fullstendige status er derfor fra
 2025, da arten ble rapportert på 103 trær og bestanden anslått til 7 726
 thalli (Roos et al. 2025).
 
+Dokumenterte bevaringstiltak omfatter ringbarking av gran og
+translokasjonsforsøk fra 2022, samt fornyede forsøk med limfesting i
+2025. I 2026 har Statsforvalteren ført oppsyn og dokumentert veltede
+vertstrær. Innkjøpt metallnetting er ikke montert. Det er meldt om
+beiting på unge askeskudd, men ikke om nye barkgnag på stående ask ved
+vinterbesøkene. Det er opplyst om 20 000 kroner til fjerning av smågran;
+gjennomføringen er ikke bekreftet. Prioriterte oppgaver i 2027 er
+kontroll av de seks translokasjonstrærne, sikring av vertstrær og
+askeforyngelse, og kartfestet oppfølging av eventuell skjøtsel.
+Litteraturen gir grunnlag for videre metodeutvikling og
+DNA-undersøkelser, men dokumenterer ikke at selvopprettholdende nye
+bestander er etablert.
+
+## English summary
+
+## 1. Innledning
+
+Askeglye er en barklevende cyanolav i *Collemataceae*. Arten er vurdert
+som CR etter kriterium D1 i Norsk rødliste for arter 2021. Den norske
+forekomsten vokser på ask *Fraxinus excelsior* i sørvendt edellauvskog
+og tidligere hagemark. Tap av vertstrær, hjortebeiting og gjengroing er
+sentrale trusler. Askeskuddsyke er en viktig belastning, men døde og
+svekkede trær kan ha flere årsaker (Haugan et al. 2021; Roos et al.
+2025; Larsen 2026).
+
+Utenfor Europa er arten kjent fra tempererte og tropiske strøk i Afrika,
+Asia, Australia og Nord- og Sør-Amerika (Haugan et al. 2021).
+
+Delprosjektet skal dokumentere tiltak og legge grunnlag for å undersøke
+virkningen på laven, vertstrærne og habitatet. Årets leveranse er en
+sammenstilling av tiltaksstatus og kunnskapsgrunnlag.
+
 ```{r fig-innledning}
-#| fig-cap: 'Figurtekst skrives her.'
+#| fig-cap: 'Askeglye *Collema leptaleum* på en askestamme ved Vestrheim. Foto: Mathias Andreasen/NINA.'
 #| out-width: '70%'
 #| code-summary: 'Kode for å vise bilde.'
 # pictures are added to the img folder
-pth <- here::here("img/MY_PICTURE.png")
+pth <- here::here("img/Picture1.jpg")
 knitr::include_graphics(pth)
 ```
 
