@@ -315,7 +315,19 @@ Status og utfordringer/påvirkninger. -->
 
 ### 3.2 Tiltak
 
-<!-- Beskrivelse av tiltak, hva, når, hvem utfører. Legg inn bilde. -->
+Ved Vestrheim er det gjennomført ringbarking av gran og translokasjon
+med netting i 2022, etterfulgt av nye forsøk med limfesting i 2025 og
+tabell 1 skiller utførte tiltak fra beredskap og planlagte aktiviteter.
+Oppfølgingen i 2026 har omfattet oppsyn og registrering av veltede
+vertstrær. Metallnetting til beitebeskyttelse er innkjøpt, men ikke
+montert. Gjennomføring av smågranrydding er ikke bekreftet, og nye
+translokasjoner er ikke utført. (korrespondanse med Tore Larsen nov.
+2026).
+
+Seks mottakertrær er kartfestet (tabell 2). Ifølge korrespondansen ble
+totalt 32 enheter limfestet i 2025: 17 på barkbiter og 15 direkte på
+bark. Antallene avviker fra rapporten fra 2025 og må avstemmes mot
+originaldokumentasjonen før resultatene kan vurderes.
 
 ## 4. Datainnsamling
 
@@ -324,10 +336,10 @@ Status og utfordringer/påvirkninger. -->
 Referer til tabellen under (@tbl-datainnsamling).
 
 ```{r tbl-datainnsamling}
-#| tbl-cap: 'Skriv tabelltekst her.'
+#| tbl-cap: 'Tiltak og oppfølging ved Vestrheim og Sanden. Kilder: Roos et al. (2025) og korrespondansen med Statsforvalteren (Larsen 2026).'
 #| code-summary: 'Kode for å vise tabell.'
 
-pth2 <- here::here("data/dummyTable_effektovervaaking.xlsx")
+pth2 <- here::here("data/Tabell1_tiltak.xlsx")
 tbl <- read_excel(pth2)
 DT::datatable(tbl)
 
