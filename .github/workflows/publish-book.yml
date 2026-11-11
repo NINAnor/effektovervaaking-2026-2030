@@ -3,6 +3,7 @@ name: Publish Quarto book
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -10,7 +11,6 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
 
       - name: Require main branch
         run: |
-          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" != "pull_request" && "$GITHUB_REF" != "refs/heads/main" ]]; then
             echo "Pages must be published from main (got $GITHUB_REF)." >&2
             exit 1
           fi
@@ -110,6 +110,7 @@ jobs:
           path: _site
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     permissions:
