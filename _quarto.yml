@@ -14,6 +14,7 @@ book:
   repo-branch: main
   chapters:
     - index.qmd
+    - Åpen grunnlendt kalkmark
     - Dragehode/Dragehode.qmd
     - Honningblom/Honningblom.qmd
     - Elvesandjeger/Elvesandjeger.qmd
