@@ -320,7 +320,7 @@ Skriptene for databehandling, figurer og populasjonsestimater ligger i [`code/`]
 
 ### 6.1 Skipstadsand
 
-På Skipstadsand viser antallet individer i overvåkingsrutene en kraftig nedgang etter 2018 (@fig-skipstadsand). I 2026 lå gjennomsnittlig antall individer i overvåkingsrutene rundt det som har vært normalt for perioden 2021–2025. Sammen med observasjonene langs transektene ga observasjonene i overvåkingsrutene grunnlag for et litt lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (802 vs. 1495 individer, @fig-populasjon), men dette var høyere enn gjennomsnittet for perioden 2019–2025 (690). Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025 til 2026 (@fig-populasjon og @fig-fertile).
+På Skipstadsand viser antallet individer i overvåkingsrutene en kraftig nedgang etter 2018 (@fig-skipstadsand). I 2026 lå gjennomsnittlig antall individer i overvåkingsrutene rundt det som har vært normalt for perioden 2021–2025. Sammen med observasjonene langs transektene ga observasjonene i overvåkingsrutene grunnlag for et litt lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495 individer, @fig-populasjon), men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759). Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025 til 2026 (@fig-populasjon og @fig-fertile).
 
 ```{r fig-skipstadsand}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2014 til 2026, Skipstadsand, i de opprinnelige rutene (venstre) og i alle ruter (høyre). Gjennomsnitt ± standardfeil.'
@@ -340,7 +340,7 @@ include_graphics("img/Skjellvik_antall.jpg")
 
 ### 6.3 Teneskjær
 
-Det gjennomsnittlige antallet individer i overvåkingsrutene på Teneskjær viser en kraftig nedgang i overvåkingsperioden, men har vært stabilt, med tendens til økning, siden 2019 (@fig-teneskjaer). Bestandsestimatet for 2026 er 706 individer, noe lavere enn i 2025 (805), men høyere enn gjennomsnittet for 2019–2025 (403) (@fig-populasjon). Det er en liten andel av individene på Teneskjær som er fertile (@fig-fertile).
+Det gjennomsnittlige antallet individer i overvåkingsrutene på Teneskjær viser en kraftig nedgang i overvåkingsperioden, men har vært stabilt, med tendens til økning, siden 2019 (@fig-teneskjaer). Bestandsestimatet for 2026 er 706 individer, noe lavere enn i 2025 (805), men høyere enn gjennomsnittet for 2019–2025 (416) (@fig-populasjon). Det er en liten andel av individene på Teneskjær som er fertile (@fig-fertile).
 
 ```{r fig-teneskjaer}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2014 til 2026, Teneskjær, i de opprinnelige rutene (venstre) og i alle ruter (høyre). Gjennomsnitt ± standardfeil.'

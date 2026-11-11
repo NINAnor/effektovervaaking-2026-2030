@@ -345,9 +345,9 @@ nedgang etter 2018
 gjennomsnittlig antall individer i overvåkingsrutene rundt det som har
 vært normalt for perioden 2021–2025. Sammen med observasjonene langs
 transektene ga observasjonene i overvåkingsrutene grunnlag for et litt
-lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (802 vs. 1495
+lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495
 individer, <a href="#fig-populasjon" class="quarto-xref">Figur 5</a>),
-men dette var høyere enn gjennomsnittet for perioden 2019–2025 (690).
+men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759).
 Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025
 til 2026 (<a href="#fig-populasjon" class="quarto-xref">Figur 5</a> og
 <a href="#fig-fertile" class="quarto-xref">Figur 6</a>).
@@ -392,7 +392,7 @@ viser en kraftig nedgang i overvåkingsperioden, men har vært stabilt,
 med tendens til økning, siden 2019
 (<a href="#fig-teneskjaer" class="quarto-xref">Figur 3</a>).
 Bestandsestimatet for 2026 er 706 individer, noe lavere enn i 2025
-(805), men høyere enn gjennomsnittet for 2019–2025 (403)
+(805), men høyere enn gjennomsnittet for 2019–2025 (416)
 (<a href="#fig-populasjon" class="quarto-xref">Figur 5</a>). Det er en
 liten andel av individene på Teneskjær som er fertile
 (<a href="#fig-fertile" class="quarto-xref">Figur 6</a>).
@@ -455,18 +455,18 @@ data/Herminium_pop_2026.csv.
 
 | År | Skipstadsand | Skjellvik | Teneskjær | Filletassen |
 |:---|---:|---:|---:|---:|
-| 2014 | 1 253 (681–9 726) | 9 427 (4 770–15 954) | 5 820 (363–15 278) |  |
-| 2015 | 2 086 (1 026–16 223) | 13 951 (6 450–24 983) | 3 719 (263–9 090) |  |
-| 2016 | 1 695 (865–13 071) | 13 146 (6 843–21 589) | 1 767 (195–4 417) |  |
-| 2017 | 2 118 (946–16 411) | 19 965 (9 266–36 958) | 1 565 (139–3 832) |  |
-| 2019 | 751 (371–5 140) | 8 848 (4 686–14 620) | 323 (98–633) |  |
-| 2020 | 937 (502–7 042) | 13 482 (7 095–22 322) | 140 (53–449) | 1 566 (544–2 938) |
-| 2021 | 488 (215–5 451) | 10 120 (5 219–16 835) | 323 (98–603) | 1 555 (507–3 132) |
-| 2022 | 613 (270–6 626) | 11 352 (5 487–19 312) | 286 (87–613) | 1 271 (395–2 679) |
-| 2023 | 457 (226–5 501) | 34 720 (17 513–58 610) | 397 (63–1 108) | 1 990 (708–3 733) |
-| 2024 | 570 (285–6 328) | 22 020 (10 054–38 752) | 638 (173–2 374) | 2 443 (913–4 456) |
-| 2025 | 1 495 (230–5 933) | 41 784 (16 787–78 041) | 805 (392–11 302) | 1 599 (787–2 649) |
-| 2026 | 802 (164–2 273) | 57 072 (21 525–115 334) | 706 (240–8 268) | 3 217 (1 303–6 088) |
+| 2014 | 1 253 (698–9 785) | 9 427 (4 645–15 706) | 5 820 (366–15 986) |  |
+| 2015 | 2 086 (1 009–16 367) | 13 951 (6 142–24 737) | 3 719 (270–9 824) |  |
+| 2016 | 1 695 (875–13 008) | 13 146 (6 539–21 263) | 1 767 (197–4 893) |  |
+| 2017 | 2 118 (949–15 997) | 19 965 (9 010–36 099) | 1 565 (149–4 182) |  |
+| 2019 | 751 (371–5 480) | 8 848 (4 360–14 841) | 323 (98–650) |  |
+| 2020 | 937 (498–7 266) | 13 482 (6 821–22 323) | 140 (53–460) | 1 566 (570–2 949) |
+| 2021 | 488 (216–4 582) | 10 120 (4 782–17 162) | 323 (98–627) | 1 555 (511–3 081) |
+| 2022 | 613 (275–5 715) | 11 352 (5 288–19 446) | 286 (87–675) | 1 271 (405–2 613) |
+| 2023 | 457 (225–4 443) | 34 720 (16 526–60 887) | 397 (72–1 143) | 1 990 (754–3 812) |
+| 2024 | 570 (288–5 915) | 22 020 (9 412–38 934) | 638 (188–2 123) | 2 443 (1 000–4 444) |
+| 2025 | 1 495 (271–6 115) | 41 784 (14 535–80 054) | 805 (362–10 645) | 1 599 (760–2 688) |
+| 2026 | 783 (169–1 999) | 57 072 (19 808–113 633) | 706 (240–8 861) | 3 217 (1 296–5 875) |
 
 </div>
 
