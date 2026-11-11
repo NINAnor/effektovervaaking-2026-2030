@@ -216,7 +216,13 @@ Datainnsamlingen vil gjøres ved telling av blomstrende skudd og oppfølging (st
 
 ## English summary
 
-<!--# Skrives av prosjektledergruppa. -->
+<!--# Utkast. Skal kontrolleres av prosjektledergruppa mot den endelige norske oppsummeringen. -->
+
+The black vanilla orchid (*Nigritella nigra*) is associated with the traditional cultural landscape. It is found only in Norway and Sweden, and is listed as endangered (EN). The project aims to halt its decline and to strengthen populations at selected sites through management. The effects of management (mowing and grazing) on population size and population structure will be documented. Without management we expect local extinction at sites that depend on it, with the species surviving only in isolated populations in the mountains. Because the number of shoots and flowering shoots varies greatly between years, monitoring must take a long-term perspective to give reliable answers about population trends.
+
+The project is based on the sites Svanvollen and Sølendet. In addition, we propose following the species in permanent plots in the Kvikne mountains (Tynset municipality) as a reference, and at several management-dependent sites in Oppdal. As management, we propose mowing and/or grazing, mainly late in the season after flowering.
+
+Data will be collected by counting flowering shoots and by following individual plants (status (flowering/vegetative) and size) in permanent 1 × 1 m plots. The plants are mapped to the nearest centimetre and marked. So far, the data have only been summarised and analysed descriptively, and a master's thesis from Sølendet was completed in 2026. The results so far suggest that grazing is the most important measure. Management has so far increased the number of black vanilla orchids at the Oppdal sites, but not at Svanvollen or Sølendet.
 
 ## 1. Innledning
 
