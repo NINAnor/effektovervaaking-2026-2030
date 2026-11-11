@@ -79,11 +79,62 @@ Harald Bratli, Ida M. Mienna
 
 ## Oppsummering
 
-<!--# Standardisert oppsummering, lik den som leveres i hovedrapporten. -->
+Rød skogfrue (*Cephalanthera rubra*) er en sterkt truet (EN) orkidé som
+vokser i kalkrik, relativt lysåpen skog på Sørøstlandet. Med to nye funn
+i 2026 er det kjent 58 sikre forekomster. Trusler er blant annet hogst,
+utbygging, slitasje, gjengroing med busker, trær og einstape, og beiting
+av hjortevilt. I flere lokaliteter er det gjennomført skjøtsel, som
+rydding av einstape, einer og busker, tynning og ringbarking av trær, og
+nettingbur mot beiting. Effekten av tiltakene er foreløpig ikke
+undersøkt.
+
+Overvåkingen av effekter av tiltak er i planleggingsfasen. I 2026 ble
+det samlet informasjon om tiltak fra Statsforvalteren, floravoktere og
+årsrapporter fra handlingsplanen, og det ble gjennomført en feltbefaring
+på Bjørkedokk. Basisovervåkingen i seks lokaliteter omfattet 526 merkede
+skudd i 2026, hvorav 173 var overjordiske (56 fertile) og 353 i dvale.
+Feltbefaringen viste stor variasjon i skogstruktur og lys innen og
+mellom lokalitetene. Overvåkingen bør derfor knyttes til enkeltskudd,
+med registrering av vegetasjon og tiltak i faste ruter rundt tilfeldig
+valgte skudd. En gjennomgang av fjernmålingsdata viser at tresjiktet kan
+følges over tid med laserdata, mens busk- og feltsjikt og einstape må
+registreres i felt. Skuddene må stedfestes med høypresisjons-GPS for å
+kunne knyttes til fjernmålingsdata.
+
+Vi anbefaler at de foreslåtte indikatorene testes i 2027 i lokaliteter
+med og uten tiltak, blant annet Bjørkedokk, Eikfjellet og Ødegård, og at
+en endelig overvåkingsmetodikk settes i gang fra 2028.
 
 ## English summary
 
-<!--# Skrives av prosjektledergruppa. -->
+<!--# Utkast. Skal kontrolleres av prosjektledergruppa mot den endelige norske oppsummeringen. -->
+
+The red helleborine (*Cephalanthera rubra*) is an endangered (EN) orchid
+that grows in calcareous, fairly open forest in south-eastern Norway.
+With two new finds in 2026, 58 confirmed occurrences are known. Threats
+include logging, development, trampling, encroachment by shrubs, trees
+and bracken, and browsing by deer. Management has been carried out at
+several sites, such as clearing bracken, juniper and shrubs, thinning
+and ring-barking trees, and wire cages against browsing. The effects of
+these measures have not yet been studied.
+
+Monitoring of the effects of management is still being planned. In 2026,
+information on measures was collected from the County Governors,
+volunteer plant guardians and the annual reports of the action plan, and
+a field visit was made to Bjørkedokk. The basic monitoring at six sites
+covered 526 marked shoots in 2026, of which 173 were above ground (56
+flowering) and 353 dormant. The field visit showed large variation in
+forest structure and light within and between sites. Monitoring should
+therefore be based on individual shoots, with vegetation and measures
+recorded in fixed plots around randomly selected shoots. A review of
+remote-sensing data shows that the tree layer can be followed over time
+with lidar, whereas the shrub and field layers and bracken must be
+recorded in the field. The shoots must be positioned with high-precision
+GPS to be linked to remote-sensing data.
+
+We recommend testing the proposed indicators in 2027 at sites with and
+without management, including Bjørkedokk, Eikfjellet and Ødegård, and
+starting a final monitoring method from 2028.
 
 ## 1. Innledning
 
@@ -92,34 +143,7 @@ sterkt truet (EN) på rødlista for arter 2021 (Solstad mfl. 2021). Arten
 ble utpekt som prioritert art med funksjonsområde i 2011, og det er
 utarbeidet handlingsplan for arten (Direktoratet for naturforvaltning
 2006). Den har en sørøstlig utbredelse i Norge, der den forekommer i
-lavlandet i kalkrik, oftest relativt lysåpen skogsmark. Den var kjent
-fra 69 lokaliteter i 2025 (Hanssen 2026). I løpet av sommeren 2026 ble
-det funnet to nye lokaliteter, Storøya i Hole kommune og Lårdalstigen i
-Tokke kommune. Sistnevnte lokalitet ligger isolert fra de øvrige, er den
-eneste som er kjent fra indre Telemark, og utvider artens utbredelse
-langt mot vest. Artens kjerneområde ligger i Eiker-Drammen-området i
-Buskerud. Den eneste intakte forekomsten på østsiden av Oslofjorden er
-på en skjellsandbanke i Aremark. Utbredelsen strekker seg fra Gjerstad
-kommune i sør til Jevnaker kommune i nord. Høyeste forekomst er på ca.
-400 m o.h. i Modum. Hanssen (2026) oppgir 56 sikre forekomster, tre som
-er usikre og ti som trolig er utgått. Med de to som ble funnet i 2026,
-er det totale antallet sikre forekomster 58. De fleste av de sikre
-forekomstene har funksjonsområder, som i [forskrift om rød skogfrue
-(*Cephalanthera rubra*) som prioritert
-art](https://lovdata.no/dokument/SF/forskrift/2011-05-20-523) er
-definert som artens leveområder.
-
-De fleste lokalitetene ligger på kalkrike bergarter i Oslofeltet.
-Vanligste naturtyper er TB01-M005-06 kalk-bærlyngskog, TB01-M005-05
-bærlyng-lågurtskog og TB01-M005-09 kalklyngskog etter Natur i Norge 3.0
-(Halvorsen mfl. 2023). Tresjiktet domineres vanligvis av furu, men det
-er ofte innslag av gran, eik og andre løvtrær. Busksjikt med einer,
-rose-arter og enkelte andre busker og små løvtrær kan forekomme.
-Feltsjiktet er oftest glissent, men er tett i enkelte forekomster.
-Bunnsjiktet er oftest sparsomt eller manglende, og det kan være en del
-naken jord, særlig i skråninger med ustabilt substrat. Både tre-, busk-
-og feltsjikt varierer lokalt i og mellom lokalitetene fra temmelig tett
-til glissent eller nesten fraværende i noen tilfeller.
+lavlandet i kalkrik, oftest relativt lysåpen skogsmark (kap. 3.1).
 
 Trusler mot rød skogfrue er blant annet beskrevet i handlingsplanen for
 arten (Direktoratet for naturforvaltning 2006). De omfatter tap av
@@ -146,18 +170,83 @@ Figur 1: Blomstrende skudd av rød skogfrue i Bjørkedokk.
 Arten opptrer klumpvis i små bestander eller som enkeltindivider i
 lokalitetene. Disse bestandene dekker oftest små arealer, bare noen få
 m², og selv innen disse arealene kan dekningen av tre-, busk- og
-feltsjikt variere. I 23 av de sikre lokalitetene er det registrert
-maksimum seks skudd, og færre enn det er heller ikke uvanlig
-(<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 4</a>). Arten har
-variabel blomstring mellom år og kan også ha flere års underjordisk
-dvaleperiode. I små lokaliteter kan den derfor tilsynelatende være borte
-i flere år på rad, for så å sette overjordsskudd. Arten spres vegetativt
-med jordstengel, og det reelle genetiske individantallet per lokalitet
-er trolig lavere enn antallet skudd. Den mest individrike forekomsten er
-Bjørkedokk, der 106 skudd har blitt registrert ett år, men oftest er det
-færre, og skuddene er spredt i mange delpopulasjoner over et stort
-område. Ellers har lokalitetene Frognøya, Solbergfjell, Hamrefjell,
-Kirkeåsen, Heggenåsen N og Tollåsen relativt mange skudd.
+feltsjikt variere. Arten har variabel blomstring mellom år og kan også
+ha flere års underjordisk dvaleperiode. I små lokaliteter kan den derfor
+tilsynelatende være borte i flere år på rad, for så å sette
+overjordsskudd. Arten spres vegetativt med jordstengel, og det reelle
+genetiske individantallet per lokalitet er trolig lavere enn antallet
+skudd.
+
+## 2. Formål med delprosjektet
+
+### 2.1 Målsetning med tiltakene
+
+Det foretas ulike skjøtselstiltak i lokaliteter med rød skogfrue.
+Hensikten er å bedre voksestedsforholdene for arten slik at
+populasjonsstørrelsen øker. Tiltakene skal redusere utskygging av rød
+skogfrue ved å redusere dekningen av einstape, einer og andre busker. I
+noen lokaliteter fjernes også tresjikt. Beiting fra hjortevilt på rød
+skogfrue reduseres ved å plassere nettingbur over planter.
+
+### 2.2 Formål med overvåking
+
+Overordnet mål for overvåkingen er å undersøke om tiltakene har effekt
+på artens populasjonsstørrelse og romlige utstrekning på
+tiltakslokalitetene. Videre er målet å gi økt blomstring og
+fruktsetting. Konkret innebærer det å undersøke om fjerning av tett
+vegetasjon på voksestedet øker antallet skudd, og om antallet
+blomstrende skudd og kapselproduksjonen øker.
+
+### 2.3 Forventninger
+
+Rød skogfrue er en langlevd art. Den har også variabel opptreden i
+lokalitetene mellom år, noen ganger fertil, andre ganger bare vegetativ
+eller i underjordisk dvale. På kort sikt antar vi derfor at det vil være
+relativt små endringer i populasjonsstørrelse, og at disse vil være
+vanskelige å isolere fra artens naturlige dynamikk. På lengre sikt
+forventer vi at det vil være mulig å observere endringer i antall
+overjordsskudd, og at flere av disse vil være fertile.
+
+## 3. Overvåkingslokalitetene
+
+### 3.1 Beskrivelse av lokalitetene
+
+Rød skogfrue var kjent fra 69 lokaliteter i 2025 (Hanssen 2026). I løpet
+av sommeren 2026 ble det funnet to nye lokaliteter, Storøya i Hole
+kommune og Lårdalstigen i Tokke kommune. Sistnevnte lokalitet ligger
+isolert fra de øvrige, er den eneste som er kjent fra indre Telemark, og
+utvider artens utbredelse langt mot vest. Artens kjerneområde ligger i
+Eiker-Drammen-området i Buskerud. Den eneste intakte forekomsten på
+østsiden av Oslofjorden er på en skjellsandbanke i Aremark. Utbredelsen
+strekker seg fra Gjerstad kommune i sør til Jevnaker kommune i nord.
+Høyeste forekomst er på ca. 400 m o.h. i Modum. Hanssen (2026) oppgir 56
+sikre forekomster, tre som er usikre og ti som trolig er utgått. Med de
+to som ble funnet i 2026, er det totale antallet sikre forekomster 58.
+De fleste av de sikre forekomstene har funksjonsområder, som i
+[forskrift om rød skogfrue (*Cephalanthera rubra*) som prioritert
+art](https://lovdata.no/dokument/SF/forskrift/2011-05-20-523) er
+definert som artens leveområder.
+
+De fleste lokalitetene ligger på kalkrike bergarter i Oslofeltet.
+Vanligste naturtyper er TB01-M005-06 kalk-bærlyngskog, TB01-M005-05
+bærlyng-lågurtskog og TB01-M005-09 kalklyngskog etter Natur i Norge 3.0
+(Halvorsen mfl. 2023). Tresjiktet domineres vanligvis av furu, men det
+er ofte innslag av gran, eik og andre løvtrær. Busksjikt med einer,
+rose-arter og enkelte andre busker og små løvtrær kan forekomme.
+Feltsjiktet er oftest glissent, men er tett i enkelte forekomster.
+Bunnsjiktet er oftest sparsomt eller manglende, og det kan være en del
+naken jord, særlig i skråninger med ustabilt substrat. Både tre-, busk-
+og feltsjikt varierer lokalt i og mellom lokalitetene fra temmelig tett
+til glissent eller nesten fraværende i noen tilfeller.
+
+I 23 av de sikre lokalitetene er det registrert maksimum seks skudd, og
+færre enn det er heller ikke uvanlig
+(<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 4</a>). Den mest
+individrike forekomsten er Bjørkedokk, der 106 skudd har blitt
+registrert ett år, men oftest er det færre, og skuddene er spredt i
+mange delpopulasjoner over et stort område. Ellers har lokalitetene
+Frognøya, Solbergfjell, Hamrefjell, Kirkeåsen, Heggenåsen N og Tollåsen
+relativt mange skudd.
 
 Det foregår detaljert basisovervåking på individnivå i seks av
 lokalitetene. Overvåkingen på disse lokalitetene ble startet i 2008
@@ -211,42 +300,6 @@ lokaliteter enkelte år
 (<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 4</a>). Detaljer
 om skjøtselstiltakene, og om de omfatter hele eller deler av
 lokaliteten, er ikke oppgitt.
-
-## 2. Formål med delprosjektet
-
-### 2.1 Målsetning med tiltakene
-
-Det foretas ulike skjøtselstiltak i lokaliteter med rød skogfrue.
-Hensikten er å bedre voksestedsforholdene for arten slik at
-populasjonsstørrelsen øker. Tiltakene skal redusere utskygging av rød
-skogfrue ved å redusere dekningen av einstape, einer og andre busker. I
-noen lokaliteter fjernes også tresjikt. Beiting fra hjortevilt på rød
-skogfrue reduseres ved å plassere nettingbur over planter.
-
-### 2.2 Formål med overvåking
-
-Overordnet mål for overvåkingen er å undersøke om tiltakene har effekt
-på artens populasjonsstørrelse og romlige utstrekning på
-tiltakslokalitetene. Videre er målet å gi økt blomstring og
-fruktsetting. Konkret innebærer det å undersøke om fjerning av tett
-vegetasjon på voksestedet øker antallet skudd, og om antallet
-blomstrende skudd og kapselproduksjonen øker.
-
-### 2.3 Forventninger
-
-Rød skogfrue er en langlevd art. Den har også variabel opptreden i
-lokalitetene mellom år, noen ganger fertil, andre ganger bare vegetativ
-eller i underjordisk dvale. På kort sikt antar vi derfor at det vil være
-relativt små endringer i populasjonsstørrelse, og at disse vil være
-vanskelige å isolere fra artens naturlige dynamikk. På lengre sikt
-forventer vi at det vil være mulig å observere endringer i antall
-overjordsskudd, og at flere av disse vil være fertile.
-
-## 3. Overvåkingslokalitetene
-
-### 3.1 Beskrivelse av lokalitetene
-
-<!--# Ingen egen tekst i utkastet. Lokalitetene og naturtypene er beskrevet i kap. 1, og et utvalg sikre forekomster er listet i tabellen i kap. 6. -->
 
 ### 3.2 Tiltak
 
@@ -482,16 +535,10 @@ skala. Dette danner utgangspunkt for forslag til uttesting i 2027.
 
 ### 6.1 Lokaliteter og tiltak
 
-Det er etablert kontakt med Karoline Bredland, Statsforvalteren i
-Østfold, Buskerud, Oslo og Akershus, og Trond Eirik Silsand hos
-Statsforvalteren i Vestfold og Telemark, det vil si i de delene av
-landet der arten forekommer. Informasjon er også innhentet fra
-floravoktere i Kragerø, Kongsberg, Modum, Jevnaker og flere lokaliteter
-i Eiker-Drammen-området. Videre er årsrapporter for årene 2006 til 2025
-fra handlingsplanen for rød skogfrue (bl.a. Hanssen 2026) gjennomgått.
-Informasjonen er oppsummert i
-<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 4</a> sammen med
-egne observasjoner i lokalitetene fra basisovervåkingen.
+<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 4</a> oppsummerer
+opplysningene fra Statsforvalteren, floravokterne og årsrapportene fra
+handlingsplanen for årene 2006–2025 (se kap. 3.2), sammen med egne
+observasjoner fra basisovervåkingen.
 
 <div id="tbl-lokaliteter">
 
