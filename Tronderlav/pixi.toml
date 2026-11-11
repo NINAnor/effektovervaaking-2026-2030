@@ -1,0 +1,42 @@
+[workspace]
+name = "effektovervaaking-tronderlav"
+description = "R + Quarto environment for the Trønderlav report and analyses"
+channels = ["conda-forge"]
+platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
+
+[dependencies]
+r-base = "4.4.*"
+quarto = "*"
+# ecRxiv template (_common.R)
+r-here = "*"
+r-knitr = "*"
+r-rmarkdown = "*"
+r-kableextra = "*"
+r-yaml = "*"
+r-tibble = "*"
+r-conflicted = "*"
+r-dplyr = ">=1.2"
+r-rstudioapi = "*"
+r-remotes = "*"
+# data cleaning, climate and thallus growth analyses (code/01–03)
+r-tidyverse = "*"
+r-readxl = "*"
+r-vroom = "*"
+r-janitor = "*"
+r-skimr = "*"
+r-gt = "*"
+r-ggbeeswarm = "*"
+r-lme4 = "*"
+r-lmertest = "*"
+r-emmeans = "*"
+r-performance = "*"
+r-mumin = "*"
+"r-broom.mixed" = "*"
+r-pbkrtest = "*"
+r-ggeffects = "*"
+r-ragg = "*"
+
+[tasks]
+# R packages that are only on GitHub (anybadger, used by _common.R) are installed into the pixi environment on first use
+install-github-deps = "Rscript code/install_github_deps.R"
+render = { cmd = "quarto render Tronderlav.qmd", depends-on = ["install-github-deps"] }
