@@ -299,6 +299,15 @@ vise at forsøket bidrar til en selvopprettholdende forekomst.
 
 ### 3.1 Beskrivelse av lokalitetene
 
+Vestrheim og Sanden ligger i den sørvendte lia ved Sognefjorden i
+Leikanger, Sogndal kommune, Vestland, på Vestlandet i Norge. De omtales
+her som to delområder innen det kjente norske forekomstområdet. I 2025
+ble tilstand vurdert for 91 trær: 47,3 % var registrert som døende, døde
+eller falt, 59,4 % sto under gjengroing eller i skygge, og 56 % hadde
+hjortegnag. Alle 91 var feltvurdert som angrepet av askeskuddsyke. Dette
+er visuelle registreringer og gir ikke en sikker årsaksdiagnose for
+hvert tre (Roos et al. 2025).
+
 ```{=html}
 <!-- Hvor, kart, plassering av lokalitetene i Norge.
 Status og utfordringer/påvirkninger. -->
