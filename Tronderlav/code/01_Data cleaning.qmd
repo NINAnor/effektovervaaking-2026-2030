@@ -1,0 +1,305 @@
+---
+title: "Climate analyses for localities with Erioderma pedicellatum"
+format: html
+editor: visual
+---
+
+## About
+
+This script analyses climate logger data collected at several sites in Innlandet, Norway and and one site in Trønderlag, Norway. The aim of the analyses is to compare microclimate at the sites, and determine which environmental variables are most important for growth of translocated thalli of *Erioderma pedicellatum*.
+
+## Language settings
+
+```{r}
+Sys.setlocale(locale='no_NB.utf8')
+```
+
+## Required packages
+
+```{r}
+library(tidyverse)
+library(vroom)
+library(janitor)
+library(lubridate)
+library(tidyr) 
+library(knitr)
+library(skimr)
+library(gt)
+library(readxl)
+library(lme4)
+library(lmerTest)
+library(emmeans)
+library(performance)
+library(MuMIn)
+library(broom.mixed)
+library(ggbeeswarm)
+library(here)
+library(ggeffects)
+```
+
+## Loading and cleaning climate data
+
+### Loading climate data
+
+There are many individual datasets to load here. Each logger has a file name with the logger number and locality name. We can use this to combine all the data into one big dataset. We will use this dataset for analyses.
+
+```{r}
+
+data_folder <- here::here("Data", "Raw_climate_data")
+
+# 1. List all CSV files
+files <- list.files(path = data_folder, pattern = "\\.csv$", full.names = TRUE)
+
+# 2. Parse filename info function
+parse_filename <- function(filename) {
+  base <- basename(filename) %>% str_remove("\\.csv$")
+  parts <- str_split(base, " ")[[1]]
+  logger_locality <- parts[1]
+  date_str <- parts[2]
+  
+  logger_locality_parts <- str_split(logger_locality, "_")[[1]]
+  logger <- logger_locality_parts[1]
+  if (length(logger_locality_parts) > 2) {
+    type <- logger_locality_parts[length(logger_locality_parts)]
+    locality <- paste(logger_locality_parts[2:(length(logger_locality_parts)-1)], collapse = "_")
+  } else {
+    type <- NA_character_
+    locality <- logger_locality_parts[2]
+  }
+  
+  date <- as.Date(str_replace_all(date_str, "_", "-"))
+  
+  tibble(filename = filename,
+         logger = logger,
+         locality = locality,
+         date = date,
+         type = type)
+}
+
+# 3. Create file info table
+file_info <- map_dfr(files, parse_filename)
+
+# 4. Read and clean each file
+read_clean_file <- function(filepath) {
+  # --- Detect delimiter automatically ---
+  first_line <- readLines(filepath, n = 1)
+  if (grepl(";", first_line) && !grepl(",", first_line)) {
+    delim <- ";"
+  } else if (grepl(",", first_line) && !grepl(";", first_line)) {
+    delim <- ","
+  } else {
+    # If both or neither are found, try comma first
+    delim <- ","
+  }
+  
+  # --- Read file using detected delimiter ---
+  df <- vroom(filepath, delim = delim, show_col_types = FALSE)
+  
+  # Drop first 5 rows to remove sensor setup influence
+  df <- df %>% slice(-1:-5)
+  
+  # --- Parse timestamp (supports multiple date formats) ---
+  df <- df %>%
+    mutate(
+      # Replace '.' with '/' to normalize both formats
+      datetime_cet_cest = str_replace_all(datetime_cet_cest, "\\.", "/"),
+      
+      # Try multiple timestamp orders
+      timestamp = suppressWarnings(
+        parse_date_time(
+          datetime_cet_cest,
+          orders = c("mdy HMS", "dmy HMS", "mdy HM", "dmy HM"),
+          tz = "CET"
+        )
+      )
+    )
+  
+  # Warn if timestamp parsing fails
+  n_failed <- sum(is.na(df$timestamp))
+  if (n_failed > 0) {
+    warning(sprintf(
+      "Some timestamps failed to parse in file %s: %d rows",
+      basename(filepath), n_failed
+    ))
+  }
+  
+  # Drop original datetime column
+  df <- df %>% select(-datetime_cet_cest)
+  
+  return(df)
+}
+# 5. Read all data and combine
+all_data <- file_info %>%
+  mutate(data = map(filename, read_clean_file)) %>%
+  unnest(data)
+
+# 6. Add logger/locality info to combined data
+all_data <- all_data %>%
+  left_join(file_info %>% select(filename, logger, locality))
+
+# 7. Add type = "temp" for all data collected with the standard sensor ("lux" is already assign for the light sensors)
+
+all_data <- all_data %>% 
+  mutate(type = replace_na(type, "temp"))
+
+```
+
+### Explore and tidy climate data
+
+```{r}
+
+glimpse(all_data)
+summary(all_data)
+
+#Create a summary for each numeric column. Let's look at min and max values, to see if there are some unrealistic values. And let's split it up per locality, so that it is easier to spot where the error comes from. 
+
+all_data %>%
+  filter(type == "temp") %>% #Change to "lux" to see the light loggers
+  group_by(locality) %>% 
+  summarise(across(where(is.numeric),
+                   list(min = ~min(., na.rm = TRUE),
+                        max = ~max(., na.rm = TRUE),
+                        mean = ~mean(., na.rm = TRUE),
+                        median = ~median(., na.rm = TRUE),
+                        missing = ~sum(is.na(.))))) %>%
+  pivot_longer(
+    cols = -locality,
+    names_to = c("variable", "stat"),
+    names_pattern = "^(.*)_(min|max|mean|median|missing)$"
+  ) %>%
+  pivot_wider(
+    names_from = stat,
+    values_from = value
+  ) %>%
+  arrange(variable) %>%
+  knitr::kable(caption = "Summary Statistics for Numeric Columns")
+
+#Seems there are some unrealistic negative dewpoint temperatures at Tegningfallet2 
+#An RH of 0% is also not realistic, this is also at Tegningfallet2
+#Lux values go up to ca. 82.000 which is fairly realistic
+#Max and min temps look OK
+
+#Let's have a closer look at Tegningfallet2
+
+# Plot time series of dew point temperature
+all_data %>% 
+  filter(type == "temp") %>% 
+  filter(locality == "Tegningfallet2") %>% 
+ggplot(aes(x = timestamp, y = dew_point_C)) +
+  geom_line(color = "steelblue") +
+  labs(x = "Dato",
+    y = "Temperatur (°C)"
+  ) +
+  theme_minimal()
+
+all_data %>% 
+  filter(type == "temp") %>% 
+  filter(locality == "Tegningfallet2") %>% 
+ggplot(aes(x = timestamp, y = rh_percent)) +
+  geom_line(color = "steelblue") +
+  labs(x = "Dato",
+    y = "Relative humidity %"
+  ) +
+  theme_minimal()
+
+#Let's find the specific rows
+
+df_faulty <- all_data %>%
+  filter(locality == "Tegningfallet2") %>% 
+  filter(dew_point_C == -273 | rh_percent == 0)
+
+#Both errors coinide, and we probably can't trust the temperature readings. So, when Tdew = -273, we want to replace the values for Tdew, Temp, and RH with "NA"
+
+
+all_data <- all_data %>% 
+  mutate(
+    temp_C = if_else(dew_point_C == -273, NA, temp_C),
+    dew_point_C = if_else(dew_point_C == -273, NA, dew_point_C),
+    rh_percent = if_else(dew_point_C == -273, NA, rh_percent)
+  )
+
+#Add year, day and month as variables
+all_data <- all_data %>% 
+  mutate(year = year(timestamp),
+         month = month(timestamp), 
+         day = day(timestamp))
+
+
+#Let's check some of the Trøndelag data
+
+all_data %>% 
+  filter(type == "temp") %>% 
+  filter(locality == "Trøndelag") %>% 
+ggplot(aes(x = timestamp, y = dew_point_C)) +
+  geom_line(color = "steelblue") +
+  labs(x = "Dato",
+    y = "Temperatur (°C)"
+  ) +
+  theme_minimal()
+
+
+
+```
+
+### Calculate absolute humidity
+
+```{r}
+#from: https://carnotcycle.wordpress.com/2012/08/04/how-to-convert-relative-humidity-to-absolute-humidity/
+
+#Calculate absolute humidy in g/m3 of water vapor
+
+all_data <- all_data %>% 
+    mutate(humidity = (6.112 * exp((17.67 * temp_C) / (temp_C + 243.5)) * rh_percent * 2.1674) / (273.15 + temp_C))
+
+```
+
+### Aggregate data to daily means and variability (max - min)
+
+```{r}
+daily_data <- all_data %>%
+  filter(type == "temp") %>% 
+  mutate(date = as_date(timestamp)) %>%
+  group_by(locality, date) %>%
+  summarise(
+    mean_temp_C = mean(temp_C, na.rm = TRUE),
+    mean_ah = mean(humidity, na.rm = TRUE), 
+    mean_dp = mean(dew_point_C, na.rm = TRUE), 
+    mean_rh = mean(rh_percent, na.rm = TRUE), 
+    range_temp_C = max(temp_C, na.rm = TRUE) - min(temp_C, na.rm = TRUE),
+    range_ah = max(humidity, na.rm = TRUE) - min(humidity, na.rm = TRUE),
+    range_dp = max(dew_point_C, na.rm = TRUE) - min(dew_point_C, na.rm = TRUE),
+    range_rh = max(rh_percent, na.rm = TRUE) - min(rh_percent, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(year = year(date)) %>% 
+  ungroup()
+
+
+daily_data_lux <- all_data %>%
+  filter(type == "lux") %>% 
+  mutate(date = as_date(timestamp)) %>%
+  group_by(locality, date) %>%
+  summarise(
+    mean_lux = mean(light_lux, na.rm = TRUE),
+    max_lux = max(light_lux), 
+    range_lux = max(light_lux, na.rm = TRUE) - min(light_lux, na.rm = TRUE),
+     .groups = "drop"
+  ) %>%
+  ungroup() %>% 
+  mutate(year = year(date)) %>% 
+  filter(range_lux >0)#remove two days with no variation in lux
+```
+
+### Export the daily climate data
+
+```{r}
+readr::write_csv(
+  daily_data,
+  here::here("Data", "daily_data.csv")
+)
+
+readr::write_csv(
+  daily_data_lux,
+  here::here("Data", "daily_data_lux.csv")
+)
+```
