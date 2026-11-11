@@ -31,7 +31,7 @@ library(ggeffects)
 ### Loading ph and conductivity data
 
 ```{r}
-ph_data <- readxl::read_excel(here::here("Data", "ph data.xlsx"))  
+ph_data <- readxl::read_excel(here::here("data", "ph data.xlsx"))  
 ph_data <- ph_data %>%    
   mutate(locality = factor(locality),
          net_id = factor(net_id),
@@ -41,16 +41,16 @@ ph_data <- ph_data %>%
 ### Loading thallus growth data
 
 ```{r}
-thalli_data <- readxl::read_excel(here::here("Data", "Area_lichens_2021_2022_2023_2024_2025_2026.xlsx"))
+thalli_data <- readxl::read_excel(here::here("data", "Area_lichens_2021_2022_2023_2024_2025_2026.xlsx"))
 ```
 
 ### Import climate data
 
 ```{r}
 
-daily_data <- readr::read_csv(here::here("Data", "daily_data.csv"))
+daily_data <- readr::read_csv(here::here("data", "daily_data.csv"))
 
-daily_data_lux <- readr::read_csv(here::here("Data", "daily_data_lux.csv"))
+daily_data_lux <- readr::read_csv(here::here("data", "daily_data_lux.csv"))
 
 ```
 
@@ -313,7 +313,7 @@ p.growth <- ggplot(loc_slopes, aes(x = locality, y = growth_pct, color = localit
 p.growth
 
 #Save this plot
-ggsave(filename = here::here("Figures", "thallus_growth_rates.png"),
+ggsave(filename = here::here("img", "thallus_growth_rates.png"),
   plot = p.growth,
   width = 16,
   height = 12,
@@ -531,7 +531,7 @@ p.thalli <- ggplot(thalli_long_m_T, aes(x = year_c, y = exp(log_areal))) +
   theme(legend.position = "none")
 
 #Export this figure
-ggsave(filename = here::here("Figures", "thalli_sizes.png"),
+ggsave(filename = here::here("img", "thalli_sizes.png"),
   plot = p.thalli,
   width = 16,
   height = 12,
@@ -637,7 +637,7 @@ p.survival.year <- ggplot(
   theme_minimal(base_size = 14)
 
 #Export this figure
-ggsave(filename = here::here("Figures", "thalli_survival.png"),
+ggsave(filename = here::here("img", "thalli_survival.png"),
   plot = p.survival.year,
   width = 16,
   height = 12,
