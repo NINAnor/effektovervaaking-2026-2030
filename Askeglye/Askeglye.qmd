@@ -199,7 +199,7 @@ meta |>
 
 <!--# Update this logg with short messages for each update -->
 
--   01 Jan. 1901 - Original PR
+-   11.11.2026 Initial version
 :::
 
 <hr />
@@ -217,7 +217,14 @@ Skriv tekst her, og så kan du henvise til figurer slik
 
 ## 1. Innledning
 
-<!-- Om arten/naturtypen: Organismegruppe, Status rødlista, Utbredelse, Trusler. Kort om dette delprosjektet (hvilke tiltak ser det på effekten av, hvor. -->
+Askeglye *Collema leptaleum* er kritisk truet (CR) i Norge og er i
+Europa bare kjent fra Vestrheim og Sanden i Leikanger, Sogndal kommune.
+Rapporteringen for 2026 sammenstiller gjennomførte tiltak, kartfestede
+forsøk og opplysninger fra Statsforvalteren i Vestland. Det foreligger
+ikke en ny systematisk bestandstelling eller kontroll av de limfestede
+thalliene i årets dokumentasjon. Siste fullstendige status er derfor fra
+2025, da arten ble rapportert på 103 trær og bestanden anslått til 7 726
+thalli (Roos et al. 2025).
 
 ```{r fig-innledning}
 #| fig-cap: 'Figurtekst skrives her.'
