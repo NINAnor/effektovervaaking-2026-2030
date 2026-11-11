@@ -1,0 +1,31 @@
+[workspace]
+name = "effektovervaaking-klippeblaavinge"
+description = "Python environment for the Klippeblåvinge analyses in code/ (raw data on P: -> data/ and img/)"
+channels = ["conda-forge"]
+platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
+
+[dependencies]
+python = "3.12.*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+geopandas = "*"
+pyogrio = "*"
+pyproj = "*"
+shapely = "*"
+rasterio = "*"
+pvlib-python = "*"
+statsmodels = "*"
+matplotlib = "*"
+laspy = "*"
+lazrs-python = "*"
+pyvista = "*"
+pillow = "*"
+
+[tasks]
+planter = { cmd = "python 1_planter.py", cwd = "code" }
+vegetasjon = { cmd = "python 2_vegetasjonsdekke.py", cwd = "code", depends-on = ["planter"] }
+habitat = { cmd = "python 3_habitatmodell.py", cwd = "code", depends-on = ["planter"] }
+egg = { cmd = "python 4_egg_test.py", cwd = "code", depends-on = ["vegetasjon", "habitat"] }
+figur-3d = { cmd = "python 5_figur_3d_gyldenlove.py", cwd = "code" }
+analyse = { depends-on = ["egg", "figur-3d"] }
