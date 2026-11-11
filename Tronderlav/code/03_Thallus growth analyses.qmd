@@ -1,0 +1,645 @@
+---
+title: "03_Thallus growth analyses"
+format: html
+---
+
+## Required packages
+
+```{r}
+library(tidyverse) 
+library(vroom) 
+library(janitor) 
+library(lubridate) 
+library(tidyr)  
+library(knitr) 
+library(skimr) 
+library(gt) 
+library(readxl) 
+library(lme4) 
+library(lmerTest) 
+library(emmeans) 
+library(performance) 
+library(MuMIn) 
+library(broom.mixed) 
+library(ggbeeswarm) 
+library(here) 
+library(ggeffects)
+```
+
+## Import data
+
+### Loading ph and conductivity data
+
+```{r}
+ph_data <- readxl::read_excel(here::here("Data", "ph data.xlsx"))  
+ph_data <- ph_data %>%    
+  mutate(locality = factor(locality),
+         net_id = factor(net_id),
+         year = factor(year))
+```
+
+### Loading thallus growth data
+
+```{r}
+thalli_data <- readxl::read_excel(here::here("Data", "Area_lichens_2021_2022_2023_2024_2025_2026.xlsx"))
+```
+
+### Import climate data
+
+```{r}
+
+daily_data <- readr::read_csv(here::here("Data", "daily_data.csv"))
+
+daily_data_lux <- readr::read_csv(here::here("Data", "daily_data_lux.csv"))
+
+```
+
+## Data cleaning and preparation
+
+### Thallus data
+
+```{r}
+#Remove lines and columns we do not need 
+thalli_data <- thalli_data %>%      
+  slice(1:(n() - 2)) %>%      
+  select(-c(`...16`, `...17`))  
+
+#Rename columns 
+thalli_data <- thalli_data %>%    
+  rename(locality = Lokalitet,           
+         thallus_id = Nb,           
+         areal_2021 = "Areal 2021 (cm2)",           
+         areal_2022 = "Areal 2022 (cm2)",           
+         areal_2023 = "Areal 2023 (cm2)",          
+         areal_2024 = "Areal 2024 (cm2)",          
+         areal_2025 = "Areal 2025 (cm2)", 
+         areal_2026 = "Areal 2026 (cm2)",
+         status = Status)  
+
+#There is a typo in "Nekkfallet", which is spelled with one "k" only 
+thalli_data <- thalli_data %>%    
+  mutate(locality = recode(locality, "Nekkfallet" = "Nekfallet"))  
+
+#We need to make an ID for net, and one for thallus 
+thalli_data <- thalli_data %>%    
+  mutate(net_id = str_extract(thallus_id, "^[^_]+"), # Extracts characters before the first underscore     
+         thallus_id = thallus_id # Creates a copy of the original column
+         )  
+
+#Create long format 
+thalli_long <- thalli_data %>%   
+  pivot_longer(cols = starts_with("areal_"),          # columns to gather     
+               names_to = "year",                    # new column for year     
+               names_prefix = "areal_",               # remove the prefix 'area_'     
+               values_to = "areal_cm2"                # new column for area values   
+  ) %>%   
+  mutate(year = as.numeric(year),              # convert to numeric     
+         areal_cm2 = as.numeric(areal_cm2)   )  # Make sure keys are factors and area > 0 
+
+# This also removes entries with areal_cm = NA, which basically trunkates the data to only contain only data for when the thalli were actuelly attached to the net, and excludes years where the thallus has dissapeared.  
+
+thalli_long <- thalli_long %>%   
+  mutate(locality = factor(locality),     
+         net_id  = factor(net_id),
+         thallus_id  = factor(thallus_id)) %>%   
+  filter(is.finite(areal_cm2), areal_cm2 > 0)  
+
+#In 2023, the thalli where not completely saturated, which gives lower surface area than what is realistic, if needed, we can therefore remove the thallus measurements for 2023.  #thalli_long_cleaned <- thalli_long_cleaned %>%  #  filter(!year == 2023)}
+
+```
+
+### Adding climate data
+
+```{r}
+# We need to get yearly climate data, and add this to the thallus dataframe.
+# Unfortunately, quite a few years do not have data, so we can just calculate an average for 2024, for which all the sites have data.
+
+# Aggregate to yearly means
+yearly_data <- daily_data %>%
+  filter(year == 2024) %>%
+  filter(!locality == "Tegningfallet2") %>%
+  filter(!locality == "Trøndelag") %>%
+  group_by(locality) %>%
+  summarize(
+    mean_temp = mean(mean_temp_C),
+    mean_rh = mean(mean_rh)
+  ) %>%
+  mutate(locality = recode(locality, "Tegningfallet1" = "Tegningfallet"))
+
+# We can also use the yearly max lux, but there are a lot of holes in the data.
+# Best not to use it then. More monitoring years are necessary!
+yearly_lux <- daily_data_lux %>%
+  group_by(locality, year) %>%
+  summarize(
+    max_lux = if (all(is.na(max_lux))) NA_real_
+              else max(max_lux, na.rm = TRUE),
+    .groups = "drop")
+```
+
+### Join environmental measurements and create variables
+
+```{r}
+# Join climate data 
+thalli_long_m <- thalli_long %>%   left_join(yearly_data, by = "locality")  
+
+# Join pH and conductivity data 
+thalli_long_m <- thalli_long_m %>%
+  left_join(
+    ph_data %>%
+      filter(year == 2024) %>%
+      select(-year),
+    by = c("net_id", "locality"),
+    relationship = "many-to-one")
+
+# Add variables 
+thalli_long_m <- thalli_long_m %>%   
+  mutate(log_areal = log(areal_cm2),     
+         year_c = year - min(year, na.rm = TRUE))
+
+```
+
+### Substrate summaries and filtering
+
+```{r}
+# Summarize variables measured at branch/net level to locality level
+data_substrate <- thalli_long_m %>%
+  group_by(locality) %>%
+  summarise(
+    substrate_ph = mean(ph_branch, na.rm = TRUE),
+    substrate_cond = mean(conductivity_branch, na.rm = TRUE))
+
+# Join substrate variables
+thalli_long_m <- thalli_long_m %>%
+  left_join(data_substrate, by = "locality")
+
+# Remove thalli with only one observation
+thalli_long_m <- thalli_long_m %>%
+  group_by(thallus_id) %>%
+  filter(n() >= 2) %>%
+  ungroup()
+
+# Set Tegningfallet as reference locality
+thalli_long_m_T <- thalli_long_m %>%
+  mutate(locality = relevel(factor(locality), ref = "Tegningfallet"))
+
+# Standardize variables (mean 0, SD 1)
+thalli_long_m_T <- thalli_long_m_T %>%
+  mutate(across(
+    c(year, mean_rh, mean_temp, ph_river, conductivity_river,
+      ph_branch, conductivity_branch, substrate_ph, substrate_cond),
+    ~ as.numeric(scale(.)),
+    .names = "{.col}_z"
+  ))
+```
+
+## Models: locality differences in growth
+
+### Fit locality model
+
+```{r}
+# Nested structure: thallus within net within locality;
+# time (year_c) is a repeated measure; locality is a fixed effect.
+m_loc <- lmer(
+  log_areal ~ year_c * locality +
+    (year_c | thallus_id) + (1 | net_id),
+  data = thalli_long_m_T, REML = TRUE
+)
+summary(m_loc)
+```
+
+### Locality-specific growth slopes and contrasts
+
+```{r}
+# Estimated growth slopes per locality (log scale)
+em_loc <- emtrends(m_loc, ~ locality, var = "year_c")
+summary(em_loc)
+pairs(em_loc, adjust = "tukey")
+summary(em_loc, infer = c(TRUE, TRUE))
+
+# Back-transform to percent per year
+loc_slopes <- as.data.frame(em_loc)
+loc_slopes$growth_pct <- 100 * (exp(loc_slopes$year_c.trend) - 1)
+loc_slopes <- loc_slopes[order(-loc_slopes$growth_pct), ]
+
+
+#Flatdalsåsen, Nekfallet and Sagåa have significantly negative annual growth rates.
+```
+
+## Models: environmental predictors of growth
+
+### Full model
+
+```{r}
+# Full model without branch-level measurements as individual predictors options(na.action = "na.omit") 
+m_full <- lmer(log_areal ~ year_c * (mean_rh_z + mean_temp_z + ph_river_z + conductivity_river_z + substrate_ph_z + substrate_cond_z) +     (year_c | thallus_id) + (1 | net_id),   data = thalli_long_m_T,   REML = FALSE ) 
+check_collinearity(m_full)
+
+```
+
+### Model selection (AICc)
+
+```{r}
+# Model selection, always keeping year options(na.action = "na.fail") 
+options(na.action = "na.fail")
+m_dredge <- dredge(m_full, fixed = ~ year_c)
+options(na.action = "na.omit")
+
+head(m_dredge)
+sw(m_dredge)
+m_best <- get.models(m_dredge, 1)[[1]]
+
+# Refit best model using REML
+m_final <- update(m_best, REML = TRUE)
+summary(m_final)
+```
+
+Original interpretation (retained; not updated for 2026): The best model includes river conductivity, mean temperature, river pH and year. Lower river conductivity relates to smaller initial thallus size; warmer sites had smaller initial thalli; river pH had a trend for smaller initial size; thallus size declines with time; and decline accelerates at warmer sites.
+
+Interpreatation with 2026 data: The selected model showed a significant decline in thallus size over time. Substrate conductivity was significantly associated with the rate of decline, with higher conductivity corresponding to more negative growth rates. Mean temperature showed a positive but non-significant interaction with time, providing no clear evidence that temperature influenced growth rates. River conductivity, mean temperature and river pH were negatively associated with initial thallus size, whereas substrate conductivity showed a positive association. Overall, substrate conductivity emerged as the strongest environmental predictor of variation in thallus growth rates.
+
+### Alternative growth-focused model
+
+```{r}
+# Isolate effects on growth rates rather than intercepts
+m_growth_focus <- lmer(
+  log_areal ~ year_c * (mean_rh_z + mean_temp_z + ph_river_z + conductivity_river_z + substrate_ph_z + substrate_cond_z) -
+    (mean_rh_z + mean_temp_z + ph_river_z + conductivity_river_z + substrate_ph_z + substrate_cond_z) +
+    (year_c | thallus_id) + (1 | net_id),
+  data = thalli_long_m_T,
+  REML = TRUE
+)
+summary(m_growth_focus)
+```
+
+## Figures: modelled growth rates
+
+### Figure 1. Estimated annual growth rate by locality (95% CI)
+
+```{r}
+# Get locality-specific slopes
+em_loc <- emtrends(m_loc, ~ locality, var = "year_c")
+
+# Convert slopes and confidence intervals to percentages
+loc_slopes <- as.data.frame(em_loc) %>%
+  mutate(
+    growth_pct = 100 * (exp(year_c.trend) - 1),
+    lower_pct = 100 * (exp(lower.CL) - 1),
+    upper_pct = 100 * (exp(upper.CL) - 1),
+    locality = fct_reorder(locality, growth_pct)
+  )
+
+my_cols <- c(
+  "Tegningfallet" = "#004F71",
+  "Eldåa" = "#E57200",
+  "Nekfallet" = "#93328E",
+  "Sagåa" = "#7A9A01",
+  "Flatdalsåsen" = "#008C95",
+  "Gulsvikelvi" = "#A2AAAD"
+)
+
+p.growth <- ggplot(loc_slopes, aes(x = locality, y = growth_pct, color = locality)) +
+  geom_hline(yintercept = 0, linetype = 2) +
+  geom_pointrange(aes(ymin = lower_pct, ymax = upper_pct),
+                  position = position_dodge(width = 0.2)) +
+  scale_color_manual(values = my_cols) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Endring i thallusstørrelse (% p. År)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+p.growth
+
+#Save this plot
+ggsave(filename = here::here("Figures", "thallus_growth_rates.png"),
+  plot = p.growth,
+  width = 16,
+  height = 12,
+  units = "cm")
+
+```
+
+### Figure 2. Raw thallus size, locality mean and SE
+
+```{r}
+# Summarize mean and SE per year and locality
+size_summary <- thalli_long_m_T %>%
+  group_by(locality, year) %>%
+  summarise(
+    mean_log_areal = exp(mean(log_areal, na.rm = TRUE)),
+    se_log_areal = exp(sd(log_areal, na.rm = TRUE) / sqrt(n())),
+    .groups = "drop")
+
+# Plot
+ggplot() +
+  # Raw data (all thalli)
+  geom_point(
+    data = thalli_long_m_T,
+    aes(x = year, y = exp(log_areal), color = locality),
+    position = position_jitter(width = 0.1, height = 0, seed = 123),
+    alpha = 0.3, size = 1.5
+  ) +
+  # Mean B1 SE trend per locality
+  geom_line(
+    data = size_summary,
+    aes(x = year, y = mean_log_areal, color = locality, group = locality),
+    linewidth = 1
+  ) +
+  geom_errorbar(
+    data = size_summary,
+    aes(x = year,
+        ymin = mean_log_areal - se_log_areal,
+        ymax = mean_log_areal + se_log_areal,
+        color = locality),
+    width = 0.1, linewidth = 0.6
+  ) +
+  geom_point(
+    data = size_summary,
+    aes(x = year, y = mean_log_areal, color = locality),
+    size = 2.5
+  ) +
+  facet_wrap(~ locality) +
+  labs(
+    title = "Utvikling i thallusstørrelse over tid per lokalitet",
+    x = "År",
+    y = "log(thallusstørrelse, cm²)",
+    color = "Lokalitet"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    legend.position = "right"
+  )
+```
+
+### Figure 3. Raw individual thallus trajectories and observed mean trend
+
+```{r}
+thalli_long_m_T <- thalli_long_m_T %>%
+  mutate(locality = factor(locality,
+    levels = c("Tegningfallet", "Eldåa", "Nekfallet",
+               "Sagåa", "Flatdalsåsen", "Gulsvikelvi")))
+
+ggplot(thalli_long_m_T,
+       aes(x = year, y = exp(log_areal), group = thallus_id)) +
+  # Individual thalli: thin grey lines
+  geom_line(alpha = 0.3, color = "gray40") +
+  geom_point(alpha = 0.5, color = "gray30", size = 1.5) +
+  # Mean trend per locality
+  stat_summary(
+    fun = mean, geom = "line",
+    aes(group = locality),
+    color = "#0072B2", size = 1.2
+  ) +
+  facet_wrap(~ locality, scales = "free_y") +
+  labs(
+    x = "År",
+    y = "Thallusstørrelse (cm²)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    panel.grid.minor = element_blank()
+  )
+```
+
+### Figure 4. Individual trajectories and blue model prediction (95% CI)
+
+```{r}
+# Real-year axis
+year0 <- min(thalli_long_m_T$year, na.rm = TRUE)
+
+# Prediction grid across observed year_c range
+year_seq <- with(thalli_long_m_T, seq(min(year_c, na.rm = TRUE),
+                                     max(year_c, na.rm = TRUE),
+                                     length.out = 100))
+
+# Marginal predictions per locality (fixed effects only)
+emm <- emmeans(
+  m_loc,
+  specs = ~ locality | year_c,
+  at = list(year_c = year_seq),
+  type = "link"
+)
+
+pred_df <- as.data.frame(emm) %>%
+  transmute(
+    locality,
+    year_c,
+    year = year0 + year_c,
+    fit_cm2 = exp(emmean),
+    lwr_cm2 = exp(lower.CL),
+    upr_cm2 = exp(upper.CL)
+  )
+
+# Plot
+ggplot() +
+  geom_line(
+    data = thalli_long_m_T,
+    aes(x = year, y = exp(log_areal), group = thallus_id),
+    color = "grey40", alpha = 0.35, linewidth = 0.5
+  ) +
+  geom_point(
+    data = thalli_long_m_T,
+    aes(x = year, y = exp(log_areal)),
+    color = "grey30", alpha = 0.5, size = 1.2
+  ) +
+  geom_ribbon(
+    data = pred_df,
+    aes(x = year, ymin = lwr_cm2, ymax = upr_cm2),
+    fill = "#5DADE2", alpha = 0.25
+  ) +
+  geom_line(
+    data = pred_df,
+    aes(x = year, y = fit_cm2),
+    color = "#1F77B4", linewidth = 1.2
+  ) +
+  facet_wrap(~ locality, scales = "free_y") +
+  labs(
+    title = "Thallusstørrelse over tid per lokalitet: rådata og modellert gjennomsnitt (95% KI)",
+    x = "År",
+    y = "Thallusstørrelse (cm²)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    panel.grid.minor = element_blank()
+  )
+```
+
+### Figure 5. Individual trajectories and locality-coloured model predictions
+
+```{r}
+# Observed year_c range per locality
+year_ranges <- thalli_long_m_T %>%
+  group_by(locality) %>%
+  summarise(
+    min_year = min(year_c, na.rm = TRUE),
+    max_year = max(year_c, na.rm = TRUE)
+  )
+
+# Model predictions across the full year range
+pred_full <- ggpredict(m_loc, terms = c("year_c", "locality"))
+pred_df <- as.data.frame(pred_full)
+pred_df <- pred_df %>%
+  rename(locality = "group")
+
+# Trim to observed range per locality
+pred_trimmed <- pred_df %>%
+  left_join(year_ranges, by = "locality") %>%
+  filter(x >= min_year & x <= max_year)
+
+# Locality colours
+my_cols <- c(
+  "Tegningfallet" = "#004F71",
+  "Eldåa" = "#E57200",
+  "Nekfallet" = "#93328E",
+  "Sagåa" = "#7A9A01",
+  "Flatdalsåsen" = "#008C95",
+  "Gulsvikelvi" = "#A2AAAD"
+)
+
+# Plot
+p.thalli <- ggplot(thalli_long_m_T, aes(x = year_c, y = exp(log_areal))) +
+  geom_line(aes(group = thallus_id), alpha = 0.3, color = "grey40") +
+  geom_point(alpha = 0.6, color = "black") +
+  geom_ribbon(
+    data = pred_trimmed,
+    aes(x = x, y = exp(predicted),
+        ymin = exp(conf.low),
+        ymax = exp(conf.high),
+        fill = locality),
+    alpha = 0.15, inherit.aes = FALSE
+  ) +
+  geom_line(
+    data = pred_trimmed,
+    aes(x = x, y = exp(predicted), color = locality),
+    size = 1.2, inherit.aes = FALSE
+  ) +
+  scale_color_manual(values = my_cols) +
+  scale_fill_manual(values = my_cols) +
+  facet_wrap(~ locality, scales = "free_y") +
+  labs(
+    x = "År (sentrert)",
+    y = "Thallusstørrelse (cm²)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+#Export this figure
+ggsave(filename = here::here("Figures", "thalli_sizes.png"),
+  plot = p.thalli,
+  width = 16,
+  height = 12,
+  units = "cm")
+```
+
+## Thallus survival rates
+
+```{r}
+initial_thalli <- thalli_long %>%
+  filter(!is.na(areal_cm2), areal_cm2 > 0) %>%
+  group_by(locality) %>%
+  mutate(first_year = min(year)) %>%
+  filter(year == first_year) %>%
+  distinct(locality, thallus_id, first_year) %>%
+  ungroup()
+
+survey_years <- thalli_long %>%
+  distinct(locality, year)
+
+#Calculate survival
+survival_data <- initial_thalli %>%
+  left_join(survey_years, by = "locality") %>%
+  filter(year >= first_year) %>%
+  left_join(
+    thalli_long %>%
+      group_by(locality, thallus_id, year) %>%
+      summarise(
+        present = any(!is.na(areal_cm2) & areal_cm2 > 0),
+        .groups = "drop"
+      ),
+    by = c("locality", "thallus_id", "year")
+  ) %>%
+  mutate(
+    present = replace_na(present, FALSE),
+    years_since_start = year - first_year
+  )
+
+survival_summary <- survival_data %>%
+  group_by(locality, year, years_since_start) %>%
+  summarise(
+    n_initial = n(),
+    n_surviving = sum(present),
+    .groups = "drop") %>%
+  mutate(    # Correct initial number for Gulsvikelvi
+    n_initial = if_else(
+      locality == "Gulsvikelvi",
+      28L,
+      n_initial
+    ),
+
+    # All 28 thalli were present when transplanted in 2023
+    n_surviving = if_else(
+      locality == "Gulsvikelvi" & year == 2023,
+      28L,
+      n_surviving
+    ),
+
+    survival_pct = 100 * n_surviving / n_initial)
+
+print(survival_summary)
+
+#Summarize for 2026
+
+
+```
+
+### Figure 6. Thallus survival
+
+```{r}
+
+my_cols <- c(
+  "Tegningfallet" = "#004F71",
+  "Eldåa" = "#E57200",
+  "Nekfallet" = "#93328E",
+  "Sagåa" = "#7A9A01",
+  "Flatdalsåsen" = "#008C95",
+  "Gulsvikelvi" = "#A2AAAD")
+
+#Plot survival, by calendar year
+
+p.survival.year <- ggplot(
+  survival_summary,
+  aes(
+    x = year,
+    y = survival_pct,
+    color = locality,
+    group = locality
+  )
+) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2.5) +
+  scale_color_manual(values = my_cols) +
+  scale_y_continuous(limits = c(0, 100)) +
+  scale_x_continuous(
+    breaks = sort(unique(survival_summary$year))
+  ) +
+  labs(
+    x = "År",
+    y = "Overlevelse (%)",
+    color = "Lokalitet"
+  ) +
+  theme_minimal(base_size = 14)
+
+#Export this figure
+ggsave(filename = here::here("Figures", "thalli_survival.png"),
+  plot = p.survival.year,
+  width = 16,
+  height = 12,
+  units = "cm")
+```
