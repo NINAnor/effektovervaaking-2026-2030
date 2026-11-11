@@ -222,12 +222,10 @@ Trøndertorvmose (*Sphagnum troendelagicum*) er en endemisk og prioritert art fo
 Det er ingen pågående tiltak for trøndertorvmose, men det kan være aktuelt å styrke enkeltbestander gjennom bevaringsutsetting. I dette prosjektet har vi utvidet pågående overvåking av arten [@hassel_2020] til den sørvestlige delen av utbredelsen (@fig-kaldal), hvor arten ikke var kjent da overvåkingen ble etablert i 2016. I tillegg har vi forsøkt å oppformere individer av trøndertorvmose i veksthus, og vi har nå utvidet forsøket til å oppformere individer i bioreaktorer i veksthus for å teste om det er mer effektivt. Bioreaktorene står i veksthuset på Ringve botaniske hage i Trondheim.
 
 ```{r fig-kaldal}
-#| fig-cap: 'Lokaliteten Kaldal i Namsos kommune er et av de nyoppdagede funnstedene for trøndertorvmose. På lokaliteten ble det etablert fire fastruter for overvåking av arten.'
+#| fig-cap: 'Lokaliteten Kaldal i Namsos kommune er et av de nyoppdagede funnstedene for trøndertorvmose. På lokaliteten ble det etablert fire fastruter for overvåking av arten. Foto: NINA.'
 #| code-summary: 'Kode for figur.'
 include_graphics("img/kaldal.jpg")
 ```
-
-<!--# Fotograf mangler i figurteksten. -->
 
 ## 2. Formål med delprosjektet
 

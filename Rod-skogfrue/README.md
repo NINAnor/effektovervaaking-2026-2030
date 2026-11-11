@@ -161,11 +161,11 @@ enkelte forekomster.
 
 <img src="img/rod_skogfrue_bjorkedokk.jpg" style="width:40.0%" />
 
-Figur 1: Blomstrende skudd av rød skogfrue i Bjørkedokk.
+Figur 1: Blomstrende skudd av rød skogfrue i Bjørkedokk. Foto: NINA.
 
 </div>
 
-<!--# Fotograf mangler for bildene fra utkastet (figur 1–4). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
+<!--# Fotograf for bildene fra utkastet (figur 1–4) er ukjent, derfor «Foto: NINA» (muligens Harald Bratli – bekreft). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
 
 Arten opptrer klumpvis i små bestander eller som enkeltindivider i
 lokalitetene. Disse bestandene dekker oftest små arealer, bare noen få
@@ -344,7 +344,7 @@ gjennomført spredt rydding av einstape og busker på lokalitetene.
 <img src="img/bjorkedokk_baklia_ryddet.jpg" style="width:60.0%" />
 
 Figur 2: Dellokalitet «baklia» i Bjørkedokk der einer, småtrær og
-einstape er fjernet.
+einstape er fjernet. Foto: NINA.
 
 </div>
 
@@ -377,7 +377,7 @@ data-ref-parent="fig-hoppbakken" />
 </div>
 
 Figur 3: Dellokalitet øst for hoppbakken i Bjørkedokk før og etter
-fjerning av einstape i 2026.
+fjerning av einstape i 2026. Foto: NINA.
 
 </div>
 
@@ -410,7 +410,7 @@ data-ref-parent="fig-royskattlia" />
 </div>
 
 Figur 4: Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og
-13 i Bjørkedokk før fjerning av løvoppslag.
+13 i Bjørkedokk før fjerning av løvoppslag. Foto: NINA.
 
 </div>
 

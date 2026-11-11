@@ -129,11 +129,9 @@ Ringve botaniske hage i Trondheim.
 
 Figur 1: Lokaliteten Kaldal i Namsos kommune er et av de nyoppdagede
 funnstedene for trøndertorvmose. På lokaliteten ble det etablert fire
-fastruter for overvåking av arten.
+fastruter for overvåking av arten. Foto: NINA.
 
 </div>
-
-<!--# Fotograf mangler i figurteksten. -->
 
 ## 2. Formål med delprosjektet
 
