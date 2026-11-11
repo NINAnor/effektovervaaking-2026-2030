@@ -144,6 +144,8 @@ grense <- 0.05 # Når andelen transektruter med Honningblom er mindre enn grense
 # på linje 365 og 426.
 pop <- list() # Resultat-objekt
 
+set.seed(123) # Gjør bootstrap-resultatene reproduserbare
+
 for (loc in localities) {
   
   # Organiser transektdatasettet i ei transektrute x ÅrMedTransektdata matrise
