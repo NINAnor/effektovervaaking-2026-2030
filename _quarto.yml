@@ -22,6 +22,7 @@ book:
     - Askeglye/Askeglye.qmd
     - Rod-skogfrue/Rod-skogfrue.qmd
     - Trondertorvmose/Trondertorvmose.qmd
+    - Svartkurle/Svartkurle.qmd
     - Kystlynghei/report/kystlynghei_condition_report.qmd
   appendices:
     - Kystlynghei/report/kystlynghei_methods.qmd
