@@ -267,6 +267,12 @@ knitr::include_graphics(pth)
 
 ### 2.1 Målsetning med tiltakene
 
+Tiltakene skal bevare den eksisterende bestanden, sikre rekruttering av
+egnede vertstrær og utvikle metoder for bevaringsutsetting. Relevante
+indikatorer er antall trær med naturlig forekomst, thallienes mengde og
+vitalitet, overlevelse og feste hos flyttede thalli, nyetablering,
+vertstrærnes tilstand, beiteskader og habitatets lysforhold.
+
 ```{=html}
 <!-- Hva er målsetningen med tiltakene som gjennomføres.
 Hvilke indikatorer skal tiltakene endre. -->
@@ -274,11 +280,20 @@ Hvilke indikatorer skal tiltakene endre. -->
 
 ### 2.2 Formål med overvåking
 
-<!-- Hva skal overvåkingen avdekke. -->
+Overvåkingen skal følge utviklingen på de samme trærne og dokumentere
+hvor, når og hvordan tiltak er utført. Den skal skille tap av vertstrær
+og lav fra nyoppdagede forekomster og fra endringer i leteinnsats. NINAs
+rolle er faglig rådgivning og effektovervåking; praktisk skjøtsel må
+avklares og samordnes med forvaltningen og grunneierne.
 
 ### 2.3 Forventninger
 
-<!-- Hva forventer vi å observere av endringer i indikatorene – på kort og lang sikt. -->
+Beitebeskyttelse forventes å redusere nye skader og bedre
+askeforyngelsen. Gradvis fristilling forventes å motvirke utskygging,
+men sterk åpning kan endre mikroklimaet ugunstig. Ved translokasjon må
+mekanisk tap skilles fra biologisk dødelighet. Feste og overlevelse er
+delmål; først dokumentert nyetablering og videre bestandsutvikling kan
+vise at forsøket bidrar til en selvopprettholdende forekomst.
 
 ## 3. Overvåkingslokalitetene
 
