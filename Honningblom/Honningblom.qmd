@@ -215,11 +215,22 @@ The monitoring shows that the populations are stable or increasing. Skjellvik, t
 
 ## 1. Innledning
 
-Orkideen honningblom (*Herminium monorchis*) vokser på fire kystnære lokaliteter på Hvaler, Østfold: tre på Asmaløy (Skipstadsand, Skjellvik og Teneskjær) og en på øya Filletassen utenfor Asmaløy [@hoitomt_2017]. Arten var tidligere spredt men sjelden på Sørøstlandet, men har hatt kraftig tilbakegang de siste hundre årene, på grunn av oppdyrking, drenering og annen omlegging av arealbruk. Honningblom er vurdert som kritisk truet (CR) på Rødlista for arter 2021 [@artsdatabanken_2021].
+Orkideen honningblom (*Herminium monorchis*) vokser på fire kystnære lokaliteter på Hvaler, Østfold: tre på Asmaløy (Skipstadsand, Skjellvik og Teneskjær) og en på øya Filletassen utenfor Asmaløy [@hoitomt_2017]. Arten var tidligere spredt men sjelden på Sørøstlandet (@fig-historisk), men har hatt kraftig tilbakegang de siste hundre årene, på grunn av oppdyrking, drenering og annen omlegging av arealbruk. Honningblom er vurdert som kritisk truet (CR) på Rødlista for arter 2021 [@artsdatabanken_2021].
 
 Honningblompopulasjonene på Skipstadsand, Skjellvik og Teneskjær har vært overvåket siden 2014 og populasjonen på Filletassen siden 2020 [@roos_2023a]. Fordi honningblom er flerårig og viser stor mellomårsvariasjon i andelen individer som har overjordiske skudd [@wells_1998; @kravdal_2016], er det viktig med årlige data over mange år for å kunne skille mellomårsvariasjon fra trender i populasjonsstørrelse. Det foregår skjøtsel på lokalitetene som overvåkes. NINA er i nær kontakt med Statsforvalteren i Østfold, Buskerud, Oslo og Akershus og med Nasjonalparkforvalteren i Ytre Hvaler nasjonalpark om tiltakene og overvåkingen.
 
-<!--# Bilde: Figur 1. Honningblom på Skjellvik. Foto: Ruben E. Roos/NINA. Legg bildet i img/ og sett det inn her. -->
+```{r fig-honningblom}
+#| fig-cap: 'Honningblom på Hvaler. Foto: Ruben E. Roos/NINA.'
+#| code-summary: 'Kode for figur.'
+#| out-width: 70%
+include_graphics("img/honningblom_hvaler.jpg")
+```
+
+```{r fig-historisk}
+#| fig-cap: 'Historiske lokaliteter for honningblom på Sørøstlandet, etter tidspunkt for siste registrering (før 1900, 1900–1950, 1951–1990 og etter 1990).'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Map1_distribution.jpeg")
+```
 
 ## 2. Formål med delprosjektet
 
@@ -241,21 +252,47 @@ Forventningen er at overjordisk populasjonsstørrelse av honningblom vil variere
 
 ### 3.1 Beskrivelse av lokalitetene
 
-Alle de gjenværende honningblomlokalitetene ligger på Hvaler i Østfold.
+Alle de gjenværende honningblomlokalitetene ligger på Hvaler i Østfold (@fig-hvaler).
 
-<!--# Kart over lokalitetene (plassering i Norge og på Hvaler) settes inn her. -->
+```{r fig-hvaler}
+#| fig-cap: 'De fire overvåkingslokalitetene for honningblom på Hvaler: Skipstadsand, Skjellvik og Teneskjær på Asmaløy og Filletassen.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Map2_forekomster.jpeg")
+```
 
 Alle forekomstene av honningblom er knyttet til semi-naturlige naturtyper. Slike naturtyper er åpne, men gror igjen med høyvokste arter ved opphør av drift som beite og slått. Arten kan også være utsatt for tråkkskader, både fra mennesker og beitedyr. Skjøtsel på de fire overvåkingslokalitetene er grundig beskrevet i @evju_2022a og i @ekelund_2019a [-@ekelund_2019b].
 
-På Skipstadsand slås det to ganger per sesong: i juni, før honningblom er kommet opp, og etter frøsetting. Slått plantemateriale fjernes, og i tillegg lukes det rundt plantene. Forekomstene av honningblom er konsentrert i den nordøstlige delen av lokaliteten, med noen spredte individer utenfor kjerneområdet.
+På Skipstadsand slås det to ganger per sesong: i juni, før honningblom er kommet opp, og etter frøsetting. Slått plantemateriale fjernes, og i tillegg lukes det rundt plantene. Forekomstene av honningblom er konsentrert i den nordøstlige delen av lokaliteten, med noen spredte individer utenfor kjerneområdet (@fig-kart-skipstadsand).
 
-Skjellvik er den største lokaliteten, både i utstrekning og populasjonsstørrelse. Honningblom forekommer spredt innenfor hele lokaliteten, men ikke langs transektrutene utenfor gjerdet nordover. Lokaliteten slås to ganger i året, og deler av lokaliteten en ekstra gang noen år.
+Skjellvik er den største lokaliteten, både i utstrekning og populasjonsstørrelse (@fig-kart-skjellvik). Honningblom forekommer spredt innenfor hele lokaliteten, men ikke langs transektrutene utenfor gjerdet nordover. Lokaliteten slås to ganger i året, og deler av lokaliteten en ekstra gang noen år.
 
-Teneskjær inngår i beiteområdet til frittgående Herefordkyr i Ytre Hvaler nasjonalpark, og det forekommer en god del beite. For å beskytte plantene mot beite ble det i 2025 og 2026 satt opp små bur over en del planter. Det er ingen aktiv skjøtsel utover dette.
+Teneskjær inngår i beiteområdet til frittgående Herefordkyr i Ytre Hvaler nasjonalpark, og det forekommer en god del beite (@fig-kart-teneskjaer). For å beskytte plantene mot beite ble det i 2025 og 2026 satt opp små bur over en del planter. Det er ingen aktiv skjøtsel utover dette.
 
-På Filletassen slås det på forsommeren samt på slutten av sommeren.
+På Filletassen slås det på forsommeren samt på slutten av sommeren (@fig-kart-filletassen).
 
-<!--# Oversiktskart for hver lokalitet (ruter og transekter) settes inn her. -->
+```{r fig-kart-skipstadsand}
+#| fig-cap: 'Overvåkingslokaliteten på Skipstadsand (rød linje) med overvåkingsruter (oransje) og start- og sluttpunkt for transektene (lilla).'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Map_Skipstadsand.jpeg")
+```
+
+```{r fig-kart-skjellvik}
+#| fig-cap: 'Overvåkingslokaliteten på Skjellvik (rød linje) med overvåkingsruter (oransje) og start- og sluttpunkt for transektene (lilla). Kartet viser også gjerdet slik det har vært fram til 2013, fram til 2018 og i dag, området med høyvokst vegetasjon som slås en ekstra gang, og området som er ryddet etter 2020.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Map_Skjellvik.jpeg")
+```
+
+```{r fig-kart-teneskjaer}
+#| fig-cap: 'Overvåkingslokaliteten på Teneskjær (rød linje) med overvåkingsruter (oransje) og start- og sluttpunkt for transektene (lilla).'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Map_Teneskjaer.jpeg")
+```
+
+```{r fig-kart-filletassen}
+#| fig-cap: 'Overvåkingslokaliteten på Filletassen (rød linje) med overvåkingsruter (oransje).'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Map_Filletassen.jpeg")
+```
 
 ### 3.2 Tiltak
 
@@ -271,7 +308,7 @@ I tillegg til skjøtselen arbeides det med bevaringsutsetting av honningblom. NI
 
 ## 4. Datainnsamling
 
-Design for overvåking er beskrevet i @evju_2022a. Overvåkingen omfatter 67 permanente vegetasjonsruter på 0,5 × 0,5 m, fordelt på Skipstadsand (15), Skjellvik (27), Teneskjær (15) og Filletassen (10). Alle rutene er merket med aluminiumsrør og med høypresisjons-GPS. I rutene registreres antall honningblomindivider og hvorvidt de er fertile eller vegetative. Andre variabler som registreres i rutene, er vist i @tbl-indikatorer. Forekomst/fravær av honningblom registreres i tillegg langs faste transekter på hver lokalitet, med totalt 416 meter transekt, fordelt på Skipstadsand (3 transekter, 90 m), Skjellvik (4 transekter, 180 m), Teneskjær (2 transekter, 60 m) og Filletassen (8 transekter, 86 m). Start- og sluttpunkt for transektene er merket med aluminiumsrør og høypresisjons-GPS.
+Design for overvåking er beskrevet i @evju_2022a. Overvåkingen omfatter 67 permanente vegetasjonsruter på 0,5 × 0,5 m, fordelt på Skipstadsand (15; @fig-kart-skipstadsand), Skjellvik (27; @fig-kart-skjellvik), Teneskjær (15; @fig-kart-teneskjaer) og Filletassen (10; @fig-kart-filletassen). Alle rutene er merket med aluminiumsrør og med høypresisjons-GPS. I rutene registreres antall honningblomindivider og hvorvidt de er fertile eller vegetative. Andre variabler som registreres i rutene, er vist i @tbl-indikatorer. Forekomst/fravær av honningblom registreres i tillegg langs faste transekter på hver lokalitet, med totalt 416 meter transekt, fordelt på Skipstadsand (3 transekter, 90 m), Skjellvik (4 transekter, 180 m), Teneskjær (2 transekter, 60 m) og Filletassen (8 transekter, 86 m). Start- og sluttpunkt for transektene er merket med aluminiumsrør og høypresisjons-GPS.
 
 Oversikt over indikatorer og datainnsamling i felt er gitt i @tbl-indikatorer.
 
@@ -312,7 +349,7 @@ $$\widehat{fa} = ua \cdot (1 - \hat{p}_0)$$
 
 der $p_0$ er sannsynligheten for ikke å observere honningblom i en transektrute. Sannsynligheten estimeres ut fra en negativ binomisk fordeling tilpasset registreringene av honningblom i både transektruter og overvåkingsruter. Parameterne i fordelingen estimeres ved hjelp av sannsynlighetsmaksimeringsprinsippet, der transektrutene og overvåkingsrutene vektes i forhold til antall ruter av hver type som inngår i datagrunnlaget. Ved Skipstadsand, Skjellvik og Teneskjær ble overvåkingsrutene etablert i 2014, mens transektene ble etablert først i 2021. Populasjonsestimatene for årene 2014–2020 er basert på antagelsen at forekomsten av honningblom i transektrutene i 2021 reflekterer tilstanden i disse rutene i perioden fra 2014.
 
-Usikkerheten i $\hat{n}$ estimeres som et 95 % konfidensintervall ved hjelp av ikke-parametrisk bootstrap, der hele tidsserier av honningblomregistreringer fra transektruter og overvåkingsruter velges med tilbakelegging slik at antall transektruter og antall overvåkingsruter er som i det observerte datagrunnlaget. Estimatene beregnes for overjordiske individer totalt og for fertile individer.
+Usikkerheten i $\hat{n}$ estimeres som et 95 % konfidensintervall ved hjelp av ikke-parametrisk bootstrap, der hele tidsserier av honningblomregistreringer fra transektruter og overvåkingsruter velges med tilbakelegging slik at antall transektruter og antall overvåkingsruter er som i det observerte datagrunnlaget. Estimatene beregnes for overjordiske individer totalt og for fertile individer. Andelen fertile individer som presenteres i resultatene, er likevel basert på de faktiske tellingene i overvåkingsrutene (@fig-fertile), og ikke på populasjonsestimatene.
 
 Skriptene for databehandling, figurer og populasjonsestimater ligger i [`code/`](https://github.com/NINAnor/effektovervaaking-2026-2030/tree/main/Honningblom/code) på GitHub (figurer: `5_Plot based counts.qmd`; populasjonsestimater: `6_Herminium_population_estimates.qmd`).
 
@@ -320,7 +357,7 @@ Skriptene for databehandling, figurer og populasjonsestimater ligger i [`code/`]
 
 ### 6.1 Skipstadsand
 
-På Skipstadsand viser antallet individer i overvåkingsrutene en kraftig nedgang etter 2018 (@fig-skipstadsand). I 2026 lå gjennomsnittlig antall individer i overvåkingsrutene rundt det som har vært normalt for perioden 2021–2025. Sammen med observasjonene langs transektene ga observasjonene i overvåkingsrutene grunnlag for et litt lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495 individer, @fig-populasjon), men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759). Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025 til 2026 (@fig-populasjon og @fig-fertile).
+På Skipstadsand viser antallet individer i overvåkingsrutene en kraftig nedgang etter 2018 (@fig-skipstadsand). I 2026 lå gjennomsnittlig antall individer i overvåkingsrutene rundt det som har vært normalt for perioden 2021–2025. Sammen med observasjonene langs transektene ga observasjonene i overvåkingsrutene grunnlag for et litt lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495 individer, @fig-populasjon), men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759). Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025 til 2026 (@fig-fertile).
 
 ```{r fig-skipstadsand}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2014 til 2026, Skipstadsand, i de opprinnelige rutene (venstre) og i alle ruter (høyre). Gjennomsnitt ± standardfeil.'
@@ -368,7 +405,7 @@ include_graphics("img/Alle_lokaliteter.png")
 ```
 
 ```{r tbl-estimater}
-#| tbl-cap: 'Estimert overjordisk populasjonsstørrelse av honningblom per lokalitet og år, med 95 % konfidensintervall (bootstrap) i parentes. Filletassen ble overvåket første gang i 2020, og det mangler data for 2018. Estimatene for antall fertile individer ligger i data/Herminium_pop_2026.csv.'
+#| tbl-cap: 'Estimert overjordisk populasjonsstørrelse av honningblom per lokalitet og år, med 95 % konfidensintervall (bootstrap) i parentes. Filletassen ble overvåket første gang i 2020, og det mangler data for 2018.'
 #| code-summary: 'Kode for tabell.'
 lok <- c("Skipstadsand", "Skjellvik", "Teneskjaer", "Filletassen")
 fmt <- function(x) format(round(x), big.mark = " ", scientific = FALSE, trim = TRUE)
