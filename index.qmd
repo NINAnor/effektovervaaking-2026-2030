@@ -4,13 +4,24 @@ title: "Effektovervåking 2026–2030"
 
 Code, cleaned data and yearly result summaries for NINA's monitoring of the
 effects of management actions for threatened species and habitat types in
-Norway (*Overvåking av effekter av tiltak for trua arter og naturtyper*),
+Norway (*Overvåking av effekter av tiltak for trua arter og naturtyper 2026-2030*),
 funded by the Norwegian Environment Agency.
 
 This book includes reports for:
+- [Åpen grunnlendt kalkmark]()
+- [Dragehode](Dragehode/Dragehode.qmd)
+- [Honningblom](Honningblom/Honningblom.qmd)
 - [Elvesandjeger](Elvesandjeger/Elvesandjeger.qmd)
 - [Stor elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd)
-- [Dragehode](Dragehode/Dragehode.qmd)
+- [Klippeblåvinge]()
+- [Prikkrutevinge]()
+- [Trønderlav](Tronderlav/Tronderlav.qmd)
+- [Eremitt]()
+- [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd)
+- [Svartkurle](Svartkurle/Svartkurle.qmd)
+- [Trøndertorvmose](Trondertorvmose/Trondertorvmose-qmd)
+- [Stjernebønnelav]()
+- [Askeglye](Askeglye/Askeglye.qmd)
 - [Kystlynghei: Methodology](Kystlynghei/report/kystlynghei_methods.qmd)
 - [Forest monitoring report](effektovervaking_forests/docs/index.html)
 
