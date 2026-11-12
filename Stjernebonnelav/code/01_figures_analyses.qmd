@@ -14,6 +14,9 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(here)
+library(vegan)
+library(tibble)
+library(ggrepel)
 ```
 
 ## Importing data
@@ -21,6 +24,8 @@ library(here)
 ```{r}
 
 lav <- readxl::read_excel(here::here("data", "Stjernebønnelav_REV_25_26_v2.xlsx"), sheet = "Stjernebønnelav")
+
+arter <- readxl::read_excel(here::here("data", "Stjernebønnelav_REV_25_26_v2.xlsx"), sheet = "Arter_i_ruter")
 
 ```
 
@@ -119,4 +124,203 @@ fig2 <- ggplot(
     title = "Individuell vekst 2025")
 
 fig2
+```
+
+### Dynamics: new and disappeared thalli
+
+```{r}
+ids_2025 <- unique(
+  lav$Individ[lav$Year == 2025]
+)
+
+ids_2026 <- unique(
+  lav$Individ[lav$Year == 2026]
+)
+
+dynamics <- tibble(
+  Status = factor(
+    c("Forsvunnet", "Overlevende", "Nye"),
+    levels = c("Forsvunnet",
+               "Overlevende", "Nye")
+  ),
+  Number = c(
+    length(setdiff(ids_2025, ids_2026)),
+    length(intersect(ids_2025, ids_2026)),
+    length(setdiff(ids_2026, ids_2025))
+  )
+)
+
+fig3 <- ggplot(
+  dynamics,
+  aes(x = Status, y = Number, fill = Status)
+) +
+  geom_col(width = 0.65) +
+  geom_text(
+    aes(label = Number),
+    vjust = -0.5, size = 5
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Forsvunnet" = "#C44E52",
+      "Overlevende" = "#004F71",
+      "Nye" = "#55A868"
+    )
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.12))
+  ) +
+  labs(
+    x = "",
+    y = "Antall thallus",
+    title = "Populasjonsdynamikk 2025–2026"
+  ) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+fig3
+
+```
+
+## Ordination analysis and visualisation
+
+```{r}
+
+# Lag artsmatrise: én rad per rute og år
+artsdata <- arter %>%
+  transmute(
+    Lokalitet,
+    Rute,
+    Year = as.factor(`År`),
+    Species = `Latinsk navn`,
+    Frequency = as.numeric(Smårutefrekvens)
+  ) %>%
+  group_by(Lokalitet, Rute, Year, Species) %>%
+  summarise(
+    Frequency = sum(Frequency, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = Species,
+    values_from = Frequency,
+    values_fill = 0
+  )
+
+# Hent ut metadata og artsmatrise
+metadata <- artsdata %>%
+  select(Lokalitet, Rute, Year)
+
+species_matrix <- artsdata %>%
+  select(-Lokalitet, -Rute, -Year) %>%
+  as.data.frame()
+
+# Fjern eventuelle ruter uten arter
+keep <- rowSums(species_matrix) > 0
+
+species_matrix <- species_matrix[keep, , drop = FALSE]
+metadata <- metadata[keep, , drop = FALSE]
+
+# Kjør NMDS
+set.seed(123)
+
+nmds <- metaMDS(
+  species_matrix,
+  distance = "bray",
+  k = 2,
+  trymax = 200,
+  autotransform = FALSE
+)
+
+# Sjekk stress
+nmds$stress
+
+# Hent ut ruteskårer
+site_scores <- as.data.frame(
+  scores(nmds, display = "sites")
+) %>%
+  bind_cols(metadata)
+
+# Hent ut artsskårer
+species_scores <- as.data.frame(
+  scores(nmds, display = "species")
+) %>%
+  rownames_to_column("Species")
+
+# Lag figur
+fig_nmds <- ggplot() +
+  
+  # Grå stiplede linjer gjennom origo
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed",
+    colour = "grey65",
+    linewidth = 0.4
+  ) +
+  geom_vline(
+    xintercept = 0,
+    linetype = "dashed",
+    colour = "grey65",
+    linewidth = 0.4
+  ) +
+  
+  # Ruter med farger for år
+  geom_point(
+    data = site_scores,
+    aes(x = NMDS1, y = NMDS2, colour = Year),
+    size = 3
+  ) +
+  
+  # Alle arter unntatt Buellia asterella
+  ggrepel::geom_text_repel(
+    data = species_scores %>%
+      filter(Species != "Buellia asterella"),
+    aes(x = NMDS1, y = NMDS2, label = Species),
+    size = 3,
+    colour = "grey35",
+    max.overlaps = Inf,
+    box.padding = 0.5,
+    point.padding = 0.3,
+    force = 2,
+    max.iter = 20000,
+    seed = 123
+  ) +
+  
+  # Uthev Buellia asterella
+  ggrepel::geom_text_repel(
+    data = species_scores %>%
+      filter(Species == "Buellia asterella"),
+    aes(x = NMDS1, y = NMDS2, label = Species),
+    size = 4,
+    colour = "#C44E52",
+    fontface = "bold.italic",
+    box.padding = 0.8,
+    force = 3,
+    seed = 123
+  ) +
+  
+  scale_colour_manual(
+    values = c(
+      "2025" = "#004F71",
+      "2026" = "#E69F00"
+    )
+  ) +
+  
+  coord_equal() +
+  
+  labs(
+    title = "NMDS – Species composition",
+    subtitle = paste(
+      "Stress =", round(nmds$stress, 3)
+    ),
+    x = "NMDS1",
+    y = "NMDS2",
+    colour = "Year"
+  ) +
+  
+  theme_classic() +
+  theme(
+    plot.title = element_text(size = 14),
+    legend.position = "right"
+  )
+
+fig_nmds
 ```
