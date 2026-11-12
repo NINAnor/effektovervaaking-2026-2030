@@ -19,10 +19,10 @@ book:
     - Elvesandjeger/Elvesandjeger.qmd
     - Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd
     - Tronderlav/Tronderlav.qmd
-    - Askeglye/Askeglye.qmd
     - Rod-skogfrue/Rod-skogfrue.qmd
-    - Trondertorvmose/Trondertorvmose.qmd
     - Svartkurle/Svartkurle.qmd
+    - Trondertorvmose/Trondertorvmose.qmd
+    - Askeglye/Askeglye.qmd
     - Kystlynghei/report/kystlynghei_condition_report.qmd
     - effektovervaking_forests/docs/forest_monitoring_report.qmd
   appendices:
