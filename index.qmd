@@ -1,6 +1,4 @@
----
-title: "Effektovervåking 2026–2030"
----
+# Effektovervåking 2026–2030 {.unnumbered}
 
 Code, cleaned data and yearly result summaries for NINA's monitoring of the
 effects of management actions for threatened species and habitat types in
