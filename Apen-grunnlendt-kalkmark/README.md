@@ -80,11 +80,67 @@ Marianne Evju, Ruben Erik Roos
 
 ## Oppsummering
 
-<!--# Standardisert oppsummering, lik den som leveres i hovedrapporten. Mangler i utkastet. -->
+<!--# Utkast, skrevet ut fra teksten i rapporten. Skal kontrolleres av forfatterne. -->
+
+Åpen grunnlendt kalkmark i boreonemoral sone er en utvalgt naturtype og
+er vurdert som sterkt truet (EN) på Rødlista for naturtyper 2025.
+Naturtypen er truet av fremmede arter, særlig gravbergknapp (*Phedimus
+spurius*), og av gjengroing. Siden 2022 har vi overvåket effekter av
+restaureringstiltak på lokaliteter i indre Oslofjord, og per 2026 inngår
+sju lokaliteter. På Bleikøya, Loffen på Nakholmen og Torvøya bekjempes
+gravbergknapp med duk, sprøyting og luking. På Padda, Malmøya og
+Husbergøya fjernes busker og kratt ved rydding, og på Husbergøya også
+ved geitebeite. På Fyrsteila testes ulike metoder for bekjempelse av
+gravbergknapp i kombinasjon med revegetering i et eksperiment, som ble
+tatt inn i overvåkingen i 2026.
+
+I 2026 ble dekning av vedplanter, fremmede arter og problemarter
+registrert i sirkler rundt vegetasjonsrutene på seks lokaliteter, og det
+ble gjort vegetasjonsanalyser på Fyrsteila. Både duk og sprøyting har
+redusert dekningen av gravbergknapp, men der duken er fjernet eller
+gravbergknapp er sprøytet, etablerer det seg andre fremmede arter og
+ugrasarter, særlig vinterkarse. Krattrydding har redusert dekningen av
+vedplanter på Padda og Malmøya, men nye oppslag må ryddes jevnlig, og
+ugrasarter etablerer seg på forstyrret mark. På Fyrsteila hadde alle
+bekjempelsesmetodene rask effekt, men manuell fjerning uten
+etterbehandling ga nye oppskudd av gravbergknapp. Revegetering ga noe
+høyere dekning av habitatspesialister og lavere dekning av fremmede
+arter. Resultatene viser at oppfølgende luking og rydding over flere år
+er nødvendig for å opprettholde effekten av tiltakene.
 
 ## English summary
 
-<!--# Skrives av prosjektledergruppa. -->
+<!--# Utkast, oversatt fra oppsummeringen. Skal kontrolleres av prosjektledergruppa. -->
+
+Open shallow-soil calcareous grassland in the boreonemoral zone is a
+selected habitat type in Norway and is assessed as endangered (EN) on
+the 2025 Norwegian Red List of Ecosystems and Habitat Types. The habitat
+type is threatened by alien species, especially two-row stonecrop
+(*Phedimus spurius*), and by encroachment of shrubs and trees. Since
+2022, we have monitored the effects of restoration measures at sites in
+the inner Oslofjord, and seven sites are included as of 2026. On
+Bleikøya, Loffen on Nakholmen and Torvøya, two-row stonecrop is
+controlled by covering with tarpaulins, herbicide spraying and weeding.
+On Padda, Malmøya and Husbergøya, shrubs and scrub are removed by
+clearing, and on Husbergøya also by goat grazing. On Fyrsteila, an
+experiment tests different methods for controlling two-row stonecrop in
+combination with revegetation; it was included in the monitoring in
+2026.
+
+In 2026, cover of woody plants, alien species and problem species was
+recorded in circles around the vegetation plots at six sites, and
+vegetation analyses were carried out on Fyrsteila. Both tarpaulins and
+spraying have reduced the cover of two-row stonecrop, but where
+tarpaulins have been removed or the stonecrop has been sprayed, other
+alien species and weeds establish, especially land cress (*Barbarea
+verna*). Clearing of scrub has reduced the cover of woody plants on
+Padda and Malmøya, but new shoots must be removed regularly, and weeds
+establish on disturbed ground. On Fyrsteila, all control methods had a
+rapid effect, but manual removal without follow-up treatment led to
+regrowth of two-row stonecrop. Revegetation gave somewhat higher cover
+of habitat specialists and lower cover of alien species. The results
+show that follow-up weeding and clearing over several years are needed
+to maintain the effects of the measures.
 
 ## 1. Innledning
 
