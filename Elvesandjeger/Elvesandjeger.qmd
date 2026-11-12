@@ -31,7 +31,7 @@ format:
     toc-depth: 2
     echo: false
   html:
-    embed-resources: true
+    # embed-resources: true
     code-fold: true
     toc: true
     toc-title: Innhold
