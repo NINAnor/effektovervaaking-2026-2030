@@ -13,12 +13,68 @@ library(tibble)
 library(lubridate)
 library(tidyr)
 library(stringr)
+library(openxlsx)
 
+#### ---- Import data ---- ####
 
-#### ---- Plot data ---- #### 
 ### new dataset from Survey123 ###
-plot_2026 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/Exports/GRUK_effekt_2026_data_analyses.xlsx", sheet = "plots")
+plot_2026 <- readxl::read_excel(here::here("data", 
+                                           "S123_2026", 
+                                           "GRUK_effekt_2026_processed", 
+                                           "Exports", 
+                                           "GRUK_effekt_2026_data_analyses.xlsx"), 
+                                sheet = "plots" )
 
+### Fyrsteila-dataset from 2025 ###
+fil <- here::here("data", "Fyrsteilene data 2025_NINA.xlsx")
+
+
+### Old datasets from 2022-25 ###
+plot_2022_25 <- readxl::read_excel(here::here("data", "GRUK_effekt_data_2025_updated.xlsx"), sheet = "plots")
+
+### species data from Survey123 2026 ###
+plotspecies_2026 <- readxl::read_excel(here::here("data", 
+                                                  "S123_2026", 
+                                                  "GRUK_effekt_2026_processed", 
+                                                  "Exports", 
+                                                  "GRUK_effekt_2026_data_analyses.xlsx"), 
+                                       sheet = "plot_species_long")
+  
+### old dataset from 2022-25 ###
+plotspecies_2022_25 <- readxl::read_excel(here::here("data", 
+                                                     "GRUK_effekt_data_2025_updated.xlsx"), sheet = "species.long")
+
+### new 2026 circle data from Survey123
+circle_2026 <- readxl::read_excel(here::here("data", 
+                                             "S123_2026", 
+                                             "GRUK_effekt_2026_processed",
+                                             "Exports",
+                                             "GRUK_effekt_2026_data_analyses.xlsx"), sheet = "circles")
+                                             
+circle_2022_25 <- readxl::read_excel(here::here("data", 
+                                                "GRUK_effekt_data_2025_updated.xlsx"),
+                                     sheet="circles")
+                                                
+### new 2026 circle species data from Survey123
+circlespecies_2026 <- readxl::read_excel(here::here("data", 
+                                                    "S123_2026", 
+                                                    "GRUK_effekt_2026_processed",
+                                                    "Exports",
+                                                    "GRUK_effekt_2026_data_analyses.xlsx"), 
+                                         sheet = "circle_species_long")
+
+### old circle species data  
+circlespecies_2022_25 <- readxl::read_excel(here::here("data", 
+                                                       "GRUK_effekt_data_2025_updated.xlsx")
+                                            ,sheet="species.circles")
+#GPS data
+GPS_GRUK <- readxl::read_excel(here::here("data", 
+                                          "GRUK_effekt_vegruter_2026_oppdatert.xlsx"),
+                               sheet="GRUK_effekt_vegruter_2026")
+                                          
+  
+  
+#### ---- Plot data ---- #### 
 # creating variable names that correspond to existing dataset
 plot_2026_rev <- plot_2026 %>%
   rename(
@@ -149,8 +205,8 @@ plot_2026_rev2 <- plot_2026_rev %>%
        
   )
 
+
 ### Fyrsteila-dataset from 2025 ###
-fil <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/Fyrsteilene data 2025_NINA.xlsx"
 
 # Kobling mellom plotnummer i 2025-fila og riktig Rute
 rute_lookup_2025 <- tibble(
@@ -247,7 +303,6 @@ Fyrsteila_plot_2025 <- Fyrsteila_plot_2025 %>%
 
 
 ### old dataset from 2022-25 ###
-plot_2022_25 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_data_2025_updated.xlsx",sheet="plots")
 plot_2022_25 <- plot_2022_25 %>% mutate(Dato = as.Date(Dato))
 
 # cleaning plot_2022_25, including plot size and only keeping rows where plots were analysed
@@ -291,8 +346,6 @@ GRUK_plot_22_26 <- GRUK_plot_22_26 %>%
 
 
 #### ---- Species in plots data ---- #### 
-### species data from Survey123 2026 ###
-plotspecies_2026 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/Exports/GRUK_effekt_2026_data_analyses.xlsx", sheet = "plot_species_long")
 
 # in the 2026-data, creating variable names that correspond to existing dataset
 plotspecies_2026 <- plotspecies_2026 %>%
@@ -337,7 +390,7 @@ plotspecies_2026 <- plotspecies_2026 %>%
   )
 
 ### Including Fyrsteila data from 2025 ###
-# fil <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/Fyrsteilene data 2025_NINA.xlsx"
+
 # Artsliste
 species_list <- read_excel(
   fil,
@@ -438,7 +491,6 @@ plotspecies_2022_25 <- plotspecies_2022_25 %>%
   )
 
 ### old dataset from 2022-25 ###
-plotspecies_2022_25 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_data_2025_updated.xlsx",sheet="species.long")
 plotspecies_2022_25 <- plotspecies_2022_25 %>% mutate(Dato = as.Date(Dato))
 
 ### merging the three files into one
@@ -449,7 +501,9 @@ GRUK_plotspecies_22_26 <- GRUK_plotspecies_22_26 %>%
   filter(!is.na(Latinsk_navn) & !Latinsk_navn %in% "Abies")
 
 ## making a draft file for checking species names in an easier way (for me at least)
-write.csv(GRUK_plotspecies_22_26, "mitt_datasett.csv", row.names = FALSE)
+write.csv(GRUK_plotspecies_22_26,
+          file = here::here("data", "mitt_datasett.csv"), 
+          row.names = FALSE)
 
 
 ## revising species names to ensure that all observations of a given taxon are recorded at the same taxonomic level
@@ -505,8 +559,6 @@ GRUK_plotspecies_22_26 <- GRUK_plotspecies_22_26 %>%
 
 
 #### ---- Circle data ---- ####
-### new 2026 circle data from Survey123
-circle_2026 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/Exports/GRUK_effekt_2026_data_analyses.xlsx", sheet = "circles")
 
 # creating variable names that correspond to existing dataset
 circle_2026_rev <- circle_2026 %>%
@@ -677,7 +729,6 @@ circle_2026_rev2 <- circle_2026_rev %>%
 
 
 ### old data from 2022-25 ###
-circle_2022_25 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_data_2025_updated.xlsx",sheet="circles")
 circle_2022_25 <- circle_2022_25 %>% mutate(Dato = as.Date(Dato))
 
 ### merging the two files into one
@@ -691,9 +742,7 @@ GRUK_circle_22_26 <- GRUK_circle_22_26 %>%
   filter(Lokalitet != "Fyrsteila")
 
 
-x#### ---- Species in circles data ---- #### 
-### new 2026 data from Survey123
-circlespecies_2026 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/Exports/GRUK_effekt_2026_data_analyses.xlsx", sheet = "circle_species_long")
+#### ---- Species in circles data ---- #### 
 
 # in the 2026-data, creating variable names that correspond to existing dataset
 circlespecies_2026 <- circlespecies_2026 %>%
@@ -1072,7 +1121,7 @@ circlespecies_2026_clean2 <- circlespecies_2026_clean %>%
   select(c(Lokalitet,Rute,Tid_num,Tid,Registrant,Dato,Latinsk_navn,Dekning))
 
 ### old data from 2022-25
-circlespecies_2022_25 <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_data_2025_updated.xlsx",sheet="species.circles")
+
 circlespecies_2022_25 <- circlespecies_2022_25 %>% 
   mutate(Dato = as.Date(Dato))
 
@@ -1082,7 +1131,9 @@ circlespecies_2022_25 <- circlespecies_2022_25 %>%
 GRUK_circlespecies_22_26 <- bind_rows(circlespecies_2022_25, circlespecies_2026_clean2) 
 
 ## making a draft file for checking species names in an easier way (for me at least)
-write.csv(GRUK_circlespecies_22_26, "sirkelarterkladd.csv", row.names = FALSE)
+write.csv(GRUK_circlespecies_22_26, 
+          file = here("data", "sirkelarterkladd.csv"),
+          row.names = FALSE)
 
 ## correcting stuff
 GRUK_circlespecies_22_26 <- GRUK_circlespecies_22_26 %>% 
@@ -1097,11 +1148,8 @@ GRUK_circlespecies_22_26 <- GRUK_circlespecies_22_26 %>%
 
 
 #### ---- Export data as an excel-file ---- ####
-#install.packages("openxlsx")
-library(openxlsx)
 
 # one for the complete dataset
-GPS_GRUK <- read_excel("~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_vegruter_2026_oppdatert.xlsx",sheet="GRUK_effekt_vegruter_2026")
 
 wb <- createWorkbook()
 
@@ -1120,11 +1168,13 @@ writeData(wb, "species.circles", GRUK_circlespecies_22_26)
 addWorksheet(wb, "GPS")
 writeData(wb, "GPS", GPS_GRUK)
 
-saveWorkbook(wb, "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_data_2026.xlsx", overwrite = TRUE)
-
+openxlsx::saveWorkbook(
+  wb,
+  file = here::here("data", "GRUK_effekt_data_2026.xlsx"),
+  overwrite = TRUE
+)
 
 #### ---- Exporting also only new data as an excel-file ---- ####
-
 
 plots_new_2026 <- bind_rows(plot_2026_rev2,Fyrsteila_plot_2025) 
 ## including only rows/plots where plot analyses were carried out
@@ -1156,5 +1206,9 @@ writeData(wb, "species.circles", circlespecies_2026_new)
 addWorksheet(wb, "GPS")
 writeData(wb, "GPS", GPS_GRUK)
 
-saveWorkbook(wb, "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data/GRUK_effekt_data_2026_only.xlsx", overwrite = TRUE)
+openxlsx::saveWorkbook(
+  wb,
+  file = here::here("data", "GRUK_effekt_data_2026_only.xlsx"),
+  overwrite = TRUE
+)
 
