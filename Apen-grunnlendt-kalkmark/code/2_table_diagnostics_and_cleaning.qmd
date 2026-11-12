@@ -19,13 +19,14 @@ Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ct
 ```{r}
 
 # The table should have the same structure and colnames as in export_dirty.xlsx.
-filepath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/GRUK_effekt_2026_export_dirty.xlsx"
+
+filepath <- here::here("data", "S123_2026", "GRUK_effekt_2026_processed", "GRUK_effekt_2026_export_dirty.xlsx")
 
 # What should the exported files be marked as?
 project <- "GRUK_effekt_2026"
 
 # Path to folder where the processed directories and files should be exported
-outputpath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed"
+outputpath <- here::here("data", "S123_2026", "GRUK_effekt_2026_processed")
 
 ```
 
