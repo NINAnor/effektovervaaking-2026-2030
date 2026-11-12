@@ -18,16 +18,16 @@ library(readxl)
 library(ggplot2)
 library(stringr)
 library(cowplot)
+library(here)
 
 # defining a colour palette
 nina.colours <- c("#004F71","#008C95","#E57200","#93328E","#7A9A01","#A2AAAD","#2DCCD3","#FFB25B")
 
 ## stier
-prosjektmappe <- if (dir.exists("~/Mounts/P-Prosjekter2")) "~/Mounts/P-Prosjekter2" else "/data/P-Prosjekter2"
-datamappe <- file.path(prosjektmappe, "154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Data")
-datafil <- file.path(datamappe, "GRUK_effekt_data_2026.xlsx")
-outputmappe <- file.path(prosjektmappe, "154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/Analyser_outputs")
-dir.create(outputmappe, showWarnings = FALSE)
+datamappe <- here::here("data")
+datafil <- here::here("data", "GRUK_effekt_data_2026.xlsx")
+outputmappe <- here::here("img")
+
 
 ## henter inn data
 ## guess_max: noen kolonner i species.long er tomme i de første radene og blir ellers lest som logiske
