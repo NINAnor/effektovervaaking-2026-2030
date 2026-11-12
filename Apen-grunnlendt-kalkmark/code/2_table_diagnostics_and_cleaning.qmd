@@ -1,0 +1,228 @@
+# Datavask og -prosessering av vegetasjonsdata
+
+*Skrevet av Ida M. Mienna*
+
+*18.08.2025*
+
+CHANGES CHANGES CHANGES x2 tester hvordan dette lagres
+
+endringer som kan påvirke lokalt?
+
+hvordan endres dette lokalt og på nett?
+
+Her bør du gjøre den datarengjøringen du ellers ville ha gjort i Excel. Grunnen til å gjøre dette her er å ha en reproduserbar metode som både andre, men også du selv, kan bruke for å kjøre gjennom datarengjøringen og ende opp med de samme resultatene som før.
+
+Selve diagnostikken for datarengjøringen vil kjøres nedenfor under seksjonen "\*\*IKKE gjør endringer under her\*\*". Dette er (forhåpentligvis) for å gjøre det mer åpenbart hvilke deler av tabellen som må endres. Jeg har lagt til noen typiske temaer nedenfor, men disse kan videre bearbeides under "IKKE ENDRE NEDENFOR" om nødvendig.
+
+Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ctrl+Alt+R. Du vil finne én ny fil med navnet "ditt_prosjekt_navn_export_dirty.xlsx" i din eksportmappe.
+
+```{r}
+
+# The table should have the same structure and colnames as in export_dirty.xlsx.
+filepath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/GRUK_effekt_2026_export_dirty.xlsx"
+
+# What should the exported files be marked as?
+project <- "GRUK_effekt_2026"
+
+# Path to folder where the processed directories and files should be exported
+outputpath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed"
+
+```
+
+```{r}
+## If you have collected high-precision GPS points, let collctd_hpcoords be TRUE 
+## and add the full file path with the coordinates. The coordinates should be in
+## a csv format as when exporting the GPS points report. If you do not have 
+## collctd_hpcoords, change hpcoords to FALSE.
+collctd_hpcoords <- FALSE
+
+hpcoordspath <- "insert-your-path-here"
+
+# Which crs do the coordinates have? Please write EPSG:XXXXX (see example)
+hpcrs <- "EPSG:25832" # EUREF89 UTM sone 32
+
+# If you have check_GIS <- TRUE, you can further check if the plots are OK for analyses (e.g. use as ground truth for remote sensing). A map will pop up to in your Viewer-console (by default in your bottom right) where you can zoom in on your data. Hold the cursor above a plot to see its label.
+# If you did not use a high-precision GPS, this step will not work so change check_GIS to FALSE.
+
+check_GIS <- TRUE
+
+```
+
+Hvis du ønsker, kan du få ut en diagnostikk-mappe ("Diagnostics") som viser informasjon om plot ID, artsnavn, koordinater osv.
+
+```{r}
+## Export files for diagnostics? (Yes=TRUE, No=FALSE)
+export_diagnostics <- TRUE
+
+```
+
+```{r}
+
+## DO NOT CHANGE but you can add your own packages if necessary (IMPORTING PACKAGES)
+
+# Open files (import function and run)
+source(here::here("Rsource", "functions.R"))
+
+dat <- readxl::read_excel(filepath)
+
+if(collctd_hpcoords){
+  hpcoords <- read.table(hpcoordspath, header = FALSE, sep = ",", 
+                         stringsAsFactors = FALSE, fill = TRUE, skip=1)
+}
+
+Sys.setlocale(locale='no_NB.utf8')
+
+## Packages
+packages <- c("dplyr", "readxl", "sf", "tidyr", "openxlsx", "stringr",
+              "httr", "jsonlite", "purrr", "data.table", "readr", "mapview")
+
+# Require or install packages function
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+
+ipak(packages)
+```
+
+## Datavask
+
+Under her gjør du vask av dataene dine. Under er eksempler på hvordan dette kan gjøres, men du kan gjøre endringene under som du vil.
+
+I skriptet vil endringer gjort under Datavsk prosesseres i "IKKE gjør endringer". Det som per nå
+
+Lokasjonsnavn
+
+#### Rutenavn, lokalitetsnavn o.l.
+
+```{r}
+
+dat <- dat %>%
+  mutate(
+    main_plot_id = if_else(
+      main_location_id %in% c("S", "SR", "LS", "L", "D2", "D1"),
+      paste0(main_location_id, "_", main_plot_id),
+      as.character(main_plot_id)
+    ),
+    main_location_id = if_else(
+      main_location_id %in% c("S", "SR", "LS", "L", "D2", "D1"),
+      "Fyrsteila",
+      main_location_id
+    )
+  )
+
+dat <- dat %>%
+  mutate(
+    main_plot_id = if_else(
+      main_plot_id == "D1-1_3",
+      "D1_3",
+      main_plot_id
+    )
+  )
+```
+
+#### Artsnavn
+
+```{r}
+
+# ## EXAMPLE:
+# # Fix spelling errors in the dataset.
+dat <- dat %>%
+   mutate(plot_species = case_when(
+    plot_species == "Anthyllis_vulneraria" ~ "Anthyllis_vulneraria_subsp._vulneraria",
+    plot_species == "Arenaria_serpyllifolia" ~ "Arenaria_serpyllifolia_subsp._serpyllifolia",
+    plot_species == "Lotus_corniculatus" ~ "Lotus_corniculatus_var._corniculatus",
+    #plot_species == "Lotus corniculatus var. corniculatus" ~ "Lotus corniculatus corniculatus",
+
+    TRUE ~ plot_species
+
+  ))
+#   ))
+
+```
+
+#### Koordinater
+
+Sjekk om navn er riktig plassert på riktige steder. Sjekk også om koordinatnøyaktigheten er god nok.
+
+```{r}
+
+# # EXAMPLE:
+# # If there are rows that should be removed
+# hppointrem <- c("RTCM0446", "4H1_sw", "4H4_sw", "9L1_sw", "5M3_sw", "10H5_np",
+#                "6R2_np", "V0104")
+# hpplotrem <- c(
+#   "10H1", "10H2", "10H3", "10H4", "10H5", "10L1", "10L2", "10L3", "10L4", "10L5",
+#   "10M1", "10M2", "10M3", "10M4", "10M5", "10R1", "10R2", "10R3", "10R4", "10R5",
+#   "11H1", "11H2", "11H3", "11H4", "11H5", "11L1", "11L2", "11L3", "11L4", "11L5",
+#   "11M1", "11M2", "11M3", "11M4", "11M5", "11R1", "11R2", "11R3", "11R4", "11R5",
+#   "12H1", "12H2", "12H3", "12H4", "12H5", "12L1", "12L2", "12L3", "12L4", "12L5",
+#   "12M1", "12M2", "12M3", "12M4", "12M5", "12R1", "12R2", "12R3", "12R4", "12R5",
+#   "2H1", "2H2", "2H3", "2H4", "2H5", "2L1", "2L2", "2L3", "2L4", "2L5",
+#   "2M1", "2M2", "2M3", "2M4", "2M5", "2R1", "2R2", "2R3", "2R4", "2R5",
+#   "3H1", "3H2", "3H3", "3H4", "3H5", "3L1", "3L2", "3L3", "3L4", "3L5",
+#   "3M1", "3M2", "3M3", "3M4", "3M5", "3R1", "3R2", "3R3", "3R4", "3R5",
+#   "4H1", "4H2", "4H3", "4H4", "4H5", "4L1", "4L2", "4L3", "4L4", "4L5",
+#   "4M1", "4M2", "4M3", "4M4", "4M5", "4R1", "4R2", "4R3", "4R4", "4R5",
+#   "5H1", "5H2", "5H3", "5H4", "5H5", "5L1", "5L2", "5L3", "5L4", "5L5",
+#   "5M1", "5M2", "5M3", "5M4", "5M5", "5R1", "5R2", "5R3", "5R4", "5R5",
+#   "6H1", "6H2", "6H3", "6H4", "6H5", "6L1", "6L2", "6L3", "6L4", "6L5",
+#   "6M1", "6M2", "6M3", "6M4", "6M5", "6R1", "6R2", "6R3", "6R4", "6R5",
+#   "8H1", "8H2", "8H3", "8H4", "8H5", "8L1", "8L2", "8L3", "8L4", "8L5",
+#   "8M1", "8M2", "8M3", "8M4", "8M5", "8R1", "8R2", "8R3", "8R4", "8R5",
+#   "9H1", "9H2", "9H3", "9H4", "9H5", "9L1", "9L2", "9L3", "9L4", "9L5",
+#   "9M1", "9M2", "9M3", "9M4", "9M5", "9R1", "9R2", "9R3", "9R4", "9R5"
+# )
+# 
+# hpcoords <- hpcoords %>%
+#   
+#   # Rename columns
+#   setNames( c("Point", "Y", "X", "Elev", "NA")) %>%
+#   
+#   # Remove specific rows from a column (here: Point) that have values listed in
+#   # hppointrem
+#   filter(! Point %in% hppointrem) %>%
+#   
+#   # Remove specific rows from a column (here: Point) that have values that have
+#   # specific words, numbers etc. that matches what we have listed in hpplotrem.
+#   filter(! grepl(paste0(hpplotrem, collapse="|"),Point)) %>%
+#   
+#   # Fix writing errors in plot names
+#   mutate(Point = case_when(
+#     
+#     # When there is a specific name
+#     Point == "VR1_sv" ~ "VR101_sv", # Where Point=VR1 it should instead be VR101
+#     
+#     # When there is a pattern
+#     grepl("^VR[1-5]", Point) ~ sub("^VR([1-5])", "VR10\\1", Point), # VR2 to VR5 should be VR102 to VR105
+#     grepl("^MR[1-5]", Point) ~ sub("^MR([1-5])", "MR10\\1", Point), # MR1 to (same as above)
+#     grepl("^BR[1-5]", Point) ~ sub("^BR([1-5])", "BR10\\1", Point), # BR1 to (same as above)
+#     
+#     grepl("nj", Point) ~ sub("nj", "no", Point), # Should be no and not nj
+#     
+#     TRUE ~ Point
+#     
+#   ))
+
+```
+
+## \*\*IKKE gjør endringer under her\*\*
+
+```{r}
+
+# Create a folder for diagnostics (if it does not exist) 
+diagnostics_folder <- paste0(outputpath, "Diagnostics/")
+
+if (!dir.exists(diagnostics_folder)) {
+  dir.create(diagnostics_folder)
+  cat(paste0("Directory created for diagnostics: ", diagnostics_folder))
+}
+
+
+```
+
+```{r}
+process_and_diagnose(dat)
+```

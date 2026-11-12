@@ -1,0 +1,62 @@
+# Fra Survey123 data til rå tabell
+
+*Skrevet av Ida M. Mienna*
+
+*29.09.2026*
+
+Survey123-data kan lastes ned fra [ArcGIS online](https://www.arcgis.com/index.html) eller fra [Survey123s webløsning](https://survey123.arcgis.com/). Filen man laster ned burde helst være en file geodatabase (FGDB) for å også få med bilder, men kan også være en geodatabase (GDB) eller Excel. Man trenger ikke pakke ut fila før man kjører skriptet.
+
+Filstien MÅ bestå av "/" og IKKE "\\". I tillegg kan den ikke inneholde æ,ø,å eller andre spesielle bokstaver.
+
+Hvis du jobber på RStudio-serveren kan du finne filstien ved å åpne filvinduet (befinner seg oftest i vinduet nederst til høyre). Her må du først navigere deg frem til mappen hvor filene befinner seg. Deretter klikker du på "More"-knappen og "Copy Folder Path to Clipboard". Lim inn filstien hvor det står "insert-your-file-path" og legg til navnet på filen du vil importere (husk å ha med filtypen bakerst!).
+
+Dette skriptet **pakker kun ut og kobler sammen** rådataene (hovedtabell + eventuelle repeat-tabeller som artsregistreringer) til én tabell - det gjør ingen standardisering av kolonnenavn. Standardiseringen skjer i neste steg, [1b_standardize_table.qmd](1b_standardize_table.qmd).
+
+Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ctrl+Alt+R. Du vil finne én ny fil med navnet "ditt_prosjekt_navn_raw.xlsx" i din eksportmappe.
+
+```{r}
+
+## File path
+
+filepath <- here::here("data", "S123_2026", "805b3d03-e40e-463e-ba5e-59151086b18b.gdb")
+
+## Output path
+# Path to folder where the processed directories and files should be exported
+outputpath <- here::here("data", "S123_2026")
+
+
+## Project name
+project <- "GRUK_effekt_2026"
+```
+
+## \*\*IKKE gjør endringer under her\*\*
+
+```{r}
+#| label: inputs
+#| echo: true
+#| code-fold: false         # keep THIS one open
+#| message: false
+
+Sys.setlocale("LC_CTYPE", "nb_NO.UTF-8")
+
+## Packages
+packages <- c("here", "dplyr", "readxl", "sf", "openxlsx")
+
+# Open files (import function and run)
+source(here::here("Rsource", "functions.R"))
+
+# Require or install packages function
+ipak(packages)
+```
+
+```{r}
+#| label: unpack
+#| echo: true
+#| code-fold: false         # keep THIS one open
+#| message: false
+
+unpack_survey123(filepath = filepath,
+                 outputpath = outputpath,
+                 project = project)
+
+```
