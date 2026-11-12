@@ -1,0 +1,197 @@
+---
+title: "03 Rettelser i 2026-dataene etter Rubens svar (10.11.2026)"
+format: html
+---
+
+
+Leser Survey123-eksporten (fanene plots og circles) og skriver en rettet kopi.
+Rådata og eksportfila endres ikke.
+
+Rettelser:
+
+1. Dekning i rutene og artslista ble ikke registrert i 2026 (forenklet overvåking,
+   Rubens svar 11.11.2026). Står som 0 i Survey123 og settes til NA, også RT-3 bunnsjikt 34.
+2. Sju sirkelverdier med store endringer fra 2025 settes til NA (Rubens svar 9).
+3. Rosetter i sirkel: manglende verdi = ingen funnet -> 0. I tillegg ja/nei
+   for sammenligning med 2025 (Rubens svar 7).
+4. Busksjikthøyde for RU-15 og RU-10 fra kommentarfeltet (svar 8). Erstatter
+   vegetasjonshøyden for disse to rutene (Rubens svar 11.11.2026).
+5. Fulle navn på observatørene (svar 11).
+6. Skjøtsel (Plot_management, antall ganger slått) fra skript 02.
+7. RT-22-sirkelen: prosent skjøttet = 0 (Rubens svar 11.11.2026).
+8. Larvespinn i sirkelen rundt RT-21 manglet: 0 (Rubens svar 11.11.2026).
+
+Kjør 02_skjotsel.qmd først.
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026, oppdatert 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+skjotsel <- readRDS(ut("02_skjotsel_2022_2026.rds")) |> filter(aar == 2026)
+
+p26 <- les(fil_2026, "plots")
+c26 <- les(fil_2026, "circles")
+
+legg_til_id <- function(d) {
+  d |> mutate(
+    lok = main_location_id,
+    sirkel_fast = str_detect(main_plot_id, "^Sirkel"),
+    rute = if_else(sirkel_fast,
+                   paste0(lok, "-sirkel", str_extract(main_plot_id, "\\d+")),
+                   paste0(lok, "-", main_plot_id)),
+    kode = if_else(sirkel_fast,
+                   paste0("Circle", str_extract(main_plot_id, "\\d+")),
+                   sprintf("M%02d", suppressWarnings(as.integer(main_plot_id)))),
+    observer = fullt_navn(main_observant_name))
+}
+
+logg <- list()
+logg_endring <- function(rute, variabel, fra, til, grunn) {
+  logg[[length(logg) + 1]] <<- tibble(rute = rute, variabel = variabel,
+                                       fra = as.character(fra), til = as.character(til),
+                                       grunn = grunn)
+}
+```
+
+## Ruter
+
+```{r}
+ruter <- p26 |> legg_til_id() |> filter(!sirkel_fast)
+
+## Smalkjempedekning fra artstabellen er reelle data (eneste art som kom inn). Beholdes.
+sp26 <- les(fil_2026, "species.long") |>
+  filter(plot_species == "Plantago_lanceolata") |>
+  transmute(rute = paste0(main_location_id, "-", main_plot_id),
+            # Skript 2 i Survey123-løypa gjør artsdekning om til andel (0–1).
+            # Tilbake til prosent, som i GDB-en (RU-6: 2, RT-8: 2, RU-1: 0,1).
+            plot_cover_plantago = plot_cover_species * 100,
+            plot_floral_stems_plantago = plot_species_repshoots)
+ruter <- ruter |> left_join(sp26, by = "rute")
+
+dekning_rute <- c("plot_cover_bottomlayer", "plot_cover_fieldlayer", "plot_cover_baresoil",
+                  "plot_cover_bedrock", "plot_cover_litter", "plot_cover_focalspecies1",
+                  "plot_cover_focalspecies2", "plot_cover_total", "nr_species")
+for (v in intersect(dekning_rute, names(ruter))) {
+  endret <- which(!is.na(ruter[[v]]))
+  if (length(endret)) logg_endring(ruter$rute[endret], v, ruter[[v]][endret], NA,
+                                   "Ikke registrert i 2026 (forenklet overvåking, Rubens svar 11.11). 0 i Survey123 betyr ikke registrert.")
+  ruter[[v]] <- NA_real_
+}
+
+busk <- tribble(
+  ~rute,   ~plot_height_shrub1, ~plot_height_shrub2, ~plot_height_shrub3, ~plot_height_shrub4,
+  "RU-15", 120, 0,  99, 88,
+  "RU-10", 137, 89, 65, 126
+)
+ruter <- ruter |> left_join(busk, by = "rute")
+for (i in seq_len(nrow(busk))) logg_endring(busk$rute[i], "plot_height_shrub1-4", NA,
+  paste(unlist(busk[i, -1]), collapse = ", "),
+  "Busksjikthøyde fra kommentarfeltet. Rubens svar 8: bruk den for å sammenligne med tidligere år.")
+
+## Rubens svar 11.11.2026: for RU-15 og RU-10 erstattes vegetasjonshøyden med
+## busksjikthøyden, fordi det gir målinger som er mest like tidligere år (da ble
+## høyden målt på busksjiktet). Vegetasjonshøyden som ble målt i 2026, beholdes i
+## kolonnene plot_height_fieldlayer1–4.
+hoyde <- paste0("plot_height_vegetation", 1:4)
+ruter[paste0("plot_height_fieldlayer", 1:4)] <- ruter[hoyde]
+for (r in busk$rute) {
+  j <- which(ruter$rute == r)
+  logg_endring(r, "plot_height_vegetation1-4",
+               paste(unlist(ruter[j, hoyde]), collapse = ", "),
+               paste(unlist(ruter[j, paste0("plot_height_shrub", 1:4)]), collapse = ", "),
+               "Rubens svar 11.11: erstatt vegetasjonshøyde med busksjikthøyde (mest konsistent med tidligere år). Målt feltsjikthøyde beholdt i plot_height_fieldlayer1-4.")
+  ruter[j, hoyde] <- ruter[j, paste0("plot_height_shrub", 1:4)]
+}
+ruter$hoyde_busksjikt <- ruter$rute %in% busk$rute
+
+ruter <- ruter |>
+  left_join(skjotsel |> filter(type == "rute") |>
+              select(rute, Plot_management, antall_ganger_slatt), by = "rute") |>
+  mutate(eventID = paste0("NINA.Monitoring.", lok, ".Revisit4.", kode),
+         locationID = paste0("Rauer.", lokalitet_navn[lok], ".", kode),
+         plot_rosettes_plantago = plot_freq_focalspecies2,
+         plot_count_spinn = plot_freq_focalspecies1) |>
+  relocate(eventID, locationID, rute, observer, Plot_management, antall_ganger_slatt)
+```
+
+## Sirkler
+
+```{r}
+sirkler <- c26 |> legg_til_id()
+
+sju <- tribble(
+  ~rute,        ~variabel,
+  "RT-21",      "circle_cover_fieldlayer",
+  "RT-21",      "circle_cover_trees",
+  "RU-sirkel3", "circle_cover_bryophytes",
+  "RU-sirkel4", "circle_cover_fieldlayer",
+  "RU-sirkel4", "circle_cover_lowwoody",
+  "RU-sirkel5", "circle_cover_lowwoody",
+  "RU-sirkel5", "circle_cover_shrubs"
+)
+for (i in seq_len(nrow(sju))) {
+  j <- which(sirkler$rute == sju$rute[i]); v <- sju$variabel[i]
+  stopifnot(length(j) == 1)
+  logg_endring(sju$rute[i], v, sirkler[[v]][j], NA,
+               "Stor endring fra 2025, usikkert hva som er riktig. Rubens svar 9: NA, ikke med i analysene.")
+  sirkler[[v]][j] <- NA
+}
+
+j <- which(is.na(sirkler$circle_pres_focalspecies2))
+if (length(j)) logg_endring(sirkler$rute[j], "circle_pres_focalspecies2", NA, 0,
+                            "Rubens svar 7: manglende verdi betyr ingen funnet.")
+sirkler <- sirkler |>
+  mutate(circle_rosettes_plantago = coalesce(circle_pres_focalspecies2, 0),
+         circle_presence_plantago = if_else(circle_rosettes_plantago > 0, "present", "absent"),
+         circle_count_spinn = circle_freq_focalspecies1)
+
+sk <- skjotsel |> filter(type == "sirkel") |> select(rute, Plot_management, antall_ganger_slatt, prosent_skjottet)
+rt22 <- which(sirkler$rute == "RT-22")
+logg_endring("RT-22", "circle_management_cover", sirkler$circle_management_cover[rt22],
+             sk$prosent_skjottet[sk$rute == "RT-22"],
+             "Rubens svar 4 og 11.11: «100 % ingen skjøtsel» = 0 % skjøtsel.")
+sirkler <- sirkler |>
+  left_join(sk, by = "rute") |>
+  mutate(circle_management_cover = prosent_skjottet,
+         eventID = paste0("NINA.Monitoring.", lok, ".Revisit4.Circle.", kode),
+         locationID = paste0("Rauer.", lokalitet_navn[lok], ".Circle.", kode)) |>
+  select(-prosent_skjottet) |>
+  relocate(eventID, locationID, rute, observer, Plot_management, antall_ganger_slatt)
+
+j <- which(is.na(sirkler$circle_count_spinn))
+stopifnot(identical(sirkler$rute[j], "RT-21"))
+logg_endring(sirkler$rute[j], "circle_freq_focalspecies1", NA, 0,
+             "Rubens svar 11.11: ingen larvespinn i sirkelen -> 0.")
+sirkler$circle_count_spinn[j] <- 0
+
+logg_df <- bind_rows(logg) |>
+  group_by(variabel, fra, til, grunn) |>
+  summarise(ruter = paste(rute, collapse = ", "), antall = n(), .groups = "drop") |>
+  group_by(variabel, til, grunn) |>
+  summarise(ruter_og_gamle_verdier = paste0(ruter, " (", fra, ")", collapse = "; "),
+            antall = sum(antall), .groups = "drop") |>
+  select(variabel, antall, ruter_og_gamle_verdier, ny_verdi = til, grunn)
+les_meg <- tibble(Forklaring = c(
+  "Rettet kopi av 2026-dataene. Rådata og eksportfila er ikke endret.",
+  "Fanen «Ruter» har 20 ruter, «Sirkler» har 27 sirkler (20 rundt ruter og Sirkel1–7).",
+  "Dekning i rutene og artslista ble ikke registrert i 2026 (forenklet overvåking, Rubens svar 11.11). Verdiene står som 0 i Survey123 og er satt til NA. Det gjelder også 34 i bunnsjikt for RT-3 (feilregistrering).",
+  "plot_rosettes_plantago = antall smalkjemperosetter i ruta (plot_freq_focalspecies2).",
+  "plot_cover_plantago og plot_floral_stems_plantago = dekning og blomstrende skudd for smalkjempe fra artstabellen. Eneste art som kom inn i 2026.",
+  "circle_rosettes_plantago = antall rosetter i hele sirkelen, inkludert ruta. circle_presence_plantago = present/absent.",
+  "RU-15 og RU-10: plot_height_vegetation1-4 er erstattet med busksjikthøyden (plot_height_shrub1-4), som er mest lik tidligere år (Rubens svar 11.11). Målt feltsjikthøyde står i plot_height_fieldlayer1-4. Kolonnen hoyde_busksjikt viser hvilke ruter det gjelder.",
+  "Plot_management og antall_ganger_slatt kommer fra 02_skjotsel_2022_2026.xlsx.",
+  "Alle endringer står i fanen «Endringslogg»."
+))
+
+skriv_excel(list(`Les meg` = les_meg, Ruter = ruter, Sirkler = sirkler, Endringslogg = logg_df),
+            ut("03_Effekt_Prikk_2026_rettet.xlsx"))
+saveRDS(list(ruter = ruter, sirkler = sirkler), ut("03_Effekt_Prikk_2026_rettet.rds"))
+```

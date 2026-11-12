@@ -18,7 +18,7 @@ Previous years' code: [NINAnor/effektovervaaking](https://github.com/NINAnor/eff
 | [Kystlynghei](Kystlynghei/) | Kystlynghei | report draft, satellite monitoring of succession and management effects |
 | [effektovervaking_forests](effektovervaking_forests/) | Olivinskog and kalklindeskog | report and methods appendix rendered from Quarto sources |
 | [Klippeblaavinge](Klippeblaavinge/) | Klippeblåvinge (*Scolitantides orion*) | not set up |
-| [Prikkrutevinge](Prikkrutevinge/) | Prikkrutevinge (*Melitaea cinxia*) | not set up |
+| [Prikkrutevinge](Prikkrutevinge/) | Prikkrutevinge (*Melitaea cinxia*) | quality control, DarwinCore 2022–2026 and analyses 2022–2026 (code/, no report yet) |
 | [Tronderlav](Tronderlav/) | Trønderlav (*Erioderma pedicellatum*) | not set up |
 | [Trondertorvmose](Trondertorvmose/) | Trøndertorvmose (*Sphagnum troendelagicum*) | not set up |
 

@@ -1,0 +1,223 @@
+---
+title: "07 Sammenslått analysedatasett 2022–2026"
+format: html
+---
+
+
+Tre tabeller, én rad per enhet og år:
+
+- ruter:   M-ruter og S-ruter (spinnruter), 2022–2026
+- sirkler: sirkler rundt ruter og faste sirkler (Sirkel1–7), 2025–2026
+- arter:   dekning og blomstrende skudd per art og rute (bare funne arter)
+
+Skjøtsel (Plot_management og antall_ganger_slatt) kommer fra skript 02.
+
+Kilder:
+
+- 2022–2025: den rensede fila (data/Effekt_prikkrutevinge_2025_cleaned.xlsx).
+   Den har blomstrende skudd per art, som ikke er med i DwC-fila.
+- 2026: den rettede fila fra skript 03.
+
+Det som ikke kan sammenlignes mellom år (forenklet overvåking, Rubens svar 11.11.2026):
+
+- 2024: bare nektarplanter med blomstrende skudd. Dekning per art og artsrikdom
+   mangler. Sum blomstrende skudd gjelder bare nektarplanter.
+- 2026: bare høyde, larvespinn og smalkjemperosetter i rutene. Dekning,
+   artsliste og blomstrende skudd (utenom smalkjempe) mangler.
+- RU-15 og RU-10 2026: vegetasjonshøyden er busksjikthøyden (skript 03).
+
+Kolonnen protokoll viser dette for hver rad.
+
+Rettet i forhold til analyseskriptet fra 2025 (Prikkrutevinge_analyser_2025.R):
+
+- antall ganger slått kommer fra Rubens skjøtselsfil (skript 02), ikke bare fra
+   feltregistreringen i 2025
+- artsrikdom teller bare arter med dekning > 0 (i 2022 sto hele artslista på
+   53 arter i hver rute, også med 0 %)
+
+Kjør 02 og 03 først.
+
+Skrevet av Ida M. Mienna med Claude, 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+skj <- readRDS(ut("02_skjotsel_2022_2026.rds")) |>
+  select(aar, rute, type, eventID, Plot_management, antall_ganger_slatt, prosent_skjottet)
+ren <- les(fil_renset)
+d26 <- readRDS(ut("03_Effekt_Prikk_2026_rettet.rds"))
+
+protokoll_aar <- c(`2022` = "full", `2023` = "full", `2024` = "forenklet (nektarplanter)",
+                   `2025` = "full", `2026` = "forenklet (høyde, larvespinn, smalkjempe)")
+```
+
+## Ruter 2022–2025
+
+```{r}
+ren_rute <- ren |> filter(!str_detect(plot_id2, "sirkel"))
+
+arter_gml <- ren_rute |>
+  filter(!is.na(species)) |>
+  transmute(aar = as.integer(year), rute = plot_id2, art = species,
+            dekning = if_else(year == 2024, NA_real_, species_cover),
+            blomstrende_skudd = count_floral_stems)
+
+per_rute <- arter_gml |>
+  group_by(aar, rute) |>
+  summarise(
+    antall_arter = if (first(aar) == 2024) NA_integer_ else sum(dekning > 0, na.rm = TRUE),
+    antall_arter_blomstrende = sum(blomstrende_skudd > 0, na.rm = TRUE),
+    sum_blomstrende_skudd = sum(blomstrende_skudd, na.rm = TRUE),
+    .groups = "drop")
+
+ruter_gml <- ren_rute |>
+  group_by(year, plot_id2) |>
+  slice(1) |>
+  ungroup() |>
+  transmute(aar = as.integer(year), rute = plot_id2,
+            hoyde1 = vegheight1, hoyde2 = vegheight2, hoyde3 = vegheight3, hoyde4 = vegheight4,
+            rosetter = count_plantago, larvespinn = count_spinn,
+            dekning_feltsjikt = cover_field_layer, dekning_bunnsjikt = cover_bottom_layer,
+            staende_dod_biomasse = cover_standing_litter, kort_vegetasjon = cover_short_vegetation,
+            dekning_berg = cover_rock, dekning_bar_jord = cover_bare_soil, dekning_strø = cover_litter) |>
+  left_join(per_rute, by = c("aar", "rute")) |>
+  left_join(arter_gml |> filter(art == "Plantago_lanceolata") |>
+              select(aar, rute, dekning_smalkjempe = dekning, blomstrende_skudd_smalkjempe = blomstrende_skudd),
+            by = c("aar", "rute"))
+```
+
+## Ruter 2026
+
+```{r}
+r26 <- d26$ruter
+ruter_26 <- r26 |>
+  transmute(aar = 2026L, rute,
+            hoyde1 = plot_height_vegetation1, hoyde2 = plot_height_vegetation2,
+            hoyde3 = plot_height_vegetation3, hoyde4 = plot_height_vegetation4,
+            rosetter = plot_rosettes_plantago, larvespinn = plot_count_spinn,
+            dekning_smalkjempe = plot_cover_plantago,
+            blomstrende_skudd_smalkjempe = plot_floral_stems_plantago,
+            hoyde_er_busksjikt = hoyde_busksjikt)
+```
+
+## Felles rutetabell
+
+```{r}
+ruter <- bind_rows(ruter_gml, ruter_26) |>
+  mutate(hoyde_er_busksjikt = coalesce(hoyde_er_busksjikt, FALSE),
+         dekning_smalkjempe = if_else(aar != 2024 & is.na(dekning_smalkjempe), 0, dekning_smalkjempe),
+         blomstrende_skudd_smalkjempe = if_else(aar %in% c(2022, 2023, 2025, 2026) & is.na(blomstrende_skudd_smalkjempe),
+                                                0, blomstrende_skudd_smalkjempe)) |>
+  rowwise() |>
+  mutate(hoyde_snitt = mean(c(hoyde1, hoyde2, hoyde3, hoyde4), na.rm = TRUE)) |>
+  ungroup() |>
+  mutate(hoyde_snitt = if_else(is.nan(hoyde_snitt), NA_real_, hoyde_snitt),
+         larvespinn_ja = as.integer(larvespinn > 0)) |>
+  left_join(skj |> filter(type == "rute") |> select(-type, -prosent_skjottet), by = c("aar", "rute")) |>
+  mutate(lok = str_sub(rute, 1, 2),
+         lokalitet = unname(lokalitet_navn[lok]),
+         rutetype = if_else(str_detect(rute, "-S\\d+$"), "S-rute", "M-rute"),
+         protokoll = unname(protokoll_aar[as.character(aar)])) |>
+  relocate(aar, lokalitet, rute, rutetype, eventID, Plot_management, antall_ganger_slatt, protokoll) |>
+  select(-lok) |>
+  arrange(aar, lokalitet, rutetype, rute)
+
+stopifnot(!anyDuplicated(ruter[c("aar", "rute")]),
+          !any(is.na(ruter$Plot_management)), !any(is.na(ruter$antall_ganger_slatt)),
+          !any(is.na(ruter$eventID)))
+```
+
+## Sirkler 2025–2026
+
+```{r}
+sirk_25 <- ren |>
+  filter(year == 2025, !is.na(circle_cover_fieldlayer)) |>
+  group_by(plot_id2) |>
+  slice(1) |>
+  ungroup() |>
+  transmute(aar = 2025L, rute = plot_id2,
+            dekning_feltsjikt = circle_cover_fieldlayer, dekning_moser = circle_cover_bryophytes,
+            dekning_lav = circle_cover_lichen, dekning_lyng = circle_cover_lowwoody,
+            dekning_busker = circle_cover_shrubs, dekning_traer = circle_cover_trees,
+            dekning_bar_jord = circle_cover_baresoil, dekning_berg = circle_cover_bedrock,
+            larvespinn = circle_count_spinn,
+            smalkjempe = circle_presence_plantago)
+sirk_26 <- d26$sirkler |>
+  transmute(aar = 2026L, rute,
+            dekning_feltsjikt = circle_cover_fieldlayer, dekning_moser = circle_cover_bryophytes,
+            dekning_lav = circle_cover_lichen, dekning_lyng = circle_cover_lowwoody,
+            dekning_busker = circle_cover_shrubs, dekning_traer = circle_cover_trees,
+            dekning_bar_jord = circle_cover_baresoil, dekning_berg = circle_cover_bedrock,
+            larvespinn = circle_count_spinn,
+            smalkjempe = circle_presence_plantago,
+            rosetter = circle_rosettes_plantago)
+
+sirkler <- bind_rows(sirk_25 |> mutate(smalkjempe = recode(as.character(smalkjempe), ja = "present", nei = "absent")), sirk_26) |>
+  left_join(skj |> filter(type == "sirkel") |> select(-type), by = c("aar", "rute")) |>
+  mutate(lok = str_sub(rute, 1, 2),
+         lokalitet = unname(lokalitet_navn[lok]),
+         sirkeltype = if_else(str_detect(rute, "sirkel"), "fast sirkel", "sirkel rundt rute")) |>
+  relocate(aar, lokalitet, rute, sirkeltype, eventID, Plot_management, antall_ganger_slatt, prosent_skjottet) |>
+  select(-lok) |>
+  arrange(aar, lokalitet, sirkeltype, rute)
+
+stopifnot(!anyDuplicated(sirkler[c("aar", "rute")]),
+          !any(is.na(sirkler$Plot_management)), !any(is.na(sirkler$eventID)))
+```
+
+## Arter (bare funne arter)
+
+```{r}
+arter <- bind_rows(
+  arter_gml |> filter(aar == 2024 | dekning > 0 | blomstrende_skudd > 0),
+  r26 |> filter(!is.na(plot_cover_plantago), plot_cover_plantago > 0 | coalesce(plot_floral_stems_plantago, 0) > 0) |>
+    transmute(aar = 2026L, rute, art = "Plantago_lanceolata",
+              dekning = plot_cover_plantago, blomstrende_skudd = plot_floral_stems_plantago)) |>
+  left_join(ruter |> select(aar, rute, rutetype, eventID, Plot_management, antall_ganger_slatt, protokoll),
+            by = c("aar", "rute")) |>
+  arrange(aar, rute, art)
+stopifnot(!any(is.na(arter$eventID)))
+```
+
+## Oversikt og lagring
+
+```{r}
+oversikt <- ruter |>
+  group_by(aar, rutetype, protokoll) |>
+  summarise(ruter = n(),
+            hoyde = sum(!is.na(hoyde_snitt)), rosetter = sum(!is.na(rosetter)),
+            larvespinn = sum(!is.na(larvespinn)), dekning_feltsjikt = sum(!is.na(dekning_feltsjikt)),
+            staende_dod_biomasse = sum(!is.na(staende_dod_biomasse)),
+            antall_arter = sum(!is.na(antall_arter)), sum_blomstrende_skudd = sum(!is.na(sum_blomstrende_skudd)),
+            .groups = "drop")
+
+skjotsel_oversikt <- ruter |>
+  filter(rutetype == "M-rute") |>
+  count(aar, lokalitet, antall_ganger_slatt) |>
+  pivot_wider(names_from = antall_ganger_slatt, values_from = n, values_fill = 0, names_prefix = "slått_")
+
+les_meg <- tibble(Forklaring = c(
+  "Sammenslått analysedatasett 2022–2026 for prikkrutevinge (Rauer). Én rad per rute/sirkel og år.",
+  "Fanen «Ruter»: M-ruter (overvåkingsruter) og S-ruter (spinnruter). «Sirkler»: 2025–2026. «Arter»: bare arter som ble funnet.",
+  "Plot_management: 1 = behandlet siden forrige registrering. antall_ganger_slatt: antall år med skjøtsel fra 2022 til og med året før. Fra skript 02.",
+  "Kolonnen protokoll: 2024 og 2026 var forenklet overvåking. Tomme celler (NA) betyr ikke registrert, ikke 0.",
+  "2024: dekning per art og antall arter ble ikke registrert. sum_blomstrende_skudd gjelder bare nektarplanter og kan ikke sammenlignes direkte med andre år.",
+  "2026: bare høyde, rosetter og larvespinn i rutene (pluss dekning og blomstrende skudd for smalkjempe).",
+  "hoyde_snitt = gjennomsnitt av fire høydemålinger. RU-15 og RU-10 i 2026: busksjikthøyde (hoyde_er_busksjikt = TRUE).",
+  "antall_arter teller arter med dekning > 0. sum_blomstrende_skudd = alle blomstrende skudd i ruta.",
+  "Sirkler: smalkjempe = present/absent. rosetter (antall i hele sirkelen) bare i 2026.",
+  "Fanen «Skjøtsel M-ruter» viser hvor mange M-ruter som er slått 0, 1, 2 … ganger, per år og lokalitet."
+))
+
+skriv_excel(list(`Les meg` = les_meg, Oversikt = oversikt, `Skjøtsel M-ruter` = skjotsel_oversikt,
+                 Ruter = ruter, Sirkler = sirkler, Arter = arter),
+            ut("07_sammenslatt_2022_2026.xlsx"))
+saveRDS(list(ruter = ruter, sirkler = sirkler, arter = arter), ut("07_sammenslatt_2022_2026.rds"))
+```

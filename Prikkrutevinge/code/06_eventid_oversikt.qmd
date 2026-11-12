@@ -1,0 +1,105 @@
+---
+title: "06 Oversikt over event-ID-er 2022–2026 til gjennomgang med Roald"
+format: html
+---
+
+
+Marianne og Ruben er uenige om hva «Baseline» betyr:
+
+- **A** Årsbasert (Mariannes regel): 2022 = Baseline, 2023 = Revisit1, ..., 2026 = Revisit4.
+- **B** Lokalitetsbasert (Rubens spørsmål): første registrering av hver rute/sirkel
+   = Baseline, deretter Revisit1, Revisit2 ... per sted.
+
+11.11.2026: Variant A er valgt (Rubens svar: «Da er det sikkert Marianne som har
+rett») og gjennomført i skript 05. Oversikten viser ID-ene slik de var i
+2025-malen, og hva som ble endret. Variant B er tatt med til sammenligning.
+
+Kjør 04 og 05 først.
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026, oppdatert 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+ev_gml <- readRDS(ut("05_Monitoring_Melitaea_cinxia_2022_2025_rettet.rds"))$event
+# Tilbake til ID-ene i 2025-malen, så oversikten viser hva som ble endret i 05
+endr <- les(ut("05_Monitoring_Melitaea_cinxia_2022_2025_rettet.xlsx"), "Endrede eventID")
+ev_gml <- ev_gml |>
+  mutate(eventID = coalesce(endr$eventID_gammel[match(eventID, endr$eventID_ny)], eventID),
+         parentEventID = str_remove(eventID, "\\.(Circle\\.)?[^.]+$"))
+ev_26  <- les(ut("04_DwC_Melitaea_cinxia_2026.xlsx"), "event")
+
+ev <- bind_rows(ev_gml |> select(year, eventID, parentEventID, locationID),
+                ev_26  |> select(year, eventID, parentEventID, locationID)) |>
+  mutate(
+    lok = str_match(eventID, "Monitoring\\.(RT|RU)\\.")[, 2],
+    kode = str_remove(eventID, "^.*\\.(?=[^.]+$)"),
+    sirkel = str_detect(eventID, "\\.Circle\\."),
+    rutetype = case_when(str_detect(kode, "^Circle") ~ "fast sirkel",
+                         sirkel ~ "sirkel rundt rute",
+                         str_detect(kode, "^S") ~ "S-rute",
+                         TRUE ~ "M-rute"),
+    besok_naa = str_match(eventID, "Monitoring\\.(?:RT|RU)\\.([A-Za-z0-9]+)\\.")[, 2]
+  )
+
+lag_id <- function(lok, besok, sirkel, kode) {
+  paste0("NINA.Monitoring.", lok, ".", besok, ".", if_else(sirkel, "Circle.", ""), kode)
+}
+
+ev <- ev |>
+  group_by(locationID) |>
+  arrange(year, .by_group = TRUE) |>
+  mutate(besok_nr = row_number()) |>
+  ungroup() |>
+  mutate(
+    A_besok = unname(besok_aar[as.character(year)]),
+    A_eventID = lag_id(lok, A_besok, sirkel, kode),
+    A_parentEventID = paste0("NINA.Monitoring.", lok, ".", A_besok),
+    B_besok = if_else(besok_nr == 1, "Baseline", paste0("Revisit", besok_nr - 1)),
+    B_eventID = lag_id(lok, B_besok, sirkel, kode),
+    B_parentEventID = paste0("NINA.Monitoring.", lok, ".", B_besok),
+    endres_A = eventID != A_eventID,
+    endres_B = eventID != B_eventID
+  )
+
+stopifnot(!anyDuplicated(ev$A_eventID), !anyDuplicated(ev$B_eventID))
+
+tabell <- ev |>
+  arrange(lok, rutetype, kode, year) |>
+  transmute(lokalitet = lokalitet_navn[lok], rutetype, locationID, aar = year, besok_nr,
+            eventID_naa = eventID, parentEventID_naa = parentEventID,
+            A_eventID, endres_A, B_eventID, endres_B,
+            B_parentEventID)
+
+avvik <- tabell |> filter(endres_A | endres_B)
+
+oppsummering <- ev |>
+  group_by(rutetype, aar = year) |>
+  summarise(hendelser = n(), endres_A = sum(endres_A), endres_B = sum(endres_B), .groups = "drop") |>
+  arrange(rutetype, aar)
+
+les_meg <- tibble(Forklaring = c(
+  "VALGT 11.11.2026: variant A (Rubens svar: Marianne har rett). Endringene er gjort i 05_Monitoring_Melitaea_cinxia_2022_2025_rettet.xlsx (fanen «Endrede eventID»).",
+  "Kolonnen eventID_naa viser ID-ene slik de var i 2025-malen. Variant B er tatt med bare til sammenligning.",
+  "A (årsbasert, Mariannes regel): besøket følger året. 2022 Baseline, 2023 Revisit1, 2024 Revisit2, 2025 Revisit3, 2026 Revisit4.",
+  "B (lokalitetsbasert, Rubens spørsmål): første registrering av hver rute/sirkel er Baseline, deretter Revisit1, 2 ... for det stedet.",
+  "Dagens ID-er er blandet: de fleste følger A, men S-ruter registrert første gang i 2023 og sirklene på Utedassen i 2025 har Baseline (B).",
+  "Under A må disse rettes. Under B må alle hendelser for steder som ble registrert første gang etter 2022 rettes i senere år.",
+  "Konsekvens av B: parentEventID samler ikke lenger ett år (f.eks. RU.Baseline får hendelser fra 2022, 2023, 2025 og 2026).",
+  "Konsekvens av A: Baseline betyr «første år i overvåkingen», ikke «første besøk på stedet». Besøksnummeret per sted står i kolonnen besok_nr.",
+  "2026 er tatt med fra DwC-utkastet (skript 04), som bruker variant A.",
+  "Fanen «Avvik» viser bare hendelser der minst én variant gir en ny ID.",
+  sprintf("M-rutene er like under begge variantene (alle registrert første gang i 2022). Valget gjelder bare S-ruter og sirkler: A gir %d endrede ID-er, B gir %d.",
+          sum(ev$endres_A), sum(ev$endres_B))
+))
+
+skriv_excel(list(`Les meg` = les_meg, Oppsummering = oppsummering, Avvik = avvik, Alle = tabell),
+            ut("06_eventid_oversikt.xlsx"))
+```

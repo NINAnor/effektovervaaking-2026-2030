@@ -1,0 +1,85 @@
+---
+title: "00 Felles oppsett for prikkrutevinge-skriptene"
+format: html
+---
+
+Pakker, filstier og hjelpefunksjoner. Lest inn øverst i skript 01–08 med `source(knitr::purl(...))`. Kjøres ikke alene og endrer ingen filer.
+
+Inndata ligger i `data/`, og alle resultater skrives til `img/`. `here::here()` peker på mappa `Prikkrutevinge` (der `Prikkrutevinge.Rproj` ligger).
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026
+
+```{r}
+suppressPackageStartupMessages({
+  library(readxl)
+  library(dplyr)
+  library(tidyr)
+  library(stringr)
+  library(openxlsx)
+})
+
+## Inndata (data/)
+fil_mal_2025    <- here::here("data", "Monitoring_Melitaea_cinxia_2025.xlsx")        # DwC 2022–2025 (skal ikke overskrives)
+fil_renset      <- here::here("data", "Effekt_prikkrutevinge_2025_cleaned.xlsx")     # renset datasett 2022–2025
+fil_skjotsel    <- here::here("data", "Management plots 2022-2026_v2.xlsx")          # Rubens skjøtselsfil (v2 med S-ruter, 11.11.2026)
+fil_2026        <- here::here("data", "Effekt_Prikk_2026_data_analyses_renamed_sheets.xlsx")  # Survey123-eksport 2026
+fil_dirty_2024  <- here::here("data", "Effekt_prikkrutevinge_2024_export_dirty.xlsx")  # rådata 2024 (brukes bare i 01)
+
+## Utdata (img/)
+mappe_ut <- here::here("img")
+dir.create(mappe_ut, showWarnings = FALSE, recursive = TRUE)
+ut <- function(fil) file.path(mappe_ut, fil)
+
+## Besøksnavn per år (årsbasert regel fra Marianne, e-post 15./16.10.2026)
+besok_aar <- c(`2022` = "Baseline", `2023` = "Revisit1", `2024` = "Revisit2",
+               `2025` = "Revisit3", `2026` = "Revisit4")
+
+lokalitet_navn <- c(RT = "Telefonstolpen", RU = "Utedassen")
+
+## Observatører (Rubens svar 11)
+observatorer <- c(RR = "Ruben E. Roos", VT = "Victoria De Bruyn Trzebinski")
+fullt_navn <- function(x) {
+  vapply(x, function(s) {
+    if (is.na(s)) return(NA_character_)
+    k <- str_trim(str_split(s, ",")[[1]])
+    paste(ifelse(k %in% names(observatorer), observatorer[k], k), collapse = " | ")
+  }, character(1), USE.NAMES = FALSE)
+}
+
+## Rute-ID «RT-3», «RU-S11», «RU-sirkel1» -> lokalitet og kode («M03», «S11», «Circle1»)
+del_rute_id <- function(id) {
+  p <- str_match(id, "^(RT|RU)-(S?)(sirkel)?(\\d+)$")
+  tibble(
+    lok  = p[, 2],
+    kode = case_when(
+      !is.na(p[, 4]) ~ paste0("Circle", as.integer(p[, 5])),
+      p[, 3] == "S"  ~ sprintf("S%02d", as.integer(p[, 5])),
+      TRUE           ~ sprintf("M%02d", as.integer(p[, 5]))
+    ),
+    rutetype = case_when(
+      !is.na(p[, 4]) ~ "fast sirkel",
+      p[, 3] == "S"  ~ "S-rute",
+      TRUE           ~ "M-rute"
+    )
+  )
+}
+
+## Les en Excel-fane uten meldinger om kolonnenavn
+les <- function(fil, fane = NULL, ...) {
+  suppressMessages(read_excel(fil, sheet = fane, guess_max = 1e5,
+                              .name_repair = "unique_quiet", ...))
+}
+
+## Skriv flere faner til Excel med enkel formatering
+skriv_excel <- function(faner, fil) {
+  wb <- createWorkbook()
+  for (n in names(faner)) {
+    addWorksheet(wb, n)
+    writeData(wb, n, faner[[n]], headerStyle = createStyle(textDecoration = "bold"))
+    freezePane(wb, n, firstRow = TRUE)
+    setColWidths(wb, n, cols = seq_len(max(1, ncol(faner[[n]]))), widths = "auto")
+  }
+  saveWorkbook(wb, fil, overwrite = TRUE)
+  message("Skrevet: ", fil)
+}
+```

@@ -1,0 +1,232 @@
+---
+title: "02 Skjøtselstabell 2022–2026: behandlet ja/nei (Plot_management) og antall ganger slått"
+format: html
+---
+
+
+Regler (Rubens svar 10. og 11.11.2026, se sesjonssammendraget seksjon 5 og 12):
+
+- Kartleggingen gjøres alltid FØR årets tiltak. En registrering i år Å viser
+   skjøtsel til og med år Å-1. management_Å i Rubens fil påvirker først Å+1.
+- M-ruter, S-ruter og faste sirkler (Sirkel1–7): Plot_management = Rubens fil
+   for året før. Fila brukes også der feltet sier noe annet (Rubens svar 11.11:
+   «greit å følge fila»). Unntak:
+   RU-22: fila er feil, ruta er ikke slått i 2025  -> management_2025 = 0
+   RT-15: ligger på kanten av slått område, følg feltet -> management_2025 = 1
+   Første år (2022): ingen tiltak før første registrering -> 0.
+- Faste sirkler: Sirkel2–7 ble slått i 2023, ikke 2025. Slåtten var fortsatt
+   synlig i felt i 2026 (Rubens svar 11.11). Derfor fila, ikke feltet, og
+   prosent skjøttet settes til 0 (feltverdien i prosent_skjottet_felt).
+- Sirkler rundt ruter: Plot_management fra feltregistreringen. Skjøtsel i felt
+   gir 1, også ved 1 %. RT-22-sirkelen i 2026 er ikke slått (0 %, Rubens svar).
+- S-ruter: fila v2 har noen S-ruter med feil lokalitet fra GPS/QGIS (kommentar
+   i fila). RT-S12–S18 heter egentlig RU-S12–S18 og får riktig navn. RT-S11
+   («RU og et ubrukt nummer») svarer ikke til noen registrert rute og tas ut.
+   Ruben 11.11: trolig skrivefeil for RU-S11, som finnes i GIS-fila og i
+   skjøtselsfila (begge rader har bare 0).
+- Antall ganger slått = sum av skjøtsel i fila fra 2022 til og med året før.
+   Sirkler rundt ruter bruker rutas historikk. Hvis feltet sier slått, men fila
+   har 0 for året før, telles det med én gang til: sirkelen er slått minst én
+   gang (Rubens svar 11.11; sirkler ble ikke registrert før 2025).
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026, oppdatert 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+## RT-22-sirkelen 2026: registrert «ingen» skjøtsel med 100 %. Rubens svar 11.11:
+## «100 % ingen skjøtsel» = 0 % skjøtsel.
+rt22_sirkel_prosent_2026 <- 0
+```
+
+## 1 Rubens skjøtselsfil, lang form, med unntak
+
+```{r}
+fil_raa <- les(fil_skjotsel) |> filter(!is.na(plot_id))
+navnefeil <- fil_raa |>
+  filter(!is.na(Comment)) |>
+  transmute(plot_id_fil = plot_id, Comment,
+            plot_id_riktig = str_match(Comment, "hete (R[TU]-S\\d+)")[, 2])
+fil <- fil_raa |>
+  left_join(navnefeil |> select(plot_id = plot_id_fil, plot_id_riktig), by = "plot_id") |>
+  filter(!(plot_id %in% navnefeil$plot_id_fil & is.na(plot_id_riktig))) |>   # RT-S11
+  mutate(plot_id = coalesce(plot_id_riktig, plot_id)) |>
+  select(plot_id, starts_with("management_")) |>
+  distinct()
+stopifnot(!anyDuplicated(fil$plot_id))   # RU-S12 står to ganger med like verdier
+fil <- fil |>
+  pivot_longer(starts_with("management_"), names_to = "aar", names_prefix = "management_",
+               values_to = "slatt") |>
+  mutate(aar = as.integer(aar), kilde_fil = "Rubens fil") |>
+  mutate(
+    kilde_fil = case_when(
+      plot_id == "RU-22" & aar == 2025 ~ "Rubens svar 2: fila feil, ikke slått 2025",
+      plot_id == "RT-15" & aar == 2025 ~ "Rubens svar 4: følg feltet (slått i felt 2026)",
+      TRUE ~ kilde_fil),
+    slatt = case_when(
+      plot_id == "RU-22" & aar == 2025 ~ 0,
+      plot_id == "RT-15" & aar == 2025 ~ 1,
+      TRUE ~ slatt)
+  ) |>
+  select(id_fil = plot_id, aar, slatt, kilde_fil)
+
+fil_verdi <- function(id, aar) {
+  fil$slatt[match(paste(id, aar), paste(fil$id_fil, fil$aar))]
+}
+fil_sum_for <- function(id, aar) {
+  vapply(seq_along(id), function(i) {
+    if (is.na(id[i]) || !id[i] %in% fil$id_fil) return(NA_real_)
+    sum(fil$slatt[fil$id_fil == id[i] & fil$aar < aar[i]])   # 0 for 2022
+  }, numeric(1))
+}
+```
+
+## 2 Hendelser 2022–2025 fra DwC-malen, med feltregistrert skjøtsel (eventRemarks)
+
+```{r}
+ev <- les(fil_mal_2025, "event")
+mof <- les(fil_mal_2025, "measurementOrFact")
+sirkel_prosent_2025 <- mof |>
+  filter(measurementType == "Circle_CoverManagement") |>
+  transmute(eventID, prosent_skjottet = as.numeric(measurementValue))
+
+h_gml <- ev |>
+  transmute(
+    aar = as.integer(year), eventID,
+    lok = str_match(eventID, "Monitoring\\.(RT|RU)\\.")[, 2],
+    kode = str_remove(eventID, "^.*\\.(?=[^.]+$)"),
+    type = if_else(str_detect(eventID, "Circle"), "sirkel", "rute"),
+    felt = case_when(eventRemarks == "Mown since last visit" ~ 1,
+                     eventRemarks == "No treatment received" ~ 0),
+    felt_tekst = eventRemarks) |>
+  left_join(sirkel_prosent_2025, by = "eventID")
+```
+
+## 3 Hendelser 2026 fra Survey123
+
+```{r}
+p26 <- les(fil_2026, "plots")
+c26 <- les(fil_2026, "circles")
+id26 <- function(lok, pid) {
+  ifelse(str_detect(pid, "^Sirkel"),
+         paste0("Circle", str_extract(pid, "\\d+")),
+         sprintf("M%02d", as.integer(suppressWarnings(as.numeric(pid)))))
+}
+h26_rute <- p26 |>
+  filter(!str_detect(main_plot_id, "^Sirkel")) |>
+  transmute(aar = 2026L, lok = main_location_id, kode = id26(main_location_id, main_plot_id),
+            type = "rute", felt = as.numeric(plot_management_type != "ingen"),
+            felt_tekst = plot_management_type, prosent_skjottet = NA_real_)
+h26_sirkel <- c26 |>
+  transmute(aar = 2026L, lok = main_location_id, kode = id26(main_location_id, main_plot_id),
+            type = "sirkel",
+            felt = as.numeric(circle_management_type != "ingen"),
+            felt_tekst = circle_management_type,
+            prosent_skjottet = circle_management_cover) |>
+  mutate(
+    # Rubens svar 4: RT-22-sirkelen («ingen», 100 %) er ikke slått
+    felt = if_else(lok == "RT" & kode == "M22", 0, felt),
+    prosent_skjottet = if_else(lok == "RT" & kode == "M22", rt22_sirkel_prosent_2026, prosent_skjottet))
+h26 <- bind_rows(h26_rute, h26_sirkel) |>
+  mutate(eventID = paste0("NINA.Monitoring.", lok, ".", besok_aar["2026"], ".",
+                          if_else(type == "sirkel", "Circle.", ""), kode))
+```
+
+## 4 Felles tabell og regler
+
+```{r}
+h <- bind_rows(h_gml, h26) |>
+  mutate(
+    rutetype = case_when(str_detect(kode, "^Circle") ~ "fast sirkel",
+                         str_detect(kode, "^S") ~ "S-rute",
+                         type == "sirkel" ~ "sirkel rundt rute",
+                         TRUE ~ "M-rute"),
+    rute = case_when(
+      rutetype == "fast sirkel" ~ paste0(lok, "-sirkel", str_extract(kode, "\\d+")),
+      rutetype == "S-rute" ~ paste0(lok, "-S", as.integer(str_extract(kode, "\\d+"))),
+      TRUE ~ paste0(lok, "-", as.integer(str_extract(kode, "\\d+")))),
+    id_fil = rute,
+    fil_aaret_for = fil_verdi(id_fil, aar - 1),
+    fil_samme_aar = fil_verdi(id_fil, aar),
+    ganger_fil = fil_sum_for(id_fil, aar),
+    fra_fil = rutetype != "sirkel rundt rute"
+  ) |>
+  mutate(
+    Plot_management = case_when(
+      fra_fil & aar == 2022 ~ 0,
+      fra_fil ~ fil_aaret_for,
+      TRUE ~ felt),
+    kilde = case_when(
+      fra_fil & aar == 2022 ~ "2022: før første tiltak",
+      fra_fil ~ paste0("Fil ", aar - 1),
+      TRUE ~ "Feltregistrering"),
+    ekstra = rutetype == "sirkel rundt rute" & felt == 1 & coalesce(fil_aaret_for, 0) == 0 & aar > 2022,
+    antall_ganger_slatt = if_else(ekstra, ganger_fil + 1, ganger_fil),
+    merknad = case_when(
+      ekstra ~ "Felt: sirkelen slått. Fila: ruta ikke slått året før. Talt med én ekstra gang (slått minst én gang).",
+      rutetype == "sirkel rundt rute" & felt == 0 & fil_aaret_for %in% 1 ~
+        "Felt: ikke slått. Fila: ruta slått året før. Ikke talt ekstra.",
+      fra_fil & aar > 2022 & !is.na(felt) & felt != fil_aaret_for ~
+        paste0("Felt (", felt_tekst, ") og fil året før er uenige. Fila brukes."),
+      TRUE ~ NA_character_),
+    merknad = if_else(type == "sirkel" & lok == "RT" & kode == "M22" & aar == 2026,
+                      "Rubens svar: «100 % ingen skjøtsel» = 0 % skjøtsel.", merknad)
+  ) |>
+  select(-ekstra, -fra_fil)
+
+## Faste sirkler som ikke er behandlet siden forrige registrering etter fila, men har
+## prosent skjøttet > 0 i felt (gammel slått som fortsatt synes, Sirkel2–7 i 2026):
+## prosent -> 0 (Rubens svar 11.11.2026). Feltverdien beholdes i prosent_skjottet_felt.
+h <- h |>
+  mutate(prosent_skjottet_felt = prosent_skjottet,
+         gammel_slatt = rutetype == "fast sirkel" & Plot_management == 0 & prosent_skjottet %in% 1:100,
+         prosent_skjottet = if_else(gammel_slatt, 0, prosent_skjottet),
+         merknad = if_else(gammel_slatt,
+                           paste0("Felt: ", prosent_skjottet_felt, " % skjøttet (eldre slått som fortsatt synes). Satt til 0 (Rubens svar 11.11)."),
+                           merknad)) |>
+  select(-gammel_slatt)
+stopifnot(!any(is.na(h$Plot_management)), !any(is.na(h$antall_ganger_slatt)))
+
+## RT-15 og RU-22: vis unntaket i kilde
+h <- h |>
+  left_join(fil |> transmute(id_fil, aar = aar + 1L, kilde_unntak = kilde_fil), by = c("id_fil", "aar")) |>
+  mutate(kilde = if_else(rutetype == "M-rute" & !is.na(kilde_unntak) & kilde_unntak != "Rubens fil",
+                         paste0(kilde, " (", kilde_unntak, ")"), kilde)) |>
+  select(-kilde_unntak)
+
+tabell <- h |>
+  transmute(aar, lokalitet = lokalitet_navn[lok], rute, type, rutetype, eventID,
+            Plot_management, antall_ganger_slatt, prosent_skjottet, prosent_skjottet_felt,
+            felt_registrert = felt_tekst, fil_aaret_for, fil_samme_aar, kilde, merknad) |>
+  arrange(aar, lokalitet, type, rute)
+
+## Bred oversikt: én rad per rute/sirkel
+bred <- tabell |>
+  transmute(rute, type, aar, verdi = paste0(Plot_management, " (", antall_ganger_slatt, ")")) |>
+  pivot_wider(names_from = aar, values_from = verdi, names_sort = TRUE) |>
+  arrange(type, rute)
+
+les_meg <- tibble(Forklaring = c(
+  "Plot_management: 1 = behandlet (slått, krattrydding o.l.) siden forrige registrering, 0 = ingen.",
+  "antall_ganger_slatt: antall år med skjøtsel fra 2022 til og med året før registreringen.",
+  "Kartleggingen gjøres før årets tiltak. M-ruter, S-ruter og faste sirkler (Sirkel1–7) bruker derfor Rubens fil for året før, også der feltet sier noe annet.",
+  "Sirkel2–7 på Utedassen ble slått i 2023, ikke 2025. Slåtten var fortsatt synlig i felt i 2026, men Plot_management 2026 er 0 etter fila.",
+  "Sirkler rundt ruter bruker feltregistreringen. Skjøtsel i felt gir 1, også ved 1 %. De er slått minst én gang hvis feltet sier slått.",
+  "Unntak: RU-22 ikke slått i 2025 (fila feil). RT-15 følger feltet i 2026. RT-22-sirkelen 2026 ikke slått (0 %).",
+  "S-ruter fra Rubens fil v2. RT-S12–S18 i fila heter egentlig RU-S12–S18 (feil i GPS/QGIS) og er gitt riktig navn. RT-S11 er tatt ut (ingen tilsvarende rute).",
+  "Fanen «Oversikt» viser Plot_management (antall ganger slått) per år.",
+  "Merknad-kolonnen viser hvor felt og fil er uenige, og hvor antall ganger er justert."
+))
+
+skriv_excel(list(`Les meg` = les_meg, Skjøtsel = tabell, Oversikt = bred,
+                 `Rubens fil brukt` = fil),
+            ut("02_skjotsel_2022_2026.xlsx"))
+saveRDS(tabell, ut("02_skjotsel_2022_2026.rds"))
+```

@@ -1,0 +1,153 @@
+---
+title: "04 DarwinCore Sampling Event for 2026 (event + measurementOrFact, ingen occurrence)"
+format: html
+---
+
+
+Forenklet overvåking i 2026 (Rubens svar 11.11.2026): i rutene ble bare
+vegetasjonshøyde, larvespinn og smalkjemperosetter registrert, ikke dekning eller
+artsliste. Sirklene ble registrert fullt ut. Dette står i samplingProtocol.
+
+Struktur som 2025-malen (data/Monitoring_Melitaea_cinxia_2025.xlsx), med:
+
+- eventRemarks = Revisit4 (Mariannes instruks)
+- egen locationID for sirkler, f.eks. Rauer.Telefonstolpen.Circle.M03
+- ny kolonne Plot_management (1 = slått, krattrydding o.l., 0 = ingen)
+- ny måletype Circle_RosettesPlantago (antall rosetter i sirkel), i tillegg
+   til Circle_PresencePlantago (present/absent, enhet occurrence)
+
+- StateProvince = Østfold (Rubens svar 11.11.2026; også rettet for 2022–2025 i skript 05)
+- RU-15 og RU-10: VegetationHeight1–4 er busksjikthøyden (Rubens svar 11.11.2026,
+   se skript 03). Står i measurementRemarks for disse radene.
+
+Kjør 02 og 03 først.
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026, oppdatert 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+fylke <- "Østfold"
+protokoll <- paste("vegetation monitoring for management of Melitaea cinxia; Evju et al. 2022;",
+                   "simplified monitoring in 2026: plots recorded for vegetation height,",
+                   "larval webs and Plantago lanceolata only (no cover or species list); circles recorded in full")
+
+d26 <- readRDS(ut("03_Effekt_Prikk_2026_rettet.rds"))
+ruter <- d26$ruter
+sirkler <- d26$sirkler
+
+mal_ev <- les(fil_mal_2025, "event")
+mal_mof <- les(fil_mal_2025, "measurementOrFact")
+
+dato <- as.Date("2026-08-10")
+stopifnot(all(as.Date(paste(ruter$year, ruter$month, ruter$day, sep = "-")) == dato),
+          all(as.Date(paste(sirkler$year, sirkler$month, sirkler$day, sep = "-")) == dato))
+
+bestemt_av <- unique(ruter$observer)
+stopifnot(length(bestemt_av) == 1)
+
+## Koordinater: siste kjente koordinat per rute i malen (Rubens svar 10: iPad-GPS
+## er dårlig, høypresisjonsfila er ikke funnet). Sirkler rundt ruter bruker rutas punkt.
+koord <- mal_ev |>
+  mutate(lok = str_match(eventID, "Monitoring\\.(RT|RU)\\.")[, 2],
+         kode = str_remove(eventID, "^.*\\.(?=[^.]+$)")) |>
+  arrange(desc(year)) |>
+  distinct(lok, kode, .keep_all = TRUE) |>
+  select(lok, kode, UTMsone, UTMost, UTMnord)
+
+lag_event <- function(d, hendelse) {
+  d |>
+    left_join(koord, by = c("lok", "kode")) |>
+    transmute(
+      type = NA, license = NA,
+      datasetName = "Monitoring Melitaea cinxia on Rauer, Norway",
+      ownerInstitutionCode = "Norwegian Institute for Nature Research",
+      informationWithheld = NA, dataGeneralizations = NA, dynamicProperties = NA,
+      ansvarligNINA = "Ruben E. Roos",
+      eventID,
+      parentEventID = paste0("NINA.Monitoring.", lok, ".Revisit4"),
+      samplingProtocol = protokoll,
+      sampleSizeValue = if (hendelse == "sirkel") 78.5 else 1,
+      sampleSizeUnit = "squaremeter", samplingEffort = NA,
+      eventDate = dato, eventTime = NA, year = 2026, month = 8, day = 10,
+      habitat = NA, habitatNiN = NA, versionNiN = "NiN 2.0", fieldNumber = NA, fieldNotes = NA,
+      eventRemarks = "Revisit4",
+      Plot_management,
+      locationID, country = "Norway", StateProvince = fylke, county = "Fredrikstad",
+      locality = "Rauer", longitude = NA, latitude = NA,
+      originalkoordinat_longitude = NA, originalkoordinat_latitude = NA,
+      UTMsone, UTMost, UTMnord, footprintWKT = NA,
+      coordinateUncertaintyinMeters = if (hendelse == "sirkel") 5 else 1,
+      coordinatePrecision = NA, minimumElevationInMeters = NA, maximumElevationInMeters = NA,
+      minimumDepthInMeters = NA, maximumDepthInMeters = NA, locationAccordingTo = NA)
+}
+event <- bind_rows(lag_event(ruter, "rute"), lag_event(sirkler, "sirkel")) |>
+  arrange(parentEventID, eventID)
+stopifnot(!any(is.na(event$UTMost)), !anyDuplicated(event$eventID))
+
+## measurementOrFact
+mof_rute <- c(
+  VegetationHeight1 = "plot_height_vegetation1", VegetationHeight2 = "plot_height_vegetation2",
+  VegetationHeight3 = "plot_height_vegetation3", VegetationHeight4 = "plot_height_vegetation4",
+  LarvaSpinn = "plot_count_spinn", RosettesPlantagoLanceolata = "plot_rosettes_plantago")
+mof_sirkel <- c(
+  Circle_FieldLayerCover = "circle_cover_fieldlayer", Circle_CoverBryophytes = "circle_cover_bryophytes",
+  Circle_CoverLichens = "circle_cover_lichen", Circle_CoverLowwoody = "circle_cover_lowwoody",
+  Circle_CoverShrubs = "circle_cover_shrubs", Circle_CoverTrees = "circle_cover_trees",
+  Circle_CoverBareSoil = "circle_cover_baresoil", Circle_CoverBedrock = "circle_cover_bedrock",
+  Circle_CoverManagement = "circle_management_cover", Circle_LarvaSpinn = "circle_count_spinn",
+  Circle_PresencePlantago = "circle_presence_plantago", Circle_RosettesPlantago = "circle_rosettes_plantago")
+enhet <- function(type) case_when(
+  str_detect(type, "Height") ~ "centimeter",
+  type == "Circle_PresencePlantago" ~ "occurrence",
+  str_detect(type, "Spinn|Rosettes") ~ "count",
+  TRUE ~ "percent")
+
+lang <- function(d, kart) {
+  d |>
+    select(eventID, all_of(unname(kart))) |>
+    mutate(across(-eventID, as.character)) |>
+    pivot_longer(-eventID, names_to = "kol", values_to = "measurementValue") |>
+    mutate(measurementType = names(kart)[match(kol, kart)],
+           rekkefolge = match(kol, kart)) |>
+    filter(!is.na(measurementValue))
+}
+mof <- bind_rows(lang(ruter, mof_rute), lang(sirkler, mof_sirkel)) |>
+  arrange(eventID, rekkefolge) |>
+  transmute(eventID, measurementID = NA, measurementType, measurementValue,
+            measurementAccuracy = NA, measurementUnit = enhet(measurementType),
+            measurementDeterminedBy = bestemt_av, measurementDeterminedDate = dato,
+            measurementMethod = "visual estimate",
+            measurementRemarks = "Sampling protocol and variables described in Roos et al. 2024") |>
+  mutate(measurementRemarks = if_else(
+    eventID %in% ruter$eventID[ruter$hoyde_busksjikt] & str_detect(measurementType, "^VegetationHeight"),
+    paste(measurementRemarks, "Height of the shrub layer, for consistency with earlier years.", sep = ". "),
+    measurementRemarks))
+stopifnot(sum(str_detect(mof$measurementRemarks, "shrub layer")) == 8)
+
+stopifnot(all(mof$eventID %in% event$eventID))
+nye_typer <- setdiff(unique(mof$measurementType), unique(mal_mof$measurementType))
+
+les_meg <- tibble(Forklaring = c(
+  "DwC Sampling Event 2026. Ingen occurrence (Mariannes instruks).",
+  sprintf("%d hendelser: %d ruter og %d sirkler. %d målinger.", nrow(event), nrow(ruter), nrow(sirkler), nrow(mof)),
+  "Forenklet overvåking i 2026: dekning i rutene (CoverVegetation, CoverBottom, StandingDeadBiomass, VegetationShort) og artslista ble ikke registrert. Står i samplingProtocol.",
+  "Sju sirkelverdier som er satt til NA i skript 03, er utelatt.",
+  "RU-15 og RU-10: VegetationHeight1-4 er busksjikthøyden (Rubens svar 11.11), forklart i measurementRemarks.",
+  paste0("Nye måletyper sammenlignet med 2025-malen: ", paste(nye_typer, collapse = ", "), "."),
+  "Circle_PresencePlantago har enhet occurrence (2025-malen hadde blandet percent/occurrence).",
+  paste0("StateProvince = ", fylke, " (Rubens svar 11.11)."),
+  "Koordinater: siste kjente koordinat fra 2025-malen. Høypresisjonspunktene er tatt tidligere år (Rubens svar 11.11).",
+  "Plot_management: ruter og faste sirkler fra Rubens fil for 2025 (med unntak), sirkler rundt ruter fra feltregistreringen. Se 02_skjotsel_2022_2026.xlsx."
+))
+
+skriv_excel(list(`Les meg` = les_meg, event = event, measurementOrFact = mof),
+            ut("04_DwC_Melitaea_cinxia_2026.xlsx"))
+```

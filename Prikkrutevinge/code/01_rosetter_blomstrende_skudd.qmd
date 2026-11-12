@@ -1,0 +1,141 @@
+---
+title: "01 Undersøkelse av rosetter (RosettesPlantagoLanceolata) og blomstrende skudd 2022–2025"
+format: html
+---
+
+
+Bakgrunn: Ruben (10.11.2026) ville ha undersøkt hva som har gått galt med
+rosetter og blomstrende skudd før noe rettes i 2022–2025-fila.
+Skriptet endrer ingen data. Det skriver en Excel-rapport til img/.
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+ev  <- les(fil_mal_2025, "event")
+mof <- les(fil_mal_2025, "measurementOrFact")
+occ <- les(fil_mal_2025, "occurence")
+ren <- les(fil_renset)
+d24 <- les(fil_dirty_2024)
+
+## Kobling mellom renset fil og hendelser i malen: «år + lokalitet + kode»
+ren <- bind_cols(ren, del_rute_id(ren$plot_id2)) |>
+  mutate(nokkel = paste(year, lok, kode))
+ev <- ev |>
+  mutate(lok = str_match(eventID, "Monitoring\\.(RT|RU)\\.")[, 2],
+         kode = str_remove(eventID, "^.*\\.(?=[^.]+$)"),
+         sirkel = str_detect(eventID, "Circle"),
+         nokkel = if_else(sirkel & str_detect(kode, "^M"), NA_character_,
+                          paste(year, lok, kode)))
+```
+
+## 1 RosettesPlantagoLanceolata: rader per hendelse og samsvar med renset fil
+
+```{r}
+arter_per_hendelse <- occ |> count(eventID, name = "arter_i_occurrence")
+ros <- mof |>
+  filter(measurementType == "RosettesPlantagoLanceolata") |>
+  mutate(verdi = as.numeric(measurementValue)) |>
+  group_by(eventID) |>
+  summarise(rader = n(), ulike_verdier = n_distinct(verdi), verdi = first(verdi), .groups = "drop") |>
+  left_join(ev |> select(eventID, year, nokkel), by = "eventID") |>
+  left_join(ren |> distinct(nokkel, count_plantago), by = "nokkel") |>
+  left_join(arter_per_hendelse, by = "eventID") |>
+  mutate(lik_renset = verdi == count_plantago) |>
+  select(year, eventID, rader, ulike_verdier, verdi_i_mal = verdi,
+         count_plantago_renset = count_plantago, lik_renset, arter_i_occurrence) |>
+  arrange(year, eventID)
+
+ros_aar <- ros |>
+  group_by(year) |>
+  summarise(hendelser = n(), rader_i_mal = sum(rader),
+            hendelser_med_flere_ulike_verdier = sum(ulike_verdier > 1),
+            hendelser_lik_renset = sum(lik_renset, na.rm = TRUE),
+            hendelser_med_rosetter = sum(verdi_i_mal > 0, na.rm = TRUE), .groups = "drop")
+```
+
+## 2 Blomstrende skudd per år (renset fil, én rad per art)
+
+```{r}
+gress <- "^(Festuca|Poa|Agrostis|Elytrigia|Deschampsia|Avenula|Helictotrichon|Anthoxanthum|Dactylis|Briza|Danthonia|Holcus|Arrhenatherum|Phleum|Avenella|Koeleria|Melica|Bromus|Lolium|Nardus|Calamagrostis|Carex|Luzula)_"
+skudd_aar <- ren |>
+  mutate(gress_starr_frytle = str_detect(coalesce(species, ""), gress)) |>
+  group_by(year) |>
+  summarise(
+    ruter = n_distinct(plot_id2),
+    artsrader = n(),
+    `artsdekning 0` = sum(species_cover == 0, na.rm = TRUE),
+    `skudd NA` = sum(is.na(count_floral_stems)),
+    `skudd 0` = sum(count_floral_stems == 0, na.rm = TRUE),
+    `skudd > 0` = sum(count_floral_stems > 0, na.rm = TRUE),
+    `skudd > 0 men dekning 0` = sum(count_floral_stems > 0 & species_cover == 0, na.rm = TRUE),
+    `gress/starr/frytle: rader` = sum(gress_starr_frytle),
+    `gress/starr/frytle: skudd NA` = sum(gress_starr_frytle & is.na(count_floral_stems)),
+    `gress/starr/frytle: skudd 0` = sum(gress_starr_frytle & count_floral_stems %in% 0),
+    .groups = "drop")
+```
+
+## 3 2024: artsdata i rådata (export_dirty)
+
+```{r}
+d24_ut <- d24 |>
+  transmute(rute = paste0(polygon_id, "-", plot_id), species,
+            `dekning % (rådata)` = `dekning %`,
+            `antall blomsterskudd (rådata)` = `antall blomsterskudd`,
+            species_cover, count_floral_stems)
+d24_rute <- d24_ut |> count(rute, name = "arter med rad")
+```
+
+## 4 Occurrence: 0 % dekning merket «present», og rader uten hendelse
+
+```{r}
+occ <- occ |> left_join(ev |> select(eventID, year), by = "eventID")
+occ_aar <- occ |>
+  group_by(year) |>
+  summarise(rader = n(),
+            `organismQuantity 0` = sum(as.numeric(organismQuantity) == 0, na.rm = TRUE),
+            occurrenceStatus = paste(unique(occurrenceStatus), collapse = "/"), .groups = "drop")
+occ_foreldrelos <- occ |> filter(is.na(year)) |>
+  select(eventID, scientificName, organismQuantity, organismQuantityType)
+```
+
+## 5 Oppsummering
+
+```{r}
+n_ros_rader <- sum(ros$rader); n_ros_hend <- nrow(ros)
+oppsummering <- tibble(Funn = c(
+  sprintf("RosettesPlantagoLanceolata har %d rader for %d hendelser. Alle hendelser har bare én verdi, gjentatt (%d av %d har flere ulike verdier).",
+          n_ros_rader, n_ros_hend, sum(ros$ulike_verdier > 1), n_ros_hend),
+  sprintf("Verdien i malen er lik count_plantago i den rensede fila for %d av %d hendelser. Tallene er altså riktige; feilen er bare gjentatte rader.",
+          sum(ros$lik_renset, na.rm = TRUE), n_ros_hend),
+  "Gjentakelsen følger artsradene: rosettverdien er kopiert én gang per art i ruta (i 2022 også for arter med 0 % dekning, fordi 2022 har hele artslista). Det er derfor 2022 har flest rader.",
+  "Løsning: behold én rad per hendelse. Ingen verdier endres.",
+  "Blomstrende skudd (count_floral_stems) er ikke med i DwC-malen. Problemene gjelder den rensede fila:",
+  "  2022: full artsliste med 0 % for arter som ikke finnes (1 342 av 1 696 rader). Skudd = 0 for de fleste, NA for gress/starr/frytle.",
+  "  2023: bare arter som finnes. Gress/starr/frytle har 0, ikke NA, så ekte 0 og «ikke vurdert» kan ikke skilles.",
+  "  2024: bare 15 ruter og 82 arter, og ALLE har dekning 0 også i rådata (kolonnen «dekning %»). Bare arter med blomstrende skudd er med. Dekning per art mangler for 2024 – samme mønster som 2026.",
+  "  2025: skudd NA for 126 rader (de fleste gress), 0 for 49 rader.",
+  "Occurrence i malen: arter med 0 % dekning står som occurrenceStatus = present (2022: 1 342 rader, 2023: 1, 2024: 82). Disse bør være absent eller fjernes.",
+  sprintf("Occurrence i malen: %d rader har eventID «NINA.Monitoring.RU.Revisit3.RU-1», som ikke finnes. Riktig er …Revisit3.M01. Dette er grunnen til at RU-M01 2025 så ut til å mangle data.",
+          nrow(occ_foreldrelos))
+))
+
+skriv_excel(list(
+  Oppsummering = oppsummering,
+  `Rosetter per år` = ros_aar,
+  `Rosetter per hendelse` = ros,
+  `Skudd per år` = skudd_aar,
+  `2024 rådata arter` = d24_ut,
+  `2024 arter per rute` = d24_rute,
+  `Occurrence per år` = occ_aar,
+  `Occurrence uten hendelse` = occ_foreldrelos
+), ut("01_rosetter_blomstrende_skudd_2022_2025.xlsx"))
+```

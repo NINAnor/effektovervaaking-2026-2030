@@ -1,0 +1,311 @@
+---
+title: "08 Analyser 2022–2026: samme oppsett som tidligere år"
+format: html
+---
+
+
+Følger analyseskriptet fra 2025 (154027_…/07 Prikkrutevinge/Effektovervaaking_prikkrutevinge/
+Scripts/Prikkrutevinge_analyser_2025.R), med data fra skript 07:
+
+- **A** Spinnruter mot overvåkingsruter (alle ruter):
+   respons ~ Spinnrute + factor(år) + (1 | rute)
+- **B** Endring over år i overvåkingsrutene (M-ruter):
+   respons ~ factor(år) + (1 | rute)
+- **C** Effekt av skjøtsel i siste år med data (M-ruter):
+   respons ~ antall_ganger_slatt   og   respons ~ slatt_minst_en_gang
+- **D** NMDS av artssammensetningen (2022, 2023, 2025; ikke 2024 og 2026, da
+   artsdekning ikke ble registrert), med envfit og lm av aksene
+- **E** Larvespinn: bare tabell
+
+Figurer: spinnrute mot overvåkingsrute, og M-ruter etter antall ganger slått
+
+Gaussisk lmer/lm for høyde, blomstrende skudd, stående død biomasse og kort
+vegetasjon; Poisson for rosetter (som tidligere år).
+
+Forskjeller fra 2025-skriptet:
+
+- antall ganger slått fra Rubens skjøtselsfil (skript 02), ikke bare fra feltet i 2025
+- artsrikdom teller bare arter med dekning > 0
+- «siste år» er 2026 for høyde og rosetter, 2025 for variablene som ikke ble
+   registrert i 2026
+- blomstrende skudd i 2024 gjelder bare nektarplanter (forenklet overvåking);
+   2024 er med i figurer og modeller som tidligere år, men står i figurteksten
+- Tillegg (fane «Tillegg alle år»): respons ~ antall_ganger_slatt + factor(år) +
+   lokalitet + (1 | rute), som bruker skjøtselshistorien for alle år
+
+Kjør 07 først. Krever lme4, lmerTest, DHARMa, vegan og ggrepel.
+
+Skrevet av Ida M. Mienna med Claude, 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(lme4)
+  library(lmerTest)
+  library(DHARMa)
+  library(vegan)
+})
+
+mappe_fig <- ut("08_figurer")
+dir.create(mappe_fig, showWarnings = FALSE)
+unlink(list.files(mappe_fig, full.names = TRUE))
+
+data07 <- readRDS(ut("07_sammenslatt_2022_2026.rds"))
+d <- data07$ruter |>
+  mutate(aar_f = factor(aar),
+         rute = factor(rute),
+         Spinnrute = if_else(rutetype == "S-rute", "Ja", "Nei"),
+         slatt_minst_en_gang = as.integer(antall_ganger_slatt > 0),
+         slatt_gruppe = factor(pmin(antall_ganger_slatt, 3), levels = 0:3,
+                               labels = c("0", "1", "2", "3 eller flere")))
+m <- d |> filter(rutetype == "M-rute")
+
+variabler <- tribble(
+  ~var,                    ~navn,                                          ~familie,
+  "hoyde_snitt",           "Vegetasjonshøyde (cm)",                        "gaussian",
+  "rosetter",              "Antall smalkjemperosetter",                    "poisson",
+  "sum_blomstrende_skudd", "Antall blomstrende skudd av pollinatorplanter", "gaussian",
+  "staende_dod_biomasse",  "Stående død biomasse (%)",                     "gaussian",
+  "kort_vegetasjon",       "Kort vegetasjon (%)",                          "gaussian"
+)
+# Siste år med data per variabel
+variabler$siste_aar <- vapply(variabler$var, function(v) max(m$aar[!is.na(m[[v]])]), numeric(1))
+```
+
+## Hjelpefunksjoner
+
+```{r}
+tilpass <- function(formel, data, familie) {
+  if (familie == "gaussian") lmerTest::lmer(formel, data = data) else
+    glmer(formel, data = data, family = familie, control = glmerControl(optimizer = "bobyqa"))
+}
+koef <- function(mod, analyse, variabel, data) {
+  k <- summary(mod)$coefficients
+  p_kol <- grep("^Pr", colnames(k), value = TRUE)
+  mer <- inherits(mod, "merMod")
+  advarsel <- if (mer) paste(c(mod@optinfo$conv$lme4$messages, if (isSingular(mod)) "singulær tilpasning"),
+                             collapse = "; ") else ""
+  tibble(analyse = analyse, variabel = variabel, ledd = rownames(k),
+         estimat = round(k[, "Estimate"], 3), se = round(k[, "Std. Error"], 3),
+         p = signif(k[, p_kol], 2), n_obs = nrow(data),
+         merknad = if (nzchar(advarsel)) advarsel else NA_character_)
+}
+diagnose_rad <- function(mod, analyse, variabel, filnavn) {
+  sim <- simulateResiduals(mod, n = 500, seed = 1)
+  png(file.path(mappe_fig, paste0("residualer_", filnavn, ".png")), width = 1600, height = 800, res = 150)
+  plot(sim, title = paste(analyse, "–", variabel))
+  dev.off()
+  tibble(analyse = analyse, variabel = variabel,
+         uniformitet_p = signif(testUniformity(sim, plot = FALSE)$p.value, 2),
+         spredning_p = signif(testDispersion(sim, plot = FALSE)$p.value, 2))
+}
+beskriv <- function(data, var, ...) {
+  data |> filter(!is.na(.data[[var]])) |>
+    group_by(...) |>
+    summarise(snitt = mean(.data[[var]]), sd = sd(.data[[var]]), n = n(), .groups = "drop") |>
+    mutate(se = sd / sqrt(n))
+}
+```
+
+## A, B, C og tillegg
+
+```{r}
+res <- list(); diag <- list(); deskr <- list()
+for (i in seq_len(nrow(variabler))) {
+  v <- variabler[i, ]; y <- v$var
+
+  # A Spinnrute mot overvåkingsrute
+  dA <- d |> filter(!is.na(.data[[y]]))
+  mA <- tilpass(as.formula(paste(y, "~ Spinnrute + aar_f + (1 | rute)")), dA, v$familie)
+  res[[length(res) + 1]] <- koef(mA, "A Spinnrute mot overvåkingsrute", v$navn, dA)
+  diag[[length(diag) + 1]] <- diagnose_rad(mA, "A", v$navn, paste0("A_", y))
+
+  # B Endring over år, M-ruter
+  dB <- m |> filter(!is.na(.data[[y]]))
+  mB <- tilpass(as.formula(paste(y, "~ aar_f + (1 | rute)")), dB, v$familie)
+  res[[length(res) + 1]] <- koef(mB, "B År, overvåkingsruter (mot 2022)", v$navn, dB)
+  diag[[length(diag) + 1]] <- diagnose_rad(mB, "B", v$navn, paste0("B_", y))
+
+  # C Skjøtsel i siste år med data
+  dC <- dB |> filter(aar == v$siste_aar)
+  for (forkl in c("antall_ganger_slatt", "slatt_minst_en_gang")) {
+    f <- as.formula(paste(y, "~", forkl))
+    mC <- if (v$familie == "gaussian") lm(f, data = dC) else glm(f, data = dC, family = v$familie)
+    res[[length(res) + 1]] <- koef(mC, paste0("C Skjøtsel ", v$siste_aar, " (", forkl, ")"), v$navn, dC)
+  }
+
+  # Tillegg: alle år med skjøtselshistorie
+  mT <- tilpass(as.formula(paste(y, "~ antall_ganger_slatt + aar_f + lokalitet + (1 | rute)")), dB, v$familie)
+  res[[length(res) + 1]] <- koef(mT, "Tillegg alle år", v$navn, dB)
+
+  deskr[[length(deskr) + 1]] <- beskriv(d, y, aar, rutetype) |> mutate(variabel = v$navn, .before = 1)
+}
+res <- bind_rows(res)
+diag <- bind_rows(diag)
+deskr <- bind_rows(deskr) |> mutate(across(c(snitt, sd, se), ~ round(.x, 2)))
+```
+
+## E Larvespinn
+
+```{r}
+larvespinn <- d |>
+  group_by(aar, rutetype) |>
+  summarise(ruter = n(), ruter_med_larvespinn = sum(larvespinn > 0, na.rm = TRUE),
+            larvespinn_totalt = sum(larvespinn, na.rm = TRUE), .groups = "drop")
+```
+
+## Figurer
+
+```{r}
+farger_skj <- c("0" = "#004F71", "1" = "#E57200", "2" = "#7A9A01", "3 eller flere" = "#93328E")
+merk_2024 <- function(var) if (var == "sum_blomstrende_skudd") " 2024: bare nektarplanter registrert." else ""
+
+fig_rutetype <- function(var, navn) {
+  beskriv(d, var, aar, Spinnrute) |>
+    ggplot(aes(factor(aar), snitt, fill = Spinnrute)) +
+    geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
+    geom_errorbar(aes(ymin = snitt - se, ymax = snitt + se),
+                  position = position_dodge2(preserve = "single", padding = 0.7)) +
+    scale_fill_manual(values = c("Ja" = "#004F71", "Nei" = "#E57200"),
+                      labels = c("Ja" = "Spinnrute", "Nei" = "Overvåkingsrute")) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+    labs(x = "År", y = navn, fill = NULL,
+         caption = paste0("Gjennomsnitt ± standardfeil. Spinnruter ble ikke registrert i 2024 og 2026, og bare to i 2025.",
+                          merk_2024(var))) +
+    theme_classic() + theme(legend.position = "bottom")
+}
+fig_skjotsel <- function(var, navn) {
+  beskriv(m, var, lokalitet, aar, slatt_gruppe) |>
+    ggplot(aes(factor(aar), snitt, fill = slatt_gruppe)) +
+    geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
+    geom_errorbar(aes(ymin = snitt - se, ymax = snitt + se),
+                  position = position_dodge2(preserve = "single", padding = 0.7)) +
+    geom_text(aes(y = 0, label = n), position = position_dodge2(width = 0.9, preserve = "single", padding = 0.1),
+              vjust = -0.3, size = 2.5, colour = "white") +
+    facet_wrap(~ lokalitet) +
+    scale_fill_manual(values = farger_skj, drop = FALSE) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+    labs(x = "År", y = navn, fill = "Antall ganger skjøtsel",
+         caption = paste0("Overvåkingsruter. Gjennomsnitt ± standardfeil. Tall i søylene: antall ruter.", merk_2024(var))) +
+    theme_classic() + theme(legend.position = "bottom", strip.background = element_blank())
+}
+for (i in seq_len(nrow(variabler))) {
+  v <- variabler[i, ]
+  ggsave(file.path(mappe_fig, paste0("spinnrute_", v$var, ".png")), fig_rutetype(v$var, v$navn),
+         width = 21, height = 14, units = "cm", dpi = 200)
+  ggsave(file.path(mappe_fig, paste0("skjotsel_", v$var, ".png")), fig_skjotsel(v$var, v$navn),
+         width = 21, height = 14, units = "cm", dpi = 200)
+}
+fig_spinn <- larvespinn |>
+  ggplot(aes(factor(aar), larvespinn_totalt, fill = rutetype)) +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
+  scale_fill_manual(values = c("S-rute" = "#004F71", "M-rute" = "#E57200"),
+                    labels = c("S-rute" = "Spinnrute", "M-rute" = "Overvåkingsrute")) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  labs(x = "År", y = "Antall larvespinn", fill = NULL) +
+  theme_classic() + theme(legend.position = "bottom")
+ggsave(file.path(mappe_fig, "spinnrute_larvespinn.png"), fig_spinn, width = 21, height = 14, units = "cm", dpi = 200)
+```
+
+## D NMDS
+
+```{r}
+nmds_aar <- c(2022, 2023, 2025)
+arter <- data07$arter |> filter(aar %in% nmds_aar, dekning > 0)
+bred <- arter |>
+  group_by(aar, rute, art) |>
+  summarise(dekning = mean(dekning), .groups = "drop") |>
+  pivot_wider(names_from = art, values_from = dekning, values_fill = 0) |>
+  arrange(aar, rute)
+env <- bred |> select(aar, rute) |>
+  left_join(d |> mutate(rute = as.character(rute)) |>
+              select(aar, rute, Spinnrute, antall_ganger_slatt, slatt_minst_en_gang, dekning_feltsjikt,
+                     rosetter, hoyde_snitt, antall_arter, sum_blomstrende_skudd),
+            by = c("aar", "rute"))
+stopifnot(!any(is.na(env$Spinnrute)))
+art_mat <- bred |> select(-aar, -rute) |> as.data.frame()
+art_rel <- decostand(art_mat, method = "total")
+set.seed(2026)
+nmds <- metaMDS(vegdist(art_rel, method = "bray"), k = 3, maxit = 999, trymax = 500, trace = FALSE)
+
+env_num <- env |> select(antall_ganger_slatt, slatt_minst_en_gang, dekning_feltsjikt, rosetter,
+                         hoyde_snitt, antall_arter, sum_blomstrende_skudd)
+set.seed(2026)
+ef <- envfit(nmds, env_num, permutations = 999, na.rm = TRUE)
+env_navn <- c(antall_ganger_slatt = "Antall ganger skjøttet", slatt_minst_en_gang = "Skjøttet",
+              dekning_feltsjikt = "Feltsjikt", rosetter = "Smalkjempe", hoyde_snitt = "Vegetasjonshøyde",
+              antall_arter = "Artsrikdom", sum_blomstrende_skudd = "Antall blomsterstander")
+envfit_tab <- tibble(variabel = unname(env_navn[names(ef$vectors$r)]),
+                     NMDS1 = round(ef$vectors$arrows[, 1], 3), NMDS2 = round(ef$vectors$arrows[, 2], 3),
+                     r2 = round(ef$vectors$r, 3), p = ef$vectors$pvals)
+
+skaar <- as.data.frame(scores(nmds, display = "sites")) |>
+  bind_cols(env |> select(aar, rute, Spinnrute)) |>
+  mutate(Year = factor(aar))
+akse_lm <- bind_rows(lapply(c("NMDS1", "NMDS2", "NMDS3"), function(a) {
+  bind_rows(lapply(c(" ~ Spinnrute * Year", " ~ Spinnrute + Year", " ~ Year"), function(f) {
+    mod <- lm(as.formula(paste0(a, f)), data = skaar)
+    an <- anova(mod)
+    tibble(akse = a, modell = paste0(a, f), ledd = rownames(an), df = an$Df,
+           F = round(an$`F value`, 2), p = signif(an$`Pr(>F)`, 2))
+  }))
+})) |> filter(ledd != "Residuals")
+
+pil_mult <- ordiArrowMul(ef, display = "vectors", fill = 0.8)
+piler <- as.data.frame(scores(ef, display = "vectors") * pil_mult) |>
+  mutate(navn = unname(env_navn[rownames(scores(ef, display = "vectors"))]))
+fig_nmds <- ggplot(skaar, aes(NMDS1, NMDS2)) +
+  stat_ellipse(aes(colour = Spinnrute), type = "norm", level = 0.68, show.legend = FALSE) +
+  geom_point(aes(colour = Spinnrute, shape = Year), size = 2) +
+  geom_segment(data = piler, aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+               arrow = arrow(length = unit(0.2, "cm")), colour = "grey20", linewidth = 0.3) +
+  ggrepel::geom_text_repel(data = piler, aes(NMDS1, NMDS2, label = navn), size = 3, colour = "grey20",
+                           min.segment.length = Inf, seed = 1) +
+  coord_fixed() +
+  scale_colour_manual(values = c("Ja" = "#004F71", "Nei" = "#E57200"),
+                      labels = c("Ja" = "Spinnrute", "Nei" = "Overvåkingsrute")) +
+  labs(colour = NULL, shape = "År",
+       caption = sprintf("NMDS (Bray–Curtis, k = 3, stress = %.3f). Pilene er skalert for lesbarhet. 2024 og 2026 er ikke med.",
+                         nmds$stress)) +
+  theme_classic() +
+  theme(panel.border = element_rect(fill = NA, colour = "black"))
+ggsave(file.path(mappe_fig, "nmds.png"), fig_nmds, width = 21, height = 17, units = "cm", dpi = 200)
+```
+
+## Lagring
+
+```{r}
+les_meg <- tibble(Forklaring = c(
+  "Analyser 2022–2026 for prikkrutevinge, med samme oppsett som i 2025 (Prikkrutevinge_analyser_2025.R). Data fra skript 07.",
+  "A: spinnruter mot overvåkingsruter, respons ~ Spinnrute + år + (1 | rute). Leddet «SpinnruteNei» er forskjellen overvåkingsrute minus spinnrute.",
+  "B: endring over år i overvåkingsrutene, respons ~ år + (1 | rute). Hvert år sammenlignes med 2022.",
+  "C: effekt av skjøtsel i siste år med data (2026 for høyde og rosetter, 2025 ellers): antall ganger slått og slått minst én gang.",
+  "Tillegg alle år: respons ~ antall_ganger_slatt + år + lokalitet + (1 | rute), bruker skjøtselshistorien for alle år.",
+  "Rosetter: Poisson, estimater på log-skala (exp(estimat) = faktor). Ellers gaussisk.",
+  "p-verdier: Satterthwaite (lmerTest) for blandede gaussiske modeller, Wald z for Poisson, t for lm.",
+  "Fanen «Diagnose»: DHARMa-tester for A og B. p < 0,05 betyr at residualene avviker fra modellen. Figurer: 08_figurer/residualer_*.png.",
+  "Fanen «Beskrivende»: gjennomsnitt, sd og n per år og rutetype (tilsvarer tapply i 2025-skriptet).",
+  "NMDS: 2022, 2023 og 2025 (artsdekning finnes ikke for 2024 og 2026). Fanene «NMDS envfit» og «NMDS akser».",
+  "Blomstrende skudd 2024 gjelder bare nektarplanter (forenklet overvåking). 2024 er med som tidligere år.",
+  "Figurer i 08_figurer: spinnrute_*.png, skjotsel_*.png, nmds.png."
+))
+
+skriv_excel(list(`Les meg` = les_meg,
+                 `A Spinnrute` = res |> filter(str_starts(analyse, "A")),
+                 `B År` = res |> filter(str_starts(analyse, "B")),
+                 `C Skjøtsel siste år` = res |> filter(str_starts(analyse, "C")),
+                 `Tillegg alle år` = res |> filter(str_starts(analyse, "Tillegg")),
+                 Diagnose = diag, Beskrivende = deskr, Larvespinn = larvespinn,
+                 `NMDS envfit` = envfit_tab, `NMDS akser` = akse_lm),
+            ut("08_analyser_2022_2026.xlsx"))
+saveRDS(list(nmds = nmds, envfit = ef), ut("08_nmds.rds"))
+```

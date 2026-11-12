@@ -1,0 +1,306 @@
+---
+title: "05 Oppdatert DwC 2022–2025 i en ny fil"
+format: html
+---
+
+Originalen (data/Monitoring_Melitaea_cinxia_2025.xlsx) endres ikke.
+
+Gjennomført (godkjent av Marianne/Ruben 10.11.2026, eller rene feilrettinger):
+
+1. eventRemarks = Baseline (2022), Revisit1 (2023), Revisit2 (2024), Revisit3 (2025)
+   (Mariannes årsbaserte regel). Tidligere tekst («Mown since last visit» o.l.)
+   erstattes av den nye kolonnen Plot_management.
+2. Plot_management (1/0) fra skript 02: ruter fra Rubens fil, S-ruter og sirkler
+   fra feltregistreringen.
+3. Sirklene på Telefonstolpen 2025 får Circle i locationID (svar fra begge).
+4. RU-S11 2025: parentEventID NINA.Monitoring.RU.NA -> NINA.Monitoring.RU.Revisit3.
+5. RU-M01 2025: artene lå under eventID «…Revisit3.RU-1», som ikke finnes. Rettet til
+   «…Revisit3.M01». Målingene manglet og legges inn fra den rensede fila.
+6. RosettesPlantagoLanceolata: én rad per hendelse. Verdiene er kontrollert mot den
+   rensede fila i skript 01 (alle like); bare gjentatte rader fjernes.
+7. Circle_PresencePlantago: enhet «occurrence» for alle (verdiene er present/absent).
+8. eventID og parentEventID følger året (variant A i skript 06): 2022 Baseline,
+   2023 Revisit1, ... Gjelder S-ruter registrert første gang i 2023 og sirklene
+   på Utedassen i 2025, som hadde «Baseline». Endret i event, measurementOrFact
+   og occurrence. (Rubens svar 11.11.2026: Marianne har rett; Ida 11.11.2026)
+9. StateProvince Viken -> Østfold (Rubens svar 11.11.2026).
+10. samplingProtocol for 2024: forenklet overvåking, bare nektarplanter i
+   artslista (Rubens svar 11.11.2026).
+
+11. Occurrence med 0 % dekning (Rubens svar 11.11.2026: 0 % = ikke funnet, da er
+   «present» feil; smalkjempe som «absent» er nyttig):
+   - 2022: hele artslista (53 arter) sto i hver rute. Arter med 0 % fjernes,
+   unntatt smalkjempe, som får occurrenceStatus = absent.
+   - 2023 og 2025: bare funne arter står i lista. Smalkjempe legges til som
+   absent i ruter der den ikke er registrert.
+   - 2024: forenklet overvåking, dekning ble ikke registrert. Artene ble funnet
+   (alle har blomstrende skudd), så de forblir present, men 0 % -> NA.
+   - 2023 RU-M05 Geranium robertianum med 0 %: arten fantes trolig i ruta,
+   dekning 0 -> 0,1 % (Rubens svar 11.11.2026).
+   Oversikt i 05_occurrence_0_prosent_oversikt.xlsx.
+
+Kjør 01 og 02 først.
+
+Skrevet av Ida M. Mienna med Claude, 10.11.2026, oppdatert 11.11.2026
+
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+```
+
+```{r}
+ev  <- les(fil_mal_2025, "event")
+mof <- les(fil_mal_2025, "measurementOrFact")
+occ <- les(fil_mal_2025, "occurence")
+ren <- les(fil_renset)
+skj <- readRDS(ut("02_skjotsel_2022_2026.rds")) |> filter(aar <= 2025)
+
+# Tomme kolonner uten navn i occurrence (…34–…38) har nesten bare NA. Én rad (M06 2025)
+# har taksonomitekst der; den beholdes i en egen fane til kontroll.
+occ_ekstra <- occ |> select(eventID, scientificName, starts_with("...")) |>
+  filter(if_any(starts_with("..."), ~ !is.na(.x)))
+occ <- occ |> select(-starts_with("..."))
+
+logg <- tibble(nr = integer(), endring = character(), antall_rader = integer(), detaljer = character())
+logg_add <- function(nr, endring, n, detaljer = NA_character_) {
+  logg <<- add_row(logg, nr = nr, endring = endring, antall_rader = as.integer(n), detaljer = detaljer)
+}
+
+dato <- function(x) as.Date(x)
+ev  <- ev  |> mutate(eventDate = dato(eventDate))
+mof <- mof |> mutate(measurementDeterminedDate = dato(measurementDeterminedDate))
+```
+
+## 1 eventRemarks
+
+```{r}
+gammel_remarks <- ev$eventRemarks
+ev <- ev |> mutate(eventRemarks = unname(besok_aar[as.character(year)]))
+logg_add(1, "eventRemarks satt til besøk per år", sum(gammel_remarks != ev$eventRemarks, na.rm = TRUE),
+         "2022 Baseline, 2023 Revisit1, 2024 Revisit2, 2025 Revisit3")
+```
+
+## 2 Plot_management
+
+```{r}
+ev <- ev |>
+  left_join(skj |> select(eventID, Plot_management), by = "eventID") |>
+  relocate(Plot_management, .after = eventRemarks)
+stopifnot(!any(is.na(ev$Plot_management)))
+endret_fra_felt <- sum((gammel_remarks == "Mown since last visit") != (ev$Plot_management == 1))
+logg_add(2, "Ny kolonne Plot_management (1 = behandlet, 0 = ingen)", nrow(ev),
+         sprintf("Avviker fra gammel eventRemarks for %d hendelser (ruter følger Rubens fil). Se 02_skjotsel_2022_2026.xlsx.",
+                 endret_fra_felt))
+```
+
+## 3 locationID for sirkler på Telefonstolpen 2025
+
+```{r}
+j <- str_detect(ev$eventID, "\\.Circle\\.") & !str_detect(ev$locationID, "\\.Circle\\.")
+ev$locationID[j] <- str_replace(ev$locationID[j], "^(Rauer\\.[^.]+)\\.", "\\1.Circle.")
+logg_add(3, "Circle lagt til i locationID for sirkler", sum(j), paste(ev$locationID[j], collapse = ", "))
+```
+
+## 4 RU-S11 parentEventID
+
+```{r}
+j <- ev$parentEventID == "NINA.Monitoring.RU.NA"
+ev$parentEventID[j] <- "NINA.Monitoring.RU.Revisit3"
+logg_add(4, "parentEventID NINA.Monitoring.RU.NA -> NINA.Monitoring.RU.Revisit3", sum(j),
+         paste(ev$eventID[j], collapse = ", "))
+```
+
+## 5 RU-M01 2025
+
+```{r}
+feil_id <- "NINA.Monitoring.RU.Revisit3.RU-1"; riktig_id <- "NINA.Monitoring.RU.Revisit3.M01"
+stopifnot(riktig_id %in% ev$eventID)
+j <- occ$eventID == feil_id
+occ$eventID[j] <- riktig_id
+logg_add(5, paste("occurrence eventID", feil_id, "->", riktig_id), sum(j))
+
+stopifnot(!any(mof$eventID == riktig_id))
+ru1 <- ren |> filter(plot_id2 == "RU-1", year == 2025) |>
+  distinct(cover_field_layer, cover_standing_litter, cover_bottom_layer, cover_short_vegetation,
+           count_plantago, count_spinn, vegheight1, vegheight2, vegheight3, vegheight4)
+stopifnot(nrow(ru1) == 1)
+kart <- c(CoverVegetation = "cover_field_layer", StandingDeadBiomass = "cover_standing_litter",
+          CoverBottom = "cover_bottom_layer", VegetationShort = "cover_short_vegetation",
+          RosettesPlantagoLanceolata = "count_plantago", LarvaSpinn = "count_spinn",
+          VegetationHeight1 = "vegheight1", VegetationHeight2 = "vegheight2",
+          VegetationHeight3 = "vegheight3", VegetationHeight4 = "vegheight4")
+# Samme metadata som de andre rutene i 2025
+meta <- mof |> filter(str_detect(eventID, "Revisit3\\.M"), !str_detect(eventID, "Circle")) |>
+  count(measurementDeterminedBy, measurementMethod, measurementRemarks, sort = TRUE) |> slice(1)
+enhet <- mof |> distinct(measurementType, measurementUnit) |> distinct(measurementType, .keep_all = TRUE)
+nye <- tibble(eventID = riktig_id, measurementID = NA,
+              measurementType = names(kart),
+              measurementValue = as.character(unlist(ru1[1, kart])),
+              measurementAccuracy = NA) |>
+  left_join(enhet, by = "measurementType") |>
+  mutate(measurementDeterminedBy = meta$measurementDeterminedBy,
+         measurementDeterminedDate = ev$eventDate[ev$eventID == riktig_id],
+         measurementMethod = meta$measurementMethod,
+         measurementRemarks = meta$measurementRemarks)
+mof <- bind_rows(mof, nye)
+logg_add(5, paste("Målinger lagt inn for", riktig_id, "fra den rensede fila"), nrow(nye),
+         paste(paste0(nye$measurementType, "=", nye$measurementValue), collapse = ", "))
+```
+
+## 6 RosettesPlantagoLanceolata: én rad per hendelse
+
+```{r}
+for_n <- nrow(mof)
+ros <- mof |> filter(measurementType == "RosettesPlantagoLanceolata")
+stopifnot(all(count(distinct(ros, eventID, measurementValue), eventID)$n == 1))
+mof <- bind_rows(mof |> filter(measurementType != "RosettesPlantagoLanceolata"),
+                 ros |> distinct(eventID, .keep_all = TRUE))
+logg_add(6, "Gjentatte RosettesPlantagoLanceolata-rader fjernet (verdier uendret)", for_n - nrow(mof),
+         sprintf("%d rader igjen, én per hendelse", nrow(distinct(ros, eventID))))
+```
+
+## 7 Circle_PresencePlantago: enhet occurrence
+
+```{r}
+j <- mof$measurementType == "Circle_PresencePlantago" & mof$measurementUnit != "occurrence"
+mof$measurementUnit[j] <- "occurrence"
+logg_add(7, "Circle_PresencePlantago: measurementUnit percent -> occurrence", sum(j))
+```
+
+## 8 eventID og parentEventID etter år (Mariannes regel, variant A i skript 06)
+
+```{r}
+id_ny <- ev |>
+  transmute(eventID,
+            lok = str_match(eventID, "Monitoring\\.(RT|RU)\\.")[, 2],
+            besok = unname(besok_aar[as.character(year)]),
+            kode = str_remove(eventID, "^.*\\.(?=[^.]+$)"),
+            sirkel = str_detect(eventID, "\\.Circle\\."),
+            eventID_ny = paste0("NINA.Monitoring.", lok, ".", besok, ".", if_else(sirkel, "Circle.", ""), kode),
+            parent_ny = paste0("NINA.Monitoring.", lok, ".", besok))
+stopifnot(!anyDuplicated(id_ny$eventID_ny), !any(is.na(id_ny$lok)))
+endres <- id_ny |> filter(eventID != eventID_ny)
+ny_id <- function(x) coalesce(id_ny$eventID_ny[match(x, id_ny$eventID)], x)
+n_parent <- sum(ev$parentEventID != id_ny$parent_ny)
+ev  <- ev  |> mutate(eventID = ny_id(eventID), parentEventID = id_ny$parent_ny)
+mof <- mof |> mutate(eventID = ny_id(eventID))
+occ <- occ |> mutate(eventID = ny_id(eventID))
+logg_add(8, "eventID og parentEventID følger året (2022 Baseline, 2023 Revisit1 ...)", nrow(endres),
+         paste0(paste(endres$eventID, "->", endres$eventID_ny, collapse = "; "),
+                sprintf(". parentEventID endret for %d hendelser.", n_parent)))
+id_endringer <- endres |> select(eventID_gammel = eventID, eventID_ny)
+```
+
+## 9 StateProvince
+
+```{r}
+j <- ev$StateProvince %in% "Viken"
+ev$StateProvince[j] <- "Østfold"
+logg_add(9, "StateProvince Viken -> Østfold", sum(j))
+```
+
+## 10 Forenklet overvåking 2024
+
+```{r}
+j <- ev$year == 2024
+ev$samplingProtocol[j] <- paste0(ev$samplingProtocol[j],
+  "; simplified monitoring in 2024: species list recorded for nectar plants only")
+logg_add(10, "samplingProtocol 2024: forenklet overvåking (bare nektarplanter)", sum(j))
+```
+
+## 11 Occurrence med 0 % dekning
+
+```{r}
+aar_occ <- ev$year[match(occ$eventID, ev$eventID)]
+rute_occ <- str_remove(occ$eventID, "^NINA\\.Monitoring\\.")
+er_pl <- str_detect(occ$scientificName, "^Plantago lanceolata")
+null <- occ$organismQuantity %in% 0
+j_fjern <- aar_occ == 2022 & null & !er_pl
+j_abs   <- aar_occ == 2022 & null & er_pl
+j_24    <- aar_occ == 2024 & null
+j_annet <- null & !(j_fjern | j_abs | j_24)
+
+occ_oversikt <- tibble(aar = aar_occ, eventID = occ$eventID, art = occ$scientificName,
+                       dekning = occ$organismQuantity) |>
+  mutate(handling = case_when(
+    j_fjern ~ "Fjernet (ikke funnet, hele artslista sto i ruta)",
+    j_abs   ~ "Smalkjempe: present -> absent",
+    j_24    ~ "Beholdt som present (blomstrende skudd), dekning 0 -> NA (ikke registrert i 2024)",
+    j_annet ~ "Dekning 0 -> 0,1 % (arten fantes trolig i ruta, Rubens svar 11.11)",
+    TRUE    ~ NA_character_)) |>
+  filter(!is.na(handling))
+per_art_2022 <- tibble(aar = aar_occ, art = occ$scientificName, dekning = occ$organismQuantity) |>
+  filter(aar == 2022) |>
+  group_by(art) |>
+  summarise(ruter_funnet = sum(dekning > 0), ruter_0_prosent = sum(dekning == 0), .groups = "drop") |>
+  arrange(ruter_funnet, art)
+
+stopifnot(sum(j_annet) == 1, occ$scientificName[j_annet] == "Geranium robertianum",
+          occ$eventID[j_annet] == "NINA.Monitoring.RU.Revisit1.M05")
+occ$organismQuantity[j_annet] <- 0.1
+occ$organismQuantity[j_24] <- NA
+occ$organismQuantityType[j_24] <- NA
+occ$occurrenceRemarks <- as.character(occ$occurrenceRemarks)
+occ$occurrenceRemarks[j_24] <- "Cover not recorded in 2024 (simplified monitoring); species present with flowering shoots"
+occ$occurrenceStatus[j_abs] <- "absent"
+occ <- occ[!j_fjern, ]
+
+pl_mangler <- ev |>
+  filter(year %in% c(2022, 2023, 2025), !str_detect(eventID, "\\.Circle\\.")) |>
+  filter(!eventID %in% occ$eventID[str_detect(occ$scientificName, "^Plantago lanceolata")]) |>
+  select(eventID)
+per_hendelse <- occ |> distinct(eventID, basisOfRecord, recordedBy, identifiedBy, dateIdentified)
+stopifnot(!anyDuplicated(per_hendelse$eventID), all(pl_mangler$eventID %in% per_hendelse$eventID))
+mal_pl <- occ |> filter(str_detect(scientificName, "^Plantago lanceolata")) |> slice(1) |>
+  select(-eventID, -basisOfRecord, -recordedBy, -identifiedBy, -dateIdentified)
+nye_pl <- pl_mangler |>
+  left_join(per_hendelse, by = "eventID") |>
+  bind_cols(mal_pl[rep(1, nrow(pl_mangler)), ]) |>
+  mutate(occurrenceStatus = "absent", organismQuantity = 0, organismQuantityType = "percent",
+         occurrenceRemarks = NA_character_)
+occ <- bind_rows(occ, nye_pl)
+occ_oversikt <- bind_rows(occ_oversikt,
+  tibble(aar = ev$year[match(nye_pl$eventID, ev$eventID)], eventID = nye_pl$eventID,
+         art = nye_pl$scientificName, dekning = 0,
+         handling = "Smalkjempe lagt til som absent (ikke registrert i ruta)"))
+
+logg_add(11, "Occurrence 2022: arter med 0 % dekning fjernet (ikke funnet)", sum(j_fjern))
+logg_add(11, "Occurrence 2022: smalkjempe med 0 % -> absent", sum(j_abs))
+logg_add(11, "Occurrence 2023 og 2025: smalkjempe lagt til som absent der den ikke er registrert", nrow(nye_pl),
+         paste(table(ev$year[match(nye_pl$eventID, ev$eventID)]), collapse = " / "))
+logg_add(11, "Occurrence 2024: dekning 0 -> NA (ikke registrert), fortsatt present", sum(j_24))
+logg_add(11, "Occurrence 2023 RU-M05 Geranium robertianum: dekning 0 -> 0,1 % (Rubens svar 11.11)", sum(j_annet))
+
+occ_les_meg <- tibble(Forklaring = c(
+  "Arter i artstabellen (occurrence) for 2022–2025 med 0 % dekning, og hva som er gjort med dem (skript 05, steg 11).",
+  "2022: hele artslista på 53 arter sto i hver av de 32 rutene, også arter som ikke ble funnet (0 %). De er fjernet. Smalkjempe er beholdt som absent.",
+  "2023 og 2025: bare funne arter står i lista. Smalkjempe er lagt til som absent i rutene der den ikke ble registrert.",
+  "2024: dekning ble ikke registrert (forenklet overvåking), men alle artene har blomstrende skudd. De står fortsatt som present, med dekning NA.",
+  "2023: Geranium robertianum i RU-M05 hadde 0 %. Arten fantes trolig i ruta og har fått 0,1 % (Rubens svar 11.11).",
+  "Fanen «Per art 2022» viser hvor mange av de 32 rutene hver art ble funnet i (dekning > 0) og ikke funnet i (0 %). Arter øverst ble aldri funnet i 2022."
+))
+skriv_excel(list(`Les meg` = occ_les_meg, Rader = occ_oversikt |> arrange(aar, eventID, art),
+                 `Per art 2022` = per_art_2022),
+            ut("05_occurrence_0_prosent_oversikt.xlsx"))
+
+## Sorter som i malen og kontroller
+rekkefolge_ev <- ev$eventID
+mof <- mof |> arrange(match(eventID, rekkefolge_ev))
+occ <- occ |> arrange(match(eventID, rekkefolge_ev))
+stopifnot(all(mof$eventID %in% ev$eventID), all(occ$eventID %in% ev$eventID), !anyDuplicated(ev$eventID))
+
+ikke_gjort <- tibble(`Ikke gjort, venter på avklaring` = c(
+  "Blomstrende skudd per art er ikke med i DwC-fila. Rubens svar 11.11: trenger ikke være med."
+))
+
+skriv_excel(list(Endringslogg = logg, `Ikke gjort` = ikke_gjort, `Endrede eventID` = id_endringer,
+                 event = ev, measurementOrFact = mof, occurence = occ,
+                 `Kontroll occurrence-kolonner` = occ_ekstra),
+            ut("05_Monitoring_Melitaea_cinxia_2022_2025_rettet.xlsx"))
+saveRDS(list(event = ev, measurementOrFact = mof, occurence = occ),
+        ut("05_Monitoring_Melitaea_cinxia_2022_2025_rettet.rds"))
+```
