@@ -24,6 +24,7 @@ url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision:
 writtenLanguage: Norwegian
 lang: nb
+number-sections: false # manuell nummerering i overskriftene
 format:
   gfm:
     output-file: README.md

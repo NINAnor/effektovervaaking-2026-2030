@@ -26,7 +26,8 @@ url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 # To be filled out by ecRxiv during the typesetting, when they will replace XX_YYYY_ZZ with the name of the root folder for the current indicator(s). It should be the same as the indicatorID, but if there are more indicator IDs presented in the same folder, the folder name might be different, e.g. XX_YYYY_AAA-BBB 
 Precision: # Optional. Describe the precision metric you have used. Precision may be reported either as variation among observed values (e.g. standard deviation, variance, range, interquartile range) or as uncertainty around an estimated value (e.g. standard error, confidence interval, credible interval). 
 writtenLanguage: Norwegian
-format: 
+number-sections: false # manuell nummerering i overskriftene
+format:
   html:
     embed-resources: true
     code-fold: true
