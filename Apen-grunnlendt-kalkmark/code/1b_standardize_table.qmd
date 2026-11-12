@@ -16,13 +16,12 @@ Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ct
 
 ## File path to the raw table written by 1a_unpack_survey123.qmd
 
-filepath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026/GRUK_effekt_2026_processed/GRUK_effekt_2026_raw.xlsx"
-
+filepath <- here::here("data", "S123_2026", "GRUK_effekt_2026_processed", "GRUK_effekt_2026_raw.xlsx")
 
 ## Output path
 # Path to folder where the processed directories and files should be exported
 
-outputpath <- "/data/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/02 Apen grunnlendt kalkmark/Analyser/GRUK_effekt_2026"
+outputpath <- here::here("data", "S123_2026")
 
 
 ## Project name
