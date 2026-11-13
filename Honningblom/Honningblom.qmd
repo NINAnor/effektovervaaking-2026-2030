@@ -216,7 +216,7 @@ The monitoring shows that the populations are stable or increasing. Skjellvik, t
 
 ## 1. Innledning
 
-Orkideen honningblom (*Herminium monorchis*) vokser på fire kystnære lokaliteter på Hvaler, Østfold: tre på Asmaløy (Skipstadsand, Skjellvik og Teneskjær) og en på øya Filletassen utenfor Asmaløy [@hoitomt_2017]. Arten var tidligere spredt men sjelden på Sørøstlandet (@fig-historisk), men har hatt kraftig tilbakegang de siste hundre årene, på grunn av oppdyrking, drenering og annen omlegging av arealbruk. Honningblom er vurdert som kritisk truet (CR) på Rødlista for arter 2021 [@artsdatabanken_2021].
+Orkideen honningblom *Herminium monorchis* (@fig-honningblom) vokser på fire kystnære lokaliteter på Hvaler, Østfold: tre på Asmaløy (Skipstadsand, Skjellvik og Teneskjær) og en på øya Filletassen utenfor Asmaløy [@hoitomt_2017]. Arten var tidligere spredt men sjelden på Sørøstlandet (@fig-historisk), men har hatt kraftig tilbakegang de siste hundre årene, på grunn av oppdyrking, drenering og annen omlegging av arealbruk. Honningblom er vurdert som kritisk truet (CR) på Rødlista for arter 2021 [@artsdatabanken_2021].
 
 Honningblompopulasjonene på Skipstadsand, Skjellvik og Teneskjær har vært overvåket siden 2014 og populasjonen på Filletassen siden 2020 [@roos_2023a]. Fordi honningblom er flerårig og viser stor mellomårsvariasjon i andelen individer som har overjordiske skudd [@wells_1998; @kravdal_2016], er det viktig med årlige data over mange år for å kunne skille mellomårsvariasjon fra trender i populasjonsstørrelse. Det foregår skjøtsel på lokalitetene som overvåkes. NINA er i nær kontakt med Statsforvalteren i Østfold, Buskerud, Oslo og Akershus og med Nasjonalparkforvalteren i Ytre Hvaler nasjonalpark om tiltakene og overvåkingen.
 
@@ -261,13 +261,13 @@ Alle de gjenværende honningblomlokalitetene ligger på Hvaler i Østfold (@fig-
 include_graphics("img/Map2_forekomster.jpeg")
 ```
 
-Alle forekomstene av honningblom er knyttet til semi-naturlige naturtyper. Slike naturtyper er åpne, men gror igjen med høyvokste arter ved opphør av drift som beite og slått. Arten kan også være utsatt for tråkkskader, både fra mennesker og beitedyr. Skjøtsel på de fire overvåkingslokalitetene er grundig beskrevet i @evju_2022a og i @ekelund_2019a [-@ekelund_2019b].
+Alle forekomstene av honningblom er knyttet til semi-naturlige naturtyper. Slike naturtyper er åpne, men gror igjen med høyvokste arter ved opphør av drift som beite og slått. Arten kan også være utsatt for tråkkskader, både fra mennesker og beitedyr. Skjøtsel på de fire overvåkingslokalitetene er grundig beskrevet i @evju_2022a og i [@ekelund_2019a; -@ekelund_2019b].
 
 På Skipstadsand slås det to ganger per sesong: i juni, før honningblom er kommet opp, og etter frøsetting. Slått plantemateriale fjernes, og i tillegg lukes det rundt plantene. Forekomstene av honningblom er konsentrert i den nordøstlige delen av lokaliteten, med noen spredte individer utenfor kjerneområdet (@fig-kart-skipstadsand).
 
 Skjellvik er den største lokaliteten, både i utstrekning og populasjonsstørrelse (@fig-kart-skjellvik). Honningblom forekommer spredt innenfor hele lokaliteten, men ikke langs transektrutene utenfor gjerdet nordover. Lokaliteten slås to ganger i året, og deler av lokaliteten en ekstra gang noen år.
 
-Teneskjær inngår i beiteområdet til frittgående Herefordkyr i Ytre Hvaler nasjonalpark, og det forekommer en god del beite (@fig-kart-teneskjaer). For å beskytte plantene mot beite ble det i 2025 og 2026 satt opp små bur over en del planter. Det er ingen aktiv skjøtsel utover dette.
+Teneskjær inngår i beiteområdet til frittgående Herefordkyr i Ytre Hvaler nasjonalpark, og det forekommer en god del beite (@fig-kart-teneskjaer). For å beskytte plantene mot beite ble det i 2025 satt opp små bur over en del planter. Det er ingen aktiv skjøtsel utover dette.
 
 På Filletassen slås det på forsommeren samt på slutten av sommeren (@fig-kart-filletassen).
 
@@ -303,7 +303,7 @@ Det er Statsforvalteren og Statens naturoppsyn (SNO) som gjennomfører tiltakene
 
 -   **Skjellvik:** Kjerneområdet er inngjerdet med strømgjerde, som beskytter plantene mot tråkk. Høsten 2023 ble små oretrær og -røtter fjernet, slik at det ble lettere å slå lokaliteten med maskin. Slåtten tilpasses veksten. I 2024 ble det for eksempel bare gjennomført svært lett sommerslått, fordi veksten var moderat [@roos_2024].
 -   **Filletassen:** Slåtten på forsommeren er lett og gjøres over høyden til honningblomplantene, for å redusere dominansen til myrtistel (*Cirsium palustre*). Enga slås helt ned i slutten av august eller i september [@roos_2024].
--   **Teneskjær:** Lokaliteten slås ikke, men beites. Burene settes over grupper av fertile individer for å øke sannsynligheten for at de utvikler modne frø. I 2025 var blomstrende individer utenfor burene i stor grad beitet bort [@roos_2025].
+-   **Teneskjær:** Lokaliteten slås ikke, men beites av herefordkyr. I 2025 ble det satt bur over grupper av fertile individer for å øke sannsynligheten for at de utvikler modne frø. I 2025 var blomstrende individer utenfor burene i stor grad beitet bort [@roos_2025]. Ettersom bare én overvåkingsrute var dekket med bur, var det ikke mulig å vurdere effekten av tiltaket statistisk..
 
 I tillegg til skjøtselen arbeides det med bevaringsutsetting av honningblom. NIBIO dyrker fram planter som kan settes ut, og de første plantene kan være klare i 2026. I 2025 ble potensielle utsettingslokaliteter på Hvaler vurdert, og Vikerkilen og Herfølsalta ble anbefalt prioritert for skjøtsel fra 2026 [@ekelund_2025; @roos_2025].
 
