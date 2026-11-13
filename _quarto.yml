@@ -14,6 +14,7 @@ book:
   repo-branch: main
   chapters:
     - index.qmd
+    - Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd
     - Dragehode/Dragehode.qmd
     - Honningblom/Honningblom.qmd
     - Elvesandjeger/Elvesandjeger.qmd
@@ -23,7 +24,6 @@ book:
     - Svartkurle/Svartkurle.qmd
     - Trondertorvmose/Trondertorvmose.qmd
     - Askeglye/Askeglye.qmd
-    - Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd
     - Kystlynghei/report/kystlynghei_condition_report.qmd
     - effektovervaking_forests/docs/forest_monitoring_report.qmd
   appendices:
