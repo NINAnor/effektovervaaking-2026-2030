@@ -1,42 +1,47 @@
 ---
 title: "08 Analyser 2022–2026: samme oppsett som tidligere år"
 format: html
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
+Følger analyseskriptet fra 2025, med data fra skript 07:
 
-Følger analyseskriptet fra 2025 (154027_…/07 Prikkrutevinge/Effektovervaaking_prikkrutevinge/
-Scripts/Prikkrutevinge_analyser_2025.R), med data fra skript 07:
+-   **A** Spinnruter mot overvåkingsruter (alle ruter): respons \~
+    Spinnrute + factor(år) + (1 \| rute)
+-   **B** Endring over år i overvåkingsrutene (M-ruter): respons \~
+    factor(år) + (1 \| rute)
+-   **C** Effekt av skjøtsel i siste år med data (M-ruter): respons \~
+    antall_ganger_slatt og respons \~ slatt_minst_en_gang
+-   **D** NMDS av artssammensetningen (2022, 2023, 2025; ikke 2024 og
+    2026, da artsdekning ikke ble registrert), med envfit og lm av
+    aksene
+-   **E** Larvespinn: bare tabell
 
-- **A** Spinnruter mot overvåkingsruter (alle ruter):
-   respons ~ Spinnrute + factor(år) + (1 | rute)
-- **B** Endring over år i overvåkingsrutene (M-ruter):
-   respons ~ factor(år) + (1 | rute)
-- **C** Effekt av skjøtsel i siste år med data (M-ruter):
-   respons ~ antall_ganger_slatt   og   respons ~ slatt_minst_en_gang
-- **D** NMDS av artssammensetningen (2022, 2023, 2025; ikke 2024 og 2026, da
-   artsdekning ikke ble registrert), med envfit og lm av aksene
-- **E** Larvespinn: bare tabell
+Figurer: spinnrute mot overvåkingsrute, og M-ruter etter antall ganger
+slått
 
-Figurer: spinnrute mot overvåkingsrute, og M-ruter etter antall ganger slått
-
-Gaussisk lmer/lm for høyde, blomstrende skudd, stående død biomasse og kort
-vegetasjon; Poisson for rosetter (som tidligere år).
+Gaussisk lmer/lm for høyde, blomstrende skudd, stående død biomasse og
+kort vegetasjon; Poisson for rosetter (som tidligere år).
 
 Forskjeller fra 2025-skriptet:
 
-- antall ganger slått fra Rubens skjøtselsfil (skript 02), ikke bare fra feltet i 2025
-- artsrikdom teller bare arter med dekning > 0
-- «siste år» er 2026 for høyde og rosetter, 2025 for variablene som ikke ble
-   registrert i 2026
-- blomstrende skudd i 2024 gjelder bare nektarplanter (forenklet overvåking);
-   2024 er med i figurer og modeller som tidligere år, men står i figurteksten
-- Tillegg (fane «Tillegg alle år»): respons ~ antall_ganger_slatt + factor(år) +
-   lokalitet + (1 | rute), som bruker skjøtselshistorien for alle år
+-   antall ganger slått fra Rubens skjøtselsfil (skript 02), ikke bare
+    fra feltet i 2025
+-   artsrikdom teller bare arter med dekning \> 0
+-   «siste år» er 2026 for høyde og rosetter, 2025 for variablene som
+    ikke ble registrert i 2026
+-   blomstrende skudd i 2024 gjelder bare nektarplanter (forenklet
+    overvåking); 2024 er med i figurer og modeller som tidligere år, men
+    står i figurteksten
+-   Tillegg (fane «Tillegg alle år»): respons \~ antall_ganger_slatt +
+    factor(år) + lokalitet + (1 \| rute), som bruker skjøtselshistorien
+    for alle år
 
 Kjør 07 først. Krever lme4, lmerTest, DHARMa, vegan og ggrepel.
 
 Skrevet av Ida M. Mienna med Claude, 11.11.2026
-
 
 ```{r}
 #| label: oppsett

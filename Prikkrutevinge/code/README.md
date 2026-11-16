@@ -8,7 +8,7 @@ Skriptene leser bare fra `../data/` og skriver alle resultater til `../img/`.
 
 ## Kjøring
 
-Kjør skriptene i rekkefølge 01–08, med «Render» i RStudio, `quarto render <fil>.qmd`
+Kjør skriptene i rekkefølge 01–09, med «Render» i RStudio, `quarto render <fil>.qmd`
 eller «Run All». Hvert skript leser inn `00_felles.qmd` selv. Senere skript leser
 resultatene (`.rds`/`.xlsx` i `img/`) fra de tidligere.
 
@@ -23,6 +23,7 @@ resultatene (`.rds`/`.xlsx` i `img/`) fra de tidligere.
 | `06_eventid_oversikt.qmd` | Oversikt over hvilke event-ID-er som ble endret i 05 | `06_eventid_oversikt.xlsx` |
 | `07_sammenslatt.qmd` | Sammenslått analysedatasett 2022–2026 (ruter, sirkler, arter) | `07_sammenslatt_2022_2026.xlsx/.rds` |
 | `08_analyser.qmd` | Analyser som tidligere år: spinnruter mot overvåkingsruter, endring over år, skjøtsel, NMDS, larvespinn, DHARMa-diagnostikk | `08_analyser_2022_2026.xlsx`, `08_nmds.rds`, `08_figurer/` |
+| `09_sirkler.qmd` | Sirklene 2025 mot 2026: dekning (bl.a. busksjikt), larvespinn og smalkjempe, med skjøttet mot ikke skjøttet, og fremmede arter hentet fra kommentarfeltene | `09_sirkler_2025_2026.xlsx`, `09_figurer/` |
 
 ## Inndata (`../data/`)
 
@@ -37,7 +38,7 @@ resultatene (`.rds`/`.xlsx` i `img/`) fra de tidligere.
 ## Pakker
 
 readxl, dplyr, tidyr, stringr, openxlsx, here og knitr. 08 trenger i tillegg ggplot2,
-lme4, lmerTest, DHARMa, vegan og ggrepel.
+lme4, lmerTest, DHARMa, vegan og ggrepel. 09 trenger ggplot2.
 
 ## Neste år
 

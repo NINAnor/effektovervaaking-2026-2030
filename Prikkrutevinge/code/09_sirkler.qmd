@@ -1,0 +1,242 @@
+---
+title: "09 Sirkler: endring fra 2025 til 2026"
+format: html
+---
+
+Sammenligner sirkelregistreringene i 2025 og 2026 (Rubens ønske 16.11.2026):
+
+- **Dekning** i sirklene (feltsjikt, moser, lav, lyng, busksjikt, tresjikt, bar jord,
+  berg), larvespinn og smalkjempe. Bare sirkler som ble registrert begge år: de
+  10 sirklene rundt rutene på Telefonstolpen og de 7 faste sirklene på Utedassen.
+  Sirklene rundt rutene på Utedassen ble registrert første gang i 2026.
+- **Skjøtsel:** endringen sammenlignes mellom sirkler som ble skjøttet mellom
+  registreringene (Plot_management i 2026 = 1, fra skript 02) og sirkler som ikke ble det.
+- **Fremmede arter** har ikke eget felt i Survey123. De står som fritekst i
+  kommentarfeltene, f.eks. «Buskhyll 10%, beriberis 8%». Skriptet henter ut artsnavn med
+  prosent fra kommentarene begge år.
+
+Forbehold:
+
+- De sju sirkelverdiene som ble satt til NA i skript 03 (stor endring fra 2025,
+  Rubens svar 9), er ikke med.
+- Fremmede arter ble trolig ikke notert like systematisk begge år. En art som bare står
+  i 2026, kan ha vært der i 2025 uten å bli skrevet ned.
+- «Buskhyll» (2026) og «rødhyll» (2025) står i de samme sirklene og er trolig samme art.
+  De er slått sammen til «rødhyll», men det bør sjekkes.
+- Med 17 sirkler (7 skjøttet) er testene svake. De er tatt med som en pekepinn.
+
+Kjør 02, 03 og 07 først. Krever ggplot2.
+
+Skrevet av Ida M. Mienna med Claude, 16.11.2026
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+suppressPackageStartupMessages(library(ggplot2))
+
+mappe_fig <- ut("09_figurer")
+dir.create(mappe_fig, showWarnings = FALSE)
+```
+
+## Dekning, larvespinn og smalkjempe
+
+```{r}
+sirkler <- readRDS(ut("07_sammenslatt_2022_2026.rds"))$sirkler
+begge_aar <- intersect(sirkler$rute[sirkler$aar == 2025], sirkler$rute[sirkler$aar == 2026])
+
+# Skjøttet mellom registreringene i 2025 og 2026 = Plot_management i 2026
+skjottet <- sirkler |>
+  filter(aar == 2026) |>
+  transmute(rute, skjottet_2025_2026 = if_else(Plot_management == 1, "skjøttet", "ikke skjøttet"))
+
+variabler <- c(dekning_feltsjikt = "Feltsjikt (%)", dekning_moser = "Moser (%)",
+               dekning_lav = "Lav (%)", dekning_lyng = "Lyng (%)",
+               dekning_busker = "Busksjikt (%)", dekning_traer = "Tresjikt (%)",
+               dekning_bar_jord = "Bar jord (%)", dekning_berg = "Berg (%)",
+               larvespinn = "Larvespinn (antall)")
+
+lang <- sirkler |>
+  filter(rute %in% begge_aar) |>
+  select(aar, lokalitet, rute, sirkeltype, all_of(names(variabler))) |>
+  pivot_longer(all_of(names(variabler)), names_to = "variabel", values_to = "verdi") |>
+  left_join(skjottet, by = "rute") |>
+  mutate(navn = factor(variabler[variabel], levels = variabler))
+
+parvis <- lang |>
+  pivot_wider(id_cols = c(lokalitet, rute, sirkeltype, skjottet_2025_2026, variabel, navn),
+              names_from = aar, names_prefix = "aar_", values_from = verdi) |>
+  mutate(endring = aar_2026 - aar_2025) |>
+  arrange(navn, lokalitet, rute)
+
+test_p <- function(x, y, f) {
+  ok <- !is.na(x) & !is.na(y)
+  if (sum(ok) < 3 || all(x[ok] == y[ok])) return(NA_real_)
+  suppressWarnings(f(x[ok], y[ok]))
+}
+
+oppsummering <- parvis |>
+  group_by(navn) |>
+  summarise(
+    antall_sirkler = sum(!is.na(endring)),
+    snitt_2025 = mean(aar_2025[!is.na(endring)]),
+    snitt_2026 = mean(aar_2026[!is.na(endring)]),
+    snitt_endring = mean(endring, na.rm = TRUE),
+    median_endring = median(endring, na.rm = TRUE),
+    okt = sum(endring > 0, na.rm = TRUE),
+    lik = sum(endring == 0, na.rm = TRUE),
+    gikk_ned = sum(endring < 0, na.rm = TRUE),
+    p_wilcoxon_parvis = test_p(aar_2026, aar_2025,
+                               function(a, b) wilcox.test(a, b, paired = TRUE, exact = FALSE)$p.value),
+    snitt_endring_skjottet = mean(endring[skjottet_2025_2026 == "skjøttet"], na.rm = TRUE),
+    snitt_endring_ikke_skjottet = mean(endring[skjottet_2025_2026 == "ikke skjøttet"], na.rm = TRUE),
+    p_wilcoxon_skjottet_mot_ikke = {
+      e <- endring[!is.na(endring)]; g <- skjottet_2025_2026[!is.na(endring)]
+      if (length(unique(g)) < 2 || all(e == e[1])) NA_real_ else
+        suppressWarnings(wilcox.test(e ~ g, exact = FALSE)$p.value)
+    },
+    .groups = "drop") |>
+  mutate(across(where(is.double), ~ round(.x, 3)))
+
+smalkjempe <- sirkler |>
+  filter(rute %in% begge_aar) |>
+  select(aar, rute, smalkjempe) |>
+  pivot_wider(names_from = aar, names_prefix = "smalkjempe_", values_from = smalkjempe) |>
+  count(smalkjempe_2025, smalkjempe_2026, name = "antall_sirkler")
+
+oppsummering |> select(navn, antall_sirkler, snitt_2025, snitt_2026, snitt_endring,
+                       p_wilcoxon_parvis, snitt_endring_skjottet, snitt_endring_ikke_skjottet,
+                       p_wilcoxon_skjottet_mot_ikke) |> knitr::kable()
+smalkjempe |> knitr::kable()
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 7
+fig_dekning <- ggplot(lang |> filter(!is.na(verdi), variabel != "larvespinn"),  # larvespinn: bare 0, står i tabellen
+                      aes(factor(aar), verdi, group = rute, colour = skjottet_2025_2026)) +
+  geom_line(alpha = 0.6) +
+  geom_point(size = 1.8) +
+  facet_wrap(~ navn, scales = "free_y", ncol = 3) +
+  scale_colour_manual(values = c(`skjøttet` = "#D55E00", `ikke skjøttet` = "#0072B2"),
+                      name = "Mellom 2025 og 2026") +
+  labs(x = NULL, y = NULL,
+       caption = "Sirkler registrert begge år (10 på Telefonstolpen, 7 faste på Utedassen). Én linje per sirkel.") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+fig_dekning
+ggsave(file.path(mappe_fig, "sirkler_dekning_2025_2026.png"), fig_dekning,
+       width = 21, height = 17, units = "cm", dpi = 200)
+```
+
+## Fremmede arter fra kommentarfeltene
+
+```{r}
+# 2025: renset fil (kommentarfeltene er slått sammen med «;»)
+kom_25 <- les(fil_renset) |>
+  filter(year == 2025, !is.na(circle_cover_fieldlayer)) |>
+  distinct(plot_id2, .keep_all = TRUE) |>
+  transmute(aar = 2025L, rute = plot_id2, kommentar = circle_comments)
+
+# 2026: Survey123-eksporten, både sirkelkommentar og skjøtselskommentar
+kom_26 <- les(fil_2026, "circles") |>
+  mutate(rute = if_else(str_detect(main_plot_id, "^Sirkel"),
+                        paste0(main_location_id, "-sirkel", str_extract(main_plot_id, "\\d+")),
+                        paste0(main_location_id, "-", main_plot_id))) |>
+  transmute(aar = 2026L, rute,
+            kommentar = paste(coalesce(circle_comment, ""), coalesce(circle_management_comments, ""), sep = ";"))
+
+# Artsnavn (minst fire bokstaver) etterfulgt av en prosent. Årstall (> 100) tas ikke med.
+artsfunn <- bind_rows(kom_25, kom_26) |>
+  mutate(treff = str_match_all(kommentar, "([A-Za-zÆØÅæøå]{4,})\\s*(\\d+(?:[.,]\\d+)?)\\s*%?")) |>
+  mutate(treff = lapply(treff, as.data.frame)) |>
+  tidyr::unnest(treff) |>
+  transmute(aar, rute, navn_i_felt = V2, prosent = as.numeric(str_replace(V3, ",", ".")), kommentar) |>
+  filter(prosent <= 100) |>
+  mutate(art = str_to_lower(navn_i_felt),
+         art = recode(art, beriberis = "berberis", buskhyll = "rødhyll"))
+
+# Status på Fremmedartslista 2023 må sjekkes. «sjekk» = ikke vurdert her.
+fremmed <- tribble(
+  ~art,            ~vitenskapelig_navn,      ~fremmed_art,
+  "rødhyll",       "Sambucus racemosa",      "ja",
+  "berberis",      "Berberis vulgaris",      "ja",
+  "stikkelsbær",   "Ribes uva-crispa",       "ja",
+  "strandrødtopp", NA,                       "sjekk"
+)
+artsfunn <- artsfunn |>
+  left_join(fremmed, by = "art") |>
+  mutate(fremmed_art = coalesce(fremmed_art, "sjekk")) |>
+  relocate(aar, rute, art, vitenskapelig_navn, fremmed_art, prosent, navn_i_felt, kommentar) |>
+  arrange(art, rute, aar)
+
+stopifnot(!anyDuplicated(artsfunn[c("aar", "rute", "art")]))
+
+# Bred: én rad per sirkel og art, bare sirkler registrert begge år. Ikke nevnt = 0.
+fremmede_bred <- artsfunn |>
+  filter(rute %in% begge_aar) |>
+  select(rute, art, fremmed_art, aar, prosent) |>
+  complete(nesting(rute), nesting(art, fremmed_art), aar = c(2025L, 2026L), fill = list(prosent = 0)) |>
+  semi_join(artsfunn |> filter(rute %in% begge_aar) |> distinct(rute, art), by = c("rute", "art")) |>
+  pivot_wider(names_from = aar, names_prefix = "prosent_", values_from = prosent) |>
+  left_join(skjottet, by = "rute") |>
+  mutate(endring = prosent_2026 - prosent_2025) |>
+  arrange(art, rute)
+
+fremmede_oppsummering <- artsfunn |>
+  group_by(art, fremmed_art, aar) |>
+  summarise(antall_sirkler = n(),
+            sirkler = paste0(rute, " (", prosent, " %)", collapse = ", "),
+            .groups = "drop") |>
+  arrange(art, aar)
+
+fremmede_oppsummering |> knitr::kable()
+fremmede_bred |> knitr::kable()
+```
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+fig_fremmede <- ggplot(fremmede_bred |>
+                         pivot_longer(c(prosent_2025, prosent_2026), names_to = "aar",
+                                      names_prefix = "prosent_", values_to = "prosent"),
+                       aes(aar, prosent, group = rute, colour = skjottet_2025_2026)) +
+  geom_line(alpha = 0.6) +
+  geom_point(size = 2) +
+  facet_wrap(~ art) +
+  scale_colour_manual(values = c(`skjøttet` = "#D55E00", `ikke skjøttet` = "#0072B2"),
+                      name = "Mellom 2025 og 2026") +
+  labs(x = NULL, y = "Dekning (%)",
+       caption = "Fra kommentarfeltene. Ikke nevnt = 0 %. «Buskhyll» i 2026 er slått sammen med rødhyll.") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+fig_fremmede
+ggsave(file.path(mappe_fig, "sirkler_fremmede_arter_2025_2026.png"), fig_fremmede,
+       width = 20, height = 13, units = "cm", dpi = 200)
+```
+
+## Lagring
+
+```{r}
+les_meg <- tibble(Forklaring = c(
+  "Sammenligning av sirkelregistreringene i 2025 og 2026. Bare sirkler registrert begge år (10 på Telefonstolpen, 7 faste på Utedassen).",
+  "Skjøttet mellom 2025 og 2026 = Plot_management i 2026 (skript 02).",
+  "«Oppsummering»: snitt per år, endring, parvis Wilcoxon-test (2026 mot 2025) og Wilcoxon-test av endringen for skjøttet mot ikke skjøttet. Få sirkler, så p-verdiene er bare en pekepinn.",
+  "«Parvis»: verdien per sirkel begge år. De sju verdiene som ble satt til NA i skript 03, er ikke med.",
+  "«Smalkjempe»: present/absent i 2025 mot 2026.",
+  "Fremmede arter har ikke eget felt. De er hentet ut av kommentarfeltene (artsnavn + prosent). Arter uten prosent er ikke med.",
+  "«Buskhyll» (2026) og «rødhyll» (2025) står i de samme sirklene og er slått sammen til rødhyll. «Beriberis» er rettet til berberis. Sjekk dette.",
+  "fremmed_art: «ja» = antatt fremmed art, «sjekk» = ikke vurdert. Sjekk mot Fremmedartslista 2023.",
+  "En art som bare står i 2026, kan ha vært der i 2025 uten å bli notert.",
+  "Figurer i 09_figurer."
+))
+
+skriv_excel(list(`Les meg` = les_meg, Oppsummering = oppsummering,
+                 Parvis = parvis |> select(-variabel), Smalkjempe = smalkjempe,
+                 `Fremmede arter` = fremmede_oppsummering,
+                 `Fremmede arter per sirkel` = fremmede_bred,
+                 `Fremmede arter alle funn` = artsfunn),
+            ut("09_sirkler_2025_2026.xlsx"))
+```
