@@ -144,7 +144,7 @@ sirk_25 <- ren |>
   ungroup() |>
   transmute(aar = 2025L, rute = plot_id2,
             dekning_feltsjikt = circle_cover_fieldlayer, dekning_moser = circle_cover_bryophytes,
-            dekning_lav = circle_cover_lichen, dekning_lyng = circle_cover_lowwoody,
+            dekning_lav = circle_cover_lichen, dekning_vedplanter_feltsjikt = circle_cover_lowwoody,
             dekning_busker = circle_cover_shrubs, dekning_traer = circle_cover_trees,
             dekning_bar_jord = circle_cover_baresoil, dekning_berg = circle_cover_bedrock,
             larvespinn = circle_count_spinn,
@@ -152,7 +152,7 @@ sirk_25 <- ren |>
 sirk_26 <- d26$sirkler |>
   transmute(aar = 2026L, rute,
             dekning_feltsjikt = circle_cover_fieldlayer, dekning_moser = circle_cover_bryophytes,
-            dekning_lav = circle_cover_lichen, dekning_lyng = circle_cover_lowwoody,
+            dekning_lav = circle_cover_lichen, dekning_vedplanter_feltsjikt = circle_cover_lowwoody,
             dekning_busker = circle_cover_shrubs, dekning_traer = circle_cover_trees,
             dekning_bar_jord = circle_cover_baresoil, dekning_berg = circle_cover_bedrock,
             larvespinn = circle_count_spinn,

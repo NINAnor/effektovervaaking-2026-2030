@@ -1,29 +1,38 @@
 ---
 title: "09 Sirkler: endring fra 2025 til 2026"
 format: html
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-Sammenligner sirkelregistreringene i 2025 og 2026 (Rubens ønske 16.11.2026):
+Sammenligner sirkelregistreringene i 2025 og 2026 (Rubens ønske
+16.11.2026):
 
-- **Dekning** i sirklene (feltsjikt, moser, lav, lyng, busksjikt, tresjikt, bar jord,
-  berg), larvespinn og smalkjempe. Bare sirkler som ble registrert begge år: de
-  10 sirklene rundt rutene på Telefonstolpen og de 7 faste sirklene på Utedassen.
-  Sirklene rundt rutene på Utedassen ble registrert første gang i 2026.
-- **Skjøtsel:** endringen sammenlignes mellom sirkler som ble skjøttet mellom
-  registreringene (Plot_management i 2026 = 1, fra skript 02) og sirkler som ikke ble det.
-- **Fremmede arter** har ikke eget felt i Survey123. De står som fritekst i
-  kommentarfeltene, f.eks. «Buskhyll 10%, beriberis 8%». Skriptet henter ut artsnavn med
-  prosent fra kommentarene begge år.
+-   **Dekning** i sirklene (feltsjikt, moser, lav, vedplanter i feltsjikt, busksjikt,
+    tresjikt, bar jord, berg), larvespinn og smalkjempe. Bare sirkler
+    som ble registrert begge år: de 10 sirklene rundt rutene på
+    Telefonstolpen og de 7 faste sirklene på Utedassen. Sirklene rundt
+    rutene på Utedassen ble registrert første gang i 2026.
+-   **Skjøtsel:** endringen sammenlignes mellom sirkler som ble skjøttet
+    mellom registreringene (Plot_management i 2026 = 1, fra skript 02)
+    og sirkler som ikke ble det.
+-   **Fremmede arter** har ikke eget felt i Survey123. De står som
+    fritekst i kommentarfeltene, f.eks. «Buskhyll 10%, beriberis 8%».
+    Skriptet henter ut artsnavn med prosent fra kommentarene begge år.
 
 Forbehold:
 
-- De sju sirkelverdiene som ble satt til NA i skript 03 (stor endring fra 2025,
-  Rubens svar 9), er ikke med.
-- Fremmede arter ble trolig ikke notert like systematisk begge år. En art som bare står
-  i 2026, kan ha vært der i 2025 uten å bli skrevet ned.
-- «Buskhyll» (2026) og «rødhyll» (2025) står i de samme sirklene og er trolig samme art.
-  De er slått sammen til «rødhyll», men det bør sjekkes.
-- Med 17 sirkler (7 skjøttet) er testene svake. De er tatt med som en pekepinn.
+-   De sju sirkelverdiene som ble satt til NA i skript 03 (stor endring
+    fra 2025, Rubens svar 9), er ikke med.
+-   Fremmede arter ble trolig ikke notert like systematisk begge år. En
+    art som bare står i 2026, kan ha vært der i 2025 uten å bli skrevet
+    ned.
+-   «Buskhyll» (2026) og «rødhyll» (2025) står i de samme sirklene og er
+    trolig samme art. De er slått sammen til «rødhyll», men det bør
+    sjekkes.
+-   Med 17 sirkler (7 skjøttet) er testene svake. De er tatt med som en
+    pekepinn.
 
 Kjør 02, 03 og 07 først. Krever ggplot2.
 
@@ -53,7 +62,7 @@ skjottet <- sirkler |>
   transmute(rute, skjottet_2025_2026 = if_else(Plot_management == 1, "skjøttet", "ikke skjøttet"))
 
 variabler <- c(dekning_feltsjikt = "Feltsjikt (%)", dekning_moser = "Moser (%)",
-               dekning_lav = "Lav (%)", dekning_lyng = "Lyng (%)",
+               dekning_lav = "Lav (%)", dekning_vedplanter_feltsjikt = "Vedplanter i feltsjikt (%)",
                dekning_busker = "Busksjikt (%)", dekning_traer = "Tresjikt (%)",
                dekning_bar_jord = "Bar jord (%)", dekning_berg = "Berg (%)",
                larvespinn = "Larvespinn (antall)")
