@@ -63,7 +63,6 @@ code-links:
         href: https://github.com/NINAnor/ecRxiv
 hide: TRUE
 bibliography: references.bib
-nocite: '@evju_2018'
 ---
 
 <!--# Rapporten leser kun filer i img/. Figurene lages av code/5_Analyser.R. Tekstgrunnlaget er «Vedlegg årsrapport 2026_mal_GRUK.docx» (P:/02 Apen grunnlendt kalkmark/2026). -->
@@ -200,6 +199,8 @@ meta |>
 <!--# Legg til en kort linje for hver oppdatering -->
 
 12. nov. 2026 – Første versjon
+
+16. nov. 2026 – Korrektur fra forfatterne
 :::
 
 <hr />
@@ -207,19 +208,15 @@ meta |>
 
 ## Oppsummering
 
-<!--# Utkast, skrevet ut fra teksten i rapporten. Skal kontrolleres av forfatterne. -->
-
 Åpen grunnlendt kalkmark i boreonemoral sone er en utvalgt naturtype og er vurdert som sterkt truet (EN) på Rødlista for naturtyper 2025. Naturtypen er truet av fremmede arter, særlig gravbergknapp (*Phedimus spurius*), og av gjengroing. Siden 2022 har vi overvåket effekter av restaureringstiltak på lokaliteter i indre Oslofjord, og per 2026 inngår sju lokaliteter. På Bleikøya, Loffen på Nakholmen og Torvøya bekjempes gravbergknapp med duk, sprøyting og luking. På Padda, Malmøya og Husbergøya fjernes busker og kratt ved rydding, og på Husbergøya også ved geitebeite. På Fyrsteila testes ulike metoder for bekjempelse av gravbergknapp i kombinasjon med revegetering i et eksperiment, som ble tatt inn i overvåkingen i 2026.
 
-I 2026 ble dekning av vedplanter, fremmede arter og problemarter registrert i sirkler rundt vegetasjonsrutene på seks lokaliteter, og det ble gjort vegetasjonsanalyser på Fyrsteila. Både duk og sprøyting har redusert dekningen av gravbergknapp, men der duken er fjernet eller gravbergknapp er sprøytet, etablerer det seg andre fremmede arter og ugrasarter, særlig vinterkarse. Krattrydding har redusert dekningen av vedplanter på Padda og Malmøya, men nye oppslag må ryddes jevnlig, og ugrasarter etablerer seg på forstyrret mark. På Fyrsteila hadde alle bekjempelsesmetodene rask effekt, men manuell fjerning uten etterbehandling ga nye oppskudd av gravbergknapp. Revegetering ga noe høyere dekning av habitatspesialister og lavere dekning av fremmede arter. Resultatene viser at oppfølgende luking og rydding over flere år er nødvendig for å opprettholde effekten av tiltakene.
+I 2026 ble dekning av vedplanter, fremmede arter og problemarter registrert i sirkler rundt vegetasjonsrutene på seks lokaliteter, og det ble gjort vegetasjonsanalyser på Fyrsteila. Både duk og sprøyting har redusert dekningen av gravbergknapp, men der duken er fjernet eller gravbergknapp er sprøytet, etablerer det seg andre fremmede arter og ugrasarter, særlig vinterkarse. Krattrydding har redusert dekningen av vedplanter på Padda og Malmøya, men nye oppslag må ryddes jevnlig, og ugrasarter etablerer seg på forstyrret mark. På Fyrsteila hadde alle bekjempelsesmetodene rask effekt, men manuell fjerning uten etterbehandling ga mest oppslag av gravbergknapp. Revegetering ga noe høyere dekning av habitatspesialister og lavere dekning av fremmede arter. Resultatene viser at oppfølgende luking og rydding over flere år er nødvendig for å opprettholde effekten av tiltakene. Effektene på stedegent naturmangfold er ikke synlige ennå.
 
 ## English summary
 
-<!--# Utkast, oversatt fra oppsummeringen. Skal kontrolleres av prosjektledergruppa. -->
+Open shallow-soil calcareous grassland in the boreonemoral zone is a selected habitat type in Norway and is assessed as endangered (EN) on the 2025 Norwegian Red List of Ecosystems and Habitat Types. The habitat type is threatened by alien species, especially *Phedimus spurius*, and by encroachment of shrubs and trees. Since 2022, we have monitored the effects of restoration measures at sites in the inner Oslofjord, and seven sites are included as of 2026. On Bleikøya, Loffen on Nakholmen and Torvøya, *P. spurius* is controlled by covering with tarpaulins, herbicide spraying and weeding. On Padda, Malmøya and Husbergøya, shrubs and scrub are removed by clearing, and on Husbergøya also by goat grazing. On Fyrsteila, an experiment tests different methods for controlling *P. spurius* in combination with revegetation; it was included in the monitoring in 2026.
 
-Open shallow-soil calcareous grassland in the boreonemoral zone is a selected habitat type in Norway and is assessed as endangered (EN) on the 2025 Norwegian Red List of Ecosystems and Habitat Types. The habitat type is threatened by alien species, especially two-row stonecrop (*Phedimus spurius*), and by encroachment of shrubs and trees. Since 2022, we have monitored the effects of restoration measures at sites in the inner Oslofjord, and seven sites are included as of 2026. On Bleikøya, Loffen on Nakholmen and Torvøya, two-row stonecrop is controlled by covering with tarpaulins, herbicide spraying and weeding. On Padda, Malmøya and Husbergøya, shrubs and scrub are removed by clearing, and on Husbergøya also by goat grazing. On Fyrsteila, an experiment tests different methods for controlling two-row stonecrop in combination with revegetation; it was included in the monitoring in 2026.
-
-In 2026, cover of woody plants, alien species and problem species was recorded in circles around the vegetation plots at six sites, and vegetation analyses were carried out on Fyrsteila. Both tarpaulins and spraying have reduced the cover of two-row stonecrop, but where tarpaulins have been removed or the stonecrop has been sprayed, other alien species and weeds establish, especially land cress (*Barbarea verna*). Clearing of scrub has reduced the cover of woody plants on Padda and Malmøya, but new shoots must be removed regularly, and weeds establish on disturbed ground. On Fyrsteila, all control methods had a rapid effect, but manual removal without follow-up treatment led to regrowth of two-row stonecrop. Revegetation gave somewhat higher cover of habitat specialists and lower cover of alien species. The results show that follow-up weeding and clearing over several years are needed to maintain the effects of the measures.
+In 2026, cover of woody plants, alien species and problem species was recorded in circles around the vegetation plots at six sites, and vegetation analyses were carried out on Fyrsteila. Both tarpaulins and spraying have reduced the cover of *P. spurius*, but where tarpaulins have been removed or *P. spurius* has been sprayed, other alien species and weeds establish, especially *Barbarea vulgaris*. Clearing of scrub has reduced the cover of woody plants on Padda and Malmøya, but new shoots must be removed regularly, and weeds establish on disturbed ground. On Fyrsteila, all control methods had a rapid effect, but regrowth of *P. spurius* was highest where manual removal without follow-up treatment was carried out. Revegetation gave somewhat higher cover of habitat specialists and lower cover of alien species. The results show that follow-up weeding and clearing over several years are needed to maintain the effects of the measures. The effects on native vegetation are not yet visible.
 
 ## 1. Innledning
 
@@ -227,13 +224,9 @@ Naturtypen «åpen grunnlendt kalkmark i boreonemoral sone» finnes i åpne omr�
 
 Åpen grunnlendt kalkmark ble prioritert for restaureringstiltak i 2022 [@miljodirektoratet_2021], og Statsforvalteren i Oslo og Viken koordinerte oppstart av restaurering på flere lokaliteter i verneområder i 2022 og 2023. Overvåking av effekter av restaureringstiltakene ble startet opp i 2022 på fire lokaliteter, utvidet i 2023 med to nye lokaliteter og med enda en i 2026.
 
-Statsforvalteren i Østfold, Buskerud, Oslo og Akershus har det overordnede ansvaret for gjennomføring av restaureringstiltakene, og Bymiljøetaten i Oslo kommune samt ulike entreprenører har det praktiske ansvaret. Det ble gjennomført befaringer med Statsforvalter, Oslo kommune, SNO og NINA i måned 2026, der videre oppfølging av igangsatte restaureringsprosjekter ble diskutert. Det har også vært kontakt underveis og i etterkant av feltsesongen.
-
-<!--# Fyll inn måned for befaringene i 2026. -->
+Statsforvalteren i Østfold, Buskerud, Oslo og Akershus har det overordnede ansvaret for gjennomføring av restaureringstiltakene, og Bymiljøetaten i Oslo kommune samt ulike entreprenører har det praktiske ansvaret. Det ble gjennomført befaringer med Statsforvalter, Oslo kommune, SNO og NINA i april 2026, der videre oppfølging av igangsatte restaureringsprosjekter ble diskutert. Det har også vært kontakt underveis og i etterkant av feltsesongen.
 
 Per 2026 inngår restaurerings- og oppfølgende skjøtselstiltak gjennomført på sju lokaliteter i overvåkingen.
-
-<!--# Utkastet foreslår et bilde her: dronebilde av Fyrsteila. -->
 
 ## 2. Formål med delprosjektet
 
@@ -257,17 +250,27 @@ Forventningen er at tiltakene som gjennomføres, bidrar til å redusere de negat
 
 ### 3.1 Beskrivelse av lokalitetene og tiltak der
 
-Til sammen inngår sju lokaliteter i indre Oslofjord i overvåkingen: Bleikøya, Loffen på Nakholmen, Padda, Torvøya, Malmøya, Husbergøya og Fyrsteila (@tbl-tiltak).
+Til sammen inngår sju lokaliteter i indre Oslofjord i overvåkingen: Bleikøya, Loffen på Nakholmen, Padda, Torvøya, Malmøya, Husbergøya og Fyrsteila (@tbl-tiltak, @fig-oversikt).
 
-<!--# Figur mangler: oversiktskart. Figurtekst fra utkastet: «Lokaliteter for overvåking av restaureringstiltak på åpen grunnlendt kalkmark i indre Oslofjord.» -->
+```{r fig-oversikt}
+#| fig-cap: 'Lokalitetene for overvåking av effekter av tiltak på åpen grunnlendt kalkmark.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/kart_oversikt.jpeg")
+```
 
 #### Bleikøya
 
 Overvåkingslokaliteten omfatter en del av Bleikøya naturreservat, som Statsforvalteren og Oslo kommune prioriterte for tiltak i april 2022. Den største utfordringen i tiltaksområdet er gravbergknapp (*Phedimus spurius*), som er vurdert å ha svært høy risiko (SE) på Artsdatabankens fremmedartsliste [@solstad_2023]. Området er i tillegg preget av gjengroing med busker og trær, hvorav en god del hagemispelarter (*Cotoneaster* spp.), som er fremmedarter med i hovedsak svært høy risiko [@artsdatabanken_2023]. De to stedegne mispelartene dvergmispel (*C. scandinavicus*) og svartmispel (*C. niger*; NT) forekommer også.
 
-Data på artsmangfold og tilstand før tiltak ble samlet inn i juni 2022, se beskrivelse i @evju_2022b. Det antatte tiltaksområdet ble avgrenset basert på tegninger fra Statsforvalteren over prioritert tiltaksareal, men tok også hensyn til topografi på lokaliteten. Området utgjorde ca. 2000 m^2^. De ytterste bratte områdene nær kysten ble unngått, både av hensyn til vår sikkerhet og av hensyn til hekkende fugl. Det ble etablert til sammen 10 vegetasjonsruter på 0,5 × 0,5 m, merket med høypresisjons-GPS.
+Data på artsmangfold og tilstand før tiltak ble samlet inn i juni 2022, se beskrivelse i @evju_2022b. Det antatte tiltaksområdet ble avgrenset basert på tegninger fra Statsforvalteren over prioritert tiltaksareal, men tok også hensyn til topografi på lokaliteten. Området utgjorde ca. 2000 m^2^. De ytterste bratte områdene nær kysten ble unngått, både av hensyn til vår sikkerhet og av hensyn til hekkende fugl. Det ble etablert til sammen 10 vegetasjonsruter på 0,5 × 0,5 m, merket med høypresisjons-GPS (@fig-kart-bleikoya).
 
-De første restaureringstiltakene på Bleikøya ble gjennomført av Bymiljøetaten og Vaktmesterkompaniet i perioden 2. til 26. august. Det ble lagt duk (grønn 650 g/m^2^ PWC-presenning) som dekket gravbergknapp. Duken dekket omtrent 1000 m^2^ og ble sikret med steiner hentet opp fra steinbruddet i området. I tillegg ble det ryddet kratt og busker, også utenfor området der duken ble lagt. I løpet av høsten 2022 og sommeren 2023 ble det ryddet noe mer hagemispler i området. Duken ble utbedret, og noen deler av duken ble fjernet i september 2023. Det ble plantet inn små tuer av stedegen vegetasjon i ett av de avdekkede områdene. I 2024 ble det luket både oppslag av gravbergknapp og andre uønskede arter. Våren 2025 ble deler av duken fjernet i det østligste området, som ikke ble luket før etter overvåkingen, for å se på graden av oppslag av uønskede arter. Etter feltarbeidet ble det fjernet rundt 9 m^3^ med jord fra området som lå uten duk og luking gjennom sommeren. Det ble lagt på høy fra slåtteenga vest for området, og sådd ut frø av ønskede plantearter samlet fra øyene. Våren 2026 ble de siste dukene fjernet, og det ble luket fortløpende gjennom sommeren.
+```{r fig-kart-bleikoya}
+#| fig-cap: 'Overvåkingslokaliteten på Bleikøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak er gjennomført. Området med duk er vist med skravering, og tidspunkt for fjerning av duk er vist med ulike symboler. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/kart_bleikoya.jpeg")
+```
+
+De første restaureringstiltakene på Bleikøya ble gjennomført av Bymiljøetaten og Vaktmesterkompaniet i perioden 2. til 26. august. Det ble lagt duk (grønn 650 g/m^2^ PWC-presenning) som dekket gravbergknapp. Duken dekket omtrent 1000 m^2^ og ble sikret med steiner hentet opp fra steinbruddet i området (@fig-bleikoya-1). I tillegg ble det ryddet kratt og busker, også utenfor området der duken ble lagt. I løpet av høsten 2022 og sommeren 2023 ble det ryddet noe mer hagemispler i området. Duken ble utbedret, og noen deler av duken ble fjernet i september 2023. Det ble plantet inn små tuer av stedegen vegetasjon i ett av de avdekkede områdene. I 2024 ble det luket både oppslag av gravbergknapp og andre uønskede arter. Våren 2025 ble deler av duken fjernet i det østligste området, som ikke ble luket før etter overvåkingen, for å se på graden av oppslag av uønskede arter. Etter feltarbeidet ble det fjernet rundt 9 m^3^ med jord fra området som lå uten duk og luking gjennom sommeren. Det ble lagt på høy fra slåtteenga vest for området, og sådd ut frø av ønskede plantearter samlet fra øyene. Våren 2026 ble de siste dukene fjernet, og det ble luket fortløpende gjennom sommeren (@fig-bleikoya-2).
 
 <!--# «2. til 26. august» mangler år (2022?). -->
 
@@ -275,75 +278,93 @@ Første gjenbesøk ble gjennomført 30. september 2022. Vi registrerte tiltakene
 
 Det er ikke mulig å teste effekten av varighet av tildekking med duk, lukeinnsats eller revegeteringsforsøk med overvåkingen, men overvåkingen gir et generelt bilde på effekten av de samlede tiltakene innenfor området.
 
-<!--# Figur mangler: kart over Bleikøya. Figurtekst fra utkastet: «Overvåkingslokaliteten på Bleikøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak er gjennomført. Området med duk er vist med skravering, og tidspunkt for fjerning av duk er vist med ulike symboler. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.» -->
-
-```{r fig-bleikoya-b6}
-#| fig-cap: 'Rute B6 på Bleikøya før og etter tiltak. Duken over ruten ble fjernet våren 2024. Oppslag av gravbergknapp ble luket gjennom sommeren. Foto: Marianne Evju/NINA.'
+```{r fig-bleikoya}
+#| fig-cap: 'A. Store deler av overvåkingslokaliteten på Bleikøya ble dekket av duk i 2022 for å bekjempe gravbergknapp. B. Før feltsesongen 2026 var all duken fjernet. Områdene er blitt luket jevnlig. Foto: Marianne Evju/NINA.'
 #| fig-subcap:
-#|   - 'Juni 2022, før tiltak.'
-#|   - 'September 2024, etter tiltak.'
+#|   - ''
+#|   - ''
 #| code-summary: 'Kode for figur.'
 #| layout-ncol: 2
-include_graphics("img/bleikoya_B6_2022.jpg")
-include_graphics("img/bleikoya_B6_2024.jpg")
+include_graphics("img/bleikoya_2022.jpg")
+include_graphics("img/bleikoya_2026.jpg")
 ```
 
 #### Loffen på Nakholmen
 
 Loffen på nordsiden av Nakholmen er del av Nakholmen naturreservat. Området har svært høy dekning av gravbergknapp, og det forekommer i tillegg en rekke andre fremmede arter. Loffen er et viktig hekkeområde for fugl, og det er i tillegg vindutsatt. Loffen er leveområde for flere truede mosearter [@brynjulvsrud_2023], og tiltakene som er gjennomført, er målrettet for å ivareta disse forekomstene.
 
-Datainnsamling på artsmangfold og tilstand før tiltak ble gjennomført i august 2022, se beskrivelse i @evju_2022b. Det antatte tiltaksområdet ble avgrenset basert på tegninger fra Statsforvalteren over prioritert tiltaksareal og utgjorde ca. 900 m^2^. 10 vegetasjonsruter på 0,5 × 0,5 m ble etablert og merket med høypresisjons-GPS.
+Datainnsamling på artsmangfold og tilstand før tiltak ble gjennomført i august 2022, se beskrivelse i @evju_2022b. Det antatte tiltaksområdet ble avgrenset basert på tegninger fra Statsforvalteren over prioritert tiltaksareal og utgjorde ca. 900 m^2^. 10 vegetasjonsruter på 0,5 × 0,5 m ble etablert og merket med høypresisjons-GPS (@fig-kart-nakholmen).
 
-Sommeren 2022 ble det bare lagt ut en liten duk, for å høste erfaring med hvilken type bardunering som var nødvendig for at duken skulle bli liggende (B. Bredesen, pers. medd.). Duken ble sikret med bruk av snor, paller og stein. Det ble i tillegg ryddet fremmede arter (utenom gravbergknapp) utenfor det tildekkede området. Basert på funn av sjeldne moser ble det i september 2023 lagt en ekstra duk kant i kant med den opprinnelige duken på sørvestsiden (på et område uten forekomster av trua arter), mens det på området nordøst for duken ble luket gravbergknapp manuelt. I 2025 ble to av dukene flyttet 50 meter nordøstover på odden, til et sted der det er krevende å luke gravbergknapp og der det samtidig ikke er viktige forekomster av moser, lav og karplanter. I august ble høy fra slåtteengene på Hovedøya lagt ut over arealer der det var fjernet duk. I 2025 ble det luket betydelige mengder gravbergknapp, i tillegg til en del andre fremmede arter. I 2026 er det også gjennomført luking av andre fremmede arter.
+```{r fig-kart-nakholmen}
+#| fig-cap: 'Overvåkingslokaliteten på Loffen på Nakholmen. Det stripete området ble tildekket med duk i 2022, denne ble flyttet i 2025, de skraverte områdene viser duker lagt ut i 2023 og 2025. I det prikkete området ble det gjennomført avskaving av jord og manuell luking i 2023. Det er i tillegg luket gravbergknapp og andre arter innenfor og utenfor overvåkingsområdet.  De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/kart_nakholmen.jpeg")
+```
+
+Sommeren 2022 ble det bare lagt ut en liten duk, for å høste erfaring med hvilken type bardunering som var nødvendig for at duken skulle bli liggende (B. Bredesen, pers. medd.). Duken ble sikret med bruk av snor, paller og stein. Det ble i tillegg ryddet fremmede arter (utenom gravbergknapp) utenfor det tildekkede området. Basert på funn av sjeldne moser ble det i september 2023 lagt en ekstra duk kant i kant med den opprinnelige duken på sørvestsiden (på et område uten forekomster av trua arter), mens det på området nordøst for duken ble luket gravbergknapp manuelt. I 2025 ble to av dukene flyttet 50 meter nordøstover på odden, til et sted der det er krevende å luke gravbergknapp og der det samtidig ikke er viktige forekomster av moser, lav og karplanter. I august ble høy fra slåtteengene på Hovedøya lagt ut over arealer der det var fjernet duk. I 2025 ble det luket betydelige mengder gravbergknapp, i tillegg til en del andre fremmede arter. I 2026 er det også gjennomført luking av andre fremmede arter (@fig-nakholmen).
+
+```{r fig-nakholmen}
+#| fig-cap: 'Duken som ble lagt ut i 2022, ble flyttet i 2025, og det ble luket i kanten (nederst på bildet). Foto: Ruben E. Roos/NINA'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/nakholmen_2026.jpg")
+```
 
 Det ble foretatt et gjenbesøk i september 2022, men fordi områdene med aktive tiltak var så små, ble datainnsamling ikke gjennomført i 2023 eller 2024. Den 25. august 2025 ble andre gjenbesøk gjennomført, dagen etter tiltakene. Det ble lagt ut fem supplerende ruter i nordre delen av lokaliteten for å fange opp flere effekter av tiltak. Tredje gjenbesøk ble gjennomført 18. august 2026, med registrering av variabler i vegetasjonssirklene.
-
-<!--# Figur mangler: kart over Loffen på Nakholmen. Figurtekst fra utkastet: «Overvåkingslokaliteten på Loffen på Nakholmen. Det stripete området ble tildekket med duk i 2022, denne ble flyttet i 2025, de skraverte områdene viser duker lagt ut i 2023 og 2025. I det prikkete området ble det gjennomført avskaving av jord og manuell luking i 2023. Det er i tillegg luket gravbergknapp og andre arter innenfor og utenfor overvåkingsområdet. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.» -->
-
 #### Padda
 
 Tiltaksområdet ligger i Padda plantefredningsområde og omfatter både kalkfuruskog og åpen grunnlendt kalkmark. Store områder var mer eller mindre dominert av kratt og busker, hvorav mange stedegne arter, som liguster (*Ligustrum vulgare*), men også fremmede mispelarter. Det er tidligere gjennomført en del skjøtsel på Padda, inkludert rydding av furuforyngelse, hagemispler og berberis (*Berberis vulgaris*), og Padda er også lokalitet for utsetting av dvergtistel (*Cirsium acaule*, CR; @bjureke_2005). Områdene med åpen grunnlendt kalkmark varierer i tilstand – noen partier er åpne, andre er veldig gjengrodd med busk og kratt. Statsforvalteren og Oslo kommune gjennomførte en felles befaring i april 2022, der de ble enige om det viktigste tiltaksområdet i verneområdet (K. Bredland, pers. medd.).
 
-Data på artsmangfold og tilstand før tiltak ble samlet inn i juni 2022, se beskrivelse i @evju_2022b, fra i alt 15 permanent merkede overvåkingsruter. Ni av overvåkingsrutene lå i åpen grunnlendt kalkmark og er fulgt opp videre. Det antatte tiltaksområdet ble avgrenset basert på tegninger fra Statsforvalteren av prioritert tiltaksareal på ca. 6000 m^2^. Tiltakene på Padda ble gjennomført i perioden 15. august til 1. september av NCC på oppdrag fra Oslo kommune, Bymiljøetaten. Det ble ryddet busker og trær, og både vinsj, gravemaskin med klype og skogsmaskin ble benyttet. Noen små områder med gravbergknapp ble dekket med duk, men dette var utenfor området dekket av overvåkingen. Det er de påfølgende årene gjennomført tiltak over større områder på Padda enn det som fanges opp av overvåkingen, men beskrivelsene her begrenser seg til de overvåkede områdene med åpen grunnlendt kalkmark. I 2023 ble det gjort oppfølgende rydding, særlig av mispler og liguster, i områdene som ble ryddet i 2022, men i 2023 ble alt arbeid gjennomført manuelt (vinsj, jekk mv.), uten bruk av kjøretøy. Alt plantematerialet ble fraktet ut med lekter. I tillegg ble det luket, særlig hvitsteinkløver, legesteinkløver og sneglebelg, i september 2023. I 2024 ble det luket hver tredje uke fra juni til oktober. Oppslag av busker, samt yngre løvtrær, ble fjernet med spett, trejekk og vinsj. Lukearbeidet ble videreført i 2025 og 2026.
+Data på artsmangfold og tilstand før tiltak ble samlet inn i juni 2022, se beskrivelse i @evju_2022b, fra i alt 15 permanent merkede overvåkingsruter. Ni av overvåkingsrutene lå i åpen grunnlendt kalkmark og er fulgt opp videre (@fig-kart-padda). Det antatte tiltaksområdet ble avgrenset basert på tegninger fra Statsforvalteren av prioritert tiltaksareal på ca. 6000 m^2^. Tiltakene på Padda ble gjennomført i perioden 15. august til 1. september av NCC på oppdrag fra Oslo kommune, Bymiljøetaten. Det ble ryddet busker og trær, og både vinsj, gravemaskin med klype og skogsmaskin ble benyttet (@fig-padda-1). Noen små områder med gravbergknapp ble dekket med duk, men dette var utenfor området dekket av overvåkingen. Det er de påfølgende årene gjennomført tiltak over større områder på Padda enn det som fanges opp av overvåkingen, men beskrivelsene her begrenser seg til de overvåkede områdene med åpen grunnlendt kalkmark. I 2023 ble det gjort oppfølgende rydding, særlig av mispler og liguster, i områdene som ble ryddet i 2022, men i 2023 ble alt arbeid gjennomført manuelt (vinsj, jekk mv.), uten bruk av kjøretøy. Alt plantematerialet ble fraktet ut med lekter. I tillegg ble det luket, særlig hvitsteinkløver, legesteinkløver og sneglebelg, i september 2023. I 2024 ble det luket hver tredje uke fra juni til oktober. Oppslag av busker, samt yngre løvtrær, ble fjernet med spett, trejekk og vinsj. Lukearbeidet ble videreført i 2025 og 2026.
 
-Første gjenbesøk ble gjennomført i september 2022. Da registrerte vi variabler i sirklene rundt vegetasjonsrutene (se kap. 4 og @evju_2022b). Den 25. mai 2023 gjennomførte vi andre gjenbesøk, med både registreringer av vegetasjonssammensetning i overvåkingsrutene samt variabler i sirklene, for å ha et grunnlag for å vurdere behov for og effekt av oppfølgingstiltak. Vi avgrenset to områder, som dekket seks av de ni overvåkingsrutene, der Bymiljøetaten ble bedt om ikke å gjennomføre oppfølgende tiltak (@fig-padda-p6), slik at vi kunne vurdere effekten av oppfølging og behovet for etter-rydding. Et tredje gjenbesøk ble gjennomført 4. oktober 2023. Vi noterte nye tiltak samt variabler i sirklene rundt hver vegetasjonsrute [se @roos_2023a]. Fjerde gjenbesøk ble gjennomført 27. juni 2024, med registrering av vegetasjonssammensetning i overvåkingsrutene samt variabler i sirklene. Etter feltarbeidet ble gjerdene som sperret to områder for luking, fjernet, og disse områdene ble senere luket. Femte gjenbesøk ble gjennomført 25. august 2025, og sjette den 27. august 2026, begge gangene ble kun variabler i sirklene registrert.
-
-<!--# Figur mangler: kart over Padda. Figurtekst fra utkastet: «Overvåkingslokaliteten på Padda. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak ble gjennomført i 2022 og som ble avgrenset som overvåkingslokalitet. Delområde skog er ikke fulgt opp systematisk. De skraverte områdene viser arealene som ble gjerdet inn i mai 2023, der det ikke ble gjennomført oppfølgende tiltak i 2023. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.» -->
-
-```{r fig-padda-p6}
-#| fig-cap: 'Noen områder på Padda ble gjerdet inne i mai 2023, og her ble det ikke ryddet/luket resten av vekstsesongen, slik at vi kunne undersøke hvor stort behovet for etter-rydding er. Bildene viser rute P6. Området rundt ruten ble ikke luket i 2023, men gjerdet ble tatt ned og området luket etter datainnsamling i juni 2024. Foto: NINA.'
-#| fig-subcap:
-#|   - 'Juni 2022.'
-#|   - 'Juni 2023.'
-#|   - 'Oktober 2023.'
-#|   - 'Juni 2024.'
+```{r fig-kart-padda}
+#| fig-cap: 'Overvåkingslokaliteten på Padda. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak ble gjennomført i 2022 og som ble avgrenset som overvåkingslokalitet. Delområde skog er ikke fulgt opp systematisk. De skraverte områdene viser arealene som ble gjerdet inn i mai 2023, der det ikke ble gjennomført oppfølgende tiltak i 2023. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
 #| code-summary: 'Kode for figur.'
-#| layout-ncol: 2
-include_graphics("img/padda_P6_2022-06.jpeg")
-include_graphics("img/padda_P6_2023-06.jpeg")
-include_graphics("img/padda_P6_2023-10.jpeg")
-include_graphics("img/padda_P6_2024-06.jpeg")
+include_graphics("img/kart_padda.jpeg")
 ```
 
-<!--# Fotograf for bildene av rute P6 er ukjent («Foto: NINA.» i utkastet). -->
+Første gjenbesøk ble gjennomført i september 2022. Da registrerte vi variabler i sirklene rundt vegetasjonsrutene (se kap. 4 og @evju_2022b). Den 25. mai 2023 gjennomførte vi andre gjenbesøk, med både registreringer av vegetasjonssammensetning i overvåkingsrutene samt variabler i sirklene, for å ha et grunnlag for å vurdere behov for og effekt av oppfølgingstiltak. Vi avgrenset to områder, som dekket seks av de ni overvåkingsrutene, der Bymiljøetaten ble bedt om ikke å gjennomføre oppfølgende tiltak, slik at vi kunne vurdere effekten av oppfølging og behovet for etter-rydding. Et tredje gjenbesøk ble gjennomført 4. oktober 2023. Vi noterte nye tiltak samt variabler i sirklene rundt hver vegetasjonsrute [se @roos_2023a]. Fjerde gjenbesøk ble gjennomført 27. juni 2024, med registrering av vegetasjonssammensetning i overvåkingsrutene samt variabler i sirklene. Etter feltarbeidet ble gjerdene som sperret to områder for luking, fjernet, og disse områdene ble senere luket. Femte gjenbesøk ble gjennomført 25. august 2025, og sjette den 27. august 2026 (@fig-padda-2), begge gangene ble kun variabler i sirklene registrert.
+
+```{r fig-padda}
+#| fig-cap: 'A. Det var betydelige kjørespor i september 2022, etter restaureringstiltakene. B. I august 2026 var det ikke lenger mulig å se slitasjen i terrenget. Foto: Marianne Evju (a)/Ruben E. Roos (b)/NINA.'
+#| fig-subcap:
+#|   - ''
+#|   - ''
+#| code-summary: 'Kode for figur.'
+#| layout-ncol: 2
+include_graphics("img/padda_2022.jpg")
+include_graphics("img/padda_2026.jpg")
+```
 
 #### Torvøya
 
 Overvåkingslokaliteten omfatter en del av Torvøya og Bjerkholmen naturreservat. Hovedfokuset for restaureringsarbeidet på Torvøya er å fjerne de store feltene med gravbergknapp på den sørvestre delen av øya. I 2022 ble det gjennomført en felles befaring [se @evju_2022b], og det viktigste overvåkingsområdet, som omfattet omtrent 1000 m^2^, ble avgrenset (@fig-torvoya).
 
 ```{r fig-torvoya}
-#| fig-cap: 'Overvåkingslokaliteten på Torvøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak er gjennomført. Det nordlige området ble tildekket med duk i 2022, og duken ble liggende hele 2023. Det sørlige området ble delvis sprøytet i oktober 2022 og ble sprøytet to ganger i løpet av 2023. De rosa prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn. Tiltak gjennomført etter datainnsamling i 2024, er ikke vist.'
+#| fig-cap: 'Overvåkingslokaliteten på Torvøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak er gjennomført. Det nordlige området ble tildekket med duk i 2022, og duken ble liggende til september 2024/april 2025. Det sørlige området ble delvis sprøytet i oktober 2022 og ble deretter sprøytet to ganger per år til og med 2025. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
 #| code-summary: 'Kode for figur.'
-include_graphics("img/kart_torvoya.png")
+include_graphics("img/kart_torvoya.jpeg")
 ```
 
-Data på artsmangfold og tilstand før tiltak ble samlet inn i august 2022. Til sammen 10 vegetasjonsruter på 0,5 × 0,5 m ble etablert og merket med høypresisjons-GPS (@fig-torvoya). Fem ruter ble etablert i den nordlige delen av overvåkingslokaliteten (Torvøya N), og disse ble dekket med duk i oktober 2022. Fem ruter ble etablert i den sørlige delen av overvåkingslokaliteten (Torvøya S), der sprøyting er gjennomført. Første runde med sprøyting ble gjennomført i deler av Torvøya S 18. oktober 2022. Det ble sprøytet direkte på matter av gravbergknapp, med en 50-50-blanding av Express Gold SX og Roundup, som var tilført klebemiddel (Biowet), for å sikre at sprøytemiddelet skulle holde seg på plantene. Blandingsforholdet for en 5 liters ryggsprøyte med sprøytemiddel var ¼ Roundup og ¾ vann, ca. 1 g Express Gold og noen milliliter klebemiddel [@lokken_2022]. I 2023 ble det lagt ut en ekstra duk oppå eksisterende duk i Torvøya N, da man observerte at gravbergknapp spirte under duken. I Torvøya S ble det sprøytet to ganger direkte på gravbergknapp (18. juli og 17. august), og fra 2023 er det sprøytet kun med glyfosat tilsatt klebemiddel. I september 2024 ble halve duken på Torvøya N fjernet. Området ble revegetert med 56 tuer på 0,25 × 0,25 m, som ble plantet med ca. 1,5 m avstand [@lokken_2024]. Tuene ble gravd ned i flukt med eksisterende jordsmonn og trykket godt til berggrunn og tilliggende jord. Tuene var hentet fra andre steder på Torvøya med intakt vegetasjon typisk for åpen grunnlendt kalkmark. Torvøya S ble sprøytet i to runder med ca. 5 ukers mellomrom (slutten av august, begynnelsen av oktober). I april 2025 ble resten av duken i Torvøya N fjernet, og arealet ble revegetert med 24 tuer, plassert subjektivt innenfor område der forholdene ble vurdert best for overlevelse [@bae_2025]. Torvøya S ble sprøytet i tre runder. Det ble luket uønskede arter i begge delområdene. I 2026 ble det luket gravbergknapp i Torvøya S, men før feltarbeidet var det ikke luket i Torvøya N.
+Data på artsmangfold og tilstand før tiltak ble samlet inn i august 2022. Til sammen 10 vegetasjonsruter på 0,5 × 0,5 m ble etablert og merket med høypresisjons-GPS (@fig-torvoya). Fem ruter ble etablert i den nordlige delen av overvåkingslokaliteten (Torvøya N), og disse ble dekket med duk i oktober 2022. Fem ruter ble etablert i den sørlige delen av overvåkingslokaliteten (Torvøya S), der sprøyting er gjennomført (@fig-torvoya-drone).
 
-<!--# Utkastet viser til en figur 2.8 (utplanting av tuer) som ikke finnes i utkastet. -->
+Første runde med sprøyting ble gjennomført i deler av Torvøya S 18. oktober 2022. Det ble sprøytet direkte på matter av gravbergknapp, med en 50-50-blanding av Express Gold SX og Roundup, som var tilført klebemiddel (Biowet), for å sikre at sprøytemiddelet skulle holde seg på plantene. Blandingsforholdet for en 5 liters ryggsprøyte med sprøytemiddel var ¼ Roundup og ¾ vann, ca. 1 g Express Gold og noen milliliter klebemiddel [@lokken_2022]. Fra 2023 er det sprøytet kun med glyfosat tilsatt klebemiddel. Det ble det sprøytet to ganger direkte på gravbergknapp i 2023 (18. juli og 17. august), to ganger med ca. 5 ukers mellomrom i 2024 (slutten av august, begynnelsen av oktober) og tre ganger i 2025. Det ble luket uønskede arter. I 2026 ble det luket gravbergknapp i Torvøya S.
+
+I 2023 ble det lagt ut en ekstra duk oppå eksisterende duk i Torvøya N, da man observerte at gravbergknapp spirte under duken. I september 2024 ble halve duken på Torvøya N fjernet. Området ble revegetert med 56 tuer på 0,25 × 0,25 m, som ble plantet med ca. 1,5 m avstand [@lokken_2024]. Tuene ble gravd ned i flukt med eksisterende jordsmonn og trykket godt til berggrunn og tilliggende jord. Tuene var hentet fra andre steder på Torvøya med intakt vegetasjon typisk for åpen grunnlendt kalkmark. I april 2025 ble resten av duken i Torvøya N fjernet, og arealet ble revegetert med 24 tuer, plassert subjektivt innenfor område der forholdene ble vurdert best for overlevelse [@bae_2025]. . Det ble luket uønskede arter i begge delområdene.ingen tiltak var gjennomført i 2026 før feltarbeidet.
 
 Første gjenbesøk ble gjennomført 18. oktober 2022. Det nordlige området var da tildekket, og vi registrerte dekningsgrad av duk, fremmede arter og vedplanter i sirklene rundt vegetasjonsrutene. Andre gjenbesøk ble gjennomført 29. juni 2023. Vi registrerte både vegetasjonssammensetning i overvåkingsrutene og variabler i sirklene, men bare i Torvøya S, for å kunne vurdere effekten av en gangs sprøyting på dekningen av gravbergknapp. Tredje gjenbesøk ble gjennomført 3. oktober 2023, med kun sirkelregistreringer. Fjerde gjenbesøk ble gjennomført 7. juni 2024. Vi registrerte både vegetasjonssammensetning i overvåkingsrutene og variabler i sirklene i Torvøya S. Ingen nye behandlinger var gjennomført mellom tredje og fjerde gjenbesøk. Duken i Torvøya N lå hele vekstsesongen 2024. Femte gjenbesøk ble gjennomført 18. august. I Torvøya N registrerte vi både vegetasjonssammensetning i overvåkingsrutene og variabler i sirklene, mens i Torvøya S registrerte vi kun variabler i sirklene. Sjette gjenbesøk ble gjennomført 14. august 2026, med registreringer i sirklene.
 
 <!--# Femte gjenbesøk «18. august» mangler år (2025?). -->
+
+```{r fig-torvoya-drone}
+#| fig-cap: 'Dronebilder fra Torvøya. A. Før tiltak, i 2022. B. September 2024, halve duken er fjernet fra Torvøya N. Foto: Jørn Olav Løkken/NaturRestaurering.'
+#| fig-subcap:
+#|   - ''
+#|   - ''
+#| code-summary: 'Kode for figur.'
+#| layout-ncol: 2
+include_graphics("img/torvoya_drone_2022.jpg")
+include_graphics("img/torvoya_drone_2024.jpg")
+```
 
 #### Malmøya
 
@@ -353,15 +374,30 @@ Restaureringsområdet på Malmøya ligger i Malmøya og Malmøykalven naturreser
 
 [^2]: <https://lovdata.no/dokument/LF/forskrift/2008-06-27-687>
 
-Statsforvalteren, Oslo kommune, SNO og NINA gjennomførte en felles befaring i mai 2023. Det ble diskutert ulike løsninger for restaurering, og det viktigste tiltaksområdet ble avgrenset. Området utgjorde ca. 2000 m^2^.
+Statsforvalteren, Oslo kommune, SNO og NINA gjennomførte en felles befaring i mai 2023. Det ble diskutert ulike løsninger for restaurering, og det viktigste tiltaksområdet ble avgrenset. Området utgjorde ca. 2000 m^2^ (@fig-kart-malmoya).
+
+```{r fig-kart-malmoya}
+#| fig-cap: 'Overvåkingslokaliteten på Malmøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak skal gjennomføres. Deler av området der det tidligere var syrinkratt er sprøytet (prikket område) i 2025 og 2026, og en duk ble lagt ut i 2025 (stripete område). De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/kart_malmoya.jpeg")
+```
 
 Innsamling av data på artsmangfold og tilstand før tiltak ble gjennomført 3. august 2023. Vi la forsøksvis ut ett langt transekt fra den innerste delen av tiltaksområdet ut til spissen av odden, men pga. tett buskas var det vanskelig å legge transektet rett. Langs transektet etablerte vi vegetasjonsruter med 10 m avstand, totalt sju ruter, mens tre supplerende ruter ble lagt øst og vest for transektet, innenfor tiltaksområdet. Rutene ble merket med bruk av høypresisjons-GPS og analysert som beskrevet i kap. 4.
 
-Tiltakene på Malmøya ble i hovedsak gjennomført i september–oktober 2023 av Vaktmesterkompaniet. Syrin, anslagsvis 100 m^2^, ble kappet ned, og stubbene og eventuelle gjenværende blader ble penslet med glyfosat i begynnelsen av oktober. Busker, i hovedsak mispler, men også noe liguster og unge løvtrær, ble dratt opp med rota. Det ble i hovedsak brukt vinsj, men også jekk, rothakke og spett. I tillegg ble det kappet en del ungfuru. Planteavfallet ble fraktet til parkeringsplassen og kjørt vekk. Det ble også gjennomført bekjempelse av russesvalerot innenfor området (luking). I løpet av vekstsesongen 2024 ble vinterkarse, løkurt, engryllik, steinkløver og andre uønskede urter luket omtrent hver tredje uke. I tillegg ble gjenstående små syrinbusker forsøkt fjernet med spett, trejekk og/eller vinsj. Større gjenstående busker og oppslag av syrin ble bekjempet med glyfosat. Oppslag av løvtrær ble kuttet lavt over bakkenivå, mens mindre trær ble dratt opp med vinsj/trejekk. Unge furutrær ble fjernet. I 2025 ble lukingen videreført, og oppslag av trær og busker ble fjernet. De få gjenværende fremmede buskene ble fjernet med røtter. I tillegg ble det sørligste feltet med syrin dekket med lystett PVC-presenninger, mens det midterste feltet med syrin ble behandlet med glyfosat tre ganger. Før feltarbeid i 2026 var det gjennomført en del luking, samt en gangs sprøyting av syrinfeltet.
+Tiltakene på Malmøya ble i hovedsak gjennomført i september–oktober 2023 av Vaktmesterkompaniet. Syrin, anslagsvis 100 m^2^, ble kappet ned, og stubbene og eventuelle gjenværende blader ble penslet med glyfosat i begynnelsen av oktober. Busker, i hovedsak mispler, men også noe liguster og unge løvtrær, ble dratt opp med rota. Det ble i hovedsak brukt vinsj, men også jekk, rothakke og spett. I tillegg ble det kappet en del ungfuru. Planteavfallet ble fraktet til parkeringsplassen og kjørt vekk. Det ble også gjennomført bekjempelse av russesvalerot innenfor området (luking). I løpet av vekstsesongen 2024 ble vinterkarse, løkurt, engryllik, steinkløver og andre uønskede urter luket omtrent hver tredje uke. I tillegg ble gjenstående små syrinbusker forsøkt fjernet med spett, trejekk og/eller vinsj. Større gjenstående busker og oppslag av syrin ble bekjempet med glyfosat. Oppslag av løvtrær ble kuttet lavt over bakkenivå, mens mindre trær ble dratt opp med vinsj/trejekk. Unge furutrær ble fjernet. I 2025 ble lukingen videreført, og oppslag av trær og busker ble fjernet. De få gjenværende fremmede buskene ble fjernet med røtter. I tillegg ble det sørligste feltet med syrin dekket med lystett PVC-presenninger (@fig-malmoya), mens det midterste feltet med syrin ble behandlet med glyfosat tre ganger. Før feltarbeid i 2026 var det gjennomført en del luking, samt en gangs sprøyting av syrinfeltet.
 
 Første gjenbesøk ble gjennomført den 4. oktober 2023, der vi noterte tiltak samt variabler i sirklene rundt hver vegetasjonsrute. Andre gjenbesøk ble gjennomført 27. juni 2024, med registrering av vegetasjonssammensetning i overvåkingsrutene samt variabler i sirklene. Tredje gjenbesøk ble gjennomført 14. august 2025 og fjerde 27. august 2026, begge med registrering av variabler i sirklene.
 
-<!--# Figur mangler: kart over Malmøya. Figurtekst fra utkastet: «Overvåkingslokaliteten på Malmøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak skal gjennomføres. Deler av området der det tidligere var syrinkratt er sprøytet (prikket område) i 2025 og 2026, og en duk ble lagt ut i 2025 (stripete område). De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.» -->
+```{r fig-malmoya}
+#| fig-cap: 'A. Etter fjerning av syrinkratt i 2023 kom det oppslag av syrin og andre uønskede arter i 2024. B. Deler av dette området ble tildekket i 2026. Foto: Ruben E. Roos/NINA.'
+#| fig-subcap:
+#|   - ''
+#|   - ''
+#| code-summary: 'Kode for figur.'
+#| layout-ncol: 2
+include_graphics("img/malmoya_2024.jpg")
+include_graphics("img/malmoya_2026.jpg")
+```
 
 #### Husbergøya
 
@@ -371,12 +407,12 @@ Restaureringsområdet på Husbergøya ligger i Husbergøya naturreservat. Øya e
 
 Statsforvalteren, Oslo kommune og NINA gjennomførte en felles befaring i april 2023. Det ble diskutert ulike løsninger for restaurering, og det viktigste tiltaksområdet ble avgrenset (@fig-husbergoya). Området utgjorde i overkant av 30 000 m^2^.
 
-Innsamling av data på artsmangfold og tilstand før tiltak ble gjennomført 31. juli og 1. august 2023. Lokaliteten inngår også i basisovervåkingen av åpen grunnlendt kalkmark, og datainnsamling ble samkjørt mellom de to prosjektene. Først ble polygoner av åpen grunnlendt kalkmark avgrenset (@fig-husbergoya). Deretter etablerte vi vegetasjonsruter i de områdene som var omfattet av tiltak. Vi benyttet metoden som brukes i basisovervåkingen av åpen grunnlendt kalkmark [@evju_2020b]: For å finne posisjonen for vegetasjonsrutene ble et rutenett på 10 × 10 m konstruert og lagt over polygonene. Alle skjæringspunkter i rutenettet ble definert som potensielle vegetasjonsruter, og deretter ble rutene trukket tilfeldig. Dette sikret en minsteavstand på 10 m mellom vegetasjonsrutene. Fordi tiltaksområdet var så stort, etablerte vi totalt 18 vegetasjonsruter i det største delområdet for å fange opp variasjonen i tilstand innenfor tiltaksområdet. Noen av rutene lå også utenfor tiltaksområdet, og kan da brukes til å sammenligne endringer i områder med og uten tiltak. Vi etablerte også fem ruter i det minste delområdet. Rutene ble merket med bruk av høypresisjons-GPS (@fig-husbergoya) og analysert som beskrevet i kap. 4.
+Innsamling av data på artsmangfold og tilstand før tiltak ble gjennomført 31. juli og 1. august 2023. Lokaliteten inngår også i basisovervåkingen av åpen grunnlendt kalkmark, og datainnsamling ble samkjørt mellom de to prosjektene. Først ble polygoner av åpen grunnlendt kalkmark avgrenset. Deretter etablerte vi vegetasjonsruter i de områdene som var omfattet av tiltak. Vi benyttet metoden som brukes i basisovervåkingen av åpen grunnlendt kalkmark [@evju_2020b]: For å finne posisjonen for vegetasjonsrutene ble et rutenett på 10 × 10 m konstruert og lagt over polygonene. Alle skjæringspunkter i rutenettet ble definert som potensielle vegetasjonsruter, og deretter ble rutene trukket tilfeldig. Dette sikret en minsteavstand på 10 m mellom vegetasjonsrutene. Fordi tiltaksområdet var så stort, etablerte vi totalt 18 vegetasjonsruter i det største delområdet for å fange opp variasjonen i tilstand innenfor tiltaksområdet. Noen av rutene lå også utenfor tiltaksområdet, og kan da brukes til å sammenligne endringer i områder med og uten tiltak. Vi etablerte også fem ruter i det minste delområdet. Rutene ble merket med bruk av høypresisjons-GPS (@fig-husbergoya) og analysert som beskrevet i kap. 4.
 
 ```{r fig-husbergoya}
-#| fig-cap: 'Overvåkingslokaliteten på Husbergøya. De røde linjene viser avgrensede polygoner med åpen grunnlendt kalkmark. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak er gjennomført. De rosa prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn, fordelt på fem ruter i delområde 1 (3-3a) og atten ruter i delområde 2 (3-3b).'
+#| fig-cap: 'Overvåkingslokaliteten på Husbergøya. Den stiplede linjen viser en omtrentlig avgrensning av arealet der restaureringstiltak er gjennomført. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
 #| code-summary: 'Kode for figur.'
-include_graphics("img/kart_husbergoya.png")
+include_graphics("img/kart_husbergoya.jpeg")
 ```
 
 Den siste uka i juli 2023 ble det satt ut fem geiter på Husbergøya. Geitene er av rasen «kystgeit» og eies av Oslo kommune/Bogstad gård. Området som geitene kunne bevege seg på, ble avgrenset med tanke på å være stort nok til at de kunne bevege seg fritt uten å «stange» i ytterkantene for ofte, samtidig som de kunne beite i de områdene med mest busker og trær. Geitene hadde GPS-halsbånd som varslet med lyd og deretter støt når de nærmet seg/gikk over grensene (Nofence[^4]). Ideelt sett skulle etableringen av overvåkingen blitt gjort før geitene kom utpå øya, men dette lot seg ikke gjøre av logistiske årsaker. Beitetrykket den første uka var imidlertid lavt – vi så få eller ingen beitespor i vegetasjonsrutene som ble etablert, men noen stier/tråkk var dannet. Geitene var ute til slutten av oktober. I oktober ble det manuelt ryddet en del ungfuru, mispler og andre busker i de områdene hvor buskdekningen var høyest, totalt 2–3 containere, som ble fjernet og skal brennes. I tillegg ble det luket engryllik (*Achillea nobilis*, HI). Ryddingen ble gjort av to deltakere fra Bymiljøetaten og åtte fra Natur og Ungdoms lokallag i Nesodden samt Nesodden kommune.
@@ -399,7 +435,7 @@ include_graphics("img/husbergoya_geiter_2024.jpeg")
 
 Fyrsteila er vernet som plantefredningsområde. Her finnes kalkrike svaberg, tørrberg og kantkratt, og verneformålet er å bevare sjeldne plantearter og deres livsmiljø i form av bl.a. kalktørrenger og bergknappsamfunn. Plantesamfunnene er imidlertid dominert av store matter med gravbergknapp, i tillegg til syrinkratt rundt bebyggelsen og en god del andre fremmede plantearter.
 
-Lokaliteten er derfor prioritert for restaureringstiltak, som ble startet opp i 2023 av Naturrestaurering AS [@lokken_lohre_2024]. For å teste tidsbruk og effekt av ulike metoder for bekjempelse av gravbergknapp, og hvordan de samspiller med ulike revegeteringsmetoder, ble deler av Fyrsteila satt av til et lite eksperiment [@lokken_2025]. Oppsettet består av fem hele og en halv blokk der følgende bekjempelsesmetoder testes:
+Lokaliteten er derfor prioritert for restaureringstiltak, som ble startet opp i 2023 av Naturrestaurering AS [@lokken_lohre_2024]. For å teste tidsbruk og effekt av ulike metoder for bekjempelse av gravbergknapp, og hvordan de samspiller med ulike revegeteringsmetoder, ble deler av Fyrsteila satt av til et lite eksperiment [@lokken_2025]. Oppsettet består av fem hele og en halv blokk der følgende bekjempelsesmetoder testes (@fig-kart-fyrsteila, @fig-fyrsteila-drone):
 
 -   Luking (fjerning av hele matter med gravbergknapp)
 -   Luking med påfølgende sprøyting
@@ -408,9 +444,21 @@ Lokaliteten er derfor prioritert for restaureringstiltak, som ble startet opp i 
 -   Tildekking (2 sesonger)
 -   Tildekking (1 sesong, ½ blokk).
 
+```{r fig-kart-fyrsteila}
+#| fig-cap: 'Overvåkingslokaliteten på Fyrsteila, med blokkene for ulike bekjempelsesmetoder. De lilla prikkene viser vegetasjonsruter (to prikker per rute) der overvåkingsdata samles inn.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/kart_fyrsteila.jpeg")
+```
+
+```{r fig-fyrsteila-drone}
+#| fig-cap: 'Dronebilde fra Fyrsteila i september 2023, etter at bekjempelsestiltak er gjennomført. Foto: Jørn Olav Løkken/NaturRestaurering.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/fyrsteila_drone_2023.jpg")
+```
+
 Bekjempningstiltakene ble satt i gang i september 2023. Sprøyting ble gjort i 2 runder med ca. 4 ukers mellomrom i perioden midten av september og begynnelsen av oktober. Fjerning av matter med vegetasjon ble gjort løpende gjennom høsten, mens duk ble lagt på i begynnelsen av oktober. Ingen ytterligere bekjempningstiltak er gjennomført før registreringene i 2026.
 
-I 2024 ble det gjennomført revegeteringstiltak i alle blokkene, med unntak av blokken med tildekking i to år. I blokken med tildekking i 2 år ble det gjennomført revegetering i 2025. Følgende metoder ble testet, med to gjentak per blokk:
+I 2024 ble det gjennomført revegeteringstiltak i alle blokkene (@fig-fyrsteila-tuer), med unntak av blokken med tildekking i to år. I blokken med tildekking i 2 år ble det gjennomført revegetering i 2025. Følgende metoder ble testet, med to gjentak per blokk:
 
 -   Tue (T)
 -   Frø (F)
@@ -419,11 +467,13 @@ I 2024 ble det gjennomført revegeteringstiltak i alle blokkene, med unntak av b
 
 Tuene ble hentet fra intakt åpen grunnlendt kalkmark fra naboøya Knerten og var 0,25 × 0,25 m. Det ble samlet frø lokalt, blant annet av smalkjempe (*Plantago lanceolata*), blodstorkenebb (*Geranium sanguineum*) og harekløver (*Trifolium arvense*), som ble supplert med systematisk utsåing av tidligere innsamlede frø fra utvalgte lokaliteter i indre Oslofjord [@lokken_2022]. Disse frøene ble samlet som del av prosjektet i 2022, og var ikke sortert på arter. Arter inkluderte et utvalg vanlige arter på grunnlendt mark. Artssammensetning ble ikke notert ned i 2022.
 
-<!--# Tuestørrelse: utkastet har «0,25 × 0,25 cm», endret til m som for Torvøya. Kontroller. -->
+```{r fig-fyrsteila-tuer}
+#| fig-cap: 'Tuer plantet ut i 2024. Foto: Jørn Olav Løkken/NaturRestaurering.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/fyrsteila_revegetering.jpg")
+```
 
-I 2025 ble det gjennomført vegetasjonsanalyser i 44 ruter på 0,5 × 0,5 m i eksperimentet (Rennemo 2026), som del av en masteroppgave. I 2026 ble eksperimentet implementert som del av dette prosjektet. Størrelsen på vegetasjonsanalysen ble endret til 1 × 1 m for bedre å fange opp effekter av vegetasjonstuer som revegeteringsmetode. Feltarbeidet ble gjennomført 18. og 19. august 2026.
-
-<!--# Full referanse til Rennemo (2026) mangler. -->
+I 2025 ble det gjennomført vegetasjonsanalyser i 44 ruter på 0,5 × 0,5 m i eksperimentet [@rennemo_2026], som del av en masteroppgave. I 2026 ble eksperimentet implementert som del av dette prosjektet. Størrelsen på vegetasjonsanalysen ble endret til 1 × 1 m for bedre å fange opp effekter av vegetasjonstuer som revegeteringsmetode. Feltarbeidet ble gjennomført 18. og 19. august 2026.
 
 ### 3.2 Tiltak
 
@@ -476,7 +526,7 @@ Metodikken for datainnsamling er hentet fra forslaget til optimalovervåking av 
 -   registrering av alle forekommende karplanter i rutene, med dekningsgrad
 -   registrering av dekning av ulike vegetasjonssjikt (inkl. fremmedarter og problemarter), slitasje, kjørespor og menneskelige objekter i sirkler med 5 m radius rundt hver overvåkingsrute
 
-Metodikk for utlegging og gjenbesøk, samt datainnsamling i felt, er beskrevet i detalj i @evju_2022b og @roos_2023a. Metodikken tilsvarer den som er brukt i basisovervåking av åpen grunnlendt kalkmark [@evju_2020b]. Indikatorer for overvåkingen er beskrevet i @tbl-indikatorer.
+Metodikk for utlegging og gjenbesøk, samt datainnsamling i felt, er beskrevet i detalj i @evju_2022b og Roos mfl. [-@roos_2023a; -@roos_2024a]. Metodikken tilsvarer den som er brukt i basisovervåking av åpen grunnlendt kalkmark [@evju_2020b]. Indikatorer for overvåkingen er beskrevet i @tbl-indikatorer.
 
 På Fyrsteila er det plassert åtte ruter per blokk (fire i halv blokk), totalt 44 ruter, i en systematisk utlegging [@lokken_2025]. Rutene er 1 × 1 m store, og det inngår ikke sirkelanalyser her.
 
@@ -514,7 +564,7 @@ Data er samlet inn med appen Survey123.
 
 ## 5. Dataanalyser
 
-Metoder i dette delprosjektet er tidligere dokumentert i @evju_2022b, @roos_2023a og @roos_2024a. Resultatene er vist som gjennomsnitt per sirkel eller rute for hver lokalitet og hvert registreringstidspunkt, med ± 1 standardfeil.
+Metoder i dette delprosjektet er tidligere dokumentert i @evju_2022b og Roos mfl. [-@roos_2023a; -@roos_2024a; -@roos_2025]. Resultatene er vist som gjennomsnitt per sirkel eller rute for hver lokalitet og hvert registreringstidspunkt, med ± 1 standardfeil.
 
 <!--# Setningen om gjennomsnitt ± 1 standardfeil er lagt til ut fra figurtekstene og skriptet. Kontroller. -->
 
@@ -540,7 +590,7 @@ På Nakholmen er det i tillegg til små duker gjort manuell fjerning av matter a
 
 Det er ikke mulig å regne på effekten av varighet av tildekking, betydningen av luking eller forskjellen mellom tildekking og sprøyting fordi utvalgsstørrelsen for hver kombinasjon av forklaringsvariabel er for liten.
 
-Figurene under viser oppdaterte resultater for viktige variabler i sirklene rundt vegetasjonsrutene siden 2025. Vi henviser til 2025-rapporten for resultater fra vegetasjonsanalyser (som ikke er gjennomført i 2026).
+Figurene under viser oppdaterte resultater for viktige variabler i sirklene rundt vegetasjonsrutene siden 2025. Vi henviser til @roos_2025 for resultater fra vegetasjonsanalyser (som ikke er gjennomført i 2026).
 
 I sirklene har tiltakene i stor grad redusert dekningen av fremmede arter, men der duken nylig er fjernet, forekommer oppslag, særlig av vinterkarse (@fig-gbk-sirkler). Også i de sprøytede områdene på Torvøya S utgjør vinterkarse en stor del av fremmedartsdekningen, særlig fra 2024. En del andre ugrasarter, dvs. ruderale arter som ikke hører hjemme på åpen grunnlendt kalkmark, forekommer også, men i relativt lav mengde.
 
@@ -640,13 +690,7 @@ Det kan synes som om beitet og krattryddingen på Husbergøya begynner å gi sm�
 
 ### 7.1 Hva viser årets resultater
 
-<!--# Tiltakenes effekt per nå, endringer siden i fjor, usikkerhet. Mangler i utkastet. -->
-
-### 7.2 Anbefaling for videreføring
-
-Overvåking av effekter av tiltak på åpen grunnlendt kalkmark har nå pågått i fire sesonger og omfatter seks lokaliteter. Fordi tiltakene som gjennomføres er såpass varierte, og ofte foregår i kombinasjon, har vi ikke nok statistisk styrke til å konkludere klart og generelt om hvordan krattrydding eller bekjempelse av gravbergknapp bør gjennomføres. Dataene fra Fyrsteila vil bidra til å øke kunnskapsgrunnlaget, særlig ved å dokumentere behovet for etterarbeid, om metodenes kostnadseffektivitet.
-
-<!--# «fire sesonger og seks lokaliteter»: i 2026 er det fem sesonger (2022–2026) og sju lokaliteter. Siste setning ser uferdig ut. -->
+Overvåking av effekter av tiltak på åpen grunnlendt kalkmark har nå pågått i fire sesonger og omfatter seks lokaliteter, samt eksperimentet på Fyrsteila. Fordi tiltakene som gjennomføres er såpass varierte, og ofte foregår i kombinasjon, har vi ikke nok statistisk styrke til å konkludere klart og generelt om hvordan krattrydding eller bekjempelse av gravbergknapp bør gjennomføres. Dataene fra Fyrsteila vil bidra til å øke kunnskapsgrunnlaget, særlig ved å dokumentere behovet for etterarbeid, om metodenes kostnadseffektivitet.
 
 #### Bekjempelse av gravbergknapp
 
@@ -662,18 +706,15 @@ I hovedsak viser overvåkingen at aktive tiltak for å bekjempe busker og kratt,
 
 Som for bekjempelse av gravbergknapp, kan vi ikke konkludere om hvor stort behovet er for aktive revegeteringstiltak etter krattrydding, og hvordan de bør utformes.
 
-#### Veien videre
+### 7.2 Anbefaling for videreføring
 
-Effekten av tiltakene på påvirkningsfaktorene (gravbergknapp, gjengroing) er i hovedsak tydelige etter fire–fem år. I årets undersøkelser er effektene på naturmangfold ikke inkludert, men fjorårets resultater viste små effekter på både karplanter (rødlistearter, habitatspesifikke arter) og andre artsgrupper. Resultatene fra Fyrsteila tyder på XXX.
-
-<!--# Fullfør setningen om Fyrsteila. -->
+Effekten av tiltakene på påvirkningsfaktorene (gravbergknapp, gjengroing) er i hovedsak tydelige etter fire–fem år. I årets undersøkelser er effektene på naturmangfold ikke inkludert, men fjorårets resultater viste små effekter på både karplanter (rødlistearter, habitatspesifikke arter) og andre artsgrupper. Utvalgsstørrelsene på Fyrsteila er små, men tyder på at aktive revegeteringstiltak kan bremse etableringen av fremmede arter.
 
 For videre tiltak anbefaler vi:
 
 -   Videreføring av luking og rydding av krattoppslag på alle lokaliteter.
 -   På Fyrsteila, dokumentasjon av innsats knyttet til etterarbeid for hver av bekjempelsesmetodene, for mer kunnskap om kostnadseffektive metoder over tid.
--   Utvidet systematisk oppfølging av revegeteringstiltak. Det er ulike typer tiltak som er aktuelle, inkl. tilsåing, utplanting av tuer i ulik størrelse, utlegging av høy. Det er en mulighet nå til å gjøre dette systematisk for å få mer kunnskap om hvilke metoder som er mest effektive for å øke mangfoldet og populasjonsstørrelsene av habitatspesialister på åpen grunnlendt kalkmark.
-    -   Forsøket på Fyrsteila, som dokumenteres her, er et viktig første skritt, men det er lite og med få gjentak og vil ikke gi robuste svar for skikkelig kunnskapsoppbygging.
+-   Utvidet systematisk oppfølging av revegeteringstiltak. Forsøket på Fyrsteila, som dokumenteres her, er et viktig første skritt, men trenger supplering for skikkelig kunnskapsoppbygging. Det er ulike typer tiltak som er aktuelle, og som er testet ut litt her og der innenfor overvåkingslokalitetne, inkl. tilsåing, utplanting av tuer i ulik størrelse og utlegging av høy. Det er en mulighet nå til å gjøre dette systematisk for å få mer kunnskap om hvilke metoder som er mest effektive for å øke mangfoldet og populasjonsstørrelsene av habitatspesialister på åpen grunnlendt kalkmark.
 
 For videre overvåking anbefaler vi:
 
@@ -689,7 +730,7 @@ Videreføring av overvåkingen kan gi generell kunnskap om tiden det tar før ti
 
 ## 9. Author contributions
 
-<!--# CRediT- og MeRIT-erklæring mangler i utkastet. -->
+Marianne Evju & Ruben E. Roos har sammen designet, samlet inn data, analysert data og skrevet rapporten.
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
