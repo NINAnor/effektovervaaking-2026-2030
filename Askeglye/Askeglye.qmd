@@ -25,6 +25,8 @@ Precision:
 writtenLanguage: Norwegian
 lang: nb
 number-sections: false # manuell nummerering i overskriftene
+crossref:
+  chapters: false # figur- og tabellnummer uten kapittelprefiks i boka
 format:
   gfm:
     output-file: README.md

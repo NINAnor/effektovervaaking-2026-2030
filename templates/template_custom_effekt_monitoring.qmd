@@ -27,6 +27,8 @@ url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 Precision: # Optional. Describe the precision metric you have used. Precision may be reported either as variation among observed values (e.g. standard deviation, variance, range, interquartile range) or as uncertainty around an estimated value (e.g. standard error, confidence interval, credible interval). 
 writtenLanguage: Norwegian
 number-sections: false # manuell nummerering i overskriftene
+crossref:
+  chapters: false # figur- og tabellnummer uten kapittelprefiks i boka
 format:
   html:
     embed-resources: true
