@@ -200,9 +200,9 @@ meta |>
 
 <!--# Legg til en kort linje for hver oppdatering -->
 
-12. nov. 2026 – Første versjon
+12\. nov. 2026 – Første versjon
 
-16. nov. 2026 – Korrektur fra forfatterne
+16\. nov. 2026 – Korrektur fra forfatterne
 :::
 
 <hr />
@@ -234,7 +234,7 @@ Per 2026 inngår restaurerings- og oppfølgende skjøtselstiltak gjennomført p�
 
 ### 2.1 Målsetning med tiltakene
 
-Tiltakene som gjennomføres, varierer noe mellom de sju overvåkingslokalitetene, men kan deles i to typer: (1) bekjempelse av den fremmede arten gravbergknapp (*Phedimus spurius*) (svært høy risiko, SE; @solstad_2023) og (2) fjerning av gjengroende busker og kratt, se @tbl-tiltak.
+Tiltakene som gjennomføres, varierer noe mellom de sju overvåkingslokalitetene, men kan deles i to typer: (1) bekjempelse av den fremmede arten gravbergknapp (*Phedimus spurius*) (svært høy risiko, SE; @solstad_2023) og (2) fjerning av gjengroende busker og kratt, se @tbl-tiltak-gruk.
 
 Målsetningen med tiltakene er å redusere de negative påvirkningene (fremmede arter, gjengroende busker og kratt), og derved forbedre tilstanden til naturtypeforekomstene samt øke habitatkvalitet for og mengde/populasjonsstørrelse av habitatspesifikke og rødlistede karplanter.
 
@@ -252,7 +252,7 @@ Forventningen er at tiltakene som gjennomføres, bidrar til å redusere de negat
 
 ### 3.1 Beskrivelse av lokalitetene og tiltak der
 
-Til sammen inngår sju lokaliteter i indre Oslofjord i overvåkingen: Bleikøya, Loffen på Nakholmen, Padda, Torvøya, Malmøya, Husbergøya og Fyrsteila (@tbl-tiltak, @fig-oversikt).
+Til sammen inngår sju lokaliteter i indre Oslofjord i overvåkingen: Bleikøya, Loffen på Nakholmen, Padda, Torvøya, Malmøya, Husbergøya og Fyrsteila (@tbl-tiltak-gruk, @fig-oversikt).
 
 ```{r fig-oversikt}
 #| fig-cap: 'Lokalitetene for overvåking av effekter av tiltak på åpen grunnlendt kalkmark.'
@@ -423,7 +423,7 @@ Den siste uka i juli 2023 ble det satt ut fem geiter på Husbergøya. Geitene er
 
 I 2024 ble ti geiter satt ut på Husbergøya (@fig-geiter). Geitene var på øya fra og med 6. september til 19. november, og beiteområdet ble utvidet noe utover sesongen. I 2025 var ti geiter på beite fra tidlig august til midten av november. Det ble gjennomført en dugnad 9. september med ti fra Bymiljøetaten, tre fra Nesodden kommune og en fra Statsforvalteren. Det ble i hovedsak fjernet furu, mispler og berberis, samt noe luking av russesvalerot og andre fremmedarter. Det ble også skavet av mindre områder med gravbergknapp. I 2026 var geitene ikke kommet på beite før feltarbeidet 25. august. Det var gjennomført én økt med luking av engryllik og russesvalerot tidligere i august.
 
-<!--# Teksten sier at geitene var på beite fra tidlig august i 2025, mens @tbl-tiltak sier september–november. -->
+<!--# Teksten sier at geitene var på beite fra tidlig august i 2025, mens @tbl-tiltak-gruk sier september–november. -->
 
 Første gjenbesøk ble gjennomført 11. september 2024, med registrering av variabler i sirklene, og avdekket først og fremst effektene av ryddejobben (geiter og manuelt) som ble gjennomført høsten 2023. Andre gjenbesøk ble gjennomført 25. august 2025 og inkluderte både vegetasjonsanalyser i rutene og sirkelanalyser. Tredje gjenbesøk ble gjennomført 25. august 2026 og omfattet kun sirkelanalyser.
 
@@ -479,9 +479,9 @@ I 2025 ble det gjennomført vegetasjonsanalyser i 44 ruter på 0,5 × 0,5 m i ek
 
 ### 3.2 Tiltak
 
-@tbl-tiltak gir en kortfattet oppsummering av utfordringer og tiltak på de sju overvåkingslokalitetene. Tiltakene i tabellen fokuserer på det som er gjort innenfor overvåkingsområdene, fram til august 2026. Flere tiltak er gjennomført på lokalitetene, men utenfor de områdene som overvåkes.
+@tbl-tiltak-gruk gir en kortfattet oppsummering av utfordringer og tiltak på de sju overvåkingslokalitetene. Tiltakene i tabellen fokuserer på det som er gjort innenfor overvåkingsområdene, fram til august 2026. Flere tiltak er gjennomført på lokalitetene, men utenfor de områdene som overvåkes.
 
-```{r tbl-tiltak}
+```{r tbl-tiltak-gruk}
 #| tbl-cap: 'Utfordringer, tiltak og datainnsamling på de sju overvåkingslokalitetene.'
 #| code-summary: 'Kode for tabell.'
 tribble(
@@ -528,12 +528,12 @@ Metodikken for datainnsamling er hentet fra forslaget til optimalovervåking av 
 -   registrering av alle forekommende karplanter i rutene, med dekningsgrad
 -   registrering av dekning av ulike vegetasjonssjikt (inkl. fremmedarter og problemarter), slitasje, kjørespor og menneskelige objekter i sirkler med 5 m radius rundt hver overvåkingsrute
 
-Metodikk for utlegging og gjenbesøk, samt datainnsamling i felt, er beskrevet i detalj i @evju_2022b og Roos mfl. [-@roos_2023a; -@roos_2024a]. Metodikken tilsvarer den som er brukt i basisovervåking av åpen grunnlendt kalkmark [@evju_2020b]. Indikatorer for overvåkingen er beskrevet i @tbl-indikatorer.
+Metodikk for utlegging og gjenbesøk, samt datainnsamling i felt, er beskrevet i detalj i @evju_2022b og Roos mfl. [-@roos_2023a; -@roos_2024a]. Metodikken tilsvarer den som er brukt i basisovervåking av åpen grunnlendt kalkmark [@evju_2020b]. Indikatorer for overvåkingen er beskrevet i @tbl-indikatorer-gruk.
 
 På Fyrsteila er det plassert åtte ruter per blokk (fire i halv blokk), totalt 44 ruter, i en systematisk utlegging [@lokken_2025]. Rutene er 1 × 1 m store, og det inngår ikke sirkelanalyser her.
 
-```{r tbl-indikatorer}
-#| tbl-cap: 'Indikatorer og datainnsamling for åpen grunnlendt kalkmark. Frekvens «varierer» viser til @tbl-tiltak.'
+```{r tbl-indikatorer-gruk}
+#| tbl-cap: 'Indikatorer og datainnsamling for åpen grunnlendt kalkmark. Frekvens «varierer» viser til @tbl-tiltak-gruk.'
 #| code-summary: 'Kode for tabell.'
 rute <- "0,5 × 0,5 m"
 sirkel <- "78,5 m² sirkel"

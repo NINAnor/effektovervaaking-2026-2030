@@ -1,5 +1,5 @@
 ---
-title: "Askeglye (*Collema leptaleum*)"
+title: "Askeglye *Collema leptaleum*"
 subtitle: "[INDICATORID]"
 indicatorID: INDICATORID # søk om ID: https://github.com/NINAnor/ecRxiv/issues/new?template=apply_for_ID.yml
 indicatorName: Askeglye
@@ -199,14 +199,16 @@ meta |>
 
 <!--# Legg til en kort linje for hver oppdatering -->
 
-11. nov. 2026 – Første versjon, basert på Mathias Andreasens tekst for 2026 (overtatt fra Ruben Erik Roos' oppsett)
+11\. nov. 2026 – Første versjon, basert på Mathias Andreasens tekst for 2026 (overtatt fra Ruben Erik Roos' oppsett)
+
+17\. nov. 2026 – Korrektur fra forfatterne
 :::
 
 <hr />
 
 ## Oppsummering
 
-Askeglye (*Collema leptaleum*) er kritisk truet (CR) i Norge og er i Europa bare kjent fra Vestrheim og Sanden i Leikanger, Sogndal kommune. Rapporteringen for 2026 sammenstiller gjennomførte tiltak, kartfestede forsøk og opplysninger fra Statsforvalteren i Vestland. Det foreligger ikke en ny systematisk bestandstelling eller kontroll av de limfestede thalliene i årets dokumentasjon. Siste fullstendige status er derfor fra 2025, da arten ble rapportert på 103 trær og bestanden anslått til 7 726 thalli [@roos_2025].
+Askeglye *Collema leptaleum* er en kritisk truet (CR) lavart i Norge og er i Europa bare kjent fra Vestrheim og Sanden i Leikanger, Sogndal kommune. Rapporteringen for 2026 sammenstiller gjennomførte tiltak, kartfestede forsøk og opplysninger fra Statsforvalteren i Vestland. Det foreligger ikke en ny systematisk bestandstelling eller kontroll av de limfestede thalliene i årets dokumentasjon. Siste fullstendige status er derfor fra 2025, da arten ble rapportert på 103 trær og bestanden anslått til 7 726 thalli [@roos_2025].
 
 Dokumenterte bevaringstiltak omfatter ringbarking av gran og translokasjonsforsøk fra 2022, samt fornyede forsøk med limfesting i 2025. I 2026 har Statsforvalteren ført oppsyn og dokumentert veltede vertstrær. Innkjøpt metallnetting er ikke montert. Det er meldt om beiting på unge askeskudd, men ikke om nye barkgnag på stående ask ved vinterbesøkene. Det er opplyst om 20 000 kroner til fjerning av smågran; gjennomføringen er ikke bekreftet. Prioriterte oppgaver i 2027 er kontroll av de seks translokasjonstrærne, sikring av vertstrær og askeforyngelse, og kartfestet oppfølging av eventuell skjøtsel. Litteraturen gir grunnlag for videre metodeutvikling og DNA-undersøkelser, men dokumenterer ikke at selvopprettholdende nye bestander er etablert.
 
@@ -214,7 +216,7 @@ Dokumenterte bevaringstiltak omfatter ringbarking av gran og translokasjonsfors�
 
 <!--# Utkast. Skal kontrolleres av prosjektledergruppa mot den endelige norske oppsummeringen. -->
 
-*Collema leptaleum* is critically endangered (CR) in Norway, and in Europe it is known only from Vestrheim and Sanden in Leikanger, Sogndal municipality. The 2026 reporting brings together completed measures, mapped experiments and information from the County Governor of Vestland. No new systematic population count or check of the glued thalli was carried out this year. The latest complete status is therefore from 2025, when the species was reported on 103 trees and the population was estimated at 7,726 thalli.
+*Collema leptaleum* is a critically endangered (CR) lichen in Norway, and in Europe it is known only from Vestrheim and Sanden in Leikanger, Sogndal municipality. The 2026 reporting brings together completed measures, mapped experiments and information from the County Governor of Vestland. No new systematic population count or check of the glued thalli was carried out this year. The latest complete status is therefore from 2025, when the species was reported on 103 trees and the population was estimated at 7,726 thalli.
 
 Documented conservation measures include ring-barking of Norway spruce and translocation experiments from 2022, and renewed experiments with gluing in 2025. In 2026, the County Governor has inspected the site and documented fallen host trees. Metal netting has been bought but not installed. Browsing on young ash shoots has been reported, but no new bark stripping on standing ash during the winter visits. NOK 20,000 has reportedly been allocated to removing young spruce, but this has not been confirmed as carried out. Priorities for 2027 are checking the six translocation trees, protecting host trees and ash regeneration, and mapped follow-up of any management. The literature provides a basis for further method development and DNA studies, but does not show that new self-sustaining populations have been established.
 
@@ -237,11 +239,11 @@ include_graphics("img/askeglye_vestrheim.jpg")
 
 ### 2.1 Målsetning med tiltakene
 
-Tiltakene skal bevare den eksisterende bestanden, sikre rekruttering av egnede vertstrær og utvikle metoder for bevaringsutsetting. Relevante indikatorer er antall trær med naturlig forekomst, thallienes mengde og vitalitet, overlevelse og feste hos flyttede thalli, nyetablering, vertstrærnes tilstand, beiteskader og habitatets lysforhold.
+Tiltakene skal bevare den eksisterende bestanden ved å sikre rekruttering av egnede vertstrær, og utvikle metoder for bevaringsutsetting. Relevante indikatorer er antall trær med naturlig forekomst, thallienes mengde og vitalitet, overlevelse og feste hos flyttede thalli, nyetablering, vertstrærnes tilstand, beiteskader og habitatets lysforhold.
 
 ### 2.2 Formål med overvåking
 
-Overvåkingen skal følge utviklingen på de samme trærne og dokumentere hvor, når og hvordan tiltak er utført. Den skal skille tap av vertstrær og lav fra nyoppdagede forekomster og fra endringer i leteinnsats. NINAs rolle er faglig rådgivning og effektovervåking; praktisk skjøtsel må avklares og samordnes med forvaltningen og grunneierne.
+Overvåkingen skal følge utviklingen på de samme trærne og dokumentere hvor, når og hvordan tiltak er utført. Den skal skille tap av vertstrær og lav fra nyoppdagede forekomster og fra endringer i leteinnsats.
 
 ### 2.3 Forventninger
 
@@ -251,9 +253,9 @@ Beitebeskyttelse forventes å redusere nye skader og bedre askeforyngelsen. Grad
 
 ### 3.1 Beskrivelse av lokalitetene
 
-Vestrheim og Sanden ligger i den sørvendte lia ved Sognefjorden i Leikanger, Sogndal kommune, Vestland (@fig-kart). De omtales her som to delområder innen det kjente norske forekomstområdet. I 2025 ble tilstanden vurdert for 91 trær: 47,3 % var registrert som døende, døde eller falt, 59,4 % sto under gjengroing eller i skygge, og 56 % hadde hjortegnag. Alle 91 var feltvurdert som angrepet av askeskuddsyke. Dette er visuelle registreringer og gir ikke en sikker årsaksdiagnose for hvert tre [@roos_2025].
+Vestrheim og Sanden ligger i den sørvendte lia ved Sognefjorden i Leikanger, Sogndal kommune, Vestland (@fig-kart-askeglye). De omtales her som to delområder innen det kjente norske forekomstområdet. I 2025 ble tilstanden vurdert for 91 trær: 47,3 % var registrert som døende, døde eller falt, 59,4 % sto under gjengroing eller i skygge, og 56 % hadde hjortegnag. Alle 91 var feltvurdert som angrepet av askeskuddsyke. Dette er visuelle registreringer og gir ikke en sikker årsaksdiagnose for hvert tre [@roos_2025].
 
-```{r fig-kart}
+```{r fig-kart-askeglye}
 #| fig-cap: 'Forekomstområdet ved Vestrheim og Sanden i 2025. Blå punkter viser trær med askeglye, og oransje punkter tidligere forekomster som var forsvunnet. Gjenbrukt fra Roos mfl. (2025), figur 11.3. Kartet viser bestandsstatus i 2025, ikke tiltaksarealer eller en oppdatert status for 2026.'
 #| code-summary: 'Kode for figur.'
 include_graphics("img/askeglye_kart_2025.png")
@@ -261,11 +263,11 @@ include_graphics("img/askeglye_kart_2025.png")
 
 ### 3.2 Tiltak
 
-Ved Vestrheim er det gjennomført ringbarking av gran og translokasjon med netting i 2022, etterfulgt av nye forsøk med limfesting i 2025. @tbl-tiltak skiller utførte tiltak fra beredskap og planlagte aktiviteter. Oppfølgingen i 2026 har omfattet oppsyn og registrering av veltede vertstrær. Metallnetting til beitebeskyttelse er innkjøpt, men ikke montert. Gjennomføring av smågranrydding er ikke bekreftet, og nye translokasjoner er ikke utført [@larsen_2026].
+Ved Vestrheim er det gjennomført ringbarking av gran og translokasjon med netting i 2022, etterfulgt av nye forsøk med limfesting i 2025. @tbl-tiltak-askeglye skiller utførte tiltak fra beredskap og planlagte aktiviteter. Oppfølgingen i 2026 har omfattet oppsyn og registrering av veltede vertstrær. Metallnetting til beitebeskyttelse er innkjøpt, men ikke montert. Gjennomføring av smågranrydding er ikke bekreftet, og nye translokasjoner er ikke utført [@larsen_2026].
 
 Seks mottakertrær er kartfestet (@tbl-mottakertraer). Ifølge korrespondansen ble totalt 32 enheter limfestet i 2025: 17 på barkbiter og 15 direkte på bark. Antallene avviker fra rapporten fra 2025 og må avstemmes mot originaldokumentasjonen før resultatene kan vurderes.
 
-```{r tbl-tiltak}
+```{r tbl-tiltak-askeglye}
 #| tbl-cap: 'Tiltak og oppfølging ved Vestrheim og Sanden. Kilder: Roos mfl. (2025) og korrespondansen med Statsforvalteren (Larsen 2026).'
 #| code-summary: 'Kode for tabell.'
 read_excel(here("data", "Tabell1_tiltak.xlsx")) |>
@@ -295,9 +297,9 @@ tribble(
 
 ## 4. Datainnsamling
 
-Grunnlaget er NINA Rapport 2695 [@roos_2025], korrespondansen med seniorrådgiver Tore Larsen ved Statsforvalteren i Vestland i 2026 [@larsen_2026] og et litteratursøk som sammenfatter utførte overvåkinger, tiltak og anbefalinger, samt genetikk og metodikk. Med NINAs datasett som utgangspunkt oppsummerer @tbl-indikatorer aktuelle indikatorer, registreringsvariabler, utvalgsenheter og anbefalt registreringsfrekvens for den videre overvåkingen av askeglye.
+Grunnlaget er NINA Rapport 2695 [@roos_2025], korrespondansen med seniorrådgiver Tore Larsen ved Statsforvalteren i Vestland i 2026 [@larsen_2026] og et litteratursøk som sammenfatter utførte overvåkinger, tiltak og anbefalinger, samt genetikk og metodikk. Med NINAs datasett som utgangspunkt oppsummerer @tbl-indikatorer-askeglye aktuelle indikatorer, registreringsvariabler, utvalgsenheter og anbefalt registreringsfrekvens for den videre overvåkingen av askeglye.
 
-```{r tbl-indikatorer}
+```{r tbl-indikatorer-askeglye}
 #| tbl-cap: 'Indikatorer og datainnsamling for askeglye. Antall viser dokumenterte enheter fra 2025 der dette er oppgitt; tabellen er ikke en oversikt over feltinnsats i 2026. Frekvens og nye målinger er anbefalinger fra 2027. Antall for nye utvalg fastsettes før etablering.'
 #| code-summary: 'Kode for tabell.'
 tribble(
@@ -351,7 +353,7 @@ Disse kunnskapshullene ligger til grunn for anbefalingene om systematisk oppføl
 
 ### 7.1 Hva viser årets resultater
 
-Årets rapportering dokumenterer oppsyn, fortsatt beitepress på askeforyngelse og behov for oppfølging av veltede vertstrær. Ingen ny kvantitativ tiltakseffekt kan fastslås. Tiltakshistorikken er delvis kartfestet gjennom mottakertrærne, men nøyaktige avgrensninger av tidligere ringbarking og eventuell granrydding mangler. De viktigste kunnskapshullene gjelder gjennomføringsstatus, sammenlignbare før–etter-data og kvalitetssikret identitet og antall for forsøksenhetene.
+Årets rapportering dokumenterer fortsatt beitepress på askeforyngelse og behov for oppfølging av veltede vertstrær. Ingen ny kvantitativ tiltakseffekt kan fastslås. Tiltakshistorikken er delvis kartfestet gjennom mottakertrærne, men nøyaktige avgrensninger av tidligere ringbarking og eventuell granrydding mangler. De viktigste kunnskapshullene gjelder gjennomføringsstatus, sammenlignbare før–etter-data og kvalitetssikret identitet og antall for forsøksenhetene.
 
 ### 7.2 Anbefaling for videreføring
 
@@ -367,7 +369,7 @@ Forvaltningen bør sikre både lang levetid hos eksisterende forekomsttrær og r
 
 Kartfest hvert behandlet tre og hvert ryddet eller inngjerdet areal, med dato, utfører, metode, omfang og før–etter-bilder. Registrer lysforhold, gjengroing, vertstrærnes vitalitet og askeglyas tilstand på berørte trær og sammenligningstrær før og etter tiltak. Bruk oppfølgingen til å justere videre skjøtsel. Målet er et gradvis restaurert hagemarksmiljø som ivaretar eksisterende lavforekomster og sikrer kontinuitet i egnede vertstrær.
 
-**Følge opp og forbedre translokasjonene.** Gjennomfør kontroll av alle seks mottakertrær i 2027. Den anbefalte kontrollen i 2026 er ikke dokumentert. Avstem først tre-ID, opprinnelig antall og festemetode mot feltskjema og bilder. Registrer feste, vitalitet, areal, mekanisk tap og nye thalli separat, med faste fotoutsnitt og målestokk.
+**Følge opp og forbedre translokasjonene.** Gjennomfør kontroll av alle seks mottakertrær i 2027. Avstem først tre-ID, opprinnelig antall og festemetode mot feltskjema og bilder. Registrer feste, vitalitet, areal, mekanisk tap og nye thalli separat, med faste fotoutsnitt og målestokk.
 
 Viderefør sammenligningen av liming direkte på bark og liming av barkbiter. Netting kan inngå i nye, avgrensede metodeforsøk, med tett kontakt mot underlaget og oppsamling av løse fragmenter. Fragmentering med naturlig festemiddel bør eventuelt prøves i en liten pilot med egnet redningsmateriale. Forsøk på spisslønn *Acer platanoides* bør sammenlignes med ask. Feste og overlevelse er delmål; nyetablering må dokumenteres før selvopprettholdende bestander kan vurderes.
 

@@ -208,15 +208,15 @@ utviklingen.
 ### 3.1 Beskrivelse av lokalitetene
 
 I prosjektet utgjør lokalitetene Svanvollen og Sølendet grunnlaget
-(<a href="#fig-kart" class="quarto-xref">Figur 1</a>). Her finnes det
-gode, lange dataserier. På Sølendet i Røros kommune er det aktuelt å
-innlemme nye prøveflater som ble etablert i forbindelse med
+(<a href="#fig-kart-svartkurle" class="quarto-xref">Figur 1</a>). Her
+finnes det gode, lange dataserier. På Sølendet i Røros kommune er det
+aktuelt å innlemme nye prøveflater som ble etablert i forbindelse med
 masteroppgaven til Frida Nes Bjerva (Bjerva 2026). I tillegg foreslår vi
 å følge opp svartkurle i faste prøveflater i Kvikne-fjella (Tynset
 kommune), etablert av Dag-Inge Øien (Øien 2015), samt flere lokaliteter
 i Oppdal som følges av Miljøfaglig Utredning (se under).
 
-<div id="fig-kart">
+<div id="fig-kart-svartkurle">
 
 <img src="img/kart_lokaliteter.jpg" style="width:70.0%" />
 
@@ -413,9 +413,9 @@ ressursbruk. På grunn av slåtte- og beiteaktivitet kan vegetasjonsruter
 trolig ikke merkes med fastmerker som hovedregel, men koordinaten i
 sørvestre hjørne bør registreres med høyoppløselig GPS. Indikatorene er
 oppsummert i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
+<a href="#tbl-indikatorer-svartkurle" class="quarto-xref">Tabell 1</a>.
 
-<div id="tbl-indikatorer">
+<div id="tbl-indikatorer-svartkurle">
 
 Tabell 1: Indikatorer for overvåking av svartkurle.
 

@@ -117,12 +117,12 @@ fra Norge, de fleste fra NINAs kartlegging og overvåking (GBIF.org
 andre land, men at arten er godt kartlagt og overvåket her, og det viser
 hvor viktig overvåkingsprogrammet er for kunnskapen om arten.
 
-<div id="fig-art">
+<div id="fig-art-elvesandjeger">
 
 <div id="fig-art-voksen">
 
 <img src="img/foto_elvesandjeger_voksen.jpg"
-data-ref-parent="fig-art" />
+data-ref-parent="fig-art-elvesandjeger" />
 
 (a) Voksen elvesandjeger. Foto: Oddvar Hanssen/NINA (Roos mfl. 2024)
 
@@ -130,7 +130,7 @@ data-ref-parent="fig-art" />
 
 <div id="fig-art-hull">
 
-<img src="img/foto_hull.jpg" data-ref-parent="fig-art" />
+<img src="img/foto_hull.jpg" data-ref-parent="fig-art-elvesandjeger" />
 
 (b) Larvehull, juli 2026. Foto: Arne Endre Laugsand/NINA
 
@@ -209,7 +209,8 @@ arealer slik at elveavsetningene igjen blir tilgjengelige som leveområde
 for elvesandjeger (Roos mfl. 2024, 2025). Tiltaket skal redusere
 lupinbestanden og vegetasjonsdekket på sand- og siltflatene og dermed
 øke antallet larver og voksne, som er indikatorene i overvåkingen
-(<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>).
+(<a href="#tbl-indikatorer-elvesandjeger"
+class="quarto-xref">Tabell 2</a>).
 
 ### 2.2 Formål med overvåking
 
@@ -235,7 +236,8 @@ voksne komme enda senere. Antallet vil fortsatt variere mye fra år til
 
 Overvåkingen foregår på fire lokaliteter langs nedre del av Gaula i
 Melhus kommune i Trøndelag: Gravråk, Kregnesteigen, Storrønningen og
-Fornes (<a href="#fig-kart" class="quarto-xref">Figur 3</a>).
+Fornes
+(<a href="#fig-kart-elvesandjeger" class="quarto-xref">Figur 3</a>).
 Lokalitetene består av sand- og grusflater (elveører) langs elva.
 
 Elveørene ligger stort sett på samme sted fra år til år, men systemet er
@@ -307,12 +309,12 @@ nedstrøms. For å styrke den nye bestanden ble det satt ut voksne biller
 fra Storrønningen og Kregnesteigen i 2018 (12 individer) og fra
 Storrønningen i 2020 (20 individer) (Hanssen 2023). De fleste
 registreringene av elvesandjeger på Fornes ligger utenfor lukeområdet
-(<a href="#fig-kart" class="quarto-xref">Figur 3</a>), og Fornes brukes
-derfor som kontroll i effektanalysen.
+(<a href="#fig-kart-elvesandjeger" class="quarto-xref">Figur 3</a>), og
+Fornes brukes derfor som kontroll i effektanalysen.
 
-<div id="fig-kart">
+<div id="fig-kart-elvesandjeger">
 
-![](img/fig-kart-1.jpeg)
+![](img/fig-kart-elvesandjeger-1.jpeg)
 
 Figur 3: Lokalitetene for overvåking av elvesandjeger langs nedre Gaula
 i Trøndelag. Til venstre: oversikt over lukeområdene (grå) og utsnittene
@@ -357,24 +359,24 @@ mange lupiner som ble fjernet, og når og hvordan det ble luket (Roos
 mfl. 2024). Follstadøya blir også luket, men har ikke overvåking av
 elvesandjeger og er ikke med her.
 
-<a href="#fig-foto-luking" class="quarto-xref">Figur 4</a> viser
-eksempler på lukepolygoner før og etter luking i 2026.
+<a href="#fig-foto-luking-elvesandjeger" class="quarto-xref">Figur 4</a>
+viser eksempler på lukepolygoner før og etter luking i 2026.
 
-<div id="fig-foto-luking">
+<div id="fig-foto-luking-elvesandjeger">
 
-<div id="fig-foto-luking-forn">
+<div id="fig-foto-luking-forn-elvesandjeger">
 
 <img src="img/foto_luking_Fornes.jpg"
-data-ref-parent="fig-foto-luking" />
+data-ref-parent="fig-foto-luking-elvesandjeger" />
 
 (a) Fornes 4, der både etablerte lupiner og mange frøplanter ble luket
 
 </div>
 
-<div id="fig-foto-luking-kreg">
+<div id="fig-foto-luking-kreg-elvesandjeger">
 
 <img src="img/foto_luking_Kregnesteigen.jpg"
-data-ref-parent="fig-foto-luking" />
+data-ref-parent="fig-foto-luking-elvesandjeger" />
 
 (b) Kregnesteigen 7b
 
@@ -383,7 +385,7 @@ data-ref-parent="fig-foto-luking" />
 <div id="fig-foto-luking-grav">
 
 <img src="img/foto_luking_Gravrak.jpg"
-data-ref-parent="fig-foto-luking" />
+data-ref-parent="fig-foto-luking-elvesandjeger" />
 
 (c) Gravråk 15
 
@@ -493,9 +495,10 @@ feltteknikeren kan avgrense polygonene presist. For hvert polygon
 registreres antall larver per stadium og voksne, substrattype,
 vegetasjonsdekke (%) og slitasje (klasse 1–5). Antallene brukes som
 registrert, uavhengig av metode. Indikatorene er oppsummert i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+<a href="#tbl-indikatorer-elvesandjeger"
+class="quarto-xref">Tabell 2</a>.
 
-<div id="tbl-indikatorer">
+<div id="tbl-indikatorer-elvesandjeger">
 
 Tabell 2: Indikatorer for overvåking av elvesandjeger og effekten av
 lupinluking.
@@ -665,7 +668,7 @@ lukket hull ved augusttellingen. Mønsteret gjennom sesongen er som
 forventet: de overvintrede stadium 3-larvene dominerer i juni, nye
 stadium 1-larver klekker og dukker opp i juli, og disse går over til
 stadium 2 innen august
-(<a href="#fig-sesong" class="quarto-xref">Figur 9</a>).
+(<a href="#fig-sesong-elvesandjeger" class="quarto-xref">Figur 9</a>).
 
 **Voksne.** Det ble registrert 67 voksne i 2026, de fleste i juni (49),
 og det er det høyeste antallet i serien. I 2025 ble det ikke funnet
@@ -701,9 +704,9 @@ er undersøkt mest konsekvent). Ulik skala på y-aksen.
 
 </div>
 
-<div id="fig-sesong">
+<div id="fig-sesong-elvesandjeger">
 
-![](img/fig-sesong-1.png)
+![](img/fig-sesong-elvesandjeger-1.png)
 
 Figur 9: Andel av larvene (stadium 1–3) per besøksmåned i år med besøk i
 juni, juli og august. Tallene over søylene er totalt antall larver.
@@ -803,19 +806,19 @@ har slike data, så analysen sier lite om hvor lupinen vokser best.
 
 ### 6.3 Effekt av luking på elvesandjeger
 
-<a href="#tbl-effekt-n" class="quarto-xref">Tabell 4</a> viser hvor
-mange undersøkelsespolygoner som inngår i hver gruppe ved hvert besøk.
-De fleste lå i polygoner som ble luket i 2025, og det er få i polygoner
-som ikke ble luket (11 til sammen). Alle de ikke-lukede polygonene
-ligger på Storrønningen og alle de delvis lukede på Kregnesteigen, så
-sammenligningen mellom disse gruppene er også en sammenligning mellom
-lokalitetene.
-<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 5</a> viser
-resultatene fra modellen, og
-<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a> viser om hver
-variabel samlet bidrar til å forklare antallet larver. RR og KI95 leses
-som forklart i avsnitt 5: RR over 1 betyr flere larver enn i
-referansegruppen og RR under 1 færre, og hvis KI95 omfatter 1, kan vi
+<a href="#tbl-effekt-n-elvesandjeger" class="quarto-xref">Tabell 4</a>
+viser hvor mange undersøkelsespolygoner som inngår i hver gruppe ved
+hvert besøk. De fleste lå i polygoner som ble luket i 2025, og det er få
+i polygoner som ikke ble luket (11 til sammen). Alle de ikke-lukede
+polygonene ligger på Storrønningen og alle de delvis lukede på
+Kregnesteigen, så sammenligningen mellom disse gruppene er også en
+sammenligning mellom lokalitetene.
+<a href="#tbl-effekt-koeff-elvesandjeger"
+class="quarto-xref">Tabell 5</a> viser resultatene fra modellen, og
+<a href="#tbl-effekt-lrt-elvesandjeger" class="quarto-xref">Tabell 6</a>
+viser om hver variabel samlet bidrar til å forklare antallet larver. RR
+og KI95 leses som forklart i avsnitt 5: RR over 1 betyr flere larver enn
+i referansegruppen og RR under 1 færre, og hvis KI95 omfatter 1, kan vi
 ikke si sikkert at det er en forskjell.
 
 **Luking.** Lukingen i 2025 hadde ingen statistisk signifikant effekt på
@@ -859,7 +862,7 @@ viser at lupinen kommer raskt tilbake når lukingen stopper opp (avsnitt
 begrodd av hagelupin i 2016, og etter omfattende luking økte antallet
 registrerte larvehull kraftig i 2017 og 2018 (Hanssen 2023).
 
-<div id="tbl-effekt-n">
+<div id="tbl-effekt-n-elvesandjeger">
 
 Tabell 4: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
 undersøkelsespolygoner på Fornes utenfor lukepolygonene; Nei/Delvis/Ja =
@@ -878,7 +881,7 @@ lukestatus året før på Kregnesteigen og Storrønningen.
 
 </div>
 
-<div id="tbl-effekt-koeff">
+<div id="tbl-effekt-koeff-elvesandjeger">
 
 Tabell 5: NB GLMM for larver per undersøkelsespolygon på Kregnesteigen
 og Storrønningen. RR = rateratio (hvor mange ganger høyere eller lavere
@@ -906,7 +909,7 @@ mellom besøkene og lokalitetene. Signifikansnivå: \* p \< 0,05; \*\* p
 
 </div>
 
-<div id="tbl-effekt-lrt">
+<div id="tbl-effekt-lrt-elvesandjeger">
 
 Tabell 6: Likelihood-ratio-tester for hvert ledd i modellen.
 Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
@@ -933,12 +936,12 @@ modellen ikke samtidig ta hensyn til forskjeller mellom lokalitetene.
 Lukede polygoner hadde 2,0 ganger så høy larvetetthet som kontrollen (p
 = 0,23), ikke-lukede polygoner 1,3 ganger (p = 0,91) og delvis lukede
 polygoner 0,9 ganger (p = 0,98)
-(<a href="#fig-effekt" class="quarto-xref">Figur 11</a>). Ingen av
-gruppene skilte seg altså sikkert fra kontrollen.
+(<a href="#fig-effekt-elvesandjeger" class="quarto-xref">Figur 11</a>).
+Ingen av gruppene skilte seg altså sikkert fra kontrollen.
 
-<div id="fig-effekt">
+<div id="fig-effekt-elvesandjeger">
 
-![](img/fig-effekt-1.png)
+![](img/fig-effekt-elvesandjeger-1.png)
 
 Figur 11: Predikert larvetetthet (larver per m² søkt, gjennomsnitt ± 95
 % KI, midlet over måned, substrat og lokalitet, ved median
@@ -1019,10 +1022,9 @@ gangene og er trolig mest utsatt for oversvømmelse og sandflytting.
 I de utforskende modellene hadde verken høyeste vannføring de 14 dagene
 før besøket, antall dager over 300 m³/s siden forrige besøk eller
 nedbøren de 14 dagene før besøket noen påviselig effekt på antallet
-larver (p = 0,21–0,92;
-<a href="#tbl-klima-modeller" class="quarto-xref">Tabell 8</a>). Serien
-inneholder ennå ikke et år med en flom over middelflom, så testen har
-lav styrke.
+larver (p = 0,21–0,92; <a href="#tbl-klima-modeller-elvesandjeger"
+class="quarto-xref">Tabell 8</a>). Serien inneholder ennå ikke et år med
+en flom over middelflom, så testen har lav styrke.
 
 <div id="fig-hydrologi">
 
@@ -1035,7 +1037,7 @@ besøkene for elvesandjeger (oransje). Referanselinjer for vannføring:
 
 </div>
 
-<div id="tbl-klima-modeller">
+<div id="tbl-klima-modeller-elvesandjeger">
 
 Tabell 8: Utforskende NB GLMM for larver per lokalitet og besøk
 (Storrønningen, Kregnesteigen, Fornes; måned som fast effekt, lokalitet

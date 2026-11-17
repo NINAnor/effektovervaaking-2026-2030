@@ -199,9 +199,9 @@ meta |>
 
 <!--# Legg til en kort linje for hver oppdatering -->
 
-11. nov. 2026 – Første versjon, overvåkingsdata 2014–2026
+11\. nov. 2026 – Første versjon, overvåkingsdata 2014–2026
 
-17. nov. 2026 – Korrektur fra forfatterne
+17\. nov. 2026 – Korrektur fra forfatterne
 :::
 
 <hr />
@@ -301,13 +301,13 @@ include_graphics("img/Map_Filletassen.jpeg")
 
 ## 4. Datainnsamling
 
-Design for overvåking er beskrevet i @evju_2022a. Overvåkingen omfatter 67 permanente vegetasjonsruter på 0,5 × 0,5 m, fordelt på Skipstadsand (15; @fig-kart-skipstadsand), Skjellvik (27; @fig-kart-skjellvik), Teneskjær (15; @fig-kart-teneskjaer) og Filletassen (10; @fig-kart-filletassen). Alle rutene er merket med aluminiumsrør og med høypresisjons-GPS. I rutene registreres antall honningblomindivider og hvorvidt de er fertile eller vegetative. Andre variabler som registreres i rutene, er vist i @tbl-indikatorer. Forekomst/fravær av honningblom registreres i tillegg langs faste transekter på hver lokalitet, med totalt 416 meter transekt, fordelt på Skipstadsand (3 transekter, 90 m), Skjellvik (4 transekter, 180 m), Teneskjær (2 transekter, 60 m) og Filletassen (8 transekter, 86 m). Start- og sluttpunkt for transektene er merket med aluminiumsrør og høypresisjons-GPS.
+Design for overvåking er beskrevet i @evju_2022a. Overvåkingen omfatter 67 permanente vegetasjonsruter på 0,5 × 0,5 m, fordelt på Skipstadsand (15; @fig-kart-skipstadsand), Skjellvik (27; @fig-kart-skjellvik), Teneskjær (15; @fig-kart-teneskjaer) og Filletassen (10; @fig-kart-filletassen). Alle rutene er merket med aluminiumsrør og med høypresisjons-GPS. I rutene registreres antall honningblomindivider og hvorvidt de er fertile eller vegetative. Andre variabler som registreres i rutene, er vist i @tbl-indikatorer-honningblom. Forekomst/fravær av honningblom registreres i tillegg langs faste transekter på hver lokalitet, med totalt 416 meter transekt, fordelt på Skipstadsand (3 transekter, 90 m), Skjellvik (4 transekter, 180 m), Teneskjær (2 transekter, 60 m) og Filletassen (8 transekter, 86 m). Start- og sluttpunkt for transektene er merket med aluminiumsrør og høypresisjons-GPS.
 
-Oversikt over indikatorer og datainnsamling i felt er gitt i @tbl-indikatorer.
+Oversikt over indikatorer og datainnsamling i felt er gitt i @tbl-indikatorer-honningblom.
 
 <!--# Feltprotokoll (Vedlegg 1 i årsrapporten) – legg til lenke når den er tilgjengelig. -->
 
-```{r tbl-indikatorer}
+```{r tbl-indikatorer-honningblom}
 #| tbl-cap: 'Indikatorer for overvåking av honningblom.'
 #| code-summary: 'Kode for tabell.'
 tribble(
@@ -350,7 +350,7 @@ Skriptene for databehandling, figurer og populasjonsestimater ligger i [`code/`]
 
 ### 6.1 Skipstadsand
 
-På Skipstadsand viser antallet individer i overvåkingsrutene en kraftig nedgang etter 2018 (@fig-skipstadsand). I 2026 lå gjennomsnittlig antall individer i overvåkingsrutene rundt det som har vært normalt for perioden 2021–2025. Sammen med observasjonene langs transektene ga observasjonene i overvåkingsrutene grunnlag for et litt lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495 individer, @fig-populasjon), men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759). Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025 til 2026 (@fig-fertile).
+På Skipstadsand viser antallet individer i overvåkingsrutene en kraftig nedgang etter 2018 (@fig-skipstadsand). I 2026 lå gjennomsnittlig antall individer i overvåkingsrutene rundt det som har vært normalt for perioden 2021–2025. Sammen med observasjonene langs transektene ga observasjonene i overvåkingsrutene grunnlag for et litt lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495 individer, @fig-populasjon-honningblom), men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759). Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025 til 2026 (@fig-fertile).
 
 ```{r fig-skipstadsand}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2014 til 2026, Skipstadsand, i de opprinnelige rutene (venstre) og i alle ruter (høyre). Gjennomsnitt ± standardfeil.'
@@ -360,7 +360,7 @@ include_graphics("img/Skipstadsand_antall.jpg")
 
 ### 6.2 Skjellvik
 
-Skjellvik har den største bestanden av honningblom, men antallet individer varierer kraftig fra år til år. De siste årene tyder likevel på at populasjonen er økende. Det gjennomsnittlige antallet individer per rute har økt i 2026, særlig i de opprinnelige overvåkingsrutene (@fig-skjellvik). Dette gir grunnlag for et bestandsestimat på 57 072, som er det høyeste estimatet i tidsserien (@fig-populasjon). Andelen fertile individer var som tidligere år på ca. 10 % (@fig-fertile).
+Skjellvik har den største bestanden av honningblom, men antallet individer varierer kraftig fra år til år. De siste årene tyder likevel på at populasjonen er økende. Det gjennomsnittlige antallet individer per rute har økt i 2026, særlig i de opprinnelige overvåkingsrutene (@fig-skjellvik). Dette gir grunnlag for et bestandsestimat på 57 072, som er det høyeste estimatet i tidsserien (@fig-populasjon-honningblom). Andelen fertile individer var som tidligere år på ca. 10 % (@fig-fertile).
 
 ```{r fig-skjellvik}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2014 til 2026, Skjellvik, i de opprinnelige rutene (venstre) og i alle ruter (høyre). Gjennomsnitt ± standardfeil.'
@@ -370,7 +370,7 @@ include_graphics("img/Skjellvik_antall.jpg")
 
 ### 6.3 Teneskjær
 
-Det gjennomsnittlige antallet individer i overvåkingsrutene på Teneskjær viser en kraftig nedgang i overvåkingsperioden, men har vært stabilt, med tendens til økning, siden 2019 (@fig-teneskjaer). Bestandsestimatet for 2026 er 706 individer, noe lavere enn i 2025 (805), men høyere enn gjennomsnittet for 2019–2025 (416) (@fig-populasjon). Det er en liten andel av individene på Teneskjær som er fertile (@fig-fertile).
+Det gjennomsnittlige antallet individer i overvåkingsrutene på Teneskjær viser en kraftig nedgang i overvåkingsperioden, men har vært stabilt, med tendens til økning, siden 2019 (@fig-teneskjaer). Bestandsestimatet for 2026 er 706 individer, noe lavere enn i 2025 (805), men høyere enn gjennomsnittet for 2019–2025 (416) (@fig-populasjon-honningblom). Det er en liten andel av individene på Teneskjær som er fertile (@fig-fertile).
 
 ```{r fig-teneskjaer}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2014 til 2026, Teneskjær, i de opprinnelige rutene (venstre) og i alle ruter (høyre). Gjennomsnitt ± standardfeil.'
@@ -380,7 +380,7 @@ include_graphics("img/Teneskjaer_antall.jpg")
 
 ### 6.4 Filletassen
 
-På Filletassen har gjennomsnittlig antall individer per overvåkingsrute økt jevnt siden overvåkingen startet i 2020 (@fig-filletassen). Estimatet på bestandsstørrelsen har dermed også økt, fra 1566 i 2020 til 3217 i 2026 (@fig-populasjon), og det lave estimatet i 2025 ser ut til å skyldes en høyere andel individer uten overjordisk biomasse enn i andre år. Andelen fertile individer på Filletassen var lav i 2026, men har økt noe de siste årene (@fig-fertile).
+På Filletassen har gjennomsnittlig antall individer per overvåkingsrute økt jevnt siden overvåkingen startet i 2020 (@fig-filletassen). Estimatet på bestandsstørrelsen har dermed også økt, fra 1566 i 2020 til 3217 i 2026 (@fig-populasjon-honningblom), og det lave estimatet i 2025 ser ut til å skyldes en høyere andel individer uten overjordisk biomasse enn i andre år. Andelen fertile individer på Filletassen var lav i 2026, men har økt noe de siste årene (@fig-fertile).
 
 ```{r fig-filletassen}
 #| fig-cap: 'Antall overjordiske honningblomindivider per rute fra 2020 til 2026, Filletassen. Gjennomsnitt ± standardfeil.'
@@ -391,7 +391,7 @@ include_graphics("img/Filletassen_antall.jpg")
 
 ### 6.5 Populasjonsstørrelse og andel fertile
 
-```{r fig-populasjon}
+```{r fig-populasjon-honningblom}
 #| fig-cap: 'Estimert overjordisk populasjonsstørrelse (svart linje) og antall fertile individer (rød linje) på Filletassen, Skipstadsand, Teneskjær og Skjellvik i perioden 2014–2026. Skraverte områder viser 95 % konfidensintervall for henholdsvis overjordisk populasjonsstørrelse (grått) og antall fertile individer (rødt). Legg merke til at y-aksen er på log-skala.'
 #| code-summary: 'Kode for figur.'
 include_graphics("img/Alle_lokaliteter.png")

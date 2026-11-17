@@ -358,11 +358,11 @@ Horgen har vært med i basisovervåkingen av dragehode siden 2017, og bestanden 
 
 ### 3.2 Tiltak
 
-Den første slåtten ble gjort 1. september 2023, etter frøsetting, med ryddesag med tretanns sagblad. Ryddesag ble valgt fordi bakken er ujevn med tuer av sandholdig jord og gras, hovedsakelig sauesvingel. Slåtten kappet og forstyrret noen av grastuene, og den åpne jorda kan gi plass til frøplanter av dragehode. Rosekratt og oppslag av eik, ask og rogn ble fjernet med beskjæringssaks der de var for tykke for ryddesagen. Høyet ble raket opp og fjernet to dager etter [@roos_2023a]. Den andre slåtten ble gjort i september 2025 på samme måte, og høyet ble raket bort [@roos_2025]. Neste slått er planlagt i 2027 (@tbl-tiltak). Det ble ikke slått i 2024 og 2026.
+Den første slåtten ble gjort 1. september 2023, etter frøsetting, med ryddesag med tretanns sagblad. Ryddesag ble valgt fordi bakken er ujevn med tuer av sandholdig jord og gras, hovedsakelig sauesvingel. Slåtten kappet og forstyrret noen av grastuene, og den åpne jorda kan gi plass til frøplanter av dragehode. Rosekratt og oppslag av eik, ask og rogn ble fjernet med beskjæringssaks der de var for tykke for ryddesagen. Høyet ble raket opp og fjernet to dager etter [@roos_2023a]. Den andre slåtten ble gjort i september 2025 på samme måte, og høyet ble raket bort [@roos_2025]. Neste slått er planlagt i 2027 (@tbl-tiltak-dragehode). Det ble ikke slått i 2024 og 2026.
 
 <!--# Bilde av slåtten legges inn her senere -->
 
-```{r tbl-tiltak}
+```{r tbl-tiltak-dragehode}
 #| tbl-cap: 'Gjennomførte tiltak og datainnsamling i skjøtselsforsøket på Horgen. Registreringene gjøres før slåtten de årene det slås.'
 #| code-summary: 'Kode for tabell.'
 datoer <- dat |>
@@ -396,9 +396,9 @@ Forsøket består av 20 faste overvåkingsruter på 1 × 1 m: fem ruter med drag
 -   dekning av feltsjikt, bunnsjikt, strø, bar jord, berg og vedplanter i feltsjiktet
 -   dekning av alle karplanter, de første to årene og deretter annethvert år (2023, 2024 og 2025)
 
-Registreringene gjøres før slåtten de årene det slås. I 2023, 2024 og 2026 ble rutene registrert i juni, mens de i 2025 ble registrert i begynnelsen av august (@tbl-tiltak). Indikatorene er oppsummert i @tbl-indikatorer.
+Registreringene gjøres før slåtten de årene det slås. I 2023, 2024 og 2026 ble rutene registrert i juni, mens de i 2025 ble registrert i begynnelsen av august (@tbl-tiltak-dragehode). Indikatorene er oppsummert i @tbl-indikatorer-dragehode.
 
-```{r tbl-indikatorer}
+```{r tbl-indikatorer-dragehode}
 #| tbl-cap: 'Indikatorer for overvåking av effekter av sen slått annethvert år for dragehode på Horgen.'
 #| code-summary: 'Kode for tabell.'
 tribble(
@@ -501,9 +501,9 @@ imap_dfr(modeller, \(m, nm) tibble(Indikator = nm, n = m$n, Behandling = p_sig(m
 
 ### 6.1 Bestanden på Horgen
 
-Bestanden av dragehode på hele lokaliteten har gått kraftig ned siden basisovervåkingen startet i 2017 (@fig-populasjon). I 2017 ble bestanden estimert til 877 individer, og i 2020–2022 til mellom 357 og 413. I 2026 var estimatet 229 individer (50 % intervall 177–270), omtrent som i 2024 (225). Nedgangen gjelder særlig de fertile plantene, som gikk fra 578 i 2017 til 123 i 2026, det laveste i serien. Det har vært få småplanter siden 2022 (0–65 per år), noe som tyder på svak rekruttering. Trendmodellen gir 99,98 % sannsynlighet for at bestanden har gått ned i perioden, med en nedgang på 63 individer per år (95 % KI 33–93). Mye av nedgangen skjedde før 2020, og siden 2020 har nedgangen vært mindre bratt.
+Bestanden av dragehode på hele lokaliteten har gått kraftig ned siden basisovervåkingen startet i 2017 (@fig-populasjon-dragehode). I 2017 ble bestanden estimert til 877 individer, og i 2020–2022 til mellom 357 og 413. I 2026 var estimatet 229 individer (50 % intervall 177–270), omtrent som i 2024 (225). Nedgangen gjelder særlig de fertile plantene, som gikk fra 578 i 2017 til 123 i 2026, det laveste i serien. Det har vært få småplanter siden 2022 (0–65 per år), noe som tyder på svak rekruttering. Trendmodellen gir 99,98 % sannsynlighet for at bestanden har gått ned i perioden, med en nedgang på 63 individer per år (95 % KI 33–93). Mye av nedgangen skjedde før 2020, og siden 2020 har nedgangen vært mindre bratt.
 
-```{r fig-populasjon}
+```{r fig-populasjon-dragehode}
 #| fig-cap: 'Estimert antall dragehodeplanter på hele lokaliteten på Horgen i basisovervåkingen 2017–2026, totalt og fordelt på fertile, vegetative og småplanter. Båndene viser 50 % bootstrap-intervall. Estimatene for 2019 og 2020 er korrigert fra antall skudd til antall individer.'
 #| fig-height: 5
 #| fig-width: 10

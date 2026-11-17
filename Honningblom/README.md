@@ -66,9 +66,9 @@ Marianne Evju, Ruben Erik Roos
 >
 > <!--# Legg til en kort linje for hver oppdatering -->
 >
-> 11. nov. 2026 – Første versjon, overvåkingsdata 2014–2026
+> 11\. nov. 2026 – Første versjon, overvåkingsdata 2014–2026
 >
-> 12. nov. 2026 – Korrektur fra forfatterne
+> 17\. nov. 2026 – Korrektur fra forfatterne
 
 <hr />
 
@@ -296,7 +296,7 @@ Filletassen (10;
 rutene er merket med aluminiumsrør og med høypresisjons-GPS. I rutene
 registreres antall honningblomindivider og hvorvidt de er fertile eller
 vegetative. Andre variabler som registreres i rutene, er vist i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
+<a href="#tbl-indikatorer-honningblom" class="quarto-xref">Tabell 1</a>.
 Forekomst/fravær av honningblom registreres i tillegg langs faste
 transekter på hver lokalitet, med totalt 416 meter transekt, fordelt på
 Skipstadsand (3 transekter, 90 m), Skjellvik (4 transekter, 180 m),
@@ -305,11 +305,11 @@ Start- og sluttpunkt for transektene er merket med aluminiumsrør og
 høypresisjons-GPS.
 
 Oversikt over indikatorer og datainnsamling i felt er gitt i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
+<a href="#tbl-indikatorer-honningblom" class="quarto-xref">Tabell 1</a>.
 
 <!--# Feltprotokoll (Vedlegg 1 i årsrapporten) – legg til lenke når den er tilgjengelig. -->
 
-<div id="tbl-indikatorer">
+<div id="tbl-indikatorer-honningblom">
 
 Tabell 1: Indikatorer for overvåking av honningblom.
 
@@ -399,7 +399,8 @@ gjennomsnittlig antall individer i overvåkingsrutene rundt det som har
 vært normalt for perioden 2021–2025. Sammen med observasjonene langs
 transektene ga observasjonene i overvåkingsrutene grunnlag for et litt
 lavere estimat på populasjonsstørrelsen i 2026 enn i 2025 (783 vs. 1495
-individer, <a href="#fig-populasjon" class="quarto-xref">Figur 12</a>),
+individer,
+<a href="#fig-populasjon-honningblom" class="quarto-xref">Figur 12</a>),
 men dette var høyere enn gjennomsnittet for perioden 2019–2025 (759).
 Andelen fertile individer falt fra 2024 til 2025 og var stabil fra 2025
 til 2026 (<a href="#fig-fertile" class="quarto-xref">Figur 13</a>).
@@ -423,8 +424,8 @@ per rute har økt i 2026, særlig i de opprinnelige overvåkingsrutene
 (<a href="#fig-skjellvik" class="quarto-xref">Figur 9</a>). Dette gir
 grunnlag for et bestandsestimat på 57 072, som er det høyeste estimatet
 i tidsserien
-(<a href="#fig-populasjon" class="quarto-xref">Figur 12</a>). Andelen
-fertile individer var som tidligere år på ca. 10 %
+(<a href="#fig-populasjon-honningblom" class="quarto-xref">Figur 12</a>).
+Andelen fertile individer var som tidligere år på ca. 10 %
 (<a href="#fig-fertile" class="quarto-xref">Figur 13</a>).
 
 <div id="fig-skjellvik">
@@ -445,8 +446,8 @@ med tendens til økning, siden 2019
 (<a href="#fig-teneskjaer" class="quarto-xref">Figur 10</a>).
 Bestandsestimatet for 2026 er 706 individer, noe lavere enn i 2025
 (805), men høyere enn gjennomsnittet for 2019–2025 (416)
-(<a href="#fig-populasjon" class="quarto-xref">Figur 12</a>). Det er en
-liten andel av individene på Teneskjær som er fertile
+(<a href="#fig-populasjon-honningblom" class="quarto-xref">Figur 12</a>).
+Det er en liten andel av individene på Teneskjær som er fertile
 (<a href="#fig-fertile" class="quarto-xref">Figur 13</a>).
 
 <div id="fig-teneskjaer">
@@ -465,10 +466,11 @@ På Filletassen har gjennomsnittlig antall individer per overvåkingsrute
 økt jevnt siden overvåkingen startet i 2020
 (<a href="#fig-filletassen" class="quarto-xref">Figur 11</a>). Estimatet
 på bestandsstørrelsen har dermed også økt, fra 1566 i 2020 til 3217 i
-2026 (<a href="#fig-populasjon" class="quarto-xref">Figur 12</a>), og
-det lave estimatet i 2025 ser ut til å skyldes en høyere andel individer
-uten overjordisk biomasse enn i andre år. Andelen fertile individer på
-Filletassen var lav i 2026, men har økt noe de siste årene
+2026
+(<a href="#fig-populasjon-honningblom" class="quarto-xref">Figur 12</a>),
+og det lave estimatet i 2025 ser ut til å skyldes en høyere andel
+individer uten overjordisk biomasse enn i andre år. Andelen fertile
+individer på Filletassen var lav i 2026, men har økt noe de siste årene
 (<a href="#fig-fertile" class="quarto-xref">Figur 13</a>).
 
 <div id="fig-filletassen">
@@ -482,7 +484,7 @@ Figur 11: Antall overjordiske honningblomindivider per rute fra 2020 til
 
 ### 6.5 Populasjonsstørrelse og andel fertile
 
-<div id="fig-populasjon">
+<div id="fig-populasjon-honningblom">
 
 ![](img/Alle_lokaliteter.png)
 

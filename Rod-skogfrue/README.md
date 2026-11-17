@@ -233,8 +233,8 @@ til glissent eller nesten fraværende i noen tilfeller.
 
 I 23 av de sikre lokalitetene er det registrert maksimum seks skudd, og
 færre enn det er heller ikke uvanlig
-(<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a>). Den mest
-individrike forekomsten er Bjørkedokk, der 106 skudd har blitt
+(<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>).
+Den mest individrike forekomsten er Bjørkedokk, der 106 skudd har blitt
 registrert ett år, men oftest er det færre, og skuddene er spredt i
 mange delpopulasjoner over et stort område. Ellers har lokalitetene
 Frognøya, Solbergfjell, Hamrefjell, Kirkeåsen, Heggenåsen N og Tollåsen
@@ -255,7 +255,7 @@ beskrivelse av overvåkingen og resultater finnes i Bratli (2016) og i
 seks lokalitetene fra basisovervåkingen i 2026 finnes i
 <a href="#tbl-basis" class="quarto-xref">Tabell 1</a>. Disse
 lokalitetene omfatter en stor andel av alle kjente skudd i landet
-(<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a>).
+(<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>).
 
 I forbindelse med basisovervåkingen er det også enkelte år gjennomført
 spredt rydding av einstape, busker og greiner fra trær som skygger ut
@@ -289,8 +289,8 @@ telles antall planter på lokalitetene, oftest antall blomstrende skudd,
 noen ganger også vegetative, men individer merkes ikke og følges derfor
 ikke over år. I tillegg er det foretatt spredt skjøtsel i en del
 lokaliteter enkelte år
-(<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a>). Detaljer
-om skjøtselstiltakene, og om de omfatter hele eller deler av
+(<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>).
+Detaljer om skjøtselstiltakene, og om de omfatter hele eller deler av
 lokaliteten, er ikke oppgitt.
 
 ### 3.2 Tiltak
@@ -303,8 +303,8 @@ Kragerø, Kongsberg, Modum, Jevnaker og flere lokaliteter i
 Eiker-Drammen-området. Videre er årsrapporter fra handlingsplanen for
 rød skogfrue (bl.a. Hanssen 2026) gjennomgått. Sammen med egne
 observasjoner i lokalitetene fra basisovervåkingen er dette oppsummert i
-<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a>. Nedenfor er
-tiltak i noen lokaliteter kommentert etter gjennomgang av
+<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>.
+Nedenfor er tiltak i noen lokaliteter kommentert etter gjennomgang av
 skjøtselsnotater og innspill fra Statsforvalteren i Østfold, Buskerud,
 Oslo og Akershus og i Vestfold og Telemark.
 
@@ -408,13 +408,13 @@ Figur 4: Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og
 
 Eikfjellet i Bamble kommune omfatter tre ulike delforekomster: Synken N,
 Synken S og Eikfjellet
-(<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a>). Her ble
-det fjernet seks store graner mot sør og sørvest i desember 2025 på det
-nordligste voksestedet (T.E. Silsand, pers. medd.). På det midtre kjente
-voksestedet ble det fjernet seks store graner mot sør og sørvest i
-januar 2026. Trærne ble vinsjet ut på snø, og begge tiltakene er i tråd
-med skjøtselsplanen for funksjonsområdet. På Eikfjellet-Synkene, midtre
-kjente voksested, er det planlagt å fjerne mispler og berberis i
+(<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>).
+Her ble det fjernet seks store graner mot sør og sørvest i desember 2025
+på det nordligste voksestedet (T.E. Silsand, pers. medd.). På det midtre
+kjente voksestedet ble det fjernet seks store graner mot sør og sørvest
+i januar 2026. Trærne ble vinsjet ut på snø, og begge tiltakene er i
+tråd med skjøtselsplanen for funksjonsområdet. På Eikfjellet-Synkene,
+midtre kjente voksested, er det planlagt å fjerne mispler og berberis i
 september 2026. Plantene dras opp med rot. I resterende del av
 funksjonsområdet skal det videreføres tynning av gran vinteren 2026, og
 ringbarking av trær, spesielt omkring søndre kjente voksested. I
@@ -457,9 +457,9 @@ blomstring, frøsetting og spiring av nye planter.
 
 Metodikken for overvåkingen av rød skogfrue er foreløpig i
 planleggingsfasen. Indikatorene i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a> er derfor
-kun et foreløpig forslag basert på egne erfaringer og feltbefaring på
-Bjørkedokk i august 2026.
+<a href="#tbl-indikatorer-skogfrue" class="quarto-xref">Tabell 2</a> er
+derfor kun et foreløpig forslag basert på egne erfaringer og
+feltbefaring på Bjørkedokk i august 2026.
 
 Rød skogfrue har jordstengel som kan produsere flere skudd. Overvåkingen
 knyttes derfor til enkeltskudd, mens egenskaper ved voksestedet
@@ -477,7 +477,7 @@ Antall lokaliteter og antall skudd må bestemmes etter befaring i felt i
 minimum 200 skudd. Rutestørrelse og frekvens på registreringene bør også
 vurderes i forbindelse med feltbefaring på lokalitetene i 2027.
 
-<div id="tbl-indikatorer">
+<div id="tbl-indikatorer-skogfrue">
 
 Tabell 2: Foreløpig forslag til indikatorer.
 
@@ -511,7 +511,8 @@ Siden overvåkingen av rød skogfrue foreløpig er i planleggingsfasen, er
 det ikke foretatt analyser av overvåkingsdata. Det er foretatt en
 gjennomgang av potensielle lokaliteter basert på oversikter i
 årsrapporter fra oppfølgingen av handlingsplanen (bl.a. Hanssen 2026),
-vist i <a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a>. I
+vist i
+<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>. I
 tabellen inngår også høyeste antall skudd observert i løpet av ett år i
 lokaliteten, og tiltak som eventuelt er utført.
 
@@ -527,12 +528,12 @@ skala. Dette danner utgangspunkt for forslag til uttesting i 2027.
 
 ### 6.1 Lokaliteter og tiltak
 
-<a href="#tbl-lokaliteter" class="quarto-xref">Tabell 3</a> oppsummerer
-opplysningene fra Statsforvalteren, floravokterne og årsrapportene fra
-handlingsplanen for årene 2006–2025 (se kap. 3.2), sammen med egne
-observasjoner fra basisovervåkingen.
+<a href="#tbl-lokaliteter-skogfrue" class="quarto-xref">Tabell 3</a>
+oppsummerer opplysningene fra Statsforvalteren, floravokterne og
+årsrapportene fra handlingsplanen for årene 2006–2025 (se kap. 3.2),
+sammen med egne observasjoner fra basisovervåkingen.
 
-<div id="tbl-lokaliteter">
+<div id="tbl-lokaliteter-skogfrue">
 
 Tabell 3: Et utvalg sikre forekomster med rød skogfrue basert på Hanssen
 (2026). Første år viser året arten først ble funnet på lokaliteten. Maks

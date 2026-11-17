@@ -66,9 +66,9 @@ Marianne Evju, Ruben Erik Roos
 >
 > <!--# Legg til en kort linje for hver oppdatering -->
 >
-> 12. nov. 2026 – Første versjon
+> 12\. nov. 2026 – Første versjon
 >
-> 13. nov. 2026 – Korrektur fra forfatterne
+> 16\. nov. 2026 – Korrektur fra forfatterne
 
 <hr />
 
@@ -174,7 +174,7 @@ Tiltakene som gjennomføres, varierer noe mellom de sju
 overvåkingslokalitetene, men kan deles i to typer: (1) bekjempelse av
 den fremmede arten gravbergknapp (*Phedimus spurius*) (svært høy risiko,
 SE; Solstad mfl. (2023)) og (2) fjerning av gjengroende busker og kratt,
-se <a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>.
+se <a href="#tbl-tiltak-gruk" class="quarto-xref">Tabell 1</a>.
 
 Målsetningen med tiltakene er å redusere de negative påvirkningene
 (fremmede arter, gjengroende busker og kratt), og derved forbedre
@@ -208,7 +208,7 @@ avhengig av aktive revegeteringstiltak.
 
 Til sammen inngår sju lokaliteter i indre Oslofjord i overvåkingen:
 Bleikøya, Loffen på Nakholmen, Padda, Torvøya, Malmøya, Husbergøya og
-Fyrsteila (<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>,
+Fyrsteila (<a href="#tbl-tiltak-gruk" class="quarto-xref">Tabell 1</a>,
 <a href="#fig-oversikt" class="quarto-xref">Figur 1</a>).
 
 <div id="fig-oversikt">
@@ -796,7 +796,7 @@ skavet av mindre områder med gravbergknapp. I 2026 var geitene ikke
 kommet på beite før feltarbeidet 25. august. Det var gjennomført én økt
 med luking av engryllik og russesvalerot tidligere i august.
 
-<!--# Teksten sier at geitene var på beite fra tidlig august i 2025, mens @tbl-tiltak sier september–november. -->
+<!--# Teksten sier at geitene var på beite fra tidlig august i 2025, mens @tbl-tiltak-gruk sier september–november. -->
 
 Første gjenbesøk ble gjennomført 11. september 2024, med registrering av
 variabler i sirklene, og avdekket først og fremst effektene av
@@ -905,13 +905,13 @@ gjennomført 18. og 19. august 2026.
 
 ### 3.2 Tiltak
 
-<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a> gir en kortfattet
-oppsummering av utfordringer og tiltak på de sju
+<a href="#tbl-tiltak-gruk" class="quarto-xref">Tabell 1</a> gir en
+kortfattet oppsummering av utfordringer og tiltak på de sju
 overvåkingslokalitetene. Tiltakene i tabellen fokuserer på det som er
 gjort innenfor overvåkingsområdene, fram til august 2026. Flere tiltak
 er gjennomført på lokalitetene, men utenfor de områdene som overvåkes.
 
-<div id="tbl-tiltak">
+<div id="tbl-tiltak-gruk">
 
 Tabell 1: Utfordringer, tiltak og datainnsamling på de sju
 overvåkingslokalitetene.
@@ -952,17 +952,18 @@ Metodikk for utlegging og gjenbesøk, samt datainnsamling i felt, er
 beskrevet i detalj i Evju mfl. (2022) og Roos mfl. (2023, 2024).
 Metodikken tilsvarer den som er brukt i basisovervåking av åpen
 grunnlendt kalkmark (Evju mfl. 2020). Indikatorer for overvåkingen er
-beskrevet i <a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+beskrevet i
+<a href="#tbl-indikatorer-gruk" class="quarto-xref">Tabell 2</a>.
 
 På Fyrsteila er det plassert åtte ruter per blokk (fire i halv blokk),
 totalt 44 ruter, i en systematisk utlegging (Løkken mfl. 2025). Rutene
 er 1 × 1 m store, og det inngår ikke sirkelanalyser her.
 
-<div id="tbl-indikatorer">
+<div id="tbl-indikatorer-gruk">
 
 Tabell 2: Indikatorer og datainnsamling for åpen grunnlendt kalkmark.
 Frekvens «varierer» viser til
-<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>.
+<a href="#tbl-tiltak-gruk" class="quarto-xref">Tabell 1</a>.
 
 <div class="cell-output-display">
 

@@ -242,7 +242,7 @@ sammenligningen av mikroklima, men ikke blant de 161 nettranslokerte
 thalliene. Lokalitetsbeskrivelser og tidligere tiltak er dokumentert i
 Roos mfl. (2024; 2025).
 
-<div id="tbl-lokaliteter">
+<div id="tbl-lokaliteter-tronderlav">
 
 Tabell 1: Lokaliteter, opprinnelige nettforsøk og status ved
 avslutningen av feltsesongen 2026.
@@ -304,9 +304,9 @@ på tidligere kjente vertstrær. Thalli ble registrert i to
 størrelsesklasser, sammen med vertstrærnes tilstand. Antall på
 høytliggende greiner er anslått med tilhørende usikkerhet. Indikatorer,
 utvalgsenheter og registreringsfrekvens framgår av
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+<a href="#tbl-indikatorer-tronderlav" class="quarto-xref">Tabell 2</a>.
 
-<div id="tbl-indikatorer">
+<div id="tbl-indikatorer-tronderlav">
 
 Tabell 2: Indikatorer og datainnsamling i delprosjektet. Antall gjelder
 opprinnelige utvalgsenheter der ikke annet er angitt.

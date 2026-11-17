@@ -262,9 +262,9 @@ Rød skogfrue var kjent fra 69 lokaliteter i 2025 [@hanssen_2026]. I løpet av s
 
 De fleste lokalitetene ligger på kalkrike bergarter i Oslofeltet. Vanligste naturtyper er TB01-M005-06 kalk-bærlyngskog, TB01-M005-05 bærlyng-lågurtskog og TB01-M005-09 kalklyngskog etter Natur i Norge 3.0 [@halvorsen_2023]. Tresjiktet domineres vanligvis av furu, men det er ofte innslag av gran, eik og andre løvtrær. Busksjikt med einer, rose-arter og enkelte andre busker og små løvtrær kan forekomme. Feltsjiktet er oftest glissent, men er tett i enkelte forekomster. Bunnsjiktet er oftest sparsomt eller manglende, og det kan være en del naken jord, særlig i skråninger med ustabilt substrat. Både tre-, busk- og feltsjikt varierer lokalt i og mellom lokalitetene fra temmelig tett til glissent eller nesten fraværende i noen tilfeller.
 
-I 23 av de sikre lokalitetene er det registrert maksimum seks skudd, og færre enn det er heller ikke uvanlig (@tbl-lokaliteter). Den mest individrike forekomsten er Bjørkedokk, der 106 skudd har blitt registrert ett år, men oftest er det færre, og skuddene er spredt i mange delpopulasjoner over et stort område. Ellers har lokalitetene Frognøya, Solbergfjell, Hamrefjell, Kirkeåsen, Heggenåsen N og Tollåsen relativt mange skudd.
+I 23 av de sikre lokalitetene er det registrert maksimum seks skudd, og færre enn det er heller ikke uvanlig (@tbl-lokaliteter-skogfrue). Den mest individrike forekomsten er Bjørkedokk, der 106 skudd har blitt registrert ett år, men oftest er det færre, og skuddene er spredt i mange delpopulasjoner over et stort område. Ellers har lokalitetene Frognøya, Solbergfjell, Hamrefjell, Kirkeåsen, Heggenåsen N og Tollåsen relativt mange skudd.
 
-Det foregår detaljert basisovervåking på individnivå i seks av lokalitetene. Overvåkingen på disse lokalitetene ble startet i 2008 (2010 for Solbergfjell), og data samles inn og rapporteres årlig [@bratli_2026]. Basisovervåkingen omfatter alle kjente skudd av arten i lokalitetene (totalkartlegging). Skuddene er merket, og nye skudd som observeres, merkes, måles og innlemmes i overvåkingen. For alle skudd med overjordisk biomasse måles skuddhøyde, antall blader og bredde og lengde på største blad. For fertile planter måles i tillegg høyden på blomsterstanden og antall blomster. Basisovervåkingen gir relevante data på variasjoner i populasjonsstørrelse og -struktur i tid og rom. Nærmere beskrivelse av overvåkingen og resultater finnes i @bratli_2016 og i årsrapporter [@bratli_2026]. En oversikt over antall merkede skudd i de seks lokalitetene fra basisovervåkingen i 2026 finnes i @tbl-basis. Disse lokalitetene omfatter en stor andel av alle kjente skudd i landet (@tbl-lokaliteter).
+Det foregår detaljert basisovervåking på individnivå i seks av lokalitetene. Overvåkingen på disse lokalitetene ble startet i 2008 (2010 for Solbergfjell), og data samles inn og rapporteres årlig [@bratli_2026]. Basisovervåkingen omfatter alle kjente skudd av arten i lokalitetene (totalkartlegging). Skuddene er merket, og nye skudd som observeres, merkes, måles og innlemmes i overvåkingen. For alle skudd med overjordisk biomasse måles skuddhøyde, antall blader og bredde og lengde på største blad. For fertile planter måles i tillegg høyden på blomsterstanden og antall blomster. Basisovervåkingen gir relevante data på variasjoner i populasjonsstørrelse og -struktur i tid og rom. Nærmere beskrivelse av overvåkingen og resultater finnes i @bratli_2016 og i årsrapporter [@bratli_2026]. En oversikt over antall merkede skudd i de seks lokalitetene fra basisovervåkingen i 2026 finnes i @tbl-basis. Disse lokalitetene omfatter en stor andel av alle kjente skudd i landet (@tbl-lokaliteter-skogfrue).
 
 I forbindelse med basisovervåkingen er det også enkelte år gjennomført spredt rydding av einstape, busker og greiner fra trær som skygger ut planter.
 
@@ -285,11 +285,11 @@ bind_rows(basis, summarise(basis, Lokalitet = "Sum", across(where(is.numeric), s
   kable(align = "lrrrrrr")
 ```
 
-I tillegg følges flere lokaliteter opp av floravoktere fra Norsk Botanisk Forening [se @hanssen_2026]. I denne ekstensive overvåkingen telles antall planter på lokalitetene, oftest antall blomstrende skudd, noen ganger også vegetative, men individer merkes ikke og følges derfor ikke over år. I tillegg er det foretatt spredt skjøtsel i en del lokaliteter enkelte år (@tbl-lokaliteter). Detaljer om skjøtselstiltakene, og om de omfatter hele eller deler av lokaliteten, er ikke oppgitt.
+I tillegg følges flere lokaliteter opp av floravoktere fra Norsk Botanisk Forening [se @hanssen_2026]. I denne ekstensive overvåkingen telles antall planter på lokalitetene, oftest antall blomstrende skudd, noen ganger også vegetative, men individer merkes ikke og følges derfor ikke over år. I tillegg er det foretatt spredt skjøtsel i en del lokaliteter enkelte år (@tbl-lokaliteter-skogfrue). Detaljer om skjøtselstiltakene, og om de omfatter hele eller deler av lokaliteten, er ikke oppgitt.
 
 ### 3.2 Tiltak
 
-Det er innhentet informasjon om utførte og planlagte tiltak i lokalitetene fra Karoline Bredland, Statsforvalteren i Østfold, Buskerud, Oslo og Akershus, og Trond Eirik Silsand hos Statsforvalteren i Vestfold og Telemark. Informasjon er også innhentet fra floravoktere i Kragerø, Kongsberg, Modum, Jevnaker og flere lokaliteter i Eiker-Drammen-området. Videre er årsrapporter fra handlingsplanen for rød skogfrue [bl.a. @hanssen_2026] gjennomgått. Sammen med egne observasjoner i lokalitetene fra basisovervåkingen er dette oppsummert i @tbl-lokaliteter. Nedenfor er tiltak i noen lokaliteter kommentert etter gjennomgang av skjøtselsnotater og innspill fra Statsforvalteren i Østfold, Buskerud, Oslo og Akershus og i Vestfold og Telemark.
+Det er innhentet informasjon om utførte og planlagte tiltak i lokalitetene fra Karoline Bredland, Statsforvalteren i Østfold, Buskerud, Oslo og Akershus, og Trond Eirik Silsand hos Statsforvalteren i Vestfold og Telemark. Informasjon er også innhentet fra floravoktere i Kragerø, Kongsberg, Modum, Jevnaker og flere lokaliteter i Eiker-Drammen-området. Videre er årsrapporter fra handlingsplanen for rød skogfrue [bl.a. @hanssen_2026] gjennomgått. Sammen med egne observasjoner i lokalitetene fra basisovervåkingen er dette oppsummert i @tbl-lokaliteter-skogfrue. Nedenfor er tiltak i noen lokaliteter kommentert etter gjennomgang av skjøtselsnotater og innspill fra Statsforvalteren i Østfold, Buskerud, Oslo og Akershus og i Vestfold og Telemark.
 
 Det er utarbeidet skjøtselsplan for lokalitetene Bjørkedokk i Drammen kommune [@hanssen_2023] og Eikfjellet i Bamble kommune [@reiso_2024]. På Bjørkedokk ble det gjennomført rydding av busker og trolig også noen små trær i to konkrete områder i 2023. I ett av disse (ovenfor en liten rasskrent langs turveien vest for parkeringsplassen på Bjørkedokk) er det også foretatt ringbarking av flere grantrær. I lia mot Inntaksdammen («baklia») ble det fjernet en del busker, mest einer, og einstape (@fig-baklia). I 2024 ble det også fjernet en del einstape i «baklia». Ovenfor den gamle hoppbakken ble det fjernet noe einstape og ringbarket en hegg. Disse tiltakene er gjennomført på oppdrag fra Statsforvalteren i Østfold, Buskerud, Oslo og Akershus.
 
@@ -322,7 +322,7 @@ include_graphics(c("img/bjorkedokk_hoppbakken_for.jpg", "img/bjorkedokk_hoppbakk
 include_graphics(c("img/bjorkedokk_royskattlia_1.jpg", "img/bjorkedokk_royskattlia_2.jpg"))
 ```
 
-Eikfjellet i Bamble kommune omfatter tre ulike delforekomster: Synken N, Synken S og Eikfjellet (@tbl-lokaliteter). Her ble det fjernet seks store graner mot sør og sørvest i desember 2025 på det nordligste voksestedet (T.E. Silsand, pers. medd.). På det midtre kjente voksestedet ble det fjernet seks store graner mot sør og sørvest i januar 2026. Trærne ble vinsjet ut på snø, og begge tiltakene er i tråd med skjøtselsplanen for funksjonsområdet. På Eikfjellet-Synkene, midtre kjente voksested, er det planlagt å fjerne mispler og berberis i september 2026. Plantene dras opp med rot. I resterende del av funksjonsområdet skal det videreføres tynning av gran vinteren 2026, og ringbarking av trær, spesielt omkring søndre kjente voksested. I tilgrensende areal mot øst skal det utredes mulighet for å etablere forekomst av fagerklokke i forbindelse med bygging av et nytt kommunalteknisk anlegg. Dette antas å kunne bidra til bedre pollinering.
+Eikfjellet i Bamble kommune omfatter tre ulike delforekomster: Synken N, Synken S og Eikfjellet (@tbl-lokaliteter-skogfrue). Her ble det fjernet seks store graner mot sør og sørvest i desember 2025 på det nordligste voksestedet (T.E. Silsand, pers. medd.). På det midtre kjente voksestedet ble det fjernet seks store graner mot sør og sørvest i januar 2026. Trærne ble vinsjet ut på snø, og begge tiltakene er i tråd med skjøtselsplanen for funksjonsområdet. På Eikfjellet-Synkene, midtre kjente voksested, er det planlagt å fjerne mispler og berberis i september 2026. Plantene dras opp med rot. I resterende del av funksjonsområdet skal det videreføres tynning av gran vinteren 2026, og ringbarking av trær, spesielt omkring søndre kjente voksested. I tilgrensende areal mot øst skal det utredes mulighet for å etablere forekomst av fagerklokke i forbindelse med bygging av et nytt kommunalteknisk anlegg. Dette antas å kunne bidra til bedre pollinering.
 
 Ved Ødegård (Barfodkollen) i Røsskleiva naturreservat i Bamble kommune ble det i mars 2025 tynnet i tresjiktet vest og sør for det faktiske voksestedet. All gran, bøk og bjørk ble fjernet. Ung furu med tverrsnitt mot rota under 15 cm ble også fjernet. Tiltaket skal gi kortvarig solinnstråling til voksestedet deler av dagen (T.E. Silsand, pers. medd.). Etter at det ble observert beiting av rådyr (blomst spist), ble det utplassert nettingbur over forekomsten i juni 2024. Liljekonvall lukes innenfor nettingburet i mai 2026. Det var også mistanke om beiting av brunsnegler i mai 2026, og forekomsten overvåkes med tanke på bekjempelse av snegler i mai–juli 2026. I Barfodkollen er det planer om å etablere en større forekomst av fagerklokke utenfor funksjonsområdet, på arealet omkring hoppbakken/skianlegget.
 
@@ -334,7 +334,7 @@ På Bergan NØ, Saueråsen i Holmestrand kommune er det ikke utarbeidet skjøtse
 
 ## 4. Datainnsamling
 
-Metodikken for overvåkingen av rød skogfrue er foreløpig i planleggingsfasen. Indikatorene i @tbl-indikatorer er derfor kun et foreløpig forslag basert på egne erfaringer og feltbefaring på Bjørkedokk i august 2026.
+Metodikken for overvåkingen av rød skogfrue er foreløpig i planleggingsfasen. Indikatorene i @tbl-indikatorer-skogfrue er derfor kun et foreløpig forslag basert på egne erfaringer og feltbefaring på Bjørkedokk i august 2026.
 
 Rød skogfrue har jordstengel som kan produsere flere skudd. Overvåkingen knyttes derfor til enkeltskudd, mens egenskaper ved voksestedet registreres i faste ruter. Populasjonsutviklingen knyttes til målte egenskaper i omgivelsene med antatt betydning for artens levevilkår, og tiltak som foretas i disse.
 
@@ -342,7 +342,7 @@ Enkeltskudd trekkes tilfeldig. Regler for plassering i dellokaliteter med mange 
 
 Antall lokaliteter og antall skudd må bestemmes etter befaring i felt i 2027. @evju_2021b foreslår alle intakte lokaliteter og minimum 200 skudd. Rutestørrelse og frekvens på registreringene bør også vurderes i forbindelse med feltbefaring på lokalitetene i 2027.
 
-```{r tbl-indikatorer}
+```{r tbl-indikatorer-skogfrue}
 #| tbl-cap: 'Foreløpig forslag til indikatorer.'
 #| code-summary: 'Kode for tabell.'
 tribble(
@@ -368,7 +368,7 @@ tribble(
 
 ## 5. Dataanalyser
 
-Siden overvåkingen av rød skogfrue foreløpig er i planleggingsfasen, er det ikke foretatt analyser av overvåkingsdata. Det er foretatt en gjennomgang av potensielle lokaliteter basert på oversikter i årsrapporter fra oppfølgingen av handlingsplanen [bl.a. @hanssen_2026], vist i @tbl-lokaliteter. I tabellen inngår også høyeste antall skudd observert i løpet av ett år i lokaliteten, og tiltak som eventuelt er utført.
+Siden overvåkingen av rød skogfrue foreløpig er i planleggingsfasen, er det ikke foretatt analyser av overvåkingsdata. Det er foretatt en gjennomgang av potensielle lokaliteter basert på oversikter i årsrapporter fra oppfølgingen av handlingsplanen [bl.a. @hanssen_2026], vist i @tbl-lokaliteter-skogfrue. I tabellen inngår også høyeste antall skudd observert i løpet av ett år i lokaliteten, og tiltak som eventuelt er utført.
 
 Det ble gjennomført en analyse av potensialet for bruk av fjernmålingsdata i overvåkingen [@mienna_2026]. Lidar, ortofoto, satellittdata og nasjonale skogkart ble vurdert i 46 lokaliteter med funn av arten etter 2015. Hensikten var å finne ut hvilke fjernmålingsdatasett som finnes i lokalitetene, hvor lange tidsserier de har, hva som kan avledes om skogstruktur og lys, og på hvilken romlig skala. Dette danner utgangspunkt for forslag til uttesting i 2027.
 
@@ -376,9 +376,9 @@ Det ble gjennomført en analyse av potensialet for bruk av fjernmålingsdata i o
 
 ### 6.1 Lokaliteter og tiltak
 
-@tbl-lokaliteter oppsummerer opplysningene fra Statsforvalteren, floravokterne og årsrapportene fra handlingsplanen for årene 2006–2025 (se kap. 3.2), sammen med egne observasjoner fra basisovervåkingen.
+@tbl-lokaliteter-skogfrue oppsummerer opplysningene fra Statsforvalteren, floravokterne og årsrapportene fra handlingsplanen for årene 2006–2025 (se kap. 3.2), sammen med egne observasjoner fra basisovervåkingen.
 
-```{r tbl-lokaliteter}
+```{r tbl-lokaliteter-skogfrue}
 #| tbl-cap: 'Et utvalg sikre forekomster med rød skogfrue basert på Hanssen (2026). Første år viser året arten først ble funnet på lokaliteten. Maks antall er høyeste antall skudd observert i løpet av ett år. Skjøtsel viser ulike tiltak som er kjent på lokalitetene. Fylke: Øs = Østfold, Ak = Akershus, Bu = Buskerud, Ve = Vestfold, Te = Telemark, Ag = Agder.'
 #| code-summary: 'Kode for tabell.'
 tribble(

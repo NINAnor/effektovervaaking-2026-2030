@@ -254,9 +254,9 @@ Vi forventer at slike skjøtselstiltak på lang sikt vil gi en vegetasjonssammen
 
 ### 3.1 Beskrivelse av lokalitetene
 
-I prosjektet utgjør lokalitetene Svanvollen og Sølendet grunnlaget (@fig-kart). Her finnes det gode, lange dataserier. På Sølendet i Røros kommune er det aktuelt å innlemme nye prøveflater som ble etablert i forbindelse med masteroppgaven til Frida Nes Bjerva [@bjerva_2026]. I tillegg foreslår vi å følge opp svartkurle i faste prøveflater i Kvikne-fjella (Tynset kommune), etablert av Dag-Inge Øien [@oien_2015], samt flere lokaliteter i Oppdal som følges av Miljøfaglig Utredning (se under).
+I prosjektet utgjør lokalitetene Svanvollen og Sølendet grunnlaget (@fig-kart-svartkurle). Her finnes det gode, lange dataserier. På Sølendet i Røros kommune er det aktuelt å innlemme nye prøveflater som ble etablert i forbindelse med masteroppgaven til Frida Nes Bjerva [@bjerva_2026]. I tillegg foreslår vi å følge opp svartkurle i faste prøveflater i Kvikne-fjella (Tynset kommune), etablert av Dag-Inge Øien [@oien_2015], samt flere lokaliteter i Oppdal som følges av Miljøfaglig Utredning (se under).
 
-```{r fig-kart}
+```{r fig-kart-svartkurle}
 #| fig-cap: 'Kart over de fem eksisterende overvåkingslokalitetene som foreslås inkludert.'
 #| code-summary: 'Kode for figur.'
 #| out-width: 70%
@@ -312,9 +312,9 @@ På Svanvollen registreres alle observerte svartkurleskudd. Hvert skudd merkes o
 
 Sommeren 2014 ble det lagt ut 40 småruter på 0,5 × 0,5 m. De 40 smårutene ble plassert i de fire storrutene med ti småruter i hver, og har følgelig ulike tiltak (se over). Vegetasjonen i smårutene er registrert etter standard vegetasjonsanalytisk metode hvert år fra 2014 til 2022. Alle karplanter er registrert med forekomst/fravær i 16 småruter, pluss prosent dekning. Vegetasjonshøyde er målt i hver smårute. Sjiktdekning (tre-, busk-, felt- og bunnsjikt pluss bar mark) og noen økologiske målinger er foretatt i rutene.
 
-Datainnsamlingen som tenkes gjort på nye overvåkingslokaliteter, bør gi data som er kompatible med dem som samles inn på Sølendet og Svanvollen. Telling av blomstrende skudd og innmåling av skudd for å følge utviklingen av disse over år er aktuelt. Demografiske målinger av skuddene inkluderer de parameterne som brukes på Sølendet og Svanvollen. Vegetasjonsanalyser i ruter (0,5 × 0,5 m eller 1 × 1 m) anbefales inkludert, men trolig ikke oftere enn hvert femte år på grunn av ressursbruk. På grunn av slåtte- og beiteaktivitet kan vegetasjonsruter trolig ikke merkes med fastmerker som hovedregel, men koordinaten i sørvestre hjørne bør registreres med høyoppløselig GPS. Indikatorene er oppsummert i @tbl-indikatorer.
+Datainnsamlingen som tenkes gjort på nye overvåkingslokaliteter, bør gi data som er kompatible med dem som samles inn på Sølendet og Svanvollen. Telling av blomstrende skudd og innmåling av skudd for å følge utviklingen av disse over år er aktuelt. Demografiske målinger av skuddene inkluderer de parameterne som brukes på Sølendet og Svanvollen. Vegetasjonsanalyser i ruter (0,5 × 0,5 m eller 1 × 1 m) anbefales inkludert, men trolig ikke oftere enn hvert femte år på grunn av ressursbruk. På grunn av slåtte- og beiteaktivitet kan vegetasjonsruter trolig ikke merkes med fastmerker som hovedregel, men koordinaten i sørvestre hjørne bør registreres med høyoppløselig GPS. Indikatorene er oppsummert i @tbl-indikatorer-svartkurle.
 
-```{r tbl-indikatorer}
+```{r tbl-indikatorer-svartkurle}
 #| tbl-cap: 'Indikatorer for overvåking av svartkurle.'
 #| code-summary: 'Kode for tabell.'
 tribble(
