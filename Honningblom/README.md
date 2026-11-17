@@ -67,6 +67,8 @@ Marianne Evju, Ruben Erik Roos
 > <!--# Legg til en kort linje for hver oppdatering -->
 >
 > 11. nov. 2026 – Første versjon, overvåkingsdata 2014–2026
+>
+> 12. nov. 2026 – Korrektur fra forfatterne
 
 <hr />
 
@@ -74,11 +76,11 @@ Marianne Evju, Ruben Erik Roos
 
 Honningblom (*Herminium monorchis*) er en kritisk truet (CR) orkidé med
 fire kjente lokaliteter, alle på Hvaler i Østfold. Populasjonene på
-Skipstadsand, Skjellvik og Teneskjær har vært overvåket siden 2014, og
-populasjonen på Filletassen siden 2020. Tiltakene er i hovedsak slått,
-én eller flere ganger i året, for å holde vegetasjonen lav og åpen.
-Teneskjær slås ikke, men beites av storfe, og der settes det bur over en
-del av plantene for å beskytte dem mot beite.
+Skipstadsand, Skjellvik og Teneskjær har vært overvåket siden 2014 og
+populasjonen på Filletassen siden 2020. Lokalitetene slås i hovedsak to
+ganger i året for å holde vegetasjonen lav og åpen. Teneskjær slås ikke,
+men beites av storfe, og i 2025 ble det testet å sette bur over en del
+av plantene for å beskytte dem mot beite.
 
 Overvåkingen viser at populasjonene er stabile eller økende. Skjellvik,
 den største populasjonen, hadde i 2026 det høyeste estimatet i
@@ -92,14 +94,13 @@ overvåkingen bør videreføres.
 
 ## English summary
 
-The lesser musk orchid (*Herminium monorchis*) is a critically
-endangered (CR) orchid with four known sites in Norway, all in Hvaler,
-Østfold. The populations at Skipstadsand, Skjellvik and Teneskjær have
-been monitored since 2014, and the population at Filletassen since 2020.
-Management consists mainly of mowing, once or several times a year, to
-keep the vegetation short and open. Teneskjær is not mown but is grazed
-by cattle, and cages are placed over some of the plants to protect them
-from grazing.
+Musk orchid (*Herminium monorchis*) is a critically endangered (CR)
+orchid with four known sites in Norway, all in Hvaler, Østfold. The
+populations at Skipstadsand, Skjellvik and Teneskjær have been monitored
+since 2014, and the population at Filletassen since 2020. The localities
+are mowned twice a year to keep the vegetation short and open. Teneskjær
+is not mown but is grazed by cattle, and in 2025 placing cages over some
+of the plants was tested to protect them from grazing.
 
 The monitoring shows that the populations are stable or increasing.
 Skjellvik, the largest population, had the highest estimate in the time
@@ -126,7 +127,7 @@ kritisk truet (CR) på Rødlista for arter 2021 (Artsdatabanken 2021).
 
 Honningblompopulasjonene på Skipstadsand, Skjellvik og Teneskjær har
 vært overvåket siden 2014 og populasjonen på Filletassen siden 2020
-(Roos mfl. 2023). Fordi honningblom er flerårig og viser stor
+(Roos mfl. 2025). Fordi honningblom er flerårig og viser stor
 mellomårsvariasjon i andelen individer som har overjordiske skudd (Wells
 mfl. 1998; Kravdal mfl. 2016), er det viktig med årlige data over mange
 år for å kunne skille mellomårsvariasjon fra trender i
@@ -159,7 +160,7 @@ etter 1990).
 
 Tiltakene som gjennomføres, varierer noe mellom de fire
 overvåkingslokalitetene, men omfatter i hovedsak fjerning av biomasse
-gjennom slått, én eller flere ganger årlig (se kap. 3.1). Målsetningen
+gjennom slått, i hovedsak to ganger årlig (se kap. 3.1). Målsetningen
 med tiltakene er å redusere vegetasjonshøyden og derigjennom øke
 habitatkvaliteten for og mengden/populasjonsstørrelsen av honningblom.
 
@@ -183,7 +184,7 @@ de lokale populasjonsstørrelsene.
 
 ## 3. Overvåkingslokalitetene
 
-### 3.1 Beskrivelse av lokalitetene
+### 3.1 Beskrivelse av lokalitetene og tiltakene der
 
 Alle de gjenværende honningblomlokalitetene ligger på Hvaler i Østfold
 (<a href="#fig-hvaler" class="quarto-xref">Figur 3</a>).
@@ -202,11 +203,13 @@ naturtyper. Slike naturtyper er åpne, men gror igjen med høyvokste arter
 ved opphør av drift som beite og slått. Arten kan også være utsatt for
 tråkkskader, både fra mennesker og beitedyr. Skjøtsel på de fire
 overvåkingslokalitetene er grundig beskrevet i Evju mfl. (2022) og i
-(Ekelund 2019a, 2019b).
+(Ekelund 2019a, 2019b). Det er Statsforvalteren og SNO som gjennomfører
+tiltakene på lokalitetene.
 
-På Skipstadsand slås det to ganger per sesong: i juni, før honningblom
-er kommet opp, og etter frøsetting. Slått plantemateriale fjernes, og i
-tillegg lukes det rundt plantene. Forekomstene av honningblom er
+På Skipstadsand slås det to ganger per sesong: i mai/juni, før
+honningblom er kommet opp, og etter frøsetting. Slått plantemateriale
+fjernes, og i tillegg lukes det rundt plantene. I 2026 ble det slått i
+slutten av mai og slutten av august. Forekomstene av honningblom er
 konsentrert i den nordøstlige delen av lokaliteten, med noen spredte
 individer utenfor kjerneområdet
 (<a href="#fig-kart-skipstadsand" class="quarto-xref">Figur 4</a>).
@@ -214,18 +217,28 @@ individer utenfor kjerneområdet
 Skjellvik er den største lokaliteten, både i utstrekning og
 populasjonsstørrelse
 (<a href="#fig-kart-skjellvik" class="quarto-xref">Figur 5</a>).
-Honningblom forekommer spredt innenfor hele lokaliteten, men ikke langs
-transektrutene utenfor gjerdet nordover. Lokaliteten slås to ganger i
-året, og deler av lokaliteten en ekstra gang noen år.
+Lokaliteten er slått jevnlig siden ca. 1995. I 2009 ble det etablert et
+gjerde for å beskytte kjerneområdet for honningblom mot tråkk og beite
+fra storfe. Dette gjerdet ble utvidet i 2014, og igjen i 2018. Vanligvis
+slås lokaliteten to ganger i året, og deler av lokaliteten en ekstra
+gang noen år. Det er også gjennomført rydding av vier og svartor noen
+år. I 2026 ble det gjennomført tidlig og sen slått. Honningblom
+forekommer spredt innenfor hele lokaliteten, men ikke langs
+transektrutene utenfor gjerdet nordover.
 
 Teneskjær inngår i beiteområdet til frittgående Herefordkyr i Ytre
 Hvaler nasjonalpark, og det forekommer en god del beite
 (<a href="#fig-kart-teneskjaer" class="quarto-xref">Figur 6</a>). For å
 beskytte plantene mot beite ble det i 2025 satt opp små bur over en del
-planter. Det er ingen aktiv skjøtsel utover dette.
+planter, men dette ble ikke gjort i 2026. Det er ingen aktiv skjøtsel
+utover dette.
 
-På Filletassen slås det på forsommeren samt på slutten av sommeren
-(<a href="#fig-kart-filletassen" class="quarto-xref">Figur 7</a>).
+På Filletassen slås det vanligvis på forsommeren samt på slutten av
+sommeren
+(<a href="#fig-kart-filletassen" class="quarto-xref">Figur 7</a>). Det
+har noen år vært beite med sau (2−3 bukker). I 2026 ble det gjennomført
+tidlig slått på deler av arealet der det er dominans av mjødurt, mens
+hele lokaliteten ble slått på sensommeren. Det var ikke beitedyr på øya.
 
 <div id="fig-kart-skipstadsand">
 
@@ -267,40 +280,6 @@ Figur 7: Overvåkingslokaliteten på Filletassen (rød linje) med
 overvåkingsruter (oransje).
 
 </div>
-
-### 3.2 Tiltak
-
-<!--# Bekreft tiltakene som ble gjennomført i 2026 (tidspunkt for slått, bur på Teneskjær, status for utsetting), og legg inn bilde av tiltakene. -->
-
-Det er Statsforvalteren og Statens naturoppsyn (SNO) som gjennomfører
-tiltakene på honningblomlokalitetene. Tiltakene følger skjøtselsplanene
-for lokalitetene (Ekelund 2019b; Evju mfl. 2022) og består i hovedsak av
-slått med fjerning av det slåtte materialet, slik at vegetasjonen holdes
-lav og åpen (se kap. 3.1 for slåtten på hver lokalitet). I tillegg
-gjøres det noen tiltak som er tilpasset den enkelte lokaliteten:
-
-- **Skjellvik:** Kjerneområdet er inngjerdet med strømgjerde, som
-  beskytter plantene mot tråkk. Høsten 2023 ble små oretrær og -røtter
-  fjernet, slik at det ble lettere å slå lokaliteten med maskin. Slåtten
-  tilpasses veksten. I 2024 ble det for eksempel bare gjennomført svært
-  lett sommerslått, fordi veksten var moderat (Roos mfl. 2024).
-- **Filletassen:** Slåtten på forsommeren er lett og gjøres over høyden
-  til honningblomplantene, for å redusere dominansen til myrtistel
-  (*Cirsium palustre*). Enga slås helt ned i slutten av august eller i
-  september (Roos mfl. 2024).
-- **Teneskjær:** Lokaliteten slås ikke, men beites av herefordkyr. I
-  2025 ble det satt bur over grupper av fertile individer for å øke
-  sannsynligheten for at de utvikler modne frø. I 2025 var blomstrende
-  individer utenfor burene i stor grad beitet bort (Roos mfl. 2025).
-  Ettersom bare én overvåkingsrute var dekket med bur, var det ikke
-  mulig å vurdere effekten av tiltaket statistisk..
-
-I tillegg til skjøtselen arbeides det med bevaringsutsetting av
-honningblom. NIBIO dyrker fram planter som kan settes ut, og de første
-plantene kan være klare i 2026. I 2025 ble potensielle
-utsettingslokaliteter på Hvaler vurdert, og Vikerkilen og Herfølsalta
-ble anbefalt prioritert for skjøtsel fra 2026 (Ekelund mfl. 2025; Roos
-mfl. 2025).
 
 ## 4. Datainnsamling
 
@@ -354,9 +333,9 @@ Tabell 1: Indikatorer for overvåking av honningblom.
 ## 5. Dataanalyser
 
 Metodikk for å beregne populasjonsstørrelse og -struktur er beskrevet
-tidligere av Evju mfl. (2022) og Roos mfl. (2024). Basert på forekomst i
-overvåkingsrutene beregnes gjennomsnittlig antall individer, samt andel
-fertile individer, per overvåkingsrute.
+tidligere av Evju mfl. (2022) og Roos mfl. (2023, 2024). Basert på
+forekomst i overvåkingsrutene beregnes gjennomsnittlig antall individer,
+samt andel fertile individer, per overvåkingsrute.
 
 For å estimere populasjonsstørrelse på hver lokalitet tar vi
 utgangspunkt i en oppdeling av lokaliteten (eller mer presist den
@@ -575,8 +554,11 @@ skyldtes at det ble funnet honningblom i en transektrute der arten ikke
 var registrert tidligere (Roos mfl. 2025). Nedgangen fra 2025 til 2026
 er derfor ikke nødvendigvis en reell tilbakegang. På Teneskjær er
 andelen fertile individer fortsatt lav, og beite fjerner mange av
-blomsterstandene. Burene over fertile planter kan derfor være viktige
-for frøproduksjonen på lokaliteten.
+blomsterstandene. Observasjoner fra 2025 viste at plantene innenfor
+burene blomstret, men bare én overvåkingsrute var omfattet av burene, og
+effekten ble ikke beregnet statistisk. Vi tror likevel at burene over
+fertile planter er viktige for å øke sannsynligheten for frøproduksjon
+på lokaliteten.
 
 **Usikkerhet.** Konfidensintervallene er brede
 (<a href="#tbl-estimater" class="quarto-xref">Tabell 2</a>), særlig på
@@ -585,25 +567,32 @@ transektrutene, og forekomstarealet må estimeres med en modell. Enkeltår
 bør derfor tolkes med forsiktighet, og det er utviklingen over flere år
 som gir det sikreste bildet. Estimatene omfatter bare individer med
 overjordiske skudd. Andelen individer uten overjordiske skudd varierer
-mellom år (Wells mfl. 1998; Kravdal mfl. 2016), og noe av variasjonen i
-estimatene skyldes trolig dette.
+mellom år, og noe av variasjonen i estimatene skyldes trolig dette.
 
 **Vær.** I 2024 fant vi at populasjonsstørrelsen henger sammen med
 nedbør og tørke i juni og juli året før, men at sammenhengen går i
 motsatt retning på lokaliteter med dyp, torvrik jord (Filletassen og
 Skjellvik) og på lokaliteter med grunn jord over skjellsand
-(Skipstadsand og Teneskjær) (Roos mfl. 2024). Været er ikke analysert i
-år.
+(Skipstadsand og Teneskjær) (Roos mfl. 2024).
 
 ### 7.2 Anbefaling for videreføring
 
 Overvåkingen av honningblom gir svært viktig informasjon om
 populasjonsutviklingen til denne kritisk truede arten, og om hvordan
 utviklingen påvirkes av vær og forvaltningstiltak. Både tiltakene som
-forvaltningen gjennomfører, og overvåkingen, bør videreføres. Årlig
+forvaltningen gjennomfører, og overvåkingen bør videreføres. Årlig
 overvåking er viktig for å unngå hull i tidsserien (som i 2018) og for å
 forstå effekten av variasjoner i temperatur og nedbør gjennom
-vekstsesongen.
+vekstsesongen. Det bør gjennomføres en grundigere analyse av
+populasjonsdynamikk mot vær- og andre miljøforhold.
+
+I 2026 er det også gjennomført skjøtsel på potensielle
+utsettingslokaliteter på Hvaler, i henhold til anbefalingene i Ekelund
+mfl. (2025), se også Roos mfl. (2023). NIBIO har i oktober 2026 plantet
+ut oppformerte individer på Herfølsalta og Vikerkilen (nyetablerte
+populasjoner) og Filletassen (populasjonsforsterking) (Svalheim og Velle
+2026). Det betyr at arbeidet med bevaringsutsetting av honningblom har
+tatt et viktig skritt videre.
 
 ## 8. Referanser
 
@@ -619,7 +608,7 @@ Artsdatabanken. 2021. *Norsk rødliste for arter 2021*.
 <div id="ref-ekelund_2019a" class="csl-entry">
 
 Ekelund, K. 2019a. *Honningblom *Herminium monorchis*. Status i Norge*.
-Ekelund Consult Rapport Nos. 2019-1. Ekelund Consult.
+Ekelund Consult Rapport 2019-1. Ekelund Consult.
 
 </div>
 
@@ -627,8 +616,8 @@ Ekelund Consult Rapport Nos. 2019-1. Ekelund Consult.
 
 Ekelund, K. 2019b. *Skjøtselsplan for 3 lokaliteter med honningblom
 (*Herminium monorchis*) i Ytre Hvaler nasjonalpark, Østfold fylke.
-Skjellvik, Teneskjær og Filletassen*. Ekelund Consult Rapport Nos.
-2019-2. Ekelund Consult.
+Skjellvik, Teneskjær og Filletassen*. Ekelund Consult Rapport 2019-2.
+Ekelund Consult.
 
 </div>
 
@@ -636,7 +625,8 @@ Skjellvik, Teneskjær og Filletassen*. Ekelund Consult Rapport Nos.
 
 Ekelund, K., R. E. Roos, og M. Evju. 2025. *Potensielle lokaliteter for
 bevaringsutsetting av honningblom. Resultater fra feltundersøkelser*.
-NINA Rapport No. 2696. Norsk institutt for naturforskning.
+NINA Rapport 2696. Norsk institutt for naturforskning.
+<https://hdl.handle.net/11250/5325386>.
 
 </div>
 
@@ -644,9 +634,8 @@ NINA Rapport No. 2696. Norsk institutt for naturforskning.
 
 Evju, M., R. M. Jacobsen, A. Endrestøl, mfl. 2022. *Overvåking av
 effekter av tiltak for truet natur. Feltmetodikk, analyser og resultater
-for sju arter og en naturtype*. NINA Rapport No. 2106. Norsk institutt
-for naturforskning.
-<https://brage.nina.no/nina-xmlui/handle/11250/2979127>.
+for sju arter og en naturtype*. NINA Rapport 2106. Norsk institutt for
+naturforskning. <https://brage.nina.no/nina-xmlui/handle/11250/2979127>.
 
 </div>
 
@@ -668,28 +657,37 @@ monorchis* – overvåking av artens tre populasjoner på Hvaler». *Blyttia*
 
 <div id="ref-roos_2025" class="csl-entry">
 
-Roos, Ruben E., Mathias Andreasen, Fia Bengtsson, mfl. 2025. *Overvåking
-av effekter av tiltak trua natur i 2025. Resultater for ti arter og én
-naturtype*. NINA Rapport No. 2695. Norsk institutt for naturforskning.
+Roos, R. E., M. Andreasen, F. Bengtsson, mfl. 2025. *Overvåking av
+effekter av tiltak trua natur i 2025. Resultater for ti arter og én
+naturtype*. NINA Rapport 2695. Norsk institutt for naturforskning.
 <https://nva.sikt.no/registration/019ad9d2e908-b8b219d4-fb21-40f8-a34a-e1c577293c9a>.
 
 </div>
 
 <div id="ref-roos_2024" class="csl-entry">
 
-Roos, Ruben Erik, Marianne Evju, Anders Endrestøl, mfl. 2024.
-*Overvåking av effekter av tiltak for åtte trua arter og en naturtype i
-2024*. NINA Rapport No. 2538. Norsk institutt for naturforskning.
+Roos, R. E., M. Evju, A. Endrestøl, mfl. 2024. *Overvåking av effekter
+av tiltak for åtte trua arter og en naturtype i 2024*. NINA Rapport
+2538. Norsk institutt for naturforskning.
 <https://hdl.handle.net/11250/3169493>.
 
 </div>
 
-<div id="ref-roos_2023a" class="csl-entry">
+<div id="ref-roos_2023" class="csl-entry">
 
-Roos, Ruben Erik, Marianne Evju, Anders Endrestøl, Oddvar Hanssen, og
-Megan Nowell. 2023. *Overvåking av effekter av tiltak for seks trua
-arter og en naturtype i 2023*. NINA Rapport No. 2377. Norsk institutt
-for naturforskning. <https://hdl.handle.net/11250/3106536>.
+Roos, R. E., M. Evju, M. Nowell, mfl. 2023. *Effektovervåking av trua
+arter og naturtyper. Forslag til videreutvikling for dragehode,
+honningblom, elvesandjeger og klippeblåvinge*. NINA Rapport 2263. Norsk
+institutt for naturforskning. <https://hdl.handle.net/11250/3056939>.
+
+</div>
+
+<div id="ref-svalheim_2026" class="csl-entry">
+
+Svalheim, E., og L. G. Velle. 2026. *Utplanting og oppfølging av
+honningblom, *Herminium monorchis*, i 2026 - Lokaliteter,
+utplantingsdesign og overvåkningsprotokoller*. NIBIO Rapport 12/137.
+Norsk institutt for bioøkonomi. <https://doi.org/10.21350/6gqb-ec60>.
 
 </div>
 
@@ -712,7 +710,7 @@ Society* 126: 39–48.
 **CRediT statement**
 
 - Writing – original draft: ME (Marianne Evju)
-- Data curation: RER (Ruben Erik Roos), IMM (Ida M. Mienna)
+- Data curation: RER (Ruben Erik Roos), IMM (Ida M. Mienna), ME
 - Formal analysis: RER
 - Software: RER, IMM, BP (Bård Pedersen, original functions for the
   population estimates)
