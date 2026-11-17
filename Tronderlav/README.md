@@ -1,6 +1,6 @@
 # Trønderlav (*Erioderma pedicellatum*)
 Mathias Andreasen, Ruben Erik Roos, Björn Nordén
-2026-11-11
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Mathias Andreasen, Ruben Erik Roos, Björn Nordén
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Mathias Andreasen, Ruben Erik Roos, Björn Nordén
 > | Version comment | Første versjon, med bestandsovervåking 2025–2026, translokeringsforsøket 2021–2026 og mikroklimadata 2022–2026 |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -252,7 +244,7 @@ Roos mfl. (2024; 2025).
 
 <div id="tbl-lokaliteter">
 
-Tabell 2: Lokaliteter, opprinnelige nettforsøk og status ved
+Tabell 1: Lokaliteter, opprinnelige nettforsøk og status ved
 avslutningen av feltsesongen 2026.
 
 <div class="cell-output-display">
@@ -312,11 +304,11 @@ på tidligere kjente vertstrær. Thalli ble registrert i to
 størrelsesklasser, sammen med vertstrærnes tilstand. Antall på
 høytliggende greiner er anslått med tilhørende usikkerhet. Indikatorer,
 utvalgsenheter og registreringsfrekvens framgår av
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 3</a>.
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
 
 <div id="tbl-indikatorer">
 
-Tabell 3: Indikatorer og datainnsamling i delprosjektet. Antall gjelder
+Tabell 2: Indikatorer og datainnsamling i delprosjektet. Antall gjelder
 opprinnelige utvalgsenheter der ikke annet er angitt.
 
 <div class="cell-output-display">
@@ -465,13 +457,13 @@ Ved Tegningfallet ble trønderlav registrert på 19 vertstrær i 2025.
 Summen av den trevise registreringen var 4 610 thalli, mens den
 publiserte totalsummen var 4 622 (Roos mfl. 2025). Ved overvåkingen 17.
 august 2026 var det samlede trevise anslaget 4 580 thalli
-(<a href="#tbl-bestand" class="quarto-xref">Tabell 4</a>). Forskjellen
+(<a href="#tbl-bestand" class="quarto-xref">Tabell 3</a>). Forskjellen
 er liten sammenlignet med usikkerheten ved opptelling på høytliggende
 greiner.
 
 <div id="tbl-bestand">
 
-Tabell 4: Anslått antall thalli på de 19 registrerte vertstrærne ved
+Tabell 3: Anslått antall thalli på de 19 registrerte vertstrærne ved
 Tegningfallet i 2025 og 2026. Den publiserte totalsummen for 2025 var 4
 622 (Roos mfl. 2025); avviket mot den trevise summen er ikke avklart.
 Tallene må tolkes med usikkerhet knyttet til opptelling.
@@ -509,7 +501,7 @@ Tallene må tolkes med usikkerhet knyttet til opptelling.
 
 I nettforsøkene var 100 av de opprinnelige 161 thalliene registrert i
 2025 (62,1 %) og 77 i 2026 (47,8 %;
-<a href="#tbl-overlevelse" class="quarto-xref">Tabell 5</a>,
+<a href="#tbl-overlevelse" class="quarto-xref">Tabell 4</a>,
 <a href="#fig-overlevelse" class="quarto-xref">Figur 3</a>). I 2026 var
 18 av 25 thalli til stede ved Tegningfallet (72,0 %), 17 av 25 ved Eldåa
 (68,0 %), 7 av 25 ved Nekfallet (28,0 %), 19 av 30 ved Flatdalsåsen
@@ -519,7 +511,7 @@ I nettforsøkene var 100 av de opprinnelige 161 thalliene registrert i
 
 <div id="tbl-overlevelse">
 
-Tabell 5: Overlevelse av nettranslokerte thalli i 2025 og 2026, beregnet
+Tabell 4: Overlevelse av nettranslokerte thalli i 2025 og 2026, beregnet
 fra individdataene. Tallene for 2025 avviker noe fra tallene i Roos mfl.
 (2025) (totalt 95 thalli), og forskjellene er ikke ferdig avklart. På
 Gulsvikelvi mangler bildet av ett nett fra 2023, så bare 22 av de 28
@@ -549,14 +541,14 @@ Figur 3: Andel nettranslokerte thalli som var til stede hvert år, per
 lokalitet. For Gulsvikelvi er to thalli på nettet som ikke ble
 fotografert i 2023, ikke med, så overlevelsen der er noe lavere i
 figuren enn i
-<a href="#tbl-overlevelse" class="quarto-xref">Tabell 5</a>.
+<a href="#tbl-overlevelse" class="quarto-xref">Tabell 4</a>.
 
 </div>
 
 ### 6.3 Endringer i thallusareal
 
 Endringen i thallusareal varierte mellom lokalitetene og mellom
-individer (<a href="#tbl-areal" class="quarto-xref">Tabell 6</a>,
+individer (<a href="#tbl-areal" class="quarto-xref">Tabell 5</a>,
 <a href="#fig-storrelse" class="quarto-xref">Figur 4</a>). Median
 endring fra 2025 til 2026 var positiv ved Eldåa (+15,3 %) og Gulsvikelvi
 (+13,4 %), men negativ ved Tegningfallet (−14,5 %), Nekfallet (−1,4 %),
@@ -566,7 +558,7 @@ thalli som fortsatt kunne måles.
 
 <div id="tbl-areal">
 
-Tabell 6: Median relativ endring i areal (%) hos thalli med målinger i
+Tabell 5: Median relativ endring i areal (%) hos thalli med målinger i
 begge år. Startår er 2021 ved Tegningfallet, Nekfallet og Eldåa, ellers
 2023. n er antall thalli som inngår i sammenligningen.
 
@@ -589,7 +581,7 @@ Arealendringer for overlevende individer kan ikke uten videre
 sammenlignes med samlet bestandstilvekst, fordi tapte thalli ikke inngår
 med areal lik null. Medianendringene må dessuten skilles fra modellert
 årlig utvikling for hele tidsserien
-(<a href="#tbl-modell" class="quarto-xref">Tabell 7</a>).
+(<a href="#tbl-modell" class="quarto-xref">Tabell 6</a>).
 
 <div id="fig-storrelse">
 
@@ -607,7 +599,7 @@ De modellberegnede årlige endringene i thallusareal var negative ved
 alle lokalitetene. Konfidensintervallene lå helt under null ved
 Nekfallet (−11,5 % per år), Sagåa (−19,8 %) og Flatdalsåsen (−15,5 %),
 mens endringen ved de andre lokalitetene var mer usikker
-(<a href="#tbl-modell" class="quarto-xref">Tabell 7</a>,
+(<a href="#tbl-modell" class="quarto-xref">Tabell 6</a>,
 <a href="#fig-vekstrate" class="quarto-xref">Figur 5</a>). Dette gjelder
 vurderinger mot nullendring innen hver lokalitet og er ikke en test av
 forskjellene mellom lokalitetene. Ved parvise sammenligninger var ingen
@@ -615,7 +607,7 @@ av forskjellene mellom lokalitetene statistisk signifikante.
 
 <div id="tbl-modell">
 
-Tabell 7: Modellert prosentvis endring i thallusareal per år gjennom
+Tabell 6: Modellert prosentvis endring i thallusareal per år gjennom
 2026 med 95 % konfidensintervall (KI). Verdiene er tilbake-transformert
 fra logaritmisk skala og gjelder hele observasjonsperioden
 (code/03_Thallus growth analyses.qmd).
@@ -660,17 +652,17 @@ vanskelig påvisbare stadier.
 ### 6.5 pH og konduktivitet i elvevann og på greiner
 
 pH og konduktivitet ble undersøkt i elvevann ved alle seks lokaliteter i
-2026 (<a href="#tbl-elvevann" class="quarto-xref">Tabell 8</a>).
+2026 (<a href="#tbl-elvevann" class="quarto-xref">Tabell 7</a>).
 Sammenlignet med 2024 var pH høyere ved alle lokaliteter, med de største
 økningene ved Eldåa (+0,81) og Nekfallet (+0,79). Konduktiviteten økte
 ved fem lokaliteter, men var lavere ved Nekfallet (58,0 mot 10,0 µS/cm).
 Årsaken til disse årsforskjellene er ikke undersøkt. pH og konduktivitet
 på greinene ble bare målt i 2024
-(<a href="#tbl-grein" class="quarto-xref">Tabell 9</a>).
+(<a href="#tbl-grein" class="quarto-xref">Tabell 8</a>).
 
 <div id="tbl-elvevann">
 
-Tabell 8: pH og konduktivitet (µS/cm) i elvevann i 2024 og 2026. Tallene
+Tabell 7: pH og konduktivitet (µS/cm) i elvevann i 2024 og 2026. Tallene
 er lokalitetsverdier uten estimert usikkerhet. Konduktiviteten ved Eldåa
 i 2024 er omtrentlig (oppgitt som 15–16 µS/cm).
 
@@ -691,7 +683,7 @@ i 2024 er omtrentlig (oppgitt som 15–16 µS/cm).
 
 <div id="tbl-grein">
 
-Tabell 9: pH og konduktivitet på greiner i 2024, gjennomsnitt av fem
+Tabell 8: pH og konduktivitet på greiner i 2024, gjennomsnitt av fem
 merkede målepunkter per lokalitet. Grein- og elvevannsdata er separate
 prøvematrikser.
 
@@ -731,7 +723,7 @@ Gulsvikelvi og Tegningfallet.
 I den felles perioden i 2026 var gjennomsnittlig relativ luftfuktighet
 høyest ved Flatdalsåsen (93,5 %), fulgt av Solem (90,9 %),
 Tegningfallet2 (86,1 %), Eldåa (85,2 %) og Sagåa (84,5 %)
-(<a href="#tbl-logger" class="quarto-xref">Tabell 10</a>).
+(<a href="#tbl-logger" class="quarto-xref">Tabell 9</a>).
 Lysintensiteten var høyest ved Nekfallet (4 290 lux i døgnmiddel), mens
 Tegningfallet1, Gulsvikelvi og Flatdalsåsen lå på 1 058–1 227 lux.
 Sammenlignet med de samme kalenderdagene i 2025 var
@@ -740,7 +732,7 @@ Flatdalsåsen (−1,93 °C), Sagåa (−1,99 °C) og Tegningfallet2 (−1,71 °C
 
 <div id="tbl-logger">
 
-Tabell 10: Loggerverdier for 1. januar–14. august 2026, gjennomsnitt av
+Tabell 9: Loggerverdier for 1. januar–14. august 2026, gjennomsnitt av
 døgnmiddelverdier. n er antall døgn med data. «–» betyr manglende eller
 utilstrekkelig dekning (under 30 døgn). Trøndelag er Kvernbekken i Solem
 naturreservat.
@@ -1080,7 +1072,7 @@ i bruk når skjemaet og overføringen av historiske data er
 kvalitetssikret.
 
 Prioriteringene i
-<a href="#tbl-prioritet" class="quarto-xref">Tabell 11</a> følger
+<a href="#tbl-prioritet" class="quarto-xref">Tabell 10</a> følger
 hypotesene og kombinerer ny kunnskapsinnhenting med nødvendig årlig
 oppfølging. Samlet skal dette gi et bedre grunnlag for framtidig
 bevaringsutsetting i tråd med Miljødirektoratets anbefalinger
@@ -1088,7 +1080,7 @@ bevaringsutsetting i tråd med Miljødirektoratets anbefalinger
 
 <div id="tbl-prioritet">
 
-Tabell 11: Prioriterte arbeidsoppgaver for 2027 og videre.
+Tabell 10: Prioriterte arbeidsoppgaver for 2027 og videre.
 Prioriteringen gjelder særlig nye kunnskapsoppgaver; årlig
 bestandsovervåking og oppfølging av translokasjonsforsøk forutsettes
 videreført uavhengig av rangeringen.

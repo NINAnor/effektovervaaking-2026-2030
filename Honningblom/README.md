@@ -1,6 +1,6 @@
 # Honningblom (*Herminium monorchis*)
 Marianne Evju, Ruben Erik Roos
-2026-11-11
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Marianne Evju, Ruben Erik Roos
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Marianne Evju, Ruben Erik Roos
 > | Version comment | Første versjon, med overvåkingsdata 2014–2026 |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -121,15 +113,16 @@ monitoring should continue.
 
 ## 1. Innledning
 
-Orkideen honningblom (*Herminium monorchis*) vokser på fire kystnære
-lokaliteter på Hvaler, Østfold: tre på Asmaløy (Skipstadsand, Skjellvik
-og Teneskjær) og en på øya Filletassen utenfor Asmaløy (Høitomt og
-Brynjulvsrud 2017). Arten var tidligere spredt men sjelden på
-Sørøstlandet (<a href="#fig-historisk" class="quarto-xref">Figur 2</a>),
-men har hatt kraftig tilbakegang de siste hundre årene, på grunn av
-oppdyrking, drenering og annen omlegging av arealbruk. Honningblom er
-vurdert som kritisk truet (CR) på Rødlista for arter 2021
-(Artsdatabanken 2021).
+Orkideen honningblom *Herminium monorchis*
+(<a href="#fig-honningblom" class="quarto-xref">Figur 1</a>) vokser på
+fire kystnære lokaliteter på Hvaler, Østfold: tre på Asmaløy
+(Skipstadsand, Skjellvik og Teneskjær) og en på øya Filletassen utenfor
+Asmaløy (Høitomt og Brynjulvsrud 2017). Arten var tidligere spredt men
+sjelden på Sørøstlandet
+(<a href="#fig-historisk" class="quarto-xref">Figur 2</a>), men har hatt
+kraftig tilbakegang de siste hundre årene, på grunn av oppdyrking,
+drenering og annen omlegging av arealbruk. Honningblom er vurdert som
+kritisk truet (CR) på Rødlista for arter 2021 (Artsdatabanken 2021).
 
 Honningblompopulasjonene på Skipstadsand, Skjellvik og Teneskjær har
 vært overvåket siden 2014 og populasjonen på Filletassen siden 2020
@@ -209,7 +202,7 @@ naturtyper. Slike naturtyper er åpne, men gror igjen med høyvokste arter
 ved opphør av drift som beite og slått. Arten kan også være utsatt for
 tråkkskader, både fra mennesker og beitedyr. Skjøtsel på de fire
 overvåkingslokalitetene er grundig beskrevet i Evju mfl. (2022) og i
-Ekelund (2019a, 2019b).
+(Ekelund 2019a, 2019b).
 
 På Skipstadsand slås det to ganger per sesong: i juni, før honningblom
 er kommet opp, og etter frøsetting. Slått plantemateriale fjernes, og i
@@ -228,8 +221,8 @@ transektrutene utenfor gjerdet nordover. Lokaliteten slås to ganger i
 Teneskjær inngår i beiteområdet til frittgående Herefordkyr i Ytre
 Hvaler nasjonalpark, og det forekommer en god del beite
 (<a href="#fig-kart-teneskjaer" class="quarto-xref">Figur 6</a>). For å
-beskytte plantene mot beite ble det i 2025 og 2026 satt opp små bur over
-en del planter. Det er ingen aktiv skjøtsel utover dette.
+beskytte plantene mot beite ble det i 2025 satt opp små bur over en del
+planter. Det er ingen aktiv skjøtsel utover dette.
 
 På Filletassen slås det på forsommeren samt på slutten av sommeren
 (<a href="#fig-kart-filletassen" class="quarto-xref">Figur 7</a>).
@@ -295,10 +288,12 @@ gjøres det noen tiltak som er tilpasset den enkelte lokaliteten:
   til honningblomplantene, for å redusere dominansen til myrtistel
   (*Cirsium palustre*). Enga slås helt ned i slutten av august eller i
   september (Roos mfl. 2024).
-- **Teneskjær:** Lokaliteten slås ikke, men beites. Burene settes over
-  grupper av fertile individer for å øke sannsynligheten for at de
-  utvikler modne frø. I 2025 var blomstrende individer utenfor burene i
-  stor grad beitet bort (Roos mfl. 2025).
+- **Teneskjær:** Lokaliteten slås ikke, men beites av herefordkyr. I
+  2025 ble det satt bur over grupper av fertile individer for å øke
+  sannsynligheten for at de utvikler modne frø. I 2025 var blomstrende
+  individer utenfor burene i stor grad beitet bort (Roos mfl. 2025).
+  Ettersom bare én overvåkingsrute var dekket med bur, var det ikke
+  mulig å vurdere effekten av tiltaket statistisk..
 
 I tillegg til skjøtselen arbeides det med bevaringsutsetting av
 honningblom. NIBIO dyrker fram planter som kan settes ut, og de første
@@ -322,7 +317,7 @@ Filletassen (10;
 rutene er merket med aluminiumsrør og med høypresisjons-GPS. I rutene
 registreres antall honningblomindivider og hvorvidt de er fertile eller
 vegetative. Andre variabler som registreres i rutene, er vist i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
 Forekomst/fravær av honningblom registreres i tillegg langs faste
 transekter på hver lokalitet, med totalt 416 meter transekt, fordelt på
 Skipstadsand (3 transekter, 90 m), Skjellvik (4 transekter, 180 m),
@@ -331,13 +326,13 @@ Start- og sluttpunkt for transektene er merket med aluminiumsrør og
 høypresisjons-GPS.
 
 Oversikt over indikatorer og datainnsamling i felt er gitt i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
 
 <!--# Feltprotokoll (Vedlegg 1 i årsrapporten) – legg til lenke når den er tilgjengelig. -->
 
 <div id="tbl-indikatorer">
 
-Tabell 2: Indikatorer for overvåking av honningblom.
+Tabell 1: Indikatorer for overvåking av honningblom.
 
 <div class="cell-output-display">
 
@@ -523,7 +518,7 @@ på log-skala.
 
 <div id="tbl-estimater">
 
-Tabell 3: Estimert overjordisk populasjonsstørrelse av honningblom per
+Tabell 2: Estimert overjordisk populasjonsstørrelse av honningblom per
 lokalitet og år, med 95 % konfidensintervall (bootstrap) i parentes.
 Filletassen ble overvåket første gang i 2020, og det mangler data for
 2018.
@@ -570,7 +565,7 @@ honningblomlokalitetene. Dette tyder på at nåværende tiltak fungerer for
 
 **Skjellvik og Filletassen.** Begge populasjonene hadde i 2026 det
 høyeste estimatet siden overvåkingen startet
-(<a href="#tbl-estimater" class="quarto-xref">Tabell 3</a>). På
+(<a href="#tbl-estimater" class="quarto-xref">Tabell 2</a>). På
 Skjellvik har estimatet økt hvert år siden 2024, og forekomstarealet var
 like stort som i 2025.
 
@@ -584,7 +579,7 @@ blomsterstandene. Burene over fertile planter kan derfor være viktige
 for frøproduksjonen på lokaliteten.
 
 **Usikkerhet.** Konfidensintervallene er brede
-(<a href="#tbl-estimater" class="quarto-xref">Tabell 3</a>), særlig på
+(<a href="#tbl-estimater" class="quarto-xref">Tabell 2</a>), særlig på
 Teneskjær og Skipstadsand. Der vokser honningblom i få av
 transektrutene, og forekomstarealet må estimeres med en modell. Enkeltår
 bør derfor tolkes med forsiktighet, og det er utviklingen over flere år

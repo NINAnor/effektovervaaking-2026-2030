@@ -1,6 +1,6 @@
 # Åpen grunnlendt kalkmark
 Marianne Evju, Ruben Erik Roos
-2026-11-16
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Marianne Evju, Ruben Erik Roos
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Marianne Evju, Ruben Erik Roos
 > | Version comment | Første versjon i effektovervåking 2026–2030, med sju lokaliteter i indre Oslofjord |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -182,7 +174,7 @@ Tiltakene som gjennomføres, varierer noe mellom de sju
 overvåkingslokalitetene, men kan deles i to typer: (1) bekjempelse av
 den fremmede arten gravbergknapp (*Phedimus spurius*) (svært høy risiko,
 SE; Solstad mfl. (2023)) og (2) fjerning av gjengroende busker og kratt,
-se <a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a>.
+se <a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>.
 
 Målsetningen med tiltakene er å redusere de negative påvirkningene
 (fremmede arter, gjengroende busker og kratt), og derved forbedre
@@ -216,7 +208,7 @@ avhengig av aktive revegeteringstiltak.
 
 Til sammen inngår sju lokaliteter i indre Oslofjord i overvåkingen:
 Bleikøya, Loffen på Nakholmen, Padda, Torvøya, Malmøya, Husbergøya og
-Fyrsteila (<a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a>,
+Fyrsteila (<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>,
 <a href="#fig-oversikt" class="quarto-xref">Figur 1</a>).
 
 <div id="fig-oversikt">
@@ -913,7 +905,7 @@ gjennomført 18. og 19. august 2026.
 
 ### 3.2 Tiltak
 
-<a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a> gir en kortfattet
+<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a> gir en kortfattet
 oppsummering av utfordringer og tiltak på de sju
 overvåkingslokalitetene. Tiltakene i tabellen fokuserer på det som er
 gjort innenfor overvåkingsområdene, fram til august 2026. Flere tiltak
@@ -921,7 +913,7 @@ er gjennomført på lokalitetene, men utenfor de områdene som overvåkes.
 
 <div id="tbl-tiltak">
 
-Tabell 2: Utfordringer, tiltak og datainnsamling på de sju
+Tabell 1: Utfordringer, tiltak og datainnsamling på de sju
 overvåkingslokalitetene.
 
 <div class="cell-output-display">
@@ -960,7 +952,7 @@ Metodikk for utlegging og gjenbesøk, samt datainnsamling i felt, er
 beskrevet i detalj i Evju mfl. (2022) og Roos mfl. (2023, 2024).
 Metodikken tilsvarer den som er brukt i basisovervåking av åpen
 grunnlendt kalkmark (Evju mfl. 2020). Indikatorer for overvåkingen er
-beskrevet i <a href="#tbl-indikatorer" class="quarto-xref">Tabell 3</a>.
+beskrevet i <a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
 
 På Fyrsteila er det plassert åtte ruter per blokk (fire i halv blokk),
 totalt 44 ruter, i en systematisk utlegging (Løkken mfl. 2025). Rutene
@@ -968,9 +960,9 @@ er 1 × 1 m store, og det inngår ikke sirkelanalyser her.
 
 <div id="tbl-indikatorer">
 
-Tabell 3: Indikatorer og datainnsamling for åpen grunnlendt kalkmark.
+Tabell 2: Indikatorer og datainnsamling for åpen grunnlendt kalkmark.
 Frekvens «varierer» viser til
-<a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a>.
+<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>.
 
 <div class="cell-output-display">
 

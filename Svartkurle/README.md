@@ -1,6 +1,6 @@
 # Svartkurle (*Nigritella nigra*)
 Harald Bratli, Dag-Inge Øien, Anders Lyngstad
-2026-11-11
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -40,12 +40,6 @@ Harald Bratli, Dag-Inge Øien, Anders Lyngstad
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -63,9 +57,7 @@ Harald Bratli, Dag-Inge Øien, Anders Lyngstad
 > | Version comment | Første versjon, med Sølendet, Svanvollen og Oppdal og forslag til overvåkingsmetodikk |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -421,11 +413,11 @@ ressursbruk. På grunn av slåtte- og beiteaktivitet kan vegetasjonsruter
 trolig ikke merkes med fastmerker som hovedregel, men koordinaten i
 sørvestre hjørne bør registreres med høyoppløselig GPS. Indikatorene er
 oppsummert i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
 
 <div id="tbl-indikatorer">
 
-Tabell 2: Indikatorer for overvåking av svartkurle.
+Tabell 1: Indikatorer for overvåking av svartkurle.
 
 <div class="cell-output-display">
 

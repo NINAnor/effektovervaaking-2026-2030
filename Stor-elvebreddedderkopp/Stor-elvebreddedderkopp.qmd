@@ -194,7 +194,7 @@ license_badge()
 
 ::: {.callout-tip collapse="true"}
 ## Metadata
-```{r tbl-meta2}
+```{r meta2}
 #| tbl-cap: 'Indicator metadata'
 #| echo: false
 #| warning: false

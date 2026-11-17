@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-11-10
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -42,12 +42,6 @@ Megan Nowell
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -65,9 +59,7 @@ Megan Nowell
 > | Version comment | Første versjon, med data 2020–2026, effekt av lupinluking og klima/vannføring |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -166,7 +158,7 @@ arealer slik at elveavsetningene igjen blir tilgjengelige som leveområde
 for stor elvebreddedderkopp (Roos mfl. 2024, 2025). Tiltaket skal
 redusere vegetasjonsdekket på sandflatene og dermed øke antallet
 juvenile og voksne individer, som er indikatorene i overvåkingen
-(<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>).
+(<a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>).
 
 ### 2.2 Formål med overvåking
 
@@ -383,7 +375,7 @@ vedlikeholdt eller har falt sammen, ikke telles (Roos mfl. 2024). Hver
 lokalitet undersøkes én gang i året, i september. Fram til og med 2024
 ble edderkopper også registrert under tellingene av elvesandjeger i
 juni–august
-(<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 3</a>), men
+(<a href="#tbl-datainnsamling" class="quarto-xref">Tabell 2</a>), men
 bare septembertellingene brukes i analysene (avsnitt 6.1). I 2026 ble
 lokalitetene undersøkt på Storrønningen 11. september, på Fornes 12.
 september, på Kregnesteigen 13. september og på Gravråk 14. september.
@@ -401,7 +393,7 @@ med 2024 ble hvert funn i stedet registrert som et GPS-punkt med antall
 per stadium. Metoden ble endret for å redusere de geometriske feilene
 fra den håndholdte GPS-en, gi bedre kontroll over hvilke områder som har
 hull, og samtidig registrere habitatvariabler. Indikatorene er beskrevet
-i <a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
+i <a href="#tbl-indikatorer" class="quarto-xref">Tabell 1</a>.
 
 <div id="fig-obskart">
 
@@ -418,7 +410,7 @@ gjennomsiktige fordi de kan overlappe. Ortofoto: © Norge i bilder
 
 <div id="tbl-indikatorer">
 
-Tabell 2: Indikatorer for overvåking av stor elvebreddedderkopp og
+Tabell 1: Indikatorer for overvåking av stor elvebreddedderkopp og
 effekten av lupinluking.
 
 <div class="cell-output-display">
@@ -437,7 +429,7 @@ effekten av lupinluking.
 
 <div id="tbl-datainnsamling">
 
-Tabell 3: Antall individer av stor elvebreddedderkopp registrert per år
+Tabell 2: Antall individer av stor elvebreddedderkopp registrert per år
 og måned, fordelt på juvenile og voksne (alle fire lokaliteter). – =
 ingen registreringer. Registreringene i juni–august ble gjort under
 tellingene av elvesandjeger; bare septemberregistreringene brukes i
@@ -620,22 +612,22 @@ Figur 8: Antall juvenile og voksne i september per lokalitet (antall +
 
 Effekten av lupinluking er analysert for undersøkelsespolygonene på de
 tre effektlokalitetene Gravråk, Kregnesteigen og Storrønningen i 2025 og
-2026. <a href="#tbl-effekt-n" class="quarto-xref">Tabell 4</a> viser
+2026. <a href="#tbl-effekt-n" class="quarto-xref">Tabell 3</a> viser
 hvor mange polygoner som inngår i hver gruppe. I 2025 var det 87
 polygoner på effektlokalitetene og 51 kontrollpolygoner på Fornes, i
 2026 40 og 15. Polygonene var større i 2026, så de var færre.
 Datagrunnlaget for 2026 er derfor mindre, og særlig gruppen delvis luket
 (6 polygoner) er liten.
-<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 5</a> viser
+<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 4</a> viser
 resultatene fra hovedmodellen for begge år samlet.
-<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a> viser om hver
+<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 5</a> viser om hver
 variabel samlet bidrar til å forklare antallet (likelihood-ratio-test),
 om effekten av luking var forskjellig mellom årene (luking × år), og om
 vegetasjonsdekke og slitasje har betydning.
 
 **Full luking.** Når begge årene ses samlet, hadde polygoner som ble
 luket året før, ikke flere edderkopper enn polygoner som ikke ble luket
-(<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 5</a>).
+(<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 4</a>).
 Rateratioen var 1,03 for juvenile (KI95 0,65–1,65) og 1,12 for voksne
 (KI95 0,51–2,44), og begge intervallene omfatter 1.
 
@@ -646,7 +638,7 @@ ganger så mange voksne som ikke-lukede polygoner (KI95 1,42–9,13, p =
 **Forskjell mellom år.** Testen av samspill mellom luking og år viser at
 effekten av luking ikke var den samme i 2025 og 2026 (juvenile p =
 0,011, voksne p = 0,0049;
-<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a>). Effekten er
+<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 5</a>). Effekten er
 derfor også beregnet for hvert år for seg
 (<a href="#fig-effekt" class="quarto-xref">Figur 9</a>).
 
@@ -675,7 +667,7 @@ avgrenses på samme måte fra år til år.
 
 <div id="tbl-effekt-n">
 
-Tabell 4: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes
+Tabell 3: Undersøkelsespolygoner per gruppe og år. Kontroll = Fornes
 (polygoner utenfor lukepolygonene); Nei / Delvis / Ja = lukestatus året
 før på effektlokalitetene.
 
@@ -694,7 +686,7 @@ før på effektlokalitetene.
 
 <div id="tbl-effekt-koeff">
 
-Tabell 5: NB GLMM for juvenile og voksne per undersøkelsespolygon på
+Tabell 4: NB GLMM for juvenile og voksne per undersøkelsespolygon på
 effektlokalitetene. RR = rateratio (hvor mange ganger høyere eller
 lavere antallet er enn i referansegruppen); KI95 = 95 %
 konfidensintervall. Referansenivåer: ikke luket året før, første år,
@@ -719,7 +711,7 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div id="tbl-effekt-lrt">
 
-Tabell 6: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
+Tabell 5: Likelihood-ratio-tester per ledd (p-verdier). Vegetasjonsdekke
 og slitasje er testet hver for seg på polygonene der de er registrert.
 Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
@@ -741,7 +733,7 @@ Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 **Effekt per år og betydningen av Kregnesteigen.**
 <a href="#fig-effekt" class="quarto-xref">Figur 9</a> og
-<a href="#tbl-effekt-aar" class="quarto-xref">Tabell 7</a> viser
+<a href="#tbl-effekt-aar" class="quarto-xref">Tabell 6</a> viser
 effekten av luking for begge år samlet, for hvert år for seg og uten
 Kregnesteigen. Rateratioen sammenligner delvis luket og luket med ikke
 luket. En verdi over 1 betyr flere edderkopper enn i ikke-lukede
@@ -787,7 +779,7 @@ betydning for voksne enn for juvenile.
 
 <div id="tbl-effekt-aar">
 
-Tabell 7: Effekt av luking året før per år, sammenlignet med ikke-lukede
+Tabell 6: Effekt av luking året før per år, sammenlignet med ikke-lukede
 polygoner (modell med samspill luking × år). RR = rateratio; KI95 = 95 %
 konfidensintervall. Intervaller og p-verdier er justert for to
 sammenligninger per år (Dunnett). Signifikansnivå: \* p \< 0,05; \*\* p
@@ -868,7 +860,7 @@ i polygoner med 75 % vegetasjonsdekke eller mer, og de voksne er altså
 noe mer spredt mot polygoner med mer vegetasjon enn de juvenile. Dette
 stemmer med effektmodellen, der antallet gikk ned med økende
 vegetasjonsdekke
-(<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a>). Nesten
+(<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 5</a>). Nesten
 alle individene ble funnet på sand (98 % av de juvenile og 94 % av de
 voksne). De fleste ble funnet i polygoner med slitasje i klasse 3 (81 %
 av de juvenile og 66 % av de voksne), men slitasje kan bare ses på sand
@@ -896,13 +888,13 @@ de også påvirker bestandsutviklingen, og fordi de må tas hensyn til når
 effekten av lupinlukingen skal vurderes.
 
 Høyeste vannføring i sommersesongen varierte fra 388 m³/s i 2026 til 829
-m³/s i 2020 (<a href="#tbl-klima" class="quarto-xref">Tabell 8</a>). I
+m³/s i 2020 (<a href="#tbl-klima" class="quarto-xref">Tabell 7</a>). I
 seks av sju år kom den høyeste vannføringen i mai eller juni, under
 vårflommen. Bare i 2023 kom den i august, etter kraftig regn. Årene med
 de største flommene hadde færrest edderkopper i september, og årene med
 de minste flommene flest
 (<a href="#fig-klima" class="quarto-xref">Figur 12</a>,
-<a href="#tbl-klima-modeller" class="quarto-xref">Tabell 9</a>).
+<a href="#tbl-klima-modeller" class="quarto-xref">Tabell 8</a>).
 Sammenhengen gjelder både juvenile (p \< 0,001) og voksne (p = 0,0023),
 og den holder også når det er tatt hensyn til en lineær årstrend og
 metodeskiftet i 2025 (juvenile p = 0,0042, voksne p = 0,0084). Nedbør i
@@ -919,7 +911,7 @@ dynamikken i elva som skaper og fornyer sandflatene.
 
 <div id="tbl-klima">
 
-Tabell 8: Septemberbesøket per år: antall og eksponering. Høyeste
+Tabell 7: Septemberbesøket per år: antall og eksponering. Høyeste
 vannføring og dager \> 300 m³/s i sommersesongen (1. mai – besøket),
 høyeste vannføring de 30 dagene før besøket, og nedbør i sesongen.
 
@@ -950,7 +942,7 @@ Figur 12: Antall i september mot høyeste vannføring i sommersesongen
 
 <div id="tbl-klima-modeller">
 
-Tabell 9: Utforskende NB GLMM for antall i september per lokalitet og år
+Tabell 8: Utforskende NB GLMM for antall i september per lokalitet og år
 (lokalitet og år som tilfeldige effekter) med én eksponeringsvariabel om
 gangen, og effekten av høyeste vannføring når det er tatt hensyn til en
 lineær årstrend og metodeskiftet til polygoner i 2025. Estimat på

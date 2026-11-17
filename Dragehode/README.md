@@ -1,6 +1,6 @@
 # Dragehode (*Dracocephalum ruyschiana*)
 Ruben Erik Roos
-2026-11-06
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Ruben Erik Roos
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Ruben Erik Roos
 > | Version comment | Første versjon, med data fra skjøtselsforsøket 2023–2026 og basisovervåkingen på Horgen 2017–2026 |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -221,14 +213,14 @@ Høyet ble raket opp og fjernet to dager etter (Roos, Evju, Endrestøl,
 mfl. 2023). Den andre slåtten ble gjort i september 2025 på samme måte,
 og høyet ble raket bort (<span class="nocase">Roos mfl.</span> 2025).
 Neste slått er planlagt i 2027
-(<a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a>). Det ble ikke
+(<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>). Det ble ikke
 slått i 2024 og 2026.
 
 <!--# Bilde av slåtten legges inn her senere -->
 
 <div id="tbl-tiltak">
 
-Tabell 2: Gjennomførte tiltak og datainnsamling i skjøtselsforsøket på
+Tabell 1: Gjennomførte tiltak og datainnsamling i skjøtselsforsøket på
 Horgen. Registreringene gjøres før slåtten de årene det slås.
 
 <div class="cell-output-display">
@@ -279,13 +271,13 @@ registreres:
 Registreringene gjøres før slåtten de årene det slås. I 2023, 2024 og
 2026 ble rutene registrert i juni, mens de i 2025 ble registrert i
 begynnelsen av august
-(<a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a>). Indikatorene
+(<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a>). Indikatorene
 er oppsummert i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 3</a>.
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
 
 <div id="tbl-indikatorer">
 
-Tabell 3: Indikatorer for overvåking av effekter av sen slått annethvert
+Tabell 2: Indikatorer for overvåking av effekter av sen slått annethvert
 år for dragehode på Horgen.
 
 <div class="cell-output-display">
@@ -368,14 +360,14 @@ naturforskning, u.å.).
 ## 6. Resultater
 
 Testene av behandling, år og samspillet mellom dem er oppsummert i
-<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>. Bare
+<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>. Bare
 vegetasjonshøyden viste en effekt av slått (signifikant samspill mellom
 behandling og år). Alle indikatorene unntatt dekningen av dragehode
 varierte mellom år.
 
 <div id="tbl-modeller">
 
-Tabell 4: Test av behandling (slått eller ikke slått), år og samspillet
+Tabell 3: Test av behandling (slått eller ikke slått), år og samspillet
 mellom dem for indikatorene i skjøtselsforsøket. Antall
 dragehodeplanter: Poisson GLMM med likelihood ratio-tester; de andre:
 lineære blandede modeller med F-tester. Alle modellene har rute som
@@ -428,11 +420,11 @@ og småplanter. Båndene viser 50 % bootstrap-intervall. Estimatene for
 
 I de ti rutene som ble lagt ut på dragehode, ble det registrert 85
 dragehodeplanter i 2023, 76 i 2024, 52 i 2025 og 50 i 2026
-(<a href="#tbl-klasser" class="quarto-xref">Tabell 5</a>). Antallet gikk
+(<a href="#tbl-klasser" class="quarto-xref">Tabell 4</a>). Antallet gikk
 ned både i rutene som slås (fra 48 til 24) og i rutene som ikke slås
 (fra 37 til 26). Antallet varierte signifikant mellom år (p = 0,003),
 men utviklingen var ikke forskjellig mellom behandlingene (samspill p =
-0,79; <a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>). Mye av
+0,79; <a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>). Mye av
 nedgangen i de slåtte rutene skyldes én rute, som gikk fra 31 planter i
 2023 til 9 i 2026
 (<a href="#fig-dragehode" class="quarto-xref">Figur 2</a>). De fleste
@@ -450,11 +442,11 @@ ikke funnet dragehode i 2026.
 Dekningen av dragehode i rutene var i gjennomsnitt 5–14 %, og varierte
 ikke signifikant mellom år eller behandlinger
 (<a href="#fig-dragehode" class="quarto-xref">Figur 2</a>,
-<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>).
+<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>).
 
 <div id="tbl-klasser">
 
-Tabell 5: Antall dragehodeplanter i de ti rutene med dragehode, fordelt
+Tabell 4: Antall dragehodeplanter i de ti rutene med dragehode, fordelt
 på størrelsesklasser, per år og behandling. Registreringene i 2023 ble
 gjort før den første slåtten.
 
@@ -491,7 +483,7 @@ registreringene i 2025.
 
 Vegetasjonshøyden er den eneste indikatoren som viser en effekt av slått
 (samspill p = 0,012;
-<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>). I 2023, før
+<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>). I 2023, før
 den første slåtten og i en tørr sommer, var vegetasjonen lav i alle
 rutene (14 cm i gjennomsnitt). Sommeren etter hver slått var
 vegetasjonen lavere i rutene som ble slått: 24,8 mot 32,9 cm i 2024 (8,1
@@ -506,7 +498,7 @@ sammenlignes direkte med de andre årene.
 Det var også mindre strø og mer bar jord i de slåtte rutene året etter
 den første slåtten (8 mot 28 % strø og 8 mot 2 % bar jord i 2024), men
 forskjellen var liten i 2026
-(<a href="#tbl-struktur" class="quarto-xref">Tabell 6</a>). Dekningen av
+(<a href="#tbl-struktur" class="quarto-xref">Tabell 5</a>). Dekningen av
 feltsjiktet har økt mye siden tørkesommeren 2023, fra 36–44 % til 82–88
 % i 2026, i begge behandlingene.
 
@@ -531,7 +523,7 @@ ble rutene registrert i august, de andre årene i juni.
 
 <div id="tbl-struktur">
 
-Tabell 6: Gjennomsnittlig dekning (%) av feltsjikt, strø, bunnsjikt og
+Tabell 5: Gjennomsnittlig dekning (%) av feltsjikt, strø, bunnsjikt og
 bar jord i rutene som slås og ikke slås (alle 20 ruter).
 
 <div class="cell-output-display">
@@ -558,7 +550,7 @@ varierte mellom år (p = 0,008) og var høyest i 2024, men det var ingen
 forskjell mellom rutene som slås og ikke slås (p = 0,98) og ingen
 forskjell i utviklingen (samspill p = 0,88;
 <a href="#fig-artsrikdom" class="quarto-xref">Figur 4</a>,
-<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>).
+<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>).
 
 Dekningen av pollinatorplanter var lav i tørkesommeren 2023 (15–18 %),
 mye høyere i 2024 (34–38 %) og noe lavere i 2025 (24–30 %). Forskjellen
@@ -588,7 +580,7 @@ Artssammensetningen varierte mellom år (PERMANOVA p = 0,002) og var noe
 forskjellig mellom rutene som slås og ikke slås (p = 0,021), men
 forskjellen mellom behandlingene endret seg ikke over tid (samspill p =
 1,0; <a href="#fig-nmds" class="quarto-xref">Figur 5</a>,
-<a href="#tbl-permanova" class="quarto-xref">Tabell 7</a>). Forskjellen
+<a href="#tbl-permanova" class="quarto-xref">Tabell 6</a>). Forskjellen
 mellom behandlingene fantes altså allerede før den første slåtten, og
 skyldes ikke slåtten. År og behandling forklarer til sammen bare 11 % av
 variasjonen i artssammensetningen, og ordinasjonen har relativt høyt
@@ -608,7 +600,7 @@ behandling har flyttet seg fra år til år.
 
 <div id="tbl-permanova">
 
-Tabell 7: PERMANOVA av artssammensetningen (Bray-Curtis) i 2023–2025. R²
+Tabell 6: PERMANOVA av artssammensetningen (Bray-Curtis) i 2023–2025. R²
 er andelen av variasjonen som forklares. Signifikansnivå: \* p \< 0,05;
 \*\* p \< 0,01; \*\*\* p \< 0,001.
 

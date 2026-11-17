@@ -1,6 +1,6 @@
 # Askeglye (*Collema leptaleum*)
 Mathias Andreasen
-2026-11-11
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Mathias Andreasen
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Mathias Andreasen
 > | Version comment | Første versjon, med tiltaksstatus 2026 og bestandsstatus fra 2025 |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -212,7 +204,7 @@ bestandsstatus i 2025, ikke tiltaksarealer eller en oppdatert status for
 
 Ved Vestrheim er det gjennomført ringbarking av gran og translokasjon
 med netting i 2022, etterfulgt av nye forsøk med limfesting i 2025.
-<a href="#tbl-tiltak" class="quarto-xref">Tabell 2</a> skiller utførte
+<a href="#tbl-tiltak" class="quarto-xref">Tabell 1</a> skiller utførte
 tiltak fra beredskap og planlagte aktiviteter. Oppfølgingen i 2026 har
 omfattet oppsyn og registrering av veltede vertstrær. Metallnetting til
 beitebeskyttelse er innkjøpt, men ikke montert. Gjennomføring av
@@ -220,14 +212,14 @@ smågranrydding er ikke bekreftet, og nye translokasjoner er ikke utført
 (Larsen 2026).
 
 Seks mottakertrær er kartfestet
-(<a href="#tbl-mottakertraer" class="quarto-xref">Tabell 3</a>). Ifølge
+(<a href="#tbl-mottakertraer" class="quarto-xref">Tabell 2</a>). Ifølge
 korrespondansen ble totalt 32 enheter limfestet i 2025: 17 på barkbiter
 og 15 direkte på bark. Antallene avviker fra rapporten fra 2025 og må
 avstemmes mot originaldokumentasjonen før resultatene kan vurderes.
 
 <div id="tbl-tiltak">
 
-Tabell 2: Tiltak og oppfølging ved Vestrheim og Sanden. Kilder: Roos
+Tabell 1: Tiltak og oppfølging ved Vestrheim og Sanden. Kilder: Roos
 mfl. (2025) og korrespondansen med Statsforvalteren (Larsen 2026).
 
 <div class="cell-output-display">
@@ -235,7 +227,7 @@ mfl. (2025) og korrespondansen med Statsforvalteren (Larsen 2026).
 | Aktivitet og år | Dokumentert status | Sted og kartfesting |
 |:---|:---|:---|
 | Ringbarking av gran 2022 | Gjennomført. I 2025 var ringbarkede grantrær døde; økt lysinnslipp ble kvalitativt registrert. | Vestrheim. Enkelttrær og tiltaksareal er ikke presist kartfestet i materialet. |
-| Translokasjon med nett 2022 | Gjennomført. Nettene ble fjernet i 2025. Antall opprinnelige thalli er uavklart. | Seks trær; se <a href="#tbl-mottakertraer" class="quarto-xref">Tabell 3</a>. |
+| Translokasjon med nett 2022 | Gjennomført. Nettene ble fjernet i 2025. Antall opprinnelige thalli er uavklart. | Seks trær; se <a href="#tbl-mottakertraer" class="quarto-xref">Tabell 2</a>. |
 | Translokasjon med lim 2025 | Gjennomført. To festemåter: direkte i barksprekk og på barkbit uten direkte limkontakt. | Samme seks trær ifølge e-posten. Rapporten fra 2025 omtaler bare fire. |
 | Beitebeskyttelse 2025–2026 | Fire ruller metallnetting innkjøpt og lagret i utløe. Ikke montert per siste svar. | Kjerneområdet ved Vestrheim. Ingen utført inngjerding kan kartfestes. |
 | Oppsyn 2026 | Vinterbesøk og registrering av veltede trær. Ikke systematisk sommertilsyn. | Tre 1039 (6,617500° Ø, 61,209000° N) og 00814 (6,617624° Ø, 61,209130° N) omtalt særskilt som veltede trær |
@@ -250,7 +242,7 @@ mfl. (2025) og korrespondansen med Statsforvalteren (Larsen 2026).
 
 <div id="tbl-mottakertraer">
 
-Tabell 3: Kartfestede mottakertrær. Koordinater (WGS84) og antall er
+Tabell 2: Kartfestede mottakertrær. Koordinater (WGS84) og antall er
 gjengitt fra e-post 3. februar 2026 (Larsen 2026). Høyde er oppgitt i
 meter over havet. Tallene for 2025 avviker fra tabell 11.4 i Roos mfl.
 (2025) og må avstemmes.
@@ -277,13 +269,13 @@ seniorrådgiver Tore Larsen ved Statsforvalteren i Vestland i 2026
 (Larsen 2026) og et litteratursøk som sammenfatter utførte overvåkinger,
 tiltak og anbefalinger, samt genetikk og metodikk. Med NINAs datasett
 som utgangspunkt oppsummerer
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 4</a> aktuelle
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 3</a> aktuelle
 indikatorer, registreringsvariabler, utvalgsenheter og anbefalt
 registreringsfrekvens for den videre overvåkingen av askeglye.
 
 <div id="tbl-indikatorer">
 
-Tabell 4: Indikatorer og datainnsamling for askeglye. Antall viser
+Tabell 3: Indikatorer og datainnsamling for askeglye. Antall viser
 dokumenterte enheter fra 2025 der dette er oppgitt; tabellen er ikke en
 oversikt over feltinnsats i 2026. Frekvens og nye målinger er
 anbefalinger fra 2027. Antall for nye utvalg fastsettes før etablering.
@@ -427,7 +419,7 @@ tydelige prioriteringer, ansvar og dokumentasjon. Sikring av vertstrær
 og habitat bør prioriteres først, sammen med kontroll av eksisterende
 translokasjoner. Nye utsettinger og genetiske undersøkelser er
 supplerende arbeid. Ansvarsdelingen i
-<a href="#tbl-ansvar" class="quarto-xref">Tabell 5</a> er et forslag og
+<a href="#tbl-ansvar" class="quarto-xref">Tabell 4</a> er et forslag og
 må avklares med forvaltningen og grunneierne.
 
 **Sikre vertstrær og rekruttering av ask.** Beskytt de viktigste
@@ -527,7 +519,7 @@ bør utvikles parallelt med habitattiltakene.
 
 <div id="tbl-ansvar">
 
-Tabell 5: Forslag til ansvar og tidspunkt for oppfølging. Tiltak og
+Tabell 4: Forslag til ansvar og tidspunkt for oppfølging. Tiltak og
 finansiering må avtales; tabellen beskriver anbefalt videre arbeid.
 
 <div class="cell-output-display">

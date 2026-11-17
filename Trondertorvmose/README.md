@@ -1,6 +1,6 @@
 # Trøndertorvmose (*Sphagnum troendelagicum*)
 Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
-2026-11-11
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 > | Version comment | Første versjon, med utvidet overvåking og vekstforsøk i 2026 |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >

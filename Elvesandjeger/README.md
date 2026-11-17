@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell
-2026-11-10
+2026-11-17
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -41,12 +41,6 @@ Megan Nowell
 >
 > ### Metadata
 >
-> <div id="tbl-meta2">
->
-> Tabell 1: Indicator metadata
->
-> <div class="cell-output-display">
->
 > | Variable | Value |
 > |:---|:---|
 > | Indicator ID | INDICATORID |
@@ -64,9 +58,7 @@ Megan Nowell
 > | Version comment | Første versjon, med data 2015–2026, effekt av lupinluking og klima/vannføring |
 > | Precision |  |
 >
-> </div>
->
-> </div>
+> Indicator metadata
 
 > [!TIP]
 >
@@ -217,7 +209,7 @@ arealer slik at elveavsetningene igjen blir tilgjengelige som leveområde
 for elvesandjeger (Roos mfl. 2024, 2025). Tiltaket skal redusere
 lupinbestanden og vegetasjonsdekket på sand- og siltflatene og dermed
 øke antallet larver og voksne, som er indikatorene i overvåkingen
-(<a href="#tbl-indikatorer" class="quarto-xref">Tabell 3</a>).
+(<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>).
 
 ### 2.2 Formål med overvåking
 
@@ -415,7 +407,7 @@ Melhus kommune (Solberg mfl. 2025).
 
 Lukeinnsatsen har variert mye mellom år og lokaliteter
 (<a href="#fig-luking-areal" class="quarto-xref">Figur 5</a>,
-<a href="#tbl-luking" class="quarto-xref">Tabell 2</a>). På
+<a href="#tbl-luking" class="quarto-xref">Tabell 1</a>). På
 Storrønningen ble det luket 21 465 m² i 2024, men bare 5 101 m² i 2025,
 og i 2026 ble det igjen luket 12 507 m². På Kregnesteigen ble det luket
 om lag 17 700 m² hvert år i 2023–2025, i 2025 mest som delvis luking,
@@ -446,7 +438,7 @@ mangler antall.
 
 <div id="tbl-luking">
 
-Tabell 2: Lupinluking per lokalitet og år: areal luket (m², Ja +
+Tabell 1: Lupinluking per lokalitet og år: areal luket (m², Ja +
 Delvis), antall lupiner fjernet og lupintetthet (lupiner per m²) i
 polygonene som ble fullt luket. – = ikke registrert eller ingen
 polygoner fullt luket. Kilde: lukedata fra Midtnorsk Naturundersøkelse
@@ -501,11 +493,11 @@ feltteknikeren kan avgrense polygonene presist. For hvert polygon
 registreres antall larver per stadium og voksne, substrattype,
 vegetasjonsdekke (%) og slitasje (klasse 1–5). Antallene brukes som
 registrert, uavhengig av metode. Indikatorene er oppsummert i
-<a href="#tbl-indikatorer" class="quarto-xref">Tabell 3</a>.
+<a href="#tbl-indikatorer" class="quarto-xref">Tabell 2</a>.
 
 <div id="tbl-indikatorer">
 
-Tabell 3: Indikatorer for overvåking av elvesandjeger og effekten av
+Tabell 2: Indikatorer for overvåking av elvesandjeger og effekten av
 lupinluking.
 
 <div class="cell-output-display">
@@ -722,7 +714,7 @@ juni, juli og august. Tallene over søylene er totalt antall larver.
 
 **Lukehistorikk.** Lupintettheten i polygonene som ble fullt luket,
 avhenger av hvordan de var luket årene før
-(<a href="#tbl-lupin-luking" class="quarto-xref">Tabell 4</a>,
+(<a href="#tbl-lupin-luking" class="quarto-xref">Tabell 3</a>,
 <a href="#fig-lupin-luking" class="quarto-xref">Figur 10</a>). I
 polygoner som også ble fullt luket året før, var det 1,0 lupin per m².
 Etter to år eller mer uten luking hadde tettheten økt kraftig, til 5,9
@@ -751,7 +743,7 @@ full luking fram til neste luking.
 **Utvikling over år.** Lupintettheten i polygonene som ble fullt luket,
 gikk ned fra 4,8 per m² i 2020 til 0,88 i 2024 og 0,35 i 2025, men økte
 igjen til 1,7 per m² i 2026
-(<a href="#tbl-luking" class="quarto-xref">Tabell 2</a>). Den lave
+(<a href="#tbl-luking" class="quarto-xref">Tabell 1</a>). Den lave
 tettheten i 2025 kom etter flere år med mye luking: i 2024 ble 44 700 m²
 luket, det meste fullt. I 2025 ble bare 11 900 m² fullt luket og 16 000
 m² delvis luket. Økningen i 2026 kom særlig fra tolv polygoner på
@@ -760,7 +752,7 @@ per m², og nesten halvparten av lupinene som ble fjernet i 2026.
 
 <div id="tbl-lupin-luking">
 
-Tabell 4: Lupintetthet (lupiner per m²) i fullt lukede polygoner etter
+Tabell 3: Lupintetthet (lupiner per m²) i fullt lukede polygoner etter
 lukehistorikk. NB GLMM, n = polygon-år. RR = rateratio; KI95 = 95 %
 konfidensintervall. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01;
 \*\*\* p \< 0,001.
@@ -811,16 +803,16 @@ har slike data, så analysen sier lite om hvor lupinen vokser best.
 
 ### 6.3 Effekt av luking på elvesandjeger
 
-<a href="#tbl-effekt-n" class="quarto-xref">Tabell 5</a> viser hvor
+<a href="#tbl-effekt-n" class="quarto-xref">Tabell 4</a> viser hvor
 mange undersøkelsespolygoner som inngår i hver gruppe ved hvert besøk.
 De fleste lå i polygoner som ble luket i 2025, og det er få i polygoner
 som ikke ble luket (11 til sammen). Alle de ikke-lukede polygonene
 ligger på Storrønningen og alle de delvis lukede på Kregnesteigen, så
 sammenligningen mellom disse gruppene er også en sammenligning mellom
 lokalitetene.
-<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 6</a> viser
+<a href="#tbl-effekt-koeff" class="quarto-xref">Tabell 5</a> viser
 resultatene fra modellen, og
-<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 7</a> viser om hver
+<a href="#tbl-effekt-lrt" class="quarto-xref">Tabell 6</a> viser om hver
 variabel samlet bidrar til å forklare antallet larver. RR og KI95 leses
 som forklart i avsnitt 5: RR over 1 betyr flere larver enn i
 referansegruppen og RR under 1 færre, og hvis KI95 omfatter 1, kan vi
@@ -869,7 +861,7 @@ registrerte larvehull kraftig i 2017 og 2018 (Hanssen 2023).
 
 <div id="tbl-effekt-n">
 
-Tabell 5: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
+Tabell 4: Antall undersøkelsespolygoner per gruppe og måned. Kontroll =
 undersøkelsespolygoner på Fornes utenfor lukepolygonene; Nei/Delvis/Ja =
 lukestatus året før på Kregnesteigen og Storrønningen.
 
@@ -888,7 +880,7 @@ lukestatus året før på Kregnesteigen og Storrønningen.
 
 <div id="tbl-effekt-koeff">
 
-Tabell 6: NB GLMM for larver per undersøkelsespolygon på Kregnesteigen
+Tabell 5: NB GLMM for larver per undersøkelsespolygon på Kregnesteigen
 og Storrønningen. RR = rateratio (hvor mange ganger høyere eller lavere
 larvetettheten er enn i referansegruppen); KI95 = 95 %
 konfidensintervall. Referansenivåer: ikke luket året før, juni, sand,
@@ -916,7 +908,7 @@ mellom besøkene og lokalitetene. Signifikansnivå: \* p \< 0,05; \*\* p
 
 <div id="tbl-effekt-lrt">
 
-Tabell 7: Likelihood-ratio-tester for hvert ledd i modellen.
+Tabell 6: Likelihood-ratio-tester for hvert ledd i modellen.
 Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
 
 <div class="cell-output-display">
@@ -969,7 +961,7 @@ substrat (gjennomsnitt ± 95 % KI).
 
 **Per larvestadium.** Den samme modellen er tilpasset stadium 1, 2 og 3
 hver for seg (<a href="#fig-stadium" class="quarto-xref">Figur 13</a>,
-<a href="#tbl-stadium" class="quarto-xref">Tabell 8</a>). Voksne
+<a href="#tbl-stadium" class="quarto-xref">Tabell 7</a>). Voksne
 modelleres ikke, fordi antallet avhenger mye av været på besøksdagen.
 Ingen av stadiene viste en statistisk signifikant effekt av luking.
 Stadium 1, de yngste larvene, som klekte i 2026, hadde den største
@@ -989,7 +981,7 @@ høyere tetthet.
 
 <div id="tbl-stadium">
 
-Tabell 8: Likelihood-ratio-test for lukestatus året før i modellene per
+Tabell 7: Likelihood-ratio-test for lukestatus året før i modellene per
 stadium, og rateratio for luket mot ikke luket. Nuller =
 undersøkelsespolygoner uten larver i stadiet. Signifikansnivå: \* p \<
 0,05; \*\* p \< 0,01; \*\*\* p \< 0,001.
@@ -1028,7 +1020,7 @@ I de utforskende modellene hadde verken høyeste vannføring de 14 dagene
 før besøket, antall dager over 300 m³/s siden forrige besøk eller
 nedbøren de 14 dagene før besøket noen påviselig effekt på antallet
 larver (p = 0,21–0,92;
-<a href="#tbl-klima-modeller" class="quarto-xref">Tabell 9</a>). Serien
+<a href="#tbl-klima-modeller" class="quarto-xref">Tabell 8</a>). Serien
 inneholder ennå ikke et år med en flom over middelflom, så testen har
 lav styrke.
 
@@ -1045,7 +1037,7 @@ besøkene for elvesandjeger (oransje). Referanselinjer for vannføring:
 
 <div id="tbl-klima-modeller">
 
-Tabell 9: Utforskende NB GLMM for larver per lokalitet og besøk
+Tabell 8: Utforskende NB GLMM for larver per lokalitet og besøk
 (Storrønningen, Kregnesteigen, Fornes; måned som fast effekt, lokalitet
 og år som tilfeldige effekter) med én eksponeringsvariabel om gangen.
 Estimat på log-skala; p fra likelihood-ratio-test. Signifikansnivå: \* p
