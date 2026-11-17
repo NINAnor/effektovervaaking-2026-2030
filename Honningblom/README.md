@@ -98,7 +98,7 @@ Musk orchid (*Herminium monorchis*) is a critically endangered (CR)
 orchid with four known sites in Norway, all in Hvaler, Østfold. The
 populations at Skipstadsand, Skjellvik and Teneskjær have been monitored
 since 2014, and the population at Filletassen since 2020. The localities
-are mowned twice a year to keep the vegetation short and open. Teneskjær
+are mown twice a year to keep the vegetation short and open. Teneskjær
 is not mown but is grazed by cattle, and in 2025 placing cages over some
 of the plants was tested to protect them from grazing.
 
