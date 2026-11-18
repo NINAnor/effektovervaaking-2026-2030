@@ -235,7 +235,7 @@ fig.mean_apothecia <- ggplot(
   ) +
   labs(
     x = "Rute",
-    y = "3b.Gjennomsnittlig antall apothecia per thallus",
+    y = "3b.Gjennomsnittlig antall apothecia per rute",
     fill = "År"
   ) +
   theme_bw(base_size = 16)
@@ -244,7 +244,7 @@ fig.mean_apothecia
 
 #Save figure 
   ggsave(
-  filename = here::here("img", "Gjennomsnitt_apothecia_per_rute.png"),
+  filename = here::here("img", "3b.Gjennomsnitt_apothecia_per_rute.png"),
   plot = fig.mean_apothecia,
   width = 18,
   height = 12,
