@@ -4,7 +4,7 @@ well PlanetScope NDVI tracks it.
 Input (P:): drone orthophotos (May 2025/2026), PlanetScope indices (Aug 2025),
 data/smorbukk_planter.csv.
 Output: data/vegetasjonsdekke_punkter.csv (plants and random points),
-data/ndvi_vegetasjonsdekke_klasser.csv (NDVI classes), img/figur_5_vegetasjon_og_ndvi.png.
+data/ndvi_vegetasjonsdekke_klasser.csv (NDVI classes).
 The pixel-level NDVI pairs stay in WORK/qa (PlanetScope licence).
 
 Vegetation: orthophotos averaged to 10 cm. A pixel is vegetation if its
@@ -18,7 +18,6 @@ left out.
 
 import time
 
-import matplotlib
 import numpy as np
 import pandas as pd
 import rasterio
@@ -28,14 +27,13 @@ from rasterio.warp import reproject
 from scipy.signal import fftconvolve
 
 import config as C
-from felles import COL_BG, COL_EGG, COL_NO, TXT_DARK, TXT_LIGHT, figure_style, log, need, save_png
+from felles import log, need
 
 RES_M = 0.10
 SHADOW_BRIGHTNESS = 0.12
 N_RANDOM_PER_SITE = 2000
 MIN_PS_COVERAGE = 0.8
 rng = np.random.default_rng(7)
-plt = figure_style()
 
 
 def otsu(v, bins=256):
@@ -150,56 +148,3 @@ bstat.rename_axis("ndvi_klasse").rename(columns={"count": "n_piksler", "25%": "v
                                                  "75%": "veg_q75"}).to_csv(C.DATA / "ndvi_vegetasjonsdekke_klasser.csv",
                                                                           float_format="%.3f")
 log(f"NDVI vs drone vegetation share: Spearman r = {r_all:.2f} (n = {len(pairs)} pixels)")
-
-# ------------------------------------------------------------------ figure
-fig = plt.figure(figsize=(12.5, 4.4), layout="constrained")
-gs = fig.add_gridspec(1, 3, width_ratios=[0.8, 1.25, 1])
-axa = fig.add_subplot(gs[0])
-ex = "Gyldenlove" if "Gyldenlove" in examples else next(iter(examples))
-img, vg, vd = examples[ex]
-over = np.zeros(vg.shape + (4,))
-over[vg] = (0.15, 0.75, 0.25, 0.55)
-over[~vd] = (0.1, 0.1, 0.3, 0.35)
-axa.imshow(img)
-axa.imshow(over)
-axa.set_xticks([])
-axa.set_yticks([])
-axa.set_title(f"a  Vegetasjon fra droneortofoto\n{C.SITE_LABELS[ex]}, 24 × 24 m utsnitt", loc="left",
-              fontsize=10, fontweight="bold", color=TXT_DARK)
-axa.text(0.01, -0.06, "Grønt: vegetasjon (grønn eller gul-brun farge). Mørkeblått: skygge, utelatt.",
-         transform=axa.transAxes, fontsize=8, color=TXT_LIGHT, va="top")
-
-axb = fig.add_subplot(gs[1])
-groups = [("Tilfeldige punkt", COL_BG), ("Uten egg", COL_NO), ("Med egg", COL_EGG)]
-labels = list(C.SITE_LABELS.values())
-for j, s in enumerate(labels):
-    for gi, (g, col) in enumerate(groups):
-        v = df.loc[(df.site == s) & (df.gruppe == g), "veg_1m"].dropna()
-        if len(v):
-            bp = axb.boxplot([v], positions=[j + (gi - 1) * 0.26], widths=0.22, showfliers=False,
-                             patch_artist=True, medianprops=dict(color="#1B3341", linewidth=1.5))
-            bp["boxes"][0].set_facecolor(matplotlib.colors.to_rgba(col, 0.55))
-            bp["boxes"][0].set_edgecolor("#263D4C")
-axb.set_xticks(range(len(labels)), labels)
-axb.set_ylabel("Andel vegetasjon innen 1 m")
-axb.set_ylim(-0.02, 1.02)
-for g, col in groups:
-    axb.bar(0, 0, color=matplotlib.colors.to_rgba(col, 0.55), label=g if g == "Tilfeldige punkt" else f"Smørbukk {g.lower()}")
-axb.legend(frameon=False, fontsize=8, loc="upper left", ncol=3, bbox_to_anchor=(0, 1.1))
-axb.set_title("b  Smørbukk står på mer bart berg", loc="left", fontsize=10, fontweight="bold", color=TXT_DARK, pad=22)
-
-axc = fig.add_subplot(gs[2])
-for s, col in zip(labels, ["#2F6B55", "#8A6A2B", "#5B4E8C"]):
-    d = pairs[pairs.site == s]
-    axc.scatter(d.ndvi, d.veg_andel, s=4, alpha=0.35, color=col, linewidths=0, label=s)
-bx = [float(i.split("-")[0]) + 0.025 for i in bstat.index]
-axc.fill_between(bx, bstat["25%"], bstat["75%"], color="#1B3341", alpha=0.15, linewidth=0)
-axc.plot(bx, bstat["50%"], color="#1B3341", linewidth=2, marker="o", markersize=4, label="Median (kvartiler)")
-axc.set_xlabel("PlanetScope NDVI (aug. 2025, 3 m)")
-axc.set_ylabel("Andel vegetasjon i pikselen (drone)")
-axc.set_title(f"c  NDVI og vegetasjonsdekke (Spearman r = {r_all:.2f})".replace(".", ","), loc="left", fontsize=10,
-              fontweight="bold", color=TXT_DARK)
-axc.legend(frameon=False, fontsize=8, markerscale=3, loc="upper left")
-fig.suptitle("Bart berg mot vegetasjon rundt smørbukk – og koblingen til PlanetScope NDVI", x=0.01, ha="left",
-             fontsize=12.5, fontweight="bold", color=TXT_DARK)
-save_png(fig, C.IMG / "figur_5_vegetasjon_og_ndvi.png")

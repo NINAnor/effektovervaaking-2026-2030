@@ -22,7 +22,7 @@ from pyproj import Transformer
 from scipy.spatial import cKDTree
 
 import config as C
-from felles import (horn_slope_aspect, load_lidar, log, need, plant_chm, plant_terrain, radius_code,
+from felles import (horn_slope_aspect, load_lidar, log, need, plant_terrain, radius_code,
                     ray_distances, solar_exposure, sun_table, trace_horizons)
 
 C.QA.mkdir(parents=True, exist_ok=True)
@@ -124,7 +124,6 @@ dtm, dom, tf, crs, res = load_lidar(C.LIDAR_DTM, C.LIDAR_DOM, box, C.CACHE)
 slope, aspect = horn_slope_aspect(dtm, res)
 terrain = plant_terrain(dtm, slope, aspect, tf, res, lx, ly, C.RADII_M, C.SOLAR["plane_radius_m"],
                         C.MIN_VALID_FRACTION)
-terrain = terrain.join(plant_chm(dom - dtm, tf, res, lx, ly, C.RADII_M, C.CHM_THRESHOLD_M, C.MIN_VALID_FRACTION))
 terrain.index = plants.index
 plants = plants.join(terrain)
 log(f"Terrain: LiDAR grid {dtm.shape[1]} x {dtm.shape[0]} at {res} m")
@@ -193,7 +192,6 @@ cols = (["plant_row_id", "Year", "Egg", "site", "x_m", "y_m"]
         + [c for c in plants.columns if c.startswith("n_sedum_")]
         + [f"{m}_{radius_code(r)}m" for m in ("slope_deg", "northness", "eastness", "dem_fraction") for r in C.RADII_M]
         + ["tpi_5m", "plane_slope_deg", "plane_aspect_deg", "steep_face"]
-        + [f"chm_{m}_{radius_code(r)}m" for m in ("mean", "max", "cover") for r in C.RADII_M]
         + ["solar_kwh_m2_day", "beam_kwh_m2_day", "solar_rel_flat_pct", "sun_hours_day", "sun_hours_morning_day",
            "sun_hours_afternoon_day", "sky_view_factor", "horizon_reach_min_m", "horizon_max_deg",
            "endring_drone_lidar_m", "has_drone_dsm", "has_rgb"])

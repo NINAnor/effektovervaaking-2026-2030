@@ -68,7 +68,6 @@ RADII_M = [1, 5]                # plant-scale summaries
 MIN_VALID_FRACTION = 0.75       # share of valid cells needed within a disk
 STEEP_FACE_DEG = 60             # flag: 2.5D models unreliable above this slope
 LOCALITY_MAX_DIST_M = 150       # plants outside a drone tile take the nearest locality within this distance
-CHM_THRESHOLD_M = 0.5           # DOM - DTM above this = raised structure
 TREE_HEIGHT_M = 2.0             # DOM - DTM above this = trees, buildings, tall walls
 
 SOLAR = {
@@ -91,9 +90,10 @@ HABITAT = {
     "n_background": 20000,
     "seed": 2026,
     "survey_buffer_m": 4.0,
-    # Tested but not used in the model: NDVI (does not cover the whole area,
-    # adds nothing) and height above ground (follows slope on steep faces).
-    "exclude_from_model": ["ndvi", "chm"],
+    # Tested but not used in the model: NDVI (does not cover the whole area, adds nothing).
+    # Height above ground (DOM - DTM) is not used at all: on steep faces it only
+    # reflects differences between the two LiDAR grids.
+    "exclude_from_model": ["ndvi"],
 }
 
 N_PERMUTATIONS = int(os.environ.get("KLIPPEBLAAVINGE_N_PERM", 9999))

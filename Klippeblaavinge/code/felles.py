@@ -198,34 +198,6 @@ def plant_terrain(dtm, slope, aspect, transform, res, x, y, radii, plane_r, min_
     return pd.DataFrame(out)
 
 
-def plant_chm(chm, transform, res, x, y, radii, threshold, min_frac):
-    """Height above ground (DOM - DTM) per plant disk: mean, max and share of
-    cells above threshold. Picks up vegetation, walls and boulders, and on
-    steep faces differences between the two LiDAR grids."""
-    n = len(x)
-    k = int(np.ceil(max(radii) / res)) + 1
-    pad = np.pad(chm, k, constant_values=np.nan)
-    col = (x - transform.c) / res
-    row = (transform.f - y) / res
-    out = {f"chm_{m}_{radius_code(r)}m": np.full(n, np.nan) for r in radii for m in ("mean", "max", "cover")}
-    for j in range(n):
-        r0, c0, DX, DY = _disk_offsets(row[j], col[j], res, k)
-        if not (0 <= r0 < chm.shape[0] and 0 <= c0 < chm.shape[1]):
-            continue
-        w = pad[r0:r0 + 2 * k + 1, c0:c0 + 2 * k + 1]
-        dist = np.hypot(DX, DY)
-        for r in radii:
-            v = w[dist <= r]
-            v = v[np.isfinite(v)]
-            if len(v) < min_frac * (dist <= r).sum():
-                continue
-            code = radius_code(r)
-            out[f"chm_mean_{code}m"][j] = np.clip(v, 0, None).mean()
-            out[f"chm_max_{code}m"][j] = v.max()
-            out[f"chm_cover_{code}m"][j] = (v > threshold).mean()
-    return pd.DataFrame(out)
-
-
 # ------------------------------------------------------ horizons and sun
 
 
