@@ -18,11 +18,11 @@ Or run a single script directly: `cd code; pixi run python 3_habitatmodell.py`.
 
 | Script | Does | Writes |
 |---|---|---|
-| `1_planter.py` | Survey points → duplicate QA, neighbour counts, locality, LiDAR 2022 terrain (slope, aspect, relative height, height above ground), horizons to 500 m and clear-sky solar exposure 15 May–30 June per plant | `data/smorbukk_planter.csv` |
-| `2_vegetasjonsdekke.py` | Vegetation cover around plants and random points from the drone orthophotos; comparison with PlanetScope NDVI | `data/vegetasjonsdekke_punkter.csv`, `data/ndvi_vegetasjonsdekke_klasser.csv`, `img/figur_5_…` |
+| `1_planter.py` | Survey points → duplicate QA, neighbour counts, locality, LiDAR 2022 terrain (slope, aspect, relative height), horizons to 500 m and clear-sky solar exposure 15 May–30 June per plant | `data/smorbukk_planter.csv` |
+| `2_vegetasjonsdekke.py` | Vegetation cover around plants and random points from the drone orthophotos; comparison with PlanetScope NDVI | `data/vegetasjonsdekke_punkter.csv`, `data/ndvi_vegetasjonsdekke_klasser.csv` |
 | `3_habitatmodell.py` | 2 m predictor grid for Halden festning, presence-background habitat model, leave-one-locality-out validation, high-confidence habitat and egg-laying potential | `data/habitatmodell_*.csv`, `data/habitat_hoy_sikkerhet.gpkg`, `img/figur_3_…`, `img/figur_4_…` |
-| `4_egg_test.py` | 16 variables tested for egg vs no egg within localities (AUC, permutation test, Benjamini–Hochberg) | `data/egg_vs_ikke_egg.csv`, `data/egg_test_nokkeltall.csv`, `img/figur_2_…` |
-| `5_figur_3d_gyldenlove.py` | 3D view of Gyldenløve from the drone point cloud, with plants | `img/figur_1_3d_gyldenlove.jpg` |
+| `4_egg_test.py` | 14 variables tested for egg vs no egg within localities (AUC, permutation test, Benjamini–Hochberg) | `data/egg_vs_ikke_egg.csv`, `data/egg_test_nokkeltall.csv`, `img/figur_2_…` |
+| `5_figur_3d_gyldenlove.py` | 3D view of Gyldenløve from the drone point cloud, with plants. `--interaktiv` opens a viewer to choose the view (K saves it to `figur_1_kamera.json`); `--skjermbilde <png>` builds the figure from a screenshot taken in the viewer | `img/figur_1_3d_gyldenlove.jpg` |
 
 `config.py` holds all paths and settings. `felles.py` holds shared functions
 (terrain, horizons, solar, statistics, figure style).
@@ -65,5 +65,5 @@ To run with data somewhere else, set these environment variables:
   "High confidence" means the full model and all three leave-one-locality-out
   models agree.
 
-Height above ground (DOM − DTM) increases with slope because the LiDAR models
-diverge on steep faces. It is reported but not interpreted as plant height.
+Height above ground (DOM − DTM) is not used. On steep faces it only reflects
+differences between the LiDAR terrain and surface models, not vegetation.

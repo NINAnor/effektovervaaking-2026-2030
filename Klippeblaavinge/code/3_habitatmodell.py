@@ -62,7 +62,6 @@ PRED = {  # code: (Norwegian label, unit)
     "sun_hours": ("Direkte sol", "timer/døgn"),
     "svf": ("Himmelsynsfaktor", "0–1"),
     "tree_10m": ("Trær/høye strukturer innen 10 m", "andel"),
-    "chm": ("Høyde over terreng (usikker i bratt terreng)", "m"),
     "ndvi": ("NDVI (PlanetScope aug. 2025)", ""),
 }
 ASPECT = {"northness_5m": ("Nordvendthet innen 5 m", "−1 sør … +1 nord"),
@@ -109,10 +108,9 @@ P["northness_5m"] = disk_mean(np.cos(asp_rad).astype(np.float32), 5 / RES)
 P["eastness_5m"] = disk_mean(np.sin(asp_rad).astype(np.float32), 5 / RES)
 z_cell = block_mean(crop_fine(dtm), f_map)
 P["tpi_5m"] = z_cell - disk_mean(z_cell, 5 / RES)
-chm_fine = crop_fine(dom) - crop_fine(dtm)
-P["chm"] = np.clip(block_mean(chm_fine, f_map), 0, None)
-P["tree_10m"] = disk_mean(block_mean((chm_fine > C.TREE_HEIGHT_M).astype(np.float32), f_map), 10 / RES)
-del chm_fine
+tall = (crop_fine(dom) - crop_fine(dtm)) > C.TREE_HEIGHT_M   # trees, buildings, tall walls
+P["tree_10m"] = disk_mean(block_mean(tall.astype(np.float32), f_map), 10 / RES)
+del tall
 with rasterio.open(C.PLANETSCOPE) as r:
     band = [i + 1 for i, d in enumerate(r.descriptions) if d and d.upper() == "NDVI"][0]
     P["ndvi"] = np.full((H, W), np.nan, dtype=np.float32)

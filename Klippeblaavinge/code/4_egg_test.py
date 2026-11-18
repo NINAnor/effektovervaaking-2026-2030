@@ -10,8 +10,9 @@ For each variable: medians, direction of the difference at each locality, an
 AUC calculated within each locality and averaged (weighted by egg plants), a
 two-sided permutation p-value with egg labels shuffled within localities, and
 Benjamini-Hochberg q-values. Localities differ strongly in egg share, so
-pooled tests would mix locality and habitat. Height above ground is re-tested
-after removing its slope trend within each locality.
+pooled tests would mix locality and habitat. Height above ground (DOM - DTM)
+is not tested: on steep faces it only reflects differences between the two
+LiDAR grids.
 """
 
 import numpy as np
@@ -53,9 +54,6 @@ VARS = [  # column, English label, unit, source and scale, Norwegian figure labe
     ("sun_hours_morning_day", "Direct sun before solar noon", "h/day", "LiDAR 2022, horizons 500 m",
      "Morgensol (timer/døgn)"),
     ("sky_view_factor", "Sky-view factor", "0–1", "LiDAR DOM 2022, plant plane", "Himmelsynsfaktor (0–1)"),
-    ("chm_mean_1m", "Height above ground", "m", "LiDAR DOM − DTM 2022, within 1 m", "Høyde over terreng innen 1 m (m) †"),
-    ("chm_cover_5m", "Share > 0.5 m above ground", "0–1", "LiDAR DOM − DTM 2022, within 5 m",
-     "Andel > 0,5 m over terreng, 5 m †"),
     ("tree_10m", "Trees/tall structures (> 2 m)", "%", "LiDAR DOM − DTM 2022, within 10 m",
      "Trær/høye strukturer innen 10 m (%)"),
     ("veg_1m", "Vegetation cover", "%", "Drone orthophoto 2025/26, within 1 m", "Vegetasjonsdekke innen 1 m (%)"),
@@ -90,21 +88,8 @@ tab = pd.DataFrame(rows)
 tab["q_bh"] = bh_adjust(tab.p_perm)
 tab.to_csv(C.DATA / "egg_vs_ikke_egg.csv", index=False, float_format="%.4f")
 
-# Height above ground follows slope on steep faces (grid interpolation):
-# re-test after removing the slope trend within localities (decile medians).
-d = plants.dropna(subset=["chm_mean_1m", "slope_deg_1m"]).copy()
-rho = d[["chm_mean_1m", "slope_deg_1m"]].corr(method="spearman").iloc[0, 1]
-d["chm_res"] = np.nan
-for s, g in d.groupby("site"):
-    bins = pd.qcut(g.slope_deg_1m, 10, duplicates="drop")
-    d.loc[g.index, "chm_res"] = g.chm_mean_1m - g.groupby(bins, observed=True).chm_mean_1m.transform("median")
-auc_res = strat_auc(d.chm_res.to_numpy(), d.egg.to_numpy(), d.site.to_numpy())
-slope_bins = d.groupby(pd.cut(d.slope_deg_1m, [0, 15, 25, 35, 45, 90]), observed=True).chm_mean_1m.median()
-pd.Series({"chm_slope_spearman": rho, "chm_auc_after_slope": auc_res,
-           "chm_median_slope_under_15": slope_bins.iloc[0], "chm_median_slope_over_45": slope_bins.iloc[-1],
-           "n_permutations": C.N_PERMUTATIONS}).rename("verdi").rename_axis("nokkeltall").to_csv(
-    C.DATA / "egg_test_nokkeltall.csv", float_format="%.4f")
-log(f"Height above ground vs slope: rho {rho:.2f}; AUC after removing slope trend {auc_res:.2f}")
+pd.Series({"n_permutations": C.N_PERMUTATIONS}).rename("verdi").rename_axis("nokkeltall").to_csv(
+    C.DATA / "egg_test_nokkeltall.csv")
 
 # ------------------------------------------------------------------ figure
 nor = {v[0]: v[4] for v in VARS}
@@ -141,7 +126,5 @@ fig.suptitle("Smørbukk med og uten egg av klippeblåvinge: alle testede variabl
              x=0.01, ha="left", fontsize=13, fontweight="bold", color=TXT_DARK)
 fig.text(0.01, -0.03, "Punkter: planter per lokalitet; strek: median. AUC beregnet innen lokalitet (0,5 = ingen "
          "forskjell; >0,5 = høyere verdier ved egg-planter). q: permutasjonstest innen lokalitet, korrigert for "
-         f"{len(tab)} tester (Benjamini–Hochberg); * = q < 0,05. † Høyde over terreng følger helningen (usikkerhet i "
-         "LiDAR-modellene i bratt terreng); uten helningseffekten forsvinner forskjellen (AUC "
-         + f"{auc_res:.2f}".replace(".", ",") + ").", fontsize=8.5, color=TXT_LIGHT, wrap=True)
+         f"{len(tab)} tester (Benjamini–Hochberg); * = q < 0,05.", fontsize=8.5, color=TXT_LIGHT, wrap=True)
 save_png(fig, C.IMG / "figur_2_egg_variabler_rangert.png")

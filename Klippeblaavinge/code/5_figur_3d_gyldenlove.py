@@ -4,6 +4,17 @@ Input (P:): Gyldenløve point cloud (Metashape, May 2026, LAZ with RGB), the
 raw GNSS export of the 2026 smørbukk survey (heights), smørbukk survey points.
 Output: img/figur_1_3d_gyldenlove.jpg.
 
+Choosing the view yourself:
+    pixi run python 5_figur_3d_gyldenlove.py --interaktiv
+opens the point cloud in a window (left drag: rotate, right drag or scroll:
+zoom, shift + left drag or middle drag: pan). Press K to save the current
+view to code/figur_1_kamera.json, Q to close. A normal run then renders the
+figure from that saved view, cropped to the window as you framed it. Delete
+the json file to go back to the default view (bearing/elevation in VIEW).
+A screenshot taken in the interactive window can be used as the image instead
+of a new render (lighter and with fewer gaps at the lower point density):
+    pixi run python 5_figur_3d_gyldenlove.py --skjermbilde path/to/screenshot.png
+
 The merged survey layer has no heights, so plant heights come from the raw
 GNSS export (ellipsoidal heights), shifted by the median difference to the
 point-cloud surface at the plants (constant to within a few cm). Plants on
@@ -11,7 +22,10 @@ steep faces are therefore placed correctly. Egg records without their own
 GNSS height take the nearest GNSS point within 25 cm, else the cloud surface.
 """
 
+import argparse
+import json
 import time
+from pathlib import Path
 
 import geopandas as gpd
 import laspy
@@ -41,6 +55,19 @@ VIEW = {
     "egg_radius_m": 0.32,
     "pin_height_m": 3.5,
 }
+INTERACTIVE_WINDOW = (1500, 1000)   # same 3:2 shape as VIEW["window"], so the saved framing carries over
+CAMERA_FILE = Path(__file__).with_name("figur_1_kamera.json")
+COMPASS = ["nord", "nord-nordøst", "nordøst", "øst-nordøst", "øst", "øst-sørøst", "sørøst", "sør-sørøst",
+           "sør", "sør-sørvest", "sørvest", "vest-sørvest", "vest", "vest-nordvest", "nordvest", "nord-nordvest"]
+ap = argparse.ArgumentParser(description="3D figure of Gyldenløve (figur 1).")
+ap.add_argument("--interaktiv", action="store_true", help="open an interactive window to choose and save the view")
+ap.add_argument("--andel", type=float, help="share of points shown (default 0.35; 0.15 in the interactive window)")
+ap.add_argument("--skjermbilde", type=Path, help="use this screenshot from the interactive window as the image")
+args = ap.parse_args()
+if args.andel:
+    VIEW["keep_fraction"] = args.andel
+elif args.interaktiv or args.skjermbilde:
+    VIEW["keep_fraction"] = 0.15
 COL_PLANT = "#2E9BE6"          # saturated blue: does not read as a gap in the point cloud
 plt = figure_style()
 need(C.GYLDENLOVE_PC, "Gyldenløve point cloud")
@@ -125,7 +152,6 @@ p_pts, e_pts = P_ALL[on_cloud(P_ALL)], E_ALL[on_cloud(E_ALL)]
 n_hidden = len(P_ALL) + len(E_ALL) - len(p_pts) - len(e_pts)
 
 # ----------------------------------------------------------------- render
-pv.OFF_SCREEN = True
 allp = np.vstack([p_pts, e_pts])
 lo_p, hi_p = np.percentile(allp, [2, 98], axis=0)
 centre = np.array([(lo_p[0] + hi_p[0]) / 2, (lo_p[1] + hi_p[1]) / 2, np.median(allp[:, 2])])
@@ -134,51 +160,96 @@ b, e = np.radians(VIEW["bearing_deg"]), np.radians(VIEW["elevation_deg"])
 dist = span / np.tan(np.radians(VIEW["view_angle_deg"]) / 2) * 0.5
 cam = centre + dist * np.array([np.sin(b) * np.cos(e), np.cos(b) * np.cos(e), np.sin(e)])
 
-cloud = pv.PolyData(xyz)
-cloud["rgb"] = rgb
-pl = pv.Plotter(off_screen=True, window_size=VIEW["window"])
-pl.set_background("white")
-pl.add_points(cloud, scalars="rgb", rgb=True, point_size=VIEW["point_size"], render_points_as_spheres=False)
-sph = pv.Sphere(radius=1.0, theta_resolution=20, phi_resolution=20)
-pr, er = VIEW["plant_radius_m"], VIEW["egg_radius_m"]
-pl.add_mesh(pv.PolyData(p_pts + np.array([0, 0, pr * 0.6], dtype=np.float32)).glyph(geom=sph, scale=False,
-                                                                                      orient=False, factor=pr),
-            color=COL_PLANT, smooth_shading=True, ambient=0.35, diffuse=0.75, specular=0.2)
-elift = np.array([0, 0, er * 0.6], dtype=np.float32)
-pl.add_mesh(pv.PolyData(e_pts + elift).glyph(geom=sph, scale=False, orient=False, factor=er),
-            color="#F07A2E", smooth_shading=True, ambient=0.35, diffuse=0.75, specular=0.3)
-for p in e_pts:
-    top = p + np.array([0, 0, VIEW["pin_height_m"]], dtype=np.float32)
-    pl.add_mesh(pv.Tube(pointa=p + elift, pointb=top, radius=er * 0.18), color="#F07A2E", ambient=0.4)
-    pl.add_mesh(pv.Sphere(radius=er * 0.8, center=top), color="#F07A2E", smooth_shading=True, ambient=0.4)
-pl.enable_eye_dome_lighting()
-pl.camera.position, pl.camera.focal_point, pl.camera.up = tuple(cam), tuple(centre), (0, 0, 1)
-pl.camera.view_angle = VIEW["view_angle_deg"]
-pl.enable_anti_aliasing("ssaa")
-img = pl.screenshot(return_img=True)
+saved = json.loads(CAMERA_FILE.read_text(encoding="utf-8")) if CAMERA_FILE.exists() else None
+if saved:
+    cam, centre = np.array(saved["position"]), np.array(saved["focal_point"])
+    up, view_angle = tuple(saved["up"]), saved["view_angle"]
+else:
+    up, view_angle = (0, 0, 1), VIEW["view_angle_deg"]
 
-# Crop around the plants (outermost 1 % ignored; every egg plant and pin kept).
-ren = pl.renderer
-sx = img.shape[1] / ren.GetSize()[0]
-proj = []
-for p in np.vstack([allp, e_pts + np.array([0, 0, VIEW["pin_height_m"]], dtype=np.float32)]):
-    ren.SetWorldPoint(float(p[0]), float(p[1]), float(p[2]), 1.0)
-    ren.WorldToDisplay()
-    dx, dy, _ = ren.GetDisplayPoint()
-    proj.append((img.shape[0] - dy * sx, dx * sx))
-pl.close()
-proj = np.array(proj)
-h, w = img.shape[:2]
-n_pl = len(allp)
-eproj = np.vstack([proj[len(p_pts):n_pl], proj[n_pl:]])
-r_lo, r_hi = np.percentile(proj[:n_pl, 0], [1, 99])
-c_lo, c_hi = np.percentile(proj[:n_pl, 1], [1, 99])
-r_lo, r_hi = min(r_lo, eproj[:, 0].min()), max(r_hi, eproj[:, 0].max())
-c_lo, c_hi = min(c_lo, eproj[:, 1].min()), max(c_hi, eproj[:, 1].max())
-rc, cc = (r_lo + r_hi) / 2, (c_lo + c_hi) / 2
-hr = min((r_hi - r_lo) / 2 * VIEW["crop_margin"], rc, h - rc)
-hc = min(max((c_hi - c_lo) / 2 * VIEW["crop_margin"], hr * VIEW["crop_min_aspect"]), cc, w - cc)
-img = img[int(rc - hr):int(rc + hr), int(cc - hc):int(cc + hc)]
+
+def compass(position, focal):
+    """Norwegian compass direction the scene is seen from (camera relative to its focal point)."""
+    dx, dy = position[0] - focal[0], position[1] - focal[1]
+    return COMPASS[int(np.round((np.degrees(np.arctan2(dx, dy)) % 360) / 22.5)) % 16]
+
+
+if args.skjermbilde:
+    from PIL import Image
+    img = np.asarray(Image.open(args.skjermbilde).convert("RGB"))
+else:
+    cloud = pv.PolyData(xyz)
+    cloud["rgb"] = rgb
+    pv.OFF_SCREEN = not args.interaktiv
+    if args.interaktiv:
+        pl = pv.Plotter(window_size=INTERACTIVE_WINDOW, title="Gyldenløve 3D: K lagrer visningen, Q lukker")
+    else:
+        window = VIEW["window"]
+        if saved and saved.get("window"):   # keep the shape of the window the view was framed in
+            sw, sh = saved["window"]
+            window = (VIEW["window"][0], int(round(VIEW["window"][0] * sh / sw)))
+        pl = pv.Plotter(off_screen=True, window_size=window)
+    pl.set_background("white")
+    pl.add_points(cloud, scalars="rgb", rgb=True, point_size=VIEW["point_size"], render_points_as_spheres=False)
+    sph = pv.Sphere(radius=1.0, theta_resolution=20, phi_resolution=20)
+    pr, er = VIEW["plant_radius_m"], VIEW["egg_radius_m"]
+    pl.add_mesh(pv.PolyData(p_pts + np.array([0, 0, pr * 0.6], dtype=np.float32)).glyph(geom=sph, scale=False,
+                                                                                          orient=False, factor=pr),
+                color=COL_PLANT, smooth_shading=True, ambient=0.35, diffuse=0.75, specular=0.2)
+    elift = np.array([0, 0, er * 0.6], dtype=np.float32)
+    pl.add_mesh(pv.PolyData(e_pts + elift).glyph(geom=sph, scale=False, orient=False, factor=er),
+                color="#F07A2E", smooth_shading=True, ambient=0.35, diffuse=0.75, specular=0.3)
+    for p in e_pts:
+        top = p + np.array([0, 0, VIEW["pin_height_m"]], dtype=np.float32)
+        pl.add_mesh(pv.Tube(pointa=p + elift, pointb=top, radius=er * 0.18), color="#F07A2E", ambient=0.4)
+        pl.add_mesh(pv.Sphere(radius=er * 0.8, center=top), color="#F07A2E", smooth_shading=True, ambient=0.4)
+    pl.enable_eye_dome_lighting()
+    pl.camera.position, pl.camera.focal_point, pl.camera.up = tuple(cam), tuple(centre), up
+    pl.camera.view_angle = view_angle
+
+    if args.interaktiv:
+        def save_camera():
+            c = pl.camera
+            CAMERA_FILE.write_text(json.dumps({
+                "note": "Camera for 5_figur_3d_gyldenlove.py, in metres relative to the point cloud's lower-left corner",
+                "position": [float(v) for v in c.position], "focal_point": [float(v) for v in c.focal_point],
+                "up": [float(v) for v in c.up], "view_angle": float(c.view_angle),
+                "window": [int(v) for v in pl.window_size]}, indent=2), encoding="utf-8")
+            log(f"Saved view to {CAMERA_FILE.name} (seen from {compass(c.position, c.focal_point)})")
+
+        pl.add_key_event("k", save_camera)
+        pl.add_text("Venstre: roter · høyre/hjul: zoom · shift+venstre: flytt · K: lagre visning · Q: lukk",
+                    position="upper_left", font_size=9, color="black")
+        log("Interactive window open: press K to save the view, Q to close")
+        pl.show()
+        raise SystemExit
+    pl.enable_anti_aliasing("ssaa")
+    img = pl.screenshot(return_img=True)
+
+    # Crop around the plants (outermost 1 % ignored; every egg plant and pin kept),
+    # unless the view was framed by hand in the interactive window.
+    ren = pl.renderer
+    sx = img.shape[1] / ren.GetSize()[0]
+    proj = []
+    for p in np.vstack([allp, e_pts + np.array([0, 0, VIEW["pin_height_m"]], dtype=np.float32)]):
+        ren.SetWorldPoint(float(p[0]), float(p[1]), float(p[2]), 1.0)
+        ren.WorldToDisplay()
+        dx, dy, _ = ren.GetDisplayPoint()
+        proj.append((img.shape[0] - dy * sx, dx * sx))
+    pl.close()
+    proj = np.array(proj)
+    h, w = img.shape[:2]
+    n_pl = len(allp)
+    eproj = np.vstack([proj[len(p_pts):n_pl], proj[n_pl:]])
+    r_lo, r_hi = np.percentile(proj[:n_pl, 0], [1, 99])
+    c_lo, c_hi = np.percentile(proj[:n_pl, 1], [1, 99])
+    r_lo, r_hi = min(r_lo, eproj[:, 0].min()), max(r_hi, eproj[:, 0].max())
+    c_lo, c_hi = min(c_lo, eproj[:, 1].min()), max(c_hi, eproj[:, 1].max())
+    rc, cc = (r_lo + r_hi) / 2, (c_lo + c_hi) / 2
+    hr = min((r_hi - r_lo) / 2 * VIEW["crop_margin"], rc, h - rc)
+    hc = min(max((c_hi - c_lo) / 2 * VIEW["crop_margin"], hr * VIEW["crop_min_aspect"]), cc, w - cc)
+    if not saved:
+        img = img[int(rc - hr):int(rc + hr), int(cc - hc):int(cc + hc)]
 
 # ----------------------------------------------------------------- figure
 h, w = img.shape[:2]
@@ -189,15 +260,15 @@ ax.imshow(img)
 ax.axis("off")
 fig.text(0.01, 1 - 0.15 / H, "Gyldenløve i 3D: smørbukk og egg av klippeblåvinge", fontsize=15, fontweight="bold",
          color=TXT_DARK, va="top")
-fig.text(0.01, 1 - 0.52 / H, f"Sett fra sør-sørøst · smørbukk med og uten egg {C.EGG_YEARS[0]}", fontsize=10.5,
+fig.text(0.01, 1 - 0.52 / H, f"Sett fra {compass(cam, centre)} · smørbukk med og uten egg {C.EGG_YEARS[0]}", fontsize=10.5,
          color="#4B5F6A", va="top")
 fig.legend(handles=[Line2D([], [], marker="o", linestyle="", markersize=7, markerfacecolor=COL_PLANT,
                            markeredgecolor="#2B5A73", label=f"Smørbukk uten egg (n = {len(p_pts)})"),
                     Line2D([], [], marker="o", linestyle="", markersize=11, markerfacecolor=COL_EGG,
                            markeredgecolor="#7A3410", label=f"Smørbukk med egg {C.EGG_YEARS[0]} (n = {len(e_pts)})")],
            loc="lower left", bbox_to_anchor=(0.01, 0.4 / H), ncol=2, frameon=False, fontsize=10)
-fig.text(0.01, 0.12 / H, f"Fargelagt punktsky fra dronefotogrammetri (Gyldenløve, mai 2026), "
-         f"{VIEW['keep_fraction'] * 100:.0f} % av punktene vist. Plantehøyder fra GNSS-innmåling, justert til "
+fig.text(0.01, 0.12 / H, "Fargelagt punktsky fra dronefotogrammetri (Gyldenløve, mai 2026). "
+         "Plantehøyder fra GNSS-innmåling, justert til "
          "punktskyen. Planter med egg er markert med nål. Skrå 3D-visning: ingen fast målestokk."
          + (f" {n_hidden} planter utenfor punktskyen er ikke vist." if n_hidden else ""),
          fontsize=8.5, color=TXT_LIGHT, va="bottom", wrap=True)

@@ -1,0 +1,23 @@
+{
+  "note": "Camera for 5_figur_3d_gyldenlove.py, in metres relative to the point cloud's lower-left corner",
+  "position": [
+    106.50003877030649,
+    -29.69850301698295,
+    80.30712951229069
+  ],
+  "focal_point": [
+    71.12755728234235,
+    38.8137580527845,
+    61.39916238168527
+  ],
+  "up": [
+    -0.1489420646088946,
+    0.19087093968599456,
+    0.9702497337146895
+  ],
+  "view_angle": 32.0,
+  "window": [
+    2355,
+    1282
+  ]
+}
