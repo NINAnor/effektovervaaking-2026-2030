@@ -47,6 +47,267 @@ lav <- lav %>%
 
 ## Figures
 
+### Individual thalli per plot
+
+```{r}
+
+thalli_summary <- lav %>%
+  filter(Year %in% c(2025, 2026)) %>%
+  group_by(Rute, Year) %>%
+  summarise(
+    Antall = n_distinct(Individ, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  complete(Rute, Year = c(2025, 2026), fill = list(Antall = 0))
+
+fig.count <- ggplot(
+  thalli_summary,
+  aes(x = Rute, y = Antall,
+      fill = factor(Year))
+) +
+  geom_col(
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) + 
+  scale_fill_manual(
+    values = c("2025" = "#004F71",
+               "2026" = "#E69F00"),
+    name = "År"
+  ) +
+  labs(
+    x = "Rute",
+    y = "Antall thalli",
+    title = ""
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_classic()
+
+fig.count  
+ 
+#Save figure 
+  ggsave(
+  filename = here::here("img", "Antall_thalli_per_rute.png"),
+  plot = fig.count,
+  width = 18,
+  height = 12,
+  units = "cm",
+  dpi = 300)
+```
+
+### Fertile thalli per plot
+
+```{r}
+
+fertile_summary <- lav %>%
+  filter(Year %in% c(2025, 2026)) %>%
+  group_by(Rute, Year) %>%
+  summarise(
+    Antall = n_distinct(Individ[Fertil == 1 & !is.na(Fertil)],
+                        na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  complete(Rute, Year = c(2025, 2026), fill = list(antall = 0))
+
+fig.fertile <- ggplot(
+  fertile_summary,
+  aes(x = Rute, y = Antall,
+      fill = factor(Year))
+) +
+  geom_col(
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) + 
+  scale_fill_manual(
+    values = c("2025" = "#004F71",
+               "2026" = "#E69F00"),
+    name = "År"
+  ) +
+  labs(
+    x = "Rute",
+    y = "Antall fertile thalli",
+    title = ""
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_classic()
+
+fig.fertile 
+
+#Save figure 
+  ggsave(
+  filename = here::here("img", "Antall_fertile_thalli_per_rute.png"),
+  plot = fig.fertile,
+  width = 18,
+  height = 12,
+  units = "cm",
+  dpi = 300)
+
+```
+
+### Number of apothecia per plot, per year
+
+```{r}
+# Totalt antall apotecier per rute og år
+apothecia_summary <- lav %>%
+  filter(Year %in% c(2025, 2026)) %>%
+  group_by(Rute, Year) %>%
+  summarise(
+    antall = if (all(is.na(Apothecia))) {
+      NA_real_
+    } else {
+      sum(Apothecia, na.rm = TRUE)
+    },
+    .groups = "drop"
+  )
+
+# Figur
+fig.apothecia <- ggplot(
+  apothecia_summary,
+  aes(x = factor(Rute), y = antall, fill = factor(Year))
+) +
+  geom_col(
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  scale_fill_manual(
+    values = c("2025" = "#4477AA", "2026" = "#EEAA33")
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty(),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    x = "Rute",
+    y = "Totalt antall apotecier per rute",
+    fill = "År"
+  ) +
+  theme_bw(base_size = 16)
+
+fig.apothecia
+
+#Save figure 
+  ggsave(
+  filename = here::here("img", "Antall_apothecia_per_rute.png"),
+  plot = fig.apothecia,
+  width = 18,
+  height = 12,
+  units = "cm",
+  dpi = 300)
+
+```
+
+### Average number of apothecia per plot
+
+```{r}
+
+# Gjennomsnittlig antall apotecier innenfor hver rute og år
+apothecia_mean_summary <- lav %>%
+  filter(Year %in% c(2025, 2026)) %>%
+  group_by(Rute, Year) %>%
+  summarise(
+    n = sum(!is.na(Apothecia)),
+    gjennomsnitt = mean(Apothecia, na.rm = TRUE),
+    se = sd(Apothecia, na.rm = TRUE) / sqrt(n),
+    .groups = "drop"
+  )
+
+# Figur
+fig.mean_apothecia <- ggplot(
+  apothecia_mean_summary,
+  aes(x = factor(Rute), y = gjennomsnitt, fill = factor(Year))
+) +
+  geom_col(
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(0, gjennomsnitt - se),
+      ymax = gjennomsnitt + se
+    ),
+    position = position_dodge(width = 0.8),
+    width = 0.2
+  ) +
+  scale_fill_manual(
+    values = c("2025" = "#4477AA", "2026" = "#EEAA33")
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    x = "Rute",
+    y = "Gjennomsnittlig antall apothecia per thallus",
+    fill = "År"
+  ) +
+  theme_bw(base_size = 16)
+
+fig.mean_apothecia
+
+#Save figure 
+  ggsave(
+  filename = here::here("img", "Mean_apothecia_per_rute.png"),
+  plot = fig.mean_apothecia,
+  width = 18,
+  height = 12,
+  units = "cm",
+  dpi = 300)
+
+```
+
+### Average thallus size per plot per year
+
+```{r}
+size_summary <- lav %>%
+  filter(Year %in% c(2025, 2026)) %>%
+  group_by(Rute, Year) %>%
+  summarise(
+    n = sum(!is.na(Size)),
+    gjennomsnitt = mean(Size, na.rm = TRUE),
+    se = sd(Size, na.rm = TRUE) / sqrt(n),
+    .groups = "drop"
+  )
+
+fig.size <- ggplot(
+  size_summary,
+  aes(x = factor(Rute), y = gjennomsnitt, fill = factor(Year))
+) +
+  geom_col(
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(0, gjennomsnitt - se),
+      ymax = gjennomsnitt + se
+    ),
+    position = position_dodge(width = 0.8),
+    width = 0.2
+  ) +
+  scale_fill_manual(
+    values = c("2025" = "#4477AA", "2026" = "#EEAA33")
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    x = "Rute",
+    y = "Gjennomsnittlig thallusstørrelse",
+    fill = "År"
+  ) +
+  theme_bw(base_size = 16)
+
+fig.size
+
+ggsave(
+  filename = here::here("img", "Gjennomsnitt_thallusstorrelse_per_rute_SE.png"),
+  plot = fig.size,
+  width = 18,
+  height = 12,
+  units = "cm",
+  dpi = 300)
+
+
+```
+
 ### Size and number of apothecia
 
 ```{r}
