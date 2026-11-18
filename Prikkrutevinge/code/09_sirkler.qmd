@@ -14,7 +14,7 @@ Sammenligner sirkelregistreringene i 2025 og 2026 (Rubens ønske
     smalkjempe. Bare sirkler som ble registrert begge år: de 10 sirklene
     rundt rutene på Telefonstolpen og de 7 faste sirklene på Utedassen.
     Sirklene rundt rutene på Utedassen ble registrert første gang i
-    2026.
+    2026. 
 -   **Skjøtsel:** endringen sammenlignes mellom sirkler som ble skjøttet
     mellom registreringene (Plot_management i 2026 = 1, fra skript 02)
     og sirkler som ikke ble det.
