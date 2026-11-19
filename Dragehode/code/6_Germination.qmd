@@ -1,0 +1,19 @@
+---
+title: "Germination"
+format: html
+---
+
+# Germination experiment for norther dragonhead (*Dracocephalum ruyschiana*) at Horgen, Frogn municipality, Norway. 
+
+## Required packages
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readxl)
+library(here)
+
+```
+
+## Import data
