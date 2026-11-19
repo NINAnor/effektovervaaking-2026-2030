@@ -84,7 +84,7 @@ tab_forsoksoppsett <- forsoksoppsett %>%
     )
   ) %>%
   tab_source_note(
-    source_note = "C = kontroll (ingen behandling); S = stratifisering."
+    source_note = "C = kontroll (ingen behandling); S = skarifisert."
   ) %>%
   sub_missing(missing_text = "") %>%
   opt_row_striping() %>%
