@@ -6,22 +6,22 @@ Norway (*Overvåking av effekter av tiltak for trua arter og naturtyper 2026-203
 funded by the Norwegian Environment Agency.
 
 This book includes reports for:
-- [Åpen grunnlendt kalkmark](Apen-grunnlendt-kalkmark.qmd)
+- [Åpen grunnlendt kalkmark](Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd)
 - [Dragehode](Dragehode/Dragehode.qmd)
 - [Honningblom](Honningblom/Honningblom.qmd)
 - [Elvesandjeger](Elvesandjeger/Elvesandjeger.qmd)
 - [Stor elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd)
-- [Klippeblåvinge]()
-- [Prikkrutevinge]()
+- [Klippeblåvinge](Klippeblaavinge/Klippeblaavinge.qmd)
+- [Prikkrutevinge](Prikkrutevinge/Prikkrutevinge.qmd)
 - [Trønderlav](Tronderlav/Tronderlav.qmd)
-- [Eremitt]()
+- Eremitt (ikke klar ennå)
 - [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd)
 - [Svartkurle](Svartkurle/Svartkurle.qmd)
-- [Trøndertorvmose](Trondertorvmose/Trondertorvmose-qmd)
-- [Stjernebønnelav]()
+- [Trøndertorvmose](Trondertorvmose/Trondertorvmose.qmd)
+- [Stjernebønnelav](Stjernebonnelav/Stjernebonnelav.qmd)
 - [Askeglye](Askeglye/Askeglye.qmd)
 - [Kystlynghei: Methodology](Kystlynghei/report/kystlynghei_methods.qmd)
-- [Forest monitoring report](effektovervaking_forests/docs/index.html)
+- [Forest monitoring report](effektovervaking_forests/docs/forest_monitoring_report.qmd)
 
 See the [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030)
 for the full subproject list and project workflow.
