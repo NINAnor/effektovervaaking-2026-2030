@@ -49,7 +49,10 @@ author:
     affiliations:
       - id: nina
         name: Norsk institutt for naturforskning (NINA)
-AuthorList: Nowell, M.
+  - name: Arne Endre Laugsand
+    affiliations:
+      - ref: nina
+AuthorList: Nowell, M. & Laugsand, A. E.
 date: today
 data_availability: none
 code_reproducibility: none

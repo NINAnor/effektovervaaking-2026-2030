@@ -44,16 +44,18 @@ execute:
   cache: false
   warning: false
   message: false
-# Forfattere fra Writing i CRediT_statements_2026.xlsx – foreløpig
 author:
   - name: Ruben E. Roos
     affiliations:
       - id: nina
         name: Norsk institutt for naturforskning (NINA)
+  - name: Anders Endrestøl
+    affiliations:
+      - ref: nina
   - name: Andrew Møller Gray
     affiliations:
       - ref: nina
-AuthorList: Roos, R. E. & Gray, A. M.
+AuthorList: Roos, R. E., Endrestøl, A. & Gray, A. M.
 date: today
 data_availability: none
 code_reproducibility: none
@@ -465,7 +467,7 @@ Dersom en bestand ikke etablerer seg, kan det være vanskelig å identifisere å
 
 **CRediT statement**
 
--   Data collection: Andrew Møller Gray, Ruben E. Roos
+-   Data collection: Andrew Møller Gray, Ruben E. Roos, Anders Endrestøl
 -   Formal analysis: Andrew Møller Gray
 -   Writing: Ruben E. Roos, Andrew Møller Gray
 -   Software: Niccolò Cantu

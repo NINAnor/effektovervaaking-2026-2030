@@ -1,5 +1,5 @@
 # Klippeblåvinge (*Scolitantides orion*)
-Ruben E. Roos, Andrew Møller Gray
+Ruben E. Roos, Anders Endrestøl, Andrew Møller Gray
 2026-11-19
 
 - [Oppsummering](#oppsummering)
@@ -34,8 +34,8 @@ Ruben E. Roos, Andrew Møller Gray
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Roos, R. E. & Gray, A. M. 2026.
-> Klippeblåvinge (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
+> **Recommended citation**: Roos, R. E., Endrestøl, A. & Gray, A. M.
+> 2026. Klippeblåvinge (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
 > https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 
 > [!TIP]
@@ -677,7 +677,7 @@ av tiltak for åtte trua arter og en naturtype i 2024*. NINA Rapport
 
 **CRediT statement**
 
-- Data collection: Andrew Møller Gray, Ruben E. Roos
+- Data collection: Andrew Møller Gray, Ruben E. Roos, Anders Endrestøl
 - Formal analysis: Andrew Møller Gray
 - Writing: Ruben E. Roos, Andrew Møller Gray
 - Software: Niccolò Cantu

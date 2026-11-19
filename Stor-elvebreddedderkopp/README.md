@@ -1,5 +1,5 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
-Megan Nowell
+Megan Nowell, Arne Endre Laugsand
 2026-11-19
 
 - [Oppsummering](#oppsummering)
@@ -34,8 +34,8 @@ Megan Nowell
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Nowell, M. 2026. Stor elvebreddedderkopp
-> (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
+> **Recommended citation**: Nowell, M. & Laugsand, A. E. 2026. Stor
+> elvebreddedderkopp (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
 > https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 
 > [!TIP]
