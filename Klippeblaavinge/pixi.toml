@@ -29,3 +29,31 @@ habitat = { cmd = "python 3_habitatmodell.py", cwd = "code", depends-on = ["plan
 egg = { cmd = "python 4_egg_test.py", cwd = "code", depends-on = ["vegetasjon", "habitat"] }
 figur-3d = { cmd = "python 5_figur_3d_gyldenlove.py", cwd = "code" }
 analyse = { depends-on = ["egg", "figur-3d"] }
+
+# ---- Report environment (R + Quarto) for Klippeblaavinge.qmd -> README.md ----
+# Separate from the Python analysis environment above. Use: pixi run -e report render
+[feature.report.dependencies]
+r-base = "4.4.*"
+quarto = "*"
+# ecRxiv template (_common.R)
+r-here = "*"
+r-knitr = "*"
+r-rmarkdown = "*"
+r-kableextra = "*"
+r-yaml = "*"
+r-tibble = "*"
+r-conflicted = "*"
+r-dplyr = ">=1.2"
+r-rstudioapi = "*"
+r-remotes = "*"
+# report
+r-tidyverse = "*"
+r-readxl = "*"
+
+[feature.report.tasks]
+# R packages that are only on GitHub (anybadger, used by _common.R) are installed into the report environment on first use
+install-github-deps = "Rscript code/install_github_deps.R"
+render = { cmd = "quarto render Klippeblaavinge.qmd", depends-on = ["install-github-deps"] }
+
+[environments]
+report = { features = ["report"], no-default-feature = true }
