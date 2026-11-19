@@ -90,15 +90,15 @@ every year. After a very poor year in 2025, the population increased
 again in 2026, with many new larvae and more adults than ever recorded
 in the series. Lupin removal reduces the lupin population, but lupins
 returned quickly in 2026 after less removal in 2025. Patches where
-lupins were removed had twice as many larvae as patches that were not,
-but the difference was not statistically significant, partly because
-there are few uncleared patches to compare with. Lupin removal every
-year and monitoring should be continued, and trampling in the core areas
-should be reduced.
+lupins were removed had twice as many larvae as patches that were not
+cleared, but the difference was not statistically significant, partly
+because there are few uncleared patches to compare with. Lupin removal
+every year and monitoring should be continued, and trampling in the core
+areas should be reduced.
 
 ## 1. Innledning
 
-Elvesandjeger *Cicindela maritima* er en løpebille (Carabidae) som i
+Elvesandjeger (*Cicindela maritima*) er en løpebille (Carabidae) som i
 Norge er knyttet til sand- og siltflater langs større elver. Arten
 finnes i Tanavassdraget, Altaelva, Gaula i Trøndelag, Gudbrandsdalslågen
 med Ottavassdraget og Glomma med Folla (Direktoratet for
@@ -142,20 +142,22 @@ Figur 1: Elvesandjeger: en voksen bille og hull etter larver i sanden
 </div>
 
 Hunnen legger eggene ett og ett i silt eller finsand om våren og
-forsommeren. Larvene går gjennom tre stadier, og larveutviklingen antas
-å ta to år: larvene overvintrer i stadium 2, forpupper seg i stadium 3
-sensommeren året etter, og de nyklekte voksne overvintrer og legger egg
-våren etter (<a href="#fig-livssyklus" class="quarto-xref">Figur 2</a>)
-(Hanssen 2023). Arten er likevel lite studert, og kunnskapen om
-livssyklusen bygger på spredte observasjoner i felt. Det er derfor
-usikkert hvor lenge hvert stadium varer, og hvor mye dette varierer
-mellom år (Hanssen 2023; Roos mfl. 2025). Larvene lever i ganger i
-sanden, og larvestadiet kan bestemmes ut fra størrelsen på hullet (Roos
-mfl. 2024). Larven jakter på insekter fra åpningen, og larvene ser ut
-til å bli i den samme gangen gjennom hele larvetiden (Hanssen 2023).
-Arten er avhengig av finere substrat som silt og finsand, som avsettes
-på roligere og høyereliggende flater under flom (Ødegaard og Hanssen
-2010; Roos mfl. 2024). De voksne billene er aktive i solskinn.
+forsommeren
+(<a href="#fig-art-elvesandjeger" class="quarto-xref">Figur 1</a>).
+Larvene går gjennom tre stadier, og larveutviklingen antas å ta to år:
+larvene overvintrer i stadium 2, forpupper seg i stadium 3 sensommeren
+året etter, og de nyklekte voksne overvintrer og legger egg våren etter
+(<a href="#fig-livssyklus" class="quarto-xref">Figur 2</a>) (Hanssen
+2023). Arten er likevel lite studert, og kunnskapen om livssyklusen
+bygger på spredte observasjoner i felt. Det er derfor usikkert hvor
+lenge hvert stadium varer, og hvor mye dette varierer mellom år (Hanssen
+2023; Roos mfl. 2025). Larvene lever i ganger i sanden, og larvestadiet
+kan bestemmes ut fra størrelsen på hullet (Roos mfl. 2024). Larven
+jakter på insekter fra åpningen, og larvene ser ut til å bli i den samme
+gangen gjennom hele larvetiden (Hanssen 2023). Arten er avhengig av
+finere substrat som silt og finsand, som avsettes på roligere og
+høyereliggende flater under flom (Ødegaard og Hanssen 2010; Roos mfl.
+2024). De voksne billene er aktive i solskinn.
 
 <div id="fig-livssyklus">
 
@@ -206,9 +208,9 @@ eget delprosjekt.
 
 Formålet med tiltaket, luking av hagelupin, er å åpne opp gjengrodde
 arealer slik at elveavsetningene igjen blir tilgjengelige som leveområde
-for elvesandjeger (Roos mfl. 2024, 2025). Tiltaket skal redusere
-lupinbestanden og vegetasjonsdekket på sand- og siltflatene og dermed
-øke antallet larver og voksne, som er indikatorene i overvåkingen
+for elvesandjeger. Tiltaket skal redusere lupinbestanden og
+vegetasjonsdekket på sand- og siltflatene og dermed øke antallet larver
+og voksne, som er indikatorene i overvåkingen
 (<a href="#tbl-indikatorer-elvesandjeger"
 class="quarto-xref">Tabell 2</a>).
 
@@ -216,19 +218,18 @@ class="quarto-xref">Tabell 2</a>).
 
 Formålet med overvåkingen er å følge bestanden av elvesandjeger på fire
 lokaliteter langs Gaula og fastslå effekten av lupinlukingen på
-bestanden (Roos mfl. 2024, 2025).
+bestanden.
 
 ### 2.3 Forventninger
 
 Det forventes at arealer der lupinene er luket, blir tatt i bruk til
 egglegging av elvesandjeger, og at lukingen på sikt vil øke utbredelsen
-og bestanden på lokalitetene (Roos mfl. 2025). Effekten kommer trolig
-med en forsinkelse: arten ser ikke ut til å trives på sterkt forstyrrede
-sandflater, så de lukede flatene tas trolig i bruk året etter lukingen,
-etter at en vinter og en vårflom har jevnet dem ut (Roos mfl. 2024).
-Fordi larveutviklingen trolig tar to år, vil en effekt på antallet
-voksne komme enda senere. Antallet vil fortsatt variere mye fra år til
-år på grunn av flom og vær.
+og bestanden på lokalitetene. Effekten kommer trolig med en forsinkelse:
+arten ser ikke ut til å trives på sterkt forstyrrede sandflater, så de
+lukede flatene tas trolig i bruk året etter lukingen, etter at en vinter
+og en vårflom har jevnet dem ut (Roos mfl. 2024). Fordi larveutviklingen
+trolig tar to år, vil en effekt på antallet voksne komme enda senere.
+Antallet vil fortsatt variere mye fra år til år på grunn av flom og vær.
 
 ## 3. Overvåkingslokalitetene
 
@@ -486,15 +487,15 @@ med håndholdt GPS, med en ny posisjon for hver 2–5 m (Roos mfl. 2024).
 Fra 2026 registreres elvesandjeger med polygoner i ArcGIS Field Maps.
 Metoden ble endret for å redusere de geometriske feilene fra den
 håndholdte GPS-en, gi bedre kontroll over hvilke områder som har
-larvehull, og samtidig registrere habitatvariabler. Feltteknikeren
-tegner polygoner rundt områder med larvehull der substratet og
+larvehull, og samtidig registrere habitatvariabler. I felt tegnes
+polygoner rundt områder med larvehull der substratet og
 vegetasjonsdekket er mest mulig likt. Larvehullene ligger ofte i
 samlinger, og et polygon omfatter gjerne én samling. Et dronebilde tatt
-i juni samme år brukes som høyoppløselig bakgrunnskart, slik at
-feltteknikeren kan avgrense polygonene presist. For hvert polygon
-registreres antall larver per stadium og voksne, substrattype,
-vegetasjonsdekke (%) og slitasje (klasse 1–5). Antallene brukes som
-registrert, uavhengig av metode. Indikatorene er oppsummert i
+i juni samme år brukes som høyoppløselig bakgrunnskart, slik at man i
+felt kan avgrense polygonene presist. For hvert polygon registreres
+antall larver per stadium og voksne, substrattype, vegetasjonsdekke (%)
+og slitasje (klasse 1–5). Antallene brukes som registrert, uavhengig av
+metode. Indikatorene er oppsummert i
 <a href="#tbl-indikatorer-elvesandjeger"
 class="quarto-xref">Tabell 2</a>.
 
@@ -1273,23 +1274,23 @@ lukingen kan påvises.
 <div id="ref-dn_2009" class="csl-entry">
 
 Direktoratet for naturforvaltning. 2009. *Handlingsplan for
-elvesandjeger *Cicindela maritima**. DN-rapport Nos. 2009-3.
-Direktoratet for naturforvaltning.
+elvesandjeger *Cicindela maritima**. DN-rapport 2009-3. Direktoratet for
+naturforvaltning.
 
 </div>
 
 <div id="ref-evju_2022b" class="csl-entry">
 
-Evju, Marianne, Ruben E. Roos, Anders Endrestøl, Megan Nowell, Oddvar
-Hanssen, og Ellen E. Ombler. 2022. *Effektovervåking av trua arter og
-naturtyper 2022*. NINA Rapport No. 2196. Norsk institutt for
-naturforskning. <https://brage.nina.no/nina-xmlui/handle/11250/3035335>.
+Evju, M., R. E. Roos, A. Endrestøl, M. Nowell, O. Hanssen, og E. E.
+Ombler. 2022. *Effektovervåking av trua arter og naturtyper 2022*. NINA
+Rapport 2196. Norsk institutt for naturforskning.
+<https://brage.nina.no/nina-xmlui/handle/11250/3035335>.
 
 </div>
 
 <div id="ref-fremstad_2012" class="csl-entry">
 
-Fremstad, Eli. 2012. *Hagelupin *Lupinus polyphyllus**. Artsdatabanken.
+Fremstad, E. 2012. *Hagelupin *Lupinus polyphyllus**. Artsdatabanken.
 
 </div>
 
@@ -1302,10 +1303,10 @@ GBIF.org. 2026. *GBIF Occurrence Download*.
 
 <div id="ref-hanssen_2023" class="csl-entry">
 
-Hanssen, Oddvar. 2023. *Oppfølging av handlingsplan for elvesandjeger
+Hanssen, O. 2023. *Oppfølging av handlingsplan for elvesandjeger
 *Cicindela maritima*, og registreringer av stor elvebreddedderkopp
 *Arctosa cinerea*. Rapportering for perioden 2015–2020*. NINA Rapport
-No. 1815. Norsk institutt for naturforskning.
+1815. Norsk institutt for naturforskning.
 <https://hdl.handle.net/11250/3049395>.
 
 </div>
@@ -1320,35 +1321,35 @@ Uhanalaisuusluokka 2019: VU*. Finnish Biodiversity Information Facility.
 
 <div id="ref-roos_2025" class="csl-entry">
 
-Roos, Ruben E., Mathias Andreasen, Fia Bengtsson, mfl. 2025. *Overvåking
-av effekter av tiltak trua natur i 2025. Resultater for ti arter og én
-naturtype*. NINA Rapport No. 2695. Norsk institutt for naturforskning.
+Roos, R. E., M. Andreasen, F. Bengtsson, mfl. 2025. *Overvåking av
+effekter av tiltak trua natur i 2025. Resultater for ti arter og én
+naturtype*. NINA Rapport 2695. Norsk institutt for naturforskning.
 <https://nva.sikt.no/registration/019ad9d2e908-b8b219d4-fb21-40f8-a34a-e1c577293c9a>.
 
 </div>
 
 <div id="ref-roos_2024" class="csl-entry">
 
-Roos, Ruben E., Marianne Evju, Anders Endrestøl, mfl. 2024. *Overvåking
-av effekter av tiltak for åtte trua arter og en naturtype i 2024*. NINA
-Rapport No. 2538. Norsk institutt for naturforskning.
+Roos, R. E., M. Evju, A. Endrestøl, mfl. 2024. *Overvåking av effekter
+av tiltak for åtte trua arter og en naturtype i 2024*. NINA Rapport
+2538. Norsk institutt for naturforskning.
 <https://hdl.handle.net/11250/3169493>.
 
 </div>
 
 <div id="ref-roos_2023" class="csl-entry">
 
-Roos, Ruben E., Marianne Evju, Anders Endrestøl, Oddvar Hanssen, og
-Megan Nowell. 2023. *Overvåking av effekter av tiltak for seks trua
-arter og en naturtype i 2023*. NINA Rapport No. 2377. Norsk institutt
-for naturforskning. <https://hdl.handle.net/11250/3106536>.
+Roos, R. E., M. Evju, A. Endrestøl, O. Hanssen, og M. Nowell. 2023.
+*Overvåking av effekter av tiltak for seks trua arter og en naturtype i
+2023*. NINA Rapport 2377. Norsk institutt for naturforskning.
+<https://hdl.handle.net/11250/3106536>.
 
 </div>
 
 <div id="ref-solberg_2020" class="csl-entry">
 
 Solberg, K. A. 2020. *Kartlegging av fremmede arter, og bekjempelse av
-lupiner, langs Gaula i 2020*. MidNat Rapport Nos. 4-2020. Midtnorsk
+lupiner, langs Gaula i 2020*. MidNat Rapport 4-2020. Midtnorsk
 Naturundersøkelse AS.
 
 </div>
@@ -1357,7 +1358,7 @@ Naturundersøkelse AS.
 
 Solberg, K. A., S. Daaland, og J. Vullum. 2025. *Fremmede planter langs
 Gaula 2025 – kartlegging, bekjempelse og tiltak for elvesandjeger*.
-MidNat Rapport Nos. 7-2025. Midtnorsk Naturundersøkelse AS.
+MidNat Rapport 7-2025. Midtnorsk Naturundersøkelse AS.
 <https://www.midnat.no/gauldalen/>.
 
 </div>
@@ -1366,14 +1367,14 @@ MidNat Rapport Nos. 7-2025. Midtnorsk Naturundersøkelse AS.
 
 Solberg, K. A., og J. Vullum. 2022a. *Bekjempelse av hagelupin og
 rynkerose på to elveører med elvesandjeger-bestander, i Melhus kommune,
-2022*. MidNat Rapport Nos. 10-2022. Midtnorsk Naturundersøkelse AS.
+2022*. MidNat Rapport 10-2022. Midtnorsk Naturundersøkelse AS.
 
 </div>
 
 <div id="ref-solberg_2022a" class="csl-entry">
 
 Solberg, K. A., og J. Vullum. 2022b. *Bekjempelse og kartlegging av
-lupiner langs Gaula i 2021*. MidNat Rapport Nos. 2-2022. Midtnorsk
+lupiner langs Gaula i 2021*. MidNat Rapport 2-2022. Midtnorsk
 Naturundersøkelse AS.
 
 </div>
@@ -1382,50 +1383,50 @@ Naturundersøkelse AS.
 
 Solberg, K. A., og J. Vullum. 2023. *Fremmede planter langs Gaula 2023 –
 kartlegging, bekjempelse og tiltak for elvesandjeger*. MidNat Rapport
-Nos. 5-2023. Midtnorsk Naturundersøkelse AS.
+5-2023. Midtnorsk Naturundersøkelse AS.
 
 </div>
 
 <div id="ref-solberg_2024" class="csl-entry">
 
 Solberg, K. A., og J. Vullum. 2024. *Fremmede planter langs Gaula 2024 –
-kartlegging og bekjempelse*. MidNat Rapport Nos. 6-2024. Midtnorsk
+kartlegging og bekjempelse*. MidNat Rapport 6-2024. Midtnorsk
 Naturundersøkelse AS.
 
 </div>
 
 <div id="ref-odegaard_2010" class="csl-entry">
 
-Ødegaard, Frode, og Oddvar Hanssen. 2010. *Elvesandjeger *Cicindela
-maritima**. Artsdatabankens faktaark nr. 115. Artsdatabanken.
+Ødegaard, F., og O. Hanssen. 2010. *Elvesandjeger *Cicindela maritima**.
+Artsdatabankens faktaark nr. 115. Artsdatabanken.
 <https://www.artsdatabanken.no>.
 
 </div>
 
 <div id="ref-odegaard_2021" class="csl-entry">
 
-Ødegaard, Frode, Oddvar Hanssen, Arne E. Laugsand, og Stefan Olberg.
-2021. *Biller: Vurdering av elvesandjeger *Cicindela maritima* for
-Norge. Rødlista for arter 2021*. Artsdatabanken.
+Ødegaard, F., O. Hanssen, A. E. Laugsand, og S. Olberg. 2021. *Biller:
+Vurdering av elvesandjeger *Cicindela maritima* for Norge. Rødlista for
+arter 2021*. Artsdatabanken.
 <https://www.artsdatabanken.no/lister/rodlisteforarter/2021/12703>.
 
 </div>
 
 <div id="ref-odegaard_2014" class="csl-entry">
 
-Ødegaard, Frode, Oddvar Hanssen, Sandra Åström, og Ulf Hansen. 2014.
-*Oppfølging av handlingsplan for elvesandjeger, *Cicindela maritima*.
-Sluttrapport for perioden 2009–2013*. NINA Rapport No. 1034. Norsk
-institutt for naturforskning. <http://hdl.handle.net/11250/2372336>.
+Ødegaard, F., O. Hanssen, S. Åström, og U. Hansen. 2014. *Oppfølging av
+handlingsplan for elvesandjeger, *Cicindela maritima*. Sluttrapport for
+perioden 2009–2013*. NINA Rapport 1034. Norsk institutt for
+naturforskning. <http://hdl.handle.net/11250/2372336>.
 
 </div>
 
 <div id="ref-astrom_2017" class="csl-entry">
 
-Åström, Jens, Frode Ødegaard, Oddvar Hanssen, og Sandra Åström. 2017.
-*Endring i leveområder for elvesandjeger og stor elvebreddedderkopp ved
-Gaula. Forekomst og dynamikk av elveører fra 1947 til 2014*. NINA
-Rapport No. 1314. Norsk institutt for naturforskning.
+Åström, J., F. Ødegaard, O. Hanssen, og S. Åström. 2017. *Endring i
+leveområder for elvesandjeger og stor elvebreddedderkopp ved Gaula.
+Forekomst og dynamikk av elveører fra 1947 til 2014*. NINA Rapport 1314.
+Norsk institutt for naturforskning.
 <http://hdl.handle.net/11250/2429548>.
 
 </div>
