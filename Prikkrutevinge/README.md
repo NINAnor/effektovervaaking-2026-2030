@@ -1,6 +1,5 @@
 # Prikkrutevinge (*Melitaea cinxia*)
-Ruben E. Roos, Ida Marielle Mienna, Marianne Evju, Victoria De Bruyn
-Trzebinski
+Ruben E. Roos, Anders Endrestøl
 2026-11-19
 
 - [Oppsummering](#oppsummering)
@@ -34,9 +33,8 @@ Trzebinski
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Roos, R. E., Mienna, I. M., Evju, M. & De
-> Bruyn Trzebinski, V. 2026. Prikkrutevinge (ID: XX_YYYY_ZZZ) v. 0.1.0.
-> ecRxiv:
+> **Recommended citation**: Roos, R. E. & Endrestøl, A. 2026.
+> Prikkrutevinge (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
 > https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 
 > [!TIP]
@@ -625,7 +623,7 @@ Norsk institutt for naturforskning.
 - Data collection: Ruben E. Roos, Victoria De Bruyn Trzebinski
 - Data curation: Ruben E. Roos, Ida Marielle Mienna, Marianne Evju
 - Formal analysis: Ida Marielle Mienna, Ruben E. Roos
-- Writing: Ruben E. Roos
+- Writing: Ruben E. Roos, Marianne Evju
 - Software: Niccolò Cantu
 
 <!--# <MeRIT attribution> -->

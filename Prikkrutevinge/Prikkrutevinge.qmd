@@ -44,22 +44,15 @@ execute:
   cache: false
   warning: false
   message: false
-# Forfattere fra CRediT_statements_2026.xlsx (Rapporter_2026_github/Final)
 author:
   - name: Ruben E. Roos
     affiliations:
       - id: nina
         name: Norsk institutt for naturforskning (NINA)
-  - name: Ida Marielle Mienna
+  - name: Anders Endrestøl
     affiliations:
       - ref: nina
-  - name: Marianne Evju
-    affiliations:
-      - ref: nina
-  - name: Victoria De Bruyn Trzebinski
-    affiliations:
-      - ref: nina
-AuthorList: Roos, R. E., Mienna, I. M., Evju, M. & De Bruyn Trzebinski, V.
+AuthorList: Roos, R. E. & Endrestøl, A.
 date: today
 data_availability: none
 code_reproducibility: none
@@ -459,7 +452,7 @@ Effektovervåking av skjøtselstiltakene er komplisert, fordi det er stor varias
 -   Data collection: Ruben E. Roos, Victoria De Bruyn Trzebinski
 -   Data curation: Ruben E. Roos, Ida Marielle Mienna, Marianne Evju
 -   Formal analysis: Ida Marielle Mienna, Ruben E. Roos
--   Writing: Ruben E. Roos
+-   Writing: Ruben E. Roos, Marianne Evju
 -   Software: Niccolò Cantu
 
 <!--# <MeRIT attribution> -->
