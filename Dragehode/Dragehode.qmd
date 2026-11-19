@@ -350,17 +350,21 @@ Fjerning av biomasse og åpning av vegetasjonsdekket forventes å gi økt rekrut
 
 ### 3.1 Beskrivelse av lokalitetene
 
-Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1). Lokaliteten er en åkerholme omgitt av kornåker. Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med roser, eik og bringebær, og var ikke slått på flere år før forsøket startet [@roos_2023a]. Andre naturverdier på lokaliteten er bl.a. forekomst av nyresildre (NT), bakkemaure (VU), dvergforglemmegei (VU) og flere hule eiker.
+Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1). Lokaliteten er en åkerholme omgitt av kornåker (@fig-kart-dragehode). Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med roser, eik og bringebær, og var ikke slått på flere år før forsøket startet [@roos_2023a]. Andre naturverdier på lokaliteten er bl.a. forekomst av nyresildre (NT), bakkemaure (VU), dvergforglemmegei (VU) og flere hule eiker.
 
 Mot toppen av skråningen er jordsmonnet grunt og tørt, med skrinn og kortvokst vegetasjon, mens vegetasjonen er frodigere nederst mot åkerkanten og traktorveien. Dragehode finnes i begge delene. Skråningen ble derfor delt i seks striper, som hver har ruter både med og uten dragehode, og tre av stripene slås [@roos_2023a].
 
 Horgen har vært med i basisovervåkingen av dragehode siden 2017, og bestanden har gått kraftig ned [@evju_2023; @evju_2024; @roos_2025].
 
-<!--# Bilde av lokaliteten og kart over rutene legges inn her senere -->
+```{r fig-kart-dragehode}
+#| fig-cap: 'Overvåkingslokaliteten på Horgen i Frogn kommune.'
+#| code-summary: 'Kode for figur.'
+include_graphics("img/Horgen 2026.png")
+```
 
 ### 3.2 Tiltak
 
-Den første slåtten ble gjort 1. september 2023, etter frøsetting, med ryddesag med tretanns sagblad. Ryddesag ble valgt fordi bakken er ujevn med tuer av sandholdig jord og gras, hovedsakelig sauesvingel. Slåtten kappet og forstyrret noen av grastuene, og den åpne jorda kan gi plass til frøplanter av dragehode. Rosekratt og oppslag av eik, ask og rogn ble fjernet med beskjæringssaks der de var for tykke for ryddesagen. Høyet ble raket opp og fjernet to dager etter [@roos_2023a]. Den andre slåtten ble gjort i september 2025 på samme måte, og høyet ble raket bort [@roos_2025]. Neste slått er planlagt i 2027 (@tbl-tiltak-dragehode). Det ble ikke slått i 2024 og 2026.
+Den første slåtten ble gjort 1. september 2023, etter frøsetting, med ryddesag med tretanns sagblad. Ryddesag ble valgt fordi bakken er ujevn med tuer av sandholdig jord og gras, hovedsakelig sauesvingel. Slåtten kappet og forstyrret noen av grastuene, og den åpne jorda kan gi plass til frøplanter av dragehode. Rosekratt og oppslag av eik, ask og rogn ble fjernet med beskjæringssaks der de var for tykke for ryddesagen. Høyet ble raket opp og fjernet to dager etter [@roos_2023a]. Den andre slåtten ble gjort i september 2025 på samme måte, og høyet ble raket bort [@roos_2025]. Neste slått er planlagt i 2027 (@tbl-tiltak-dragehode). Det ble ikke slått i dette området i 2024 og 2026, men det ble gjennomført slått før igangsetting av frøspiringsforsøket (se under og @fig-kart-dragehode).
 
 <!--# Bilde av slåtten legges inn her senere -->
 
