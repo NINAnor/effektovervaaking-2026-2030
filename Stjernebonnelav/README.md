@@ -1,5 +1,5 @@
 # Stjernebønnelav (*Buellia asterella*)
-Alexander Nilsson, Ruben E. Roos, Marianne Evju
+Alexander Nilsson, Ruben E. Roos, Marianne Evju, Torbjørn Høitomt
 2026-11-19
 
 - [Oppsummering](#oppsummering)
@@ -33,8 +33,8 @@ Alexander Nilsson, Ruben E. Roos, Marianne Evju
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Nilsson, A., Roos, R. E. & Evju, M. 2026.
-> Stjernebønnelav (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
+> **Recommended citation**: Nilsson, A., Roos, R. E., Evju, M. &
+> Høitomt, T. 2026. Stjernebønnelav (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
 > https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 
 > [!TIP]

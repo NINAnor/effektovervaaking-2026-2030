@@ -57,7 +57,10 @@ author:
   - name: Marianne Evju
     affiliations:
       - ref: nina
-AuthorList: Nilsson, A., Roos, R. E. & Evju, M.
+  - name: Torbjørn Høitomt
+    affiliations:
+      - ref: biofokus
+AuthorList: Nilsson, A., Roos, R. E., Evju, M. & Høitomt, T.
 date: today
 data_availability: none
 code_reproducibility: none
