@@ -337,7 +337,7 @@ Roos/NINA.
 <div id="tbl-forsoksoppsett-dragehode">
 
 Tabell 3: Oppsett for spiringsforsøket på Horgen. C = kontroll (ingen
-behandling); S = stratifisering.
+behandling); S = skarifisert.
 
 <div class="cell-output-display">
 

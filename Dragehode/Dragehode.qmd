@@ -423,7 +423,7 @@ Høsten 2026 ble det etablert et frøspiringsforsøk på Horgen. Forsøksfeltet 
 ![Springsforsøket på Horgen i 2026, etter slått. Foto: Ruben E. Roos/NINA.](img/Horgen_spiring_2026_etter.jpg){#fig-spiring-etter-dragehode}
 
 ```{r tbl-forsoksoppsett-dragehode}
-#| tbl-cap: 'Oppsett for spiringsforsøket på Horgen. C = kontroll (ingen behandling); S = stratifisering.'
+#| tbl-cap: 'Oppsett for spiringsforsøket på Horgen. C = kontroll (ingen behandling); S = skarifisert.'
 #| code-summary: 'Kode for tabell.'
 # Ett frø per smårute; plot 1–5 ligger i det vestlige transektet og 6–10 i det østlige
 forsoksoppsett <- read_excel(here("data", "Frøspiring_data.xlsx")) |>
