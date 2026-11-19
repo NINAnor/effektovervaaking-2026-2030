@@ -1,0 +1,241 @@
+---
+title: "10 Rapportfigurer for ruter og sirkler"
+format: html
+---
+
+Figurer og tabeller etter Mariannes ønske (e-post 19.11.2026). Ingen deling på
+lokalitet eller på antall ganger slått.
+
+Vegetasjonsruter, per år:
+
+- **Grupper:** spinnruter (blå) og overvåkingsruter (M-ruter) delt i slått og ikke slått.
+  Slått = Plot_management for året, altså skjøttet siden forrige registrering (skript 02).
+  I 2022 er ingen ruter slått.
+- **Vegetasjonshøyde og smalkjemperosetter:** gjennomsnitt per rute ± standardfeil.
+- **Larvespinn:** totalt antall over alle ruter i gruppen.
+- **Spinnruter** ble registrert i 2022, 2023 og 2025 (bare 2 i 2025), ikke i 2024 og 2026.
+- **RU-15 og RU-10 i 2026:** vegetasjonshøyden er busksjikthøyden (skript 03).
+
+Sirkler, per år (2025 og 2026), skjøttet mot uskjøttet (Plot_management):
+
+- **Dekning av busksjikt** (circle_cover_shrubs) og **vedplanter i feltsjikt**
+  (circle_cover_lowwoody): gjennomsnitt ± standardfeil.
+- **Larvespinn** (circle_count_spinn): totalt antall.
+- **Smalkjemperosetter** (circle_pres_focalspecies2): gjennomsnitt ± standardfeil, bare
+  2026. I 2025 ble bare forekomst registrert.
+- **Antall sirkler med forekomst** (verdi > 0, eller smalkjempe present) for alle
+  fire variablene, med Fishers eksakte test for skjøttet mot uskjøttet.
+- Alle sirkler registrert det året er med, ikke bare de som ble registrert begge år.
+  De sju verdiene som ble satt til NA i skript 03, er ikke med.
+
+Kjør 02, 03 og 07 først. Krever ggplot2.
+
+Skrevet av Ida M. Mienna med Claude, 19.11.2026
+
+```{r}
+#| label: oppsett
+#| message: false
+# Felles oppsett: pakker, filstier og hjelpefunksjoner
+source(knitr::purl(here::here("code", "00_felles.qmd"),
+                   output = tempfile(fileext = ".R"), quiet = TRUE))
+suppressPackageStartupMessages(library(ggplot2))
+
+mappe_fig <- ut("10_figurer")
+dir.create(mappe_fig, showWarnings = FALSE)
+
+d07 <- readRDS(ut("07_sammenslatt_2022_2026.rds"))
+
+farger <- c("Spinnruter" = "#0072B2",
+            "Overvåkingsruter, slått" = "#D55E00",
+            "Overvåkingsruter, ikke slått" = "#F4B183")
+farger_sirkel <- c("Skjøttet" = "#D55E00", "Uskjøttet" = "#F4B183")
+
+se <- function(x) { x <- x[!is.na(x)]; if (length(x) < 2) NA_real_ else sd(x) / sqrt(length(x)) }
+dodge <- position_dodge(width = 0.9)
+
+lagre <- function(fig, navn, bredde = 18, hoyde = 11) {
+  ggsave(file.path(mappe_fig, navn), fig, width = bredde, height = hoyde, units = "cm", dpi = 200)
+}
+```
+
+## Vegetasjonsruter
+
+```{r}
+ruter <- d07$ruter |>
+  mutate(gruppe = case_when(
+    rutetype == "S-rute" ~ "Spinnruter",
+    Plot_management == 1 ~ "Overvåkingsruter, slått",
+    TRUE ~ "Overvåkingsruter, ikke slått"),
+    gruppe = factor(gruppe, levels = names(farger)))
+stopifnot(all(ruter$rutetype %in% c("M-rute", "S-rute")), !any(is.na(ruter$Plot_management)))
+
+ruter_tabell <- ruter |>
+  group_by(aar, gruppe) |>
+  summarise(antall_ruter = n(),
+            hoyde_cm_snitt = mean(hoyde_snitt, na.rm = TRUE),
+            hoyde_cm_se = se(hoyde_snitt),
+            rosetter_snitt = mean(rosetter, na.rm = TRUE),
+            rosetter_se = se(rosetter),
+            larvespinn_totalt = sum(larvespinn, na.rm = TRUE),
+            ruter_med_larvespinn = sum(larvespinn > 0, na.rm = TRUE),
+            .groups = "drop") |>
+  # Tomme grupper (f.eks. spinnruter 2024) som NA, så søylene står likt hvert år
+  complete(aar, gruppe) |>
+  arrange(aar, gruppe)
+
+ruter_tabell |> mutate(across(where(is.double), ~ round(.x, 2))) |> knitr::kable()
+```
+
+```{r}
+fig_rute <- function(y, ymin_ymax = TRUE, ylab, tekst) {
+  d <- ruter_tabell |> mutate(n_tekst = if_else(is.na(antall_ruter), "", paste0("n=", antall_ruter)))
+  p <- ggplot(d, aes(factor(aar), .data[[y[1]]], fill = gruppe)) +
+    geom_col(position = dodge, width = 0.85, na.rm = TRUE)
+  if (ymin_ymax) {
+    p <- p + geom_errorbar(aes(ymin = .data[[y[1]]] - .data[[y[2]]], ymax = .data[[y[1]]] + .data[[y[2]]]),
+                           position = dodge, width = 0.3, na.rm = TRUE)
+  }
+  p +
+    geom_text(aes(y = 0, label = n_tekst), position = dodge, vjust = -0.4, size = 2.6, na.rm = TRUE) +
+    scale_fill_manual(values = farger, name = NULL, drop = FALSE) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
+    labs(x = NULL, y = ylab, caption = tekst) +
+    theme_bw() +
+    theme(legend.position = "bottom", panel.grid.major.x = element_blank())
+}
+
+fig_hoyde <- fig_rute(c("hoyde_cm_snitt", "hoyde_cm_se"), TRUE, "Vegetasjonshøyde (cm)",
+  "Gjennomsnitt per rute ± standardfeil. Spinnruter ble ikke registrert i 2024 og 2026.\nRU-15 og RU-10 i 2026: busksjikthøyde.")
+fig_rosetter <- fig_rute(c("rosetter_snitt", "rosetter_se"), TRUE, "Smalkjemperosetter per rute",
+  "Gjennomsnitt per rute ± standardfeil. Spinnruter ble ikke registrert i 2024 og 2026.")
+fig_larvespinn <- fig_rute("larvespinn_totalt", FALSE, "Larvespinn, totalt antall",
+  "Totalt antall larvespinn over alle ruter i gruppen. Spinnruter ble ikke registrert i 2024 og 2026.")
+
+fig_hoyde; fig_rosetter; fig_larvespinn
+lagre(fig_hoyde, "ruter_vegetasjonshoyde.png")
+lagre(fig_rosetter, "ruter_smalkjemperosetter.png")
+lagre(fig_larvespinn, "ruter_larvespinn.png")
+```
+
+## Sirkler
+
+```{r}
+sirkler <- d07$sirkler |>
+  mutate(skjotsel = factor(if_else(Plot_management == 1, "Skjøttet", "Uskjøttet"), levels = names(farger_sirkel)))
+stopifnot(!any(is.na(sirkler$Plot_management)))
+
+sirkler_tabell <- sirkler |>
+  group_by(aar, skjotsel) |>
+  summarise(antall_sirkler = n(),
+            busksjikt_snitt = mean(dekning_busker, na.rm = TRUE),
+            busksjikt_se = se(dekning_busker),
+            vedplanter_snitt = mean(dekning_vedplanter_feltsjikt, na.rm = TRUE),
+            vedplanter_se = se(dekning_vedplanter_feltsjikt),
+            larvespinn_totalt = sum(larvespinn, na.rm = TRUE),
+            larvespinn_snitt = mean(larvespinn, na.rm = TRUE),
+            rosetter_snitt = if (first(aar) == 2026) mean(rosetter, na.rm = TRUE) else NA_real_,
+            rosetter_se = if (first(aar) == 2026) se(rosetter) else NA_real_,
+            .groups = "drop")
+
+sirkler_tabell |> mutate(across(where(is.double), ~ round(.x, 2))) |> knitr::kable()
+```
+
+```{r}
+fig_sirkel <- function(d, y, se_kol = NULL, ylab, tekst) {
+  d <- d |> mutate(n_tekst = paste0("n=", antall_sirkler))
+  p <- ggplot(d, aes(factor(aar), .data[[y]], fill = skjotsel)) +
+    geom_col(position = dodge, width = 0.85, na.rm = TRUE)
+  if (!is.null(se_kol)) {
+    p <- p + geom_errorbar(aes(ymin = .data[[y]] - .data[[se_kol]], ymax = .data[[y]] + .data[[se_kol]]),
+                           position = dodge, width = 0.3, na.rm = TRUE)
+  }
+  p +
+    geom_text(aes(y = 0, label = n_tekst), position = dodge, vjust = -0.4, size = 2.6) +
+    scale_fill_manual(values = farger_sirkel, name = NULL) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
+    labs(x = NULL, y = ylab, caption = tekst) +
+    theme_bw() +
+    theme(legend.position = "bottom", panel.grid.major.x = element_blank())
+}
+
+fig_s_busk <- fig_sirkel(sirkler_tabell, "busksjikt_snitt", "busksjikt_se", "Dekning av busksjikt (%)",
+                         "Gjennomsnitt per sirkel ± standardfeil.")
+fig_s_ved <- fig_sirkel(sirkler_tabell, "vedplanter_snitt", "vedplanter_se", "Dekning av vedplanter i feltsjikt (%)",
+                        "Gjennomsnitt per sirkel ± standardfeil.")
+fig_s_spinn <- fig_sirkel(sirkler_tabell, "larvespinn_totalt", NULL, "Larvespinn, totalt antall",
+                          "Totalt antall larvespinn over alle sirkler i gruppen.")
+fig_s_ros <- fig_sirkel(sirkler_tabell |> filter(aar == 2026), "rosetter_snitt", "rosetter_se",
+                        "Smalkjemperosetter per sirkel",
+                        "Gjennomsnitt per sirkel ± standardfeil. Bare 2026; i 2025 ble bare forekomst registrert.")
+
+fig_s_busk; fig_s_ved; fig_s_spinn; fig_s_ros
+lagre(fig_s_busk, "sirkler_busksjikt.png", 14)
+lagre(fig_s_ved, "sirkler_vedplanter_feltsjikt.png", 14)
+lagre(fig_s_spinn, "sirkler_larvespinn.png", 14)
+lagre(fig_s_ros, "sirkler_smalkjemperosetter.png", 10)
+```
+
+### Antall sirkler med forekomst
+
+```{r}
+forekomst_lang <- sirkler |>
+  transmute(aar, skjotsel,
+            `Busksjikt` = dekning_busker > 0,
+            `Vedplanter i feltsjikt` = dekning_vedplanter_feltsjikt > 0,
+            `Larvespinn` = larvespinn > 0,
+            # 2025: bare forekomst (present/absent); 2026: present når rosetter > 0
+            `Smalkjempe` = smalkjempe == "present") |>
+  pivot_longer(-c(aar, skjotsel), names_to = "variabel", values_to = "forekomst") |>
+  mutate(variabel = factor(variabel, levels = c("Busksjikt", "Vedplanter i feltsjikt", "Larvespinn", "Smalkjempe")))
+
+forekomst <- forekomst_lang |>
+  filter(!is.na(forekomst)) |>
+  group_by(variabel, aar, skjotsel) |>
+  summarise(sirkler_registrert = n(), sirkler_med_forekomst = sum(forekomst), .groups = "drop") |>
+  mutate(andel_prosent = round(100 * sirkler_med_forekomst / sirkler_registrert, 1))
+
+fisher_p <- forekomst_lang |>
+  filter(!is.na(forekomst)) |>
+  group_by(variabel, aar) |>
+  summarise(p_fisher_skjottet_mot_uskjottet = {
+    t <- table(skjotsel, forekomst)
+    if (any(dim(t) < 2)) NA_real_ else round(fisher.test(t)$p.value, 3)
+  }, .groups = "drop")
+
+forekomst <- forekomst |> left_join(fisher_p, by = c("variabel", "aar")) |> arrange(variabel, aar, skjotsel)
+knitr::kable(forekomst)
+```
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+fig_forekomst <- ggplot(forekomst, aes(factor(aar), andel_prosent, fill = skjotsel)) +
+  geom_col(position = dodge, width = 0.85) +
+  geom_text(aes(label = paste0(sirkler_med_forekomst, "/", sirkler_registrert)),
+            position = dodge, vjust = -0.3, size = 2.6) +
+  facet_wrap(~ variabel, nrow = 1) +
+  scale_fill_manual(values = farger_sirkel, name = NULL) +
+  scale_y_continuous(limits = c(0, 108), breaks = seq(0, 100, 25), expand = expansion(mult = c(0, 0))) +
+  labs(x = NULL, y = "Sirkler med forekomst (%)",
+       caption = "Tall over søylene: sirkler med forekomst / sirkler registrert.") +
+  theme_bw() +
+  theme(legend.position = "bottom", panel.grid.major.x = element_blank())
+fig_forekomst
+lagre(fig_forekomst, "sirkler_forekomst.png", 20, 11)
+```
+
+## Lagring
+
+```{r}
+les_meg <- tibble(Forklaring = c(
+  "Tabeller bak figurene i 10_figurer (Mariannes ønske, e-post 19.11.2026). Ingen deling på lokalitet eller antall ganger slått.",
+  "Ruter: spinnruter (S-ruter) og overvåkingsruter (M-ruter) delt i slått/ikke slått etter Plot_management for året (skjøttet siden forrige registrering).",
+  "Ruter: høyde og rosetter som gjennomsnitt per rute ± standardfeil (se), larvespinn som totalt antall. Spinnruter ble ikke registrert i 2024 og 2026.",
+  "Sirkler: skjøttet/uskjøttet etter Plot_management. Busksjikt og vedplanter i feltsjikt som gjennomsnitt ± se, larvespinn som totalt (og snitt), rosetter bare 2026.",
+  "Forekomst: verdi > 0, eller smalkjempe present. Fishers eksakte test for skjøttet mot uskjøttet per år; NA når en av gruppene mangler variasjon.",
+  "De sju sirkelverdiene som ble satt til NA i skript 03, er ikke med."
+))
+skriv_excel(list(`Les meg` = les_meg, Ruter = ruter_tabell, Sirkler = sirkler_tabell,
+                 `Sirkler forekomst` = forekomst),
+            ut("10_rapportfigurer.xlsx"))
+```

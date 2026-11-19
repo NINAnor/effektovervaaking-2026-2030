@@ -27,6 +27,8 @@ lav <- readxl::read_excel(here::here("data", "Stjernebønnelav_REV_25_26_v2.xlsx
 
 arter <- readxl::read_excel(here::here("data", "Stjernebønnelav_REV_25_26_v2.xlsx"), sheet = "Arter_i_ruter")
 
+artsliste <- readxl::read_excel(here::here("data", "Stjernebønnelav_REV_25_26_v2.xlsx"), sheet = "Artsliste")
+
 ```
 
 ## Data cleaning
@@ -43,6 +45,72 @@ lav <- lav %>%
     Size = as.numeric(Size),
     Apothecia = as.numeric(Apothecia)
   )
+
+#Assign kingdom to each species in "arter" datasett, based on species list. 
+
+# Lookup: species name and assign kingdom
+kingdom_lookup <- artsliste %>%
+  select(Art, Kingdom, Phylum) %>%
+  distinct()
+
+arter <- arter  %>% 
+  left_join(
+    kingdom_lookup,
+    by = c(`Latinsk navn` = "Art"),
+    relationship = "many-to-one"
+  )
+
+arter <- arter %>%
+  mutate(
+    Funksjonell_gruppe = case_when(
+      Kingdom == "Fungi" ~ "Lav",
+      Kingdom == "Plantae" & Phylum == "Bryophyta" ~ "Moser",
+      Kingdom == "Plantae" & Phylum != "Bryophyta" ~ "Karplanter",
+      TRUE ~ NA_character_
+    )
+  )
+
+```
+
+## Summary
+
+Summarize number of thalli
+
+```{r}
+lav %>%
+  group_by(Year) %>%
+  summarise(
+    antall_thalli = n_distinct(Individ, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+lav %>% 
+  group_by(Year) %>% 
+  filter(Fertil == 1) %>%  
+  summarise(
+    antall_fertile_thalli = n_distinct(Individ, na.rm = TRUE), 
+    .groups = "drop"
+  )
+```
+
+Summarize number of lichen, bryophytes and vascular plants
+
+```{r}
+
+#Summary for number of species in each functional groups. This counts each species only once, also if it is registered in mutliple plots. 
+artsoppsummering <- arter %>%
+  filter(
+    År %in% c(2025, 2026),
+    Smårutefrekvens > 0,
+    !is.na(Funksjonell_gruppe)
+  ) %>%
+  group_by(År, Behandling, Funksjonell_gruppe) %>%
+  summarise(
+    antall_arter = n_distinct(`Latinsk navn`, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+artsoppsummering
 ```
 
 ## Figures
@@ -169,7 +237,8 @@ fig.apothecia <- ggplot(
     width = 0.7
   ) +
   scale_fill_manual(
-    values = c("2025" = "#4477AA", "2026" = "#EEAA33")
+    values = c("2025" = "#004F71",
+               "2026" = "#E69F00")
   ) +
   scale_y_continuous(
     breaks = scales::breaks_pretty(),
@@ -180,7 +249,7 @@ fig.apothecia <- ggplot(
     y = "Totalt antall apotecier per rute",
     fill = "År"
   ) +
-  theme_bw(base_size = 16)
+  theme_classic()
 
 fig.apothecia
 
@@ -228,7 +297,8 @@ fig.mean_apothecia <- ggplot(
     width = 0.2
   ) +
   scale_fill_manual(
-    values = c("2025" = "#4477AA", "2026" = "#EEAA33")
+    values = c("2025" = "#004F71",
+               "2026" = "#E69F00")
   ) +
   scale_y_continuous(
     expand = expansion(mult = c(0, 0.05))
@@ -238,7 +308,7 @@ fig.mean_apothecia <- ggplot(
     y = "3b.Gjennomsnittlig antall apothecia per rute",
     fill = "År"
   ) +
-  theme_bw(base_size = 16)
+  theme_classic()
 
 fig.mean_apothecia
 
@@ -283,7 +353,8 @@ fig.size <- ggplot(
     width = 0.2
   ) +
   scale_fill_manual(
-    values = c("2025" = "#4477AA", "2026" = "#EEAA33")
+    values = c("2025" = "#004F71",
+               "2026" = "#E69F00")
   ) +
   scale_y_continuous(
     expand = expansion(mult = c(0, 0.05))
@@ -293,7 +364,7 @@ fig.size <- ggplot(
     y = "Gjennomsnittlig thallusstørrelse",
     fill = "År"
   ) +
-  theme_bw(base_size = 16)
+  theme_classic()
 
 fig.size
 
