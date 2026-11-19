@@ -705,13 +705,12 @@ tribble(
 
 ## 9. Author contributions
 
-<!-- Fill in CRediT and MeRIT statements. See https://credit.niso.org/ and https://www.nature.com/articles/s41467-023-37039-1. -->
-
 **CRediT statement**
 
--   Mathias Andreasen: Methodology; Investigation (feltarbeid, laboratoriearbeid og forberedende genetiske undersøkelser); Project administration; Writing – original draft
--   Björn Nordén: Methodology; Validation (faglig kvalitetssikring)
--   Ruben Erik Roos: Formal analysis; Software; Visualization
+-   Data collection: Mathias Andreasen
+-   Formal analysis: Ruben E. Roos
+-   Writing: Mathias Andreasen
+-   Software: Niccolò Cantu
 
 **MeRIT attribution.** Mathias Andreasen gjennomførte feltmetodikk, laboratoriearbeid og planlegging av genetiske metoder, og var med på å utvikle opplegget for translokasjon og dyrking. Björn Nordén bidro til metodeutvikling og faglig kvalitetssikring. Ruben Erik Roos gjennomførte analysene av overvåkingsdata.
 

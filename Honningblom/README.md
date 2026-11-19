@@ -1,6 +1,6 @@
 # Honningblom (*Herminium monorchis*)
 Marianne Evju, Ruben Erik Roos
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -707,13 +707,10 @@ Society* 126: 39–48.
 
 ## 9. Author contributions
 
-<!-- Fill in CRediT and MeRIT statements. See https://credit.niso.org/ and https://www.nature.com/articles/s41467-023-37039-1. Delete rows you don't use. -->
-
 **CRediT statement**
 
-- Writing – original draft: ME (Marianne Evju)
-- Data curation: RER (Ruben Erik Roos), IMM (Ida M. Mienna), ME
-- Formal analysis: RER
-- Software: RER, IMM, BP (Bård Pedersen, original functions for the
-  population estimates)
-- Visualization: RER
+- Data collection: Ruben E. Roos, Astrid Brekke Skrindo
+- Data curation: Ruben E. Roos, Marianne Evju
+- Formal analysis: Ruben E. Roos
+- Writing: Marianne Evju, Ruben E. Roos
+- Software: Niccolò Cantu

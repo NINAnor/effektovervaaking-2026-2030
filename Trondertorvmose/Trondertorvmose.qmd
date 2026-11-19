@@ -295,7 +295,12 @@ Det var svært få individer av trøndertorvmose på lokaliteten i Snåsa i 2026
 
 ## 9. Author contributions
 
-Kristian Hassel har bidratt med feltarbeid. Fia Bengtsson har bidratt med feltarbeid og rapportering, samt etablert vekstforsøket. Magni Olsen Kyrkjeeide har bidratt med feltarbeid og skrevet rapporten.
+**CRediT statement**
+
+-   Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson
+-   Data curation: Fia Bengtsson
+-   Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
+-   Software: Niccolò Cantu
 
 Dataene samlet fra de nyetablerte fastrutene for trøndertorvmose (Henningslettet, Korsmyra og Kaldal) er delt på Living Norway.
 

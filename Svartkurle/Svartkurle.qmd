@@ -391,13 +391,10 @@ Undersøkelsene fra Sølendet og Svanvollen representerer langtidsdata fra to vi
 
 ## 9. Author contributions
 
--   Harald Bratli: forfatter
--   Dag-Inge Øien: forfatter
--   Anders Lyngstad: tilrettelegging, forfatter
--   Marianne Evju: tilrettelegging
--   Ruben Erik Roos: tilrettelegging
--   John Bjarne Jordal: diskusjonspartner, overvåkingsdata
--   Frida Nes Bjerva: analyser, dataleveranse
+**CRediT statement**
+
+-   Data collection: Anders Lyngstad, Dag Inge Øien
+-   Software: Niccolò Cantu
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}

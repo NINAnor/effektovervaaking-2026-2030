@@ -865,13 +865,10 @@ for arter 2021*. Artsdatabanken.
 
 ## 9. Author contributions
 
-<!-- Fill in CRediT and MeRIT statements. See https://credit.niso.org/ and https://www.nature.com/articles/s41467-023-37039-1. Delete rows you don't use. -->
-
 **CRediT statement**
 
-- Data curation: RER, IMM
-- Formal analysis: RER
-- Software: RER, IMM (Ida M. Mienna), OS (Olav Skarpaas), MG (Matthew
-  Grainger)
-- Visualization: RER
-- Writing – original draft: RER
+- Data collection: Ruben E. Roos, Siri Lie Olsen
+- Data curation: Ruben E. Roos, Marianne Evju
+- Formal analysis: Ruben E. Roos
+- Writing: Ruben E. Roos
+- Software: Niccolò Cantu

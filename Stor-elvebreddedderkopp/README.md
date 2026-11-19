@@ -1,6 +1,6 @@
 # Stor elvebreddedderkopp (*Arctosa cinerea*)
 Megan Nowell
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -1217,10 +1217,10 @@ Rapport No. 1314. Norsk institutt for naturforskning.
 
 ## 9. Author contributions
 
-<!-- Fill in CRediT and MeRIT statements. See https://credit.niso.org/ and https://www.nature.com/articles/s41467-023-37039-1. Delete rows you don't use. -->
-
 **CRediT statement**
 
-- Formal analysis: MN
-- Software: MN
-- Visualization: MN
+- Data collection: Arne Endre Laugsand
+- Data curation: Arne Endre Laugsand, Megan Nowell
+- Formal analysis: Megan Nowell
+- Writing: Megan Nowell
+- Software: Niccolò Cantu

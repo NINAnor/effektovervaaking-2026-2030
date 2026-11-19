@@ -405,7 +405,9 @@ tribble(
 
 **CRediT statement**
 
--   Mathias Andreasen: Writing – original draft; Writing – review & editing
+-   Data collection: Mathias Andreasen
+-   Writing: Mathias Andreasen
+-   Software: Niccolò Cantu
 
 **MeRIT attribution.** MA (Mathias Andreasen) sammenstilte litteratur, tidligere overvåkingsdata og opplysninger fra Statsforvalteren og utarbeidet rapportteksten og anbefalingene.
 

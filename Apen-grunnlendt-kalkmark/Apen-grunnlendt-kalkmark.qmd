@@ -732,7 +732,13 @@ Videreføring av overvåkingen kan gi generell kunnskap om tiden det tar før ti
 
 ## 9. Author contributions
 
-Marianne Evju & Ruben E. Roos har sammen designet, samlet inn data, analysert data og skrevet rapporten.
+**CRediT statement**
+
+-   Data collection: Marianne Evju, Ruben E. Roos
+-   Data curation: Marianne Evju, Ida Marielle Mienna
+-   Formal analysis: Marianne Evju, Ida Marielle Mienna
+-   Writing: Marianne Evju, Ruben E. Roos
+-   Software: Niccolò Cantu
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}

@@ -1,6 +1,6 @@
 # Åpen grunnlendt kalkmark
 Marianne Evju, Ruben Erik Roos
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -1588,8 +1588,13 @@ Fremmedartslista 2023*. Artsdatabanken.
 
 ## 9. Author contributions
 
-Marianne Evju & Ruben E. Roos har sammen designet, samlet inn data,
-analysert data og skrevet rapporten.
+**CRediT statement**
+
+- Data collection: Marianne Evju, Ruben E. Roos
+- Data curation: Marianne Evju, Ida Marielle Mienna
+- Formal analysis: Marianne Evju, Ida Marielle Mienna
+- Writing: Marianne Evju, Ruben E. Roos
+- Software: Niccolò Cantu
 
 [^1]: <https://faktaark.naturbase.no/?id=VV00000370>
 

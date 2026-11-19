@@ -1,6 +1,6 @@
 # Trønderlav (*Erioderma pedicellatum*)
 Mathias Andreasen, Ruben Erik Roos, Björn Nordén
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -1217,15 +1217,12 @@ Springer. <https://doi.org/10.1007/978-3-642-56359-1_1>.
 
 ## 9. Author contributions
 
-<!-- Fill in CRediT and MeRIT statements. See https://credit.niso.org/ and https://www.nature.com/articles/s41467-023-37039-1. -->
-
 **CRediT statement**
 
-- Mathias Andreasen: Methodology; Investigation (feltarbeid,
-  laboratoriearbeid og forberedende genetiske undersøkelser); Project
-  administration; Writing – original draft
-- Björn Nordén: Methodology; Validation (faglig kvalitetssikring)
-- Ruben Erik Roos: Formal analysis; Software; Visualization
+- Data collection: Mathias Andreasen
+- Formal analysis: Ruben E. Roos
+- Writing: Mathias Andreasen
+- Software: Niccolò Cantu
 
 **MeRIT attribution.** Mathias Andreasen gjennomførte feltmetodikk,
 laboratoriearbeid og planlegging av genetiske metoder, og var med på å

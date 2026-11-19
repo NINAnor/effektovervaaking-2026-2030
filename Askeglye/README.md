@@ -1,6 +1,6 @@
 # Askeglye *Collema leptaleum*
 Mathias Andreasen
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -794,8 +794,9 @@ Threatened Macrolichens of Norway – 1995*. Sommerfeltia 23.
 
 **CRediT statement**
 
-- Mathias Andreasen: Writing – original draft; Writing – review &
-  editing
+- Data collection: Mathias Andreasen
+- Writing: Mathias Andreasen
+- Software: Niccolò Cantu
 
 **MeRIT attribution.** MA (Mathias Andreasen) sammenstilte litteratur,
 tidligere overvåkingsdata og opplysninger fra Statsforvalteren og

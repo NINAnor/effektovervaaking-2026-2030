@@ -1,6 +1,6 @@
 # Trøndertorvmose (*Sphagnum troendelagicum*)
 Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -255,9 +255,12 @@ Artsdatabanken.
 
 ## 9. Author contributions
 
-Kristian Hassel har bidratt med feltarbeid. Fia Bengtsson har bidratt
-med feltarbeid og rapportering, samt etablert vekstforsøket. Magni Olsen
-Kyrkjeeide har bidratt med feltarbeid og skrevet rapporten.
+**CRediT statement**
+
+- Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson
+- Data curation: Fia Bengtsson
+- Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
+- Software: Niccolò Cantu
 
 Dataene samlet fra de nyetablerte fastrutene for trøndertorvmose
 (Henningslettet, Korsmyra og Kaldal) er delt på Living Norway.

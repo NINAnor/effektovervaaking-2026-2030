@@ -1,6 +1,6 @@
 # Svartkurle (*Nigritella nigra*)
 Harald Bratli, Dag-Inge Øien, Anders Lyngstad
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -723,10 +723,7 @@ Vitenskapsmuseet.
 
 ## 9. Author contributions
 
-- Harald Bratli: forfatter
-- Dag-Inge Øien: forfatter
-- Anders Lyngstad: tilrettelegging, forfatter
-- Marianne Evju: tilrettelegging
-- Ruben Erik Roos: tilrettelegging
-- John Bjarne Jordal: diskusjonspartner, overvåkingsdata
-- Frida Nes Bjerva: analyser, dataleveranse
+**CRediT statement**
+
+- Data collection: Anders Lyngstad, Dag Inge Øien
+- Software: Niccolò Cantu

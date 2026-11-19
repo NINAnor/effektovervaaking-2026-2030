@@ -1073,13 +1073,13 @@ Skilt ved de mest besøkte stedene, som fiskeplassene og gapahuken på Kregneste
 
 ## 9. Author contributions
 
-<!-- Fill in CRediT and MeRIT statements. See https://credit.niso.org/ and https://www.nature.com/articles/s41467-023-37039-1. Delete rows you don't use. -->
-
 **CRediT statement**
 
-* Formal analysis: MN
-* Software: MN
-* Visualization: MN
+-   Data collection: Arne Endre Laugsand
+-   Data curation: Arne Endre Laugsand, Megan Nowell
+-   Formal analysis: Megan Nowell
+-   Writing: Megan Nowell
+-   Software: Niccolò Cantu
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}

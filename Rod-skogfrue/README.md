@@ -1,6 +1,6 @@
 # Rød skogfrue (*Cephalanthera rubra*)
 Harald Bratli, Ida M. Mienna
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -799,11 +799,9 @@ Artsdatabanken.
 
 ## 9. Author contributions
 
-<!--# Kontroller rollene. Se https://credit.niso.org/ og https://www.nature.com/articles/s41467-023-37039-1. -->
-
 **CRediT statement**
 
-- Harald Bratli: Investigation (basisovervåking og feltbefaring);
-  Writing – original draft
-- Ida M. Mienna: Formal analysis (fjernmålingsdata); Visualization
-  (fjernmålingsfigurer); Writing – original draft (fjernmåling)
+- Data collection: Harald Bratli
+- Formal analysis: Ida Marielle Mienna
+- Writing: Harald Bratli, Ida Marielle Mienna
+- Software: Niccolò Cantu
