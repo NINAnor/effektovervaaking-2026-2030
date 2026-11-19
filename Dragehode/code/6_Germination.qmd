@@ -3,7 +3,7 @@ title: "Germination"
 format: html
 ---
 
-# Germination experiment for norther dragonhead (*Dracocephalum ruyschiana*) at Horgen, Frogn municipality, Norway. 
+# Germination experiment for norther dragonhead (*Dracocephalum ruyschiana*) at Horgen, Frogn municipality, Norway.
 
 ## Required packages
 
@@ -13,7 +13,91 @@ library(dplyr)
 library(ggplot2)
 library(readxl)
 library(here)
+library(gt)
 
 ```
 
 ## Import data
+
+```{r}
+df <- readxl::read_excel(here::here("data", "Frøspiring_data.xlsx"))
+```
+
+## Create overview table of experiment
+
+```{r}
+#Assign plots to a transect
+transekt_key <- tibble(
+  Plot = 1:10,
+  Transekt = c(
+    rep("Vestlig", 5),
+    rep("Østlig", 5)
+  )
+)
+
+#Create table that shows experimental setup
+# Én kolonne per smårute
+forsoksoppsett <- df %>%
+  select(Plot, Subplot, Treatment) %>%
+  left_join(transekt_key, by = "Plot") %>%
+  pivot_wider(
+    names_from = Subplot,
+    values_from = Treatment,
+    names_prefix = "S",
+    names_sort = TRUE
+  ) %>%
+  arrange(Transekt, Plot) %>%
+  relocate(Transekt, Plot)
+
+# Smårutekolonner og norske kolonneoverskrifter
+smarutekolonner <- grep("^S[0-9]+$", names(forsoksoppsett), value = TRUE)
+
+smaruteetiketter <- setNames(
+  as.list(sub("^S", "", smarutekolonner)),
+  smarutekolonner
+)
+
+tab_forsoksoppsett <- forsoksoppsett %>%
+  gt() %>%
+  tab_header(
+    title = "Forsøksoppsett for frøspiring hos dragehode",
+    subtitle = "Fordeling av behandlinger mellom småruter"
+  ) %>%
+  cols_label(
+    Transekt = "Transekt",
+    Plot = "Rute",
+    .list = smaruteetiketter
+  ) %>%
+  tab_spanner(
+    label = "Smårute",
+    columns = all_of(smarutekolonner)
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = everything()
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "#E8EEF4"),
+    locations = cells_body(
+      columns = all_of(smarutekolonner),
+      rows = TRUE
+    )
+  ) %>%
+  tab_source_note(
+    source_note = "C = kontroll (ingen behandling); S = stratifisering."
+  ) %>%
+  sub_missing(missing_text = "") %>%
+  opt_row_striping() %>%
+  tab_options(
+    table.font.size = 14,
+    data_row.padding = px(8)
+  )
+
+tab_forsoksoppsett
+
+#Save as word file
+gt::gtsave(
+  data = tab_forsoksoppsett,
+  filename = here::here("img", "Forsoksoppsett_dragehode.docx")
+)
+```
