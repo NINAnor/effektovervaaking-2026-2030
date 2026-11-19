@@ -1,6 +1,6 @@
 # Dragehode (*Dracocephalum ruyschiana*)
 Ruben Erik Roos
-2026-11-17
+2026-11-19
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -66,12 +66,14 @@ Ruben Erik Roos
 >
 > <!--# Legg til en kort linje for hver oppdatering -->
 >
-> 30. okt. 2026 – Første versjon, skjøtselsforsøket 2023–2026 og
->     basisovervåkingen 2017–2026
+> 30\. okt. 2026 – Første versjon, skjøtselsforsøket 2023–2026 og
+> basisovervåkingen 2017–2026
 >
 > <!-- -->
 >
-> 2.  nov. 2026 - oppdatert Innledning
+> 2\. nov. 2026 - oppdatert Innledning
+>
+> 19\. nov. 2026 – Korrektur fra forfatterne
 
 <hr />
 
@@ -128,8 +130,8 @@ voksesteder nedbygging.
 
 <!--# Bilde av dragehode legges inn her senere -->
 
-Mange skjøtselstiltak for dragehode gjennomføres av ulike aktører.
-Aktuelle metoder er blant annet høstbeite, slått, brenning og rydding av
+Skjøtselstiltak for dragehode gjennomføres av ulike aktører. Aktuelle
+metoder er blant annet høstbeite, slått, brenning og rydding av
 gjengroingsarter. Det overordnede målet av de ulike tiltakene er å
 begrense gjengroing og åpne opp leveområder etter at tradisjonell
 arealbruk har opphørt (Larsen og Høitomt 2022). NINA har vurdert ulike
@@ -155,7 +157,9 @@ seg.
 Tiltaket er sen slått etter frøsetting, annethvert år. Målet er å fjerne
 biomasse og åpne vegetasjonsdekket, og dermed bedre habitatkvaliteten,
 overlevelsen og rekrutteringen av dragehode og øke bestanden lokalt
-(Roos mfl. 2024, 2025).
+(Roos mfl. 2024, 2025). Målet med spriringsforsøket er å finne ut om
+dragehodene på Horgen produserer spiringsdyktige frø, og om disse klarer
+å spire i felt.
 
 ### 2.2 Formål med overvåking
 
@@ -182,12 +186,14 @@ etter slåtten.
 ### 3.1 Beskrivelse av lokalitetene
 
 Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1).
-Lokaliteten er den nordøstre delen av en åkerholme omgitt av kornåker.
-Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som
-er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men
-deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av
-gjengroing, særlig med roser, eik og bringebær, og var ikke slått på
-flere år før forsøket startet (Roos, Evju, Endrestøl, mfl. 2023).
+Lokaliteten er en åkerholme omgitt av kornåker. Dragehode vokser i
+nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt
+kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er
+nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med
+roser, eik og bringebær, og var ikke slått på flere år før forsøket
+startet (Roos, Evju, Endrestøl, mfl. 2023). Andre naturverdier på
+lokaliteten er bl.a. forekomst av nyresildre (NT), bakkemaure (VU),
+dvergforglemmegei (VU) og flere hule eiker.
 
 Mot toppen av skråningen er jordsmonnet grunt og tørt, med skrinn og
 kortvokst vegetasjon, mens vegetasjonen er frodigere nederst mot
@@ -235,18 +241,6 @@ Horgen. Registreringene gjøres før slåtten de årene det slås.
 </div>
 
 </div>
-
-Høsten 2026 ble det etablert et frøspiringsforsøk på Horgen.
-Forsøksfeltet ligger utenfor dagens forekomst og ble ryddet for kratt og
-slått før såing. Frø ble samlet fra ti dragehodeplanter på lokaliteten.
-Totalt 160 frø, halvparten ubehandlede og halvparten skarifisert med
-kniv, ble sådd i ti faste ruter 11. september. I tillegg inngår 75 frø i
-et forsøk under kontrollerte forhold, med ubehandlede frø og frø
-skarifisert med kniv eller sandpapir, etter to måneders
-kuldestratifisering. Overskuddsfrø ble spredt ved den opprinnelige
-bestanden.
-
-<!--# Bilde av frøspiringseksperimentet og kart over rutene legges inn her senere -->
 
 ## 4. Datainnsamling
 
@@ -305,6 +299,65 @@ for hele bestanden på lokaliteten hvert år siden 2017 (Evju mfl. 2021,
 2023). Disse dataene brukes her til å vise utviklingen i bestanden på
 lokaliteten.
 
+Høsten 2026 ble det etablert et frøspiringsforsøk på Horgen.
+Forsøksfeltet ligger utenfor dagens forekomst og ble ryddet for kratt og
+slått før såing
+(<a href="#fig-spiring-for-dragehode" class="quarto-xref">Figur 1</a> og
+<a href="#fig-spiring-etter-dragehode" class="quarto-xref">Figur 2</a>).
+Frø ble samlet fra ti dragehodeplanter på lokaliteten. Totalt 160 frø,
+halvparten ubehandlede og halvparten skarifisert med kniv, ble sådd i ti
+faste ruter 11. september. Rutene er 50 × 50 cm, og plasert hver 5.
+Meter langs to nord-sør orienterte trasekter på lokalititen. Ett frø ble
+sådd i hver av 16 småruter (12.5 × 12.5 cm) per vegetasjonsrute, slik at
+hver rute har 8 ubehandlede frø og 8 skarifiserte frø
+(<a href="#tbl-forsoksoppsett-dragehode" class="quarto-xref">Tabell 3</a>).
+I tillegg inngår 75 frø i et forsøk under kontrollerte forhold, med
+ubehandlede frø og frø skarifisert med kniv eller sandpapir, etter to
+måneders kuldestratifisering. Overskuddsfrø ble spredt ved den
+opprinnelige bestanden.
+
+<div id="fig-spiring-for-dragehode">
+
+![](img/Horgen_spiring_2026_før.jpg)
+
+Figur 1: Spiringsforsøket på Horgen i 2026, før slått. Foto: Ruben E.
+Roos/NINA.
+
+</div>
+
+<div id="fig-spiring-etter-dragehode">
+
+![](img/Horgen_spiring_2026_etter.jpg)
+
+Figur 2: Springsforsøket på Horgen i 2026, etter slått. Foto: Ruben E.
+Roos/NINA.
+
+</div>
+
+<div id="tbl-forsoksoppsett-dragehode">
+
+Tabell 3: Oppsett for spiringsforsøket på Horgen. C = kontroll (ingen
+behandling); S = stratifisering.
+
+<div class="cell-output-display">
+
+| Transekt | Plot |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  | 11  | 12  | 13  | 14  | 15  | 16  |
+|:---------|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Vestlig  |  1   |  C  |  S  |  S  |  C  |  S  |  S  |  C  |  C  |  C  |  S  |  C  |  S  |  S  |  C  |  S  |  C  |
+| Vestlig  |  2   |  S  |  C  |  S  |  S  |  S  |  S  |  S  |  C  |  C  |  C  |  C  |  C  |  S  |  C  |  C  |  S  |
+| Vestlig  |  3   |  C  |  C  |  C  |  S  |  C  |  S  |  S  |  S  |  C  |  C  |  S  |  S  |  C  |  S  |  C  |  S  |
+| Vestlig  |  4   |  C  |  S  |  S  |  C  |  S  |  S  |  S  |  S  |  C  |  S  |  S  |  C  |  C  |  C  |  C  |  C  |
+| Vestlig  |  5   |  S  |  S  |  C  |  C  |  C  |  S  |  S  |  S  |  C  |  S  |  C  |  S  |  S  |  C  |  C  |  C  |
+| Østlig   |  6   |  C  |  C  |  C  |  C  |  C  |  S  |  C  |  S  |  S  |  S  |  S  |  S  |  C  |  S  |  C  |  S  |
+| Østlig   |  7   |  S  |  S  |  C  |  C  |  C  |  C  |  S  |  S  |  C  |  C  |  S  |  C  |  S  |  S  |  C  |  S  |
+| Østlig   |  8   |  S  |  S  |  S  |  S  |  S  |  S  |  C  |  C  |  C  |  S  |  C  |  C  |  C  |  C  |  S  |  C  |
+| Østlig   |  9   |  S  |  C  |  C  |  C  |  S  |  C  |  S  |  S  |  S  |  C  |  C  |  S  |  S  |  C  |  S  |  C  |
+| Østlig   |  10  |  S  |  S  |  S  |  C  |  C  |  C  |  S  |  C  |  S  |  S  |  S  |  C  |  S  |  C  |  C  |  C  |
+
+</div>
+
+</div>
+
 ## 5. Dataanalyser
 
 <!-- Kort beskrivelse: hvilke analyser er gjennomført, for å undersøke endringer i indikatorer ift. påvirkningsfaktorer og tiltak, jf. forventninger (under formål). -->
@@ -360,14 +413,14 @@ naturforskning, u.å.).
 ## 6. Resultater
 
 Testene av behandling, år og samspillet mellom dem er oppsummert i
-<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>. Bare
+<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>. Bare
 vegetasjonshøyden viste en effekt av slått (signifikant samspill mellom
 behandling og år). Alle indikatorene unntatt dekningen av dragehode
 varierte mellom år.
 
 <div id="tbl-modeller">
 
-Tabell 3: Test av behandling (slått eller ikke slått), år og samspillet
+Tabell 4: Test av behandling (slått eller ikke slått), år og samspillet
 mellom dem for indikatorene i skjøtselsforsøket. Antall
 dragehodeplanter: Poisson GLMM med likelihood ratio-tester; de andre:
 lineære blandede modeller med F-tester. Alle modellene har rute som
@@ -394,7 +447,7 @@ n = antall rute-år. Signifikansnivå: \* p \< 0,05; \*\* p \< 0,01;
 
 Bestanden av dragehode på hele lokaliteten har gått kraftig ned siden
 basisovervåkingen startet i 2017
-(<a href="#fig-populasjon-dragehode" class="quarto-xref">Figur 1</a>). I
+(<a href="#fig-populasjon-dragehode" class="quarto-xref">Figur 3</a>). I
 2017 ble bestanden estimert til 877 individer, og i 2020–2022 til mellom
 357 og 413. I 2026 var estimatet 229 individer (50 % intervall 177–270),
 omtrent som i 2024 (225). Nedgangen gjelder særlig de fertile plantene,
@@ -409,7 +462,7 @@ vært mindre bratt.
 
 ![](img/fig-populasjon-dragehode-1.png)
 
-Figur 1: Estimert antall dragehodeplanter på hele lokaliteten på Horgen
+Figur 3: Estimert antall dragehodeplanter på hele lokaliteten på Horgen
 i basisovervåkingen 2017–2026, totalt og fordelt på fertile, vegetative
 og småplanter. Båndene viser 50 % bootstrap-intervall. Estimatene for
 2019 og 2020 er korrigert fra antall skudd til antall individer.
@@ -420,14 +473,14 @@ og småplanter. Båndene viser 50 % bootstrap-intervall. Estimatene for
 
 I de ti rutene som ble lagt ut på dragehode, ble det registrert 85
 dragehodeplanter i 2023, 76 i 2024, 52 i 2025 og 50 i 2026
-(<a href="#tbl-klasser" class="quarto-xref">Tabell 4</a>). Antallet gikk
+(<a href="#tbl-klasser" class="quarto-xref">Tabell 5</a>). Antallet gikk
 ned både i rutene som slås (fra 48 til 24) og i rutene som ikke slås
 (fra 37 til 26). Antallet varierte signifikant mellom år (p = 0,003),
 men utviklingen var ikke forskjellig mellom behandlingene (samspill p =
-0,79; <a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>). Mye av
+0,79; <a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>). Mye av
 nedgangen i de slåtte rutene skyldes én rute, som gikk fra 31 planter i
 2023 til 9 i 2026
-(<a href="#fig-dragehode" class="quarto-xref">Figur 2</a>). De fleste
+(<a href="#fig-dragehode" class="quarto-xref">Figur 4</a>). De fleste
 rutene har hatt omtrent like mange planter alle årene.
 
 De fleste plantene er fertile (45 i 2023 og 34 i 2026). Antallet
@@ -441,12 +494,12 @@ ikke funnet dragehode i 2026.
 
 Dekningen av dragehode i rutene var i gjennomsnitt 5–14 %, og varierte
 ikke signifikant mellom år eller behandlinger
-(<a href="#fig-dragehode" class="quarto-xref">Figur 2</a>,
-<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>).
+(<a href="#fig-dragehode" class="quarto-xref">Figur 4</a>,
+<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>).
 
 <div id="tbl-klasser">
 
-Tabell 4: Antall dragehodeplanter i de ti rutene med dragehode, fordelt
+Tabell 5: Antall dragehodeplanter i de ti rutene med dragehode, fordelt
 på størrelsesklasser, per år og behandling. Registreringene i 2023 ble
 gjort før den første slåtten.
 
@@ -471,7 +524,7 @@ gjort før den første slåtten.
 
 ![](img/fig-dragehode-1.png)
 
-Figur 2: Venstre: antall dragehodeplanter i hver av de ti rutene med
+Figur 4: Venstre: antall dragehodeplanter i hver av de ti rutene med
 dragehode (linjer) per år. Høyre: gjennomsnittlig dekning av dragehode i
 de samme rutene (søyler, med 95 % konfidensintervall). Den første
 slåtten ble gjort etter registreringene i 2023 og den andre etter
@@ -483,12 +536,12 @@ registreringene i 2025.
 
 Vegetasjonshøyden er den eneste indikatoren som viser en effekt av slått
 (samspill p = 0,012;
-<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>). I 2023, før
+<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>). I 2023, før
 den første slåtten og i en tørr sommer, var vegetasjonen lav i alle
 rutene (14 cm i gjennomsnitt). Sommeren etter hver slått var
 vegetasjonen lavere i rutene som ble slått: 24,8 mot 32,9 cm i 2024 (8,1
 cm lavere, p = 0,032) og 21,7 mot 29,8 cm i 2026 (8,2 cm lavere, p =
-0,031) (<a href="#fig-struktur" class="quarto-xref">Figur 3</a>). I
+0,031) (<a href="#fig-struktur" class="quarto-xref">Figur 5</a>). I
 2025, to år etter den første slåtten, var det ingen forskjell (29,7 mot
 25,6 cm, p = 0,28). Effekten av slåtten på vegetasjonshøyden ser altså
 ut til å vare ett år. I 2025 ble rutene registrert i august, da
@@ -498,7 +551,7 @@ sammenlignes direkte med de andre årene.
 Det var også mindre strø og mer bar jord i de slåtte rutene året etter
 den første slåtten (8 mot 28 % strø og 8 mot 2 % bar jord i 2024), men
 forskjellen var liten i 2026
-(<a href="#tbl-struktur" class="quarto-xref">Tabell 5</a>). Dekningen av
+(<a href="#tbl-struktur" class="quarto-xref">Tabell 6</a>). Dekningen av
 feltsjiktet har økt mye siden tørkesommeren 2023, fra 36–44 % til 82–88
 % i 2026, i begge behandlingene.
 
@@ -513,7 +566,7 @@ tyder på at vedplantene øker der det ikke slås.
 
 ![](img/fig-struktur-1.png)
 
-Figur 3: Gjennomsnittlig vegetasjonshøyde (venstre) og dekning av
+Figur 5: Gjennomsnittlig vegetasjonshøyde (venstre) og dekning av
 vedplanter i feltsjiktet (høyre) i rutene som slås og ikke slås, med 95
 % konfidensintervall (alle 20 ruter). Den første slåtten ble gjort etter
 registreringene i 2023 og den andre etter registreringene i 2025. I 2025
@@ -523,7 +576,7 @@ ble rutene registrert i august, de andre årene i juni.
 
 <div id="tbl-struktur">
 
-Tabell 5: Gjennomsnittlig dekning (%) av feltsjikt, strø, bunnsjikt og
+Tabell 6: Gjennomsnittlig dekning (%) av feltsjikt, strø, bunnsjikt og
 bar jord i rutene som slås og ikke slås (alle 20 ruter).
 
 <div class="cell-output-display">
@@ -549,8 +602,8 @@ Det var i gjennomsnitt 12–14 karplantearter per rute. Artsrikdommen
 varierte mellom år (p = 0,008) og var høyest i 2024, men det var ingen
 forskjell mellom rutene som slås og ikke slås (p = 0,98) og ingen
 forskjell i utviklingen (samspill p = 0,88;
-<a href="#fig-artsrikdom" class="quarto-xref">Figur 4</a>,
-<a href="#tbl-modeller" class="quarto-xref">Tabell 3</a>).
+<a href="#fig-artsrikdom" class="quarto-xref">Figur 6</a>,
+<a href="#tbl-modeller" class="quarto-xref">Tabell 4</a>).
 
 Dekningen av pollinatorplanter var lav i tørkesommeren 2023 (15–18 %),
 mye høyere i 2024 (34–38 %) og noe lavere i 2025 (24–30 %). Forskjellen
@@ -565,7 +618,7 @@ ble ikke gjort full vegetasjonsanalyse i 2026.
 
 ![](img/fig-artsrikdom-1.png)
 
-Figur 4: Gjennomsnittlig antall karplantearter (venstre) og summert
+Figur 6: Gjennomsnittlig antall karplantearter (venstre) og summert
 dekning av pollinatorplanter (høyre) i rutene som slås og ikke slås, med
 95 % konfidensintervall (alle 20 ruter). Full vegetasjonsanalyse ble
 gjort i 2023–2025. Registreringene i 2023 ble gjort før den første
@@ -579,8 +632,8 @@ slåtten.
 Artssammensetningen varierte mellom år (PERMANOVA p = 0,002) og var noe
 forskjellig mellom rutene som slås og ikke slås (p = 0,021), men
 forskjellen mellom behandlingene endret seg ikke over tid (samspill p =
-1,0; <a href="#fig-nmds" class="quarto-xref">Figur 5</a>,
-<a href="#tbl-permanova" class="quarto-xref">Tabell 6</a>). Forskjellen
+1,0; <a href="#fig-nmds" class="quarto-xref">Figur 7</a>,
+<a href="#tbl-permanova" class="quarto-xref">Tabell 7</a>). Forskjellen
 mellom behandlingene fantes altså allerede før den første slåtten, og
 skyldes ikke slåtten. År og behandling forklarer til sammen bare 11 % av
 variasjonen i artssammensetningen, og ordinasjonen har relativt høyt
@@ -590,7 +643,7 @@ stress (0,20), så den gir bare et grovt bilde av variasjonen.
 
 ![](img/fig-nmds-1.png)
 
-Figur 5: NMDS-ordinasjon av artssammensetningen i rutene som slås
+Figur 7: NMDS-ordinasjon av artssammensetningen i rutene som slås
 (oransje) og ikke slås (blå) i 2023–2025. Hvert punkt er en rute ett år.
 Ellipsene viser 95 % konfidensintervall rundt gjennomsnittet for hver
 behandling og hvert år, og pilene viser hvordan gjennomsnittet for hver
@@ -600,7 +653,7 @@ behandling har flyttet seg fra år til år.
 
 <div id="tbl-permanova">
 
-Tabell 6: PERMANOVA av artssammensetningen (Bray-Curtis) i 2023–2025. R²
+Tabell 7: PERMANOVA av artssammensetningen (Bray-Curtis) i 2023–2025. R²
 er andelen av variasjonen som forklares. Signifikansnivå: \* p \< 0,05;
 \*\* p \< 0,01; \*\*\* p \< 0,001.
 
@@ -624,11 +677,14 @@ er andelen av variasjonen som forklares. Signifikansnivå: \* p \< 0,05;
 slåtten og ett år etter den andre er det ingen effekt av slått på
 antallet eller dekningen av dragehode i overvåkingsrutene. Antallet gikk
 ned i både slåtte og ikke-slåtte ruter, og nedgangen følger utviklingen
-for hele lokaliteten, der bestanden fortsatt går ned. Det er svært få
+for hele lokaliteten, der bestanden fortsatt går ned. Dette er som
+forventet: dragehode er en langlivet art, og slått må trolig
+gjennomføres flere ganger før en eventuell effekt på bestanden blir
+synlig (<span class="nocase">Roos mfl.</span> 2025). Det er svært få
 småplanter, både i rutene og på lokaliteten, og rekrutteringen er
-fortsatt svak. Dette er som forventet: dragehode er en langlivet art, og
-slått må trolig gjennomføres flere ganger før en eventuell effekt på
-bestanden blir synlig (<span class="nocase">Roos mfl.</span> 2025).
+fortsatt svak. Det var imidlertid lett å samle frø til spiringsforsøket,
+noe som tyder på at det tross bra frøproduksjon er veldig få frø som
+spirer og utvikler seg til småplanter.
 
 **Slåtten gir lavere vegetasjon, men effekten varer ett år.** Sommeren
 etter hver slått var vegetasjonen om lag 8 cm lavere i de slåtte rutene,
@@ -653,13 +709,18 @@ mulig å påvise store effekter.
 
 **Tiltak.** Vi anbefaler å fortsette med sen slått annethvert år, med
 neste slått i september 2027. Effekten på vegetasjonshøyden varer bare
-ett år, og det kan derfor være aktuelt å vurdere om hyppigere slått gir
-et mer åpent vegetasjonsdekke over tid. Det bør også vurderes om området
-som slås, kan utvides til delen av åkerholmen sør for kraftlinjen, der
-både engvegetasjonen, med blant annet nyresildre *Saxifraga granulata*
-(NT) og bakkemaure *Galium sterneri* (VU), og flere eiketrær vil ha
-fordel av at nitrofile arter og gjengroingsarter holdes nede
-(<span class="nocase">Roos mfl.</span> 2025).
+ett år, men vi anbefaler likevel at slåtten ikke gjennomføres hyppigere,
+da dette kan påvirke dragehode negativt. Slått annethvert år ser ut som
+å være tilstrekkelig for å holde vegetasjonen relativt lav. Det kan
+vurdere å fjerne noen småeik og rosekratt med røttene, slik at
+vegetasjonshøyden vil øke mindre raskt etter slått. Vi anbefalte
+tidligere at området som slås kan utvides til delen av åkerholmen sør
+for kraftlinjen, der både engvegetasjonen, med blant annet nyresildre
+*Saxifraga granulata* (NT) og bakkemaure *Galium sterneri* (VU), og
+flere eiketrær vil ha fordel av at nitrofile arter og gjengroingsarter
+holdes nede (<span class="nocase">Roos mfl.</span> 2025). Dette er
+gjennomført i 2026 og vi anbefaler at dette området blir slått på nytt i
+2028.
 
 **Overvåking.** Overvåkingen av dragehode (antall i størrelsesklasser og
 dekning) og vegetasjonsstrukturen bør fortsette hvert år, og full
@@ -667,8 +728,8 @@ vegetasjonsanalyse bør gjøres annethvert år, neste gang i 2027.
 Registreringene bør gjøres i juni hvert år, slik at årene kan
 sammenlignes. Fordi forsøket har få ruter og bare én lokalitet, bør det
 vurderes å utvide forsøket til flere lokaliteter med dragehode (Roos,
-Evju, Endrestøl, mfl. 2023). Det vil også være nyttig å registrere
-frøsetting, siden rekrutteringen avhenger av at plantene produserer frø.
+Evju, Endrestøl, mfl. 2023). Oppfølging av spiringsforsøket i 2027 vil
+forhåpentligvis i innsikt om plantene produserer spiringsdyktige frø.
 
 ## 8. Referanser
 

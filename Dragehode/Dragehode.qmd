@@ -218,11 +218,13 @@ meta |>
 
 <!--# Legg til en kort linje for hver oppdatering -->
 
-30. okt. 2026 – Første versjon, skjøtselsforsøket 2023–2026 og basisovervåkingen 2017–2026
+30\. okt. 2026 – Første versjon, skjøtselsforsøket 2023–2026 og basisovervåkingen 2017–2026
 
 <!-- -->
 
-2.  nov. 2026 - oppdatert Innledning
+2\. nov. 2026 - oppdatert Innledning
+
+19\. nov. 2026 – Korrektur fra forfatterne
 :::
 
 <hr />
@@ -326,7 +328,7 @@ Dragehode *Dracocephalum ruyschiana* er en urt i leppeblomstfamilien som vokser 
 
 <!--# Bilde av dragehode legges inn her senere -->
 
-Mange skjøtselstiltak for dragehode gjennomføres av ulike aktører. Aktuelle metoder er blant annet høstbeite, slått, brenning og rydding av gjengroingsarter. Det overordnede målet av de ulike tiltakene er å begrense gjengroing og åpne opp leveområder etter at tradisjonell arealbruk har opphørt [@larsen_2022]. NINA har vurdert ulike skjøtselsmetoder [@evju_2022b; @roos_2023b] og foreslått å teste effekten av slått. Slått er enkelt å standardisere mellom lokaliteter, og det er mulig å ha både behandlings- og kontrollruter på samme lokalitet. I tillegg er det noe uenighet om effekten av slått for dragehode, og det er behov for skjøtselsmetoder som også tar vare på andre naturverdier på dragehodelokalitetene [@roos_2023a].
+Skjøtselstiltak for dragehode gjennomføres av ulike aktører. Aktuelle metoder er blant annet høstbeite, slått, brenning og rydding av gjengroingsarter. Det overordnede målet av de ulike tiltakene er å begrense gjengroing og åpne opp leveområder etter at tradisjonell arealbruk har opphørt [@larsen_2022]. NINA har vurdert ulike skjøtselsmetoder [@evju_2022b; @roos_2023b] og foreslått å teste effekten av slått. Slått er enkelt å standardisere mellom lokaliteter, og det er mulig å ha både behandlings- og kontrollruter på samme lokalitet. I tillegg er det noe uenighet om effekten av slått for dragehode, og det er behov for skjøtselsmetoder som også tar vare på andre naturverdier på dragehodelokalitetene [@roos_2023a].
 
 Dette delprosjektet overvåker effekten av sen slått annethvert år på dragehode på Horgen i Frogn kommune, der dragehodebestanden er i tilbakegang [@evju_2024]. Forsøket ble etablert i 2023 [@roos_2023a]. I tillegg ble det i 2026 etablert et spiringsforsøk, for å undersøke om dragehodeplantene klarer å formere seg.
 
@@ -334,7 +336,7 @@ Dette delprosjektet overvåker effekten av sen slått annethvert år på drageho
 
 ### 2.1 Målsetning med tiltakene
 
-Tiltaket er sen slått etter frøsetting, annethvert år. Målet er å fjerne biomasse og åpne vegetasjonsdekket, og dermed bedre habitatkvaliteten, overlevelsen og rekrutteringen av dragehode og øke bestanden lokalt [@roos_2024; @roos_2025].
+Tiltaket er sen slått etter frøsetting, annethvert år. Målet er å fjerne biomasse og åpne vegetasjonsdekket, og dermed bedre habitatkvaliteten, overlevelsen og rekrutteringen av dragehode og øke bestanden lokalt [@roos_2024; @roos_2025]. Målet med spriringsforsøket er å finne ut om dragehodene på Horgen produserer spiringsdyktige frø, og om disse klarer å spire i felt.
 
 ### 2.2 Formål med overvåking
 
@@ -348,7 +350,7 @@ Fjerning av biomasse og åpning av vegetasjonsdekket forventes å gi økt rekrut
 
 ### 3.1 Beskrivelse av lokalitetene
 
-Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1). Lokaliteten er den nordøstre delen av en åkerholme omgitt av kornåker. Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med roser, eik og bringebær, og var ikke slått på flere år før forsøket startet [@roos_2023a].
+Overvåkingen foregår på Horgen i Frogn kommune (gnr/bnr 36/1). Lokaliteten er en åkerholme omgitt av kornåker. Dragehode vokser i nordenden av åkerholmen, i en østvendt skråning som er vurdert som svakt kalkrik eng med klart hevdpreg (T32-C-20), men deler av lokaliteten er nok tørreng (T32-C-16). Lokaliteten er preget av gjengroing, særlig med roser, eik og bringebær, og var ikke slått på flere år før forsøket startet [@roos_2023a]. Andre naturverdier på lokaliteten er bl.a. forekomst av nyresildre (NT), bakkemaure (VU), dvergforglemmegei (VU) og flere hule eiker.
 
 Mot toppen av skråningen er jordsmonnet grunt og tørt, med skrinn og kortvokst vegetasjon, mens vegetasjonen er frodigere nederst mot åkerkanten og traktorveien. Dragehode finnes i begge delene. Skråningen ble derfor delt i seks striper, som hver har ruter både med og uten dragehode, og tre av stripene slås [@roos_2023a].
 
@@ -382,10 +384,6 @@ tibble(year = 2023:aar) |>
   kable()
 ```
 
-Høsten 2026 ble det etablert et frøspiringsforsøk på Horgen. Forsøksfeltet ligger utenfor dagens forekomst og ble ryddet for kratt og slått før såing. Frø ble samlet fra ti dragehodeplanter på lokaliteten. Totalt 160 frø, halvparten ubehandlede og halvparten skarifisert med kniv, ble sådd i ti faste ruter 11. september. I tillegg inngår 75 frø i et forsøk under kontrollerte forhold, med ubehandlede frø og frø skarifisert med kniv eller sandpapir, etter to måneders kuldestratifisering. Overskuddsfrø ble spredt ved den opprinnelige bestanden.
-
-<!--# Bilde av frøspiringseksperimentet og kart over rutene legges inn her senere -->
-
 ## 4. Datainnsamling
 
 Forsøket består av 20 faste overvåkingsruter på 1 × 1 m: fem ruter med dragehode som slås, fem ruter med dragehode som ikke slås (kontroll), fem ruter uten dragehode som slås og fem ruter uten dragehode som ikke slås [@roos_2023a]. Rutene er kartfestet med høypresisjons-GPS. Datainnsamlingen følger protokollen i @roos_2023a og registreres i ArcGIS Survey123. I hver rute registreres:
@@ -417,6 +415,26 @@ tribble(
 ```
 
 Basisovervåkingen av dragehode på Horgen gjøres etter en egen metodikk, med transekter og ruter langs dragehodeforekomsten, og gir et estimat for hele bestanden på lokaliteten hvert år siden 2017 [@evju_2021b; @evju_2023]. Disse dataene brukes her til å vise utviklingen i bestanden på lokaliteten.
+
+Høsten 2026 ble det etablert et frøspiringsforsøk på Horgen. Forsøksfeltet ligger utenfor dagens forekomst og ble ryddet for kratt og slått før såing (@fig-spiring-for-dragehode og @fig-spiring-etter-dragehode). Frø ble samlet fra ti dragehodeplanter på lokaliteten. Totalt 160 frø, halvparten ubehandlede og halvparten skarifisert med kniv, ble sådd i ti faste ruter 11. september. Rutene er 50 × 50 cm, og plasert hver 5. Meter langs to nord-sør orienterte trasekter på lokalititen. Ett frø ble sådd i hver av 16 småruter (12.5 × 12.5 cm) per vegetasjonsrute, slik at hver rute har 8 ubehandlede frø og 8 skarifiserte frø (@tbl-forsoksoppsett-dragehode). I tillegg inngår 75 frø i et forsøk under kontrollerte forhold, med ubehandlede frø og frø skarifisert med kniv eller sandpapir, etter to måneders kuldestratifisering. Overskuddsfrø ble spredt ved den opprinnelige bestanden.
+
+![Spiringsforsøket på Horgen i 2026, før slått. Foto: Ruben E. Roos/NINA.](img/Horgen_spiring_2026_før.jpg){#fig-spiring-for-dragehode}
+
+![Springsforsøket på Horgen i 2026, etter slått. Foto: Ruben E. Roos/NINA.](img/Horgen_spiring_2026_etter.jpg){#fig-spiring-etter-dragehode}
+
+```{r tbl-forsoksoppsett-dragehode}
+#| tbl-cap: 'Oppsett for spiringsforsøket på Horgen. C = kontroll (ingen behandling); S = stratifisering.'
+#| code-summary: 'Kode for tabell.'
+# Ett frø per smårute; plot 1–5 ligger i det vestlige transektet og 6–10 i det østlige
+forsoksoppsett <- read_excel(here("data", "Frøspiring_data.xlsx")) |>
+  mutate(Transekt = if_else(Plot <= 5, "Vestlig", "Østlig")) |>
+  select(Transekt, Plot, Subplot, Treatment) |>
+  pivot_wider(names_from = Subplot, values_from = Treatment) |>
+  arrange(Plot)
+tab <- kable(forsoksoppsett, align = c("l", rep("c", 17)))
+if (knitr::is_html_output()) tab <- add_header_above(tab, c(" " = 2, "Smårute" = 16))
+tab
+```
 
 ## 5. Dataanalyser
 
@@ -641,7 +659,7 @@ as.data.frame(perm) |>
 
 ### 7.1 Hva viser årets resultater
 
-**Ingen effekt av slått på dragehode ennå.** Tre år etter den første slåtten og ett år etter den andre er det ingen effekt av slått på antallet eller dekningen av dragehode i overvåkingsrutene. Antallet gikk ned i både slåtte og ikke-slåtte ruter, og nedgangen følger utviklingen for hele lokaliteten, der bestanden fortsatt går ned. Det er svært få småplanter, både i rutene og på lokaliteten, og rekrutteringen er fortsatt svak. Dette er som forventet: dragehode er en langlivet art, og slått må trolig gjennomføres flere ganger før en eventuell effekt på bestanden blir synlig [@roos_2025].
+**Ingen effekt av slått på dragehode ennå.** Tre år etter den første slåtten og ett år etter den andre er det ingen effekt av slått på antallet eller dekningen av dragehode i overvåkingsrutene. Antallet gikk ned i både slåtte og ikke-slåtte ruter, og nedgangen følger utviklingen for hele lokaliteten, der bestanden fortsatt går ned. Dette er som forventet: dragehode er en langlivet art, og slått må trolig gjennomføres flere ganger før en eventuell effekt på bestanden blir synlig [@roos_2025]. Det er svært få småplanter, både i rutene og på lokaliteten, og rekrutteringen er fortsatt svak. Det var imidlertid lett å samle frø til spiringsforsøket, noe som tyder på at det tross bra frøproduksjon er veldig få frø som spirer og utvikler seg til småplanter.
 
 **Slåtten gir lavere vegetasjon, men effekten varer ett år.** Sommeren etter hver slått var vegetasjonen om lag 8 cm lavere i de slåtte rutene, og etter den første slåtten var det også mindre strø og mer bar jord. To år etter slåtten var forskjellen borte. Lavere vegetasjon og mer åpen jord er nettopp det tiltaket skal gi, for at dragehode skal få mer lys og plass til å spire. Vedplantene ser ut til å øke i rutene som ikke slås.
 
@@ -651,9 +669,9 @@ as.data.frame(perm) |>
 
 ### 7.2 Anbefaling for videreføring
 
-**Tiltak.** Vi anbefaler å fortsette med sen slått annethvert år, med neste slått i september 2027. Effekten på vegetasjonshøyden varer bare ett år, og det kan derfor være aktuelt å vurdere om hyppigere slått gir et mer åpent vegetasjonsdekke over tid. Det bør også vurderes om området som slås, kan utvides til delen av åkerholmen sør for kraftlinjen, der både engvegetasjonen, med blant annet nyresildre *Saxifraga granulata* (NT) og bakkemaure *Galium sterneri* (VU), og flere eiketrær vil ha fordel av at nitrofile arter og gjengroingsarter holdes nede [@roos_2025].
+**Tiltak.** Vi anbefaler å fortsette med sen slått annethvert år, med neste slått i september 2027. Effekten på vegetasjonshøyden varer bare ett år, men vi anbefaler likevel at slåtten ikke gjennomføres hyppigere, da dette kan påvirke dragehode negativt. Slått annethvert år ser ut som å være tilstrekkelig for å holde vegetasjonen relativt lav. Det kan vurdere å fjerne noen småeik og rosekratt med røttene, slik at vegetasjonshøyden vil øke mindre raskt etter slått. Vi anbefalte tidligere at området som slås kan utvides til delen av åkerholmen sør for kraftlinjen, der både engvegetasjonen, med blant annet nyresildre *Saxifraga granulata* (NT) og bakkemaure *Galium sterneri* (VU), og flere eiketrær vil ha fordel av at nitrofile arter og gjengroingsarter holdes nede [@roos_2025]. Dette er gjennomført i 2026 og vi anbefaler at dette området blir slått på nytt i 2028.
 
-**Overvåking.** Overvåkingen av dragehode (antall i størrelsesklasser og dekning) og vegetasjonsstrukturen bør fortsette hvert år, og full vegetasjonsanalyse bør gjøres annethvert år, neste gang i 2027. Registreringene bør gjøres i juni hvert år, slik at årene kan sammenlignes. Fordi forsøket har få ruter og bare én lokalitet, bør det vurderes å utvide forsøket til flere lokaliteter med dragehode [@roos_2023a]. Det vil også være nyttig å registrere frøsetting, siden rekrutteringen avhenger av at plantene produserer frø.
+**Overvåking.** Overvåkingen av dragehode (antall i størrelsesklasser og dekning) og vegetasjonsstrukturen bør fortsette hvert år, og full vegetasjonsanalyse bør gjøres annethvert år, neste gang i 2027. Registreringene bør gjøres i juni hvert år, slik at årene kan sammenlignes. Fordi forsøket har få ruter og bare én lokalitet, bør det vurderes å utvide forsøket til flere lokaliteter med dragehode [@roos_2023a]. Oppfølging av spiringsforsøket i 2027 vil forhåpentligvis i innsikt om plantene produserer spiringsdyktige frø.
 
 ## 8. Referanser
 
