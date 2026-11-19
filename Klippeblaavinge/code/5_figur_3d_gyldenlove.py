@@ -150,6 +150,9 @@ def on_cloud(pts, max_d=0.3):
 P_ALL, E_ALL = local(noegg), local(eggs)
 p_pts, e_pts = P_ALL[on_cloud(P_ALL)], E_ALL[on_cloud(E_ALL)]
 n_hidden = len(P_ALL) + len(E_ALL) - len(p_pts) - len(e_pts)
+# legend count: all smørbukk surveyed at Gyldenløve (with and without eggs), from script 1
+_survey = pd.read_csv(C.DATA / "smorbukk_planter.csv")
+n_survey = int((_survey.site == "Gyldenløve").sum())
 
 # ----------------------------------------------------------------- render
 allp = np.vstack([p_pts, e_pts])
@@ -263,14 +266,13 @@ fig.text(0.01, 1 - 0.15 / H, "Gyldenløve i 3D: smørbukk og egg av klippeblåvi
 fig.text(0.01, 1 - 0.52 / H, f"Sett fra {compass(cam, centre)} · smørbukk med og uten egg {C.EGG_YEARS[0]}", fontsize=10.5,
          color="#4B5F6A", va="top")
 fig.legend(handles=[Line2D([], [], marker="o", linestyle="", markersize=7, markerfacecolor=COL_PLANT,
-                           markeredgecolor="#2B5A73", label=f"Smørbukk uten egg (n = {len(p_pts)})"),
+                           markeredgecolor="#2B5A73", label=f"Smørbukk (n = {n_survey})"),
                     Line2D([], [], marker="o", linestyle="", markersize=11, markerfacecolor=COL_EGG,
                            markeredgecolor="#7A3410", label=f"Smørbukk med egg {C.EGG_YEARS[0]} (n = {len(e_pts)})")],
            loc="lower left", bbox_to_anchor=(0.01, 0.4 / H), ncol=2, frameon=False, fontsize=10)
 fig.text(0.01, 0.12 / H, "Fargelagt punktsky fra dronefotogrammetri (Gyldenløve, mai 2026). "
          "Plantehøyder fra GNSS-innmåling, justert til "
-         "punktskyen. Planter med egg er markert med nål. Skrå 3D-visning: ingen fast målestokk."
-         + (f" {n_hidden} planter utenfor punktskyen er ikke vist." if n_hidden else ""),
+         "punktskyen. Planter med egg er markert med nål. Skrå 3D-visning: ingen fast målestokk.",
          fontsize=8.5, color=TXT_LIGHT, va="bottom", wrap=True)
 out = C.IMG / "figur_1_3d_gyldenlove.jpg"
 fig.savefig(out, dpi=200, facecolor="white", pil_kwargs={"quality": 88})
