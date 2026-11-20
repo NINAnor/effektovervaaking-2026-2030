@@ -87,9 +87,9 @@ et langsiktig perspektiv for å gi gode svar på utviklingen.
 
 I prosjektet utgjør lokalitetene Svanvollen og Sølendet grunnlaget. I
 tillegg foreslår vi å følge opp svartkurle i faste prøveflater i
-Kvikne-fjella (Tynset kommune, referanse), samt flere skjøtselsavhengige
-lokaliteter i Oppdal. Som skjøtselstiltak foreslår vi slått og/eller
-beite, hovedsakelig seint i sesongen, etter blomstring.
+Kvikne-fjella (Tynset kommune), som referanse, samt flere
+skjøtselsavhengige lokaliteter i Oppdal. Som skjøtselstiltak foreslår vi
+slått og/eller beite, hovedsakelig seint i sesongen, etter blomstring.
 
 Datainnsamlingen vil gjøres ved telling av blomstrende skudd og
 oppfølging (status (fertil/vegetativ), størrelse) av individer av
@@ -112,10 +112,9 @@ and to strengthen populations at selected sites through management. The
 effects of management (mowing and grazing) on population size and
 population structure will be documented. Without management we expect
 local extinction at sites that depend on it, with the species surviving
-only in isolated populations in the mountains. Because the number of
-shoots and flowering shoots varies greatly between years, monitoring
-must take a long-term perspective to give reliable answers about
-population trends.
+only in isolated, alpine populations. Because the number of shoots and
+flowering shoots varies greatly between years, monitoring must take a
+long-term perspective to give reliable answers about population trends.
 
 The project is based on the sites Svanvollen and Sølendet. In addition,
 we propose following the species in permanent plots in the Kvikne
@@ -168,9 +167,11 @@ Blomstrende svartkurle er vanligvis 10–23 cm høy (Moen og Øien 2003),
 men det er målt opptil 29 cm høye individer i Sølendet naturreservat og
 på Svanvollen i Håkåsæter naturreservat i Sør-Fron (upubl. data). De
 mørkt rødbrune blomstene sitter i tette aks eller hoder og har en svak
-vaniljelukt. Antallet blomster er høyt, vanligvis mellom 20 og 40.
-Kronbladene spriker slik at blomsten får form av en sekskantet stjerne,
-og i motsetning til hos de fleste norske orkideer vender leppa oppover.
+vaniljelukt
+(<a href="#fig-blomst-svartkurle" class="quarto-xref">Figur 1</a>).
+Antallet blomster er høyt, vanligvis mellom 20 og 40. Kronbladene
+spriker slik at blomsten får form av en sekskantet stjerne, og i
+motsetning til hos de fleste norske orkideer vender leppa oppover.
 Svartkurle blomstrer på de lavestliggende lokalitetene fra slutten av
 juni. På Sølendet er blomstringen vanligvis i første halvdel av juli, og
 på fjellokalitetene enda senere, ofte fram til begynnelsen av august.
@@ -179,6 +180,17 @@ Sterile eksemplarer kan være vanskelige å oppdage. De kan minne om små
 grasplanter, men bladene mangler en tydelig kjøl og har avrundet
 bladspiss. For en mer detaljert beskrivelse av arten, se Moen og Øien
 (2003, 2009).
+
+<div id="fig-blomst-svartkurle">
+
+<img src="img/svartkurle_blomstrende.jpg" style="width:50.0%" />
+
+Figur 1: Blomstrende svartkurle. Foto: Asbjørn Moen/NTNU
+Vitenskapsmuseet.
+
+</div>
+
+<!--# Bildet er hentet fra Word-dokumentet (Final); originalen (Svartkurle_Asbjørn Moen.JPG) ligger på Teams. -->
 
 ## 2. Formål med delprosjektet
 
@@ -211,7 +223,7 @@ utviklingen.
 ### 3.1 Beskrivelse av lokalitetene
 
 I prosjektet utgjør lokalitetene Svanvollen og Sølendet grunnlaget
-(<a href="#fig-kart-svartkurle" class="quarto-xref">Figur 1</a>). Her
+(<a href="#fig-kart-svartkurle" class="quarto-xref">Figur 2</a>). Her
 finnes det gode, lange dataserier. På Sølendet i Røros kommune er det
 aktuelt å innlemme nye prøveflater som ble etablert i forbindelse med
 masteroppgaven til Frida Nes Bjerva (Bjerva 2026). I tillegg foreslår vi
@@ -223,7 +235,7 @@ i Oppdal som følges av Miljøfaglig Utredning (se under).
 
 <img src="img/kart_lokaliteter.jpg" style="width:70.0%" />
 
-Figur 1: Kart over de fem eksisterende overvåkingslokalitetene som
+Figur 2: Kart over de fem eksisterende overvåkingslokalitetene som
 foreslås inkludert.
 
 </div>
@@ -249,7 +261,7 @@ vegetasjonsstrukturen, noe som tyder på at hyppigere eller mer
 målrettede tiltak kan være nødvendig for å opprettholde gunstige
 habitatforhold for svartkurle (Bjerva 2026). Så langt framstår beite som
 den mest gunstige skjøtselsmetoden for artens vitalitet
-(<a href="#fig-solendet" class="quarto-xref">Figur 2</a>). Videre
+(<a href="#fig-solendet" class="quarto-xref">Figur 3</a>). Videre
 oppfølging av svartkurle på Sølendet bør inkludere kontinuerlig
 overvåking av tetthet, vitalitet og antall blomstrende individer for å
 følge bestandsutviklingen og evaluere hvordan orkideen responderer på
@@ -259,7 +271,7 @@ skjøtsel over tid.
 
 ![](img/solendet_blomstrende.png)
 
-Figur 2: Foreløpige resultater fra telling av blomstrende individer på
+Figur 3: Foreløpige resultater fra telling av blomstrende individer på
 Sølendet 1991–2025. Forløpet for delpopulasjoner med ulik behandling er
 vist: rød linje = beiting (+ slått); gul = slått; blå = uten skjøtsel.
 Delpopulasjonene som slås, er i utgangspunktet mindre enn de som beites.
@@ -276,8 +288,8 @@ setre har tidligere beitet på vollen. Setringen opphørte på slutten av
 storfe og sau som går fritt i området. Svanvollen består av to
 delområder skilt med et bekkedrag, litt fuktmarksvegetasjon og litt
 tredekt areal, tidligere trolig åpen eng. Hovedforekomsten med
-svartkurle (505 merkede skudd) står på delområdet lengst vest, langs
-Håkåsætervegen, mens resten av populasjonen (94 merkede skudd) står på
+svartkurle (504 merkede skudd) står på delområdet lengst vest, langs
+Håkåsætervegen, mens resten av populasjonen (89 merkede skudd) står på
 dellokaliteten lengst øst.
 
 I Oppdal følges svartkurle årlig på i alt 15 lokaliteter. 13 av disse er
@@ -322,12 +334,12 @@ utmarka. Sommeren 2014 ble det etablert fire storruter på 20 × 20 m, to
 innenfor gjerdet og to utenfor. To av rutene, henholdsvis utenfor og
 innenfor gjerdet, slås årlig, mens de to andre ikke blir slått. Dette
 gir følgende skjøtsel i de fire rutene
-(<a href="#fig-svanvollen" class="quarto-xref">Figur 3</a>):
+(<a href="#fig-svanvollen" class="quarto-xref">Figur 4</a>):
 
 1.  **Slått, ikke sommerbeite:** slått og inngjerdet – ikke beite i
-    perioden 20.06–15.08, og slått seint i sesongen.
+    perioden 15.06–15.08, og slått seint i sesongen.
 2.  **Ikke slått, ikke sommerbeite:** inngjerdet – ikke beite i perioden
-    20.06–15.08, men uten slått.
+    15.06–15.08, men uten slått.
 3.  **Slått og sommerbeite:** utenfor inngjerdet areal og beite hele
     sommeren. Slått seint i sesongen.
 4.  **Ikke slått og sommerbeite:** utenfor inngjerdet areal og beite
@@ -365,11 +377,11 @@ data-ref-parent="fig-svanvollen" />
 
 </div>
 
-Figur 3: Svanvollen i 2016. Foto: NINA.
+Figur 4: Svanvollen i 2016. Foto: Harald Bratli.
 
 </div>
 
-<!--# Fotograf er ukjent for bildene fra Svanvollen 2016, derfor «Foto: NINA». Figurteksten «Felt 3 uten slått» er fra utkastet, men ifølge lista over er felt 3 slått og felt 4 uten slått – kontroller. -->
+<!--# Figurteksten «Felt 3 uten slått» er fra utkastet, men ifølge lista over er felt 3 slått og felt 4 uten slått – kontroller. -->
 
 ## 4. Datainnsamling
 
@@ -450,24 +462,25 @@ dataene. I tillegg er det gjennomført en masteroppgave fra Sølendet
 
 ### 6.1 Svanvollen
 
-I alt er det merket 593 skudd på Svanvollen. En stor andel av disse er
-vegetative (<a href="#fig-livsstadier" class="quarto-xref">Figur 4</a>).
-Mange har heller ikke dannet overjordsskudd på flere år og er trolig
-døde. Det er foreløpig ikke gjennomført analyser som viser utviklingen
-innen de ulike skjøtselstiltakene. Oppsummeringen viser at antallet
-merkede skudd øker over tid, men et ukjent antall av disse er døde.
-Omfanget og lengden av underjordisk dvale er ukjent. Antallet
-overjordsskudd har også økt jevnt, men har flatet ut de siste tre årene.
-Videre registreringer i kommende år vil vise om antallet stagnerer eller
-øker. Dataene gir også grunnlag for mer detaljerte undersøkelser av
-populasjonsutviklingen på Svanvollen, som også kan gi indikasjoner på
-artens overlevelsesmuligheter på lokaliteten.
+I alt er det merket 593 skudd på Svanvollen (pluss 6 skudd som ikke er
+gjenfunnet). En stor andel av disse er vegetative
+(<a href="#fig-livsstadier" class="quarto-xref">Figur 5</a>). Mange har
+heller ikke dannet overjordsskudd på flere år og er trolig døde. Det er
+foreløpig ikke gjennomført analyser som viser utviklingen innen de ulike
+skjøtselstiltakene. Oppsummeringen viser at antallet merkede skudd øker
+over tid, men et ukjent antall av disse er døde. Omfanget og lengden av
+underjordisk dvale er ukjent. Antallet overjordsskudd har også økt
+jevnt, men har flatet ut de siste tre årene. Videre registreringer i
+kommende år vil vise om antallet stagnerer eller øker. Dataene gir også
+grunnlag for mer detaljerte undersøkelser av populasjonsutviklingen på
+Svanvollen, som også kan gi indikasjoner på artens
+overlevelsesmuligheter på lokaliteten.
 
 <div id="fig-livsstadier">
 
 <img src="img/svanvollen_livsstadier.png" style="width:70.0%" />
 
-Figur 4: Fordeling av svartkurleskudd på Svanvollen etter livsstadium i
+Figur 5: Fordeling av svartkurleskudd på Svanvollen etter livsstadium i
 årene 2014–2026.
 
 </div>
@@ -521,9 +534,13 @@ cm for at svartkurle skal ha mulighet til langsiktig overlevelse.
 Data fra Svanvollen er ikke ferdig analysert med sikte på effekten av de
 ulike tiltakene. Det er derfor for tidlig å peke på noen sikker effekt
 av tiltakene, men observasjonene gir indikasjoner på at populasjonen på
-Svanvollen under ett er stabil og kanskje øker noe. Det er imidlertid
-også stor mellomårsvariasjon, der blant annet værforholdene foregående
-år, eller våren eller forsommeren samme år, kan spille inn.
+Svanvollen under ett er stabil og kanskje øker noe. Det er særlig antall
+vegetative skudd som bidrar til økning i antall over år. Dette er
+naturlig siden vegetative skudd er svært vanskelig å få øye på, og
+følgelig var det lavt antall de første årene. Ettersom flere skudd blir
+merket år for år, blir det også mulig å følge vegetative skudd. Det er
+imidlertid også stor mellomårsvariasjon, der blant annet værforholdene
+foregående år, eller våren eller forsommeren samme år, kan spille inn.
 
 Den viktigste erfaringen fra skjøtselen i Oppdal er at et hevdregime med
 slått og beite er gunstig, og at beiting trolig er viktigst for å

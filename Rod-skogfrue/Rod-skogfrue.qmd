@@ -47,11 +47,12 @@ execute:
 author:
   - name: Harald Bratli
     affiliations:
-      - id: nina
-        name: Norsk institutt for naturforskning (NINA)
+      - id: bratli
+        name: Biolog Bratli
   - name: Ida M. Mienna
     affiliations:
-      - ref: nina
+      - id: nina
+        name: Norsk institutt for naturforskning (NINA)
 AuthorList: Bratli, H. & Mienna, I.M.
 date: today
 data_availability: none
@@ -209,7 +210,7 @@ meta |>
 
 Rød skogfrue (*Cephalanthera rubra*) er en sterkt truet (EN) orkidé som vokser i kalkrik, relativt lysåpen skog på Sørøstlandet. Med to nye funn i 2026 er det kjent 58 sikre forekomster. Trusler er blant annet hogst, utbygging, slitasje, gjengroing med busker, trær og einstape, og beiting av hjortevilt. I flere lokaliteter er det gjennomført skjøtsel, som rydding av einstape, einer og busker, tynning og ringbarking av trær, og nettingbur mot beiting. Effekten av tiltakene er foreløpig ikke undersøkt.
 
-Overvåkingen av effekter av tiltak er i planleggingsfasen. I 2026 ble det samlet informasjon om tiltak fra Statsforvalteren, floravoktere og årsrapporter fra handlingsplanen, og det ble gjennomført en feltbefaring på Bjørkedokk. Basisovervåkingen i seks lokaliteter omfattet 526 merkede skudd i 2026, hvorav 173 var overjordiske (56 fertile) og 353 i dvale. Feltbefaringen viste stor variasjon i skogstruktur og lys innen og mellom lokalitetene. Overvåkingen bør derfor knyttes til enkeltskudd, med registrering av vegetasjon og tiltak i faste ruter rundt tilfeldig valgte skudd. En gjennomgang av fjernmålingsdata viser at tresjiktet kan følges over tid med laserdata, mens busk- og feltsjikt og einstape må registreres i felt. Skuddene må stedfestes med høypresisjons-GPS for å kunne knyttes til fjernmålingsdata.
+Overvåkingen av effekter av tiltak er i planleggingsfasen. I 2026 ble det samlet informasjon om tiltak fra Statsforvalteren, floravoktere og årsrapporter fra handlingsplanen, og det ble gjennomført en feltbefaring på Bjørkedokk. Basisovervåkingen i seks lokaliteter omfattet 526 merkede skudd i 2026, hvorav 173 var overjordiske (56 fertile) og 353 i dvale. Arten forekommer som spredte enkeltskudd eller klumpvis i små grupper. Mange lokaliteter har få skudd, og det kan være stor mellomårsvariasjon. Feltbefaringen viste stor variasjon i skogstruktur og lys innen og mellom lokalitetene. Overvåkingen bør derfor knyttes til enkeltskudd, med registrering av vegetasjon og tiltak i faste ruter rundt tilfeldig valgte skudd. En gjennomgang av fjernmålingsdata viser at tresjiktet kan følges over tid med laserdata, mens busk- og feltsjikt og einstape må registreres i felt. Skuddene må stedfestes med høypresisjons-GPS for å kunne knyttes til fjernmålingsdata.
 
 Vi anbefaler at de foreslåtte indikatorene testes i 2027 i lokaliteter med og uten tiltak, blant annet Bjørkedokk, Eikfjellet og Ødegård, og at en endelig overvåkingsmetodikk settes i gang fra 2028.
 
@@ -219,7 +220,7 @@ Vi anbefaler at de foreslåtte indikatorene testes i 2027 i lokaliteter med og u
 
 The red helleborine (*Cephalanthera rubra*) is an endangered (EN) orchid that grows in calcareous, fairly open forest in south-eastern Norway. With two new finds in 2026, 58 confirmed occurrences are known. Threats include logging, development, trampling, encroachment by shrubs, trees and bracken, and browsing by deer. Management has been carried out at several sites, such as clearing bracken, juniper and shrubs, thinning and ring-barking trees, and wire cages against browsing. The effects of these measures have not yet been studied.
 
-Monitoring of the effects of management is still being planned. In 2026, information on measures was collected from the County Governors, volunteer plant guardians and the annual reports of the action plan, and a field visit was made to Bjørkedokk. The basic monitoring at six sites covered 526 marked shoots in 2026, of which 173 were above ground (56 flowering) and 353 dormant. The field visit showed large variation in forest structure and light within and between sites. Monitoring should therefore be based on individual shoots, with vegetation and measures recorded in fixed plots around randomly selected shoots. A review of remote-sensing data shows that the tree layer can be followed over time with lidar, whereas the shrub and field layers and bracken must be recorded in the field. The shoots must be positioned with high-precision GPS to be linked to remote-sensing data.
+Monitoring of the effects of management is still being planned. In 2026, information on measures was collected from the County Governors, volunteer plant guardians and the annual reports of the action plan, and a field visit was made to Bjørkedokk. The basic monitoring at six sites covered 526 marked shoots in 2026, of which 173 were above ground (56 flowering) and 353 dormant. The species occurs as scattered individuals or in small clusters. Many localities have only a few individuals, and shoot production varies between years. The field visit showed large variation in forest structure and light within and between sites. Monitoring should therefore be based on individual shoots, with vegetation and measures recorded in fixed plots around randomly selected shoots. A review of remote-sensing data shows that the tree layer can be followed over time with lidar, whereas the shrub and field layers and bracken must be recorded in the field. The shoots must be positioned with high-precision GPS to be linked to remote-sensing data.
 
 We recommend testing the proposed indicators in 2027 at sites with and without management, including Bjørkedokk, Eikfjellet and Ødegård, and starting a final monitoring method from 2028.
 
@@ -230,13 +231,13 @@ Rød skogfrue (*Cephalanthera rubra*) er en orkidé som er vurdert som sterkt tr
 Trusler mot rød skogfrue er blant annet beskrevet i handlingsplanen for arten [@dn_2006]. De omfatter tap av habitat på grunn av utbygging og økt ferdsel, slitasje og plukking i tillegg til selve habitattapet. Hogst, især åpne hogstformer som flatehogst, anses som en trussel, med slitasje, kjørespor og markberedning og i tillegg negativ påvirkning på mykorrhiza-relasjoner som arten skal ha med skogstrær. Rød skogfrue foretrekker relativt lysåpne voksesteder, og fortetting av busk- og tresjikt og tette einstapebestand er negativt. Dette er satt i sammenheng med redusert utmarksbeite. Beite av blomstrende skudd fra hjortevilt er et problem i enkelte forekomster.
 
 ```{r fig-rod-skogfrue}
-#| fig-cap: 'Blomstrende skudd av rød skogfrue i Bjørkedokk. Foto: NINA.'
+#| fig-cap: 'Blomstrende skudd av rød skogfrue i Bjørkedokk. Foto: Harald Bratli.'
 #| code-summary: 'Kode for figur.'
 #| out-width: 40%
 include_graphics("img/rod_skogfrue_bjorkedokk.jpg")
 ```
 
-<!--# Fotograf for bildene fra utkastet (figur 1–4) er ukjent, derfor «Foto: NINA» (muligens Harald Bratli – bekreft). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
+<!--# Fotograf for figur 1–4 er Harald Bratli (bekreftet i Final-dokumentet). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
 
 Arten opptrer klumpvis i små bestander eller som enkeltindivider i lokalitetene. Disse bestandene dekker oftest små arealer, bare noen få m², og selv innen disse arealene kan dekningen av tre-, busk- og feltsjikt variere. Arten har variabel blomstring mellom år og kan også ha flere års underjordisk dvaleperiode. I små lokaliteter kan den derfor tilsynelatende være borte i flere år på rad, for så å sette overjordsskudd. Arten spres vegetativt med jordstengel, og det reelle genetiske individantallet per lokalitet er trolig lavere enn antallet skudd.
 
@@ -296,14 +297,14 @@ Det er utarbeidet skjøtselsplan for lokalitetene Bjørkedokk i Drammen kommune 
 I 2026 ble det i forbindelse med basisovervåkingen av rød skogfrue fjernet einstape i en dellokalitet øst for hoppbakken (@fig-hoppbakken). Det ble også fjernet einstapeskudd og klippet vekk greiner av gran i noen flere dellokaliteter rundt hoppbakken og i «baklia». Drammen kommune har ryddet løvoppslag nedenfor Røyskattlia 10 høsten 2026 (@fig-royskattlia). Ut over dette er det også tidligere år i forbindelse med basisovervåkingen gjennomført spredt rydding av einstape og busker på lokalitetene.
 
 ```{r fig-baklia}
-#| fig-cap: 'Dellokalitet «baklia» i Bjørkedokk der einer, småtrær og einstape er fjernet. Foto: NINA.'
+#| fig-cap: 'Dellokalitet «baklia» i Bjørkedokk der einer, småtrær og einstape er fjernet. Foto: Harald Bratli.'
 #| code-summary: 'Kode for figur.'
 #| out-width: 60%
 include_graphics("img/bjorkedokk_baklia_ryddet.jpg")
 ```
 
 ```{r fig-hoppbakken}
-#| fig-cap: 'Dellokalitet øst for hoppbakken i Bjørkedokk før og etter fjerning av einstape i 2026. Foto: NINA.'
+#| fig-cap: 'Dellokalitet øst for hoppbakken i Bjørkedokk før og etter fjerning av einstape i 2026. Foto: Harald Bratli.'
 #| fig-subcap:
 #|   - 'Før'
 #|   - 'Etter'
@@ -313,7 +314,7 @@ include_graphics(c("img/bjorkedokk_hoppbakken_for.jpg", "img/bjorkedokk_hoppbakk
 ```
 
 ```{r fig-royskattlia}
-#| fig-cap: 'Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og 13 i Bjørkedokk før fjerning av løvoppslag. Foto: NINA.'
+#| fig-cap: 'Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og 13 i Bjørkedokk før fjerning av løvoppslag. Foto: Harald Bratli.'
 #| fig-subcap:
 #|   - ''
 #|   - ''
@@ -477,6 +478,10 @@ Observasjoner i felt indikerer at rød skogfrue kan vokse under ulike økologisk
 -   Formal analysis: Ida Marielle Mienna
 -   Writing: Harald Bratli, Ida Marielle Mienna
 -   Software: Niccolò Cantu
+
+## 10. Acknowledgements
+
+Marianne Evju og Ruben E. Roos har bidratt i diskusjoner og var med på befaring, og har gitt viktige innspill til gjennomføring av delprosjektet i 2026 og anbefalinger for aktiviteter i 2027. Takk til Statsforvalterne i Østfold, Buskerud, Oslo og Akershus og Vestfold og Telemark for god dialog og informasjon om forekomster, gjennomført og planlagt skjøtsel.
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}

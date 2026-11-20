@@ -13,6 +13,7 @@ Ruben E. Roos, Anders Endrestøl
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Prikkrutevinge_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 7–11 er laget av code/10_rapportfigurer.qmd. Kartene (figur 3 og 4) er hentet fra Word-dokumentet; originalene ligger på Teams. -->
 
@@ -666,3 +667,9 @@ Norsk institutt for naturforskning.
 - Software: Niccolò Cantu
 
 <!--# <MeRIT attribution> -->
+
+## 10. Acknowledgements
+
+Forsvarsbygg takkes for tillatelse og hjelp med logistikk ved
+kartlegging av prikkrutevinge på Rauer. Victoria De Bruyn Trzebinski
+bidro på overvåking av vegetasjonen for prikkrutevinge i 2026.

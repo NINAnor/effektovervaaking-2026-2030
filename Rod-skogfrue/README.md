@@ -13,6 +13,7 @@ Harald Bratli, Ida M. Mienna
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Vedlegg årsrapport 2026_rød skogfrue_HB.docx» (P:/2026_subprojects/Skogfrue). Fjernmålingsfigurene er fra Ida M. Mienna sitt notat «rod_skogfrue_fjernmaling_notat.docx» i samme mappe. -->
 
@@ -88,6 +89,8 @@ det samlet informasjon om tiltak fra Statsforvalteren, floravoktere og
 årsrapporter fra handlingsplanen, og det ble gjennomført en feltbefaring
 på Bjørkedokk. Basisovervåkingen i seks lokaliteter omfattet 526 merkede
 skudd i 2026, hvorav 173 var overjordiske (56 fertile) og 353 i dvale.
+Arten forekommer som spredte enkeltskudd eller klumpvis i små grupper.
+Mange lokaliteter har få skudd, og det kan være stor mellomårsvariasjon.
 Feltbefaringen viste stor variasjon i skogstruktur og lys innen og
 mellom lokalitetene. Overvåkingen bør derfor knyttes til enkeltskudd,
 med registrering av vegetasjon og tiltak i faste ruter rundt tilfeldig
@@ -118,14 +121,16 @@ information on measures was collected from the County Governors,
 volunteer plant guardians and the annual reports of the action plan, and
 a field visit was made to Bjørkedokk. The basic monitoring at six sites
 covered 526 marked shoots in 2026, of which 173 were above ground (56
-flowering) and 353 dormant. The field visit showed large variation in
-forest structure and light within and between sites. Monitoring should
-therefore be based on individual shoots, with vegetation and measures
-recorded in fixed plots around randomly selected shoots. A review of
-remote-sensing data shows that the tree layer can be followed over time
-with lidar, whereas the shrub and field layers and bracken must be
-recorded in the field. The shoots must be positioned with high-precision
-GPS to be linked to remote-sensing data.
+flowering) and 353 dormant. The species occurs as scattered individuals
+or in small clusters. Many localities have only a few individuals, and
+shoot production varies between years. The field visit showed large
+variation in forest structure and light within and between sites.
+Monitoring should therefore be based on individual shoots, with
+vegetation and measures recorded in fixed plots around randomly selected
+shoots. A review of remote-sensing data shows that the tree layer can be
+followed over time with lidar, whereas the shrub and field layers and
+bracken must be recorded in the field. The shoots must be positioned
+with high-precision GPS to be linked to remote-sensing data.
 
 We recommend testing the proposed indicators in 2027 at sites with and
 without management, including Bjørkedokk, Eikfjellet and Ødegård, and
@@ -156,11 +161,12 @@ enkelte forekomster.
 
 <img src="img/rod_skogfrue_bjorkedokk.jpg" style="width:40.0%" />
 
-Figur 1: Blomstrende skudd av rød skogfrue i Bjørkedokk. Foto: NINA.
+Figur 1: Blomstrende skudd av rød skogfrue i Bjørkedokk. Foto: Harald
+Bratli.
 
 </div>
 
-<!--# Fotograf for bildene fra utkastet (figur 1–4) er ukjent, derfor «Foto: NINA» (muligens Harald Bratli – bekreft). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
+<!--# Fotograf for figur 1–4 er Harald Bratli (bekreftet i Final-dokumentet). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
 
 Arten opptrer klumpvis i små bestander eller som enkeltindivider i
 lokalitetene. Disse bestandene dekker oftest små arealer, bare noen få
@@ -339,7 +345,7 @@ gjennomført spredt rydding av einstape og busker på lokalitetene.
 <img src="img/bjorkedokk_baklia_ryddet.jpg" style="width:60.0%" />
 
 Figur 2: Dellokalitet «baklia» i Bjørkedokk der einer, småtrær og
-einstape er fjernet. Foto: NINA.
+einstape er fjernet. Foto: Harald Bratli.
 
 </div>
 
@@ -372,7 +378,7 @@ data-ref-parent="fig-hoppbakken" />
 </div>
 
 Figur 3: Dellokalitet øst for hoppbakken i Bjørkedokk før og etter
-fjerning av einstape i 2026. Foto: NINA.
+fjerning av einstape i 2026. Foto: Harald Bratli.
 
 </div>
 
@@ -405,7 +411,7 @@ data-ref-parent="fig-royskattlia" />
 </div>
 
 Figur 4: Gjengrodd forekomst med rød skogfrue mellom Røyskattlia 10 og
-13 i Bjørkedokk før fjerning av løvoppslag. Foto: NINA.
+13 i Bjørkedokk før fjerning av løvoppslag. Foto: Harald Bratli.
 
 </div>
 
@@ -808,3 +814,12 @@ Artsdatabanken.
 - Formal analysis: Ida Marielle Mienna
 - Writing: Harald Bratli, Ida Marielle Mienna
 - Software: Niccolò Cantu
+
+## 10. Acknowledgements
+
+Marianne Evju og Ruben E. Roos har bidratt i diskusjoner og var med på
+befaring, og har gitt viktige innspill til gjennomføring av
+delprosjektet i 2026 og anbefalinger for aktiviteter i 2027. Takk til
+Statsforvalterne i Østfold, Buskerud, Oslo og Akershus og Vestfold og
+Telemark for god dialog og informasjon om forekomster, gjennomført og
+planlagt skjøtsel.

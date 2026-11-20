@@ -13,6 +13,7 @@ Marianne Evju, Ruben Erik Roos
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i data/ og img/. Rådata ligger på P:, og koden som lager figurene og populasjonsestimatene ligger i code/ (skript 5 og 6). Rapporten lager ingen figurer selv. -->
 
@@ -716,3 +717,13 @@ Society* 126: 39–48.
 - Formal analysis: Ruben E. Roos
 - Writing: Marianne Evju, Ruben E. Roos
 - Software: Niccolò Cantu
+
+## 10. Acknowledgements
+
+Vi takker Skjærgårdstjenesten Ytre Oslofjord Øst for rask og trygg
+transport til Filletassen, og Monika Olsen (Ytre Hvaler nasjonalpark),
+Gunnar Bjar og Liv Ingrid Kravdal (Statsforvalteren i Østfold, Buskerud,
+Oslo og Akershus) for god dialog og informasjon om skjøtsel. Astrid
+Brekke Skrindo (NINA) takkes for innhenting av overvåkingsdata for
+honningblom. Bård Pedersen har utviklet analyserutiner for
+bestandsutvikling for honningblom.

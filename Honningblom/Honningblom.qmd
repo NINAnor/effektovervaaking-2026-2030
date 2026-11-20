@@ -458,6 +458,10 @@ I 2026 er det også gjennomført skjøtsel på potensielle utsettingslokaliteter
 -   Writing: Marianne Evju, Ruben E. Roos
 -   Software: Niccolò Cantu
 
+## 10. Acknowledgements
+
+Vi takker Skjærgårdstjenesten Ytre Oslofjord Øst for rask og trygg transport til Filletassen, og Monika Olsen (Ytre Hvaler nasjonalpark), Gunnar Bjar og Liv Ingrid Kravdal (Statsforvalteren i Østfold, Buskerud, Oslo og Akershus) for god dialog og informasjon om skjøtsel. Astrid Brekke Skrindo (NINA) takkes for innhenting av overvåkingsdata for honningblom. Bård Pedersen har utviklet analyserutiner for bestandsutvikling for honningblom.
+
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

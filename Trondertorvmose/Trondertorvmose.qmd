@@ -54,7 +54,8 @@ author:
       - ref: nina
   - name: Kristian Hassel
     affiliations:
-      - ref: nina
+      - id: ntnu
+        name: NTNU Vitenskapsmuseet
 AuthorList: Kyrkjeeide, M.O., Bengtsson, F. & Hassel, K.
 date: today
 data_availability: none
@@ -305,6 +306,10 @@ Det var svært få individer av trøndertorvmose på lokaliteten i Snåsa i 2026
 Dataene samlet fra de nyetablerte fastrutene for trøndertorvmose (Henningslettet, Korsmyra og Kaldal) er delt på Living Norway.
 
 <!--# Fyll inn adresse (DOI/lenke) til datasettet på Living Norway. -->
+
+## 10. Acknowledgements
+
+Takk til Statsforvalteren i Trøndelag for god dialog og finansiering til deler av prosjektet.
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}

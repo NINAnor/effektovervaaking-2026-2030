@@ -457,6 +457,10 @@ Effektovervåking av skjøtselstiltakene er komplisert, fordi det er stor varias
 
 <!--# <MeRIT attribution> -->
 
+## 10. Acknowledgements
+
+Forsvarsbygg takkes for tillatelse og hjelp med logistikk ved kartlegging av prikkrutevinge på Rauer. Victoria De Bruyn Trzebinski bidro på overvåking av vegetasjonen for prikkrutevinge i 2026.
+
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

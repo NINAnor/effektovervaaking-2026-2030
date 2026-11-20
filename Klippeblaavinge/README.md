@@ -13,6 +13,7 @@ Ruben E. Roos, Anders Endrestøl, Andrew Møller Gray
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Klippeblåvinge_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 6–9 er laget av Python-skriptene i code/ (se code/README.md). Bildene i figur 3, 4, 5 og 10 er hentet fra Word-dokumentet; originalene ligger på Teams. Tabell 4 og 5 er skrevet av fra teksten. -->
 
@@ -686,3 +687,12 @@ av tiltak for åtte trua arter og en naturtype i 2024*. NINA Rapport
 - Software: Niccolò Cantu
 
 <!--# <MeRIT attribution> -->
+
+## 10. Acknowledgements
+
+Vi takker Statsforvalteren i Østfold, Buskerud, Oslo og Akershus for god
+dialog om delprosjektet.
+
+Takk til Amund Dahle for hjelp til kartlegging av klippeblåvinge i 2026.
+Forsvarsbygg takkes for tillatelse til overvåking av klippeblåvinge på
+Fredriksten festning.

@@ -692,6 +692,10 @@ as.data.frame(perm) |>
 -   Writing: Ruben E. Roos
 -   Software: Niccolò Cantu
 
+## 10. Acknowledgements
+
+Ellen Stensrud, grunneier på Nordre Horgen, takkes for godt samarbeid om overvåkingen av dragehode. Siri Lie Olsen (NINA/NMBU) hadde ansvar for innsamling av data fra basisovervåkingen av dragehode på Horgen. Victoria De Bruyn Trzebinski bisto med preparering av frø til spiringsforsøk med dragehode. Thomas Landfastøyen gjennomførte skjøtsel i september 2026.
+
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

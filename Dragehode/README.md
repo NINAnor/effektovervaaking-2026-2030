@@ -13,6 +13,7 @@ Ruben Erik Roos
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i data/ og img/. Rådata ligger på P:, og koden som lager analysefilene ligger i code/. -->
 
@@ -874,3 +875,12 @@ for arter 2021*. Artsdatabanken.
 - Formal analysis: Ruben E. Roos
 - Writing: Ruben E. Roos
 - Software: Niccolò Cantu
+
+## 10. Acknowledgements
+
+Ellen Stensrud, grunneier på Nordre Horgen, takkes for godt samarbeid om
+overvåkingen av dragehode. Siri Lie Olsen (NINA/NMBU) hadde ansvar for
+innsamling av data fra basisovervåkingen av dragehode på Horgen.
+Victoria De Bruyn Trzebinski bisto med preparering av frø til
+spiringsforsøk med dragehode. Thomas Landfastøyen gjennomførte skjøtsel
+i september 2026.

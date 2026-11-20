@@ -13,6 +13,7 @@ Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Vedlegg årsrapport 2026_mal_trøndertorvmose.docx» (P:/09 Trøndertorvmose/2026). -->
 
@@ -269,3 +270,8 @@ Dataene samlet fra de nyetablerte fastrutene for trøndertorvmose
 (Henningslettet, Korsmyra og Kaldal) er delt på Living Norway.
 
 <!--# Fyll inn adresse (DOI/lenke) til datasettet på Living Norway. -->
+
+## 10. Acknowledgements
+
+Takk til Statsforvalteren i Trøndelag for god dialog og finansiering til
+deler av prosjektet.

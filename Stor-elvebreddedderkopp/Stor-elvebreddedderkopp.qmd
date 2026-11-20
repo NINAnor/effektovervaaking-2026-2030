@@ -1084,6 +1084,10 @@ Skilt ved de mest besøkte stedene, som fiskeplassene og gapahuken på Kregneste
 -   Writing: Megan Nowell
 -   Software: Niccolò Cantu
 
+## 10. Acknowledgements
+
+Takk til Midtnorsk naturundersøkelse for luking og kartlegging av lupiner på lokaliteter for stor elvebreddedderkopp i Trøndelag og for deling av data og informasjon. Arnstein Staverløkk tok dronebilder fra lokalitetene i juni.
+
 ::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

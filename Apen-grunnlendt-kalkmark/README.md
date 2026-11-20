@@ -13,6 +13,7 @@ Marianne Evju, Ruben Erik Roos, Jørn Olav Løkken
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i img/. Figurene lages av code/5_Analyser.R. Tekstgrunnlaget er «Vedlegg årsrapport 2026_mal_GRUK.docx» (P:/02 Apen grunnlendt kalkmark/2026). -->
 
@@ -1598,6 +1599,15 @@ Fremmedartslista 2023*. Artsdatabanken.
 - Formal analysis: Marianne Evju, Ida Marielle Mienna
 - Writing: Marianne Evju, Ruben E. Roos
 - Software: Niccolò Cantu
+
+## 10. Acknowledgements
+
+Vi takker Statsforvalteren i Østfold, Buskerud, Oslo og Akershus,
+Bymiljøetaten i Oslo kommune og Naturrestaurering AS for godt samarbeid
+om planlegging og overvåking av restaureringstiltak på åpen grunnlendt
+kalkmark.
+
+Ida M. Mienna har bidratt med datahåndtering og -analyser.
 
 [^1]: <https://faktaark.naturbase.no/?id=VV00000370>
 

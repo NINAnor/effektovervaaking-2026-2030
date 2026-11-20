@@ -474,6 +474,12 @@ Dersom en bestand ikke etablerer seg, kan det være vanskelig å identifisere å
 
 <!--# <MeRIT attribution> -->
 
+## 10. Acknowledgements
+
+Vi takker Statsforvalteren i Østfold, Buskerud, Oslo og Akershus for god dialog om delprosjektet.
+
+Takk til Amund Dahle for hjelp til kartlegging av klippeblåvinge i 2026. Forsvarsbygg takkes for tillatelse til overvåking av klippeblåvinge på Fredriksten festning.
+
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

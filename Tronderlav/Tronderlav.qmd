@@ -716,6 +716,10 @@ tribble(
 
 <!--# Kontroller eventuell særskilt MeRIT-kategorisering i hovedrapporten. -->
 
+## 10. Acknowledgements
+
+Takk til Statsforvalteren i Innlandet for god dialog og finansiering til deler av prosjektet. Vi takker dessuten grunneierne som har gitt tillatelse til translokasjon av trønderlav. Vi takker Andreas Ballot (NIVA) for ekspertise innen dyrking og sekvensering av cyanobakterier, Inger Skrede (Seksjon for genetikk og evolusjonsbiologi, Universitetet i Oslo) for råd om genomsekvensering og Einar Timdal (Universitetet i Oslo) for hjelp til å innhente materiale gjennom Oslo Fungarium.
+
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

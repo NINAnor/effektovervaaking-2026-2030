@@ -13,6 +13,7 @@ Mathias Andreasen, Ruben Erik Roos, Björn Nordén
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i data/ og img/. Figurene lages av skriptene i code/ (02 og 03); rapporten lager ingen figurer selv, men regner ut tabellene for overlevelse, arealendring, vannkjemi og mikroklima fra filene i data/. Tekstgrunnlaget er Mathias Andreasens utkast «Trønderlav årsrapport 2026.docx» (P:/08 Trønderlav/2026). -->
 
@@ -1234,3 +1235,13 @@ metodeutvikling og faglig kvalitetssikring. Ruben Erik Roos gjennomførte
 analysene av overvåkingsdata.
 
 <!--# Kontroller eventuell særskilt MeRIT-kategorisering i hovedrapporten. -->
+
+## 10. Acknowledgements
+
+Takk til Statsforvalteren i Innlandet for god dialog og finansiering til
+deler av prosjektet. Vi takker dessuten grunneierne som har gitt
+tillatelse til translokasjon av trønderlav. Vi takker Andreas Ballot
+(NIVA) for ekspertise innen dyrking og sekvensering av cyanobakterier,
+Inger Skrede (Seksjon for genetikk og evolusjonsbiologi, Universitetet i
+Oslo) for råd om genomsekvensering og Einar Timdal (Universitetet i
+Oslo) for hjelp til å innhente materiale gjennom Oslo Fungarium.

@@ -743,6 +743,12 @@ Videreføring av overvåkingen kan gi generell kunnskap om tiden det tar før ti
 -   Writing: Marianne Evju, Ruben E. Roos
 -   Software: Niccolò Cantu
 
+## 10. Acknowledgements
+
+Vi takker Statsforvalteren i Østfold, Buskerud, Oslo og Akershus, Bymiljøetaten i Oslo kommune og Naturrestaurering AS for godt samarbeid om planlegging og overvåking av restaureringstiltak på åpen grunnlendt kalkmark.
+
+Ida M. Mienna har bidratt med datahåndtering og -analyser.
+
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
 ## Session Info

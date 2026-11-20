@@ -13,6 +13,7 @@ Megan Nowell, Arne Endre Laugsand
 - [7. Oppsummering](#7-oppsummering)
 - [8. Referanser](#8-referanser)
 - [9. Author contributions](#9-author-contributions)
+- [10. Acknowledgements](#10-acknowledgements)
 
 <!--# Rapporten leser kun filer i data/ og img/. Rådata ligger på P:, og koden som lager masterfila ligger i code/. -->
 
@@ -1445,3 +1446,10 @@ Norsk institutt for naturforskning.
 - Formal analysis: Megan Nowell
 - Writing: Megan Nowell
 - Software: Niccolò Cantu
+
+## 10. Acknowledgements
+
+Takk til Midtnorsk naturundersøkelse for luking og kartlegging av
+lupiner på elvesandjegerlokaliteter i Trøndelag og for deling av data og
+informasjon. Arnstein Staverløkk tok dronebilder fra lokalitetene i
+juni.
