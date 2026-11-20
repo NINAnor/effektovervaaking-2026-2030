@@ -38,7 +38,7 @@ Ruben E. Roos, Anders Endrestøl, Andrew Møller Gray
 > 2026. Klippeblåvinge. Digitalt vedlegg til Roos, R.E., Nowell, M. &
 > Evju, M. (red.) 2026. Effektovervåking av trua arter og naturtyper
 > 2026–2030. Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
-> naturforskning. \[LINK\].
+> naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Klippeblaavinge/Klippeblaavinge.html>
 
 > [!TIP]

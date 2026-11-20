@@ -36,7 +36,7 @@ Ruben Erik Roos
 > **Recommended citation**: Roos, R.E. 2026. Dragehode. Digitalt vedlegg
 > til Roos, R.E., Nowell, M. & Evju, M. (red.) 2026. Effektovervåking av
 > trua arter og naturtyper 2026–2030. Årsrapport 2026. NINA Rapport
-> \[xxx\]. Norsk institutt for naturforskning. \[LINK\].
+> \[xxx\]. Norsk institutt for naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Dragehode/Dragehode.html>
 
 > [!TIP]

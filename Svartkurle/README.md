@@ -36,7 +36,7 @@ Harald Bratli, Dag-Inge Øien, Anders Lyngstad
 > Svartkurle. Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju, M.
 > (red.) 2026. Effektovervåking av trua arter og naturtyper 2026–2030.
 > Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
-> naturforskning. \[LINK\].
+> naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Svartkurle/Svartkurle.html>
 
 > [!TIP]
