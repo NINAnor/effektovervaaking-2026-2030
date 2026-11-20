@@ -52,7 +52,10 @@ author:
   - name: Ruben Erik Roos
     affiliations:
       - ref: nina
-AuthorList: Evju, M. & Roos, R.E.
+  - name: Jørn Olav Løkken
+    affiliations:
+      - name: NaturRestaurering
+AuthorList: Evju, M., Roos, R.E. & Løkken, J.O.
 date: today
 data_availability: none
 code_reproducibility: none
@@ -739,6 +742,10 @@ Videreføring av overvåkingen kan gi generell kunnskap om tiden det tar før ti
 -   Formal analysis: Marianne Evju, Ida Marielle Mienna
 -   Writing: Marianne Evju, Ruben E. Roos
 -   Software: Niccolò Cantu
+
+**Acknowledgements**
+
+We thank Eric E. Ombler for help with the field work.
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}

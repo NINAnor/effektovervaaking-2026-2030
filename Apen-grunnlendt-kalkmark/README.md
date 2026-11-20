@@ -1,5 +1,5 @@
 # Åpen grunnlendt kalkmark
-Marianne Evju, Ruben Erik Roos
+Marianne Evju, Ruben Erik Roos, Jørn Olav Løkken
 2026-11-20
 
 - [Oppsummering](#oppsummering)
@@ -33,10 +33,10 @@ Marianne Evju, Ruben Erik Roos
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Evju, M. & Roos, R.E. 2026. Åpen grunnlendt
-> kalkmark. Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju, M.
-> (red.) 2026. Effektovervåking av trua arter og naturtyper 2026–2030.
-> Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
+> **Recommended citation**: Evju, M., Roos, R.E. & Løkken, J.O. 2026.
+> Åpen grunnlendt kalkmark. Digitalt vedlegg til Roos, R.E., Nowell, M.
+> & Evju, M. (red.) 2026. Effektovervåking av trua arter og naturtyper
+> 2026–2030. Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
 > naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.html>
 
@@ -1598,6 +1598,10 @@ Fremmedartslista 2023*. Artsdatabanken.
 - Formal analysis: Marianne Evju, Ida Marielle Mienna
 - Writing: Marianne Evju, Ruben E. Roos
 - Software: Niccolò Cantu
+
+**Acknowledgements**
+
+We thank Eric E. Ombler for help with the field work.
 
 [^1]: <https://faktaark.naturbase.no/?id=VV00000370>
 
