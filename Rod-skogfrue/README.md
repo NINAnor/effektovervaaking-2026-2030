@@ -1,6 +1,6 @@
 # Rød skogfrue (*Cephalanthera rubra*)
 Harald Bratli, Ida M. Mienna
-2026-11-19
+2026-11-20
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -32,9 +32,12 @@ Harald Bratli, Ida M. Mienna
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Bratli, H. & Mienna, I.M. 2026. Rød skogfrue
-> (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
-> https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
+> **Recommended citation**: Bratli, H. & Mienna, I.M. 2026. Rød
+> skogfrue. Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju, M.
+> (red.) 2026. Effektovervåking av trua arter og naturtyper 2026–2030.
+> Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
+> naturforskning. \[LINK\].
+> <https://ninanor.github.io/effektovervaaking-2026-2030/Rod-skogfrue/Rod-skogfrue.html>
 
 > [!TIP]
 >

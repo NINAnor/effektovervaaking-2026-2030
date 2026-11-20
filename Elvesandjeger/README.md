@@ -1,6 +1,6 @@
 # Elvesandjeger (*Cicindela maritima*)
 Megan Nowell, Arne Endre Laugsand
-2026-11-19
+2026-11-20
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -34,8 +34,11 @@ Megan Nowell, Arne Endre Laugsand
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 > **Recommended citation**: Nowell, M. & Laugsand, A. E. 2026.
-> Elvesandjeger (ID: XX_YYYY_ZZZ) v. 0.1.0. ecRxiv:
-> https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
+> Elvesandjeger. Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju, M.
+> (red.) 2026. Effektovervåking av trua arter og naturtyper 2026–2030.
+> Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
+> naturforskning. \[LINK\].
+> <https://ninanor.github.io/effektovervaaking-2026-2030/Elvesandjeger/Elvesandjeger.html>
 
 > [!TIP]
 >

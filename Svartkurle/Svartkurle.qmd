@@ -170,7 +170,7 @@ license_badge()
 :::
 ::::
 
-> **Recommended citation**: `r paste(auth, " ", year, ". ", name, " (ID: ", folder_name, ") ", "v. ", version, ". ecRxiv: ", url, sep="")`
+> **Recommended citation**: `r paste0(auth, " ", year, ". ", name, ". Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju, M. (red.) ", year, ". Effektovervåking av trua arter og naturtyper 2026–2030. Årsrapport ", year, ". NINA Rapport [xxx]. Norsk institutt for naturforskning. [LINK]. <https://ninanor.github.io/effektovervaaking-2026-2030/Svartkurle/Svartkurle.html>")`
 
 ::: {.callout-tip collapse="true"}
 ## Metadata
