@@ -36,7 +36,7 @@ Ruben E. Roos, Anders Endrestøl
 > **Recommended citation**: Roos, R. E. & Endrestøl, A. 2026.
 > Prikkrutevinge. Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju, M.
 > (red.) 2026. Effektovervåking av trua arter og naturtyper 2026–2030.
-> Årsrapport 2026. NINA Rapport \[xxx\]. Norsk institutt for
+> Årsrapport 2026. NINA Rapport 2851. Norsk institutt for
 > naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Prikkrutevinge/Prikkrutevinge.html>
 

@@ -36,7 +36,7 @@ Alexander Nilsson, Ruben E. Roos, Marianne Evju, Torbjørn Høitomt
 > **Recommended citation**: Nilsson, A., Roos, R. E., Evju, M. &
 > Høitomt, T. 2026. Stjernebønnelav. Digitalt vedlegg til Roos, R.E.,
 > Nowell, M. & Evju, M. (red.) 2026. Effektovervåking av trua arter og
-> naturtyper 2026–2030. Årsrapport 2026. NINA Rapport \[xxx\]. Norsk
+> naturtyper 2026–2030. Årsrapport 2026. NINA Rapport 2851. Norsk
 > institutt for naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Stjernebonnelav/Stjernebonnelav.html>
 

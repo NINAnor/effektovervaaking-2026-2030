@@ -27,6 +27,7 @@ In the order they appear in the book.
 | [Klippeblaavinge](Klippeblaavinge/) | Klippeblåvinge (*Scolitantides orion*) | ✔ |
 | [Prikkrutevinge](Prikkrutevinge/) | Prikkrutevinge (*Melitaea cinxia*) | ✔ |
 | [Tronderlav](Tronderlav/) | Trønderlav (*Erioderma pedicellatum*) | ✔ |
+| [Eremitt](Eremitt/) | Eremitt (*Osmoderma eremita*) | ✔ draft |
 | [Rod-skogfrue](Rod-skogfrue/) | Rød skogfrue (*Cephalanthera rubra*) | ✔ |
 | [Svartkurle](Svartkurle/) | Svartkurle (*Nigritella nigra*) | ✔ |
 | [Trondertorvmose](Trondertorvmose/) | Trøndertorvmose (*Sphagnum troendelagicum*) | ✔ |
@@ -34,7 +35,6 @@ In the order they appear in the book.
 | [Stjernebonnelav](Stjernebonnelav/) | Stjernebønnelav (*Buellia asterella*) | ✔ |
 | [Kystlynghei](Kystlynghei/) | Kystlynghei | ✔ separate repository (submodule) |
 | [effektovervaking_forests](effektovervaking_forests/) | Olivinskog and kalklindeskog | ✔ separate repository (submodule) |
-| [Eremitt](Eremitt/) | Eremitt (*Osmoderma eremita*) | not set up |
 
 ## Folder structure
 

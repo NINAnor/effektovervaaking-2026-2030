@@ -14,7 +14,7 @@ This book includes reports for:
 - [Klippeblåvinge](Klippeblaavinge/Klippeblaavinge.qmd)
 - [Prikkrutevinge](Prikkrutevinge/Prikkrutevinge.qmd)
 - [Trønderlav](Tronderlav/Tronderlav.qmd)
-- Eremitt (ikke klar ennå)
+- [Eremitt](Eremitt/Eremitt.qmd) (utkast)
 - [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd)
 - [Svartkurle](Svartkurle/Svartkurle.qmd)
 - [Trøndertorvmose](Trondertorvmose/Trondertorvmose.qmd)
