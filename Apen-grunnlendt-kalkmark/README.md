@@ -1593,15 +1593,11 @@ Fremmedartslista 2023*. Artsdatabanken.
 
 **CRediT statement**
 
-- Data collection: Marianne Evju, Ruben E. Roos
+- Data collection: Marianne Evju, Ruben E. Roos, Eric E. Ombler
 - Data curation: Marianne Evju, Ida Marielle Mienna
 - Formal analysis: Marianne Evju, Ida Marielle Mienna
 - Writing: Marianne Evju, Ruben E. Roos
 - Software: Niccolò Cantu
-
-**Acknowledgements**
-
-We thank Eric E. Ombler for help with the field work.
 
 [^1]: <https://faktaark.naturbase.no/?id=VV00000370>
 

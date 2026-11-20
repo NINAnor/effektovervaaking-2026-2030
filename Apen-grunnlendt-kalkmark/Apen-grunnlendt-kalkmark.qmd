@@ -737,15 +737,11 @@ Videreføring av overvåkingen kan gi generell kunnskap om tiden det tar før ti
 
 **CRediT statement**
 
--   Data collection: Marianne Evju, Ruben E. Roos
+-   Data collection: Marianne Evju, Ruben E. Roos, Eric E. Ombler
 -   Data curation: Marianne Evju, Ida Marielle Mienna
 -   Formal analysis: Marianne Evju, Ida Marielle Mienna
 -   Writing: Marianne Evju, Ruben E. Roos
 -   Software: Niccolò Cantu
-
-**Acknowledgements**
-
-We thank Eric E. Ombler for help with the field work.
 
 :::: {.content-visible when-format="html"}
 ::: {.callout-tip collapse="true"}
