@@ -6,6 +6,8 @@ editor:
 
 # Effektovervåking 2026–2030 {.unnumbered}
 
+(English below)
+
 Denne nettsiden inneholder digitale vedlegg til årsrapporten for 2026
 for prosjektet «Effektovervåking av trua arter og naturtyper for
 perioden 2026−2030». Prosjektet er finansiert av Miljødirektoratet.
@@ -43,32 +45,36 @@ Se [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030) f
 
 Du kan også bla gjennom [previous website versions](versions/) av denne nettsiden.
 
- 
 
+This website contains the supplementary material for the 2026 annual report for "Monitoring of effects of management actions for threatened nature types and species 2026-2030". The project is funded by the Norwegian Environment Agency. 
 
+The main report can be found here: 
+Roos, R.E., Nowell, M. & Evju, M. (red.) 2026. Monitoring of effects of management actions for threatened nature types and species 2026-2030 – Annual report 2026. NINA Rapport 2851. Norsk institutt for naturforskning (LINK to be added after publication)
 
-Code, cleaned data and yearly result summaries for NINA's monitoring of
-the effects of management actions for threatened species and habitat
-types in Norway (*Overvåking av effekter av tiltak for trua arter og
-naturtyper 2026-2030*), funded by the Norwegian Environment Agency.
+The supplementary material describes species and nature types included in the project. Code, data, and yearly monitoring results of managements actions are given in a separate chapters: 
+- [Open calcareous grasslands](Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd) 
+- [Northern dragonhead](Dragehode/Dragehode.qmd) 
+- [Musk orchid](Honningblom/Honningblom.qmd) 
+- [Dune tiger beetle](Elvesandjeger/Elvesandjeger.qmd) 
+- [*Arctosa cinerea*](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd) 
+- [Chequered blue](Klippeblaavinge/Klippeblaavinge.qmd) 
+- [Glanville fritillary](Prikkrutevinge/Prikkrutevinge.qmd) 
+- [Boreal felt lichen](Tronderlav/Tronderlav.qmd) 
+- [Hermit beetle](Eremitt/Eremitt.qmd) (utkast) 
+- [Red helleborine](Rod-skogfrue/Rod-skogfrue.qmd) 
+- [Black vanilla orchid](Svartkurle/Svartkurle.qmd) 
+- [*Sphagnum troendelagicum*](Trondertorvmose/Trondertorvmose.qmd) 
+- [*Buellia asterella*](Stjernebonnelav/Stjernebonnelav.qmd) 
+- [*Collema leptaleum*](Askeglye/Askeglye.qmd) 
 
-This book includes reports for: - [Åpen grunnlendt
-kalkmark](Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd) -
-[Dragehode](Dragehode/Dragehode.qmd) -
-[Honningblom](Honningblom/Honningblom.qmd) -
-[Elvesandjeger](Elvesandjeger/Elvesandjeger.qmd) - [Stor
-elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd) -
-[Klippeblåvinge](Klippeblaavinge/Klippeblaavinge.qmd) -
-[Prikkrutevinge](Prikkrutevinge/Prikkrutevinge.qmd) -
-[Trønderlav](Tronderlav/Tronderlav.qmd) - [Eremitt](Eremitt/Eremitt.qmd)
-(utkast) - [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd) -
-[Svartkurle](Svartkurle/Svartkurle.qmd) -
-[Trøndertorvmose](Trondertorvmose/Trondertorvmose.qmd) -
-[Stjernebønnelav](Stjernebonnelav/Stjernebonnelav.qmd) -
-[Askeglye](Askeglye/Askeglye.qmd) - [Kystlynghei:
-Methodology](Kystlynghei/report/kystlynghei_methods.qmd) - [Forest
-monitoring
-report](effektovervaking_forests/docs/forest_monitoring_report.qmd)
+A separate report is published on the development and methods for using remote sensing for monitoring the condition of "selected habitat types": 
+
+Gray, A.M., Singh, G. & Mienna, I.M. 2026. Remote sensing-based monitoring of selected habitat types 2026 - Coastal heathland, olivine forest, and calcareous lime forest. Annual report for option 2 in the assignment for effect monitoring 2026–2030. NINA Report 2852. Norwegian Institute for Nature Research. (LINK after publication)
+
+This website also includes supplementary material that describes the methodology for remote sensed monitoring of coastal heathlands, olivine forest, and calcareous lime forest: 
+
+- [Coastal heathlands](Kystlynghei/report/kystlynghei_methods.qmd)
+- [Olivine and calcareous lime forest](effektovervaking_forests/docs/forest_monitoring_report.qmd)
 
 See the [repository
 README](https://github.com/NINAnor/effektovervaaking-2026-2030) for the
