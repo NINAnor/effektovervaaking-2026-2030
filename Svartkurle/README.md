@@ -167,9 +167,11 @@ Blomstrende svartkurle er vanligvis 10–23 cm høy (Moen og Øien 2003),
 men det er målt opptil 29 cm høye individer i Sølendet naturreservat og
 på Svanvollen i Håkåsæter naturreservat i Sør-Fron (upubl. data). De
 mørkt rødbrune blomstene sitter i tette aks eller hoder og har en svak
-vaniljelukt. Antallet blomster er høyt, vanligvis mellom 20 og 40.
-Kronbladene spriker slik at blomsten får form av en sekskantet stjerne,
-og i motsetning til hos de fleste norske orkideer vender leppa oppover.
+vaniljelukt
+(<a href="#fig-blomst-svartkurle" class="quarto-xref">Figur 1</a>).
+Antallet blomster er høyt, vanligvis mellom 20 og 40. Kronbladene
+spriker slik at blomsten får form av en sekskantet stjerne, og i
+motsetning til hos de fleste norske orkideer vender leppa oppover.
 Svartkurle blomstrer på de lavestliggende lokalitetene fra slutten av
 juni. På Sølendet er blomstringen vanligvis i første halvdel av juli, og
 på fjellokalitetene enda senere, ofte fram til begynnelsen av august.
@@ -179,7 +181,16 @@ grasplanter, men bladene mangler en tydelig kjøl og har avrundet
 bladspiss. For en mer detaljert beskrivelse av arten, se Moen og Øien
 (2003, 2009).
 
-<!--# HER SKAL FIGUR 1 INN: «Blomstrende svartkurle. Foto: Asbjørn Moen/NTNU Vitenskapsmuseet.» (label fig-blomst-svartkurle, henvisning «(@fig-blomst-svartkurle)» etter «vaniljelukt»). Bildet (Svartkurle_Asbjørn Moen.JPG) ligger på Teams og er ikke i Final-dokumentet. -->
+<div id="fig-blomst-svartkurle">
+
+<img src="img/svartkurle_blomstrende_moen.jpg" style="width:50.0%" />
+
+Figur 1: Blomstrende svartkurle. Foto: Asbjørn Moen/NTNU
+Vitenskapsmuseet.
+
+</div>
+
+<!--# Originalbildet «Svartkurle_Asbjørn Moen.JPG» (Teams; kopi i P:/…/2026_subprojects/Svartkurle). -->
 
 ## 2. Formål med delprosjektet
 
@@ -212,7 +223,7 @@ utviklingen.
 ### 3.1 Beskrivelse av lokalitetene
 
 I prosjektet utgjør lokalitetene Svanvollen og Sølendet grunnlaget
-(<a href="#fig-kart-svartkurle" class="quarto-xref">Figur 1</a>). Her
+(<a href="#fig-kart-svartkurle" class="quarto-xref">Figur 2</a>). Her
 finnes det gode, lange dataserier. På Sølendet i Røros kommune er det
 aktuelt å innlemme nye prøveflater som ble etablert i forbindelse med
 masteroppgaven til Frida Nes Bjerva (Bjerva 2026). I tillegg foreslår vi
@@ -224,7 +235,7 @@ i Oppdal som følges av Miljøfaglig Utredning (se under).
 
 <img src="img/kart_lokaliteter.jpg" style="width:70.0%" />
 
-Figur 1: Kart over de fem eksisterende overvåkingslokalitetene som
+Figur 2: Kart over de fem eksisterende overvåkingslokalitetene som
 foreslås inkludert.
 
 </div>
@@ -250,7 +261,7 @@ vegetasjonsstrukturen, noe som tyder på at hyppigere eller mer
 målrettede tiltak kan være nødvendig for å opprettholde gunstige
 habitatforhold for svartkurle (Bjerva 2026). Så langt framstår beite som
 den mest gunstige skjøtselsmetoden for artens vitalitet
-(<a href="#fig-solendet" class="quarto-xref">Figur 2</a>). Videre
+(<a href="#fig-solendet" class="quarto-xref">Figur 3</a>). Videre
 oppfølging av svartkurle på Sølendet bør inkludere kontinuerlig
 overvåking av tetthet, vitalitet og antall blomstrende individer for å
 følge bestandsutviklingen og evaluere hvordan orkideen responderer på
@@ -260,7 +271,7 @@ skjøtsel over tid.
 
 ![](img/solendet_blomstrende.png)
 
-Figur 2: Foreløpige resultater fra telling av blomstrende individer på
+Figur 3: Foreløpige resultater fra telling av blomstrende individer på
 Sølendet 1991–2025. Forløpet for delpopulasjoner med ulik behandling er
 vist: rød linje = beiting (+ slått); gul = slått; blå = uten skjøtsel.
 Delpopulasjonene som slås, er i utgangspunktet mindre enn de som beites.
@@ -323,7 +334,7 @@ utmarka. Sommeren 2014 ble det etablert fire storruter på 20 × 20 m, to
 innenfor gjerdet og to utenfor. To av rutene, henholdsvis utenfor og
 innenfor gjerdet, slås årlig, mens de to andre ikke blir slått. Dette
 gir følgende skjøtsel i de fire rutene
-(<a href="#fig-svanvollen" class="quarto-xref">Figur 3</a>):
+(<a href="#fig-svanvollen" class="quarto-xref">Figur 4</a>):
 
 1.  **Slått, ikke sommerbeite:** slått og inngjerdet – ikke beite i
     perioden 15.06–15.08, og slått seint i sesongen.
@@ -366,7 +377,7 @@ data-ref-parent="fig-svanvollen" />
 
 </div>
 
-Figur 3: Svanvollen i 2016. Foto: Harald Bratli.
+Figur 4: Svanvollen i 2016. Foto: Harald Bratli.
 
 </div>
 
@@ -453,7 +464,7 @@ dataene. I tillegg er det gjennomført en masteroppgave fra Sølendet
 
 I alt er det merket 593 skudd på Svanvollen (pluss 6 skudd som ikke er
 gjenfunnet). En stor andel av disse er vegetative
-(<a href="#fig-livsstadier" class="quarto-xref">Figur 4</a>). Mange har
+(<a href="#fig-livsstadier" class="quarto-xref">Figur 5</a>). Mange har
 heller ikke dannet overjordsskudd på flere år og er trolig døde. Det er
 foreløpig ikke gjennomført analyser som viser utviklingen innen de ulike
 skjøtselstiltakene. Oppsummeringen viser at antallet merkede skudd øker
@@ -469,7 +480,7 @@ overlevelsesmuligheter på lokaliteten.
 
 <img src="img/svanvollen_livsstadier.png" style="width:70.0%" />
 
-Figur 4: Fordeling av svartkurleskudd på Svanvollen etter livsstadium i
+Figur 5: Fordeling av svartkurleskudd på Svanvollen etter livsstadium i
 årene 2014–2026.
 
 </div>

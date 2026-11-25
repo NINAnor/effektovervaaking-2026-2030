@@ -236,9 +236,16 @@ Arten vokser hovedsakelig i baserike og ugjødsla, relativt fuktige (eller seson
 
 Svartkurle tilhører orkidéfamilien og slekta *Nigritella*. Denne slekta er kompleks og består av arter med ulike antall kromosomsett eller ploidinivå [@hedren_1999]. Artsavgrensingene er uklare, og antallet arter varierer i litteraturen, men mange regner om lag 14 arter til slekta [bl.a. @brutsch_2000], og disse er hjemmehørende i fjellområder i Europa. Det er nært slektskap mellom *Nigritella* og *Gymnadenia* (brudespore m.fl.), og nyere forskning tyder på at slektene bør slås sammen til *Gymnadenia*. Det er bl.a. brukt hos @kuhn_2019 og i den svenske rødlista. I Norge brukes navnene svartkurle og *Nigritella nigra* [@elven_2022].
 
-Blomstrende svartkurle er vanligvis 10–23 cm høy [@moen_2003], men det er målt opptil 29 cm høye individer i Sølendet naturreservat og på Svanvollen i Håkåsæter naturreservat i Sør-Fron (upubl. data). De mørkt rødbrune blomstene sitter i tette aks eller hoder og har en svak vaniljelukt. Antallet blomster er høyt, vanligvis mellom 20 og 40. Kronbladene spriker slik at blomsten får form av en sekskantet stjerne, og i motsetning til hos de fleste norske orkideer vender leppa oppover. Svartkurle blomstrer på de lavestliggende lokalitetene fra slutten av juni. På Sølendet er blomstringen vanligvis i første halvdel av juli, og på fjellokalitetene enda senere, ofte fram til begynnelsen av august. Bladene er linjeformet, sitter i rosett og er grågrønne til blågrønne. Sterile eksemplarer kan være vanskelige å oppdage. De kan minne om små grasplanter, men bladene mangler en tydelig kjøl og har avrundet bladspiss. For en mer detaljert beskrivelse av arten, se @moen_2003 [-@moen_2009].
+Blomstrende svartkurle er vanligvis 10–23 cm høy [@moen_2003], men det er målt opptil 29 cm høye individer i Sølendet naturreservat og på Svanvollen i Håkåsæter naturreservat i Sør-Fron (upubl. data). De mørkt rødbrune blomstene sitter i tette aks eller hoder og har en svak vaniljelukt (@fig-blomst-svartkurle). Antallet blomster er høyt, vanligvis mellom 20 og 40. Kronbladene spriker slik at blomsten får form av en sekskantet stjerne, og i motsetning til hos de fleste norske orkideer vender leppa oppover. Svartkurle blomstrer på de lavestliggende lokalitetene fra slutten av juni. På Sølendet er blomstringen vanligvis i første halvdel av juli, og på fjellokalitetene enda senere, ofte fram til begynnelsen av august. Bladene er linjeformet, sitter i rosett og er grågrønne til blågrønne. Sterile eksemplarer kan være vanskelige å oppdage. De kan minne om små grasplanter, men bladene mangler en tydelig kjøl og har avrundet bladspiss. For en mer detaljert beskrivelse av arten, se @moen_2003 [-@moen_2009].
 
-<!--# HER SKAL FIGUR 1 INN: «Blomstrende svartkurle. Foto: Asbjørn Moen/NTNU Vitenskapsmuseet.» (label fig-blomst-svartkurle, henvisning «(@fig-blomst-svartkurle)» etter «vaniljelukt»). Bildet (Svartkurle_Asbjørn Moen.JPG) ligger på Teams og er ikke i Final-dokumentet. -->
+```{r fig-blomst-svartkurle}
+#| fig-cap: 'Blomstrende svartkurle. Foto: Asbjørn Moen/NTNU Vitenskapsmuseet.'
+#| code-summary: 'Kode for figur.'
+#| out-width: 50%
+include_graphics("img/svartkurle_blomstrende_moen.jpg")
+```
+
+<!--# Originalbildet «Svartkurle_Asbjørn Moen.JPG» (Teams; kopi i P:/…/2026_subprojects/Svartkurle). -->
 
 ## 2. Formål med delprosjektet
 
