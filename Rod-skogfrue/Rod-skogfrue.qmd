@@ -68,7 +68,7 @@ hide: TRUE
 bibliography: references.bib
 ---
 
-<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Vedlegg årsrapport 2026_rød skogfrue_HB.docx» (P:/2026_subprojects/Skogfrue). Fjernmålingsfigurene er fra Ida M. Mienna sitt notat «rod_skogfrue_fjernmaling_notat.docx» i samme mappe. -->
+<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Vedlegg årsrapport 2026_rød skogfrue_HB.docx» (P:/2026_subprojects/Skogfrue). -->
 
 ```{r setup}
 #| include: false
@@ -237,7 +237,6 @@ Trusler mot rød skogfrue er blant annet beskrevet i handlingsplanen for arten [
 include_graphics("img/rod_skogfrue_bjorkedokk.jpg")
 ```
 
-<!--# Fotograf for figur 1–4 er Harald Bratli (bekreftet i Final-dokumentet). Bildene i OneDrive-zip-fila (Felt 2026) er tatt av Ruben E. Roos. -->
 
 Arten opptrer klumpvis i små bestander eller som enkeltindivider i lokalitetene. Disse bestandene dekker oftest små arealer, bare noen få m², og selv innen disse arealene kan dekningen av tre-, busk- og feltsjikt variere. Arten har variabel blomstring mellom år og kan også ha flere års underjordisk dvaleperiode. I små lokaliteter kan den derfor tilsynelatende være borte i flere år på rad, for så å sette overjordsskudd. Arten spres vegetativt med jordstengel, og det reelle genetiske individantallet per lokalitet er trolig lavere enn antallet skudd.
 

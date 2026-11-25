@@ -245,7 +245,6 @@ Blomstrende svartkurle er vanligvis 10–23 cm høy [@moen_2003], men det er må
 include_graphics("img/svartkurle_blomstrende_moen.jpg")
 ```
 
-<!--# Originalbildet «Svartkurle_Asbjørn Moen.JPG» (Teams; kopi i P:/…/2026_subprojects/Svartkurle). -->
 
 ## 2. Formål med delprosjektet
 

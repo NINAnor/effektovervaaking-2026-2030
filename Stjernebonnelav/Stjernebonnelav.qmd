@@ -75,7 +75,7 @@ hide: TRUE
 bibliography: references.bib
 ---
 
-<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Stjernebonnelav_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 4–7 er laget av code/01_figures_analyses.qmd. Kartet (figur 2) er hentet fra Word-dokumentet (større enn img/Kart_nordherad.png). -->
+<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Stjernebonnelav_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 4–7 er laget av code/01_figures_analyses.qmd. -->
 
 ```{r setup}
 #| include: false

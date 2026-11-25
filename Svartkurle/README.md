@@ -190,8 +190,6 @@ Vitenskapsmuseet.
 
 </div>
 
-<!--# Originalbildet «Svartkurle_Asbjørn Moen.JPG» (Teams; kopi i P:/…/2026_subprojects/Svartkurle). -->
-
 ## 2. Formål med delprosjektet
 
 ### 2.1 Målsetning med tiltakene og overvåkingen

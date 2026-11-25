@@ -67,7 +67,7 @@ hide: TRUE
 bibliography: references.bib
 ---
 
-<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Eremitt_2026_github.docx» (P:/…/Rapporter_2026_github), et utkast. Bildet av voksen eremitt er hentet fra Word-dokumentet (beskåret som der); de to andre bildene er lastet opp av Ruben E. Roos. Kommentarene fra Word-dokumentet er tatt med som kommentarer i teksten. -->
+<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Eremitt_2026_github.docx» (P:/…/Rapporter_2026_github), et utkast. Kommentarene fra Word-dokumentet er tatt med som kommentarer i teksten. -->
 
 ```{r setup}
 #| include: false

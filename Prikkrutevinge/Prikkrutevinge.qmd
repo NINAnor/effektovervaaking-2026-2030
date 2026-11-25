@@ -68,7 +68,7 @@ bibliography: references.bib
 nocite: "@hoell_2021" # sitert som ren tekst sammen med figurhenvisning i 3.2
 ---
 
-<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Prikkrutevinge_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 7–11 er laget av code/10_rapportfigurer.qmd. Kartene (figur 3 og 4) er hentet fra Word-dokumentet; originalene ligger på Teams. -->
+<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Prikkrutevinge_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 7–11 er laget av code/10_rapportfigurer.qmd. -->
 
 ```{r setup}
 #| include: false

@@ -237,8 +237,6 @@ Kyrkjeeide/NINA
 
 </div>
 
-<!--# Bildene i figur 2 og 3 er hentet fra «Trøndertorvmose_2026_github_final.docx» (Final); originalfilene «Fig 2 trøndertorvmose.jpg» og «Figur 3 trøndertorvmose.jpg» finnes ikke på P:. -->
-
 ## 4. Datainnsamling
 
 Datainnsamlingen er gjennomført på tre lokaliteter: Henningslettet

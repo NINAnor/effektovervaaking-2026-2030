@@ -70,7 +70,7 @@ hide: TRUE
 bibliography: references.bib
 ---
 
-<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Klippeblåvinge_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 6–9 er laget av Python-skriptene i code/ (se code/README.md). Bildene i figur 3, 4, 5 og 10 er hentet fra Word-dokumentet; originalene ligger på Teams. Tabell 4 og 5 er skrevet av fra teksten. -->
+<!--# Rapporten leser kun filer i img/. Tekstgrunnlaget er «Klippeblåvinge_2026_github_final.docx» (P:/…/Rapporter_2026_github/Final). Figur 6–9 er laget av Python-skriptene i code/ (se code/README.md). Tabell 4 og 5 er skrevet av fra teksten. -->
 
 ```{r setup}
 #| include: false
