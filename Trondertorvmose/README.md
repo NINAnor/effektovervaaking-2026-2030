@@ -325,7 +325,7 @@ Artsdatabanken.
 
 **CRediT statement**
 
-- Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson
+- Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 - Data curation: Fia Bengtsson
 - Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 - Software: Niccolò Cantu
