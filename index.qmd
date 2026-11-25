@@ -1,29 +1,77 @@
+---
+editor: 
+  markdown: 
+    wrap: 72
+---
+
 # Effektovervåking 2026–2030 {.unnumbered}
 
-Code, cleaned data and yearly result summaries for NINA's monitoring of the
-effects of management actions for threatened species and habitat types in
-Norway (*Overvåking av effekter av tiltak for trua arter og naturtyper 2026-2030*),
-funded by the Norwegian Environment Agency.
+Denne nettsiden inneholder digitale vedlegg til årsrapporten for 2026
+for prosjektet «Effektovervåking av trua arter og naturtyper for
+perioden 2026−2030». Prosjektet er finansiert av Miljødirektoratet.
 
-This book includes reports for:
-- [Åpen grunnlendt kalkmark](Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd)
-- [Dragehode](Dragehode/Dragehode.qmd)
-- [Honningblom](Honningblom/Honningblom.qmd)
-- [Elvesandjeger](Elvesandjeger/Elvesandjeger.qmd)
-- [Stor elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd)
-- [Klippeblåvinge](Klippeblaavinge/Klippeblaavinge.qmd)
-- [Prikkrutevinge](Prikkrutevinge/Prikkrutevinge.qmd)
-- [Trønderlav](Tronderlav/Tronderlav.qmd)
-- [Eremitt](Eremitt/Eremitt.qmd) (utkast)
-- [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd)
-- [Svartkurle](Svartkurle/Svartkurle.qmd)
-- [Trøndertorvmose](Trondertorvmose/Trondertorvmose.qmd)
-- [Stjernebønnelav](Stjernebonnelav/Stjernebonnelav.qmd)
-- [Askeglye](Askeglye/Askeglye.qmd)
-- [Kystlynghei: Methodology](Kystlynghei/report/kystlynghei_methods.qmd)
+Årsrapporten i sin helhet finnes her: 
+
+Roos, R.E., Nowell, M. & Evju, M. (red.) 2026. Effektovervåking av trua arter og naturtyper for perioden 2026−2030 - Årsrapport 2026. NINA Rapport 2851. Norsk institutt for naturforskning. (LENKE, må oppdateres)
+
+I vedleggene beskrives artene og naturtypen som inngår i prosjektet, i detalj. Kode, data og årlige resultater for overvåkingen av effekter av tiltak for trua arter og naturtyper, gis i hvert enkelt delkapittel. På denne nettsiden inkluderes rapporter for
+- [Åpen grunnlendt kalkmark](Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd) 
+- [Dragehode](Dragehode/Dragehode.qmd) 
+- [Honningblom](Honningblom/Honningblom.qmd) 
+- [Elvesandjeger](Elvesandjeger/Elvesandjeger.qmd) 
+- [Stor elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd) 
+- [Klippeblåvinge](Klippeblaavinge/Klippeblaavinge.qmd) 
+- [Prikkrutevinge](Prikkrutevinge/Prikkrutevinge.qmd) 
+- [Trønderlav](Tronderlav/Tronderlav.qmd) 
+- [Eremitt](Eremitt/Eremitt.qmd)(utkast) 
+- [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd) 
+- [Svartkurle](Svartkurle/Svartkurle.qmd) 
+- [Trøndertorvmose](Trondertorvmose/Trondertorvmose.qmd) 
+- [Stjernebønnelav](Stjernebonnelav/Stjernebonnelav.qmd) 
+- [Askeglye](Askeglye/Askeglye.qmd) 
+
+En egen rapport er publisert for utviklingen av metodikk for å bruke fjernmålingsdata til å overvåke tilstand i utvalgte naturtyper. Den fulle rapporten finnes her: 
+
+Gray, A.M., Singh, G. & Mienna, I.M. 2026. Fjernmålingsbasert overvåking av utvalgte naturtyper 2026. Kystlynghei, olivinskog og kalklindeskog. Årsrapport for opsjon 2 i oppdraget om effektovervåking 2026–2030. NINA Rapport 2852. Norsk institutt for naturforskning. (LENKE, må oppdateres)
+
+Denne nettsiden inkluderer også vedlegg som i detalj beskriver utviklingen av metodikk for fjernmålingsbasert overvåking av Kystlynghei og Olivinskog og Kalklindeskog, med separate metodevedlegg. 
+- [Kystlynghei: Methodology](Kystlynghei/report/kystlynghei_methods.qmd) 
 - [Forest monitoring report](effektovervaking_forests/docs/forest_monitoring_report.qmd)
 
-See the [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030)
-for the full subproject list and project workflow.
+
+Se [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030) for den fulle listen over underprosjekter og arbeidsflyt.
+
+Du kan også bla gjennom [previous website versions](versions/) av denne nettsiden.
+
+
+
+
+
+Code, cleaned data and yearly result summaries for NINA's monitoring of
+the effects of management actions for threatened species and habitat
+types in Norway (*Overvåking av effekter av tiltak for trua arter og
+naturtyper 2026-2030*), funded by the Norwegian Environment Agency.
+
+This book includes reports for: - [Åpen grunnlendt
+kalkmark](Apen-grunnlendt-kalkmark/Apen-grunnlendt-kalkmark.qmd) -
+[Dragehode](Dragehode/Dragehode.qmd) -
+[Honningblom](Honningblom/Honningblom.qmd) -
+[Elvesandjeger](Elvesandjeger/Elvesandjeger.qmd) - [Stor
+elvebreddedderkopp](Stor-elvebreddedderkopp/Stor-elvebreddedderkopp.qmd) -
+[Klippeblåvinge](Klippeblaavinge/Klippeblaavinge.qmd) -
+[Prikkrutevinge](Prikkrutevinge/Prikkrutevinge.qmd) -
+[Trønderlav](Tronderlav/Tronderlav.qmd) - [Eremitt](Eremitt/Eremitt.qmd)
+(utkast) - [Rød skogfrue](Rod-skogfrue/Rod-skogfrue.qmd) -
+[Svartkurle](Svartkurle/Svartkurle.qmd) -
+[Trøndertorvmose](Trondertorvmose/Trondertorvmose.qmd) -
+[Stjernebønnelav](Stjernebonnelav/Stjernebonnelav.qmd) -
+[Askeglye](Askeglye/Askeglye.qmd) - [Kystlynghei:
+Methodology](Kystlynghei/report/kystlynghei_methods.qmd) - [Forest
+monitoring
+report](effektovervaking_forests/docs/forest_monitoring_report.qmd)
+
+See the [repository
+README](https://github.com/NINAnor/effektovervaaking-2026-2030) for the
+full subproject list and project workflow.
 
 Browse [previous website versions](versions/).
