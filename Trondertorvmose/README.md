@@ -1,6 +1,6 @@
 # Trøndertorvmose (*Sphagnum troendelagicum*)
 Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
-2026-11-20
+2026-11-25
 
 - [Oppsummering](#oppsummering)
 - [English summary](#english-summary)
@@ -80,10 +80,10 @@ Trøndertorvmose er en endemisk og prioritert art for Norge. Den finnes
 kun i nordlige deler av Trøndelag og er kjent fra omtrent 30
 lokaliteter. Det er ingen pågående tiltak for arten, men
 bevaringsutsetting kan være aktuelt på lokaliteter hvor arten går tapt.
-Vi tester derfor hvordan arten kan oppformeres i veksthus. I tillegg har
-vi i 2026 utvidet eksisterende overvåking av arten til å inkludere den
-sørvestlige delen av utbredelsen, som først ble kjent fra 2019, etter at
-eksisterende overvåking ble etablert.
+Vi tester derfor hvordan arten kan oppformeres i bioreaktorer i
+veksthus. I tillegg har vi i 2026 utvidet eksisterende overvåking av
+arten til å inkludere den sørvestlige delen av utbredelsen, som først
+ble kjent fra 2019, etter at eksisterende overvåking ble etablert.
 
 ## English summary
 
@@ -91,12 +91,12 @@ eksisterende overvåking ble etablert.
 
 *Sphagnum troendelagicum* is endemic to and a priority species in
 Norway. It is only found in northern parts of Trøndelag county, at about
-30 sites. There are no ongoing actions, but translocation may be
-necessary at sites where the species goes extinct. Thus, we are
-currently testing how the species can be propagated vegetatively in the
-greenhouse. In addition, we have extended monitoring of the species into
-the southwestern part of its distribution, as it was unknown from this
-area when the monitoring of the species was established.
+30 sites. There are no ongoing conservation actions, but translocation
+may be necessary at sites where the species goes extinct. Thus, we are
+currently testing how the species can be propagated vegetatively in
+bioreactors. In addition, we have extended monitoring of the species
+into the southwestern part of its distribution, as it was unknown from
+this area when the monitoring of the species was established.
 
 ## 1. Innledning
 
@@ -142,9 +142,26 @@ individer *in situ* ved bevaringsutsetting.
 
 Det er ingen etablerte indikatorer for overvåkingen eller vekstforsøket.
 For vekstforsøket vil en økning i biomasse av trøndertorvmose indikere
-at det fungerer. Det er først når det eventuelt gjennomføres
-bevaringsutsetting for trøndertorvmose, at det er aktuelt å identifisere
-indikatorer som kan brukes til å evaluere effekten av tiltaket.
+at det fungerer. Dette vil måles som antall nye hoder av torvmoser og
+eventuell biomasse i forhold til startmengden (fem eller ti skudd på
+fire cm hver).
+
+For overvåkingen kan indikatorene listet i
+<a href="#tbl-indikatorer-trondertorvmose"
+class="quarto-xref">Tabell 1</a> benyttes. De samme indikatorene er
+aktuelle dersom bevaringsutsetting gjennomføres for trøndertorvmose.
+
+<div id="tbl-indikatorer-trondertorvmose">
+
+Tabell 1: Tabell med beskrivelse av foreslåtte indikatorer
+
+| Indikator | Variabel registrert i felt | Utvalgsenhet | Utlegging av utvalgsenhet | Antall utvalgsenheter | Frekvens for datainnsamling |
+|----|----|----|----|----|----|
+| Populasjonsstørrelse trøndertorvmose | Forekomst og mengde (dekning %) av trøndertorvmose | 0,5 × 0,5 m<sup>2</sup> | Ikke tilfeldig, men der det er trøndertorvmose. | 24 ruter | Hvert femte år |
+| Artsrikdom - alle plantearter | Forekomst av alle planter | 0,5 × 0,5 m<sup>2</sup> | Ikke tilfeldig, men der det er trøndertorvmose. | 24 ruter | Hvert femte år |
+| Artssammensetning | Forekomst og frekvens i 16 småruter av alle planter | 0,5 × 0,5 m<sup>2</sup> | Ikke tilfeldig, men der det er trøndertorvmose. | 24 ruter | Hvert femte år |
+
+</div>
 
 ### 2.2 Formål med overvåking
 
@@ -168,26 +185,75 @@ Statsforvalteren i Trøndelag. De 24 rutene ble analysert fra 28.
 september til 1. oktober.
 
 Vekstforsøket gjennomføres i veksthuset på Ringve botaniske hage fra
-november 2026. Ferskt materiale til forsøket ble samlet i Kaldal 29.
-september med innsamlingstillatelse fra Statsforvalteren i Trøndelag.
+november 2026 (<a href="#fig-bioreaktorer-trondertorvmose"
+class="quarto-xref">Figur 2</a>). Ferskt materiale til forsøket ble
+samlet i Kaldal 29. september med innsamlingstillatelse fra
+Statsforvalteren i Trøndelag.
+
+<div id="fig-bioreaktorer-trondertorvmose">
+
+![](img/bioreaktorer_oppsett.jpg)
+
+Figur 2: Oppsettet med 12 bioreaktorer hvor vi tester vekstforsøk med
+torvmoser, inkludert trøndertorvmose. Foto: Magni Olsen Kyrkjeeide/NINA.
+
+</div>
 
 ### 3.2 Tiltak
 
-Det gjennomføres ikke tiltak for trøndertorvmose.
+Vekstforsøk i bioreaktor ble satt opp 19. November. Vi brukte
+Plantform-bioreaktorer (Plant Form, Sverige), som er basert på ett
+prinsipp med midlertidig bløtlegging av plantemateriell i væske som kan
+inneholde næring. I bioreaktoren pumpes væske opp i en kurv hvor
+plantene ligger. Siden følger drenering og ventilasjon med hjelp av en
+annen pumpe. Systemet er lukket, noe som gjør det tidseffektivt og
+krever lite manuelt tilsyn. Syklusen med bløtlegging og drenering sikrer
+at mosene får tilstrekkelig med fuktighet, samtidig som de eksponeres
+for nok luft mellom bløtleggingene til at fotosyntesen ikke begrenses.
+Dette bør bidra til økt vekst. Totalt ble materiale av tre arter,
+trøndertorvmose, svelttorvmose og klubbetorvmose, fordelt på 12
+bioreaktorer, fire for hver art. Vi tester tilvekst av to ulike mengder
+med torvmoser: fem og ti skudd. Hvert forsøk testes i to bioreaktorer.
+Forsøket er satt opp som følger: tre arter x to mengder x to
+bioreaktorer.
+
+I hver bioreaktor ble det tilført tre dl myrvann samlet på samme
+lokalitet som artene ble samlet. Vi tilsatte ikke noe ekstra næring. Det
+pumpes vann inn i bioreaktoren i fem minutter tre ganger om dagen. Rett
+etterpå trekkes vannet ut igjen i to minutter. I veksthuset er det
+mellom 14 og 20 C. Lyset er på mellom 0800 og 1530.
+
+Vi brukte de øverste fire cm av moseskuddene og kuttet dem i åtte 0,5 cm
+lange segmenter. Disse la vi deretter i bioreaktoren plassert jevnt
+fordelt (<a href="#fig-fragmenter-trondertorvmose"
+class="quarto-xref">Figur 3</a>).
+
+<div id="fig-fragmenter-trondertorvmose">
+
+![](img/bioreaktor_fragmenter.jpg)
+
+Figur 3: Bioreaktor med fragmenter av trøndertorvmose. Foto: Magni Olsen
+Kyrkjeeide/NINA
+
+</div>
+
+<!--# Bildene i figur 2 og 3 er hentet fra «Trøndertorvmose_2026_github_final.docx» (Final); originalfilene «Fig 2 trøndertorvmose.jpg» og «Figur 3 trøndertorvmose.jpg» finnes ikke på P:. -->
 
 ## 4. Datainnsamling
 
 Datainnsamlingen er gjennomført på tre lokaliteter: Henningslettet
-(Steinkjer) og Korsmyra og Kaldal (Namsos). Fastrutene ble etablert på
-steder med trøndertorvmose. Fastrutene er 0,5 × 0,5 m og delt inn i 16
-småruter. De nyetablerte rutene ble plassert i retning sør–nord, med en
-bambuspinne i nordvestre hjørne og metallrør i de øvrige hjørnene. De
-ble deretter analysert med småruta i nordvestre hjørne som nummer 1.
-Hver rute ble fotografert fra sør for å gjøre det enklere å finne dem
-igjen ved neste rekartlegging. Ved hver fastrute ble det målt torvdybde
-i fire punkter, ett i hver himmelretning, omtrent 1 meter fra kanten av
-analyseruta. En sammenstilling av datainnsamlingen er inkludert i NINA
-Prosjektnotat 788, som er levert til Statsforvalteren i Trøndelag.
+(Steinkjer) og Korsmyra og Kaldal (Namsos). Nye fastruter ble etablert
+på steder med trøndertorvmose. Fastrutene er 0,5 × 0,5 m og delt inn i
+16 småruter. De nyetablerte rutene ble plassert i retning sør–nord, med
+en bambuspinne i nordvestre hjørne og metallrør i de øvrige hjørnene. De
+ble deretter analysert med småruta i nordvestre hjørne som nummer 1. Vi
+registrerte forekomst av alle planter i alle småruter, samt dekning av
+trøndertorvmose i prosent. Hver rute ble fotografert fra sør for å gjøre
+det enklere å finne dem igjen ved neste rekartlegging. Ved hver fastrute
+ble det målt torvdybde i fire punkter, ett i hver himmelretning, omtrent
+1 meter fra kanten av analyseruta. En sammenstilling av datainnsamlingen
+er inkludert i NINA Prosjektnotat 788, som er levert til
+Statsforvalteren i Trøndelag.
 
 ## 5. Dataanalyser
 
@@ -207,10 +273,9 @@ Snåsa som tidligere er beskrevet som aktuell for bevaringsutsetting,
 fordi det er observert tilbakegang av arten her. I 2026 ble det
 observert kun et fåtall individer på lokaliteten.
 
-Vekstforsøket er igangsatt, og eventuell tilvekst måles gjennom vinteren
-2026/27.
-
-<!--# Fyll inn hvor ofte tilveksten måles (utkastet: «hver .. måned»). -->
+Vekstforsøket er igangsatt og eventuell tilvekst undersøkes hver tredje
+uke gjennom vinteren 2026/27. Tilvekst måles når forsøket avsluttes. Det
+er ikke satt sluttdato for forsøket, siden dette er metodeutvikling.
 
 ## 7. Oppsummering
 
@@ -224,10 +289,9 @@ trøndertorvmose i Snåsa.
 Overvåkingen av arten bør fortsette hvert femte år. Neste datainnsamling
 bør skje i 2031.
 
-Det var svært få individer av trøndertorvmose på lokaliteten i Snåsa i
-2026. Bevaringsutsetting bør testes på lokaliteten fra 2027. Materialet
-fra vekstforsøket kan benyttes om forsøket er vellykket. Hvis ikke, bør
-det vurderes om det skal brukes ferskt innsamlet materiale fra en
+Bevaringsutsetting bør testes på lokaliteten fra 2027. Materialet fra
+vekstforsøket kan benyttes om forsøket er vellykket. Hvis ikke, bør det
+vurderes om det skal brukes ferskt innsamlet materiale fra en
 nærliggende lokalitet. Bevaringsutsettingen bør overvåkes i 2027, 2029
 og 2031 for å evaluere effekten.
 
@@ -266,8 +330,8 @@ Artsdatabanken.
 - Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 - Software: Niccolò Cantu
 
-Dataene samlet fra de nyetablerte fastrutene for trøndertorvmose
-(Henningslettet, Korsmyra og Kaldal) er delt på Living Norway.
+Frekvensdataene for trøndertorvmoser samlet i de nyetablerte fastrutene
+(Henningslettet, Korsmyra og Kaldal) er tilgjengelig fra …
 
 <!--# Fyll inn adresse (DOI/lenke) til datasettet på Living Norway. -->
 
