@@ -9,12 +9,15 @@
 #and save both Occurrence and Event into a new excel
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# Mappe med datafilene (sett til stien til din egen datamappe)
+data_dir <- "PATH/TO/DATA"
+
 library(readxl)
 library(writexl)
 library(dplyr)
 library(tidyr)
 #Data loading####
-dat<-read_excel("C:/Users/fia.bengtsson/OneDrive - NINA/Documents/Effektoverv??kning/Vegetasjonsanalyser_overv??king_data COPY.xlsx", sheet = "2026", .name_repair = "minimal")
+dat<-read_excel(file.path(data_dir, "Vegetasjonsanalyser_overvåking_data COPY.xlsx"), sheet = "2026", .name_repair = "minimal")
 names(dat)
 
 
@@ -75,7 +78,7 @@ Frekvens <- dat_long %>%
     Frekvens = sum(Presence) / 16 * 100,
     .groups = "drop"
   )
-write_xlsx(Frekvens, "Frekvens_2026.xlsx")
+write_xlsx(Frekvens, file.path(data_dir, "Frekvens_2026.xlsx"))
 
 #Make a species name list that can be pasted into NAVNEVASK####
 # Extract unique species names
@@ -90,14 +93,14 @@ species_names <- unique(Frekvens$Art)
 #str(Frekvens)
 #loading the datavask file I got from artsdatabanken based on the 
 #species in Frekvens
-namefix<-read_excel("C:/Users/fia.bengtsson/OneDrive - NINA/Documents/Effektoverv??kning/name_search_20_11_2026.xlsx")
+namefix<-read_excel(file.path(data_dir, "name_search_20_11_2026.xlsx"))
 #Joining frekvens with datavask based on Art and Input should be the same
 #Frekvens now has all the taxonomic info
 Frekvens <- Frekvens %>%
   left_join(namefix, by = c("Art" = "Input"))
 
 #Making the new df 
-Event <- read_excel("Event.xlsx", sheet = "Event")
+Event <- read_excel(file.path(data_dir, "Event.xlsx"), sheet = "Event")
 
 #The columns and the stuff we use Frekvens for
 Occurrence <- Frekvens %>%
@@ -177,7 +180,7 @@ relocate(eventID, .before = everything())
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #Add cover for S. troendelagicum!!!####
 #data loading
-covertroendelagicum<-read_excel("C:/Users/fia.bengtsson/OneDrive - NINA/Documents/Effektoverv??kning/Vegetasjonsanalyser_overv??king_data COPY.xlsx", sheet = "Dekning Stroend", .name_repair = "minimal")
+covertroendelagicum<-read_excel(file.path(data_dir, "Vegetasjonsanalyser_overvåking_data COPY.xlsx"), sheet = "Dekning Stroend", .name_repair = "minimal")
 
 # Create Sphagnum troendelagicum cover observations ####
 
@@ -234,7 +237,7 @@ Occurrence %>%
   count(organismQuantityType)
 
 #Last sheet! Measure or Fact
-peat<-read_excel("C:/Users/fia.bengtsson/OneDrive - NINA/Documents/Effektoverv??kning/Vegetasjonsanalyser_overv??king_data COPY.xlsx", sheet = "Torvdybde", .name_repair = "minimal")
+peat<-read_excel(file.path(data_dir, "Vegetasjonsanalyser_overvåking_data COPY.xlsx"), sheet = "Torvdybde", .name_repair = "minimal")
 str(peat)
 
 #Measurement df
@@ -281,5 +284,5 @@ Occurrence_S_troend<-Occurrence %>%
    # Occurrence = Occurrence,
    # MeasurementOrFact = Measurement
   #),
-  #"EventCore_Troender2026_all species data.xlsx"
+  #file.path(data_dir, "EventCore_Troender2026_all species data.xlsx")
 #)

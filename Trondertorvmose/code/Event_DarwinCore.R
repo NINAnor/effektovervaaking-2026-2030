@@ -1,6 +1,9 @@
 #Code to create Eventcore data from Tr??ndertorvmose effektoverv??kning 2026 ####
 #Will make one row per plot_ID in sheet one
 
+# Mappe med datafilene (sett til stien til din egen datamappe)
+data_dir <- "PATH/TO/DATA"
+
 library(dplyr)
 library(tibble)
 library(readxl)
@@ -74,7 +77,7 @@ Event <- Event %>%
 
 #Load data 
 Lokaliteter <- read_excel(
-  "C:/Users/fia.bengtsson/OneDrive - NINA/Documents/Effektoverv??kning/Vegetasjonsanalyser_overv??king_data COPY.xlsx",
+  file.path(data_dir, "Vegetasjonsanalyser_overvåking_data COPY.xlsx"),
   sheet = "Lokaliteter"
 )
 Event <- Event %>%
@@ -122,7 +125,7 @@ Event <- Event %>%
 
 write_xlsx(
   list(Event = Event),
-  "Event2.xlsx"
+  file.path(data_dir, "Event2.xlsx")
 )
 
 
