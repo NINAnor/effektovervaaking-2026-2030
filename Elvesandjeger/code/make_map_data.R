@@ -28,12 +28,9 @@ library(sf)
 library(dplyr)
 library(magick)
 
-p_elvedyr <- "/data/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/05 Elvedyr/Data"
-#p_elvedyr <- "P:/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/05 Elvedyr/Data" #Windows
-p_geo <- "/data/R/GeoSpatialData"
-#p_geo <- "R:/GeoSpatialData" #Windows
-p_photos <- "/data/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/05 Elvedyr/Figures/elvesandjeger/Photos"
-#p_photos <- "P:/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/05 Elvedyr/Figures/elvesandjeger/Photos" #Windows
+p_elvedyr <- "PATH/TO/DATA" # mappen med datafilene for elvedyr
+p_geo <- "PATH/TO/GEOSPATIALDATA" # mappen med felles kartdata (fylker, elvenett)
+p_photos <- "PATH/TO/PHOTOS" # mappen med feltbildene
 
 out <- here::here("data", "kart_elvedyr.gpkg")
 

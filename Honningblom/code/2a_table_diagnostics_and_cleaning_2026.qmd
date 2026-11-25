@@ -13,8 +13,6 @@ Når du har lagt til dine endringer under, klikk på "Run" og "Run All" eller Ct
 ```{r}
 
 # The table should have the same structure and colnames as in export_dirty.xlsx.
-filepath <- "~/Mounts/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/04 Honningblom/Herminium monorchis/Herminium_monorchis_2026/Honningblom_2026_processed/Honningblom_2026_export_dirty.xlsx"
-
 filepath <- here::here("data", 
                        "S123_2026", 
                        "Honningblom_2026_processed", 

@@ -389,6 +389,6 @@ ggplot.popstruktur <- function(popstr){
     theme_classic()
   
   ggsave(
-    paste0("C:/Users/ruben.roos/NINA/154027 - Effektovervåking av trua arter og naturtyper 2024 - Documents/154027-03 Dragehode/R Dragehode 2025/Figurer/ggplots" ,title, ".png"))              
+    file.path("PATH/TO/FIGURES", paste0("ggplots", title, ".png")))              
   
 }              

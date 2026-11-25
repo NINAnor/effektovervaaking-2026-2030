@@ -23,8 +23,8 @@
 #Author: Megan Nowell
 #Date: 2026
 
-setwd("/data/P-Prosjekter2/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/05 Elvedyr/Data")
-#setwd("P:/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/05 Elvedyr/Data") #Windows
+data_dir <- "PATH/TO/DATA" # mappen med datafilene
+setwd(data_dir)
 
 library(dplyr)
 library(tidyr)

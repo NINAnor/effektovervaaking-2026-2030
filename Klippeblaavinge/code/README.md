@@ -2,8 +2,9 @@
 
 Python scripts for the egg microhabitat analysis (smørbukk with and without
 eggs of *Scolitantides orion*, 2026) and the habitat suitability model for
-Halden festning. Raw data stay on P:. The scripts write cleaned tables to
-`../data/` and figures to `../img/`. Caches and QA files go to a work folder on P:.
+Halden festning. Raw data are not in the repo; set the data folder in `config.py`
+(placeholder `PATH/TO/DATA`). The scripts write cleaned tables to `../data/` and
+figures to `../img/`. Caches and QA files go to a work folder inside the data folder.
 
 ## Running
 
@@ -31,7 +32,7 @@ Script 4 needs the predictor raster written by script 3. Script 1 takes a few
 minutes. Script 3 takes about 5 minutes, mostly for the sun map. Both cache
 intermediate results in the work folder.
 
-## Input data (on P:)
+## Input data (not in the repo)
 
 | Data | Path in `config.py` |
 |---|---|
@@ -46,7 +47,7 @@ PlanetScope imagery is under licence and is not stored in the repository.
 
 To run with data somewhere else, set these environment variables:
 
-- `KLIPPEBLAAVINGE_P`: project folder (default `P:/156004_06_effektovervaking_2026_2030_klippeblavinge`)
+- `KLIPPEBLAAVINGE_P`: project folder (default placeholder `PATH/TO/DATA`)
 - `KLIPPEBLAAVINGE_WORK`: cache/QA folder (default `<P>/output_klippeblavinge_python`)
 - `KLIPPEBLAAVINGE_GYLDENLOVE_PC`, `KLIPPEBLAAVINGE_GYLDENLOVE_GNSS`: point cloud and GNSS export for script 5
 - `KLIPPEBLAAVINGE_LIDAR`, `KLIPPEBLAAVINGE_PLANETSCOPE`, `KLIPPEBLAAVINGE_STUDY_AREA`: override single inputs (see `config.py`)

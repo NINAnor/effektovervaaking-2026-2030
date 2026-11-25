@@ -1,6 +1,6 @@
 # Code – Elvesandjeger
 
-Preprocessing that turns the raw field data and the lupin clearing data on P: into the files in [`../data/`](../data/) that the report reads. These scripts are **not** part of the ecRxiv submission. `install_github_deps.R` is not preprocessing – it installs GitHub-only R packages into the pixi environment (see [`../pixi.toml`](../pixi.toml)). They read from and write to `05 Elvedyr/Data` on P:.
+Preprocessing that turns the raw field data and the lupin clearing data on P: into the files in [`../data/`](../data/) that the report reads. These scripts are **not** part of the ecRxiv submission. `install_github_deps.R` is not preprocessing – it installs GitHub-only R packages into the pixi environment (see [`../pixi.toml`](../pixi.toml)). They read from and write to the data folder set at the top of each script (`data_dir <- "PATH/TO/DATA"`; in `make_map_data.R`: `p_elvedyr`, `p_geo` and `p_photos`). Replace the placeholder with the path to your copy of the data.
 
 | Script | Does | Output used by the report |
 |---|---|---|

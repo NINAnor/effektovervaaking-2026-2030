@@ -1,7 +1,7 @@
 """Paths and settings shared by the Klippeblåvinge scripts.
 
-Raw data stay on P:. Set the environment variables below to run elsewhere
-(for example with a local copy of the data). Cleaned outputs are written to
+Raw data are not in the repo. Replace the PATH/TO/... placeholders below, or
+set the environment variables, to point to the data folders. Cleaned outputs are written to
 the subproject's data/ and img/ folders; caches and QA files go to WORK.
 """
 
@@ -13,7 +13,7 @@ SUBPROJECT = Path(__file__).resolve().parents[1]
 DATA = SUBPROJECT / "data"
 IMG = SUBPROJECT / "img"
 
-P = Path(os.environ.get("KLIPPEBLAAVINGE_P", "P:/156004_06_effektovervaking_2026_2030_klippeblavinge"))
+P = Path(os.environ.get("KLIPPEBLAAVINGE_P", "PATH/TO/DATA"))
 WORK = Path(os.environ.get("KLIPPEBLAAVINGE_WORK", P / "output_klippeblavinge_python"))
 CACHE = WORK / "cache"
 QA = WORK / "qa"
@@ -58,7 +58,7 @@ PLANETSCOPE = Path(os.environ.get("KLIPPEBLAAVINGE_PLANETSCOPE", P / "Analysis/P
 # Study area: Halden festning.
 STUDY_AREA = Path(os.environ.get(
     "KLIPPEBLAAVINGE_STUDY_AREA",
-    "P:/154027_effektovervaking_av_trua_arter_og_naturtyper_2024/06 Klippeblåvinge/DroneOrthomosaics/haldenArea.shp"))
+    "PATH/TO/DRONEORTHOMOSAICS/haldenArea.shp"))
 
 # ---------------------------------------------------------------- settings
 WORKING_EPSG = 25832
