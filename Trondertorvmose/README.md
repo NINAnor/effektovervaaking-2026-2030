@@ -1,5 +1,5 @@
 # Trøndertorvmose (*Sphagnum troendelagicum*)
-Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
+Magni Olsen Kyrkjeeide, Fia Bengtsson
 2026-11-25
 
 - [Oppsummering](#oppsummering)
@@ -34,9 +34,9 @@ Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_overall_none.svg)](https://github.com/NINAnor/ecRxiv/wiki#open-science-badges)
 [![](https://raw.githubusercontent.com/NINAnor/ecRxiv/main/docs/badge_gplv3.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-> **Recommended citation**: Kyrkjeeide, M.O., Bengtsson, F. & Hassel, K.
-> 2026. Trøndertorvmose. Digitalt vedlegg til Roos, R.E., Nowell, M. &
-> Evju, M. (red.) 2026. Effektovervåking av trua arter og naturtyper
+> **Recommended citation**: Kyrkjeeide, M.O. & Bengtsson, F. 2026.
+> Trøndertorvmose. Digitalt vedlegg til Roos, R.E., Nowell, M. & Evju,
+> M. (red.) 2026. Effektovervåking av trua arter og naturtyper
 > 2026–2030. Årsrapport 2026. NINA Rapport 2851. Norsk institutt for
 > naturforskning.
 > <https://ninanor.github.io/effektovervaaking-2026-2030/Trondertorvmose/Trondertorvmose.html>
@@ -325,9 +325,10 @@ Artsdatabanken.
 
 **CRediT statement**
 
-- Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
+- Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian
+  Hassel
 - Data curation: Fia Bengtsson
-- Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
+- Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson
 - Software: Niccolò Cantu
 
 Frekvensdataene for trøndertorvmoser samlet i de nyetablerte fastrutene

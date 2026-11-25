@@ -52,11 +52,7 @@ author:
   - name: Fia Bengtsson
     affiliations:
       - ref: nina
-  - name: Kristian Hassel
-    affiliations:
-      - id: ntnu
-        name: NTNU Vitenskapsmuseet
-AuthorList: Kyrkjeeide, M.O., Bengtsson, F. & Hassel, K.
+AuthorList: Kyrkjeeide, M.O. & Bengtsson, F.
 date: today
 data_availability: none
 code_reproducibility: none
@@ -326,7 +322,7 @@ Bevaringsutsetting bør testes på lokaliteten fra 2027. Materialet fra vekstfor
 
 -   Data collection: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
 -   Data curation: Fia Bengtsson
--   Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson, Kristian Hassel
+-   Writing: Magni Olsen Kyrkjeeide, Fia Bengtsson
 -   Software: Niccolò Cantu
 
 Frekvensdataene for trøndertorvmoser samlet i de nyetablerte fastrutene (Henningslettet, Korsmyra og Kaldal) er tilgjengelig fra ...
