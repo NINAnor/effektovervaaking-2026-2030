@@ -46,6 +46,9 @@ Se [repository README](https://github.com/NINAnor/effektovervaaking-2026-2030) f
 Du kan også bla gjennom [previous website versions](versions/) av denne nettsiden.
 
 
+----------------------------------------------------------------------------------------
+
+
 This website contains the supplementary material for the 2026 annual report for "Monitoring of effects of management actions for threatened nature types and species 2026-2030". The project is funded by the Norwegian Environment Agency. 
 
 The main report can be found here: 
